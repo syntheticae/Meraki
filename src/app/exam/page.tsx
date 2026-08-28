@@ -173,11 +173,12 @@ export default function ExamHubPage() {
 
             <input
               type="range"
-              min={10}
+              min={0}
               max={40}
               value={ieltsRawInput}
               onChange={(e) => setIeltsRawInput(Number(e.target.value))}
               className="w-full accent-[#C4502A] cursor-pointer"
+              aria-label="Skor mentah IELTS Reading"
             />
 
             <div className="p-4 rounded-xl bg-[#EFE8DC]/80 border border-[#1A1714]/10 flex items-center justify-between">
@@ -200,23 +201,24 @@ export default function ExamHubPage() {
           {/* TOEFL Converter */}
           <GlassCard padded="md" className="space-y-4 bg-white/75">
             <div className="flex items-center justify-between">
-              <span className="font-medium text-sm text-[#1A1714]">TOEFL Section Accuracy</span>
+              <span className="font-medium text-sm text-[#1A1714]">TOEFL Section Accuracy (Reading / Listening)</span>
               <span className="font-mono text-xs text-emerald-700">{toeflRawInput} / 30 Benar</span>
             </div>
 
             <input
               type="range"
-              min={8}
+              min={0}
               max={30}
               value={toeflRawInput}
               onChange={(e) => setToeflRawInput(Number(e.target.value))}
               className="w-full accent-emerald-700 cursor-pointer"
+              aria-label="Akurasi bagian TOEFL iBT"
             />
 
             <div className="p-4 rounded-xl bg-[#EFE8DC]/80 border border-[#1A1714]/10 flex items-center justify-between">
               <div>
                 <span className="text-[11px] font-mono text-[#82796A] uppercase block">
-                  Estimasi Skor Total iBT:
+                  Proyeksi Total Skor iBT:
                 </span>
                 <span className="text-3xl font-serif font-bold text-[#1A1714]">
                   {toeflResult.scoreOutOf120} / 120

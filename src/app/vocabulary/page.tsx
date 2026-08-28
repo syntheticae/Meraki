@@ -16,6 +16,15 @@ export default function VocabularyPage() {
 
   const categories = ['all', 'Research & Academics', 'Argumentation', 'Decision Making', 'Society & Technology', 'Cause & Effect', 'Logic & Reasoning', 'Health & Society'];
 
+  React.useEffect(() => {
+    try {
+      const stored = localStorage.getItem('meraki_mastered_vocab');
+      if (stored) setMasteredWords(JSON.parse(stored));
+    } catch (e) {
+      console.warn('Could not load mastered vocab', e);
+    }
+  }, []);
+
   const filteredCards = vocabularyCards.filter((card) => {
     const matchesCategory = selectedCategory === 'all' || card.category === selectedCategory;
     const matchesSearch =
@@ -34,10 +43,13 @@ export default function VocabularyPage() {
 
   const toggleMastered = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    setMasteredWords((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+    setMasteredWords((prev) => {
+      const next = { ...prev, [id]: !prev[id] };
+      try {
+        localStorage.setItem('meraki_mastered_vocab', JSON.stringify(next));
+      } catch (err) {}
+      return next;
+    });
   };
 
   return (
@@ -74,12 +86,12 @@ export default function VocabularyPage() {
 
         {/* Category Pills */}
         <div className="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
-          {categories.slice(0, 5).map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={clsx(
-                'px-3.5 py-1.5 rounded-full text-xs font-mono transition-all',
+                'px-3.5 py-1.5 rounded-full text-xs font-mono transition-all tactile-btn',
                 selectedCategory === cat
                   ? 'bg-[#1A1714] text-white shadow-xs'
                   : 'bg-black/03 text-[#82796A] hover:text-[#1A1714] hover:bg-black/06'
@@ -121,8 +133,9 @@ export default function VocabularyPage() {
                           e.stopPropagation();
                           playTextToSpeech(card.word);
                         }}
-                        className="p-2 rounded-full hover:bg-black/05 text-[#82796A] hover:text-[#1A1714] transition-colors"
+                        className="p-2 rounded-full hover:bg-black/05 text-[#82796A] hover:text-[#1A1714] transition-colors tactile-btn"
                         title="Dengarkan pengucapan"
+                        aria-label={`Dengarkan pengucapan kata ${card.word}`}
                       >
                         <Volume2 className="w-4 h-4 text-[#C4502A]" />
                       </button>

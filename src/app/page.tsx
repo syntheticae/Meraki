@@ -1,43 +1,51 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import Link from 'next/link';
 import { 
   BookOpen, 
   Check, 
   RotateCcw, 
   Search, 
   ChevronRight, 
-  ChevronLeft,
+  ChevronLeft, 
   CheckCircle2, 
-  HelpCircle,
-  Shuffle,
-  ArrowRight,
-  ListCheck,
-  Award,
-  Layers,
-  Sparkles,
-  Volume2,
-  AlertTriangle,
-  Clock,
-  GraduationCap,
-  Table,
-  PenTool,
-  Archive,
-  FileText,
-  Download,
-  Upload,
-  BarChart2,
-  Ear,
-  Target,
-  TrendingUp,
-  Menu,
-  X,
-  Compass,
-  BookMarked,
-  ShieldCheck,
-  ExternalLink,
-  ChevronDown,
-  Scissors
+  HelpCircle, 
+  Shuffle, 
+  ArrowRight, 
+  ListCheck, 
+  Award, 
+  Layers, 
+  Sparkles, 
+  Volume2, 
+  AlertTriangle, 
+  Clock, 
+  GraduationCap, 
+  Table, 
+  PenTool, 
+  Archive, 
+  FileText, 
+  Download, 
+  Upload, 
+  BarChart2, 
+  Ear, 
+  Target, 
+  TrendingUp, 
+  Menu, 
+  X, 
+  Compass, 
+  BookMarked, 
+  ShieldCheck, 
+  ExternalLink, 
+  ChevronDown, 
+  Scissors,
+  Play,
+  Headphones,
+  Timer,
+  Activity,
+  Flame,
+  Zap,
+  RefreshCw
 } from 'lucide-react';
 import { MERAKI_CURRICULUM, LearningTopic, PracticeQuestion, ErrorCorrectionTask } from '@/data/meraki-data';
 import { OXFORD_3000_VOCABULARY, OxfordWord, checkMeaningAccuracy } from '@/data/oxford-3000';
@@ -196,8 +204,14 @@ export default function MerakiApp() {
   const [combineUserInput, setCombineUserInput] = useState<string>('');
   const [combineFeedback, setCombineFeedback] = useState<{ checked: boolean; isCorrect: boolean } | null>(null);
 
-  // Phonetics Minimal Pairs State
+  // Phonetics Lab Modes & Ear Training State
   const [activeMinimalPairIndex, setActiveMinimalPairIndex] = useState<number>(0);
+  const [phoneticsMode, setPhoneticsMode] = useState<'reference' | 'ear-training' | 'shadowing'>('reference');
+  const [earSecretWord, setEarSecretWord] = useState<'A' | 'B' | null>(null);
+  const [earSelectedChoice, setEarSelectedChoice] = useState<'A' | 'B' | null>(null);
+  const [earScore, setEarScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
+  const [shadowingCountdown, setShadowingCountdown] = useState<number>(5);
+  const [isShadowingRunning, setIsShadowingRunning] = useState<boolean>(false);
 
   // Deterministic Writing Pad State (No AI, Rule-Based)
   const [writingPadText, setWritingPadText] = useState<string>('');
@@ -205,19 +219,39 @@ export default function MerakiApp() {
   // Progress & Mistake Vault State
   const [completedTopicIds, setCompletedTopicIds] = useState<string[]>([]);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
-  const [mistakeVault, setMistakeVault] = useState<Array<{ id: string; type: 'quiz' | 'doctor' | 'collocation' | 'prep'; title: string; question: string; prompt: string; correctAnswer: string; explanation: string; timestamp: number }>>([]);
+  const [mistakeVault, setMistakeVault] = useState<Array<{ 
+    id: string; 
+    type: 'quiz' | 'doctor' | 'collocation' | 'prep'; 
+    title: string; 
+    question: string; 
+    prompt: string; 
+    correctAnswer: string; 
+    explanation: string; 
+    timestamp: number;
+    timesMissed?: number;
+    category?: string;
+  }>>([]);
   
-  // Interactive Question Index per Topic
+  // Re-quiz in Vault State
+  const [vaultReQuizId, setVaultReQuizId] = useState<string | null>(null);
+  const [vaultReQuizAnswer, setVaultReQuizAnswer] = useState<string>('');
+  const [vaultReQuizFeedback, setVaultReQuizFeedback] = useState<{ checked: boolean; isCorrect: boolean } | null>(null);
+
+  // Interactive Practice State
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<number>(0);
+  const [isShuffleQuiz, setIsShuffleQuiz] = useState<boolean>(false);
   const [activeDoctorIndex, setActiveDoctorIndex] = useState<number>(0);
   const [doctorUserInput, setDoctorUserInput] = useState<string>('');
   const [doctorFeedback, setDoctorFeedback] = useState<{ checked: boolean; isCorrect: boolean } | null>(null);
 
   const [searchFilter, setSearchFilter] = useState<string>('');
 
-  // Diagnostic Test State
+  // Diagnostic Test State with Timer & Persistence
   const [diagnosticAnswers, setDiagnosticAnswers] = useState<Record<string, string>>({});
   const [diagnosticSubmitted, setDiagnosticSubmitted] = useState<boolean>(false);
+  const [diagnosticTimerSeconds, setDiagnosticTimerSeconds] = useState<number | null>(null);
+  const [diagnosticTimerMode, setDiagnosticTimerMode] = useState<number | null>(null); // null = untimed, 1800 = 30m, 3600 = 60m
+  const [isShuffleDiagnostic, setIsShuffleDiagnostic] = useState<boolean>(false);
 
   // Oxford 3000 State with Spaced Repetition System (SRS)
   const [oxfordIndex, setOxfordIndex] = useState<number>(0);
@@ -257,10 +291,62 @@ export default function MerakiApp() {
 
       const storedCanDo = localStorage.getItem('meraki_can_do_checks');
       if (storedCanDo) setCheckedCanDo(JSON.parse(storedCanDo));
+
+      const storedDiag = localStorage.getItem('meraki_diagnostic_answers');
+      if (storedDiag) setDiagnosticAnswers(JSON.parse(storedDiag));
+
+      const storedDiagSubmitted = localStorage.getItem('meraki_diagnostic_submitted');
+      if (storedDiagSubmitted) setDiagnosticSubmitted(JSON.parse(storedDiagSubmitted));
     } catch (e) {
       console.warn('Storage read error:', e);
     }
   }, []);
+
+  // Auto-close mobile navigation drawer on screen resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsNavOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Diagnostic Timer interval
+  useEffect(() => {
+    if (diagnosticTimerSeconds === null || diagnosticTimerSeconds <= 0 || diagnosticSubmitted) return;
+    const timerId = setInterval(() => {
+      setDiagnosticTimerSeconds((prev) => {
+        if (prev === null || prev <= 1) {
+          clearInterval(timerId);
+          setDiagnosticSubmitted(true);
+          try {
+            localStorage.setItem('meraki_diagnostic_submitted', 'true');
+          } catch (err) {}
+          alert('Waktu ujian diagnostic telah berakhir! Lembar jawaban Anda otomatis dikumpulkan.');
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timerId);
+  }, [diagnosticTimerSeconds, diagnosticSubmitted]);
+
+  // Shadowing countdown interval
+  useEffect(() => {
+    if (!isShadowingRunning || shadowingCountdown <= 0) return;
+    const interval = setInterval(() => {
+      setShadowingCountdown((prev) => {
+        if (prev <= 1) {
+          setIsShadowingRunning(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isShadowingRunning, shadowingCountdown]);
 
   const handleToggleCanDo = (key: string) => {
     const next = { ...checkedCanDo, [key]: !checkedCanDo[key] };
@@ -380,21 +466,88 @@ export default function MerakiApp() {
     }
   };
 
-  const recordMistake = (item: { id: string; type: 'quiz' | 'doctor' | 'collocation' | 'prep'; title: string; question: string; prompt: string; correctAnswer: string; explanation: string; timestamp: number }) => {
-    if (!mistakeVault.some(m => m.id === item.id)) {
-      const updated = [item, ...mistakeVault];
-      setMistakeVault(updated);
+  const recordMistake = (item: { 
+    id: string; 
+    type: 'quiz' | 'doctor' | 'collocation' | 'prep'; 
+    title: string; 
+    question: string; 
+    prompt: string; 
+    correctAnswer: string; 
+    explanation: string; 
+    timestamp: number;
+    category?: string;
+  }) => {
+    setMistakeVault((prev) => {
+      const existingIndex = prev.findIndex((m) => m.id === item.id);
+      let updated: typeof prev;
+      if (existingIndex >= 0) {
+        const existing = prev[existingIndex];
+        const updatedItem = {
+          ...existing,
+          ...item,
+          timesMissed: (existing.timesMissed || 1) + 1,
+          timestamp: Date.now(),
+        };
+        updated = [
+          updatedItem,
+          ...prev.slice(0, existingIndex),
+          ...prev.slice(existingIndex + 1),
+        ];
+      } else {
+        updated = [{ ...item, timesMissed: 1 }, ...prev];
+      }
       try {
         localStorage.setItem('meraki_mistake_vault', JSON.stringify(updated));
       } catch (e) {}
-    }
+      return updated;
+    });
   };
 
   const handleRemoveFromVault = (id: string) => {
     const updated = mistakeVault.filter(m => m.id !== id);
     setMistakeVault(updated);
+    if (vaultReQuizId === id) {
+      setVaultReQuizId(null);
+      setVaultReQuizAnswer('');
+      setVaultReQuizFeedback(null);
+    }
     try {
       localStorage.setItem('meraki_mistake_vault', JSON.stringify(updated));
+    } catch (e) {}
+  };
+
+  const handleResetTopicQuiz = () => {
+    const qIds = currentTopic.questions.map(q => q.id);
+    const updated = { ...quizAnswers };
+    qIds.forEach(id => delete updated[id]);
+    setQuizAnswers(updated);
+    try {
+      localStorage.setItem('meraki_quiz_answers', JSON.stringify(updated));
+    } catch (e) {}
+  };
+
+  const handleSelectDiagnosticAnswer = (questionId: string, answer: string) => {
+    const updated = { ...diagnosticAnswers, [questionId]: answer };
+    setDiagnosticAnswers(updated);
+    try {
+      localStorage.setItem('meraki_diagnostic_answers', JSON.stringify(updated));
+    } catch (e) {}
+  };
+
+  const handleSubmitDiagnostic = () => {
+    setDiagnosticSubmitted(true);
+    try {
+      localStorage.setItem('meraki_diagnostic_submitted', 'true');
+    } catch (e) {}
+  };
+
+  const handleResetDiagnostic = () => {
+    setDiagnosticAnswers({});
+    setDiagnosticSubmitted(false);
+    setDiagnosticTimerSeconds(diagnosticTimerMode);
+    try {
+      localStorage.removeItem('meraki_diagnostic_answers');
+      localStorage.removeItem('meraki_diagnostic_submitted');
     } catch (e) {}
   };
 
@@ -417,6 +570,8 @@ export default function MerakiApp() {
       setQuizAnswers({});
       setDiagnosticAnswers({});
       setDiagnosticSubmitted(false);
+      setDiagnosticTimerSeconds(null);
+      setDiagnosticTimerMode(null);
       setSrsDeck({});
       setMistakeVault([]);
       setCheckedCanDo({});
@@ -429,6 +584,8 @@ export default function MerakiApp() {
       localStorage.removeItem('meraki_mistake_vault');
       localStorage.removeItem('meraki_can_do_checks');
       localStorage.removeItem('meraki_writing_pad_text');
+      localStorage.removeItem('meraki_diagnostic_answers');
+      localStorage.removeItem('meraki_diagnostic_submitted');
     }
   };
 
@@ -453,7 +610,7 @@ export default function MerakiApp() {
   // Diagnostic Test Questions aggregation
   const allDiagnosticQuestions: PracticeQuestion[] = MERAKI_CURRICULUM.flatMap((t) => t.questions);
 
-  const calculateDiagnosticAnalytics = () => {
+  const diagnosticAnalytics = useMemo(() => {
     let correctTotal = 0;
     const categoryStats: Record<string, { correct: number; total: number }> = {
       'Word Classes': { correct: 0, total: 0 },
@@ -477,10 +634,10 @@ export default function MerakiApp() {
     return {
       correctTotal,
       total: allDiagnosticQuestions.length,
-      percentage: Math.round((correctTotal / allDiagnosticQuestions.length) * 100),
+      percentage: allDiagnosticQuestions.length > 0 ? Math.round((correctTotal / allDiagnosticQuestions.length) * 100) : 0,
       categoryStats,
     };
-  };
+  }, [diagnosticAnswers, allDiagnosticQuestions]);
 
   // Oxford 3000 filtering with SRS
   const filteredOxfordList = OXFORD_3000_VOCABULARY.filter((item) => {
@@ -687,7 +844,7 @@ export default function MerakiApp() {
     setCombineFeedback({ checked: true, isCorrect: isMatch });
   };
 
-  // Deterministic Writing Pad Metric Analyzer
+  // Deterministic Writing Pad Metric Analyzer with Sentence Rhythm & Academic Chunk Radar (Zero AI)
   const analyzeWritingPad = (text: string) => {
     const rawTokens = text.trim().split(/\s+/).filter(Boolean);
     const wordCount = text.trim() ? rawTokens.length : 0;
@@ -696,17 +853,49 @@ export default function MerakiApp() {
     const uniqueWords = new Set(rawTokens.map(w => w.toLowerCase().replace(/[^a-z0-9]/g, '')));
     const ttr = wordCount > 0 ? Math.round((uniqueWords.size / wordCount) * 100) : 0;
 
-    const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
-    const sentenceCount = sentences.length;
+    const rawSentences = text.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 0);
+    const sentenceCount = rawSentences.length;
     const avgWordsPerSentence = sentenceCount > 0 ? Math.round(wordCount / sentenceCount) : 0;
 
+    // Sentence rhythm calculation (lengths of each individual sentence)
+    const sentenceLengths = rawSentences.map(s => s.split(/\s+/).filter(Boolean).length);
+    
+    // Rhythm monotony detection (3+ consecutive sentences with identical or +/- 1 length)
+    let isMonotonous = false;
+    let monotonyReason = '';
+    if (sentenceLengths.length >= 3) {
+      for (let i = 0; i <= sentenceLengths.length - 3; i++) {
+        const [a, b, c] = [sentenceLengths[i], sentenceLengths[i+1], sentenceLengths[i+2]];
+        if (Math.abs(a - b) <= 2 && Math.abs(b - c) <= 2 && Math.abs(a - c) <= 3 && a >= 5) {
+          isMonotonous = true;
+          monotonyReason = `Kalimat ${i+1}–${i+3} memiliki panjang yang hampir seragam (${a}, ${b}, ${c} kata). Variasikan panjang klausa untuk menciptakan ritme esai yang lebih dinamis.`;
+          break;
+        }
+      }
+    }
+
     // Hedging words detector
-    const hedgingTokens = ['suggest', 'suggests', 'suggested', 'appear', 'appears', 'appeared', 'tend', 'tends', 'tended', 'may', 'might', 'could', 'potentially', 'arguably', 'largely', 'predominantly'];
+    const hedgingTokens = ['suggest', 'suggests', 'suggested', 'appear', 'appears', 'appeared', 'tend', 'tends', 'tended', 'may', 'might', 'could', 'potentially', 'arguably', 'largely', 'predominantly', 'plausibly', 'seemingly'];
     const lowerText = text.toLowerCase();
     const detectedHedging = hedgingTokens.filter(h => new RegExp(`\\b${h}\\b`, 'i').test(lowerText));
 
+    // Academic High-Yield Chunks & Connectors (75+ items)
+    const academicChunks = [
+      'in light of', 'with respect to', 'it is widely argued that', 'conversely', 'a substantial body of evidence',
+      'plays a pivotal role', 'play a pivotal role', 'shed light on', 'sheds light on', 'a significant proportion of',
+      'it is worth noting that', 'on the grounds that', 'in stark contrast to', 'exerts a profound influence',
+      'it can be deduced that', 'compelling evidence', 'underlying cause', 'a cornerstone of', 'give rise to',
+      'gives rise to', 'cast doubt on', 'casts doubt on', 'paramount importance', 'notwithstanding',
+      'in accordance with', 'pave the way for', 'paves the way for', 'warrant further investigation',
+      'as a consequence', 'in this regard', 'to a certain extent', 'bearing in mind', 'draw a distinction between',
+      'exert considerable pressure', 'hold the view that', 'it is evident that', 'on the premise that',
+      'reach a consensus', 'serve as a catalyst for', 'take into account', 'take into consideration'
+    ];
+    const detectedAcademicChunks = academicChunks.filter(chunk => lowerText.includes(chunk));
+    const academicChunkDensity = sentenceCount > 0 ? Math.min(100, Math.round((detectedAcademicChunks.length / sentenceCount) * 100)) : 0;
+
     // Informal words detector
-    const informalTokens = ['a lot of', 'stuff', 'things', 'gonna', 'wanna', 'very good', 'bad', 'huge', 'kids'];
+    const informalTokens = ['a lot of', 'stuff', 'things', 'gonna', 'wanna', 'very good', 'bad', 'huge', 'kids', 'kind of', 'sort of'];
     const detectedInformal = informalTokens.filter(inf => lowerText.includes(inf));
 
     return {
@@ -716,7 +905,12 @@ export default function MerakiApp() {
       ttr,
       sentenceCount,
       avgWordsPerSentence,
+      sentenceLengths,
+      isMonotonous,
+      monotonyReason,
       detectedHedging,
+      detectedAcademicChunks,
+      academicChunkDensity,
       detectedInformal
     };
   };
@@ -931,6 +1125,45 @@ export default function MerakiApp() {
               <span>Diagnostic Matrix</span>
             </button>
           </div>
+
+          {/* Section 4: Pusat Studi & Simulasi Lanjutan */}
+          <div className="space-y-1">
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] px-3 font-semibold block">
+              Pusat Studi Lanjutan
+            </span>
+            <Link
+              href="/dashboard"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+            >
+              <div className="flex items-center gap-3">
+                <BarChart2 className="w-4 h-4 text-[#A84A28]" />
+                <span>Dashboard Analisis</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
+            </Link>
+
+            <Link
+              href="/exam"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+            >
+              <div className="flex items-center gap-3">
+                <GraduationCap className="w-4 h-4 text-[#535841]" />
+                <span>IELTS & TOEFL Hub</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
+            </Link>
+
+            <Link
+              href="/vocabulary"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+            >
+              <div className="flex items-center gap-3">
+                <BookMarked className="w-4 h-4 text-[#A84A28]" />
+                <span>AWL Lexical Vault</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
+            </Link>
+          </div>
         </div>
 
         {/* Sidebar Footer: Progress Box & Backup Utilities */}
@@ -1004,7 +1237,9 @@ export default function MerakiApp() {
               {activeHub === 'curriculum' && (
                 <>
                   <span className="text-[#7A7265] text-xs">/</span>
-                  <span className="font-mono text-xs text-[#A84A28] truncate">0{currentTopic.moduleNumber}: {currentTopic.title}</span>
+                  <span className="font-mono text-xs text-[#A84A28] truncate">
+                    Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}
+                  </span>
                 </>
               )}
             </div>
@@ -1020,8 +1255,8 @@ export default function MerakiApp() {
                     isModuleIndexOpen ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                   )}
                 >
-                  <Compass className="w-3 h-3" />
-                  <span>{isModuleIndexOpen ? 'Tutup Indeks' : 'Daftar Modul'}</span>
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Daftar Modul</span>
                 </button>
               </div>
             )}
@@ -1101,7 +1336,7 @@ export default function MerakiApp() {
                                           'font-mono text-[10px] px-1.5 py-0.2 rounded-md',
                                           isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
                                         )}>
-                                          0{topic.moduleNumber}
+                                          {String(topic.moduleNumber).padStart(2, '0')}
                                         </span>
                                         <h4 className={clsx('text-xs font-medium line-clamp-1', isSelected ? 'text-[#EFE9DF]' : 'text-[#1E1B17]')}>
                                           {topic.title}
@@ -1175,7 +1410,7 @@ export default function MerakiApp() {
                                         'font-mono text-[10px] px-1.5 py-0.2 rounded-md',
                                         isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
                                       )}>
-                                        0{topic.moduleNumber}
+                                        {String(topic.moduleNumber).padStart(2, '0')}
                                       </span>
                                       <h4 className={clsx(
                                         'text-xs font-medium line-clamp-1',
@@ -1240,7 +1475,7 @@ export default function MerakiApp() {
                               : 'bg-[#E6E0D4] text-[#7A7265] border border-[#C8C0B0]'
                           )}
                         >
-                          <span>0{topic.moduleNumber}</span>
+                          <span>{String(topic.moduleNumber).padStart(2, '0')}</span>
                           <span className="max-w-[120px] truncate">{topic.title}</span>
                           {isDone && <Check className="w-3 h-3 text-[#535841]" />}
                         </button>
@@ -1622,7 +1857,9 @@ export default function MerakiApp() {
                         )}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[10px] opacity-70">0{topic.moduleNumber}</span>
+                          <span className="font-mono text-[10px] opacity-70">
+                            {String(topic.moduleNumber).padStart(2, '0')}
+                          </span>
                           <span className="line-clamp-1">{topic.title}</span>
                         </div>
                         {isDone && (
@@ -1653,7 +1890,7 @@ export default function MerakiApp() {
                               : 'bg-[#E6E0D4] text-[#7A7265] border border-[#C8C0B0]'
                           )}
                         >
-                          <span>0{topic.moduleNumber}</span>
+                          <span>{String(topic.moduleNumber).padStart(2, '0')}</span>
                           <span className="max-w-[120px] truncate">{topic.title}</span>
                           {isDone && <Check className="w-3 h-3 text-[#535841]" />}
                         </button>
@@ -1664,31 +1901,43 @@ export default function MerakiApp() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
                     <div>
                       <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
-                        Modul 0{currentTopic.moduleNumber}: {currentTopic.title}
+                        Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}
                       </span>
                       <h2 className="text-xl font-serif text-[#1E1B17]">Latihan Sintaksis & Produksi</h2>
                     </div>
 
-                    <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0] self-start sm:self-auto">
+                    <div className="flex flex-wrap items-center gap-2">
                       <button
-                        onClick={() => setPracticeSubMode('quiz')}
-                        className={clsx(
-                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
-                          practiceSubMode === 'quiz' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                        )}
+                        onClick={handleResetTopicQuiz}
+                        title="Mulai ulang jawaban topik ini"
+                        aria-label="Mulai ulang jawaban topik ini"
+                        className="px-2.5 py-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 text-[#7A7265] hover:text-[#1E1B17] text-xs font-mono flex items-center gap-1 border border-[#C8C0B0] tactile-btn min-h-[36px]"
                       >
-                        Pilihan Ganda
+                        <RotateCcw className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Reset Topik</span>
                       </button>
-                      <button
-                        onClick={() => setPracticeSubMode('sentence-doctor')}
-                        className={clsx(
-                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1 min-h-[36px]',
-                          practiceSubMode === 'sentence-doctor' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                        )}
-                      >
-                        <Sparkles className="w-3 h-3 text-[#A84A28]" />
-                        <span>Bedah Kalimat</span>
-                      </button>
+
+                      <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0]">
+                        <button
+                          onClick={() => setPracticeSubMode('quiz')}
+                          className={clsx(
+                            'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
+                            practiceSubMode === 'quiz' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                          )}
+                        >
+                          Pilihan Ganda
+                        </button>
+                        <button
+                          onClick={() => setPracticeSubMode('sentence-doctor')}
+                          className={clsx(
+                            'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1 min-h-[36px]',
+                            practiceSubMode === 'sentence-doctor' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                          )}
+                        >
+                          <Sparkles className="w-3 h-3 text-[#A84A28]" />
+                          <span>Bedah Kalimat</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
 
@@ -2075,7 +2324,21 @@ export default function MerakiApp() {
                               return (
                                 <button
                                   key={oIdx}
-                                  onClick={() => setCollocationQuizSelected(opt)}
+                                  onClick={() => {
+                                    setCollocationQuizSelected(opt);
+                                    if (opt !== col.correctTarget) {
+                                      recordMistake({
+                                        id: `acl-${col.id}`,
+                                        type: 'collocation',
+                                        title: `ACL: ${col.collocation}`,
+                                        question: col.clozePrompt,
+                                        prompt: `Pilihan Anda: "${opt}" (Kurang tepat)`,
+                                        correctAnswer: col.correctTarget,
+                                        explanation: col.literalIndonesianWarning,
+                                        timestamp: Date.now()
+                                      });
+                                    }
+                                  }}
                                   disabled={collocationQuizSelected !== null}
                                   className={clsx(
                                     'p-3.5 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
@@ -2309,7 +2572,21 @@ export default function MerakiApp() {
                               return (
                                 <button
                                   key={opt}
-                                  onClick={() => setConfusableSelected(opt)}
+                                  onClick={() => {
+                                    setConfusableSelected(opt);
+                                    if (opt !== cw.correctWord) {
+                                      recordMistake({
+                                        id: `confusable-${cw.id}`,
+                                        type: 'collocation',
+                                        title: `Confusables: ${cw.wordA} vs ${cw.wordB}`,
+                                        question: cw.quizQuestion,
+                                        prompt: `Pilihan Anda: "${opt}" (Kurang tepat)`,
+                                        correctAnswer: cw.correctWord,
+                                        explanation: `Kata yang tepat adalah "${cw.correctWord}". Perbedaan: ${cw.diagnosticTrick}`,
+                                        timestamp: Date.now()
+                                      });
+                                    }
+                                  }}
                                   disabled={confusableSelected !== null}
                                   className={clsx(
                                     'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
@@ -2492,7 +2769,21 @@ export default function MerakiApp() {
                                 return (
                                   <button
                                     key={opt}
-                                    onClick={() => setTrapSelected(opt)}
+                                    onClick={() => {
+                                      setTrapSelected(opt);
+                                      if (opt !== trap.correctAnswer) {
+                                        recordMistake({
+                                          id: `trap-${trap.id}`,
+                                          type: 'collocation',
+                                          title: `L1 Trap: ${trap.indonesianPhrase}`,
+                                          question: `Konsep: "${trap.indonesianPhrase}" (Bukan harfiah: "${trap.literalClunkyEnglish}")`,
+                                          prompt: `Pilihan Anda: "${opt}" (Salah/Harfiah)`,
+                                          correctAnswer: trap.correctAnswer,
+                                          explanation: trap.drillExplanation,
+                                          timestamp: Date.now()
+                                        });
+                                      }
+                                    }}
                                     disabled={trapSelected !== null}
                                     className={clsx(
                                       'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
@@ -2642,7 +2933,7 @@ export default function MerakiApp() {
                       matrixSubTab === 'irregular' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Irregular Verbs (200+)
+                    Irregular Verbs ({IRREGULAR_VERBS_DATA.length})
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('nouns')}
@@ -4182,8 +4473,81 @@ export default function MerakiApp() {
                         <span className="text-[#7A7265]">Rata-rata Kata/Kalimat:</span>
                         <span className="font-mono font-semibold text-[#1E1B17]">{padMetrics.avgWordsPerSentence} kata</span>
                       </div>
+                      <div className="flex justify-between py-1 border-b border-[#C8C0B0]/60">
+                        <span className="text-[#7A7265]">Academic Chunk Density:</span>
+                        <span className="font-mono font-semibold text-[#A84A28]">{padMetrics.academicChunkDensity}%</span>
+                      </div>
                     </div>
 
+                    {/* Sentence Rhythm & Monotony Visualizer */}
+                    <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">
+                          Diagram Ritme & Variasi Kalimat:
+                        </span>
+                        <Activity className="w-3.5 h-3.5 text-[#7A7265]" />
+                      </div>
+
+                      {padMetrics.sentenceLengths.length > 0 ? (
+                        <div className="space-y-1.5 pt-1">
+                          <div className="flex items-end gap-1.5 h-16 px-1 pt-2 bg-[#E6E0D4] rounded-xl border border-[#C8C0B0]/60 overflow-x-auto no-scrollbar">
+                            {padMetrics.sentenceLengths.map((len, idx) => {
+                              const heightPct = Math.min(100, Math.max(15, (len / 35) * 100));
+                              const isIdeal = len >= 12 && len <= 28;
+                              return (
+                                <div key={idx} className="flex flex-col items-center flex-1 min-w-[20px] h-full justify-end group relative">
+                                  <div
+                                    className={clsx(
+                                      'w-full rounded-t-sm transition-all',
+                                      isIdeal ? 'bg-[#535841]' : len < 12 ? 'bg-[#DDD7CA] border border-[#7A7265]' : 'bg-[#A84A28]'
+                                    )}
+                                    style={{ height: `${heightPct}%` }}
+                                  />
+                                  <span className="font-mono text-[8px] text-[#7A7265] mt-0.5">{len}</span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                          <span className="font-mono text-[9px] text-[#7A7265] block text-center">
+                            Setiap bar = jumlah kata per kalimat (Hijau: ideal 12–28 kata)
+                          </span>
+                        </div>
+                      ) : (
+                        <p className="text-[11px] text-[#7A7265] italic">Ketik minimal 1 kalimat untuk melihat grafik ritme.</p>
+                      )}
+
+                      {padMetrics.isMonotonous && (
+                        <div className="p-2.5 rounded-xl bg-[#A84A28]/15 border border-[#A84A28]/30 text-[11px] text-[#1E1B17] space-y-0.5">
+                          <strong className="text-[#A84A28] font-mono text-[9px] uppercase block">Peringatan Ritme Monoton:</strong>
+                          <p>{padMetrics.monotonyReason}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Academic High-Yield Chunks Radar */}
+                    <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[10px] text-[#A84A28] uppercase font-semibold block">
+                          Academic Chunks & Connectors ({padMetrics.detectedAcademicChunks.length}):
+                        </span>
+                        <Zap className="w-3.5 h-3.5 text-[#A84A28]" />
+                      </div>
+                      {padMetrics.detectedAcademicChunks.length > 0 ? (
+                        <div className="flex flex-wrap gap-1 pt-1">
+                          {padMetrics.detectedAcademicChunks.map(chunk => (
+                            <span key={chunk} className="font-mono text-[10px] bg-[#A84A28]/15 text-[#A84A28] border border-[#A84A28]/25 px-2 py-0.5 rounded-md font-semibold">
+                              {chunk}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-[11px] text-[#7A7265] italic">
+                          Belum ada frasa transisi akademik. Coba gunakan: *in light of*, *conversely*, *with respect to*, atau *plays a pivotal role*.
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Academic Hedging */}
                     <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
                       <span className="font-mono text-[10px] text-[#535841] uppercase font-semibold block">
                         Academic Hedging Terdeteksi ({padMetrics.detectedHedging.length}):
@@ -4218,23 +4582,67 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 6: FONETIK LAB ───────────── */}
           {activeHub === 'phonetics' && (
             <div className="max-w-4xl mx-auto h-full p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-6 pb-28 md:pb-12">
-              <div className="space-y-2 pb-4 border-b border-[#C8C0B0]">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
-                  Comparative Phonetics & Ear Training Studio
-                </span>
-                <h2 className="text-3xl font-serif text-[#1E1B17]">
-                  Minimal Pairs Laboratory (Pembeda Fonem Kritis)
-                </h2>
-                <p className="text-xs sm:text-sm text-[#7A7265]">
-                  Latih kepekaan telinga dan pelafalan penutur asli dalam membedakan pasangan fonem yang sering menjegal pembelajar Indonesia.
-                </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0]">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
+                    Comparative Phonetics & Ear Training Studio
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
+                    Minimal Pairs & Ear Training Lab
+                  </h2>
+                </div>
+
+                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] self-start sm:self-auto shrink-0">
+                  <button
+                    onClick={() => setPhoneticsMode('reference')}
+                    className={clsx(
+                      'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
+                      phoneticsMode === 'reference' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                    )}
+                  >
+                    Komparasi IPA
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPhoneticsMode('ear-training');
+                      setEarSecretWord(null);
+                      setEarSelectedChoice(null);
+                    }}
+                    className={clsx(
+                      'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1',
+                      phoneticsMode === 'ear-training' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                    )}
+                  >
+                    <Headphones className="w-3 h-3 text-[#A84A28]" />
+                    <span>Listening Drill</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPhoneticsMode('shadowing');
+                      setIsShadowingRunning(false);
+                      setShadowingCountdown(5);
+                    }}
+                    className={clsx(
+                      'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1',
+                      phoneticsMode === 'shadowing' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                    )}
+                  >
+                    <Timer className="w-3 h-3 text-[#535841]" />
+                    <span>Shadowing</span>
+                  </button>
+                </div>
               </div>
 
+              {/* Minimal Pair Pills */}
               <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
                 {MINIMAL_PAIRS_DATA.map((mp, idx) => (
                   <button
                     key={mp.id}
-                    onClick={() => setActiveMinimalPairIndex(idx)}
+                    onClick={() => {
+                      setActiveMinimalPairIndex(idx);
+                      setEarSecretWord(null);
+                      setEarSelectedChoice(null);
+                    }}
                     className={clsx(
                       'px-4 py-2 rounded-2xl text-xs font-mono whitespace-nowrap transition-all tactile-btn',
                       activeMinimalPairIndex === idx ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#E6E0D4] border border-[#C8C0B0] text-[#7A7265]'
@@ -4248,6 +4656,198 @@ export default function MerakiApp() {
               {(() => {
                 const mp = MINIMAL_PAIRS_DATA[activeMinimalPairIndex];
 
+                if (phoneticsMode === 'ear-training') {
+                  const hasStarted = earSecretWord !== null;
+                  const isAnswered = earSelectedChoice !== null;
+                  const isCorrect = earSelectedChoice === earSecretWord;
+
+                  const handlePlaySecretWord = () => {
+                    let secret = earSecretWord;
+                    if (!secret) {
+                      secret = Math.random() > 0.5 ? 'A' : 'B';
+                      setEarSecretWord(secret);
+                    }
+                    const wordToPlay = secret === 'A' ? mp.wordA : mp.wordB;
+                    playNativeAudio(wordToPlay);
+                  };
+
+                  const handleSelectEarChoice = (choice: 'A' | 'B') => {
+                    if (isAnswered) return;
+                    setEarSelectedChoice(choice);
+                    const correct = choice === earSecretWord;
+                    setEarScore(prev => ({
+                      correct: prev.correct + (correct ? 1 : 0),
+                      total: prev.total + 1
+                    }));
+                  };
+
+                  const handleNextEarRound = () => {
+                    const nextSecret = Math.random() > 0.5 ? 'A' : 'B';
+                    setEarSecretWord(nextSecret);
+                    setEarSelectedChoice(null);
+                    const wordToPlay = nextSecret === 'A' ? mp.wordA : mp.wordB;
+                    playNativeAudio(wordToPlay);
+                  };
+
+                  return (
+                    <div className="p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-6 text-center">
+                      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
+                        <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
+                          Drill Telinga: Kontras {mp.phonemeContrast}
+                        </span>
+                        <div className="font-mono text-xs text-[#7A7265]">
+                          Akurasi: <strong className="text-[#1E1B17]">{earScore.correct} / {earScore.total}</strong> ({earScore.total > 0 ? Math.round((earScore.correct / earScore.total) * 100) : 0}%)
+                        </div>
+                      </div>
+
+                      <div className="space-y-4 max-w-lg mx-auto">
+                        <h3 className="font-serif text-2xl text-[#1E1B17]">
+                          Dengarkan dan Tebak Kata yang Diucapkan
+                        </h3>
+                        <p className="text-xs text-[#524C42] leading-relaxed">
+                          Sistem akan memutar salah satu kata dari pasangan <strong className="font-mono">{mp.wordA}</strong> ({mp.ipaA}) atau <strong className="font-mono">{mp.wordB}</strong> ({mp.ipaB}).
+                        </p>
+
+                        <button
+                          onClick={handlePlaySecretWord}
+                          className="px-6 py-3.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-sm font-mono flex items-center justify-center gap-2 mx-auto tactile-btn shadow-md"
+                          aria-label="Putar suara kata misterius"
+                        >
+                          <Volume2 className="w-5 h-5" />
+                          <span>{hasStarted ? 'Putar Ulang Suara' : 'Mulai Putar Suara'}</span>
+                        </button>
+                      </div>
+
+                      {hasStarted && (
+                        <div className="space-y-4 pt-2">
+                          <span className="font-mono text-[11px] uppercase tracking-wider text-[#7A7265] block font-semibold">
+                            Kata mana yang barusan Anda dengar?
+                          </span>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
+                            {(['A', 'B'] as const).map(letter => {
+                              const word = letter === 'A' ? mp.wordA : mp.wordB;
+                              const ipa = letter === 'A' ? mp.ipaA : mp.ipaB;
+                              const meaning = letter === 'A' ? mp.meaningA : mp.meaningB;
+                              const isChoice = earSelectedChoice === letter;
+                              const isTarget = earSecretWord === letter;
+
+                              let btnStyle = 'bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 border-[#C8C0B0] text-[#1E1B17]';
+                              if (isAnswered) {
+                                if (isTarget) btnStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
+                                else if (isChoice && !isTarget) btnStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
+                                else btnStyle = 'opacity-40 bg-[#DDD7CA] border-transparent text-[#7A7265]';
+                              }
+
+                              return (
+                                <button
+                                  key={letter}
+                                  onClick={() => handleSelectEarChoice(letter)}
+                                  disabled={isAnswered}
+                                  className={clsx(
+                                    'p-5 rounded-3xl border transition-all tactile-btn text-center space-y-1',
+                                    btnStyle
+                                  )}
+                                >
+                                  <span className="font-mono text-[10px] text-[#7A7265] uppercase block">Opsi ({letter})</span>
+                                  <h4 className="font-serif text-3xl font-bold">{word}</h4>
+                                  <span className="font-mono text-xs text-[#A84A28] block">{ipa}</span>
+                                  <p className="text-[11px] text-[#524C42]">{meaning}</p>
+                                </button>
+                              );
+                            })}
+                          </div>
+
+                          {isAnswered && (
+                            <div className={clsx(
+                              'p-4 rounded-2xl border text-xs max-w-lg mx-auto space-y-3 animate-in fade-in duration-200 text-left',
+                              isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                            )}>
+                              <div className="flex items-center gap-2 font-bold">
+                                {isCorrect ? (
+                                  <>
+                                    <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                                    <span>Tepat Sekali! Telinga Anda berhasil menangkap beda fonem.</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                                    <span>Belum Tepat! Kata yang diputar adalah "{earSecretWord === 'A' ? mp.wordA : mp.wordB}".</span>
+                                  </>
+                                )}
+                              </div>
+                              <p className="text-[#524C42] leading-relaxed">
+                                <strong>Kunci Pembeda:</strong> {mp.description}
+                              </p>
+
+                              <div className="flex justify-end pt-2 border-t border-[#C8C0B0]/60">
+                                <button
+                                  onClick={handleNextEarRound}
+                                  className="px-4 py-2 rounded-xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono font-medium tactile-btn"
+                                >
+                                  Soal Berikutnya
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                if (phoneticsMode === 'shadowing') {
+                  const handleStartShadowing = () => {
+                    playNativeAudio(mp.contrastContext);
+                    setIsShadowingRunning(true);
+                    setShadowingCountdown(5);
+                  };
+
+                  return (
+                    <div className="p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-6 text-center">
+                      <div className="space-y-2">
+                        <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-3 py-1 rounded-md uppercase font-semibold">
+                          Shadowing & Articulation Loop: {mp.phonemeContrast}
+                        </span>
+                        <h3 className="font-serif text-2xl text-[#1E1B17]">
+                          Tiru Intonasi & Artikulasi Kalimat Kontras
+                        </h3>
+                        <p className="text-xs text-[#524C42] max-w-md mx-auto leading-relaxed">
+                          Dengarkan pelafalan penutur asli, lalu tirukan secara lantang dalam hitungan mundur 5 detik.
+                        </p>
+                      </div>
+
+                      <div className="p-6 rounded-3xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-4 max-w-xl mx-auto text-left">
+                        <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                          Target Kalimat Shadowing:
+                        </span>
+                        <p className="font-serif text-lg text-[#1E1B17] italic leading-relaxed">
+                          "{mp.contrastContext}"
+                        </p>
+
+                        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#C8C0B0]/60">
+                          <button
+                            onClick={handleStartShadowing}
+                            disabled={isShadowingRunning}
+                            className="px-5 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-2 tactile-btn disabled:opacity-50"
+                          >
+                            <Play className="w-4 h-4" />
+                            <span>{isShadowingRunning ? `Menirukan (${shadowingCountdown}s)...` : 'Putar & Mulai Shadowing'}</span>
+                          </button>
+
+                          {isShadowingRunning && (
+                            <div className="flex items-center gap-2 font-mono text-xs text-[#A84A28] font-bold animate-pulse">
+                              <Timer className="w-4 h-4" />
+                              <span>Waktu Ucap: {shadowingCountdown} detik</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
+                // Default: Reference View
                 return (
                   <div className="p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-6 text-center">
                     <div>
@@ -4268,6 +4868,7 @@ export default function MerakiApp() {
                         <button
                           onClick={() => playNativeAudio(mp.wordA)}
                           className="px-4 py-2 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-2 mx-auto tactile-btn shadow-xs"
+                          aria-label={`Dengarkan pelafalan ${mp.wordA}`}
                         >
                           <Volume2 className="w-4 h-4" />
                           <span>Dengarkan Kata A</span>
@@ -4282,6 +4883,7 @@ export default function MerakiApp() {
                         <button
                           onClick={() => playNativeAudio(mp.wordB)}
                           className="px-4 py-2 rounded-2xl bg-[#535841] hover:bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono flex items-center gap-2 mx-auto tactile-btn shadow-xs"
+                          aria-label={`Dengarkan pelafalan ${mp.wordB}`}
                         >
                           <Volume2 className="w-4 h-4" />
                           <span>Dengarkan Kata B</span>
@@ -4294,7 +4896,11 @@ export default function MerakiApp() {
                         <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">
                           Kalimat Kontras Pembanding:
                         </span>
-                        <button onClick={() => playNativeAudio(mp.contrastContext)} className="text-[#7A7265] hover:text-[#1E1B17] tactile-btn">
+                        <button 
+                          onClick={() => playNativeAudio(mp.contrastContext)} 
+                          className="text-[#7A7265] hover:text-[#1E1B17] tactile-btn"
+                          aria-label="Dengarkan kalimat kontras"
+                        >
                           <Volume2 className="w-4 h-4" />
                         </button>
                       </div>
@@ -4623,7 +5229,7 @@ export default function MerakiApp() {
                   Personal Weakness Re-tester & Mastery Loop
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
-                  Mistake Vault: Bank Khilaf & Catatan Evaluasi Mandiri
+                  Mistake Vault: Bank Khilaf & Analisis Pola Kesalahan
                 </h2>
                 <p className="text-xs sm:text-sm text-[#7A7265]">
                   Setiap pertanyaan, kolokasi, preposisi, atau latihan kalimat yang pernah Anda jawab kurang tepat akan terkumpul otomatis di sini. Uji ulang sampai tuntas untuk menutup celah kelemahan gramatikal.
@@ -4639,39 +5245,196 @@ export default function MerakiApp() {
                   </p>
                 </div>
               ) : (
-                <div className="space-y-4">
-                  {mistakeVault.map((item) => (
-                    <div key={item.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-3">
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
-                            {item.type === 'quiz' ? 'Pilihan Ganda' : item.type === 'doctor' ? 'Bedah Kalimat' : 'Preposisi/Kolokasi'}
-                          </span>
-                          <span className="text-xs text-[#7A7265]">{item.title}</span>
+                <div className="space-y-6">
+                  {/* Personal Error Pattern Visualizer (Zero AI, Pure SVG) */}
+                  {(() => {
+                    const totalMistakes = mistakeVault.length;
+                    const quizCount = mistakeVault.filter(m => m.type === 'quiz').length;
+                    const doctorCount = mistakeVault.filter(m => m.type === 'doctor').length;
+                    const collocationCount = mistakeVault.filter(m => m.type === 'collocation').length;
+                    const prepCount = mistakeVault.filter(m => m.type === 'prep').length;
+
+                    const quizPct = Math.round((quizCount / totalMistakes) * 100);
+                    const doctorPct = Math.round((doctorCount / totalMistakes) * 100);
+                    const colPct = Math.round((collocationCount / totalMistakes) * 100);
+                    const prepPct = Math.round((prepCount / totalMistakes) * 100);
+
+                    return (
+                      <div className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <span className="font-mono text-[10px] text-[#7A7265] uppercase tracking-wider block font-semibold">
+                              Analisis Frekuensi & Pola Kelemahan
+                            </span>
+                            <h3 className="font-serif text-lg text-[#1E1B17] font-semibold">
+                              Distribusi {totalMistakes} Catatan Kesalahan
+                            </h3>
+                          </div>
+                          <BarChart2 className="w-5 h-5 text-[#A84A28]" />
                         </div>
-                        <button
-                          onClick={() => handleRemoveFromVault(item.id)}
-                          className="text-xs font-mono text-[#535841] hover:underline flex items-center gap-1 tactile-btn"
-                        >
-                          <Check className="w-3.5 h-3.5" />
-                          <span>Sudah Paham (Hapus)</span>
-                        </button>
-                      </div>
 
-                      <p className="text-sm font-serif font-medium text-[#1E1B17]">
-                        "{item.question}"
-                      </p>
+                        {/* Stacked Percentage Bar */}
+                        <div className="w-full h-3.5 bg-[#DDD7CA] rounded-full overflow-hidden flex border border-[#C8C0B0]/60">
+                          {quizPct > 0 && <div style={{ width: `${quizPct}%` }} className="bg-[#A84A28] h-full" title={`Grammar/Quiz: ${quizPct}%`} />}
+                          {colPct > 0 && <div style={{ width: `${colPct}%` }} className="bg-[#535841] h-full" title={`Kolokasi/Diksi: ${colPct}%`} />}
+                          {prepPct > 0 && <div style={{ width: `${prepPct}%` }} className="bg-[#7A7265] h-full" title={`Preposisi: ${prepPct}%`} />}
+                          {doctorPct > 0 && <div style={{ width: `${doctorPct}%` }} className="bg-[#1E1B17] h-full" title={`Sintaksis/Doctor: ${doctorPct}%`} />}
+                        </div>
 
-                      <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-xs text-[#1E1B17]">
-                        {item.prompt}
+                        {/* Legend */}
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs font-mono">
+                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#A84A28]" />
+                            <span>Grammar ({quizCount})</span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#535841]" />
+                            <span>Kolokasi ({collocationCount})</span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#7A7265]" />
+                            <span>Preposisi ({prepCount})</span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#1E1B17]" />
+                            <span>Sintaksis ({doctorCount})</span>
+                          </div>
+                        </div>
                       </div>
+                    );
+                  })()}
 
-                      <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
-                        <p><strong>Kunci Jawaban Baku:</strong> {item.correctAnswer}</p>
-                        <p className="text-[#524C42] leading-relaxed"><strong>Pembahasan:</strong> {item.explanation}</p>
-                      </div>
-                    </div>
-                  ))}
+                  <div className="space-y-4">
+                    {mistakeVault.map((item) => {
+                      const isReQuizzing = vaultReQuizId === item.id;
+
+                      const handleCheckReQuiz = (e: React.FormEvent) => {
+                        e.preventDefault();
+                        const cleanInput = vaultReQuizAnswer.trim().toLowerCase().replace(/[.\s]+/g, ' ');
+                        const cleanCorrect = item.correctAnswer.trim().toLowerCase().replace(/[.\s]+/g, ' ');
+                        const isMatch = cleanInput === cleanCorrect;
+                        setVaultReQuizFeedback({ checked: true, isCorrect: isMatch });
+                      };
+
+                      return (
+                        <div key={item.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-3">
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
+                                {item.type === 'quiz' ? 'Pilihan Ganda' : item.type === 'doctor' ? 'Bedah Kalimat' : item.type === 'collocation' ? 'Kolokasi & Diksi' : 'Preposisi'}
+                              </span>
+                              {item.timesMissed && item.timesMissed > 1 && (
+                                <span className="font-mono text-[10px] bg-[#A84A28] text-white px-2 py-0.5 rounded-full font-bold">
+                                  Salah {item.timesMissed}x
+                                </span>
+                              )}
+                              <span className="text-xs text-[#7A7265]">{item.title}</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <button
+                                onClick={() => {
+                                  if (isReQuizzing) {
+                                    setVaultReQuizId(null);
+                                    setVaultReQuizAnswer('');
+                                    setVaultReQuizFeedback(null);
+                                  } else {
+                                    setVaultReQuizId(item.id);
+                                    setVaultReQuizAnswer('');
+                                    setVaultReQuizFeedback(null);
+                                  }
+                                }}
+                                className="text-xs font-mono text-[#A84A28] hover:underline flex items-center gap-1 tactile-btn"
+                              >
+                                <RotateCcw className="w-3.5 h-3.5" />
+                                <span>{isReQuizzing ? 'Tutup Uji Ulang' : 'Uji Ulang'}</span>
+                              </button>
+                              <button
+                                onClick={() => handleRemoveFromVault(item.id)}
+                                className="text-xs font-mono text-[#535841] hover:underline flex items-center gap-1 tactile-btn"
+                              >
+                                <Check className="w-3.5 h-3.5" />
+                                <span>Sudah Paham (Hapus)</span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <p className="text-sm font-serif font-medium text-[#1E1B17]">
+                            "{item.question}"
+                          </p>
+
+                          {/* Re-Quiz Interactive Flow */}
+                          {isReQuizzing ? (
+                            <form onSubmit={handleCheckReQuiz} className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3 animate-in fade-in duration-200">
+                              <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                                Coba Jawab Ulang Secara Mandiri:
+                              </span>
+                              <input
+                                type="text"
+                                value={vaultReQuizAnswer}
+                                onChange={(e) => {
+                                  setVaultReQuizAnswer(e.target.value);
+                                  setVaultReQuizFeedback(null);
+                                }}
+                                placeholder="Ketik jawaban / opsi yang benar..."
+                                className="w-full p-2.5 text-xs bg-[#E6E0D4] border border-[#C8C0B0] rounded-xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                              />
+                              <div className="flex items-center justify-between">
+                                <button
+                                  type="submit"
+                                  className="px-4 py-2 rounded-xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono font-medium tactile-btn"
+                                >
+                                  Verifikasi Jawaban
+                                </button>
+                              </div>
+
+                              {vaultReQuizFeedback && (
+                                <div className={clsx(
+                                  'p-3 rounded-xl border text-xs space-y-1.5 animate-in fade-in',
+                                  vaultReQuizFeedback.isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                                )}>
+                                  <div className="flex items-center justify-between">
+                                    <span className="font-bold flex items-center gap-1.5">
+                                      {vaultReQuizFeedback.isCorrect ? (
+                                        <>
+                                          <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                                          <span>Luar Biasa! Jawaban Anda Benar.</span>
+                                        </>
+                                      ) : (
+                                        <>
+                                          <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                                          <span>Masih Kurang Tepat. Kunci: {item.correctAnswer}</span>
+                                        </>
+                                      )}
+                                    </span>
+                                    {vaultReQuizFeedback.isCorrect && (
+                                      <button
+                                        type="button"
+                                        onClick={() => handleRemoveFromVault(item.id)}
+                                        className="px-3 py-1 rounded-lg bg-[#535841] text-[#EFE9DF] text-[10px] font-mono font-medium tactile-btn"
+                                      >
+                                        Hapus dari Vault
+                                      </button>
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+                            </form>
+                          ) : (
+                            <>
+                              <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-xs text-[#1E1B17]">
+                                {item.prompt}
+                              </div>
+
+                              <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
+                                <p><strong>Kunci Jawaban Baku:</strong> {item.correctAnswer}</p>
+                                <p className="text-[#524C42] leading-relaxed"><strong>Pembahasan:</strong> {item.explanation}</p>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
             </div>
@@ -4680,16 +5443,50 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 9: DIAGNOSTIC MATRIX ───────────── */}
           {activeHub === 'diagnostic' && (
             <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 sm:space-y-8 pb-28 md:pb-8">
-              <div className="space-y-2 pb-6 border-b border-[#C8C0B0]">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
-                  Comprehensive Diagnostic Evaluation & Weakness Radar
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
-                  Diagnostic Matrix: Uji Kesiapan Tata Bahasa Menyeluruh
-                </h2>
-                <p className="text-xs sm:text-sm text-[#7A7265]">
-                  Evaluasi presisi {allDiagnosticQuestions.length} pertanyaan lintas kategori untuk memetakan kekuatan dan titik lemah gramatikalmu sebelum menghadapi IELTS/TOEFL.
-                </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#C8C0B0]">
+                <div className="space-y-1">
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
+                    Comprehensive Diagnostic Evaluation & Weakness Radar
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
+                    Diagnostic Matrix: Uji Kesiapan Tata Bahasa
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#7A7265]">
+                    Evaluasi presisi {allDiagnosticQuestions.length} pertanyaan lintas kategori untuk memetakan kekuatan dan titik lemah gramatikalmu.
+                  </p>
+                </div>
+
+                {/* Diagnostic Timer Controls */}
+                <div className="flex flex-wrap items-center gap-2 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] self-start sm:self-auto shrink-0">
+                  <span className="font-mono text-[10px] text-[#7A7265] uppercase px-2 font-semibold flex items-center gap-1">
+                    <Timer className="w-3 h-3 text-[#A84A28]" />
+                    <span>Timer:</span>
+                  </span>
+                  {[
+                    { label: 'Bebas', seconds: null },
+                    { label: '30m', seconds: 1800 },
+                    { label: '60m', seconds: 3600 },
+                  ].map(tm => (
+                    <button
+                      key={tm.label}
+                      onClick={() => {
+                        setDiagnosticTimerMode(tm.seconds);
+                        setDiagnosticTimerSeconds(tm.seconds);
+                      }}
+                      className={clsx(
+                        'px-2.5 py-1 rounded-xl text-[10px] font-mono transition-all tactile-btn',
+                        diagnosticTimerMode === tm.seconds ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      {tm.label}
+                    </button>
+                  ))}
+                  {diagnosticTimerSeconds !== null && (
+                    <span className="font-mono text-xs font-bold text-[#A84A28] px-2 py-0.5 bg-[#A84A28]/10 rounded-lg">
+                      {Math.floor(diagnosticTimerSeconds / 60)}:{String(diagnosticTimerSeconds % 60).padStart(2, '0')}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {diagnosticSubmitted && (
@@ -4698,17 +5495,15 @@ export default function MerakiApp() {
                     <div>
                       <span className="font-mono text-xs text-[#7A7265] uppercase">Skor Diagnostik Global:</span>
                       <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1E1B17]">
-                        {calculateDiagnosticAnalytics().percentage}% ({calculateDiagnosticAnalytics().correctTotal} / {calculateDiagnosticAnalytics().total} Benar)
+                        {diagnosticAnalytics.percentage}% ({diagnosticAnalytics.correctTotal} / {diagnosticAnalytics.total} Benar)
                       </h3>
                     </div>
                     <button
-                      onClick={() => {
-                        setDiagnosticAnswers({});
-                        setDiagnosticSubmitted(false);
-                      }}
-                      className="px-4 py-2 rounded-2xl bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 text-xs font-mono text-[#1E1B17] border border-[#C8C0B0] tactile-btn min-h-[40px]"
+                      onClick={handleResetDiagnostic}
+                      className="px-4 py-2 rounded-2xl bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 text-xs font-mono text-[#1E1B17] border border-[#C8C0B0] tactile-btn min-h-[40px] flex items-center gap-1.5"
                     >
-                      Uji Ulang
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Uji Ulang Tes</span>
                     </button>
                   </div>
 
@@ -4718,7 +5513,7 @@ export default function MerakiApp() {
                     </span>
                     
                     <div className="space-y-3">
-                      {Object.entries(calculateDiagnosticAnalytics().categoryStats).map(([catName, stats]) => {
+                      {Object.entries(diagnosticAnalytics.categoryStats).map(([catName, stats]) => {
                         const catPct = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
                         const isWeak = catPct < 70;
 
@@ -4806,10 +5601,7 @@ export default function MerakiApp() {
                               key={oIdx}
                               onClick={() => {
                                 if (!diagnosticSubmitted) {
-                                  setDiagnosticAnswers((prev) => ({
-                                    ...prev,
-                                    [q.id]: opt,
-                                  }));
+                                  handleSelectDiagnosticAnswer(q.id, opt);
                                 }
                               }}
                               className={clsx(
@@ -4839,10 +5631,10 @@ export default function MerakiApp() {
               {!diagnosticSubmitted && (
                 <div className="pt-4 pb-8 flex justify-end">
                   <button
-                    onClick={() => setDiagnosticSubmitted(true)}
+                    onClick={handleSubmitDiagnostic}
                     className="px-8 py-3.5 rounded-full bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-colors shadow-sm tactile-btn min-h-[44px]"
                   >
-                    Kumpulkan dan Analisis Diagnostic Matrix
+                    Kumpulkan Lembar Jawaban Diagnostik
                   </button>
                 </div>
               )}
