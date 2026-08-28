@@ -104,9 +104,36 @@ html, body {
 .pr-safe {
   padding-right: env(safe-area-inset-right, 0px);
 }
+.top-safe {
+  top: env(safe-area-inset-top, 0px);
+}
+.bottom-safe {
+  bottom: env(safe-area-inset-bottom, 0px);
+}
 .h-safe-screen {
   height: 100dvh;
   height: -webkit-fill-available;
+}
+
+/* No Scrollbar Utility for Horizontal Pill Carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* iOS Momentum Smooth Scrolling */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Mobile Touch Target Standards */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
 }
 
 /* Prevent unwanted bounce/zoom on iOS Safari/Webview */
@@ -114,4 +141,5 @@ body {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
+
 

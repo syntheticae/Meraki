@@ -100,6 +100,17 @@ export default function MerakiApp() {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
   const [isModuleIndexOpen, setIsModuleIndexOpen] = useState<boolean>(true);
 
+  // Auto-detect mobile screen on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        setIsNavOpen(false);
+        setIsModuleIndexOpen(false);
+      }
+    }
+  }, []);
+
   // Practice Mode
   const [practiceSubMode, setPracticeSubMode] = useState<'quiz' | 'sentence-doctor'>('quiz');
 
@@ -342,6 +353,9 @@ export default function MerakiApp() {
     setActiveDoctorIndex(0);
     setDoctorUserInput('');
     setDoctorFeedback(null);
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      setIsModuleIndexOpen(false);
+    }
   };
 
   const handleSelectAnswer = (questionId: string, answer: string) => {
@@ -1028,10 +1042,91 @@ export default function MerakiApp() {
         <main className="flex-1 overflow-hidden">
           {/* ───────────── WORKSPACE 1: KURIKULUM (MATERI LENGKAP) ───────────── */}
           {activeHub === 'curriculum' && (
-            <div className="h-full grid grid-cols-12 overflow-hidden">
-              {/* Module Directory Drawer (Collapsible) */}
+            <div className="h-full grid grid-cols-12 overflow-hidden relative">
+              {/* Mobile Module Directory Modal (Bottom Sheet on Mobile) */}
               {isModuleIndexOpen && (
-                <aside className="col-span-12 md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex flex-col h-full overflow-hidden transition-all duration-300">
+                <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-xs md:hidden">
+                  <div className="w-full max-h-[82vh] bg-[#E8E2D6] rounded-t-3xl sm:rounded-3xl border border-[#C8C0B0] flex flex-col overflow-hidden shadow-2xl p-4 space-y-3 animate-in slide-in-from-bottom duration-200">
+                    <div className="flex items-center justify-between pb-2 border-b border-[#C8C0B0]">
+                      <span className="font-serif text-lg font-bold text-[#1E1B17]">Pilih Modul Kurikulum</span>
+                      <button
+                        onClick={() => setIsModuleIndexOpen(false)}
+                        className="p-1.5 rounded-full bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    <div className="relative">
+                      <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        value={searchFilter}
+                        onChange={(e) => setSearchFilter(e.target.value)}
+                        placeholder="Cari modul..."
+                        className="w-full pl-9 pr-3 py-2 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                      />
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto space-y-4 pr-1">
+                      {stageGroups.map((stageTitle) => {
+                        const items = filteredTopics.filter((t) => t.stageName === stageTitle);
+                        if (items.length === 0) return null;
+                        return (
+                          <div key={stageTitle} className="space-y-1.5">
+                            <div className="flex items-center gap-1.5 px-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#A84A28]" />
+                              <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] font-semibold">
+                                {stageTitle}
+                              </span>
+                            </div>
+                            <div className="space-y-1">
+                              {items.map((topic) => {
+                                const isSelected = topic.id === selectedTopicId;
+                                const isDone = completedTopicIds.includes(topic.id);
+                                return (
+                                  <button
+                                    key={topic.id}
+                                    onClick={() => handleSelectTopic(topic.id)}
+                                    className={clsx(
+                                      'w-full text-left p-3 rounded-2xl transition-all flex items-start justify-between gap-2.5 tactile-btn min-h-[46px]',
+                                      isSelected
+                                        ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
+                                        : 'bg-[#E2DCD0]/70 hover:bg-[#DDD7CA] text-[#38332A]'
+                                    )}
+                                  >
+                                    <div className="space-y-0.5 flex-1 min-w-0">
+                                      <div className="flex items-center gap-2">
+                                        <span className={clsx(
+                                          'font-mono text-[10px] px-1.5 py-0.2 rounded-md',
+                                          isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
+                                        )}>
+                                          0{topic.moduleNumber}
+                                        </span>
+                                        <h4 className={clsx('text-xs font-medium line-clamp-1', isSelected ? 'text-[#EFE9DF]' : 'text-[#1E1B17]')}>
+                                          {topic.title}
+                                        </h4>
+                                      </div>
+                                      <p className={clsx('text-[11px] line-clamp-1 pl-6', isSelected ? 'text-[#EFE9DF]/70' : 'text-[#7A7265]')}>
+                                        {topic.subtitle}
+                                      </p>
+                                    </div>
+                                    {isDone && <Check className="w-3.5 h-3.5 text-[#535841] shrink-0 mt-1" />}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Desktop Module Directory Sidebar */}
+              {isModuleIndexOpen && (
+                <aside className="hidden md:flex md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex-col h-full overflow-hidden transition-all duration-300">
                   <div className="p-3.5 border-b border-[#C8C0B0]/70 space-y-2 shrink-0">
                     <div className="relative">
                       <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
@@ -1125,10 +1220,34 @@ export default function MerakiApp() {
 
               {/* Main Reading Pane */}
               <section className={clsx(
-                'bg-[#EFE9DF] overflow-y-auto h-full p-8 sm:p-12 space-y-8 transition-all duration-300',
+                'bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-28 md:pb-12 space-y-6 sm:space-y-8 transition-all duration-300',
                 isModuleIndexOpen ? 'col-span-12 md:col-span-8 lg:col-span-9' : 'col-span-12'
               )}>
-                <div className="max-w-4xl mx-auto space-y-8">
+                <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+                  {/* Mobile Quick Module Chips Carousel */}
+                  <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#C8C0B0]/60">
+                    {MERAKI_CURRICULUM.map((topic) => {
+                      const isSelected = topic.id === selectedTopicId;
+                      const isDone = completedTopicIds.includes(topic.id);
+                      return (
+                        <button
+                          key={topic.id}
+                          onClick={() => handleSelectTopic(topic.id)}
+                          className={clsx(
+                            'px-3 py-2 rounded-xl text-xs font-mono whitespace-nowrap transition-all tactile-btn flex items-center gap-1.5 shrink-0 min-h-[38px]',
+                            isSelected
+                              ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                              : 'bg-[#E6E0D4] text-[#7A7265] border border-[#C8C0B0]'
+                          )}
+                        >
+                          <span>0{topic.moduleNumber}</span>
+                          <span className="max-w-[120px] truncate">{topic.title}</span>
+                          {isDone && <Check className="w-3 h-3 text-[#535841]" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+
                   {/* Topic Header */}
                   <div className="space-y-3 pb-6 border-b border-[#C8C0B0]">
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -1147,7 +1266,7 @@ export default function MerakiApp() {
                       </span>
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl font-serif text-[#1E1B17] leading-tight">
+                    <h1 className="text-2xl sm:text-4xl font-serif text-[#1E1B17] leading-tight">
                       {currentTopic.title}
                     </h1>
                     <p className="text-sm text-[#524C42] leading-relaxed drop-cap">
@@ -1481,8 +1600,8 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 2: LATIHAN SOAL & BEDAH KALIMAT ───────────── */}
           {activeHub === 'practice' && (
             <div className="h-full grid grid-cols-12 overflow-hidden">
-              {/* Left Topic Selector */}
-              <aside className="col-span-12 md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex flex-col h-full overflow-hidden p-4 space-y-3">
+              {/* Desktop Topic Selector Sidebar */}
+              <aside className="hidden md:flex md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex-col h-full overflow-hidden p-4 space-y-3">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#7A7265] font-semibold block">
                   Pilih Modul Soal:
                 </span>
@@ -1496,7 +1615,7 @@ export default function MerakiApp() {
                         key={topic.id}
                         onClick={() => handleSelectTopic(topic.id)}
                         className={clsx(
-                          'w-full text-left p-3 rounded-2xl text-xs transition-all flex items-center justify-between gap-2',
+                          'w-full text-left p-3 rounded-2xl text-xs transition-all flex items-center justify-between gap-2 tactile-btn',
                           isSelected
                             ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs font-medium'
                             : 'bg-[#E2DCD0]/60 hover:bg-[#DDD7CA] text-[#38332A]'
@@ -1516,9 +1635,33 @@ export default function MerakiApp() {
               </aside>
 
               {/* Right Practice Area */}
-              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-8 sm:p-12 flex flex-col justify-between">
-                <div className="max-w-2xl mx-auto w-full space-y-6 my-auto">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
+              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-28 md:pb-12 flex flex-col justify-between">
+                <div className="max-w-2xl mx-auto w-full space-y-5 sm:space-y-6 my-auto">
+                  {/* Mobile Quick Module Chips */}
+                  <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#C8C0B0]/60">
+                    {MERAKI_CURRICULUM.map((topic) => {
+                      const isSelected = topic.id === selectedTopicId;
+                      const isDone = completedTopicIds.includes(topic.id);
+                      return (
+                        <button
+                          key={topic.id}
+                          onClick={() => handleSelectTopic(topic.id)}
+                          className={clsx(
+                            'px-3 py-2 rounded-xl text-xs font-mono whitespace-nowrap transition-all tactile-btn flex items-center gap-1.5 shrink-0 min-h-[38px]',
+                            isSelected
+                              ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                              : 'bg-[#E6E0D4] text-[#7A7265] border border-[#C8C0B0]'
+                          )}
+                        >
+                          <span>0{topic.moduleNumber}</span>
+                          <span className="max-w-[120px] truncate">{topic.title}</span>
+                          {isDone && <Check className="w-3 h-3 text-[#535841]" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
                     <div>
                       <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                         Modul 0{currentTopic.moduleNumber}: {currentTopic.title}
@@ -1526,11 +1669,11 @@ export default function MerakiApp() {
                       <h2 className="text-xl font-serif text-[#1E1B17]">Latihan Sintaksis & Produksi</h2>
                     </div>
 
-                    <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0]">
+                    <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0] self-start sm:self-auto">
                       <button
                         onClick={() => setPracticeSubMode('quiz')}
                         className={clsx(
-                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
+                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
                           practiceSubMode === 'quiz' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                         )}
                       >
@@ -1539,7 +1682,7 @@ export default function MerakiApp() {
                       <button
                         onClick={() => setPracticeSubMode('sentence-doctor')}
                         className={clsx(
-                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1',
+                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1 min-h-[36px]',
                           practiceSubMode === 'sentence-doctor' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                         )}
                       >
@@ -1631,21 +1774,20 @@ export default function MerakiApp() {
                         )}
                       </div>
 
-                      <div className="flex items-center justify-between pt-2">
+                      <div className="flex items-center justify-between gap-2 pt-2">
                         <button
                           onClick={() => setActiveQuestionIndex((prev) => Math.max(0, prev - 1))}
                           disabled={activeQuestionIndex === 0}
-                          className="px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#7A7265] hover:text-[#1E1B17] disabled:opacity-30 flex items-center gap-1.5 tactile-btn"
+                          className="px-3 sm:px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#7A7265] hover:text-[#1E1B17] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
                         >
                           <ChevronLeft className="w-3.5 h-3.5" />
                           <span>Sebelumnya</span>
-                          <kbd className="text-[9px] bg-black/05 px-1 py-0.2 rounded">←</kbd>
                         </button>
 
                         <button
                           onClick={() => handleToggleTopicComplete(currentTopic.id)}
                           className={clsx(
-                            'px-5 py-2 rounded-2xl font-mono text-xs font-medium transition-all tactile-btn flex items-center gap-1.5',
+                            'px-3 sm:px-5 py-2 rounded-2xl font-mono text-xs font-medium transition-all tactile-btn flex items-center gap-1.5 min-h-[40px]',
                             completedTopicIds.includes(currentTopic.id)
                               ? 'bg-[#535841] text-[#EFE9DF]'
                               : 'bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF]'
@@ -1654,8 +1796,8 @@ export default function MerakiApp() {
                           <Check className="w-3.5 h-3.5" />
                           <span>
                             {completedTopicIds.includes(currentTopic.id)
-                              ? 'Modul Telah Dikuasai'
-                              : 'Tandai Modul Selesai'}
+                              ? 'Dikuasai'
+                              : 'Tandai Selesai'}
                           </span>
                         </button>
 
@@ -1666,10 +1808,9 @@ export default function MerakiApp() {
                             )
                           }
                           disabled={activeQuestionIndex === questions.length - 1}
-                          className="px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#1E1B17] hover:text-[#A84A28] disabled:opacity-30 flex items-center gap-1.5 tactile-btn"
+                          className="px-3 sm:px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#1E1B17] hover:text-[#A84A28] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
                         >
                           <span>Selanjutnya</span>
-                          <kbd className="text-[9px] bg-black/05 px-1 py-0.2 rounded">→</kbd>
                           <ChevronRight className="w-3.5 h-3.5" />
                         </button>
                       </div>
@@ -1679,7 +1820,7 @@ export default function MerakiApp() {
                   {practiceSubMode === 'sentence-doctor' && (
                     <div className="space-y-6">
                       {currentDoctorTask ? (
-                        <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-5">
+                        <div className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4 sm:space-y-5">
                           <div className="flex items-center justify-between">
                             <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                               Tantangan Koreksi Sintaksis:
@@ -1691,7 +1832,7 @@ export default function MerakiApp() {
 
                           <div className="p-4 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 space-y-1.5">
                             <span className="font-mono text-[10px] uppercase text-[#A84A28] block font-semibold">
-                              Kalimat Cacat / Mengandung Kesalahan Gramatikal:
+                              Kalimat Cacat / Mengandung Kesalahan:
                             </span>
                             <p className="font-serif text-base text-[#1E1B17] italic">
                               "{currentDoctorTask.flawedSentence}"
@@ -1710,12 +1851,12 @@ export default function MerakiApp() {
                               }}
                               rows={3}
                               placeholder="Ketik kalimat yang benar secara gramatikal..."
-                              className="w-full p-3.5 text-xs sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                              className="w-full p-3.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
                             />
                             <div className="flex justify-end">
                               <button
                                 type="submit"
-                                className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all shadow-xs"
+                                className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all shadow-xs tactile-btn min-h-[44px]"
                               >
                                 Verifikasi Perbaikan
                               </button>
@@ -1766,21 +1907,21 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 3: ACL & DIKSI ALAMI ───────────── */}
           {activeHub === 'collocations' && (
-            <div className="h-full flex flex-col overflow-hidden p-6 space-y-4">
+            <div className="h-full flex flex-col overflow-hidden p-4 sm:p-6 space-y-4 pb-28 md:pb-6">
               {/* Header Switcher */}
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-[#C8C0B0] shrink-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                     Academic Collocations List (ACL) & Natural Lexicon Studio
                   </span>
-                  <h2 className="text-2xl font-serif text-[#1E1B17]">Studio Kolokasi Baku & Diksi On-Point</h2>
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Studio Kolokasi Baku & Diksi On-Point</h2>
                 </div>
 
-                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0]">
+                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
                   <button
                     onClick={() => setCollocationSubTab('acl')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       collocationSubTab === 'acl' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
@@ -1789,34 +1930,34 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setCollocationSubTab('on-point')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       collocationSubTab === 'on-point' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    On-Point Academic Verbs
+                    On-Point Verbs
                   </button>
                   <button
                     onClick={() => setCollocationSubTab('prep')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       collocationSubTab === 'prep' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Dependent Prepositions
+                    Prepositions
                   </button>
                   <button
                     onClick={() => setCollocationSubTab('confusables')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       collocationSubTab === 'confusables' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Confusable Words
+                    Confusables
                   </button>
                   <button
                     onClick={() => setCollocationSubTab('traps')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       collocationSubTab === 'traps' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
@@ -1827,7 +1968,7 @@ export default function MerakiApp() {
 
               {/* Sub-tab 1: ACL */}
               {collocationSubTab === 'acl' && (
-                <div className="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
+                <div className="flex-1 grid grid-cols-12 gap-4 sm:gap-6 overflow-hidden">
                   <div className="col-span-12 lg:col-span-6 flex flex-col h-full space-y-3 overflow-hidden">
                     <div className="relative shrink-0">
                       <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
@@ -1836,7 +1977,7 @@ export default function MerakiApp() {
                         value={collocationSearch}
                         onChange={(e) => setCollocationSearch(e.target.value)}
                         placeholder="Cari kolokasi..."
-                        className="w-full pl-9 pr-3 py-2 text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                        className="w-full pl-9 pr-3 py-2 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
                       />
                     </div>
 
@@ -2372,20 +2513,20 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 4: MATRIKS FONDASI ───────────── */}
           {activeHub === 'matrices' && (
-            <div className="h-full flex flex-col overflow-hidden p-6 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-[#C8C0B0] shrink-0">
+            <div className="h-full flex flex-col overflow-hidden p-4 sm:p-6 space-y-4 pb-28 md:pb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                     Laboratorium Matriks Referensi Interaktif
                   </span>
-                  <h2 className="text-2xl font-serif text-[#1E1B17]">Master Reference & Drill Matrices</h2>
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Master Reference & Drill Matrices</h2>
                 </div>
 
-                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar max-w-[70vw]">
+                <div className="flex items-center gap-1.5 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
                   <button
                     onClick={() => setMatrixSubTab('have-has-had')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       matrixSubTab === 'have-has-had' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
@@ -2800,8 +2941,8 @@ export default function MerakiApp() {
                   </div>
 
                   {/* 5-Column Table */}
-                  <div className="flex-1 overflow-y-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4]">
-                    <table className="w-full text-left text-xs border-collapse">
+                  <div className="flex-1 overflow-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll">
+                    <table className="w-full text-left text-xs border-collapse min-w-[720px]">
                       <thead className="bg-[#DDD7CA] sticky top-0 border-b border-[#C8C0B0] z-10 font-mono text-[11px] text-[#7A7265]">
                         <tr>
                           <th className="p-3.5">Orang / Entitas</th>
@@ -3301,8 +3442,8 @@ export default function MerakiApp() {
                     </button>
                   </div>
 
-                  <div className="flex-1 overflow-y-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4]">
-                    <table className="w-full text-left text-xs border-collapse">
+                  <div className="flex-1 overflow-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll">
+                    <table className="w-full text-left text-xs border-collapse min-w-[720px]">
                       <thead className="bg-[#DDD7CA] sticky top-0 border-b border-[#C8C0B0] z-10 font-mono text-[11px] text-[#7A7265]">
                         <tr>
                           <th className="p-3.5">Verb 1 (Base)</th>
@@ -3552,29 +3693,29 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 5: STUDIO SINTAKSIS ───────────── */}
           {activeHub === 'studio' && (
-            <div className="h-full flex flex-col overflow-hidden p-6 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-[#C8C0B0] shrink-0">
+            <div className="h-full flex flex-col overflow-hidden p-4 sm:p-6 space-y-4 pb-28 md:pb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                     Studio Produksi & Analisis Retorika Mandiri
                   </span>
-                  <h2 className="text-2xl font-serif text-[#1E1B17]">Academic Syntax & Exam Studio</h2>
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Academic Syntax & Exam Studio</h2>
                 </div>
 
-                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0]">
+                <div className="flex items-center gap-1.5 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
                   <button
                     onClick={() => setStudioSubTab('paraphrase')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       studioSubTab === 'paraphrase' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Paraphrasing Studio
+                    Paraphrasing
                   </button>
                   <button
                     onClick={() => setStudioSubTab('xray')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       studioSubTab === 'xray' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
@@ -3583,29 +3724,29 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setStudioSubTab('ielts-task1')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       studioSubTab === 'ielts-task1' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    IELTS Task 1 Trends
+                    IELTS Task 1
                   </button>
                   <button
                     onClick={() => setStudioSubTab('combine')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       studioSubTab === 'combine' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Sentence Combining
+                    Combining
                   </button>
                   <button
                     onClick={() => setStudioSubTab('writing-pad')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn',
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
                       studioSubTab === 'writing-pad' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Writing Pad (Metrics)
+                    Writing Pad
                   </button>
                 </div>
               </div>
@@ -4159,7 +4300,7 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 7: OXFORD 3000 SRS LAB ───────────── */}
           {activeHub === 'oxford3000' && (
             <div className="h-full grid grid-cols-12 overflow-hidden">
-              <aside className="col-span-12 md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex flex-col h-full overflow-hidden p-4 space-y-4">
+              <aside className="hidden md:flex md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex-col h-full overflow-hidden p-4 space-y-4">
                 <div className="space-y-2">
                   <span className="font-mono text-xs text-[#7A7265] uppercase tracking-wider block font-semibold">
                     American Oxford 3000 (SRS Studio)
@@ -4282,16 +4423,16 @@ export default function MerakiApp() {
                 </div>
               </aside>
 
-              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-8 flex flex-col justify-between space-y-8">
-                <div className="max-w-2xl mx-auto w-full space-y-8 my-auto">
-                  <div className="p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-6 text-center">
+              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 pb-28 md:pb-8 flex flex-col justify-between space-y-6 sm:space-y-8">
+                <div className="max-w-2xl mx-auto w-full space-y-6 sm:space-y-8 my-auto">
+                  <div className="p-5 sm:p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5 sm:space-y-6 text-center">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
-                          CEFR Level {currentOxfordWord?.cefr}
+                          CEFR {currentOxfordWord?.cefr}
                         </span>
                         <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-2.5 py-1 rounded-md">
-                          Leitner Box {currentWordSrs.box}
+                          Box {currentWordSrs.box}
                         </span>
                       </div>
                       <span className="font-mono text-xs text-[#7A7265]">
@@ -4301,15 +4442,15 @@ export default function MerakiApp() {
 
                     <div className="space-y-2">
                       <div className="flex items-center justify-center gap-3">
-                        <h2 className="text-4xl sm:text-5xl font-serif text-[#1E1B17]">
+                        <h2 className="text-3xl sm:text-5xl font-serif text-[#1E1B17]">
                           {currentOxfordWord?.word}
                         </h2>
                         <button
                           onClick={() => playNativeAudio(currentOxfordWord?.word)}
-                          className="p-2.5 rounded-full bg-[#DDD7CA] hover:bg-[#A84A28] text-[#1E1B17] hover:text-[#EFE9DF] transition-all shadow-xs"
+                          className="p-2.5 rounded-full bg-[#DDD7CA] hover:bg-[#A84A28] text-[#1E1B17] hover:text-[#EFE9DF] transition-all shadow-xs tactile-btn"
                           title="Dengarkan pengucapan asli Amerika"
                         >
-                          <Volume2 className="w-5 h-5" />
+                          <Volume2 className="w-4 sm:w-5 h-4 sm:h-5" />
                         </button>
                       </div>
 
@@ -4345,15 +4486,14 @@ export default function MerakiApp() {
                               setMeaningFeedback(null);
                             }}
                             placeholder="contoh: menghasilkan, membuat, membuktikan..."
-                            className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17] shadow-xs"
-                            autoFocus
+                            className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17] shadow-xs"
                           />
                           <button
                             type="submit"
-                            className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shadow-xs shrink-0 flex items-center gap-1.5"
+                            className="px-5 sm:px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shadow-xs shrink-0 flex items-center gap-1.5 min-h-[44px]"
                           >
                             <span>Periksa</span>
-                            <kbd className="text-[9px] bg-white/20 px-1.5 py-0.5 rounded font-mono">↵</kbd>
+                            <kbd className="hidden sm:inline text-[9px] bg-white/20 px-1.5 py-0.5 rounded font-mono">↵</kbd>
                           </button>
                         </div>
                       </div>
@@ -4361,7 +4501,7 @@ export default function MerakiApp() {
 
                     {meaningFeedback && (
                       <div className={clsx(
-                        'p-5 rounded-2xl border text-left space-y-4 animate-in fade-in duration-200',
+                        'p-4 sm:p-5 rounded-2xl border text-left space-y-3 sm:space-y-4 animate-in fade-in duration-200',
                         meaningFeedback.isCorrect
                           ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]'
                           : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
@@ -4409,26 +4549,26 @@ export default function MerakiApp() {
 
                         <div className="pt-3 border-t border-[#C8C0B0]/60 space-y-2">
                           <span className="font-mono text-[10px] uppercase text-[#7A7265] block">
-                            Tentukan Interval Pengulangan Memori (Spaced Repetition):
+                            Tentukan Interval Pengulangan Memori (SRS):
                           </span>
                           <div className="grid grid-cols-3 gap-2">
                             <button
                               onClick={() => { handleRateSrs(currentOxfordWord.id, 1); handleNextOxfordWord(); }}
-                              className="p-2 rounded-xl bg-[#A84A28]/20 hover:bg-[#A84A28] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn"
+                              className="p-2.5 rounded-xl bg-[#A84A28]/20 hover:bg-[#A84A28] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
                             >
-                              Lupa (Review Besok)
+                              Lupa (Besok)
                             </button>
                             <button
                               onClick={() => { handleRateSrs(currentOxfordWord.id, 2); handleNextOxfordWord(); }}
-                              className="p-2 rounded-xl bg-[#DDD7CA] hover:bg-[#1E1B17] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn"
+                              className="p-2.5 rounded-xl bg-[#DDD7CA] hover:bg-[#1E1B17] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
                             >
-                              Ragu (Review 3 Hari)
+                              Ragu (3 Hari)
                             </button>
                             <button
                               onClick={() => { handleRateSrs(currentOxfordWord.id, 4); handleNextOxfordWord(); }}
-                              className="p-2 rounded-xl bg-[#535841]/20 hover:bg-[#535841] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn"
+                              className="p-2.5 rounded-xl bg-[#535841]/20 hover:bg-[#535841] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
                             >
-                              Ingat Mantap (Box 4)
+                              Mantap (Box 4)
                             </button>
                           </div>
                         </div>
@@ -4436,19 +4576,18 @@ export default function MerakiApp() {
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between pt-2">
+                  <div className="flex items-center justify-between gap-2 pt-2">
                     <button
                       onClick={handlePrevOxfordWord}
-                      className="px-5 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#1E1B17] hover:bg-[#DDD7CA] flex items-center gap-1.5 tactile-btn"
+                      className="px-3.5 sm:px-5 py-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#1E1B17] hover:bg-[#DDD7CA] flex items-center gap-1.5 tactile-btn min-h-[42px]"
                     >
                       <ChevronLeft className="w-3.5 h-3.5" />
-                      <span>Kata Sebelumnya</span>
-                      <kbd className="text-[9px] bg-black/05 px-1 py-0.2 rounded font-mono">←</kbd>
+                      <span>Sebelumnya</span>
                     </button>
 
                     <button
                       onClick={handleRandomOxfordWord}
-                      className="p-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-[#7A7265] hover:text-[#1E1B17] transition-colors tactile-btn"
+                      className="p-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-[#7A7265] hover:text-[#1E1B17] transition-colors tactile-btn min-h-[42px]"
                       title="Acak kata"
                     >
                       <Shuffle className="w-4 h-4" />
@@ -4456,10 +4595,9 @@ export default function MerakiApp() {
 
                     <button
                       onClick={handleNextOxfordWord}
-                      className="px-5 py-2 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-1.5 transition-colors tactile-btn"
+                      className="px-3.5 sm:px-5 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-1.5 transition-colors tactile-btn min-h-[42px]"
                     >
-                      <span>Kata Selanjutnya</span>
-                      <kbd className="text-[9px] bg-white/20 px-1 py-0.2 rounded font-mono">→</kbd>
+                      <span>Selanjutnya</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -4470,12 +4608,12 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 8: MISTAKE VAULT ───────────── */}
           {activeHub === 'vault' && (
-            <div className="h-full max-w-4xl mx-auto p-8 overflow-y-auto space-y-6">
+            <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 pb-28 md:pb-8">
               <div className="space-y-2 pb-6 border-b border-[#C8C0B0]">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
                   Personal Weakness Re-tester & Mastery Loop
                 </span>
-                <h2 className="text-3xl font-serif text-[#1E1B17]">
+                <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
                   Mistake Vault: Bank Khilaf & Catatan Evaluasi Mandiri
                 </h2>
                 <p className="text-xs sm:text-sm text-[#7A7265]">
@@ -4484,7 +4622,7 @@ export default function MerakiApp() {
               </div>
 
               {mistakeVault.length === 0 ? (
-                <div className="p-12 text-center bg-[#E6E0D4] rounded-3xl border border-[#C8C0B0] space-y-3">
+                <div className="p-8 sm:p-12 text-center bg-[#E6E0D4] rounded-3xl border border-[#C8C0B0] space-y-3">
                   <CheckCircle2 className="w-10 h-10 text-[#535841] mx-auto" />
                   <h3 className="font-serif text-lg text-[#1E1B17]">Mistake Vault Kosong!</h3>
                   <p className="text-xs text-[#7A7265] max-w-md mx-auto">
@@ -4494,20 +4632,20 @@ export default function MerakiApp() {
               ) : (
                 <div className="space-y-4">
                   {mistakeVault.map((item) => (
-                    <div key={item.id} className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-3">
-                      <div className="flex items-center justify-between">
+                    <div key={item.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-3">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
                           <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
-                            {item.type === 'quiz' ? 'Soal Pilihan Ganda' : item.type === 'doctor' ? 'Bedah Kalimat' : 'Preposisi/Kolokasi'}
+                            {item.type === 'quiz' ? 'Pilihan Ganda' : item.type === 'doctor' ? 'Bedah Kalimat' : 'Preposisi/Kolokasi'}
                           </span>
                           <span className="text-xs text-[#7A7265]">{item.title}</span>
                         </div>
                         <button
                           onClick={() => handleRemoveFromVault(item.id)}
-                          className="text-xs font-mono text-[#535841] hover:underline flex items-center gap-1"
+                          className="text-xs font-mono text-[#535841] hover:underline flex items-center gap-1 tactile-btn"
                         >
                           <Check className="w-3.5 h-3.5" />
-                          <span>Tandai Sudah Paham (Hapus)</span>
+                          <span>Sudah Paham (Hapus)</span>
                         </button>
                       </div>
 
@@ -4532,12 +4670,12 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 9: DIAGNOSTIC MATRIX ───────────── */}
           {activeHub === 'diagnostic' && (
-            <div className="h-full max-w-4xl mx-auto p-8 overflow-y-auto space-y-8">
+            <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 sm:space-y-8 pb-28 md:pb-8">
               <div className="space-y-2 pb-6 border-b border-[#C8C0B0]">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
                   Comprehensive Diagnostic Evaluation & Weakness Radar
                 </span>
-                <h2 className="text-3xl font-serif text-[#1E1B17]">
+                <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
                   Diagnostic Matrix: Uji Kesiapan Tata Bahasa Menyeluruh
                 </h2>
                 <p className="text-xs sm:text-sm text-[#7A7265]">
@@ -4546,11 +4684,11 @@ export default function MerakiApp() {
               </div>
 
               {diagnosticSubmitted && (
-                <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-md space-y-6 animate-in fade-in duration-300">
-                  <div className="flex items-center justify-between pb-4 border-b border-[#C8C0B0]">
+                <div className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-md space-y-6 animate-in fade-in duration-300">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0]">
                     <div>
                       <span className="font-mono text-xs text-[#7A7265] uppercase">Skor Diagnostik Global:</span>
-                      <h3 className="text-3xl font-serif font-bold text-[#1E1B17]">
+                      <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1E1B17]">
                         {calculateDiagnosticAnalytics().percentage}% ({calculateDiagnosticAnalytics().correctTotal} / {calculateDiagnosticAnalytics().total} Benar)
                       </h3>
                     </div>
@@ -4559,7 +4697,7 @@ export default function MerakiApp() {
                         setDiagnosticAnswers({});
                         setDiagnosticSubmitted(false);
                       }}
-                      className="px-4 py-2 rounded-2xl bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 text-xs font-mono text-[#1E1B17] border border-[#C8C0B0]"
+                      className="px-4 py-2 rounded-2xl bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 text-xs font-mono text-[#1E1B17] border border-[#C8C0B0] tactile-btn min-h-[40px]"
                     >
                       Uji Ulang
                     </button>
@@ -4606,7 +4744,7 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {allDiagnosticQuestions.map((q, idx) => {
                   const userSelected = diagnosticAnswers[q.id];
                   const isCorrect = userSelected === q.correctAnswer;
@@ -4614,7 +4752,7 @@ export default function MerakiApp() {
                   return (
                     <div
                       key={q.id}
-                      className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 shadow-xs"
+                      className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 shadow-xs"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -4666,7 +4804,7 @@ export default function MerakiApp() {
                                 }
                               }}
                               className={clsx(
-                                'p-3 rounded-2xl border text-xs text-left transition-all',
+                                'p-3.5 rounded-2xl border text-xs text-left transition-all tactile-btn min-h-[44px]',
                                 btnStyle
                               )}
                             >
@@ -4690,10 +4828,10 @@ export default function MerakiApp() {
               </div>
 
               {!diagnosticSubmitted && (
-                <div className="pt-4 pb-12 flex justify-end">
+                <div className="pt-4 pb-8 flex justify-end">
                   <button
                     onClick={() => setDiagnosticSubmitted(true)}
-                    className="px-8 py-3.5 rounded-full bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-colors shadow-sm"
+                    className="px-8 py-3.5 rounded-full bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-colors shadow-sm tactile-btn min-h-[44px]"
                   >
                     Kumpulkan dan Analisis Diagnostic Matrix
                   </button>
