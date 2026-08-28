@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper-bg: #EFE9DF;
+  --paper-surface: #E6E0D4;
+  --paper-card: #DDD7CA;
+  --paper-card-subtle: #E2DCD0;
+  --paper-border: #C8C0B0;
+  --paper-border-subtle: rgba(30, 27, 23, 0.12);
+  --ink-primary: #1E1B17;
+  --ink-secondary: #524C42;
+  --ink-muted: #7A7265;
+  --accent-terracotta: #A84A28;
+  --accent-sage: #535841;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-geist-sans), -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background-color: var(--paper-bg);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  height: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* Custom Editorial Ultra-Thin Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 74, 40, 0.2);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 74, 40, 0.45);
+}
+
+/* Selection Styling */
+::selection {
+  background: #A84A28;
+  color: #F7F3EB;
+}
+
+/* Glassmorphism primitives for warm muted paper */
+.glass-header {
+  background-color: rgba(230, 224, 212, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 192, 176, 0.75);
+}
+
+.glass-card {
+  background-color: rgba(230, 224, 212, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 192, 176, 0.65);
+}
+
+/* Drop Cap Typography */
+.drop-cap::first-letter {
+  font-family: var(--font-serif);
+  float: left;
+  font-size: 2.75rem;
+  line-height: 0.85;
+  margin-right: 0.5rem;
+  margin-top: 0.15rem;
+  color: #A84A28;
+  font-weight: 600;
+}
+
+/* Smooth Focus & Button Ripple Effect */
+.tactile-btn {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tactile-btn:active {
+  transform: scale(0.97);
+}
+
+/* iOS Safe Area & Native App Support for iPhone 13 */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+.h-safe-screen {
+  height: 100dvh;
+  height: -webkit-fill-available;
+}
+
+/* Prevent unwanted bounce/zoom on iOS Safari/Webview */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
+
