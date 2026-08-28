@@ -1907,9 +1907,9 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 3: ACL & DIKSI ALAMI ───────────── */}
           {activeHub === 'collocations' && (
-            <div className="h-full flex flex-col overflow-hidden p-4 sm:p-6 space-y-4 pb-28 md:pb-6">
+            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-28 md:pb-12">
               {/* Header Switcher */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0] shrink-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                     Academic Collocations List (ACL) & Natural Lexicon Studio
@@ -1917,12 +1917,12 @@ export default function MerakiApp() {
                   <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Studio Kolokasi Baku & Diksi On-Point</h2>
                 </div>
 
-                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
+                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
                   <button
                     onClick={() => setCollocationSubTab('acl')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'acl' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'acl' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     ACL Collocations
@@ -1931,7 +1931,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('on-point')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'on-point' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'on-point' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     On-Point Verbs
@@ -1940,7 +1940,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('prep')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'prep' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'prep' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Prepositions
@@ -1949,7 +1949,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('confusables')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'confusables' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'confusables' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Confusables
@@ -1958,7 +1958,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('traps')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'traps' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'traps' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Anti-Literal (L1 Traps)
@@ -1968,20 +1968,21 @@ export default function MerakiApp() {
 
               {/* Sub-tab 1: ACL */}
               {collocationSubTab === 'acl' && (
-                <div className="flex-1 grid grid-cols-12 gap-4 sm:gap-6 overflow-hidden">
-                  <div className="col-span-12 lg:col-span-6 flex flex-col h-full space-y-3 overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  {/* Left Column: Filter & Collocation Items */}
+                  <div className="col-span-1 lg:col-span-6 space-y-3">
                     <div className="relative shrink-0">
                       <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
                         value={collocationSearch}
                         onChange={(e) => setCollocationSearch(e.target.value)}
-                        placeholder="Cari kolokasi..."
-                        className="w-full pl-9 pr-3 py-2 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                        placeholder="Cari kolokasi atau arti..."
+                        className="w-full pl-9 pr-3 py-2.5 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
                       />
                     </div>
 
-                    <div className="flex-1 overflow-y-auto space-y-2.5 pr-1">
+                    <div className="space-y-2.5">
                       {ACADEMIC_COLLOCATIONS_DATA
                         .filter(c => c.collocation.toLowerCase().includes(collocationSearch.toLowerCase()) || c.meaningId.toLowerCase().includes(collocationSearch.toLowerCase()))
                         .map((col, idx) => {
@@ -1995,13 +1996,13 @@ export default function MerakiApp() {
                                 setCollocationQuizSelected(null);
                               }}
                               className={clsx(
-                                'w-full text-left p-4 rounded-3xl border transition-all tactile-btn space-y-2',
+                                'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                                 isSelected ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm' : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
                               )}
                             >
                               <div className="flex items-center justify-between">
                                 <span className={clsx(
-                                  'font-mono text-[10px] px-2 py-0.5 rounded font-semibold',
+                                  'font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold',
                                   isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#A84A28]'
                                 )}>
                                   {col.type}
@@ -2011,17 +2012,17 @@ export default function MerakiApp() {
                                     e.stopPropagation();
                                     playNativeAudio(col.collocation);
                                   }}
-                                  className="w-3.5 h-3.5 cursor-pointer opacity-70 hover:opacity-100"
+                                  className="w-4 h-4 cursor-pointer opacity-70 hover:opacity-100"
                                 />
                               </div>
 
-                              <h4 className="font-serif text-base font-bold">{col.collocation}</h4>
+                              <h4 className="font-serif text-lg font-bold">{col.collocation}</h4>
                               <p className={clsx('text-xs line-clamp-1', isSelected ? 'text-[#EFE9DF]/80' : 'text-[#7A7265]')}>
                                 {col.meaningId}
                               </p>
 
                               <div className={clsx(
-                                'p-2 rounded-xl text-[11px] font-mono',
+                                'p-2.5 rounded-2xl text-[11px] font-mono leading-relaxed',
                                 isSelected ? 'bg-white/10 text-[#DDD7CA]' : 'bg-[#A84A28]/10 text-[#A84A28]'
                               )}>
                                 {col.literalIndonesianWarning}
@@ -2032,28 +2033,34 @@ export default function MerakiApp() {
                     </div>
                   </div>
 
-                  <div className="col-span-12 lg:col-span-6 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-6 overflow-y-auto space-y-6 flex flex-col justify-between">
+                  {/* Right Column: Interactive Cloze Test Card (Sticky on desktop) */}
+                  <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                     {(() => {
                       const col = ACADEMIC_COLLOCATIONS_DATA[activeCollocationIndex] || ACADEMIC_COLLOCATIONS_DATA[0];
                       const options = [col.correctTarget, ...col.distractors].sort();
 
                       return (
-                        <div className="space-y-6 my-auto">
-                          <div>
+                        <div className="space-y-5">
+                          <div className="pb-3 border-b border-[#C8C0B0]">
                             <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
                               Uji Pasangan Kolokasi Baku (Cloze Test):
                             </span>
-                            <h3 className="font-serif text-xl text-[#1E1B17] font-bold mt-1">{col.collocation}</h3>
+                            <div className="flex items-center justify-between gap-2 mt-1">
+                              <h3 className="font-serif text-2xl text-[#1E1B17] font-bold">{col.collocation}</h3>
+                              <button onClick={() => playNativeAudio(col.collocation)} className="text-[#7A7265] hover:text-[#1E1B17] p-1.5 rounded-full bg-[#DDD7CA]">
+                                <Volume2 className="w-4 h-4" />
+                              </button>
+                            </div>
                           </div>
 
-                          <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
+                          <div className="p-4 sm:p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
                             <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
                               Lengkapi Kalimat dengan Pasangan Kolokasi yang Tepat:
                             </span>
-                            <p className="font-serif text-base text-[#1E1B17]">"{col.clozePrompt}"</p>
+                            <p className="font-serif text-base text-[#1E1B17] leading-relaxed">"{col.clozePrompt}"</p>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-2.5">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             {options.map((opt, oIdx) => {
                               const isSelected = collocationQuizSelected === opt;
                               const isCorrect = opt === col.correctTarget;
@@ -2071,7 +2078,7 @@ export default function MerakiApp() {
                                   onClick={() => setCollocationQuizSelected(opt)}
                                   disabled={collocationQuizSelected !== null}
                                   className={clsx(
-                                    'p-3.5 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center',
+                                    'p-3.5 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
                                     optStyle
                                   )}
                                 >
@@ -2082,9 +2089,15 @@ export default function MerakiApp() {
                           </div>
 
                           {collocationQuizSelected && (
-                            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2 animate-in fade-in duration-200">
+                            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2.5 animate-in fade-in duration-200">
+                              <div className="flex items-center justify-between">
+                                <span className="font-mono text-[10px] uppercase text-[#7A7265] font-semibold">Contoh Kalimat Akademik Baku:</span>
+                                <button onClick={() => playNativeAudio(col.exampleSentence)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                                  <Volume2 className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
                               <p className="font-serif text-sm text-[#1E1B17] italic">"{col.exampleSentence}"</p>
-                              <p className="text-[#524C42] leading-relaxed pt-1 border-t border-[#C8C0B0]/60">
+                              <p className="text-[#524C42] leading-relaxed pt-2 border-t border-[#C8C0B0]/60">
                                 <strong>Kaidah Leksikal:</strong> {col.literalIndonesianWarning}
                               </p>
                             </div>
@@ -2098,7 +2111,7 @@ export default function MerakiApp() {
 
               {/* Sub-tab 2: On-Point Verbs */}
               {collocationSubTab === 'on-point' && (
-                <div className="flex-1 overflow-y-auto space-y-4">
+                <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {ON_POINT_VERBS_DATA.map(opv => (
                       <div key={opv.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
@@ -2143,9 +2156,9 @@ export default function MerakiApp() {
 
               {/* Sub-tab 3: Dependent Prepositions */}
               {collocationSubTab === 'prep' && (
-                <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 my-auto">
+                <div className="max-w-2xl mx-auto w-full space-y-6">
                   <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
                       <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-3 py-1 rounded-md uppercase font-semibold">
                         Kata: {currentPrepTask.word} ({currentPrepTask.partOfSpeech})
                       </span>
@@ -2171,12 +2184,11 @@ export default function MerakiApp() {
                             setPrepFeedback(null);
                           }}
                           placeholder="Ketik preposisi: in, on, at, to, for, of, with, from..."
-                          className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
-                          autoFocus
+                          className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
                         />
                         <button
                           type="submit"
-                          className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shrink-0"
+                          className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shrink-0 min-h-[44px]"
                         >
                           Periksa Preposisi
                         </button>
@@ -2209,7 +2221,7 @@ export default function MerakiApp() {
                     )}
                   </div>
 
-                  <div className="flex justify-between">
+                  <div className="flex justify-between gap-3">
                     <button
                       onClick={() => {
                         setActivePrepIndex(prev => Math.max(0, prev - 1));
@@ -2217,7 +2229,7 @@ export default function MerakiApp() {
                         setPrepFeedback(null);
                       }}
                       disabled={activePrepIndex === 0}
-                      className="px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-5 py-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
                     >
                       Preposisi Sebelumnya
                     </button>
@@ -2229,7 +2241,7 @@ export default function MerakiApp() {
                         setPrepFeedback(null);
                       }}
                       disabled={activePrepIndex === DEPENDENT_PREPOSITIONS_DATA.length - 1}
-                      className="px-4 py-2 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-5 py-2.5 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
                     >
                       Preposisi Selanjutnya
                     </button>
@@ -2239,7 +2251,7 @@ export default function MerakiApp() {
 
               {/* Sub-tab 4: Confusable Words */}
               {collocationSubTab === 'confusables' && (
-                <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 my-auto">
+                <div className="max-w-2xl mx-auto w-full space-y-6">
                   {(() => {
                     const cw = CONFUSABLE_WORDS_DATA[activeConfusableIndex] || CONFUSABLE_WORDS_DATA[0];
 
@@ -2254,7 +2266,7 @@ export default function MerakiApp() {
                           </span>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                           <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
                             <span className="font-mono text-xs font-bold text-[#A84A28] block">{cw.wordA} ({cw.posA})</span>
                             <p className="text-[#38332A]">{cw.definitionA}</p>
@@ -2300,7 +2312,7 @@ export default function MerakiApp() {
                                   onClick={() => setConfusableSelected(opt)}
                                   disabled={confusableSelected !== null}
                                   className={clsx(
-                                    'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center',
+                                    'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
                                     btnStyle
                                   )}
                                 >
@@ -2314,14 +2326,14 @@ export default function MerakiApp() {
                     );
                   })()}
 
-                  <div className="flex justify-between">
+                  <div className="flex justify-between gap-3">
                     <button
                       onClick={() => {
                         setActiveConfusableIndex(prev => Math.max(0, prev - 1));
                         setConfusableSelected(null);
                       }}
                       disabled={activeConfusableIndex === 0}
-                      className="px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-5 py-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
                     >
                       Pasangan Sebelumnya
                     </button>
@@ -2332,7 +2344,7 @@ export default function MerakiApp() {
                         setConfusableSelected(null);
                       }}
                       disabled={activeConfusableIndex === CONFUSABLE_WORDS_DATA.length - 1}
-                      className="px-4 py-2 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-5 py-2.5 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
                     >
                       Pasangan Selanjutnya
                     </button>
@@ -2342,10 +2354,10 @@ export default function MerakiApp() {
 
               {/* Sub-tab 5: Anti-Literal / L1 Direct Translation Traps */}
               {collocationSubTab === 'traps' && (
-                <div className="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   {/* Left: List of L1 Traps */}
-                  <div className="col-span-12 lg:col-span-6 flex flex-col h-full space-y-3 overflow-hidden">
-                    <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 text-xs shrink-0 space-y-1">
+                  <div className="col-span-1 lg:col-span-6 space-y-3">
+                    <div className="p-4 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 text-xs space-y-1">
                       <strong className="text-[#A84A28] font-mono text-[11px] uppercase block">
                         Bahaya L1 Interference (Terjemahan Kata-per-Kata):
                       </strong>
@@ -2354,7 +2366,7 @@ export default function MerakiApp() {
                       </p>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto space-y-2.5 pr-1">
+                    <div className="space-y-2.5">
                       {DIRECT_TRANSLATION_TRAPS_DATA.map((trap, idx) => (
                         <button
                           key={trap.id}
@@ -2363,7 +2375,7 @@ export default function MerakiApp() {
                             setTrapSelected(null);
                           }}
                           className={clsx(
-                            'w-full text-left p-4 rounded-3xl border transition-all tactile-btn space-y-2',
+                            'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeTrapIndex === idx
                               ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
                               : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
@@ -2378,11 +2390,11 @@ export default function MerakiApp() {
                             </span>
                           </div>
 
-                          <h4 className="font-serif text-sm font-bold">{trap.indonesianPhrase}</h4>
+                          <h4 className="font-serif text-base font-bold">{trap.indonesianPhrase}</h4>
 
-                          <div className="grid grid-cols-2 gap-2 text-xs">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                             <div className={clsx(
-                              'p-2 rounded-xl border',
+                              'p-2.5 rounded-xl border',
                               activeTrapIndex === idx ? 'bg-white/10 border-white/20 text-[#EFE9DF]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
                             )}>
                               <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Kaku / Cacat:</span>
@@ -2390,7 +2402,7 @@ export default function MerakiApp() {
                             </div>
 
                             <div className={clsx(
-                              'p-2 rounded-xl border',
+                              'p-2.5 rounded-xl border',
                               activeTrapIndex === idx ? 'bg-white/20 border-white/30 text-[#EFE9DF]' : 'bg-[#535841]/15 border-[#535841]/30 text-[#1E1B17]'
                             )}>
                               <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Native On-Point:</span>
@@ -2403,23 +2415,23 @@ export default function MerakiApp() {
                   </div>
 
                   {/* Right: Deep Dive & Live Diagnostic Drill */}
-                  <div className="col-span-12 lg:col-span-6 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-6 overflow-y-auto space-y-5 flex flex-col justify-between">
+                  <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                     {(() => {
                       const trap = DIRECT_TRANSLATION_TRAPS_DATA[activeTrapIndex] || DIRECT_TRANSLATION_TRAPS_DATA[0];
 
                       return (
-                        <div className="space-y-5 my-auto">
-                          <div>
+                        <div className="space-y-5">
+                          <div className="pb-3 border-b border-[#C8C0B0]">
                             <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
                               Pembedahan L1: {trap.registerCategory}
                             </span>
-                            <h3 className="font-serif text-xl font-bold text-[#1E1B17] mt-1">{trap.indonesianPhrase}</h3>
+                            <h3 className="font-serif text-2xl font-bold text-[#1E1B17] mt-1">{trap.indonesianPhrase}</h3>
                           </div>
 
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div className="p-4 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 space-y-1">
                               <span className="font-mono text-[10px] text-[#A84A28] uppercase block font-semibold">
-                                Terjemahan Kaku / Literal (SALAH):
+                                Terjemahan Kaku (SALAH):
                               </span>
                               <p className="font-serif text-sm font-semibold text-[#1E1B17] line-through">
                                 "{trap.literalClunkyEnglish}"
@@ -2483,7 +2495,7 @@ export default function MerakiApp() {
                                     onClick={() => setTrapSelected(opt)}
                                     disabled={trapSelected !== null}
                                     className={clsx(
-                                      'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center',
+                                      'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
                                       btnStyle
                                     )}
                                   >
@@ -2513,8 +2525,9 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 4: MATRIKS FONDASI ───────────── */}
           {activeHub === 'matrices' && (
-            <div className="h-full flex flex-col overflow-hidden p-4 sm:p-6 space-y-4 pb-28 md:pb-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0] shrink-0">
+            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-28 md:pb-12">
+              {/* Header Switcher */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                     Laboratorium Matriks Referensi Interaktif
@@ -2527,7 +2540,7 @@ export default function MerakiApp() {
                     onClick={() => setMatrixSubTab('have-has-had')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'have-has-had' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      matrixSubTab === 'have-has-had' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Have / Has / Had
@@ -2535,26 +2548,26 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('in-on-at')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'in-on-at' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'in-on-at' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    In / On / At (Piramida Ruang & Waktu)
+                    In / On / At (Piramida)
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('pronouns')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'pronouns' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'pronouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Pronouns (I/You/We/They...)
+                    Pronouns (Kasus)
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('do-does-did')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'do-does-did' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'do-does-did' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Do / Does / Did
@@ -2562,8 +2575,8 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('to-be')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'to-be' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'to-be' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     To Be (Verbal vs Nominal)
@@ -2571,35 +2584,35 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('past-modals')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'past-modals' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'past-modals' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Past Modals (Deduksi)
+                    Past Modals
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('subjunctive')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'subjunctive' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'subjunctive' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Subjunctive Mood
+                    Subjunctive
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('reported-speech')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'reported-speech' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'reported-speech' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Reported Speech (Backshift)
+                    Reported Speech
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('embedded-questions')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'embedded-questions' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'embedded-questions' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Embedded Questions
@@ -2607,26 +2620,26 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('cleft-sentences')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'cleft-sentences' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'cleft-sentences' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Cleft Sentences (Sorotan)
+                    Cleft Sentences
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('geographical-articles')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'geographical-articles' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'geographical-articles' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
-                    Geographical Articles (The vs Ø)
+                    Geographical Articles
                   </button>
                   <button
                     onClick={() => setMatrixSubTab('irregular')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'irregular' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'irregular' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Irregular Verbs (200+)
@@ -2634,8 +2647,8 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('nouns')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'nouns' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'nouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Noun Taxonomy
@@ -2643,8 +2656,8 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('tenses')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'tenses' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'tenses' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     12 Tenses Master
@@ -2652,8 +2665,8 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('phrasal')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'phrasal' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'phrasal' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Phrasal Verbs
@@ -2661,8 +2674,8 @@ export default function MerakiApp() {
                   <button
                     onClick={() => setMatrixSubTab('punctuation')}
                     className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap',
-                      matrixSubTab === 'punctuation' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                      matrixSubTab === 'punctuation' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
                     )}
                   >
                     Tanda Baca
@@ -2670,43 +2683,43 @@ export default function MerakiApp() {
                 </div>
               </div>
 
-              {/* ───────────── SUB-TAB: HAVE / HAS / HAD MASTER DISSECTOR ───────────── */}
+              {/* ───────────── SUB-TAB 1: HAVE / HAS / HAD MASTER DISSECTOR ───────────── */}
               {matrixSubTab === 'have-has-had' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
+                <div className="space-y-6">
                   {/* Subject Agreement Quick Summary Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 shrink-0">
-                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="p-4 sm:p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 shadow-xs">
                       <div className="flex items-center justify-between">
-                        <span className="font-serif font-bold text-lg text-[#1E1B17]">HAVE</span>
-                        <span className="font-mono text-[10px] bg-[#535841]/20 text-[#535841] px-2 py-0.5 rounded font-semibold">Present</span>
+                        <span className="font-serif font-bold text-xl text-[#1E1B17]">HAVE</span>
+                        <span className="font-mono text-[10px] bg-[#535841]/20 text-[#535841] px-2.5 py-0.5 rounded-full font-semibold">Present</span>
                       </div>
-                      <p className="text-xs font-medium text-[#A84A28]">I, You, They, We, & Plural Nouns</p>
-                      <p className="text-[11px] text-[#7A7265]">contoh: *The students HAVE completed their research.*</p>
+                      <p className="text-xs font-semibold text-[#A84A28]">I, You, They, We, & Plural Nouns</p>
+                      <p className="text-[11px] text-[#7A7265] italic">contoh: "The students HAVE completed their research."</p>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                    <div className="p-4 sm:p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 shadow-xs">
                       <div className="flex items-center justify-between">
-                        <span className="font-serif font-bold text-lg text-[#1E1B17]">HAS</span>
-                        <span className="font-mono text-[10px] bg-[#A84A28]/20 text-[#A84A28] px-2 py-0.5 rounded font-semibold">Present (3rd Singular)</span>
+                        <span className="font-serif font-bold text-xl text-[#1E1B17]">HAS</span>
+                        <span className="font-mono text-[10px] bg-[#A84A28]/20 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">Present (3rd Singular)</span>
                       </div>
-                      <p className="text-xs font-medium text-[#A84A28]">He, She, It, & Singular/Uncountable Nouns</p>
-                      <p className="text-[11px] text-[#7A7265]">contoh: *The committee HAS published its findings.*</p>
+                      <p className="text-xs font-semibold text-[#A84A28]">He, She, It, & Singular/Uncountable Nouns</p>
+                      <p className="text-[11px] text-[#7A7265] italic">contoh: "The committee HAS published its findings."</p>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                    <div className="p-4 sm:p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 shadow-xs">
                       <div className="flex items-center justify-between">
-                        <span className="font-serif font-bold text-lg text-[#1E1B17]">HAD</span>
-                        <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2 py-0.5 rounded font-semibold">Past (Semua Subjek)</span>
+                        <span className="font-serif font-bold text-xl text-[#1E1B17]">HAD</span>
+                        <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">Past (Semua Subjek)</span>
                       </div>
-                      <p className="text-xs font-medium text-[#535841]">Semua Subjek Tanpa Terkecuali</p>
-                      <p className="text-[11px] text-[#7A7265]">contoh: *They HAD arrived before the storm began.*</p>
+                      <p className="text-xs font-semibold text-[#535841]">Semua Subjek Tanpa Terkecuali</p>
+                      <p className="text-[11px] text-[#7A7265] italic">contoh: "They HAD arrived before the storm began."</p>
                     </div>
                   </div>
 
                   {/* 5 Core Functions Grid with Interactive Drill */}
-                  <div className="flex-1 grid grid-cols-12 gap-4 overflow-hidden">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                     {/* Left: 5 Roles List */}
-                    <div className="col-span-12 lg:col-span-6 overflow-y-auto space-y-3 pr-1">
+                    <div className="col-span-1 lg:col-span-6 space-y-3">
                       {HAVE_HAS_HAD_MASTER_DATA.map((item, idx) => (
                         <button
                           key={item.id}
@@ -2715,7 +2728,7 @@ export default function MerakiApp() {
                             setHhhSelected(null);
                           }}
                           className={clsx(
-                            'w-full text-left p-4 rounded-3xl border transition-all tactile-btn space-y-2',
+                            'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeHhhIndex === idx
                               ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
                               : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
@@ -2730,13 +2743,13 @@ export default function MerakiApp() {
                             </span>
                           </div>
 
-                          <h4 className="font-serif text-base font-bold">{item.title}</h4>
+                          <h4 className="font-serif text-lg font-bold">{item.title}</h4>
                           <p className={clsx('text-xs font-mono', activeHhhIndex === idx ? 'text-[#EFE9DF]/80' : 'text-[#535841]')}>
                             Rumus: {item.formula}
                           </p>
 
                           <div className={clsx(
-                            'p-2.5 rounded-xl text-[11px] space-y-1',
+                            'p-2.5 rounded-2xl text-[11px] space-y-1',
                             activeHhhIndex === idx ? 'bg-white/10 text-[#DDD7CA]' : 'bg-[#DDD7CA] text-[#524C42]'
                           )}>
                             <p><strong>Contoh Baku:</strong> {item.correctExample}</p>
@@ -2745,18 +2758,18 @@ export default function MerakiApp() {
                       ))}
                     </div>
 
-                    {/* Right: Active Deep-Dive & Diagnostic Drill */}
-                    <div className="col-span-12 lg:col-span-6 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-6 overflow-y-auto space-y-5 flex flex-col justify-between">
+                    {/* Right: Active Deep-Dive & Diagnostic Drill (Sticky on desktop) */}
+                    <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                       {(() => {
                         const hhh = HAVE_HAS_HAD_MASTER_DATA[activeHhhIndex] || HAVE_HAS_HAD_MASTER_DATA[0];
 
                         return (
-                          <div className="space-y-5 my-auto">
-                            <div>
+                          <div className="space-y-5">
+                            <div className="pb-3 border-b border-[#C8C0B0]">
                               <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
                                 Uji Pemahaman: {hhh.role}
                               </span>
-                              <h3 className="font-serif text-xl font-bold text-[#1E1B17] mt-1">{hhh.title}</h3>
+                              <h3 className="font-serif text-2xl font-bold text-[#1E1B17] mt-1">{hhh.title}</h3>
                             </div>
 
                             <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2">
@@ -2791,7 +2804,7 @@ export default function MerakiApp() {
                                       onClick={() => setHhhSelected(opt)}
                                       disabled={hhhSelected !== null}
                                       className={clsx(
-                                        'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center',
+                                        'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
                                         optStyle
                                       )}
                                     >
@@ -2818,119 +2831,115 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: IN / ON / AT MASTER PYRAMID ───────────── */}
+              {/* ───────────── SUB-TAB 2: IN / ON / AT MASTER PYRAMID ───────────── */}
               {matrixSubTab === 'in-on-at' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
+                <div className="space-y-6">
                   {/* Category Filter */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 shrink-0">
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-mono text-xs text-[#7A7265] uppercase font-semibold mr-1">Dimensi:</span>
-                      <button
-                        onClick={() => setIoaDimensionFilter('all')}
-                        className={clsx(
-                          'px-3 py-1 rounded-xl text-xs font-mono transition-all',
-                          ioaDimensionFilter === 'all' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
-                        )}
-                      >
-                        Semua Dimensi
-                      </button>
-                      <button
-                        onClick={() => setIoaDimensionFilter('time')}
-                        className={clsx(
-                          'px-3 py-1 rounded-xl text-xs font-mono transition-all',
-                          ioaDimensionFilter === 'time' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
-                        )}
-                      >
-                        Waktu (Time)
-                      </button>
-                      <button
-                        onClick={() => setIoaDimensionFilter('space')}
-                        className={clsx(
-                          'px-3 py-1 rounded-xl text-xs font-mono transition-all',
-                          ioaDimensionFilter === 'space' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
-                        )}
-                      >
-                        Tempat & Ruang (Space)
-                      </button>
-                      <button
-                        onClick={() => setIoaDimensionFilter('idiom')}
-                        className={clsx(
-                          'px-3 py-1 rounded-xl text-xs font-mono transition-all',
-                          ioaDimensionFilter === 'idiom' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
-                        )}
-                      >
-                        Jebakan Kontras Idiomatis
-                      </button>
-                    </div>
+                  <div className="flex flex-wrap items-center gap-2 pb-1">
+                    <span className="font-mono text-xs text-[#7A7265] uppercase font-semibold mr-1">Dimensi:</span>
+                    <button
+                      onClick={() => setIoaDimensionFilter('all')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
+                        ioaDimensionFilter === 'all' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                      )}
+                    >
+                      Semua Dimensi
+                    </button>
+                    <button
+                      onClick={() => setIoaDimensionFilter('time')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
+                        ioaDimensionFilter === 'time' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                      )}
+                    >
+                      Waktu (Time)
+                    </button>
+                    <button
+                      onClick={() => setIoaDimensionFilter('space')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
+                        ioaDimensionFilter === 'space' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                      )}
+                    >
+                      Tempat & Ruang (Space)
+                    </button>
+                    <button
+                      onClick={() => setIoaDimensionFilter('idiom')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
+                        ioaDimensionFilter === 'idiom' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                      )}
+                    >
+                      Jebakan Kontras Idiomatis
+                    </button>
                   </div>
 
                   {/* Cards Grid */}
-                  <div className="flex-1 overflow-y-auto space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {PREPOSITIONS_IN_ON_AT_DATA
-                        .filter(ioa => {
-                          if (ioaDimensionFilter === 'time') return ioa.dimension.includes('Waktu');
-                          if (ioaDimensionFilter === 'space') return ioa.dimension.includes('Tempat');
-                          if (ioaDimensionFilter === 'idiom') return ioa.dimension.includes('Kontras');
-                          return true;
-                        })
-                        .map((ioa) => (
-                          <div key={ioa.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4">
-                            <div className="flex items-center justify-between">
-                              <span className="font-serif text-2xl font-bold text-[#1E1B17]">{ioa.preposition}</span>
-                              <span className="font-mono text-[10px] bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
-                                {ioa.dimension}
-                              </span>
-                            </div>
-
-                            <div className="p-2.5 rounded-xl bg-[#DDD7CA] text-[11px] font-mono text-[#535841]">
-                              <strong>Cakupan Piramida:</strong> {ioa.pyramidScope}
-                            </div>
-
-                            {/* Rules */}
-                            <div className="space-y-1 text-xs">
-                              <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Kaidah Baku:</span>
-                              <ul className="space-y-1 text-[#38332A]">
-                                {ioa.primaryRules.map((r, rIdx) => (
-                                  <li key={rIdx} className="flex items-start gap-1.5">
-                                    <span className="text-[#A84A28] font-bold">·</span>
-                                    <span>{r}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            {/* Examples */}
-                            <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 space-y-2 text-xs">
-                              <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Contoh Kontekstual:</span>
-                              {ioa.examples.map((ex, eIdx) => (
-                                <div key={eIdx} className="space-y-0.5">
-                                  <div className="flex items-center justify-between">
-                                    <p className="font-serif text-[#1E1B17] italic">"{ex.en}"</p>
-                                    <button onClick={() => playNativeAudio(ex.en)} className="text-[#7A7265] hover:text-[#1E1B17]">
-                                      <Volume2 className="w-3 h-3" />
-                                    </button>
-                                  </div>
-                                  <p className="text-[11px] text-[#7A7265]">{ex.id}</p>
-                                </div>
-                              ))}
-                            </div>
-
-                            <div className="p-3 rounded-xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
-                              <strong>Jebakan Fatal:</strong> {ioa.diagnosticPitfall}
-                            </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {PREPOSITIONS_IN_ON_AT_DATA
+                      .filter(ioa => {
+                        if (ioaDimensionFilter === 'time') return ioa.dimension.includes('Waktu');
+                        if (ioaDimensionFilter === 'space') return ioa.dimension.includes('Tempat');
+                        if (ioaDimensionFilter === 'idiom') return ioa.dimension.includes('Kontras');
+                        return true;
+                      })
+                      .map((ioa) => (
+                        <div key={ioa.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 shadow-xs">
+                          <div className="flex items-center justify-between">
+                            <span className="font-serif text-3xl font-bold text-[#1E1B17]">{ioa.preposition}</span>
+                            <span className="font-mono text-[10px] bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
+                              {ioa.dimension}
+                            </span>
                           </div>
-                        ))}
-                    </div>
+
+                          <div className="p-3 rounded-2xl bg-[#DDD7CA] text-[11px] font-mono text-[#535841]">
+                            <strong>Cakupan Piramida:</strong> {ioa.pyramidScope}
+                          </div>
+
+                          {/* Rules */}
+                          <div className="space-y-1.5 text-xs">
+                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Kaidah Baku:</span>
+                            <ul className="space-y-1 text-[#38332A]">
+                              {ioa.primaryRules.map((r, rIdx) => (
+                                <li key={rIdx} className="flex items-start gap-1.5 leading-relaxed">
+                                  <span className="text-[#A84A28] font-bold">•</span>
+                                  <span>{r}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Examples */}
+                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 space-y-2 text-xs">
+                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Contoh Kontekstual:</span>
+                            {ioa.examples.map((ex, eIdx) => (
+                              <div key={eIdx} className="space-y-0.5">
+                                <div className="flex items-center justify-between">
+                                  <p className="font-serif text-[#1E1B17] italic">"{ex.en}"</p>
+                                  <button onClick={() => playNativeAudio(ex.en)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                                    <Volume2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                                <p className="text-[11px] text-[#7A7265]">{ex.id}</p>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
+                            <strong>Jebakan Fatal:</strong> {ioa.diagnosticPitfall}
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: PRONOUN CASE & AGREEMENT GRID ───────────── */}
+              {/* ───────────── SUB-TAB 3: PRONOUN CASE & AGREEMENT GRID ───────────── */}
               {matrixSubTab === 'pronouns' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="p-4 rounded-2xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1 shrink-0">
-                    <strong className="text-[#535841] font-mono text-[11px] uppercase block">Aturan Emas Kasus Kata Ganti (Pronoun Case System):</strong>
+                <div className="space-y-4">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#535841] font-mono text-[11px] uppercase block font-bold">Aturan Emas Kasus Kata Ganti (Pronoun Case System):</strong>
                     <p className="text-[#38332A] leading-relaxed">
                       1. <strong>Subject Case</strong> (I, you, he, she, it, we, they) = Pelaku aksi kalimat.<br/>
                       2. <strong>Object Case</strong> (me, you, him, her, it, us, them) = Penerima aksi & WAJIB setelah SEMUA preposisi (*between you and ME, to US*).<br/>
@@ -2941,9 +2950,9 @@ export default function MerakiApp() {
                   </div>
 
                   {/* 5-Column Table */}
-                  <div className="flex-1 overflow-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll">
-                    <table className="w-full text-left text-xs border-collapse min-w-[720px]">
-                      <thead className="bg-[#DDD7CA] sticky top-0 border-b border-[#C8C0B0] z-10 font-mono text-[11px] text-[#7A7265]">
+                  <div className="overflow-x-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll p-1">
+                    <table className="w-full text-left text-xs border-collapse min-w-[760px]">
+                      <thead className="bg-[#DDD7CA] border-b border-[#C8C0B0] font-mono text-[11px] text-[#7A7265]">
                         <tr>
                           <th className="p-3.5">Orang / Entitas</th>
                           <th className="p-3.5">1. Subject (Pelaku)</th>
@@ -2991,14 +3000,14 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: DO / DOES / DID MASTER MATRIX ───────────── */}
+              {/* ───────────── SUB-TAB 4: DO / DOES / DID MASTER MATRIX ───────────── */}
               {matrixSubTab === 'do-does-did' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {DO_DOES_DID_MASTER_DATA.map((ddd) => (
-                      <div key={ddd.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={ddd.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-2xl font-bold text-[#1E1B17]">{ddd.operator}</span>
+                          <span className="font-serif text-3xl font-bold text-[#1E1B17]">{ddd.operator}</span>
                           <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
                             {ddd.tenseAndTime}
                           </span>
@@ -3009,7 +3018,7 @@ export default function MerakiApp() {
                           <p className="text-[#1E1B17] font-medium">{ddd.subjectAgreement}</p>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-[11px] space-y-1">
+                        <div className="p-3 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-[11px] space-y-1">
                           <div className="text-[#535841]">Negatif: {ddd.negativeForm}</div>
                           <div className="text-[#7A7265]">Tanya: {ddd.questionPattern}</div>
                         </div>
@@ -3024,7 +3033,7 @@ export default function MerakiApp() {
                           <p className="font-serif text-[12px] text-[#1E1B17] italic">"{ddd.exampleSentence}"</p>
                         </div>
 
-                        <div className="p-3 rounded-xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
+                        <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
                           <strong>Jebakan Fatal:</strong> {ddd.fatalPitfall}
                         </div>
                       </div>
@@ -3033,11 +3042,11 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: TO BE MASTER MATRIX ───────────── */}
+              {/* ───────────── SUB-TAB 5: TO BE MASTER MATRIX ───────────── */}
               {matrixSubTab === 'to-be' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="p-4 rounded-2xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1 shrink-0">
-                    <strong className="text-[#535841] font-mono text-[11px] uppercase block">
+                <div className="space-y-6">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#535841] font-mono text-[11px] uppercase block font-bold">
                       Kaidah Emas To Be & Kalimat Verbal vs Nominal:
                     </strong>
                     <p className="text-[#38332A] leading-relaxed">
@@ -3047,8 +3056,8 @@ export default function MerakiApp() {
                     </p>
                   </div>
 
-                  <div className="flex-1 grid grid-cols-12 gap-4 overflow-hidden">
-                    <div className="col-span-12 lg:col-span-6 overflow-y-auto space-y-3 pr-1">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div className="col-span-1 lg:col-span-6 space-y-3">
                       {TO_BE_MASTER_DATA.map((tbe, idx) => (
                         <button
                           key={tbe.id}
@@ -3057,7 +3066,7 @@ export default function MerakiApp() {
                             setTbeSelected(null);
                           }}
                           className={clsx(
-                            'w-full text-left p-4 rounded-3xl border transition-all tactile-btn space-y-2',
+                            'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeTbeIndex === idx
                               ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
                               : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
@@ -3072,13 +3081,13 @@ export default function MerakiApp() {
                             </span>
                           </div>
 
-                          <h4 className="font-serif text-base font-bold">{tbe.formName}</h4>
+                          <h4 className="font-serif text-lg font-bold">{tbe.formName}</h4>
                           <p className={clsx('text-xs font-mono', activeTbeIndex === idx ? 'text-[#EFE9DF]/80' : 'text-[#535841]')}>
                             Rumus: {tbe.formula}
                           </p>
 
                           <div className={clsx(
-                            'p-2.5 rounded-xl text-[11px] space-y-1',
+                            'p-2.5 rounded-2xl text-[11px] space-y-1',
                             activeTbeIndex === idx ? 'bg-white/10 text-[#DDD7CA]' : 'bg-[#DDD7CA] text-[#524C42]'
                           )}>
                             <p><strong>Contoh Baku:</strong> {tbe.correctSentence}</p>
@@ -3087,17 +3096,17 @@ export default function MerakiApp() {
                       ))}
                     </div>
 
-                    <div className="col-span-12 lg:col-span-6 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-6 overflow-y-auto space-y-5 flex flex-col justify-between">
+                    <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                       {(() => {
                         const tbe = TO_BE_MASTER_DATA[activeTbeIndex] || TO_BE_MASTER_DATA[0];
 
                         return (
-                          <div className="space-y-5 my-auto">
-                            <div>
+                          <div className="space-y-5">
+                            <div className="pb-3 border-b border-[#C8C0B0]">
                               <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
                                 Uji Pemahaman: {tbe.primaryRole}
                               </span>
-                              <h3 className="font-serif text-xl font-bold text-[#1E1B17] mt-1">{tbe.formName}</h3>
+                              <h3 className="font-serif text-2xl font-bold text-[#1E1B17] mt-1">{tbe.formName}</h3>
                             </div>
 
                             <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2">
@@ -3131,7 +3140,7 @@ export default function MerakiApp() {
                                       onClick={() => setTbeSelected(opt)}
                                       disabled={tbeSelected !== null}
                                       className={clsx(
-                                        'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center',
+                                        'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center min-h-[44px]',
                                         optStyle
                                       )}
                                     >
@@ -3158,15 +3167,15 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: PAST MODALS OF DEDUCTION ───────────── */}
+              {/* ───────────── SUB-TAB 6: PAST MODALS OF DEDUCTION ───────────── */}
               {matrixSubTab === 'past-modals' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-y-auto">
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {PAST_MODALS_DEDUCTION_DATA.map((pm) => (
-                      <div key={pm.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={pm.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-lg font-bold text-[#1E1B17]">{pm.modalStructure}</span>
-                          <span className="font-mono text-[9px] bg-[#1E1B17] text-[#EFE9DF] px-2 py-0.5 rounded font-semibold">
+                          <span className="font-serif text-xl font-bold text-[#1E1B17]">{pm.modalStructure}</span>
+                          <span className="font-mono text-[9px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
                             {pm.certaintyLevel}
                           </span>
                         </div>
@@ -3182,11 +3191,11 @@ export default function MerakiApp() {
 
                         <p className="text-[11px] text-[#38332A] leading-relaxed">{pm.explanation}</p>
 
-                        <div className="p-3 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 text-xs space-y-1">
+                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 text-xs space-y-1">
                           <div className="flex items-center justify-between">
                             <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">Contoh:</span>
                             <button onClick={() => playNativeAudio(pm.authenticExample)} className="text-[#7A7265] hover:text-[#1E1B17]">
-                              <Volume2 className="w-3 h-3" />
+                              <Volume2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
                           <p className="font-serif text-[12px] text-[#1E1B17] italic">"{pm.authenticExample}"</p>
@@ -3201,19 +3210,19 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: SUBJUNCTIVE MOOD ───────────── */}
+              {/* ───────────── SUB-TAB 7: SUBJUNCTIVE MOOD ───────────── */}
               {matrixSubTab === 'subjunctive' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {SUBJUNCTIVE_MOOD_DATA.map((sm) => (
-                      <div key={sm.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={sm.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-lg font-bold text-[#1E1B17]">{sm.triggerCategory}</span>
+                          <span className="font-serif text-xl font-bold text-[#1E1B17]">{sm.triggerCategory}</span>
                         </div>
 
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1.5">
                           {sm.triggerWords.map(w => (
-                            <span key={w} className="font-mono text-[10px] bg-[#DDD7CA] text-[#A84A28] px-2 py-0.5 rounded font-semibold">
+                            <span key={w} className="font-mono text-[10px] bg-[#DDD7CA] text-[#A84A28] px-2.5 py-0.5 rounded-md font-semibold">
                               {w}
                             </span>
                           ))}
@@ -3225,7 +3234,7 @@ export default function MerakiApp() {
 
                         <p className="text-xs text-[#38332A] leading-relaxed">{sm.mandativeRule}</p>
 
-                        <div className="space-y-1 text-xs">
+                        <div className="space-y-1.5 text-xs">
                           <div className="p-2.5 rounded-xl bg-[#535841]/15 text-[#1E1B17] border border-[#535841]/30">
                             <strong>Baku (Subjunctive V1):</strong> "{sm.authenticExample}"
                           </div>
@@ -3245,22 +3254,22 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: REPORTED SPEECH ───────────── */}
+              {/* ───────────── SUB-TAB 8: REPORTED SPEECH ───────────── */}
               {matrixSubTab === 'reported-speech' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="p-4 rounded-2xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1 shrink-0">
-                    <strong className="text-[#535841] font-mono text-[11px] uppercase block">Hukum Backshift of Tenses (Pergeseran Waktu):</strong>
+                <div className="space-y-4">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#535841] font-mono text-[11px] uppercase block font-bold">Hukum Backshift of Tenses (Pergeseran Waktu):</strong>
                     <p className="text-[#38332A] leading-relaxed">
                       Ketika mengubah kalimat langsung ke kalimat berita tidak langsung, tenses bergeser satu tingkat ke masa lalu (kecuali untuk kebenaran ilmiah universal yang tetap dalam Simple Present!).
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {REPORTED_SPEECH_DATA.map((rs) => (
-                      <div key={rs.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={rs.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-lg font-bold text-[#1E1B17]">{rs.directTense}</span>
-                          <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2 py-0.5 rounded font-semibold">
+                          <span className="font-serif text-xl font-bold text-[#1E1B17]">{rs.directTense}</span>
+                          <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
                             {rs.reportedTense}
                           </span>
                         </div>
@@ -3285,11 +3294,11 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: EMBEDDED QUESTIONS ───────────── */}
+              {/* ───────────── SUB-TAB 9: EMBEDDED QUESTIONS ───────────── */}
               {matrixSubTab === 'embedded-questions' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="p-4 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 text-xs space-y-1 shrink-0">
-                    <strong className="text-[#A84A28] font-mono text-[11px] uppercase block">
+                <div className="space-y-4">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#A84A28]/10 border border-[#A84A28]/30 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#A84A28] font-mono text-[11px] uppercase block font-bold">
                       Aturan Pembatalan Inversi (Embedded Question Architecture):
                     </strong>
                     <p className="text-[#38332A] leading-relaxed">
@@ -3297,10 +3306,10 @@ export default function MerakiApp() {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {EMBEDDED_QUESTIONS_DATA.map((eq) => (
-                      <div key={eq.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
-                        <div className="p-3 rounded-2xl bg-[#DDD7CA] text-xs space-y-1">
+                      <div key={eq.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] text-xs space-y-1">
                           <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Pertanyaan Asli (Direct):</span>
                           <p className="font-serif text-sm font-semibold text-[#1E1B17]">"{eq.directQuestion}"</p>
                           <span className="font-mono text-[10px] text-[#A84A28] block">Disisipkan ke: "{eq.introductoryFrame}"</span>
@@ -3322,17 +3331,17 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: CLEFT SENTENCES ───────────── */}
+              {/* ───────────── SUB-TAB 10: CLEFT SENTENCES ───────────── */}
               {matrixSubTab === 'cleft-sentences' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {CLEFT_SENTENCES_DATA.map((cs) => (
-                      <div key={cs.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={cs.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-serif text-base font-bold text-[#1E1B17]">{cs.cleftType}</h4>
+                          <h4 className="font-serif text-lg font-bold text-[#1E1B17]">{cs.cleftType}</h4>
                         </div>
 
-                        <div className="p-3 rounded-2xl bg-[#DDD7CA] font-mono text-[11px] text-[#535841]">
+                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] font-mono text-[11px] text-[#535841]">
                           Formula: {cs.formula}
                         </div>
 
@@ -3354,23 +3363,23 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* ───────────── SUB-TAB: GEOGRAPHICAL ARTICLES ───────────── */}
+              {/* ───────────── SUB-TAB 11: GEOGRAPHICAL ARTICLES ───────────── */}
               {matrixSubTab === 'geographical-articles' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {GEOGRAPHICAL_ARTICLES_DATA.map((geo) => (
-                      <div key={geo.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={geo.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-serif text-base font-bold text-[#1E1B17]">{geo.geographicalCategory}</h4>
-                          <span className="font-mono text-[10px] bg-[#A84A28] text-white px-2 py-0.5 rounded font-semibold">
+                          <h4 className="font-serif text-lg font-bold text-[#1E1B17]">{geo.geographicalCategory}</h4>
+                          <span className="font-mono text-[10px] bg-[#A84A28] text-white px-2.5 py-0.5 rounded-full font-semibold">
                             {geo.ruleCategory}
                           </span>
                         </div>
 
                         <p className="text-xs text-[#38332A] leading-relaxed">{geo.ruleDescription}</p>
 
-                        <div className="grid grid-cols-2 gap-2 text-xs">
-                          <div className="p-3 rounded-2xl bg-[#535841]/15 border border-[#535841]/30 space-y-1">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                          <div className="p-3.5 rounded-2xl bg-[#535841]/15 border border-[#535841]/30 space-y-1">
                             <span className="font-mono text-[10px] font-bold text-[#535841] block">Wajib Pakai "THE":</span>
                             <ul className="space-y-0.5 text-[11px] text-[#1E1B17]">
                               {geo.examplesWithArticle.map(ex => (
@@ -3379,7 +3388,7 @@ export default function MerakiApp() {
                             </ul>
                           </div>
 
-                          <div className="p-3 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1">
+                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1">
                             <span className="font-mono text-[10px] font-bold text-[#7A7265] block">Dilarang "THE" (Ø):</span>
                             <ul className="space-y-0.5 text-[11px] text-[#1E1B17]">
                               {geo.examplesWithoutArticle.map(ex => (
@@ -3389,7 +3398,7 @@ export default function MerakiApp() {
                           </div>
                         </div>
 
-                        <div className="p-2.5 rounded-xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
+                        <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
                           <strong>Peringatan Diagnostik:</strong> {geo.diagnosticPitfall}
                         </div>
                       </div>
@@ -3398,11 +3407,11 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* Irregular Verbs Sub-tab */}
+              {/* ───────────── SUB-TAB 12: IRREGULAR VERBS ───────────── */}
               {matrixSubTab === 'irregular' && (
-                <div className="flex-1 flex flex-col overflow-hidden space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-3 shrink-0">
-                    <div className="flex items-center gap-2">
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex flex-wrap items-center gap-2">
                       <div className="relative w-64">
                         <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
                         <input
@@ -3410,18 +3419,18 @@ export default function MerakiApp() {
                           value={matrixSearch}
                           onChange={(e) => setMatrixSearch(e.target.value)}
                           placeholder="Cari V1, V2, V3, atau arti..."
-                          className="w-full pl-9 pr-3 py-1.5 text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                          className="w-full pl-9 pr-3 py-2 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
                         />
                       </div>
 
-                      <div className="flex gap-1">
+                      <div className="flex flex-wrap gap-1">
                         {['all', 'A-B-C', 'A-B-B', 'A-B-A', 'A-A-A'].map(pat => (
                           <button
                             key={pat}
                             onClick={() => setIrregularPatternFilter(pat)}
                             className={clsx(
-                              'px-2.5 py-1 rounded-xl text-[10px] font-mono transition-all',
-                              irregularPatternFilter === pat ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
+                              'px-3 py-1.5 rounded-xl text-[10px] font-mono transition-all tactile-btn min-h-[36px]',
+                              irregularPatternFilter === pat ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
                             )}
                           >
                             {pat === 'all' ? 'Semua Pola' : pat}
@@ -3433,7 +3442,7 @@ export default function MerakiApp() {
                     <button
                       onClick={() => setIrregularDrillMode(!irregularDrillMode)}
                       className={clsx(
-                        'px-4 py-1.5 rounded-xl text-xs font-mono font-medium transition-all flex items-center gap-1.5 tactile-btn',
+                        'px-4 py-2 rounded-2xl text-xs font-mono font-medium transition-all flex items-center gap-1.5 tactile-btn min-h-[40px]',
                         irregularDrillMode ? 'bg-[#A84A28] text-white' : 'bg-[#DDD7CA] text-[#1E1B17] border border-[#C8C0B0]'
                       )}
                     >
@@ -3442,9 +3451,9 @@ export default function MerakiApp() {
                     </button>
                   </div>
 
-                  <div className="flex-1 overflow-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll">
-                    <table className="w-full text-left text-xs border-collapse min-w-[720px]">
-                      <thead className="bg-[#DDD7CA] sticky top-0 border-b border-[#C8C0B0] z-10 font-mono text-[11px] text-[#7A7265]">
+                  <div className="overflow-x-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll p-1">
+                    <table className="w-full text-left text-xs border-collapse min-w-[760px]">
+                      <thead className="bg-[#DDD7CA] border-b border-[#C8C0B0] font-mono text-[11px] text-[#7A7265]">
                         <tr>
                           <th className="p-3.5">Verb 1 (Base)</th>
                           <th className="p-3.5">Verb 2 (Past Simple)</th>
@@ -3489,7 +3498,7 @@ export default function MerakiApp() {
                                       onChange={(e) => setIrregularUserInputs(prev => ({ ...prev, [iv.id]: { ...userInput, v2: e.target.value } }))}
                                       placeholder="Ketik V2..."
                                       className={clsx(
-                                        'px-2 py-1 rounded border text-xs w-28 outline-hidden',
+                                        'px-2.5 py-1.5 rounded-xl border text-xs w-28 outline-hidden',
                                         userInput.v2 ? (v2Correct ? 'bg-[#535841]/20 border-[#535841] text-[#1E1B17]' : 'bg-[#A84A28]/20 border-[#A84A28]') : 'bg-[#DDD7CA] border-[#C8C0B0]'
                                       )}
                                     />
@@ -3509,7 +3518,7 @@ export default function MerakiApp() {
                                       onChange={(e) => setIrregularUserInputs(prev => ({ ...prev, [iv.id]: { ...userInput, v3: e.target.value } }))}
                                       placeholder="Ketik V3..."
                                       className={clsx(
-                                        'px-2 py-1 rounded border text-xs w-28 outline-hidden',
+                                        'px-2.5 py-1.5 rounded-xl border text-xs w-28 outline-hidden',
                                         userInput.v3 ? (v3Correct ? 'bg-[#535841]/20 border-[#535841] text-[#1E1B17]' : 'bg-[#A84A28]/20 border-[#A84A28]') : 'bg-[#DDD7CA] border-[#C8C0B0]'
                                       )}
                                     />
@@ -3543,12 +3552,12 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* Nouns Sub-tab */}
+              {/* ───────────── SUB-TAB 13: NOUN TAXONOMY ───────────── */}
               {matrixSubTab === 'nouns' && (
-                <div className="flex-1 overflow-y-auto space-y-4">
+                <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {NOUN_TAXONOMY_DATA.map(nt => (
-                      <div key={nt.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={nt.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
                           <span className="font-mono text-[10px] uppercase font-semibold bg-[#DDD7CA] text-[#A84A28] px-2.5 py-0.5 rounded-full">
                             {nt.category}
@@ -3556,7 +3565,7 @@ export default function MerakiApp() {
                         </div>
 
                         <div>
-                          <h4 className="font-serif text-lg text-[#1E1B17] font-semibold">{nt.singularForm}</h4>
+                          <h4 className="font-serif text-xl text-[#1E1B17] font-bold">{nt.singularForm}</h4>
                           {nt.pluralForm && (
                             <span className="font-mono text-xs text-[#A84A28] block">Jamak: {nt.pluralForm}</span>
                           )}
@@ -3568,7 +3577,7 @@ export default function MerakiApp() {
                           <p className="text-[11px] leading-relaxed">{nt.ruleExplanation}</p>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-xs space-y-0.5">
+                        <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-xs space-y-0.5">
                           <strong className="text-[#A84A28] text-[10px] uppercase font-mono block">Jebakan Fatal:</strong>
                           <p className="text-[#1E1B17] text-[11px]">{nt.commonPitfall}</p>
                         </div>
@@ -3578,19 +3587,19 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* Tenses Sub-tab */}
+              {/* ───────────── SUB-TAB 14: 12 TENSES MASTER ───────────── */}
               {matrixSubTab === 'tenses' && (
-                <div className="flex-1 overflow-y-auto space-y-4">
+                <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {TENSES_MASTER_DATA.map(tm => (
-                      <div key={tm.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={tm.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
                           <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
                             {tm.timeDimension} · {tm.aspect}
                           </span>
                         </div>
 
-                        <h4 className="font-serif text-xl text-[#1E1B17]">{tm.tenseName}</h4>
+                        <h4 className="font-serif text-2xl text-[#1E1B17] font-bold">{tm.tenseName}</h4>
 
                         <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-[11px] space-y-1">
                           <div className="text-[#A84A28] font-medium">(+) {tm.positiveFormula}</div>
@@ -3612,16 +3621,16 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* Phrasal Verbs Sub-tab */}
+              {/* ───────────── SUB-TAB 15: PHRASAL VERBS ───────────── */}
               {matrixSubTab === 'phrasal' && (
-                <div className="flex-1 overflow-y-auto space-y-3">
+                <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {PHRASAL_VERBS_DATA.map(pv => (
-                      <div key={pv.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={pv.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <h4 className="font-serif text-lg font-bold text-[#1E1B17]">{pv.verb} {pv.particle}</h4>
-                            <span className="font-mono text-[10px] bg-[#DDD7CA] text-[#A84A28] px-2 py-0.5 rounded">
+                            <h4 className="font-serif text-xl font-bold text-[#1E1B17]">{pv.verb} {pv.particle}</h4>
+                            <span className="font-mono text-[10px] bg-[#DDD7CA] text-[#A84A28] px-2 py-0.5 rounded font-semibold">
                               {pv.type}
                             </span>
                           </div>
@@ -3651,18 +3660,18 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* Punctuation Sub-tab */}
+              {/* ───────────── SUB-TAB 16: PUNCTUATION GUIDE ───────────── */}
               {matrixSubTab === 'punctuation' && (
-                <div className="flex-1 overflow-y-auto space-y-4">
+                <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {PUNCTUATION_GUIDE_DATA.map(pg => (
-                      <div key={pg.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={pg.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
                         <div className="flex items-center gap-3">
-                          <span className="w-10 h-10 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] font-serif text-2xl flex items-center justify-center font-bold">
+                          <span className="w-11 h-11 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] font-serif text-2xl flex items-center justify-center font-bold">
                             {pg.symbol}
                           </span>
                           <div>
-                            <h4 className="font-serif text-base text-[#1E1B17] font-semibold">{pg.markName}</h4>
+                            <h4 className="font-serif text-lg text-[#1E1B17] font-semibold">{pg.markName}</h4>
                             <span className="font-mono text-[10px] text-[#7A7265]">Kaidah Tanda Baca Akademik</span>
                           </div>
                         </div>
@@ -3693,8 +3702,8 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 5: STUDIO SINTAKSIS ───────────── */}
           {activeHub === 'studio' && (
-            <div className="h-full flex flex-col overflow-hidden p-4 sm:p-6 space-y-4 pb-28 md:pb-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0] shrink-0">
+            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-28 md:pb-12">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
                     Studio Produksi & Analisis Retorika Mandiri
@@ -4208,7 +4217,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 6: FONETIK LAB ───────────── */}
           {activeHub === 'phonetics' && (
-            <div className="max-w-4xl mx-auto h-full p-8 overflow-y-auto space-y-6">
+            <div className="max-w-4xl mx-auto h-full p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-6 pb-28 md:pb-12">
               <div className="space-y-2 pb-4 border-b border-[#C8C0B0]">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
                   Comparative Phonetics & Ear Training Studio
