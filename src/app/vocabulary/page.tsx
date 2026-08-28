@@ -84,7 +84,7 @@ export default function VocabularyPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari kata atau arti..."
-              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] text-[#1E1B17] placeholder:text-[#7A7265] outline-hidden focus:border-[#A84A28]"
+              className="w-full pl-10 pr-4 py-2 text-base sm:text-xs rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] text-[#1E1B17] placeholder:text-[#7A7265] outline-hidden focus:border-[#A84A28]"
             />
           </div>
 

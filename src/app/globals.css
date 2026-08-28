@@ -103,7 +103,14 @@ body {
   transform: scale(0.97);
 }
 
-/* iOS Safe Area & Native App Support for iPhone 13 */
+/* iOS Safe Area & Native App Support for iPhone (Notch & Dynamic Island) */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
 .pt-safe {
   padding-top: env(safe-area-inset-top, 0px);
 }
@@ -121,6 +128,10 @@ body {
 }
 .bottom-safe {
   bottom: env(safe-area-inset-bottom, 0px);
+}
+.min-h-screen-safe {
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
 }
 .h-safe-screen {
   height: 100dvh;

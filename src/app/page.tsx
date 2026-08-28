@@ -1328,7 +1328,7 @@ export default function MerakiApp() {
   };
 
   return (
-    <div className="h-screen w-screen flex bg-[#EFE9DF] text-[#1E1B17] overflow-hidden antialiased select-text">
+    <div className="h-[100dvh] min-h-[100dvh] w-full max-w-[100vw] flex bg-[#EFE9DF] text-[#1E1B17] overflow-hidden antialiased select-text">
       {/* Hidden File Input for Data Restore */}
       <input
         type="file"
@@ -1353,7 +1353,7 @@ export default function MerakiApp() {
         'hidden md:flex',
         isNavOpen ? 'md:w-64' : 'md:w-0 md:border-r-0',
         // Mobile positioning when open
-        isNavOpen && '!flex fixed inset-y-0 left-0 z-50 w-72 shadow-2xl md:shadow-none md:relative'
+        isNavOpen && '!flex fixed inset-y-0 left-0 z-50 w-72 pt-safe pb-safe shadow-2xl md:shadow-none md:relative'
       )}>
         {/* Sidebar Header */}
         <div className="p-5 border-b border-[#C8C0B0] space-y-3">
@@ -1634,7 +1634,7 @@ export default function MerakiApp() {
       {/* ───────────── MAIN APP CONTAINER ───────────── */}
       <div className="flex-1 flex flex-col h-full overflow-hidden relative">
         {/* Top Minimal Toolbar */}
-        <header className="h-12 px-4 sm:px-6 glass-header border-b border-[#C8C0B0] flex items-center justify-between shrink-0 z-30">
+        <header className="px-4 sm:px-6 pt-safe glass-header border-b border-[#C8C0B0] flex items-center justify-between shrink-0 z-30 min-h-12 py-1.5 sm:py-0">
           <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
             <button
               onClick={() => setIsNavOpen(true)}
@@ -1730,7 +1730,7 @@ export default function MerakiApp() {
               {/* Mobile Module Directory Modal (Bottom Sheet on Mobile) */}
               {isModuleIndexOpen && (
                 <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-xs md:hidden">
-                  <div className="w-full max-h-[82vh] bg-[#E8E2D6] rounded-t-3xl sm:rounded-3xl border border-[#C8C0B0] flex flex-col overflow-hidden shadow-2xl p-4 space-y-3 animate-in slide-in-from-bottom duration-200">
+                  <div className="w-full max-h-[82vh] bg-[#E8E2D6] rounded-t-3xl sm:rounded-3xl border border-[#C8C0B0] flex flex-col overflow-hidden shadow-2xl p-4 pb-safe space-y-3 animate-in slide-in-from-bottom duration-200">
                     <div className="flex items-center justify-between pb-2 border-b border-[#C8C0B0]">
                       <span className="font-serif text-lg font-bold text-[#1E1B17]">Pilih Modul Kurikulum</span>
                       <button
@@ -6637,8 +6637,8 @@ export default function MerakiApp() {
 
       {/* ───────────── GLOBAL MODAL 1: OMNISEARCH COMMAND PALETTE (CMD+K) ───────────── */}
       {isOmnisearchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="w-full max-w-2xl bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl overflow-hidden flex flex-col max-h-[75vh]">
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-safe pb-safe p-4 sm:p-6 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="w-full max-w-2xl bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl overflow-hidden flex flex-col max-h-[75vh] mt-12 sm:mt-16">
             {/* Search Input Bar */}
             <div className="p-4 border-b border-[#C8C0B0] flex items-center gap-3 bg-[#E6E0D4]">
               <Search className="w-5 h-5 text-[#A84A28] shrink-0" />
@@ -6709,7 +6709,7 @@ export default function MerakiApp() {
 
       {/* ───────────── GLOBAL MODAL 2: AUDIO TTS CONTROL PANEL ───────────── */}
       {isAudioSettingsOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
+        <div className="fixed inset-0 z-50 flex items-center justify-center pt-safe pb-safe p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
           <div className="w-full max-w-md bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl p-6 space-y-6">
             <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
               <div className="flex items-center gap-2">
@@ -6808,7 +6808,7 @@ export default function MerakiApp() {
 
       {/* ───────────── GLOBAL MODAL 3: CHEATSHEETS & BACKUP STUDIO ───────────── */}
       {isCheatsheetOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
+        <div className="fixed inset-0 z-50 flex items-center justify-center pt-safe pb-safe p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
           <div className="w-full max-w-4xl bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
             {/* Modal Header */}
             <div className="p-5 border-b border-[#C8C0B0] flex flex-wrap items-center justify-between gap-3 bg-[#E6E0D4]">

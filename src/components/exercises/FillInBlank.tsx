@@ -107,7 +107,7 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
                   onChange={(e) => handleInputChange(index, e.target.value)}
                   placeholder="ketik di sini..."
                   className={clsx(
-                    'px-3 py-1 text-sm sm:text-base rounded-xl border font-sans font-medium outline-hidden transition-all text-center min-w-[140px]',
+                    'px-3 py-1 text-base rounded-xl border font-sans font-medium outline-hidden transition-all text-center min-w-[140px]',
                     isSubmitted
                       ? isTargetCorrect(index)
                         ? 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold'
