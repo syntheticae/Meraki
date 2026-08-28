@@ -14,7 +14,9 @@ import {
   RotateCcw, 
   BookOpen, 
   ChevronRight, 
-  ChevronLeft 
+  ChevronLeft,
+  FileText,
+  ListOrdered
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Navbar } from '@/components/layout/Navbar';
@@ -36,6 +38,7 @@ export default function MockExamClient({ examType }: { examType: string }) {
     currentExam.totalTimeMinutes * 60
   );
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [mobileTab, setMobileTab] = useState<'passage' | 'questions'>('questions');
   const [examResult, setExamResult] = useState<{
     correctCount: number;
     totalCount: number;
@@ -103,6 +106,7 @@ export default function MockExamClient({ examType }: { examType: string }) {
 
     setExamResult(result);
     setIsSubmitted(true);
+    setMobileTab('questions');
 
     // Save to repository
     await progressRepository.saveMockExamResult({
@@ -168,6 +172,35 @@ export default function MockExamClient({ examType }: { examType: string }) {
           </div>
         </div>
 
+        {/* Mobile View Switcher Tab (Visible only on < lg screens) */}
+        <div className="lg:hidden flex items-center p-1.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] gap-1">
+          <button
+            onClick={() => setMobileTab('passage')}
+            className={clsx(
+              'flex-1 py-2 rounded-xl text-xs font-mono font-semibold transition-all tactile-btn flex items-center justify-center gap-1.5',
+              mobileTab === 'passage'
+                ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
+                : 'text-[#7A7265] hover:text-[#1E1B17]'
+            )}
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>Teks Bacaan (Passage)</span>
+          </button>
+
+          <button
+            onClick={() => setMobileTab('questions')}
+            className={clsx(
+              'flex-1 py-2 rounded-xl text-xs font-mono font-semibold transition-all tactile-btn flex items-center justify-center gap-1.5',
+              mobileTab === 'questions'
+                ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
+                : 'text-[#7A7265] hover:text-[#1E1B17]'
+            )}
+          >
+            <ListOrdered className="w-3.5 h-3.5" />
+            <span>Soal No. {currentQuestionIndex + 1}</span>
+          </button>
+        </div>
+
         {/* Result Modal Banner if Submitted */}
         {isSubmitted && examResult && (
           <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#A84A28]/40 space-y-4 shadow-md animate-in fade-in duration-300">
@@ -198,7 +231,10 @@ export default function MockExamClient({ examType }: { examType: string }) {
         {/* Split Pane View: Passage Left (60%), Questions Right (40%) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Column: Academic Reading Passage */}
-          <div className="lg:col-span-7 space-y-4">
+          <div className={clsx(
+            'lg:col-span-7 space-y-4',
+            mobileTab === 'questions' ? 'hidden lg:block' : 'block'
+          )}>
             <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] max-h-[75vh] overflow-y-auto space-y-4 shadow-xs">
               {passage && (
                 <div className="space-y-4">
@@ -219,7 +255,10 @@ export default function MockExamClient({ examType }: { examType: string }) {
           </div>
 
           {/* Right Column: Question Navigator & Active Item */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className={clsx(
+            'lg:col-span-5 space-y-4',
+            mobileTab === 'passage' ? 'hidden lg:block' : 'block'
+          )}>
             {/* Question Number Pills */}
             <div className="p-3 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] flex flex-wrap gap-2 shadow-xs">
               {questions.map((q, idx) => {
@@ -229,7 +268,10 @@ export default function MockExamClient({ examType }: { examType: string }) {
                 return (
                   <button
                     key={q.id}
-                    onClick={() => setCurrentQuestionIndex(idx)}
+                    onClick={() => {
+                      setCurrentQuestionIndex(idx);
+                      setMobileTab('questions');
+                    }}
                     className={clsx(
                       'w-8 h-8 rounded-xl font-mono text-xs transition-all flex items-center justify-center tactile-btn',
                       isCurrent
@@ -285,7 +327,7 @@ export default function MockExamClient({ examType }: { examType: string }) {
                         onClick={() => handleSelectAnswer(currentQuestion.id, opt.id)}
                         disabled={isSubmitted}
                         className={clsx(
-                          'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm flex items-center justify-between gap-3 transition-all tactile-btn',
+                          'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm flex items-center justify-between gap-3 transition-all tactile-btn min-h-[44px]',
                           style
                         )}
                       >

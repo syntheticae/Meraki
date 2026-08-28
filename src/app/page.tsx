@@ -1069,18 +1069,21 @@ export default function MerakiApp() {
   const handleNextOxfordWord = () => {
     setUserMeaningInput('');
     setMeaningFeedback(null);
+    if (filteredOxfordList.length === 0) return;
     setOxfordIndex((prev) => (prev + 1) % filteredOxfordList.length);
   };
 
   const handlePrevOxfordWord = () => {
     setUserMeaningInput('');
     setMeaningFeedback(null);
+    if (filteredOxfordList.length === 0) return;
     setOxfordIndex((prev) => (prev === 0 ? filteredOxfordList.length - 1 : prev - 1));
   };
 
   const handleRandomOxfordWord = () => {
     setUserMeaningInput('');
     setMeaningFeedback(null);
+    if (filteredOxfordList.length === 0) return;
     const rand = Math.floor(Math.random() * filteredOxfordList.length);
     setOxfordIndex(rand);
   };
@@ -1135,13 +1138,23 @@ export default function MerakiApp() {
     e.preventDefault();
     if (!doctorUserInput.trim() || !currentDoctorTask) return;
 
-    const cleanInput = doctorUserInput.trim().toLowerCase().replace(/[.\s]+/g, ' ');
-    const cleanTarget = currentDoctorTask.correctedSentence.trim().toLowerCase().replace(/[.\s]+/g, ' ');
+    const normalize = (s: string) => {
+      return (s || '')
+        .trim()
+        .toLowerCase()
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/[.,!?;:]+$/g, '')
+        .replace(/\s+/g, ' ');
+    };
+
+    const cleanInput = normalize(doctorUserInput);
+    const cleanTarget = normalize(currentDoctorTask.correctedSentence);
     
     let isMatch = cleanInput === cleanTarget;
     if (!isMatch && currentDoctorTask.acceptedVariations) {
       isMatch = currentDoctorTask.acceptedVariations.some(
-        (v) => cleanInput === v.trim().toLowerCase().replace(/[.\s]+/g, ' ')
+        (v) => cleanInput === normalize(v)
       );
     }
 
@@ -1891,7 +1904,7 @@ export default function MerakiApp() {
 
               {/* Main Reading Pane */}
               <section className={clsx(
-                'bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-28 md:pb-12 space-y-6 sm:space-y-8 transition-all duration-300',
+                'bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-36 md:pb-16 space-y-6 sm:space-y-8 transition-all duration-300',
                 isModuleIndexOpen ? 'col-span-12 md:col-span-8 lg:col-span-9' : 'col-span-12'
               )}>
                 <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
@@ -2308,7 +2321,7 @@ export default function MerakiApp() {
               </aside>
 
               {/* Right Practice Area */}
-              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-28 md:pb-12 flex flex-col justify-between">
+              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-36 md:pb-16 flex flex-col justify-between">
                 <div className="max-w-2xl mx-auto w-full space-y-5 sm:space-y-6 my-auto">
                   {/* Mobile Quick Module Chips */}
                   <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#C8C0B0]/60">
@@ -2577,6 +2590,38 @@ export default function MerakiApp() {
                               </div>
                             </div>
                           )}
+
+                          {doctorTasks.length > 1 && (
+                            <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#C8C0B0]/60">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setActiveDoctorIndex((prev) => Math.max(0, prev - 1));
+                                  setDoctorUserInput('');
+                                  setDoctorFeedback(null);
+                                }}
+                                disabled={activeDoctorIndex === 0}
+                                className="px-3.5 sm:px-4 py-2 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] border border-[#C8C0B0] text-xs font-mono text-[#7A7265] hover:text-[#1E1B17] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
+                              >
+                                <ChevronLeft className="w-3.5 h-3.5" />
+                                <span>Tugas Sebelumnya</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setActiveDoctorIndex((prev) => Math.min(doctorTasks.length - 1, prev + 1));
+                                  setDoctorUserInput('');
+                                  setDoctorFeedback(null);
+                                }}
+                                disabled={activeDoctorIndex === doctorTasks.length - 1}
+                                className="px-3.5 sm:px-4 py-2 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
+                              >
+                                <span>Tugas Selanjutnya</span>
+                                <ChevronRight className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          )}
                         </div>
                       ) : (
                         <div className="p-8 text-center bg-[#E6E0D4] rounded-3xl border border-[#C8C0B0] text-xs text-[#7A7265]">
@@ -2592,7 +2637,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 3: ACL & DIKSI ALAMI ───────────── */}
           {activeHub === 'collocations' && (
-            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-28 md:pb-12">
+            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-36 md:pb-16">
               {/* Header Switcher */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
@@ -3456,7 +3501,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 4: MATRIKS FONDASI ───────────── */}
           {activeHub === 'matrices' && (
-            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-28 md:pb-12">
+            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-36 md:pb-16">
               {/* Header Switcher */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
@@ -4633,7 +4678,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 5: STUDIO SINTAKSIS ───────────── */}
           {activeHub === 'studio' && (
-            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-28 md:pb-12">
+            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-36 md:pb-16">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
@@ -5366,7 +5411,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 6: FONETIK LAB ───────────── */}
           {activeHub === 'phonetics' && (
-            <div className="max-w-4xl mx-auto h-full p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-6 pb-28 md:pb-12">
+            <div className="max-w-4xl mx-auto h-full p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-6 pb-36 md:pb-16">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0]">
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
@@ -5823,7 +5868,7 @@ export default function MerakiApp() {
                 </div>
               </aside>
 
-              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 pb-28 md:pb-8 flex flex-col justify-between space-y-6 sm:space-y-8">
+              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 pb-36 md:pb-16 flex flex-col justify-between space-y-6 sm:space-y-8">
                 <div className="max-w-2xl mx-auto w-full space-y-6 sm:space-y-8 my-auto">
                   <div className="p-5 sm:p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5 sm:space-y-6 text-center">
                     <div className="flex items-center justify-between">
@@ -5936,7 +5981,7 @@ export default function MerakiApp() {
                             Kolokasi Baku:
                           </span>
                           <div className="flex flex-wrap gap-1.5">
-                            {currentOxfordWord?.collocations.map((col, cIdx) => (
+                            {currentOxfordWord?.collocations?.map((col: string, cIdx: number) => (
                               <span
                                 key={cIdx}
                                 className="text-[10px] font-mono bg-[#DDD7CA] px-2 py-0.5 rounded-md border border-[#C8C0B0] text-[#1E1B17]"
@@ -6008,7 +6053,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 8: MISTAKE VAULT ───────────── */}
           {activeHub === 'vault' && (
-            <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 pb-28 md:pb-8">
+            <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 pb-36 md:pb-16">
               <div className="space-y-2 pb-6 border-b border-[#C8C0B0]">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
                   Personal Weakness Re-tester & Mastery Loop
@@ -6276,7 +6321,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 9: DIAGNOSTIC MATRIX ───────────── */}
           {activeHub === 'diagnostic' && (
-            <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 sm:space-y-8 pb-28 md:pb-8">
+            <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 sm:space-y-8 pb-36 md:pb-16">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#C8C0B0]">
                 <div className="space-y-1">
                   <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
@@ -6463,12 +6508,20 @@ export default function MerakiApp() {
               </div>
 
               {!diagnosticSubmitted && (
-                <div className="pt-4 pb-8 flex justify-end">
+                <div className="sticky bottom-20 md:bottom-6 z-20 p-4 rounded-3xl bg-[#1E1B17] text-[#EFE9DF] border border-[#C8C0B0] flex flex-wrap items-center justify-between gap-3 shadow-xl animate-in slide-in-from-bottom-3 duration-200">
+                  <div className="space-y-0.5">
+                    <span className="font-mono text-[10px] text-[#A84A28] uppercase font-bold block">
+                      Status Pengisian Diagnostik
+                    </span>
+                    <span className="font-serif text-sm font-semibold">
+                      {Object.keys(diagnosticAnswers).length} dari {allDiagnosticQuestions.length} Soal Terisi
+                    </span>
+                  </div>
                   <button
                     onClick={handleSubmitDiagnostic}
-                    className="px-8 py-3.5 rounded-full bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-colors shadow-sm tactile-btn min-h-[44px]"
+                    className="px-6 py-2.5 rounded-2xl bg-[#A84A28] hover:bg-[#8e3c1e] text-white text-xs font-mono font-medium transition-all tactile-btn shadow-md min-h-[44px]"
                   >
-                    Kumpulkan Lembar Jawaban Diagnostik
+                    Kumpulkan Lembar Jawaban
                   </button>
                 </div>
               )}

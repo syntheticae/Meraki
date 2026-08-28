@@ -5,7 +5,7 @@
 export function playTextToSpeech(
   text: string,
   options?: {
-    lang?: 'en-US' | 'en-GB';
+    lang?: 'en-US' | 'en-GB' | 'en-AU';
     rate?: number; // 0.7 to 1.2
     pitch?: number;
     onEnd?: () => void;
@@ -48,6 +48,8 @@ export function playTextToSpeech(
     return false;
   }
 }
+
+export const playNativeAudio = playTextToSpeech;
 
 export function stopTextToSpeech(): void {
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {

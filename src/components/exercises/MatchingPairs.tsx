@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { CheckCircle2, XCircle, RefreshCw, Link as LinkIcon } from 'lucide-react';
+import { CheckCircle2, XCircle, RefreshCw, Link as LinkIcon, Check } from 'lucide-react';
 import { MatchingExercise } from '@/types/exercise';
 import { clsx } from 'clsx';
 
@@ -17,13 +17,14 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    // Shuffle right-side items on load
+    // Shuffle right-side items on load or exercise change
     const rights = exercise.pairs.map((p) => ({ id: p.id, text: p.right }));
     rights.sort(() => Math.random() - 0.5);
     setShuffledRights(rights);
     setMatches({});
+    setSelectedLeft(null);
     setIsSubmitted(false);
-  }, [exercise]);
+  }, [exercise.id]);
 
   const handleLeftClick = (id: string) => {
     if (isSubmitted) return;
@@ -72,24 +73,24 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <span className="font-mono text-xs text-[#82796A] uppercase tracking-wider">
-          Matching Pairs · {exercise.points} Pts
+        <span className="font-mono text-xs text-[#7A7265] uppercase tracking-wider font-semibold">
+          Pasangan Cocok (Matching) · {exercise.points} Pts
         </span>
-        <span className="font-mono text-xs text-[#82796A]">
+        <span className="font-mono text-xs text-[#1E1B17] font-bold px-2.5 py-0.5 rounded-full bg-[#DDD7CA]">
           {Object.keys(matches).length}/{exercise.pairs.length} Terpasang
         </span>
       </div>
 
-      <p className="text-sm text-[#82796A] leading-relaxed">
-        {exercise.instruction} (Klik item di sebelah kiri, lalu klik pasangannya di sebelah kanan).
+      <p className="text-sm text-[#7A7265] leading-relaxed">
+        {exercise.instruction} (Pilih satu item di Kolom A, lalu pilih pasangannya di Kolom B).
       </p>
 
       {/* Grid Comparison */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {/* Left Column */}
-        <div className="space-y-3">
-          <span className="font-mono text-[11px] text-[#82796A] uppercase tracking-wider block mb-1">
-            Kolom A (Item Utama)
+        <div className="space-y-2.5">
+          <span className="font-mono text-[11px] text-[#7A7265] uppercase tracking-wider block mb-1 font-semibold">
+            Kolom A (Item Konsep)
           </span>
           {exercise.pairs.map((pair, index) => {
             const isSelected = selectedLeft === pair.id;
@@ -103,20 +104,20 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
                 onClick={() => handleLeftClick(pair.id)}
                 disabled={isSubmitted}
                 className={clsx(
-                  'w-full text-left p-4 rounded-xl border transition-all text-sm flex items-center justify-between gap-3',
+                  'w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 tactile-btn min-h-[48px]',
                   isSubmitted
                     ? isCorrect
-                      ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-950 font-medium'
-                      : 'bg-rose-500/10 border-rose-500/30 text-rose-950'
+                      ? 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-semibold'
+                      : 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]'
                     : isSelected
-                    ? 'bg-[#1A1714] text-white border-[#1A1714] shadow-xs'
+                    ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-xs font-semibold'
                     : hasMatch
-                    ? 'bg-white/90 border-[#C4502A]/30 text-[#1A1714] ring-1 ring-[#C4502A]/20'
-                    : 'bg-white/60 hover:bg-white border-white/80 text-[#1A1714]'
+                    ? 'bg-[#DDD7CA] border-[#A84A28] text-[#1E1B17] ring-1 ring-[#A84A28]/30'
+                    : 'bg-[#DDD7CA] hover:bg-[#C8C0B0] border-[#C8C0B0] text-[#1E1B17]'
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-black/05 text-[11px] font-mono flex items-center justify-center">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-5 h-5 rounded-lg bg-black/05 text-[10px] font-mono flex items-center justify-center font-bold">
                     {index + 1}
                   </span>
                   <span>{pair.left}</span>
@@ -128,7 +129,7 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
                       e.stopPropagation();
                       handleRemoveMatch(pair.id);
                     }}
-                    className="text-[11px] text-[#C4502A] hover:underline font-mono"
+                    className="text-[11px] text-[#A84A28] hover:underline font-mono font-bold"
                   >
                     Batal
                   </span>
@@ -139,9 +140,9 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
         </div>
 
         {/* Right Column */}
-        <div className="space-y-3">
-          <span className="font-mono text-[11px] text-[#82796A] uppercase tracking-wider block mb-1">
-            Kolom B (Pasangan)
+        <div className="space-y-2.5">
+          <span className="font-mono text-[11px] text-[#7A7265] uppercase tracking-wider block mb-1 font-semibold">
+            Kolom B (Pasangan Kaidah)
           </span>
           {shuffledRights.map((item, index) => {
             const matchedLeftId = Object.keys(matches).find((k) => matches[k] === item.id);
@@ -155,22 +156,22 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
                 onClick={() => handleRightClick(item.id)}
                 disabled={isSubmitted || !selectedLeft}
                 className={clsx(
-                  'w-full text-left p-4 rounded-xl border transition-all text-sm flex items-center justify-between gap-3',
+                  'w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 tactile-btn min-h-[48px]',
                   isUsed
-                    ? 'bg-white/90 border-[#C4502A]/30 text-[#1A1714] ring-1 ring-[#C4502A]/20'
+                    ? 'bg-[#DDD7CA] border-[#A84A28] text-[#1E1B17] ring-1 ring-[#A84A28]/30'
                     : selectedLeft
-                    ? 'bg-amber-500/05 hover:bg-amber-500/15 border-amber-500/30 text-[#1A1714] cursor-pointer'
-                    : 'bg-white/40 border-white/60 text-[#82796A] opacity-75'
+                    ? 'bg-[#EFE9DF] hover:bg-[#C8C0B0] border-[#535841] text-[#1E1B17] cursor-pointer'
+                    : 'bg-[#DDD7CA]/50 border-[#C8C0B0]/60 text-[#7A7265] opacity-70'
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-black/05 text-[11px] font-mono flex items-center justify-center">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-5 h-5 rounded-lg bg-black/05 text-[10px] font-mono flex items-center justify-center font-bold">
                     {letter}
                   </span>
                   <span>{item.text}</span>
                 </div>
                 {isUsed && (
-                  <span className="font-mono text-[10px] bg-[#C4502A]/10 text-[#C4502A] px-2 py-0.5 rounded-full">
+                  <span className="font-mono text-[10px] bg-[#A84A28]/15 text-[#A84A28] px-2 py-0.5 rounded-full font-bold">
                     Terhubung
                   </span>
                 )}
@@ -185,7 +186,7 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
         <button
           type="button"
           onClick={handleReset}
-          className="flex items-center gap-1.5 text-xs text-[#82796A] hover:text-[#1A1714] font-mono"
+          className="flex items-center gap-1.5 text-xs text-[#7A7265] hover:text-[#1E1B17] font-mono tactile-btn"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>Reset Semua Pasangan</span>
@@ -196,10 +197,10 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
           disabled={!allMatched}
           onClick={handleCheck}
           className={clsx(
-            'px-6 py-2.5 rounded-xl font-medium text-sm transition-all shadow-xs',
+            'px-6 py-2.5 rounded-2xl font-medium text-xs font-mono transition-all shadow-xs tactile-btn min-h-[44px]',
             allMatched
-              ? 'bg-[#1A1714] hover:bg-[#C4502A] text-white cursor-pointer'
-              : 'bg-black/10 text-[#82796A]/60 cursor-not-allowed'
+              ? 'bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] cursor-pointer'
+              : 'bg-[#DDD7CA] text-[#7A7265]/60 cursor-not-allowed border border-[#C8C0B0]'
           )}
         >
           Periksa Semua Pasangan
@@ -210,27 +211,27 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
       {isSubmitted && (
         <div
           className={clsx(
-            'p-5 rounded-2xl border transition-all space-y-2',
+            'p-5 rounded-2xl border transition-all space-y-2 animate-in fade-in duration-200',
             allCorrect
-              ? 'bg-emerald-500/08 border-emerald-500/25 text-emerald-950'
-              : 'bg-rose-500/08 border-rose-500/25 text-rose-950'
+              ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]'
+              : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
           )}
         >
           <div className="flex items-center gap-2 font-semibold text-sm">
             {allCorrect ? (
               <>
-                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                <Check className="w-5 h-5 text-[#535841]" />
                 <span>Semua pasangan cocok dengan tepat! (+{exercise.points} Poin)</span>
               </>
             ) : (
               <>
-                <XCircle className="w-5 h-5 text-rose-600" />
-                <span>Beberapa pasangan belum tepat. Coba periksa kembali.</span>
+                <XCircle className="w-5 h-5 text-[#A84A28]" />
+                <span>Beberapa pasangan belum tepat. Silakan tinjau kembali.</span>
               </>
             )}
           </div>
-          <p className="text-xs text-[#82796A] leading-relaxed">
-            {exercise.explanation}
+          <p className="text-xs text-[#524C42] leading-relaxed pt-1 border-t border-[#C8C0B0]/60">
+            <strong>Pembahasan:</strong> {exercise.explanation}
           </p>
         </div>
       )}
