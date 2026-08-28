@@ -87,2437 +87,2355 @@ export interface LearningTopic {
 
 export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
-  // TAHAP 1: FONDASI MUTLAK & MORFOLOGI KATA BENDA (NOUN MORPHOLOGY)
+  // TAHAP 1: FONDASI MUTLAK & ARSITEKTUR SUBJEK-PREDIKAT INTI
   // =========================================================================
   {
-    id: 'modul-01-noun-types',
+    id: 'modul-01-subject-pronouns',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Morfologi Kata Benda',
+    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
     categoryKey: 'Word Classes',
     moduleNumber: 1,
-    title: 'Arsitektur Noun: Proper, Common, Concrete, Abstract, dan Collective Nouns',
-    subtitle: 'Mengenali entitas pembicaraan dan klasifikasi substantif dari konsep paling dasar',
+    title: 'Subjek Inti & Sistem Pronoun: I, You, They, We, He, She, It',
+    subtitle: 'Mengenali aktor pembicaraan, pembagian orang ke-1/2/3, dan kasus Subject vs Object',
     levelBadge: 'Fondasi Mutlak · Modul 01',
-    estimatedMinutes: 8,
-    mentalModelIntro: 'Sebelum merangkai kalimat, penutur asli memetakan dunia menjadi entitas spesifik (Proper Noun dengan huruf kapital), kategori umum (Common Noun), benda fisik yang bisa diindra (Concrete Noun), atau konsep tak kasat mata (Abstract Noun). Ketepatan mengenali jenis kata benda adalah syarat mutlak penentuan artikel dan kesesuaian predikat.',
-    coreConceptSummary: 'Noun adalah fondasi utama subjek dan objek kalimat. Proper Noun wajib berhuruf kapital awal tanpa artikel umum. Abstract Noun merujuk pada gagasan, sifat, atau proses yang umumnya bersifat uncountable.',
+    estimatedMinutes: 20,
+    mentalModelIntro: 'Setiap kalimat bahasa Inggris wajib memiliki Subjek yang jelas. Bahasa Inggris tidak mengenal penanggalan subjek (pro-drop) seperti bahasa Indonesia. Anda tidak bisa mengatakan "Is raining", melainkan harus "It is raining". Pronoun adalah kata ganti ringkas yang menggantikan nomina agar tidak terjadi repetisi yang melelahkan.',
+    coreConceptSummary: 'Subjek terbagi atas 3 sudut pandang (1st Person: I/We; 2nd Person: You; 3rd Person: He/She/It/They). Bentuk kasus subjek (Subject Pronoun) hanya boleh menduduki posisi pelaku sebelum kata kerja, sedangkan Object Pronoun (me, him, her, us, them) menduduki posisi setelah kata kerja atau preposisi.',
     decisionTree: [
       {
-            "step": "Langkah 1: Identifikasi Wujud & Sifat Benda",
-            "question": "Apakah kata benda merujuk pada nama diri spesifik atau konsep umum?",
-            "branches": [
-                  {
-                        "condition": "Nama diri unik (orang, kota, institusi)",
-                        "outcome": "Proper Noun",
-                        "rule": "Wajib huruf kapital, dilarang article umum (Einstein, Indonesia, Harvard)."
-                  },
-                  {
-                        "condition": "Gagasan abstrak, kualitas, atau proses",
-                        "outcome": "Abstract Noun",
-                        "rule": "Mayoritas uncountable, dilarang akhiran -s (honesty, knowledge, freedom)."
-                  },
-                  {
-                        "condition": "Sekelompok individu yang bersatu",
-                        "outcome": "Collective Noun",
-                        "rule": "Dianggap tunggal jika bertindak satu suara (The committee has decided)."
-                  }
-            ]
+        step: 'Langkah 1: Identifikasi Posisi Pronoun',
+        question: 'Apakah kata ganti berada sebelum Main Verb (sebagai pelaku) atau setelah Verb/Preposisi (sebagai penerima)?',
+        branches: [
+          { condition: 'Sebelum Verb (Pelaku)', outcome: 'Gunakan Subject Pronoun (I, You, They, We, He, She, It)', rule: 'Contoh: She analyzes the data.' },
+          { condition: 'Setelah Verb / Preposisi (Penerima)', outcome: 'Gunakan Object Pronoun (me, you, them, us, him, her, it)', rule: 'Contoh: The professor called her; send it to us.' }
+        ]
       }
-],
+    ],
     registerLadder: {
-      "informal": "People in the group talked about the stuff for a long time.",
-      "standard": "The committee discussed the proposed regulations in detail.",
-      "academicHigh": "The consultative committee deliberated extensively upon the statutory regulatory framework.",
-      "analysis": "Menggantikan kata benda samar \"people / stuff\" dengan Collective Noun presisi \"The consultative committee\" dan Abstract Noun \"statutory regulatory framework\"."
-},
+      informal: 'Me and John went to the laboratory.',
+      standard: 'John and I went to the laboratory.',
+      academicHigh: 'The primary investigator and I conducted the laboratory analysis.',
+      analysis: 'Dalam ragam formal/akademik, saat menggabungkan diri sendiri dengan orang lain pada posisi subjek, selalu sebutkan pihak lain terlebih dahulu dan gunakan pronoun "I" (bukan "Me").'
+    },
     canDoChecklist: [
-      "Saya dapat membedakan Proper Noun dari Common Noun dan selalu mengkapitalisasinya.",
-      "Saya memahami bahwa Abstract Noun (seperti honesty, integrity) bersifat uncountable.",
-      "Saya paham kapan Collective Noun mengambil kata kerja tunggal vs jamak."
-],
+      'Mampu membedakan orang ke-1, 2, dan 3 tunggal maupun jamak secara instan.',
+      'Tidak pernah lagi menggunakan Object Pronoun di posisi subjek (e.g. *Her is a doctor ❌*).',
+      'Mampu menyusun frasa subjek majemuk secara sopan dan baku (e.g. *My colleague and I*).'
+    ],
     pocketAxioms: [
-      "Proper Noun wajib huruf kapital awal tanpa artikel \"a/an\".",
-      "Abstract Noun tidak berwujud fisik dan tidak boleh dijamakkan dengan \"-s\".",
-      "Collective Noun berstatus tunggal (singular verb) jika kelompok bertindak sebagai satu kesatuan utuh."
-],
+      'Aksioma Subjek: Tidak ada kalimat tanpa subjek dalam bahasa Inggris (kecuali kalimat perintah/imperative).',
+      'Aksioma Urutan Kesopanan: Tempatkan orang lain sebelum "I" pada subjek gabungan (*Dr. Vance and I*).'
+    ],
     sections: [
       {
-        stepNumber: 'Langkah 1: Klasifikasi 5 Jenis Kata Benda Primer',
-        explanation: 'Bahasa Inggris membagi kata benda menjadi 5 kategori fungsional: Proper, Common, Concrete, Abstract, dan Collective Nouns.',
-        formula: 'Proper Noun (Kapital Wajib: Einstein, Oxford) vs Common Noun (the city, the scientist)',
+        stepNumber: '01',
+        title: 'Tabel Taksonomi Kasus Pronoun',
+        explanation: 'Bahasa Inggris menuntut penyesuaian bentuk kata ganti berdasarkan fungsinya dalam struktur sintaksis kalimat.',
+        formula: 'Subject Pronoun + Verb + Object Pronoun / Preposition + Object Pronoun',
         examples: [
-          {
-            sentence: 'Integrity and empirical precision are fundamental values of the scientific committee.',
-            translation: 'Integritas dan presisi empiris (Abstract Nouns) adalah nilai-nilai fundamental dari komite ilmiah (Collective Noun).',
-          },
-        ],
-      },
-      {
-        stepNumber: 'Langkah 2: Perlakuan Collective Nouns (Tunggal vs Jamak)',
-        explanation: 'Dalam American English standar, Collective Noun (committee, team, government) diperlakukan sebagai satu kesatuan unit tunggal.',
-        formula: 'Collective Noun + SINGULAR VERB (has decided / is preparing)',
-        examples: [
-          {
-            sentence: 'The interdisciplinary research committee has released its unanimous decision.',
-            translation: 'Komite riset lintas disiplin (satu kesatuan) telah merilis keputusan bulatnya.',
-          },
+          { sentence: 'They evaluated the methodology carefully.', translation: 'Mereka mengevaluasi metodologi tersebut dengan teliti.', note: 'They = Subject Pronoun' },
+          { sentence: 'The director assigned the research grant to them.', translation: 'Direktur memberikan dana penelitian tersebut kepada mereka.', note: 'them = Object Pronoun setelah preposisi "to"' }
         ],
         contrastiveAnalysis: {
-          incorrectSentence: 'The government have announced their new economic policies.',
-          correctSentence: 'The government has announced its new economic policy.',
-          linguisticReason: 'Dalam ragam formal American English, "government" adalah entitas kolektif tunggal yang mewajibkan kata kerja tunggal ("has") dan kata ganti kepemilikan tunggal ("its").',
-        },
+          incorrectSentence: 'Me and him investigated the chemical sample.',
+          correctSentence: 'He and I investigated the chemical sample.',
+          linguisticReason: '"Me" dan "him" adalah Object Pronouns. Posisi subjek wajib diisi Subject Pronouns "He and I".'
+        }
       },
+      {
+        stepNumber: '02',
+        title: 'Dummy Subject "It" dan "There"',
+        explanation: 'Ketika kalimat membahas cuaca, waktu, atau eksistensi yang tidak memiliki pelaku biologis, bahasa Inggris menggunakan Dummy Subject "It" atau "There".',
+        formula: 'It + is/was + Adjective/Noun | There + is/are + Noun Phrase',
+        examples: [
+          { sentence: 'It is essential to verify the empirical measurements.', translation: 'Sangat penting untuk memverifikasi pengukuran empiris.', note: 'It bertindak sebagai subjek formal gramatikal.' },
+          { sentence: 'There are three anomalies in the survey telemetry.', translation: 'Ada tiga kejanggalan dalam telemetri survei.', note: 'There mengenalkan keberadaan 3 anomali.' }
+        ],
+        commonPitfall: 'Menerjemahkan "Sangat dingin di luar" menjadi "*Is very cold outside*" tanpa menyematkan dummy subject "It".'
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Writing Task 2, penggunaan Abstract Nouns berkualitas tinggi (*sustainability*, *disparity*, *efficacy*) secara instan menaikkan skor Lexical Resource.',
-      toeflApplication: 'TOEFL Structure sering menguji kesesuaian antara Collective Noun tunggal dengan kata kerja tunggal.',
-      scoringImpact: 'Mencegah inkonsistensi jumlah kata ganti dan subjek-predikat.',
+      ieltsApplication: 'Penataan referensi pronoun yang presisi (pronoun referencing) adalah syarat mutlak untuk meraih skor 8.0+ pada kriteria Coherence & Cohesion di Writing Task 2.',
+      toeflApplication: 'Section Reading TOEFL iBT secara berkala menguji pertanyaan "The word \'they\' in paragraph 2 refers to...".',
+      scoringImpact: 'Mencegah ambiguitas rujukan pronoun menghindari pemotongan skor koherensi hingga 1.0 band.'
     },
     goldenRules: [
-      'Proper Noun selalu ditulis dengan huruf kapital di awal kata.',
-      'Collective Noun dalam American English diperlakukan sebagai entitas tunggal (is/has/its).',
-      'Abstract Nouns (integritas, pengetahuan, keberlanjutan) umumnya bersifat Uncountable.',
+      'Gunakan Subject Pronoun (I, He, She, We, They) murni hanya sebelum kata kerja.',
+      'Gunakan Object Pronoun (Me, Him, Her, Us, Them) setelah kata kerja atau setelah preposisi (between you and me).',
+      'Jangan pernah meninggalkan kalimat tanpa subjek (hindari *Is obvious that... ❌, gunakan It is obvious that... ✔*).'
     ],
     questions: [
       {
-        id: 'q01-1',
+        id: 'q-m01-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih kata kerja dan kata ganti yang tepat: "The university advisory panel ________ submitted ________ annual report."',
-        options: ['has / its', 'have / their', 'has / their', 'have / its'],
-        correctAnswer: 'has / its',
-        explanation: '"The university advisory panel" adalah collective noun tunggal, sehingga membutuhkan kata kerja tunggal ("has") dan kata ganti kepemilikan netral tunggal ("its").',
-        ruleReference: 'Kaidah Emas: Collective nouns dalam bahasa Inggris formal mengambil singular verb dan pronoun "its".',
+        question: '_____ and Dr. Aris analyzed the epidemiological data before submitting the report.',
+        options: ['She', 'Her', 'Hers', 'Herself'],
+        correctAnswer: 'She',
+        explanation: 'Posisi sebelum kata kerja "analyzed" adalah posisi Subjek majemuk, sehingga membutuhkan Subject Pronoun "She".',
+        ruleReference: 'Modul 01: Subject Pronouns'
       },
+      {
+        id: 'q-m01-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'The committee distributed the finalized research guidelines to Dr. Vance and _____.',
+        options: ['I', 'me', 'myself', 'mine'],
+        correctAnswer: 'me',
+        explanation: 'Setelah preposisi "to", seluruh kata ganti yang menyusul harus berstatus Object Pronoun ("to Dr. Vance and me").',
+        ruleReference: 'Modul 01: Object Pronouns after Prepositions'
+      },
+      {
+        id: 'q-m01-3',
+        category: 'Word Classes',
+        difficulty: 'Lanjutan',
+        question: 'Between you and _____, the proposed environmental policy requires substantial restructuring.',
+        options: ['I', 'me', 'he', 'we'],
+        correctAnswer: 'me',
+        explanation: '"Between" adalah preposisi. Preposisi mewajibkan Object Pronoun ("Between you and me", bukan "Between you and I").',
+        ruleReference: 'Modul 01: Prepositional Objects'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec01-1',
-        flawedSentence: 'The faculty board have approved their revised academic curriculum.',
-        flawLocation: 'have approved their',
-        correctedSentence: 'The faculty board has approved its revised academic curriculum.',
-        linguisticExplanation: '"The faculty board" bertindak sebagai satu kesatuan unit tunggal, sehingga harus dipasangkan dengan "has approved" dan rujukan "its".',
+        id: 'ec-m01-1',
+        flawedSentence: 'Me and my supervisor discussed the laboratory findings yesterday.',
+        flawLocation: 'Me',
+        correctedSentence: 'My supervisor and I discussed the laboratory findings yesterday.',
+        linguisticExplanation: '"Me" adalah Object Pronoun yang tidak sah menduduki posisi subjek. Bentuk baku adalah menempatkan orang lain terlebih dahulu diikuti "I".'
+      },
+      {
+        id: 'ec-m01-2',
+        flawedSentence: 'Is crucial to conduct clinical trials before approving the vaccine.',
+        flawLocation: 'Is crucial',
+        correctedSentence: 'It is crucial to conduct clinical trials before approving the vaccine.',
+        linguisticExplanation: 'Bahasa Inggris adalah bahasa non-pro-drop. Kalimat wajib diawali dummy subject "It" (*It is crucial...*).'
       }
     ]
   },
 
   {
-    id: 'modul-02-countable-uncountable',
+    id: 'modul-02-to-be-foundations',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Morfologi Kata Benda',
-    categoryKey: 'Word Classes',
+    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
+    categoryKey: 'Sentence Architecture',
     moduleNumber: 2,
-    title: 'Countable vs Uncountable Nouns & Partitive Expressions',
-    subtitle: 'Penanganan substansi massa, konsep abstrak, dan takaran hitung partitif',
+    title: 'Fondasi To Be (Am, Is, Are, Was, Were, Been, Being) & Kalimat Nominal vs Verbal',
+    subtitle: 'Mengenali esensi predikat To Be, Subject Complement, dan pemisahan mutlak kalimat verbal vs nominal',
     levelBadge: 'Fondasi Mutlak · Modul 02',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 01: Noun Types',
-    mentalModelIntro: 'Dalam bahasa Indonesia, kita bisa mengatakan "dua penelitian" atau "banyak bukti". Namun dalam bahasa Inggris, research dan evidence dianggap sebagai materi massa. Untuk menghitungnya, penutur asli wajib menggunakan wadah takaran (Partitive Expressions seperti a piece of evidence, two items of equipment).',
-    coreConceptSummary: 'Uncountable Noun mewakili materi atau konsep abstrak yang tidak pernah menerima "a/an" dan tidak pernah memiliki akhiran "-s". Gunakan Partitive Measure Words untuk menyatakan kuantitas.',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'To Be adalah kata kerja paling fleksibel sekaligus paling sering disalahgunakan dalam bahasa Inggris. To Be bertindak sebagai "tanda sama dengan" (=) yang menghubungkan subjek dengan identitasnya (Noun) atau kondisinya (Adjective/Preposition). Kesalahan terbesar pembelajar Indonesia adalah menempelkan To Be secara serampangan pada kata kerja aksi (*He is work ❌*).',
+    coreConceptSummary: 'Kalimat bahasa Inggris terbagi dua secara mutlak: (1) Kalimat Nominal (tanpa kata kerja aksi, wajib berpredikat To Be: S + To Be + Complement), dan (2) Kalimat Verbal (menggunakan kata kerja aksi murni: S + Verb). Jangan pernah mencampuradukkan keduanya dalam Simple Present/Past dasar.',
     decisionTree: [
       {
-            "step": "Langkah 1: Uji Hitung Fisik (Countability Test)",
-            "question": "Dapatkah benda dihitung utuh per satuan tanpa alat ukur/wadah tambahan?",
-            "branches": [
-                  {
-                        "condition": "Bisa dihitung fisik (1, 2, 3...)",
-                        "outcome": "Countable Noun",
-                        "rule": "Wajib \"a/an\" jika tunggal, boleh \"-s/-es\" jika jamak (a report, two books)."
-                  },
-                  {
-                        "condition": "Massa cair/gas, bahan, atau kategori abstrak",
-                        "outcome": "Uncountable Noun",
-                        "rule": "Dilarang \"a/an\", dilarang \"-s\", gunakan partitive (pieces of advice, items of equipment)."
-                  }
-            ]
+        step: 'Langkah 1: Tentukan Keberadaan Kata Kerja Aksi',
+        question: 'Apakah predikat kalimat menyatakan tindakan/aksi fisik/mental (e.g. study, write, analyze) atau sekadar status/kondisi/posisi (e.g. ready, researcher, in lab)?',
+        branches: [
+          { condition: 'Aksi / Tindakan (Verbal)', outcome: 'Gunakan Kata Kerja Murni langsung (S + Verb). JANGAN pakai To Be!', rule: 'Contoh: He works at Oxford (BUKAN: He is work).' },
+          { condition: 'Status / Sifat / Posisi (Nominal)', outcome: 'Wajib gunakan bentuk To Be yang sesuai subjek dan tenses (S + To Be + Complement).', rule: 'Contoh: He is ready; They were in the laboratory.' }
+        ]
       }
-],
+    ],
     registerLadder: {
-      "informal": "We got many new softwares and equipments for our lab.",
-      "standard": "We acquired several new software applications and pieces of equipment.",
-      "academicHigh": "The laboratory procured advanced specialized software licenses alongside state-of-the-art analytical equipment.",
-      "analysis": "Menghilangkan kesalahan fatal \"softwares\" dan \"equipments\" dengan partitive formal \"software licenses\" dan \"analytical equipment\"."
-},
+      informal: 'The project is in progress now.',
+      standard: 'The project is currently underway.',
+      academicHigh: 'The experimental protocol is currently operative and under rigorous observation.',
+      analysis: 'Dalam ragam akademik tinggi, To Be menghubungkan subjek dengan Subject Complement berbobot formal tinggi.'
+    },
     canDoChecklist: [
-      "Saya tidak akan pernah menulis \"researches\", \"equipments\", atau \"advices\".",
-      "Saya mampu menggunakan partitive expressions seperti \"pieces of evidence\" dan \"items of equipment\".",
-      "Saya paham bahwa kata benda uncountable selalu mengambil kata kerja tunggal (is/was/has)."
-],
+      'Mampu memilih bentuk To Be yang tepat untuk 7 subjek dasar di masa kini (Am, Is, Are) dan lampau (Was, Were).',
+      'Menghilangkan 100% kesalahan meletakkan To Be sebelum Base Verb (*She is agree ❌ -> She agrees ✔*).',
+      'Mengenali peran To Be sebagai Auxiliary pada Continuous Tense dan Passive Voice.'
+    ],
     pocketAxioms: [
-      "Uncountable Nouns (research, evidence, equipment, advice, information) DILARANG BERAKHIRAN -S.",
-      "Dilarang memasang \"a/an\" tepat sebelum kata benda uncountable murni.",
-      "Gunakan partitive phrase (\"a piece of...\", \"items of...\") untuk menghitung kuantitas uncountable noun."
-],
+      'Hukum Pemisahan Verbal-Nominal: Jika ada kata kerja aksi dasar, To Be dilarang hadir (*He reads, BUKAN He is read*).',
+      'Hukum Subject Complement: Kata setelah To Be menerangkan kondisi atau identitas subjek.'
+    ],
     sections: [
       {
-        stepNumber: 'Langkah 1: Daftar Uncountable Nouns Akademik Wajib',
-        explanation: 'Uncountable Nouns tidak memiliki bentuk jamak dan selalu berstatus tunggal secara gramatikal.',
-        formula: 'Daftar Mutlak Uncountable: Evidence, Research, Information, Equipment, Advice, Knowledge, Furniture, Luggage, Behavior, Traffic, Progress',
+        stepNumber: '01',
+        title: '7 Bentuk To Be & Pemetaan Subjek',
+        explanation: 'Setiap bentuk To Be terikat secara kaku dengan dimensi waktu dan jumlah subjek.',
+        formula: 'Present: I am | He/She/It is | You/We/They are || Past: I/He/She/It was | You/We/They were',
         examples: [
-          {
-            sentence: 'The empirical research provides substantial evidence for neural plasticity.',
-            translation: 'Penelitian empiris tersebut memberikan bukti yang substansial untuk plastisitas saraf.',
-            note: 'Dilarang menulis "researches" atau "evidences".',
-          },
+          { sentence: 'The methodology is robust.', translation: 'Metodologi tersebut kokoh/andal.', note: 'is + Adjective (Nominal)' },
+          { sentence: 'The researchers were in Geneva last week.', translation: 'Para peneliti berada di Jenewa minggu lalu.', note: 'were + Prepositional phrase (Nominal Past)' }
         ],
         contrastiveAnalysis: {
-          incorrectSentence: 'The scientist conducted several new researches and gathered many evidences.',
-          correctSentence: 'The scientist conducted several new studies and gathered substantial evidence.',
-          linguisticReason: 'Dalam bahasa Inggris baku, "research" dan "evidence" adalah uncountable. Untuk menyatakan hitungan jamak, gunakan alternatif "studies" atau satuan "pieces of evidence".',
-        },
-      },
+          incorrectSentence: 'The scientist is agree with the hypothesis.',
+          correctSentence: 'The scientist agrees with the hypothesis.',
+          linguisticReason: '"Agree" adalah kata kerja aksi (Verb). Maka tidak boleh disandingkan dengan "is".'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Kesalahan artikel pada uncountable noun (seperti menulis "a modern equipment") langsung menurunkan skor GRA di bawah Band 7.0.',
-      toeflApplication: 'TOEFL Structure secara reguler menyertakan jebakan uncountable nouns yang sengaja diberi akhiran "-s".',
-      scoringImpact: 'Mencegah kesalahan gramatikal elementer pada esai formal.',
+      ieltsApplication: 'Kesalahan kalimat nominal (*They are agree*, *He is work*) langsung mendegradasi skor Grammatical Range & Accuracy di bawah Band 6.0.',
+      toeflApplication: 'Structure & Written Expression TOEFL secara rutin menjebak peserta dengan kalimat yang kehilangan To Be atau kelebihan To Be liar.',
+      scoringImpact: 'Menjamin kebersihan struktur predikat fondasi mutlak.'
     },
     goldenRules: [
-      'Uncountable Nouns tidak pernah diawali "a/an" dan tidak pernah berakhiran "-s".',
-      'Gunakan Partitive Expressions (a piece of / an item of) untuk menghitung uncountable nouns.',
+      'Gunakan To Be hanya bila kalimat diikuti Adjective, Noun, atau Prepositional Phrase pada kalimat sederhana.',
+      'Bila ada kata kerja tindakan (agree, believe, study, work), gunakan verb tersebut langsung tanpa To Be.',
+      'Gunakan To Be + Verb-ing hanya bila aksi sedang berlangsung (Continuous Aspect).'
     ],
     questions: [
       {
-        id: 'q02-1',
-        category: 'Word Classes',
+        id: 'q-m02-1',
+        category: 'Sentence Architecture',
         difficulty: 'Dasar',
-        question: 'Pilih bentuk kalimat yang benar secara gramatikal:',
-        options: [
-          'The laboratory purchased modern equipments for the chemical analysis.',
-          'The laboratory purchased a modern equipment for the chemical analysis.',
-          'The laboratory purchased modern equipment for the chemical analysis.',
-          'The laboratory purchased many modern equipments for the chemical analysis.',
-        ],
-        correctAnswer: 'The laboratory purchased modern equipment for the chemical analysis.',
-        explanation: '"Equipment" adalah uncountable noun: tidak boleh menerima "a" dan tidak boleh berakhiran "-s".',
-        ruleReference: 'Kaidah Emas: Uncountable nouns berdiri sendiri tanpa a/an dan tanpa -s.',
+        question: 'The statistical conclusions _____ consistent with previous empirical findings.',
+        options: ['is', 'are', 'be', 'being'],
+        correctAnswer: 'are',
+        explanation: 'Subjek "The statistical conclusions" adalah jamak (plural), sehingga membutuhkan To Be jamak "are".',
+        ruleReference: 'Modul 02: Plural Subject with To Be'
       },
+      {
+        id: 'q-m02-2',
+        category: 'Sentence Architecture',
+        difficulty: 'Menengah',
+        question: 'Many scholars in the department _____ with the proposed ethical framework.',
+        options: ['are agree', 'agree', 'is agreeing', 'are agreed'],
+        correctAnswer: 'agree',
+        explanation: '"Agree" adalah kata kerja statif/verbal. Kalimat verbal murni tidak memerlukan To Be "are". Jawaban benar adalah "agree".',
+        ruleReference: 'Modul 02: Verbal vs Nominal Distinction'
+      },
+      {
+        id: 'q-m02-3',
+        category: 'Sentence Architecture',
+        difficulty: 'Lanjutan',
+        question: 'Neither the lead investigator nor his assistants _____ present during the initial equipment calibration.',
+        options: ['was', 'were', 'is', 'are'],
+        correctAnswer: 'were',
+        explanation: 'Pada korelasi "Neither... nor...", To Be lampau menyesuaikan subjek terdekat yaitu "his assistants" (jamak) -> "were".',
+        ruleReference: 'Modul 02: Subject-Verb Proximity Rule'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec02-1',
-        flawedSentence: 'The consultant offered valuable advices regarding international market expansions.',
-        flawLocation: 'valuable advices',
-        correctedSentence: 'The consultant offered valuable advice regarding international market expansions.',
-        linguisticExplanation: '"Advice" adalah uncountable noun, sehingga dilarang diberi akhiran jamak "-s".',
+        id: 'ec-m02-1',
+        flawedSentence: 'The senior engineer is understand the complexities of the quantum algorithm.',
+        flawLocation: 'is understand',
+        correctedSentence: 'The senior engineer understands the complexities of the quantum algorithm.',
+        linguisticExplanation: '"Understand" adalah kata kerja mental. Dilarang menyematkan To Be "is" di depan kata kerja dasar.'
       }
     ]
   },
 
   {
-    id: 'modul-03-articles-determiners',
+    id: 'modul-03-have-has-had-mastery',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Morfologi Kata Benda',
+    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
     categoryKey: 'Word Classes',
     moduleNumber: 3,
-    title: 'The Article System: A, An, The vs Zero Article',
-    subtitle: 'Presisi definit vs indefinit, aturan fonetik, dan konsep universal',
+    title: 'Fondasi Auxiliary Utama: HAVE, HAS, HAD (Kepemilikan, Aspek Selesai, dan Keharusan)',
+    subtitle: 'Membedakan HAVE sebagai Kata Kerja Utama (Possession), Auxiliary (Perfect Aspect), dan Modalitas (Obligation)',
     levelBadge: 'Fondasi Mutlak · Modul 03',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 02: Countable vs Uncountable',
-    mentalModelIntro: 'Artikel adalah penanda kejelasan rujukan. Apakah pembaca sudah mengetahui objek spesifik tersebut (The), atau objek tersebut baru pertama kali diperkenalkan sebagai satu sampel umum (A/An), ataukah objek tersebut mewakili konsep universal (Zero Article)?',
-    coreConceptSummary: 'Gunakan A/An untuk kata benda tunggal yang dapat dihitung (berdasarkan bunyi fonetik awal). Gunakan The untuk rujukan spesifik, entitas unik, atau nama federasi. Gunakan Zero Article untuk konsep jamak umum.',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Kata kerja HAVE memiliki 3 fungsi yang sama sekali berbeda dalam bahasa Inggris. Pemahaman yang keliru akan membuat Anda bingung saat menyusun kalimat lampau atau kalimat tanya. Pelajari kapan HAVE bertindak sebagai kata kerja kepemilikan biasa, kapan bertindak sebagai kata kerja bantu aspek selesai (Perfect), dan kapan menyatakan kewajiban (Have to).',
+    coreConceptSummary: '1. Kepemilikan (Possession): S + have/has/had + Noun. 2. Auxiliary Perfect Aspect: S + have/has/had + Verb 3 (Past Participle). 3. Keharusan (Obligation): S + have/has/had to + Bare Infinitive. Pembedaan subjek: I/You/They/We menggunakan HAVE; He/She/It menggunakan HAS; Bentuk lampau semua subjek menggunakan HAD.',
+    decisionTree: [
+      {
+        step: 'Langkah 1: Analisis Kata Setelah Have/Has/Had',
+        question: 'Apakah kata setelah Have/Has/Had berupa Noun, Verb 3 (Past Participle), atau "to + Verb"?',
+        branches: [
+          { condition: 'Noun / Benda', outcome: 'Fungsi Kepemilikan (Possession)', rule: 'Contoh: The university has extensive digital archives.' },
+          { condition: 'Verb 3 (Past Participle)', outcome: 'Fungsi Auxiliary (Perfect Aspect)', rule: 'Contoh: The researchers have published their results.' },
+          { condition: 'to + Verb 1', outcome: 'Fungsi Modalitas / Keharusan (Obligation)', rule: 'Contoh: All applicants have to submit official transcripts.' }
+        ]
+      }
+    ],
+    registerLadder: {
+      informal: 'We have got a lot of data to check.',
+      standard: 'We have substantial data to examine.',
+      academicHigh: 'The laboratory has accumulated an extensive repository of empirical data.',
+      analysis: 'Dalam penulisan formal akademik, hindari bentuk kolokial "have got", gunakan "have" atau padanan leksikal padat seperti "accumulated" / "possesses".'
+    },
+    canDoChecklist: [
+      'Mampu menentukan secara akurat penggunaan Have vs Has berdasarkan subjek kalimat.',
+      'Mampu membedakan secara instan kapan Have berstatus kata kerja utama vs kata kerja bantu.',
+      'Tidak pernah salah membentuk negasi untuk kepemilikan (*He hasn\'t a car ❌ -> He does not have a car ✔*).'
+    ],
+    pocketAxioms: [
+      'Aksioma Perfect: HAVE/HAS/HAD sebagai auxiliary WAJIB diikuti Verb 3 (Past Participle).',
+      'Aksioma Negasi Kepemilikan: Pada Simple Present, buat negasi dengan DO/DOES NOT HAVE, bukan have not.'
+    ],
     sections: [
       {
-        stepNumber: 'Langkah 1: Aturan Fonetik A vs An',
-        explanation: 'Pemilihan A vs An ditentukan oleh BUNYI PENGUCAPAN awal. Bunyi vokal (/ʌ/, /æ/, /aʊ/, /ɪ/) memerlukan "An". Bunyi konsonan atau semi-vokal (/j/, /w/) memerlukan "A".',
-        formula: 'A + Bunyi Konsonan (a university /juː/, a European) | An + Bunyi Vokal (an hour /aʊər/, an honest mistake)',
+        stepNumber: '01',
+        title: '3 Pilar Peran HAVE, HAS, dan HAD',
+        explanation: 'Pembedaan peran menentukan struktur kalimat tanya dan kalimat negatifnya.',
+        formula: 'Possession: S + have/has + Noun | Perfect: S + have/has/had + V3 | Obligation: S + have/has/had to + V1',
         examples: [
-          {
-            sentence: 'She earned an honors degree from a prestigious European university.',
-            translation: 'Dia meraih gelar kehormatan (an honors) dari universitas Eropa bergengsi (a European).',
-          },
+          { sentence: 'The team has a breakthrough hypothesis.', translation: 'Tim tersebut memiliki hipotesis terobosan.', note: 'Possession' },
+          { sentence: 'The team has verified the breakthrough hypothesis.', translation: 'Tim tersebut telah memverifikasi hipotesis terobosan.', note: 'Perfect Aspect (Auxiliary + V3)' }
         ],
-      },
+        contrastiveAnalysis: {
+          incorrectSentence: 'She has already submit her doctoral dissertation.',
+          correctSentence: 'She has already submitted her doctoral dissertation.',
+          linguisticReason: 'Auxiliary "has" pada aspek perfect wajib diikuti Verb 3 (Past Participle: "submitted"), bukan kata kerja dasar "submit".'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Di IELTS Writing Task 1, penulisan nama kelompok data (seperti the percentage of...) wajib memakai definite article "the".',
-      toeflApplication: 'TOEFL Structure sering menguji penggunaan artikel sebelum nama institusi resmi.',
-      scoringImpact: 'Mencapai presisi rujukan objek untuk skor Band 8.0+.',
+      ieltsApplication: 'Penggunaan Present Perfect (*Governments have implemented...*) dan Past Perfect (*By 2010, emissions had doubled...*) krusial pada IELTS Writing Task 1 & 2.',
+      toeflApplication: 'TOEFL Structure menguji konsistensi urutan waktu lampau Past Perfect (aksi yang terjadi sebelum peristiwa lampau lainnya).',
+      scoringImpact: 'Meningkatkan skor tenses complexity dan chronological precision.'
     },
     goldenRules: [
-      'Gunakan an sebelum bunyi vokal pengucapan; gunakan a sebelum bunyi konsonan/semi-vokal.',
-      'Konsep abstrak umum dan disiplin ilmu murni menggunakan Zero Article.',
+      'Subjek Tunggal (He, She, It, The report) selalu menggunakan HAS (Present) atau HAD (Past).',
+      'Subjek Jamak & I/You (I, You, We, They, The scholars) menggunakan HAVE (Present) atau HAD (Past).',
+      'Setelah have/has/had sebagai kata kerja bantu, kata kerja berikutnya WAJIB berbentuk Verb 3.'
     ],
     questions: [
       {
-        id: 'q03-1',
+        id: 'q-m03-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih pasangan artikel yang tepat: "He attended ________ unique seminar at ________ Oxford Institute of Technology."',
-        options: ['a / the', 'an / the', 'a / a', 'the / a'],
-        correctAnswer: 'a / the',
-        explanation: '"Unique" diawali bunyi semi-vokal /j/ sehingga memakai "a". Lembaga formal spesifik "the Oxford Institute of Technology" wajib menggunakan "the".',
-        ruleReference: 'Kaidah Emas: Bunyi /j/ memakai "a", institusi resmi spesifik memakai "the".',
+        question: 'The research committee _____ already approved the new biological safety protocols.',
+        options: ['have', 'has', 'having', 'is'],
+        correctAnswer: 'has',
+        explanation: 'Subjek "The research committee" bertindak sebagai entitas kolektif tunggal dalam konteks formal ini -> "has approved".',
+        ruleReference: 'Modul 03: Singular Subject with Has'
       },
+      {
+        id: 'q-m03-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'By the time the audit commenced, the accountants _____ all discrepancies in the ledger.',
+        options: ['have resolved', 'had resolved', 'has resolved', 'resolving'],
+        correctAnswer: 'had resolved',
+        explanation: 'Peristiwa penyelesaian terjadi SEBELUM audit dimulai di masa lampau (Past Perfect) -> "had resolved".',
+        ruleReference: 'Modul 03: Past Perfect Had + V3'
+      },
+      {
+        id: 'q-m03-3',
+        category: 'Word Classes',
+        difficulty: 'Lanjutan',
+        question: 'Neither the laboratory director nor the field technicians _____ access to the encrypted database.',
+        options: ['has', 'have', 'having', 'is having'],
+        correctAnswer: 'have',
+        explanation: 'Pada subjek korelasi "Neither... nor...", kata kerja mengikuti subjek terdekat yaitu "the field technicians" (jamak) -> "have".',
+        ruleReference: 'Modul 03: Correlative Subject Agreement with Have'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec03-1',
-        flawedSentence: 'The technological innovation plays an important role in the modern education.',
-        flawLocation: 'the modern education',
-        correctedSentence: 'The technological innovation plays an important role in modern education.',
-        linguisticExplanation: '"Modern education" merujuk pada konsep pendidikan secara umum di seluruh dunia, sehingga harus menggunakan Zero Article.',
+        id: 'ec-m03-1',
+        flawedSentence: 'The clinical team have discovered an unexpected correlation in the data.',
+        flawLocation: 'have discovered',
+        correctedSentence: 'The clinical team has discovered an unexpected correlation in the data.',
+        linguisticExplanation: '"The clinical team" adalah subjek kolektif tunggal, sehingga harus dipasangkan dengan "has discovered".'
       }
     ]
   },
 
   {
-    id: 'modul-04-pronoun-cases',
+    id: 'modul-04-do-does-did-operator',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Morfologi Kata Benda',
+    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
     categoryKey: 'Word Classes',
     moduleNumber: 4,
-    title: 'Pronoun Declension & Case System (Subject, Object, Possessive, Reflexive)',
-    subtitle: 'Sistem kasus kata ganti, pembedaan its vs it\'s, dan rujukan relatif who vs whom',
+    title: 'Fondasi Auxiliary Operator: DO, DOES, DID (Negasi, Tanya, dan Emfasis)',
+    subtitle: 'Mekanisme kata kerja bantu pembentuk kalimat negatif, interogatif, penekanan, dan hukum mutlak Bare Infinitive',
     levelBadge: 'Fondasi Mutlak · Modul 04',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 01: Noun Types',
-    mentalModelIntro: 'Kata ganti dalam bahasa Inggris memiliki "kasus" yang berubah tergantung posisinya: sebelum kata kerja (Subjective), setelah kata kerja/preposisi (Objective), atau penunjuk kepemilikan (Possessive Determiner).',
-    coreConceptSummary: 'Kuasai 5 bentuk kata ganti: Subject (I/he/she/they), Object (me/him/her/them), Possessive Determiner (my/his/her/its/their + Noun), Independent Possessive (mine/his/hers/theirs), dan Reflexive (myself/himself/themselves).',
+    estimatedMinutes: 20,
+    mentalModelIntro: 'Dalam bahasa Inggris, kata kerja aksi biasa (seperti work, study, write) tidak bisa langsung ditempeli kata "not" atau dibalik posisinya untuk membuat pertanyaan (*He works not ❌, Works he? ❌*). Mereka membutuhkan "mesin operator pembantu" yaitu DO, DOES (Present), atau DID (Past). Begitu operator ini muncul, kata kerja utama kembali ke bentuk aslinya (Bare Infinitive).',
+    coreConceptSummary: 'DO (I, You, They, We), DOES (He, She, It), DID (Semua subjek di masa lampau). Hukum Mutlak: Setelah DO / DOES / DID / DON\'T / DOESN\'T / DIDN\'T, kata kerja yang menyusul WAJIB berbentuk kata kerja dasar murni (Verb 1 / Bare Infinitive) tanpa akhiran -s, -es, atau -ed.',
+    decisionTree: [
+      {
+        step: 'Langkah 1: Identifikasi Kehadiran Operator Do/Does/Did',
+        question: 'Apakah kalimat menggunakan Do, Does, Did, Don\'t, Doesn\'t, atau Didn\'t?',
+        branches: [
+          { condition: 'Ya, operator hadir', outcome: 'Ubah Main Verb kembali ke BARE INFINITIVE murni!', rule: 'Contoh: He doesn\'t work (BUKAN: He doesn\'t works).' },
+          { condition: 'Tidak, kalimat positif biasa', outcome: 'Sesuaikan verb dengan subjek dan tenses.', rule: 'Contoh: He works (Present); He worked (Past).' }
+        ]
+      }
+    ],
+    registerLadder: {
+      informal: 'He doesn\'t know anything about it.',
+      standard: 'He does not possess relevant knowledge on the subject.',
+      academicHigh: 'The preliminary survey does not yield statistically meaningful correlations.',
+      analysis: 'Dalam ragam formal/akademis, hindari singkatan (contractions) seperti "doesn\'t", tulis secara utuh "does not".'
+    },
+    canDoChecklist: [
+      'Mampu membentuk kalimat negatif dan tanya pada Simple Present dan Simple Past dengan sempurna.',
+      'Tidak pernah lagi menambahkan akhiran -s/-es setelah kata "does not" (*He does not works ❌ -> He does not work ✔*).',
+      'Mampu menggunakan Do/Does/Did untuk memberikan penekanan emfatik akademis (*The data does show a correlation*).'
+    ],
+    pocketAxioms: [
+      'Hukum Bare Infinitive: DO/DOES/DID menyedot semua imbuhan tenses; kata kerja setelahnya kembali telanjang (V1 murni).',
+      'Hukum Formal Akademik: Tulis utuh "do not", "does not", "did not" tanpa disingkat.'
+    ],
     sections: [
       {
-        stepNumber: 'Langkah 1: Deklinasi Kasus Kata Ganti Baku',
-        explanation: 'Gunakan Subject Pronoun di posisi subjek, Object Pronoun setelah kata kerja transitif dan preposisi, Possessive Determiner langsung di depan kata benda.',
-        formula: 'Subject ➔ Verb ➔ Object Pronoun | Preposition + Object Pronoun (between you and me)',
+        stepNumber: '01',
+        title: 'Mekanisme Operator & Bare Infinitive',
+        explanation: 'Operator memikul beban gramatikal tenses dan kesesuaian orang ketiga tunggal.',
+        formula: 'Negasi: S + do/does/did + NOT + Verb 1 (Bare Infinitive) | Tanya: Do/Does/Did + S + Verb 1?',
         examples: [
-          {
-            sentence: 'The research director entrusted the statistical analysis to her and her team.',
-            translation: 'Direktur riset memercayakan analisis statistik kepada dia (her) dan timnya.',
-          },
+          { sentence: 'The experiment does not require radioactive reagents.', translation: 'Eksperimen tersebut tidak memerlukan reagen radioaktif.', note: 'does not + require (V1 murni)' },
+          { sentence: 'Did the audit team uncover any financial anomalies?', translation: 'Apakah tim audit menemukan kejanggalan finansial?', note: 'Did + team + uncover (V1 murni)' }
         ],
-      },
+        contrastiveAnalysis: {
+          incorrectSentence: 'The patient did not responded to the initial treatment.',
+          correctSentence: 'The patient did not respond to the initial treatment.',
+          linguisticReason: 'Karena "did not" sudah menunjukkan masa lampau, kata kerja berikutnya wajib kembali ke bentuk dasar "respond" (bukan "responded").'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Rujukan kata ganti yang salah atau ambigu merusak nilai Coherence & Cohesion (CC).',
-      toeflApplication: 'Soal "Pronoun Agreement" selalu hadir di TOEFL iBT Reading & Structure.',
-      scoringImpact: 'Menjaga alur kohesi kalimat tetap jernih dan bebas ambigu.',
+      ieltsApplication: 'Menjaga akurasi kalimat negatif tanpa "double marking" (*did not showed ❌*) menjamin nilai akurasi gramatikal tinggi.',
+      toeflApplication: 'TOEFL Structure sering menguji kalimat inversi negatif (*Rarely did the committee approve...*).',
+      scoringImpact: 'Mengeliminasi kesalahan elementer yang merusak impresi penguji.'
     },
     goldenRules: [
-      'Gunakan Object Pronoun setelah kata kerja dan setelah preposisi.',
-      'Possessive Determiner menempel langsung di depan kata benda tanpa apostrof.',
+      'Setelah do, does, did (atau bentuk negatifnya), kata kerja SELALU kembali ke bentuk pertama (Bare Infinitive).',
+      'Gunakan "does" hanya untuk subjek tunggal orang ketiga (He, She, It, The system) pada masa kini.',
+      'Gunakan "did" untuk semua subjek tanpa terkecuali pada masa lampau.'
     ],
     questions: [
       {
-        id: 'q04-1',
+        id: 'q-m04-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih bentuk kata ganti yang tepat: "The research grant was divided equally between Dr. Davis and ________."',
-        options: ['her', 'she', 'hers', 'herself'],
-        correctAnswer: 'her',
-        explanation: 'Setelah preposisi "between", kata ganti wajib berbentuk Object Pronoun ("her").',
-        ruleReference: 'Kaidah Emas: Pronoun setelah preposisi wajib memakai Object Pronoun.',
+        question: 'The preliminary simulation did not _____ the catastrophic structural failure.',
+        options: ['predicted', 'predicts', 'predict', 'predicting'],
+        correctAnswer: 'predict',
+        explanation: 'Setelah operator lampau "did not", kata kerja wajib berbentuk dasar murni (Bare Infinitive) -> "predict".',
+        ruleReference: 'Modul 04: Bare Infinitive after Did Not'
       },
+      {
+        id: 'q-m04-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'Why _____ the statistical model fail to account for seasonal economic volatility?',
+        options: ['do', 'does', 'is', 'has'],
+        correctAnswer: 'does',
+        explanation: 'Subjek "the statistical model" adalah tunggal orang ketiga, dan kalimat memiliki kata kerja aksi "fail", sehingga membutuhkan operator "does".',
+        ruleReference: 'Modul 04: Interrogative Operator with Singular Subject'
+      },
+      {
+        id: 'q-m04-3',
+        category: 'Word Classes',
+        difficulty: 'Lanjutan',
+        question: 'Although the initial hypothesis was contested, subsequent laboratory tests _____ corroborate the findings.',
+        options: ['did', 'do', 'are', 'were'],
+        correctAnswer: 'did',
+        explanation: 'Konteks kalimat adalah masa lampau ("was contested"), sehingga penekanan emfatik menggunakan operator lampau "did corroborate".',
+        ruleReference: 'Modul 04: Emphatic Past Operator'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec04-1',
-        flawedSentence: 'The international corporation revised it\'s policy to protect their assets.',
-        flawLocation: "it's policy to protect their",
-        correctedSentence: 'The international corporation revised its policy to protect its assets.',
-        linguisticExplanation: '"Corporation" adalah subjek tunggal. Bentuk kepemilikannya adalah "its" dan kata ganti rujukannya harus konsisten tunggal ("its assets").',
+        id: 'ec-m04-1',
+        flawedSentence: 'The software update does not resolves the network latency issues.',
+        flawLocation: 'does not resolves',
+        correctedSentence: 'The software update does not resolve the network latency issues.',
+        linguisticExplanation: 'Setelah operator "does not", kata kerja wajib kembali ke bentuk Bare Infinitive "resolve" tanpa akhiran -s.'
       }
     ]
   },
 
   {
-    id: 'modul-05-quantifiers',
+    id: 'modul-05-subject-verb-agreement-fundamental',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Morfologi Kata Benda',
-    categoryKey: 'Word Classes',
+    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
+    categoryKey: 'Sentence Architecture',
     moduleNumber: 5,
-    title: 'Demonstratives, Quantifiers & Distributives',
-    subtitle: 'Kesesuaian kuantitas: Much vs Many, Few vs Little, Each vs Every vs All',
+    title: 'Subject-Verb Agreement Fundamental & Kaidah Akhiran -s/-es',
+    subtitle: 'Menyelaraskan subjek tunggal vs jamak, aturan ortografi akhiran -s/-es, dan logika Simple Present',
     levelBadge: 'Fondasi Mutlak · Modul 05',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 02: Countable vs Uncountable',
-    mentalModelIntro: 'Kata penentu jumlah memiliki aturan ketat berdasarkan apakah kata benda yang dihitung bisa dihitung satuan (Countable) atau tidak (Uncountable).',
-    coreConceptSummary: 'Many/Few/Fewer untuk Countable Nouns. Much/Little/Less untuk Uncountable Nouns. Each/Every berpasangan dengan Singular Noun dan Singular Verb.',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Subject-Verb Agreement adalah hukum paling fundamental dalam tata bahasa Inggris: Subjek tunggal membutuhkan kata kerja tunggal, dan subjek jamak membutuhkan kata kerja jamak. Pada Simple Present, kata kerja untuk subjek tunggal orang ketiga (He, She, It, a scholar) WAJIB mendapatkan akhiran -s atau -es. Kebalikannya, subjek jamak (They, We, scholars) menggunakan kata kerja polos tanpa akhiran -s.',
+    coreConceptSummary: 'Subjek Tunggal (He/She/It/The student) -> Verb + -s/-es (works, studies, goes). Subjek Jamak (I/You/We/They/The students) -> Verb polos (work, study, go). Perhatikan aturan ortografi: verb berakhiran desis (-ch, -sh, -ss, -x, -zz, -o) ditambah -es (teaches, washes, fixes, goes); verb berakhiran konsonan + y berubah menjadi -ies (studies, carries).',
+    decisionTree: [
+      {
+        step: 'Langkah 1: Cek Jumlah dan Orang Subjek',
+        question: 'Apakah subjek berupa orang ketiga tunggal (He, She, It, Tunggal) dalam Simple Present Tense?',
+        branches: [
+          { condition: 'Ya (Tunggal: He/She/It/The author)', outcome: 'Wajib tambahkan akhiran -s/-es pada kata kerja!', rule: 'Contoh: The author emphasizes the importance of data.' },
+          { condition: 'Tidak (Jamak atau I/You)', outcome: 'Gunakan kata kerja dasar polos tanpa -s/-es.', rule: 'Contoh: The authors emphasize the importance of data.' }
+        ]
+      }
+    ],
+    registerLadder: {
+      informal: 'Everyone know that air pollution is bad.',
+      standard: 'Everyone knows that air pollution is hazardous.',
+      academicHigh: 'Scholarly consensus affirms that atmospheric particulates present substantial public health hazards.',
+      analysis: 'Kata ganti tak tentu "Everyone / Everybody" secara gramatikal berstatus TUNGGAL dan wajib menggunakan verb berakhiran -s (*knows*).'
+    },
+    canDoChecklist: [
+      'Mampu menerapkan akhiran -s/-es pada Simple Present tanpa pernah terlupa.',
+      'Memahami aturan ejaan konsonan + y -> -ies vs vokal + y -> -ys (e.g. *studies* vs *plays*).',
+      'Mengenali subjek tunggal dengan kata ganti tak tentu (*Everyone, Each, Nobody*) yang menuntut verb berakhiran -s.'
+    ],
+    pocketAxioms: [
+      'Aksioma S: Jika subjeknya tunggal, kata kerjanya yang memakai akhiran -S (He workS, They work).',
+      'Aksioma Indefinite: Everyone, Somebody, Each, Neither secara gramatikal selalu TUNGGAL.'
+    ],
     sections: [
       {
-        stepNumber: 'Langkah 1: Matriks Quantifiers Baku',
-        explanation: 'Countable Plural: Many, A few, Few, Fewer. Uncountable: Much, A little, Little, Less. Netral: A lot of, Some, All.',
-        formula: 'Countable: Many studies / Few errors | Uncountable: Much research / Little evidence / Less time',
+        stepNumber: '01',
+        title: 'Hukum Keselarasan Tunggal vs Jamak',
+        explanation: 'Kesesuaian antara subjek dan predikat adalah fondasi integritas kalimat.',
+        formula: 'Singular: He/She/It + Verb-s/es | Plural: They/We/I/You + Verb (Base)',
         examples: [
-          {
-            sentence: 'There is little evidence to support this claim, so fewer scholars endorse the theory.',
-            translation: 'Hanya ada sedikit bukti (little) untuk mendukung klaim ini, sehingga lebih sedikit cendekiawan (fewer) yang mendukung teori tersebut.',
-          },
+          { sentence: 'The researcher conducts longitudinal field surveys.', translation: 'Peneliti tersebut melaksanakan survei lapangan longitudinal.', note: 'Single researcher -> conducts' },
+          { sentence: 'The researchers conduct longitudinal field surveys.', translation: 'Para peneliti tersebut melaksanakan survei lapangan longitudinal.', note: 'Plural researchers -> conduct' }
         ],
-      },
+        contrastiveAnalysis: {
+          incorrectSentence: 'Everyone in the research department agree with the new policy.',
+          correctSentence: 'Everyone in the research department agrees with the new policy.',
+          linguisticReason: '"Everyone" adalah pronoun tak tentu tunggal (singular indefinite pronoun), sehingga kata kerjanya wajib berakhiran -s ("agrees").'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Writing Task 1, penggunaan deskripsi kuantitas (*a significant amount of*, *a substantial number of*) wajib akurat terhadap jenis datanya.',
-      toeflApplication: 'TOEFL Structure sering menguji kesalahan penempatan "much" di depan plural noun.',
-      scoringImpact: 'Mencegah ketidaksesuaian kuantitas leksikal dalam laporan formal.',
+      ieltsApplication: 'Kesalahan Subject-Verb Agreement adalah kesalahan grammar paling sering yang langsung terdeteksi oleh penguji IELTS pada 30 detik pertama membaca esai.',
+      toeflApplication: 'Section Written Expression TOEFL menguji S-V agreement yang dipisahkan oleh frasa sisipan preposisi yang panjang.',
+      scoringImpact: 'Mencegah penurunan drastis pada kriteria akurasi gramatikal.'
     },
     goldenRules: [
-      'Gunakan Many / Fewer untuk countable; gunakan Much / Less untuk uncountable.',
-      'Each dan Every selalu menuntut kata benda tunggal dan kata kerja tunggal.',
+      'Subjek tunggal orang ketiga (He/She/It/The machine) mewajibkan kata kerja berakhiran -s/-es pada Simple Present.',
+      'Abaikan frasa preposisi sisipan di antara subjek dan kata kerja saat menentukan tunggal/jamak.',
+      'Kata ganti *Each, Every, Everyone, Someone, Nobody* selalu menuntut kata kerja tunggal berakhiran -s.'
     ],
     questions: [
       {
-        id: 'q05-1',
-        category: 'Word Classes',
+        id: 'q-m05-1',
+        category: 'Sentence Architecture',
         difficulty: 'Dasar',
-        question: 'Pilih quantifier yang tepat: "Despite extensive searches, the committee found ________ empirical evidence of procedural misconduct."',
-        options: ['little', 'few', 'fewer', 'many'],
-        correctAnswer: 'little',
-        explanation: '"Evidence" adalah uncountable noun, sehingga menggunakan "little".',
-        ruleReference: 'Kaidah Emas: Uncountable noun dengan kuantitas minimal memakai "little".',
+        question: 'The principal investigator meticulously _____ all raw telemetry before publication.',
+        options: ['verify', 'verifies', 'verifying', 'verification'],
+        correctAnswer: 'verifies',
+        explanation: 'Subjek "The principal investigator" adalah tunggal orang ketiga, sehingga kata kerjanya membutuhkan akhiran -ies -> "verifies".',
+        ruleReference: 'Modul 05: Third-Person Singular -ies Orthography'
       },
+      {
+        id: 'q-m05-2',
+        category: 'Sentence Architecture',
+        difficulty: 'Menengah',
+        question: 'Each of the participating laboratories _____ a standardized calibration protocol.',
+        options: ['utilize', 'utilizes', 'utilizing', 'have utilized'],
+        correctAnswer: 'utilizes',
+        explanation: 'Subjek intinya adalah "Each" (tunggal), bukan "laboratories" (objek preposisi "of"). Maka kata kerja wajib tunggal -> "utilizes".',
+        ruleReference: 'Modul 05: Indefinite Pronoun Agreement (Each)'
+      },
+      {
+        id: 'q-m05-3',
+        category: 'Sentence Architecture',
+        difficulty: 'Lanjutan',
+        question: 'The implementation of stringent environmental regulations _____ carbon emissions significantly.',
+        options: ['reduce', 'reduces', 'reducing', 'have reduced'],
+        correctAnswer: 'reduces',
+        explanation: 'Subjek sejati adalah "The implementation" (tunggal), bukan "regulations". Maka verb wajib berakhiran -s -> "reduces".',
+        ruleReference: 'Modul 05: Intervening Prepositional Phrase Agreement'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec05-1',
-        flawedSentence: 'The factory produced less vehicles this quarter due to supply chain shortages.',
-        flawLocation: 'less vehicles',
-        correctedSentence: 'The factory produced fewer vehicles this quarter due to supply chain shortages.',
-        linguisticExplanation: '"Vehicles" adalah kata benda yang dapat dihitung (countable plural), sehingga bentuk yang benar adalah "fewer".',
+        id: 'ec-m05-1',
+        flawedSentence: 'The quality of the chemical reagents determine the accuracy of the experiment.',
+        flawLocation: 'determine',
+        correctedSentence: 'The quality of the chemical reagents determines the accuracy of the experiment.',
+        linguisticExplanation: 'Subjek sejati adalah "The quality" (tunggal), bukan "reagents". Kata kerja harus diselaraskan menjadi "determines".'
       }
     ]
   },
 
   // =========================================================================
-  // TAHAP 2: PREDIKAT, AKSI & SISTEM KATA KERJA BANTU (VERBS & AUXILIARIES)
+  // TAHAP 2: MORFOLOGI KATA BENDA & DETERMINERS
   // =========================================================================
   {
-    id: 'modul-06-core-verb-types',
+    id: 'modul-06-noun-types',
     stageNumber: 2,
-    stageName: 'Tahap 2: Predikat, Aksi & Sistem Kata Kerja Bantu',
+    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 6,
-    title: 'Core Verb Types: Transitive, Intransitive, dan Ergative Verbs',
-    subtitle: 'Memahami predikat berobjek, predikat tanpa objek, dan kata kerja dua arah',
-    levelBadge: 'Sistem Kata Kerja · Modul 06',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 01: Noun Types',
-    mentalModelIntro: 'Setiap kalimat bahasa Inggris berputar pada energi kata kerja: apakah energi tindakan tersebut berpindah ke objek langsung (Transitive), atau berhenti pada subjek itu sendiri (Intransitive).',
-    coreConceptSummary: 'Transitive Verb membutuhkan Direct Object. Intransitive Verb dilarang memiliki Direct Object dan tidak pernah bisa dipasifkan.',
+    title: 'Arsitektur Noun: Proper, Common, Concrete, Abstract, dan Collective Nouns',
+    subtitle: 'Mengenali entitas pembicaraan dan klasifikasi substantif dari konsep paling dasar',
+    levelBadge: 'Morfologi Noun · Modul 06',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Kata Benda (Noun) adalah batu bata utama dalam arsitektur bahasa. Segala sesuatu yang dapat dinamai—baik benda fisik yang bisa disentuh (Concrete Noun), gagasan konseptual yang hanya ada dalam pikiran (Abstract Noun), nama diri yang spesifik (Proper Noun), hingga kelompok entitas (Collective Noun)—memiliki aturan tata bahasa masing-masing.',
+    coreConceptSummary: 'Proper Noun wajib diawali huruf kapital. Abstract Noun umumnya bersifat uncountable dan tidak menerima artikel jamak (-s). Collective Noun dianggap sebagai satu unit tunggal dalam American/Oxford standard (e.g. *The committee has decided*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Transitive vs Intransitive Verbs',
-        explanation: 'Transitive Verbs wajib memiliki direct object. Intransitive Verbs (occur, happen, exist, rise) tidak memiliki objek.',
-        formula: 'Transitive: S + V + DO | Intransitive: S + V + [Adverbial / Prep Phrase]',
+        stepNumber: '01',
+        title: 'Klasifikasi 5 Jenis Noun Utama',
+        explanation: 'Membedakan klasifikasi benda memandu pemilihan artikel (a/an/the) dan keselarasan predikat.',
+        formula: 'Proper (Capitalized) | Common | Concrete (Physical) | Abstract (Non-physical) | Collective (Group as Unit)',
         examples: [
-          {
-            sentence: 'The research committee published (Transitive) the report, but the anomaly occurred (Intransitive) overnight.',
-            translation: 'Komite riset menerbitkan laporan tersebut, namun anomali itu terjadi semalam.',
-          },
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'The incident was occurred during the final laboratory inspection.',
-          correctSentence: 'The incident occurred during the final laboratory inspection.',
-          linguisticReason: '"Occur" adalah Intransitive Verb dan TIDAK PERNAH memiliki bentuk pasif.',
-        },
-      },
+          { sentence: 'Oxford University announced a breakthrough in artificial intelligence.', translation: 'Universitas Oxford mengumumkan terobosan dalam kecerdasan buatan.', note: 'Oxford University = Proper; breakthrough = Common/Abstract.' },
+          { sentence: 'Integrity and perseverance define successful researchers.', translation: 'Integritas dan kegigihan mendefinisikan peneliti yang sukses.', note: 'Integrity, perseverance = Abstract Nouns (Uncountable).' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Di IELTS Writing Task 1, penggunaan Ergative Verbs untuk mendeskripsikan tren (*prices dropped*) membuat tulisan terasa alami.',
-      toeflApplication: 'TOEFL Structure sering menguji kesalahan pemaksaan pasif pada kata kerja intransitif.',
-      scoringImpact: 'Mengeliminasi kesalahan pasif fatal pada kalimat intransitif.',
+      ieltsApplication: 'Penulisan esai akademis IELTS membutuhkan penggunaan Abstract Nouns padat (Nominalization) untuk meningkatkan skor Lexical Resource.',
+      toeflApplication: 'Section Reading TOEFL menguji pemahaman makna kata benda abstrak dalam wacana sains dan humaniora.',
+      scoringImpact: 'Meningkatkan bobot kepadatan leksikal esai.'
     },
     goldenRules: [
-      'Transitive Verb selalu membutuhkan Direct Object.',
-      'Intransitive Verb (occur, happen, exist, arrive, rise) TIDAK PERNAH memiliki bentuk pasif.',
+      'Awali semua Proper Noun dengan huruf kapital.',
+      'Perlakukan Abstract Noun sebagai uncountable kecuali dalam konteks partitif khusus.',
+      'Perlakukan Collective Noun sebagai unit tunggal (singular).'
     ],
     questions: [
       {
-        id: 'q06-1',
+        id: 'q-m06-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Kalimat manakah yang menggunakan kata kerja secara tepat tanpa kesalahan bentuk pasif intransitif?',
-        options: [
-          'A major economic recession was happened in the late 1920s.',
-          'A major economic recession happened in the late 1920s.',
-          'A major economic recession has been happened in the late 1920s.',
-          'A major economic recession was been happened in the late 1920s.',
-        ],
-        correctAnswer: 'A major economic recession happened in the late 1920s.',
-        explanation: '"Happen" adalah intransitive verb dan tidak pernah memiliki bentuk pasif.',
-        ruleReference: 'Kaidah Emas: Intransitive verbs tidak memiliki bentuk pasif.',
+        question: 'Which of the following words is an Abstract Noun?',
+        options: ['Microscope', 'Laboratory', 'Resilience', 'Professor'],
+        correctAnswer: 'Resilience',
+        explanation: '"Resilience" (ketangguhan) adalah konsep abstrak mental yang tidak berwujud fisik.',
+        ruleReference: 'Modul 06: Abstract Nouns'
       },
+      {
+        id: 'q-m06-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'The research committee _____ reached a unanimous decision regarding the grant.',
+        options: ['has', 'have', 'are', 'having'],
+        correctAnswer: 'has',
+        explanation: '"The research committee" adalah Collective Noun yang bertindak sebagai satu kesatuan unit tunggal -> "has".',
+        ruleReference: 'Modul 06: Collective Noun Agreement'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec06-1',
-        flawedSentence: 'The unexpected power blackout was occurred at midnight across the district.',
-        flawLocation: 'was occurred',
-        correctedSentence: 'The unexpected power blackout occurred at midnight across the district.',
-        linguisticExplanation: '"Occur" adalah kata kerja intransitif yang dilarang dipasifkan. Bentuk yang benar adalah "occurred".',
+        id: 'ec-m06-1',
+        flawedSentence: 'The informations provided by the ministry were insufficient.',
+        flawLocation: 'informations',
+        correctedSentence: 'The information provided by the ministry was insufficient.',
+        linguisticExplanation: '"Information" adalah abstract/uncountable noun murni yang tidak pernah memiliki bentuk jamak "informations".'
       }
     ]
   },
 
   {
-    id: 'modul-07-stative-verbs',
+    id: 'modul-07-countable-uncountable',
     stageNumber: 2,
-    stageName: 'Tahap 2: Predikat, Aksi & Sistem Kata Kerja Bantu',
+    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 7,
-    title: 'Stative Verbs vs Dynamic Verbs: Kognisi, Emosi, Persepsi & Kepemilikan',
-    subtitle: 'Memahami mengapa kata kerja kondisi permanen menolak bentuk continuous (-ing)',
-    levelBadge: 'Sistem Kata Kerja · Modul 07',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 06: Core Verb Types',
-    mentalModelIntro: 'Kata kerja statif menggambarkan kondisi keberadaan menyeluruh yang tidak memiliki awal/akhir fisik, sehingga secara logika menolak bentuk progressive (-ing).',
-    coreConceptSummary: 'Stative Verbs mencakup: Kognisi (know, understand, believe), Kepemilikan (own, possess, belong), dan Relasi (contain, consist of). Mereka SELALU menggunakan bentuk Simple.',
-    decisionTree: [
-      {
-            "step": "Langkah 1: Klasifikasi Kategori Keadaan vs Aksi Fisik",
-            "question": "Apakah kata kerja menyatakan keadaan batin permanen atau aksi fisik dinamis?",
-            "branches": [
-                  {
-                        "condition": "Kognisi, emosi, kepemilikan, atau persepsi statis",
-                        "outcome": "Stative Verb",
-                        "rule": "DILARANG menggunakan bentuk Continuous -ing (*is knowing, *is belonging SALAH)."
-                  },
-                  {
-                        "condition": "Aksi fisik yang memiliki awal dan akhir durasi",
-                        "outcome": "Dynamic Action Verb",
-                        "rule": "Boleh menggunakan tenses Continuous (is running, are investigating)."
-                  }
-            ]
-      }
-],
-    registerLadder: {
-      "informal": "I am understanding this rule now and I am having two cars.",
-      "standard": "I understand this rule now and I have two cars.",
-      "academicHigh": "The research committee fully comprehends the regulatory parameters and possesses the requisite authorization.",
-      "analysis": "Mengubah bentuk -ing statif (*am understanding, *am having) menjadi present simple baku \"comprehends\" dan \"possesses\"."
-},
-    canDoChecklist: [
-      "Saya tidak akan pernah menggunakan tenses Continuous (-ing) pada kata kerja kognisi (know, believe, understand).",
-      "Saya memahami kata kerja berkepribadian ganda seperti \"have\" (kepemilikan = statif; aktivitas makan/minum = dinamis).",
-      "Saya dapat membedakan \"taste\" sebagai statif (rasanya) vs dinamis (mencicipi)."
-],
-    pocketAxioms: [
-      "Stative verbs (know, believe, belong, seem, prefer) DILARANG berakhiran -ing untuk continuous.",
-      "Kata kerja berkepribadian ganda: \"I think you are right\" (opini) vs \"I am thinking about it\" (proses berpikir).",
-      "Dalam tulisan akademik, gunakan kognisi formal: comprehend, possess, constitute, resemble."
-],
+    title: 'Countable vs Uncountable Nouns & Partitive Expressions',
+    subtitle: 'Penanganan substansi massa, konsep abstrak, dan takaran hitung partitif',
+    levelBadge: 'Morfologi Noun · Modul 07',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Kata benda terhitung (Countable) memiliki wujud diskrit individual yang dapat dihitung (one book, two books). Sebaliknya, kata benda tak terhitung (Uncountable) berupa massa cair, gas, materi padat tak terbagi, atau konsep abstrak (water, information, research, equipment).',
+    coreConceptSummary: 'Uncountable Nouns tidak boleh diawali artikel "a/an" dan tidak boleh ditambah akhiran "-s/-es". Untuk menghitungnya, gunakan ungkapan partitif (a piece of equipment, an item of research, a body of evidence).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Stative Verbs yang Dilarang Berakhiran -ing',
-        explanation: 'Stative verbs mendeskripsikan keadaan mental atau relasi logis yang konstan.',
-        formula: 'Stative Verbs (Dilarang Berbentuk -ing): know, understand, believe, belong, own, contain, consist of, resemble',
+        stepNumber: '01',
+        title: 'Aturan Absolut Uncountable Nouns Akademik',
+        explanation: 'Kata benda seperti *research, equipment, advice, evidence, machinery, furniture, information* bersifat UNCOUNTABLE mutlak dalam bahasa Inggris standar.',
+        formula: 'Uncountable Noun + Singular Verb | Partitive: a [piece/item/body] of + Uncountable Noun',
         examples: [
-          {
-            sentence: 'The experimental compound contains microscopic traces of synthesized proteins.',
-            translation: 'Senyawa eksperimen tersebut mengandung jejak mikroskopis protein sintetis.',
-          },
+          { sentence: 'The laboratory acquired new equipment for spectrometer analysis.', translation: 'Laboratorium memperoleh peralatan baru untuk analisis spektrometer.', note: 'equipment (tanpa -s dan tanpa artikel "an")' }
         ],
-      },
+        contrastiveAnalysis: {
+          incorrectSentence: 'The scientist conducted several researches.',
+          correctSentence: 'The scientist conducted several research studies / extensive research.',
+          linguisticReason: '"Research" adalah uncountable noun. Gunakan "research studies" atau "extensive research".'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Menggunakan stative verbs dalam bentuk continuous adalah kesalahan gramatikal fatal yang langsung menurunkan skor.',
-      toeflApplication: 'TOEFL Structure sering memuat pilihan salah yang memaksakan kata kerja *consist of* ke dalam bentuk progressive.',
-      scoringImpact: 'Menjaga kemurnian sintaksis predikat dalam penulisan ilmiah.',
+      ieltsApplication: 'Menghindari *researches*, *equipments*, *evidences* adalah pembeda utama antara esai Band 6.0 dan Band 8.0.',
+      toeflApplication: 'TOEFL Structure secara rutin menjebak peserta dengan Countable vs Uncountable quantifiers (much vs many, few vs little).',
+      scoringImpact: 'Mencegah kesalahan leksikal fatal yang berulang.'
     },
     goldenRules: [
-      'Stative Verbs dilarang memakai bentuk -ing.',
-      'Gunakan Simple Present bahkan jika ada kata penanda waktu "now" atau "currently" bila kata kerjanya adalah statif.',
+      'Jangan pernah menambahkan -s pada kata *research, equipment, information, evidence, advice*.',
+      'Gunakan partitive expression (*a body of evidence*, *a piece of advice*) bila perlu menghitung unit.',
+      'Gunakan *much/little/amount of* untuk uncountable, dan *many/few/number of* untuk countable.'
     ],
     questions: [
       {
-        id: 'q07-1',
+        id: 'q-m07-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih bentuk kata kerja yang benar: "The archival collection ________ original manuscripts from the sixteenth century."',
-        options: ['is containing', 'contains', 'contain', 'are containing'],
-        correctAnswer: 'contains',
-        explanation: '"Contain" adalah stative verb relasi yang tidak boleh berbentuk progressive (-ing).',
-        ruleReference: 'Kaidah Emas: Stative verbs tidak pernah menggunakan bentuk Continuous (-ing).',
+        question: 'The environmental agency collected a vast _____ of empirical evidence.',
+        options: ['number', 'amount', 'few', 'many'],
+        correctAnswer: 'amount',
+        explanation: '"Evidence" adalah uncountable noun, sehingga penentu kuantitas yang tepat adalah "amount" (bukan "number").',
+        ruleReference: 'Modul 07: Uncountable Quantifiers'
       },
+      {
+        id: 'q-m07-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'The laboratory purchased three new pieces of _____ for the biochemical department.',
+        options: ['equipments', 'equipment', 'an equipment', 'machineries'],
+        correctAnswer: 'equipment',
+        explanation: 'Setelah frasa partitif "pieces of", kata benda uncountable tetap berbentuk dasar tunggal "equipment".',
+        ruleReference: 'Modul 07: Partitive Expressions'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec07-1',
-        flawedSentence: 'The senior scientists are now understanding the underlying molecular mechanisms.',
-        flawLocation: 'are now understanding',
-        correctedSentence: 'The senior scientists now understand the underlying molecular mechanisms.',
-        linguisticExplanation: '"Understand" adalah kata kerja kognisi statif yang menolak bentuk progressive (-ing).',
+        id: 'ec-m07-1',
+        flawedSentence: 'The forensic team discovered several new evidences at the scene.',
+        flawLocation: 'several new evidences',
+        correctedSentence: 'The forensic team discovered several new pieces of evidence at the scene.',
+        linguisticExplanation: '"Evidence" tidak pernah memiliki bentuk jamak "evidences". Gunakan "pieces of evidence".'
       }
     ]
   },
 
   {
-    id: 'modul-08-linking-verbs',
+    id: 'modul-08-articles-system',
     stageNumber: 2,
-    stageName: 'Tahap 2: Predikat, Aksi & Sistem Kata Kerja Bantu',
+    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 8,
-    title: 'Linking Verbs & Subject Complements (Be, Seem, Appear, Remain, Become)',
-    subtitle: 'Menghubungkan atribut sifat ke subjek dan pantangan penggunaan adverb',
-    levelBadge: 'Sistem Kata Kerja · Modul 08',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 07: Stative Verbs',
-    mentalModelIntro: 'Linking Verbs bertindak seperti tanda sama dengan (=). Karena yang diterangkan adalah kata benda subjek, kata yang mengikutinya WAJIB berupa kata sifat (Adjective), bukan kata keterangan (Adverb).',
-    coreConceptSummary: 'Linking Verbs mencakup: be, seem, appear, remain, become, look, sound, smell, taste, feel. Mereka SELALU diikuti oleh Adjective, bukan Adverb.',
+    title: 'The Article System: A, An, The vs Zero Article',
+    subtitle: 'Presisi definit vs indefinit, aturan fonetik pengucapan, dan konsep universal',
+    levelBadge: 'Penentu & Artikel · Modul 08',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Artikel adalah penentu identitas rujukan: Apakah pendengar/pembaca sudah tahu persis benda yang dimaksud (Definite: THE) atau benda tersebut baru diperkenalkan secara umum/acak (Indefinite: A/AN)? Untuk konsep umum jamak atau konsep abstrak universal, gunakan Zero Article (Ø).',
+    coreConceptSummary: 'A digunakan sebelum bunyi konsonan (a university, a European nation). AN digunakan sebelum bunyi vokal (an hour, an honest mistake). THE digunakan saat rujukan spesifik, unik, atau sudah disebut sebelumnya. ZERO ARTICLE digunakan untuk generalisasi jamak (*Computers are essential*) dan konsep abstrak umum (*Knowledge is power*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Hubungan Subjek dan Subject Complement',
-        explanation: 'Setelah linking verb, informasi yang diberikan adalah kondisi atau sifat dari subjek.',
-        formula: 'Subject + Linking Verb (seem / appear / remain / become / look) + ADJECTIVE',
+        stepNumber: '01',
+        title: 'Hukum Fonetik A vs AN & Kaidah THE',
+        explanation: 'Pemilihan A vs AN ditentukan oleh BUNYI pengucapan awal (phonetic sound), bukan huruf tulisan!',
+        formula: 'A + Consonant Sound (/juː/, /w/) | AN + Vowel Sound (/aʊ/, /ɒ/) | THE + Specific/Unique Entity',
         examples: [
-          {
-            sentence: 'The experimental projections remain consistent across all demographic cohorts.',
-            translation: 'Proyeksi eksperimental tetap konsisten (consistent) di seluruh kelompok demografi.',
-          },
-        ],
-      },
+          { sentence: 'A university campus (/juːnɪˈvɜːsɪti/) requires substantial maintenance.', translation: 'Kampus universitas membutuhkan pemeliharaan besar.', note: 'A university (bunyi /j/ konsonan)' },
+          { sentence: 'An honest assessment (/ˈɒnɪst/) was presented to the board.', translation: 'Penilaian yang jujur dipresentasikan kepada dewan.', note: 'An honest (bunyi /ɒ/ vokal)' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Variasi Linking Verbs formal (*remain stable*, *appear robust*) sangat diapresiasi dalam IELTS Academic Writing Task 1.',
-      toeflApplication: 'TOEFL Structure sering menguji jebakan penggunaan Adverb berakhiran -ly setelah linking verbs.',
-      scoringImpact: 'Meningkatkan ketepatan sintaksis formal dalam penulisan laporan akademik.',
+      ieltsApplication: 'Ketepatan penggunaan artikel *the* pada nama geografis dan entitas unik sangat diperhatikan dalam Academic Writing Task 1 & 2.',
+      toeflApplication: 'TOEFL Structure secara intensif menguji jebakan fonetik artikel (*a unique* vs *an unique ❌*).',
+      scoringImpact: 'Mengeliminasi kesalahan gramatikal minor yang menurunkan skor akurasi.'
     },
     goldenRules: [
-      'Linking Verbs selalu diikuti oleh Adjective sebagai Subject Complement, bukan Adverb.',
+      'Gunakan A sebelum kata yang berbunyi konsonan (/j/, /w/), e.g. *a university, a European, a one-way street*.',
+      'Gunakan AN sebelum kata yang berbunyi vokal meskipun berawalan huruf H bisu, e.g. *an hour, an honest man*.',
+      'Gunakan Zero Article untuk kata benda jamak yang merujuk generalisasi umum (*Scientists seek truth, bukan The scientists*).'
     ],
     questions: [
       {
-        id: 'q08-1',
+        id: 'q-m08-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih kata pelengkap yang tepat: "After extensive peer review, the theoretical framework appears ________."',
-        options: ['sound', 'soundly', 'soundness', 'sounding'],
-        correctAnswer: 'sound',
-        explanation: '"Appears" adalah Linking Verb, sehingga wajib diikuti oleh kata sifat ("sound" = kokoh/valid).',
-        ruleReference: 'Kaidah Emas: Linking verbs selalu diikuti oleh Adjective.',
+        question: 'The consortium presented _____ unified proposal to the international regulatory commission.',
+        options: ['a', 'an', 'the', 'Ø'],
+        correctAnswer: 'a',
+        explanation: 'Kata "unified" diawali bunyi konsonan glide /juːˈnaɪfɪd/, sehingga memerlukan artikel "a" (bukan "an").',
+        ruleReference: 'Modul 08: Phonetic Article Selection'
       },
+      {
+        id: 'q-m08-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: '_____ knowledge obtained from clinical trials must be disseminated transparently.',
+        options: ['A', 'An', 'The', 'Ø (Zero article)'],
+        correctAnswer: 'The',
+        explanation: 'Kata "knowledge" di sini dispesifikasikan oleh frasa penjelas "obtained from clinical trials", sehingga berstatus definit -> "The knowledge".',
+        ruleReference: 'Modul 08: Definite Article Specification'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec08-1',
-        flawedSentence: 'The proposed solution sounds extraordinarily effectively to the advisory council.',
-        flawLocation: 'extraordinarily effectively',
-        correctedSentence: 'The proposed solution sounds extraordinarily effective to the advisory council.',
-        linguisticExplanation: '"Sounds" adalah Linking Verb, sehingga kata yang melengkapi subjek harus berupa Adjective ("effective").',
+        id: 'ec-m08-1',
+        flawedSentence: 'The researchers submitted an unique hypothesis to the journal.',
+        flawLocation: 'an unique',
+        correctedSentence: 'The researchers submitted a unique hypothesis to the journal.',
+        linguisticExplanation: '"Unique" diawali bunyi konsonan semi-vokal /juːˈniːk/, sehingga wajib menggunakan artikel "a" (*a unique*).'
       }
     ]
   },
 
   {
-    id: 'modul-09-modals',
+    id: 'modul-09-pronoun-declension-advanced',
     stageNumber: 2,
-    stageName: 'Tahap 2: Predikat, Aksi & Sistem Kata Kerja Bantu',
+    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 9,
-    title: 'Auxiliary Verbs: Primary (Be, Do, Have) vs Modals (Can, Could, Must, Should)',
-    subtitle: 'Mekanisme kata kerja bantu, derajat kepastian, dan aturan mutlak Bare Infinitive',
-    levelBadge: 'Sistem Kata Kerja · Modul 09',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 06 - 08',
-    mentalModelIntro: 'Modal Auxiliaries bersifat unik: mereka tidak memiliki akhiran -s, tidak memiliki bentuk -ed, dan SELALU diikuti Verb 1 murni tanpa "to".',
-    coreConceptSummary: 'Modal Auxiliaries (Can, Could, May, Might, Must, Shall, Should, Will, Would) selalu langsung diikuti oleh Bare Infinitive.',
+    title: 'Pronoun Declension Lanjutan (Possessive, Reflexive, Reciprocal, Relative)',
+    subtitle: 'Pembedaan its vs it\'s, possessive adjectives vs pronouns, dan rujukan relatif who vs whom',
+    levelBadge: 'Kasus Pronoun · Modul 09',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Pronoun memiliki sistem kasus (case system) yang kaya: kepemilikan terikat (Possessive Adjective: my, your, its), kepemilikan mandiri (Possessive Pronoun: mine, yours, its), aksi memantul ke diri sendiri (Reflexive: myself, itself), dan kata hubung rujukan (Relative: who, whom, whose, which).',
+    coreConceptSummary: 'ITS (tanpa apostrof) = kepemilikan (*The bird flapped its wings*). IT\'S (dengan apostrof) = singkatan dari "it is" atau "it has". WHO bertindak sebagai subjek relative clause; WHOM bertindak sebagai objek relative clause.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Aturan Mutlak Modal + Bare Infinitive',
-        explanation: 'Setelah Modal Verb, kata kerja yang mengikuti SELALU berbentuk Verb 1 murni tanpa imbuhan apapun.',
-        formula: 'Subject + Modal (must / should / can / could / may / might) + BARE INFINITIVE (V1 murni)',
+        stepNumber: '01',
+        title: 'Matriks Possessive vs Reflexive vs Relative',
+        explanation: 'Membedakan fungsi atributif (menempel pada noun) dan substantif (berdiri sendiri).',
+        formula: 'Possessive Adj + Noun | Possessive Pronoun (Stand-alone) | Reflexive (Subject = Object)',
         examples: [
-          {
-            sentence: 'All prospective candidates must submit their certified credentials prior to final admission.',
-            translation: 'Semua calon kandidat wajib menyerahkan (must submit) kredensial tersertifikasi.',
-          },
-        ],
-      },
+          { sentence: 'The organization updated its privacy policy.', translation: 'Organisasi tersebut memperbarui kebijakan privasinya.', note: 'its = Possessive (tanpa apostrof)' },
+          { sentence: 'The scholar whom the university recruited is a Nobel laureate.', translation: 'Cendekiawan yang direkrut universitas tersebut adalah peraih Nobel.', note: 'whom = Relative Pronoun (Object posisi)' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Penggunaan Modal Verbs untuk Academic Hedging (*may suggest*, *could indicate*) adalah kriteria esensial untuk Band 8.0+ pada Task Response.',
-      toeflApplication: 'TOEFL Structure sering menguji kesalahan penambahan "to" setelah modal.',
-      scoringImpact: 'Menciptakan gaya penulisan ilmiah yang berhati-hati dan akurat.',
+      ieltsApplication: 'Penggunaan variasi pronoun dan relative clauses kompleks membuktikan penguasaan sintaksis tingkat lanjut.',
+      toeflApplication: 'Pembedaan who vs whom dan its vs it\'s merupakan materi uji wajib pada section grammar TOEFL.',
+      scoringImpact: 'Menghindari kesalahan fatal ejaan ortografi dan kasus gramatikal.'
     },
     goldenRules: [
-      'Modal verbs murni SELALU diikuti oleh Bare Infinitive (Verb 1 murni tanpa to).',
+      'Gunakan *its* untuk kepemilikan benda/hewan tunggal (tanpa apostrof).',
+      'Gunakan *whom* bila kata ganti tersebut berkedudukan sebagai objek dari kata kerja atau preposisi.',
+      'Gunakan Reflexive Pronoun (-self/-selves) hanya bila subjek dan objek adalah orang yang sama persis.'
     ],
     questions: [
       {
-        id: 'q09-1',
+        id: 'q-m09-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih kalimat dengan konstruksi modal yang benar:',
-        options: [
-          'The research team should to verify the experimental results.',
-          'The research team should verifies the experimental results.',
-          'The research team should verifying the experimental results.',
-          'The research team should verify the experimental results.',
-        ],
-        correctAnswer: 'The research team should verify the experimental results.',
-        explanation: 'Modal "should" wajib langsung diikuti oleh Bare Infinitive ("verify").',
-        ruleReference: 'Kaidah Emas: Modal selalu diikuti Bare Infinitive tanpa to.',
+        question: 'The pharmaceutical corporation increased _____ research and development budget by fifteen percent.',
+        options: ['it\'s', 'its', 'their', 'theirs'],
+        correctAnswer: 'its',
+        explanation: '"The pharmaceutical corporation" adalah entitas tunggal, sehingga kata ganti kepemilikannya adalah "its" (tanpa apostrof).',
+        ruleReference: 'Modul 09: Possessive Determiner Its'
       },
+      {
+        id: 'q-m09-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'The delegates, several of _____ had traveled from Asia, endorsed the international resolution.',
+        options: ['who', 'whom', 'which', 'whose'],
+        correctAnswer: 'whom',
+        explanation: 'Setelah preposisi "of", pronoun rujukan manusia wajib menggunakan bentuk objek "whom" -> "several of whom".',
+        ruleReference: 'Modul 09: Relative Pronoun Whom after Preposition'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec09-1',
-        flawedSentence: 'The advisory board must to review all submitted financial audits immediately.',
-        flawLocation: 'must to review',
-        correctedSentence: 'The advisory board must review all submitted financial audits immediately.',
-        linguisticExplanation: 'Modal "must" tidak boleh diikuti oleh "to-infinitive". Bentuk yang baku adalah "must review".',
+        id: 'ec-m09-1',
+        flawedSentence: 'The research lab celebrated it\'s twentieth anniversary yesterday.',
+        flawLocation: 'it\'s',
+        correctedSentence: 'The research lab celebrated its twentieth anniversary yesterday.',
+        linguisticExplanation: '"It\'s" adalah singkatan dari "it is/has". Untuk kepemilikan, gunakan "its" tanpa tanda apostrof.'
       }
     ]
   },
 
   {
-    id: 'modul-10-semi-modals',
+    id: 'modul-10-quantifiers-distributives',
     stageNumber: 2,
-    stageName: 'Tahap 2: Predikat, Aksi & Sistem Kata Kerja Bantu',
+    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 10,
-    title: 'Semi-Modals & Phrasal Modals: Ought to, Had better, Be able to, Used to',
-    subtitle: 'Konstruksi modal berfrasa, peringatan urgensi, dan pembedaan Used to vs Be used to',
-    levelBadge: 'Sistem Kata Kerja · Modul 10',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 09: Primary vs Modal Auxiliaries',
-    mentalModelIntro: 'Perbedaan paling krusial adalah antara "Used to + V1" (kebiasaan masa lalu yang sudah berhenti) dengan "Be used to + V-ing" (sudah terbiasa dengan suatu hal).',
-    coreConceptSummary: 'Had better selalu diikuti Bare Infinitive. "Used to + V1" menyatakan rutinitas masa lampau, sedangkan "Be used to + Gerund (V-ing)" menyatakan kebiasaan yang sudah familier saat ini.',
+    title: 'Demonstratives, Quantifiers & Distributives',
+    subtitle: 'Kesesuaian kuantitas: Much vs Many, Few vs Little, Each vs Every vs All',
+    levelBadge: 'Penentu Kuantitas · Modul 10',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Quantifiers menentukan takaran atau sebaran kuantitas nomina. Kesalahan dalam memilih penentu kuantitas dapat merusak keselarasan gramatikal seluruh kalimat (Subject-Verb Agreement) dan mengubah makna semantik secara drastis.',
+    coreConceptSummary: 'MANY / FEW / A FEW untuk Countable Plural. MUCH / LITTLE / A LITTLE untuk Uncountable. FEW / LITTLE (tanpa "a") bermakna negatif (hampir tidak ada / sangat langka). A FEW / A LITTLE bermakna positif (ada sedikit, cukup). EACH / EVERY selalu diikuti Singular Noun + Singular Verb.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Had Better vs Ought To',
-        explanation: '"Had better" menyatakan saran darurat dan SELALU diikuti Bare Infinitive tanpa to.',
-        formula: 'Subject + had better + Bare Infinitive (V1) | Subject + had better not + V1',
+        stepNumber: '01',
+        title: 'Pembeda Kuantitas Diskrit vs Massa',
+        explanation: 'Memetakan pasangan kuantifier berdasarkan sifat keterhitungan nomina.',
+        formula: 'Countable: Many / (A) Few / Number of | Uncountable: Much / (A) Little / Amount of',
         examples: [
-          {
-            sentence: 'The laboratory technicians had better calibrate the sensors before the trial begins.',
-            translation: 'Teknisi laboratorium sebaiknya segera mengalibrasi sensor sebelum pengujian dimulai.',
-          },
-        ],
-      },
-      {
-        stepNumber: 'Langkah 2: Pembedaan Krusial: Used to + V1 vs Be used to + V-ing',
-        explanation: '"Used to + V1" = Dulu biasa melakukan X. "Be used to + V-ing" = Sudah terbiasa melakukan X saat ini.',
-        formula: 'Used to + Verb 1 (Masa Lalu) vs be / get used to + Verb-ing (Kebiasaan Adaptif)',
-        examples: [
-          {
-            sentence: 'The professor used to lecture at Oxford, but now she is used to conducting remote research.',
-            translation: 'Profesor tersebut dulu biasa mengajar di Oxford, tetapi sekarang dia sudah terbiasa melakukan riset jarak jauh.',
-          },
-        ],
-      },
+          { sentence: 'Few researchers attended the seminar.', translation: 'Hampir tidak ada peneliti yang menghadiri seminar (makna negatif).', note: 'Few = sangat sedikit / nyaris nol' },
+          { sentence: 'A few researchers attended the seminar.', translation: 'Beberapa peneliti menghadiri seminar (makna positif).', note: 'A few = ada beberapa' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Speaking Part 1 & 2, pembedaan yang luwes antara *used to* dan *be used to* menunjukkan rentang tata bahasa fleksibel (Band 7.5+).',
-      toeflApplication: 'TOEFL Structure sangat sering menguji kata kerja setelah *be used to* (wajib Gerund -ing).',
-      scoringImpact: 'Mencegah kerancuan antara kebiasaan masa lalu dan adaptasi masa kini.',
+      ieltsApplication: 'Kerapian dalam mendeskripsikan data kuantitas di IELTS Writing Task 1 bergantung mutlak pada presisi quantifiers.',
+      toeflApplication: 'TOEFL Structure secara berkala menguji kesalahan pasangan *much people ❌* atau *many information ❌*.',
+      scoringImpact: 'Meningkatkan akurasi leksikogramatikal.'
     },
     goldenRules: [
-      'Had better selalu diikuti Bare Infinitive tanpa to.',
-      'Used to + Verb 1 murni (kebiasaan masa lalu).',
-      'Be used to / Get used to SELALU diikuti oleh Gerund (Verb-ing).',
+      'Gunakan *many / few* untuk benda terhitung (plural).',
+      'Gunakan *much / little* untuk benda tidak terhitung (uncountable massa).',
+      '*Each* dan *Every* selalu diikuti kata benda tunggal dan kata kerja tunggal.'
     ],
     questions: [
       {
-        id: 'q10-1',
+        id: 'q-m10-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih bentuk kata kerja yang tepat: "The clinical research team is accustomed to ________ late into the evening during trials."',
-        options: ['working', 'work', 'worked', 'to work'],
-        correctAnswer: 'working',
-        explanation: '"Accustomed to" dan "be used to" adalah frasa preposisi yang wajib diikuti oleh Gerund (Verb-ing: "working").',
-        ruleReference: 'Kaidah Emas: Be used to / accustomed to selalu diikuti oleh Gerund (V-ing).',
+        question: 'Despite the harsh winter, _____ students attended the voluntary tutorial session.',
+        options: ['a little', 'a few', 'much', 'every'],
+        correctAnswer: 'a few',
+        explanation: '"Students" adalah countable plural, dan kalimat menyatakan ada beberapa yang hadir -> "a few".',
+        ruleReference: 'Modul 10: Countable Quantifiers'
       },
+      {
+        id: 'q-m10-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'Every member of the faculty committee _____ required to submit an annual disclosure.',
+        options: ['are', 'is', 'were', 'have been'],
+        correctAnswer: 'is',
+        explanation: '"Every member" bersifat distributif tunggal, sehingga membutuhkan kata kerja tunggal "is".',
+        ruleReference: 'Modul 10: Distributive Every Agreement'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec10-1',
-        flawedSentence: 'The new research assistants are not used to work under strict laboratory guidelines.',
-        flawLocation: 'used to work',
-        correctedSentence: 'The new research assistants are not used to working under strict laboratory guidelines.',
-        linguisticExplanation: 'Frasa "be used to" menuntut Gerund (Verb-ing: "working"), bukan Verb 1 murni.',
+        id: 'ec-m10-1',
+        flawedSentence: 'The government allocated much funds to renewable energy infrastructure.',
+        flawLocation: 'much funds',
+        correctedSentence: 'The government allocated substantial funds / many funds to renewable energy infrastructure.',
+        linguisticExplanation: '"Funds" adalah kata benda terhitung jamak (countable plural), sehingga tidak boleh menggunakan "much".'
       }
     ]
   },
 
   // =========================================================================
-  // TAHAP 3: MODIFIKASI, DESKRIPSI & RELASI (MODIFIERS & PREPOSITIONS)
+  // TAHAP 3: MORFOLOGI KATA KERJA, MODALS & MODIFIER
   // =========================================================================
   {
-    id: 'modul-11-adjectives-order',
+    id: 'modul-11-core-verb-types',
     stageNumber: 3,
-    stageName: 'Tahap 3: Modifikasi, Deskripsi & Relasi',
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
     categoryKey: 'Word Classes',
     moduleNumber: 11,
-    title: 'Adjectives & The Royal Order of Adjectives (OSASCOMP)',
-    subtitle: 'Urutan baku susunan kata sifat majemuk penutur asli',
-    levelBadge: 'Modifikasi & Relasi · Modul 11',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 01: Noun Types',
-    mentalModelIntro: 'Ketika beberapa kata sifat diletakkan di depan kata benda, penutur asli tidak menaruhnya secara acak, melainkan mengikuti urutan hirarki kognitif: dari penilaian subjektif (Opinion) ke fakta fisik yang paling permanen dan menyatu dengan materi benda (Purpose/Material).',
-    coreConceptSummary: 'Urutan kata sifat: Opinion ➔ Size ➔ Age ➔ Shape ➔ Color ➔ Origin ➔ Material ➔ Purpose (OSASCOMP) + NOUN.',
+    title: 'Core Verb Types: Transitive, Intransitive, dan Ergative Verbs',
+    subtitle: 'Memahami predikat berobjek, predikat tanpa objek, dan kata kerja dua arah',
+    levelBadge: 'Morfologi Verb · Modul 11',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Setiap kata kerja memiliki valensi: apakah ia menuntut objek langsung (Transitive), menolak objek langsung (Intransitive), atau dapat berubah arah secara fleksibel (Ergative/Labile).',
+    coreConceptSummary: 'Transitive (S + V + O: *analyze the data*). Intransitive (S + V: *the temperature decreased*). Ergative (*The pilot landed the plane* vs *The plane landed*). Kata kerja intransitif TIDAK PERNAH bisa diubah ke bentuk pasif.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Rumus Hirarki OSASCOMP',
-        explanation: 'Opinion (innovative), Size (compact), Age (modern), Shape (rectangular), Color (metallic), Origin (German), Material (titanium), Purpose (diagnostic) + device.',
-        formula: 'Opinion ➔ Size ➔ Age ➔ Shape ➔ Color ➔ Origin ➔ Material ➔ Purpose + Noun',
+        stepNumber: '01',
+        title: 'Valensi Predikat & Hukum Pasif',
+        explanation: 'Hanya kata kerja transitif yang memiliki objek penderita yang dapat dipasifkan.',
+        formula: 'Transitive: S + V + Direct Object | Intransitive: S + V (No Object)',
         examples: [
-          {
-            sentence: 'The laboratory acquired an innovative (Opinion) compact (Size) German (Origin) diagnostic (Purpose) device.',
-            translation: 'Laboratorium memperoleh perangkat diagnostik buatan Jerman yang ringkas dan inovatif.',
-          },
+          { sentence: 'The committee approved the budget.', translation: 'Komite menyetujui anggaran tersebut.', note: 'Transitive (Direct Object: the budget)' },
+          { sentence: 'Global sea levels rose by three centimeters.', translation: 'Permukaan laut global naik sebesar tiga sentimeter.', note: 'Intransitive (rose = no direct object)' }
         ],
-      },
+        contrastiveAnalysis: {
+          incorrectSentence: 'The accident was happened at night.',
+          correctSentence: 'The accident happened at night.',
+          linguisticReason: '"Happen" adalah intransitive verb murni yang mustahil dipasifkan.'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Menyusun frasa benda deskriptif yang padat dan alami (*a comprehensive modern European framework*) menaikkan skor Lexical Resource.',
-      toeflApplication: 'TOEFL Structure sering menguji urutan terbalik antara kata sifat asal (Origin) dan kata sifat opini (Opinion).',
-      scoringImpact: 'Mencegah susunan frasa benda yang canggung bagi penutur asli.',
+      ieltsApplication: 'Menghindari pasifisasi ilegal pada kata kerja intransitif seperti *occurred, happened, died, emerged* di IELTS Writing.',
+      toeflApplication: 'TOEFL Written Expression secara berkala menguji pembedaan *raise (transitive)* vs *rise (intransitive)* dan *lay* vs *lie*.',
+      scoringImpact: 'Mencegah distorsi gramatikal fatal.'
     },
     goldenRules: [
-      'Opini selalu diletakkan paling depan; Material dan Purpose selalu menempel paling dekat dengan Noun.',
+      'Jangan pernah mempasifkan kata kerja intransitif (*happen, occur, exist, appear, rise*).',
+      '*Raise/Lay/Set* membutuhkan objek langsung (transitive); *Rise/Lie/Sit* tidak memiliki objek (intransitive).'
     ],
     questions: [
       {
-        id: 'q11-1',
+        id: 'q-m11-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih urutan kata sifat yang paling tepat:',
-        options: [
-          'a German innovative research project',
-          'an innovative German research project',
-          'a research innovative German project',
-          'an innovative research German project',
-        ],
-        correctAnswer: 'an innovative German research project',
-        explanation: 'Urutan OSASCOMP: Opinion ("innovative") ➔ Origin ("German") ➔ Purpose ("research") + Noun ("project").',
-        ruleReference: 'Kaidah Emas: Urutan Adjectives mengikuti OSASCOMP.',
+        question: 'Solar energy costs have _____ significantly over the past decade.',
+        options: ['fallen', 'dropped down', 'been fallen', 'been dropped down'],
+        correctAnswer: 'fallen',
+        explanation: '"Fall" adalah intransitive verb aktif, sehingga tidak boleh dipasifkan -> "have fallen".',
+        ruleReference: 'Modul 11: Intransitive Verbs'
       },
+      {
+        id: 'q-m11-2',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'The central bank decided to _____ interest rates to curb inflation.',
+        options: ['rise', 'raise', 'arise', 'rose'],
+        correctAnswer: 'raise',
+        explanation: 'Memerlukan kata kerja transitif yang mengambil objek langsung "interest rates" -> "raise".',
+        ruleReference: 'Modul 11: Raise vs Rise Transitivity'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec11-1',
-        flawedSentence: 'The engineering team designed a titanium circular sophisticated component.',
-        flawLocation: 'a titanium circular sophisticated',
-        correctedSentence: 'The engineering team designed a sophisticated circular titanium component.',
-        linguisticExplanation: 'Urutan OSASCOMP yang benar: Opinion ("sophisticated") ➔ Shape ("circular") ➔ Material ("titanium") + Noun ("component").',
+        id: 'ec-m11-1',
+        flawedSentence: 'A major breakthrough was occurred during the third trial.',
+        flawLocation: 'was occurred',
+        correctedSentence: 'A major breakthrough occurred during the third trial.',
+        linguisticExplanation: '"Occur" adalah intransitive verb yang tidak dapat dipasifkan (*occurred*).'
       }
     ]
   },
 
   {
-    id: 'modul-12-participle-adjectives',
+    id: 'modul-12-stative-vs-dynamic-verbs',
     stageNumber: 3,
-    stageName: 'Tahap 3: Modifikasi, Deskripsi & Relasi',
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
     categoryKey: 'Word Classes',
     moduleNumber: 12,
-    title: 'Participle Adjectives: -ed vs -ing (Perasaan vs Karakteristik)',
-    subtitle: 'Membedakan kondisi internal yang dialami subjek dengan sifat penyebab dari luar',
-    levelBadge: 'Modifikasi & Relasi · Modul 12',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 11: Adjectives',
-    mentalModelIntro: 'Participle Adjective -ed menggambarkan perasaan yang dialami oleh subjek (internal feeling), sedangkan -ing menggambarkan sifat atau karakteristik dari objek yang menyebabkan perasaan tersebut timbul (external characteristic).',
-    coreConceptSummary: 'Subjek yang merasa = -ed (interested, exhausted, concerned, surprised). Benda/hal yang menimbulkan perasaan = -ing (interesting, exhausting, concerning, surprising).',
+    title: 'Stative Verbs vs Dynamic Verbs: Kognisi, Emosi, Persepsi & Kepemilikan',
+    subtitle: 'Memahami mengapa kata kerja kondisi permanen menolak bentuk continuous (-ing)',
+    levelBadge: 'Morfologi Verb · Modul 12',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Kata kerja dinamis (Dynamic) menggambarkan aksi fisik dengan awal dan akhir. Kata kerja statif (Stative) menggambarkan keadaan pikiran, kepemilikan, perasaan, atau hubungan logis yang tidak berwujud aksi fisik.',
+    coreConceptSummary: 'Stative Verbs (know, believe, understand, possess, belong, contain, consist of) secara baku MENOLAK bentuk continuous (-ing) dalam makna statifnya.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Perbedaan Logika -ed vs -ing',
-        explanation: 'Gunakan -ed untuk reaksi perasaan subjek; gunakan -ing untuk sifat pemicu perasaan.',
-        formula: 'Subject (Feeling) = -ed | Cause (Characteristic) = -ing',
+        stepNumber: '01',
+        title: 'Taksonomi 4 Kategori Stative Verbs',
+        explanation: 'Kognisi (*know, believe*), Emosi (*love, prefer*), Persepsi (*hear, smell*), dan Relasi/Kepemilikan (*contain, belong, own*).',
+        formula: 'Stative: S + Verb (Simple Aspect) | Larangan: S + is/are + Verb-ing ❌',
         examples: [
-          {
-            sentence: 'The data revealed concerning trends (-ing: karakteristik mengkhawatirkan), which left the advisory board deeply concerned (-ed: merasa khawatir).',
-            translation: 'Data tersebut mengungkap tren yang mengkhawatirkan (-ing), yang membuat dewan penasihat merasa sangat khawatir (-ed).',
-          },
+          { sentence: 'The report contains thirty statistical graphs.', translation: 'Laporan tersebut berisi tiga puluh grafik statistik.', note: 'contains (stative)' }
         ],
-      },
+        contrastiveAnalysis: {
+          incorrectSentence: 'I am knowing the answer to this question.',
+          correctSentence: 'I know the answer to this question.',
+          linguisticReason: '"Know" adalah stative verb murni yang tidak menerima continuous -ing.'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Tertukar antara *interested* dan *interesting* atau *bored* dan *boring* di IELTS Speaking/Writing adalah kesalahan fatal yang menahan skor di Band 5.5.',
-      toeflApplication: 'TOEFL Structure sering memasukkan pilihan jebakan participle adjectives.',
-      scoringImpact: 'Mencegah kesalahan makna psikologis pada deskripsi subjek.',
+      ieltsApplication: 'Penggunaan akurat verba statif (*consists of, comprises, indicates*) sangat krusial pada IELTS Writing Task 1.',
+      toeflApplication: 'TOEFL Structure menguji verba statif ganda seperti *have* (kepemilikan = statif vs aksi = dinamis).',
+      scoringImpact: 'Meningkatkan akurasi tenses dan aspek.'
     },
     goldenRules: [
-      '-ed untuk kondisi/perasaan yang dirasakan subjek.',
-      '-ing untuk sifat/karakteristik pemicu dari luar.',
+      'Jangan gunakan bentuk -ing pada kata kerja kognisi, kepemilikan, dan relasi (*consist, belong, contain*).',
+      '*Consist of* tidak pernah pasif dan tidak pernah continuous (*is consisting ❌*).'
     ],
     questions: [
       {
-        id: 'q12-1',
+        id: 'q-m12-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih kata sifat yang tepat: "The empirical findings were so ________ that the committee requested immediate replication."',
-        options: ['astonishing', 'astonished', 'astonish', 'astonishment'],
-        correctAnswer: 'astonishing',
-        explanation: 'Temuan empiris ("The empirical findings") adalah penyebab yang menimbulkan rasa takjub (karakteristik dari luar), sehingga menggunakan bentuk -ing ("astonishing").',
-        ruleReference: 'Kaidah Emas: Sifat pemicu dari luar menggunakan bentuk -ing.',
-      },
+        question: 'The pharmaceutical dossier _____ all relevant clinical trial documentation.',
+        options: ['is containing', 'contains', 'containing', 'is contain'],
+        correctAnswer: 'contains',
+        explanation: '"Contain" adalah stative verb kepemilikan/relasi yang wajib berbentuk simple -> "contains".',
+        ruleReference: 'Modul 12: Stative Verbs'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec12-1',
-        flawedSentence: 'The advisory council was very interesting in reviewing the latest clinical trial data.',
-        flawLocation: 'interesting',
-        correctedSentence: 'The advisory council was very interested in reviewing the latest clinical trial data.',
-        linguisticExplanation: 'Dewan penasihat mengalami kondisi perasaan tertarik secara internal, sehingga kata sifat yang benar adalah "interested in", bukan "interesting".',
+        id: 'ec-m12-1',
+        flawedSentence: 'The experimental cohort is consisting of forty adult volunteers.',
+        flawLocation: 'is consisting of',
+        correctedSentence: 'The experimental cohort consists of forty adult volunteers.',
+        linguisticExplanation: '"Consist of" adalah kata kerja relasi statif yang tidak menerima bentuk continuous.'
       }
     ]
   },
 
   {
-    id: 'modul-13-comparatives-superlatives',
+    id: 'modul-13-linking-verbs',
     stageNumber: 3,
-    stageName: 'Tahap 3: Modifikasi, Deskripsi & Relasi',
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
     categoryKey: 'Word Classes',
     moduleNumber: 13,
-    title: 'Comparative & Superlative Degrees & Proportional Structures',
-    subtitle: 'Komparasi presisi, larangan double comparative, dan pola "The more... the more..."',
-    levelBadge: 'Modifikasi & Relasi · Modul 13',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 11: Adjectives',
-    mentalModelIntro: 'Komparasi akademis menuntut kejelasan penanda derajat perbandingan dan penekanan (intensifiers seperti much, far, significantly). Struktur proporsional ("The more... the more...") adalah salah satu penanda sintaksis tingkat tinggi.',
-    coreConceptSummary: 'Comparative: more + Adj / Adj-er + than. Superlative: the most + Adj / the Adj-est. Struktur Proporsional: The + Comparative, the + Comparative.',
+    title: 'Linking Verbs & Subject Complements (Be, Seem, Appear, Remain, Become)',
+    subtitle: 'Menghubungkan atribut sifat ke subjek dan pantangan penggunaan adverb',
+    levelBadge: 'Morfologi Verb · Modul 13',
+    estimatedMinutes: 20,
+    mentalModelIntro: 'Linking Verbs bertindak sebagai jembatan antara Subjek dan Kata Sifat yang menerangkannya (Subject Complement). Berbeda dari Action Verbs yang diterangkan oleh Adverb (-ly), Linking Verbs WAJIB diikuti oleh ADJECTIVE.',
+    coreConceptSummary: 'S + Linking Verb + Adjective (*The hypothesis seems valid, BUKAN validly*). Linking verbs utama: *be, seem, appear, look, sound, smell, taste, feel, remain, become*.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Aturan Baku Komparasi dan Penekanan',
-        explanation: 'Gunakan "much / far / significantly" untuk memperkuat komparasi. Dilarang menggabungkan "more" dengan akhiran "-er" (more easier SALAH).',
-        formula: 'much / far / significantly + Comparative (faster / more efficient) + than',
+        stepNumber: '01',
+        title: 'Hukum Adjective setelah Linking Verbs',
+        explanation: 'Karena menerangkan subjek (noun), kata setelah linking verb harus berupa Adjective.',
+        formula: 'Subject + Linking Verb (seem/remain/appear) + ADJECTIVE',
         examples: [
-          {
-            sentence: 'The new cryptographic algorithm is significantly more efficient than legacy protocols.',
-            translation: 'Algoritma kriptografi baru tersebut secara signifikan lebih efisien daripada protokol lama.',
-          },
-        ],
-      },
-      {
-        stepNumber: 'Langkah 2: Struktur Proporsional (The more... the more...)',
-        explanation: 'Menyatakan hubungan sebab-akibat timbal balik di mana perubahan pada klausa pertama sebanding dengan klausa kedua.',
-        formula: 'The + Comparative + Subject + Verb, the + Comparative + Subject + Verb',
-        examples: [
-          {
-            sentence: 'The more comprehensive the initial dataset is, the more accurate the predictions become.',
-            translation: 'Semakin komprehensif dataset awalnya, semakin akurat prediksi yang dihasilkan.',
-          },
-        ],
-      },
+          { sentence: 'The telemetry remains consistent across all sensors.', translation: 'Telemetri tetap konsisten di seluruh sensor.', note: 'remains + consistent (Adjective)' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Writing Task 1, variasi komparasi adalah 50% dari bahasa analisis data.',
-      toeflApplication: 'Pola "The + comparative, the + comparative" adalah salah satu soal favorit di TOEFL Structure.',
-      scoringImpact: 'Mendemonstrasikan variasi sintaksis kompleks untuk Band 8.0+.',
+      ieltsApplication: 'Penggunaan linking verbs formal (*remain stable, appear plausible*) memberi nuansa akademik tinggi.',
+      toeflApplication: 'TOEFL Structure menguji jebakan pemilihan Adverb (-ly) vs Adjective setelah *seem/remain*.',
+      scoringImpact: 'Menghindari kesalahan modifikasi kata sifat.'
     },
     goldenRules: [
-      'Dilarang menggunakan double comparatives (more easier ➔ salah; much easier ➔ benar).',
-      'Pola proporsional selalu berpasangan: "The [comp]..., the [comp]...".',
+      'Gunakan ADJECTIVE (bukan adverb -ly) setelah linking verbs (*The food smells delicious, bukan deliciously*).',
+      '*Remain, seem, appear, become* adalah linking verbs formal esensial.'
     ],
     questions: [
       {
-        id: 'q13-1',
+        id: 'q-m13-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Lengkapi struktur proporsional: "The more rigorously a methodology is tested, ________ its real-world reliability."',
-        options: ['the higher', 'higher is', 'the highest', 'more high'],
-        correctAnswer: 'the higher',
-        explanation: 'Pola kalimat proporsional: "The + Comparative..., the + Comparative..." ➔ "the higher".',
-        ruleReference: 'Kaidah Emas: Pola The + Comparative selalu berpasangan dengan The + Comparative.',
-      },
+        question: 'Despite the economic volatility, market indicators remain _____.',
+        options: ['stable', 'stably', 'stability', 'stabilize'],
+        correctAnswer: 'stable',
+        explanation: 'Setelah linking verb "remain", kata yang menyusul harus berupa Adjective "stable".',
+        ruleReference: 'Modul 13: Linking Verbs with Adjectives'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec13-1',
-        flawedSentence: 'The newly introduced software is more faster and more reliable than the previous version.',
-        flawLocation: 'more faster',
-        correctedSentence: 'The newly introduced software is much faster and more reliable than the previous version.',
-        linguisticExplanation: 'Dilarang menggabungkan "more" dengan kata sifat berakhiran "-er". Gunakan "much faster" atau "faster".',
+        id: 'ec-m13-1',
+        flawedSentence: 'The proposed solution sounds realistically to the board.',
+        flawLocation: 'realistically',
+        correctedSentence: 'The proposed solution sounds realistic to the board.',
+        linguisticExplanation: '"Sounds" adalah linking verb persepsi yang mewajibkan Adjective "realistic".'
       }
     ]
   },
 
   {
-    id: 'modul-14-adverbs-placement',
+    id: 'modul-14-modals-auxiliaries',
     stageNumber: 3,
-    stageName: 'Tahap 3: Modifikasi, Deskripsi & Relasi',
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
     categoryKey: 'Word Classes',
     moduleNumber: 14,
-    title: 'Adverbs & Adverbial Placement (Manner, Frequency, Degree & Sentence Adverbs)',
-    subtitle: 'Posisi penempatan kata keterangan dan larangan memisahkan Verb dari Direct Object',
-    levelBadge: 'Modifikasi & Relasi · Modul 14',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 11 - 13',
-    mentalModelIntro: 'Adverb menambahkan dimensi cara, frekuensi, derajat, atau sikap penulis terhadap keseluruhan kalimat. Aturan penempatan adverb sangat ketat: adverb of manner DILARANG memotong kata kerja transitif dari objek langsungnya.',
-    coreConceptSummary: 'Adverb memodifikasi Verb, Adjective, atau Adverb lain. Letakkan Adverb of Frequency sebelum Main Verb tetapi setelah Auxiliary BE. Letakkan Sentence Adverb (Clearly, Interestingly) di awal kalimat dengan tanda koma.',
+    title: 'Modal Auxiliaries: Primary vs Modals (Can, Could, Must, Should, May, Might)',
+    subtitle: 'Mekanisme kata kerja bantu modalitas, derajat kepastian, dan hukum mutlak Bare Infinitive',
+    levelBadge: 'Modal Auxiliaries · Modul 14',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Modal Auxiliaries mengekspresikan sikap pembicara terhadap aksi: kemampuan (Ability), kemungkinan (Possibility), keharusan (Necessity), atau saran (Recommendation). Modals tidak pernah menerima akhiran -s, -ed, atau -ing, dan WAJIB diikuti Bare Infinitive.',
+    coreConceptSummary: 'Modal + Bare Infinitive (V1 murni tanpa "to"). Derajat kepastian: Must (95% pasti) > Should (70% ekspektasi) > May/Might/Could (30-50% spekulasi).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Posisi Adverb of Manner dan Objek Langsung',
-        explanation: 'Adverb of Manner diletakkan setelah Direct Object atau sebelum Transitive Verb, BUKAN di antara Verb dan Object.',
-        formula: 'Subject + Verb + Direct Object + ADVERB (bukan S + V + Adverb + Object)',
+        stepNumber: '01',
+        title: 'Spektrum Modalitas & Bare Infinitive',
+        explanation: 'Modals memodifikasi makna kalimat tanpa mengubah bentuk konjugasi dasarnya.',
+        formula: 'Subject + Modal (Must/Should/Can/May) + Verb 1 (Bare Infinitive)',
         examples: [
-          {
-            sentence: 'The scholar explained the complex statistical methodology clearly.',
-            translation: 'Cendekiawan tersebut menjelaskan metodologi statistik (Objek) dengan jelas (Adverb).',
-          },
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'The professor explained clearly the theoretical framework.',
-          correctSentence: 'The professor explained the theoretical framework clearly.',
-          linguisticReason: 'Dalam sintaksis bahasa Inggris, Direct Object ("the theoretical framework") tidak boleh dipisahkan dari kata kerjanya ("explained") oleh adverb of manner.',
-        },
-      },
+          { sentence: 'Researchers must adhere to international bioethics guidelines.', translation: 'Para peneliti wajib mematuhi pedoman bioetika internasional.', note: 'must + adhere (V1)' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Penempatan Sentence Adverbs (*Significantly*, *Arguably*, *Consequently*) memperkuat nada akademik esai IELTS Task 2.',
-      toeflApplication: 'TOEFL Structure sering menguji posisi Adverbs of Frequency di antara Auxiliary dan Main Verb.',
-      scoringImpact: 'Mencapai kelancaran sintaksis natural.',
+      ieltsApplication: 'Modalitas adalah pilar utama Academic Hedging di IELTS Task 2 (*This may indicate...*).',
+      toeflApplication: 'TOEFL Structure menguji larangan "to" setelah modal murni (*must to go ❌*).',
+      scoringImpact: 'Meningkatkan objektivitas retorika akademis.'
     },
     goldenRules: [
-      'Jangan pernah meletakkan Adverb di antara kata kerja transitif dan Direct Object-nya.',
-      'Adverbs of Frequency (always, often, seldom) diletakkan SEBELUM Main Verb, tetapi SETELAH kata kerja "be".',
+      'Jangan pernah menambahkan "to" setelah modal murni (*can, could, may, might, must, should, will, would*).',
+      'Jangan pernah menambahkan akhiran -s pada modal verb (*he musts ❌*).'
     ],
     questions: [
       {
-        id: 'q14-1',
+        id: 'q-m14-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih kalimat dengan posisi Adverb yang benar secara gramatikal:',
-        options: [
-          'The candidate prepared carefully her research presentation.',
-          'The candidate prepared her research presentation carefully.',
-          'The candidate carefully her research presentation prepared.',
-          'The candidate her research presentation carefully prepared.',
-        ],
-        correctAnswer: 'The candidate prepared her research presentation carefully.',
-        explanation: 'Direct Object ("her research presentation") wajib langsung menempel pada kata kerja ("prepared"), lalu Adverb ("carefully") diletakkan di akhir.',
-        ruleReference: 'Kaidah Emas: Adverb of manner tidak boleh memisahkan Verb dari Direct Object.',
-      },
+        question: 'All lab personnel must _____ protective eyewear in the cleanroom.',
+        options: ['wear', 'wears', 'wearing', 'to wear'],
+        correctAnswer: 'wear',
+        explanation: 'Setelah modal verb "must", kata kerja wajib berbentuk Bare Infinitive "wear".',
+        ruleReference: 'Modul 14: Modal Bare Infinitive'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec14-1',
-        flawedSentence: 'The researchers analyzed exhaustively the historical documents in the archives.',
-        flawLocation: 'analyzed exhaustively the historical documents',
-        correctedSentence: 'The researchers analyzed the historical documents in the archives exhaustively.',
-        linguisticExplanation: 'Direct Object ("the historical documents") tidak boleh dipisahkan dari kata kerja ("analyzed") oleh adverb ("exhaustively").',
+        id: 'ec-m14-1',
+        flawedSentence: 'The administration should to reconsider its funding allocation.',
+        flawLocation: 'should to reconsider',
+        correctedSentence: 'The administration should reconsider its funding allocation.',
+        linguisticExplanation: 'Modal "should" diikuti langsung oleh Bare Infinitive tanpa partikel "to".'
       }
     ]
   },
 
   {
-    id: 'modul-15-prepositions-spatial-temporal',
+    id: 'modul-15-semi-modals-phrasals',
     stageNumber: 3,
-    stageName: 'Tahap 3: Modifikasi, Deskripsi & Relasi',
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
     categoryKey: 'Word Classes',
     moduleNumber: 15,
-    title: 'Prepositions: Hierarki Waktu, Ruang, dan Gerak (In, On, At & Movement)',
-    subtitle: 'Piramida koordinat waktu-tempat dari spesifik ke luas, serta preposisi arah',
-    levelBadge: 'Modifikasi & Relasi · Modul 15',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 01: Noun Types',
-    mentalModelIntro: 'Preposisi memetakan koordinat ruang dan waktu dalam bentuk piramida: AT untuk titik presisi terkecil, ON untuk permukaan datar dan hari/tanggal kalender, IN untuk ruang berbatas luas dan periode waktu panjang.',
-    coreConceptSummary: 'Waktu: AT (jam spesifik), ON (hari/tanggal), IN (bulan/tahun/abad). Tempat: AT (titik/alamat nomor), ON (jalan/permukaan), IN (kota/negara/ruangan).',
+    title: 'Semi-Modals & Phrasal Modals: Ought to, Had better, Be able to, Used to vs Be used to',
+    subtitle: 'Konstruksi modal berfrasa, peringatan urgensi, dan pembedaan Used to vs Be used to',
+    levelBadge: 'Semi-Modals · Modul 15',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Semi-modals adalah frasa yang berfungsi mirip modal murni namun memiliki partikel "to" atau konjugasi khusus. Pembedaan krusial: *Used to + V1* (kebiasaan masa lampau yang sudah berhenti) vs *Be used to + V-ing* (terbiasa dengan suatu kondisi saat ini).',
+    coreConceptSummary: 'HAD BETTER + V1 (peringatan berkonsekuensi buruk jika tidak dilakukan). OUGHT TO + V1 (kewajiban moral). USED TO + V1 (kebiasaan lampau). BE/GET USED TO + V-ing/Noun (terbiasa dengan).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Piramida Waktu & Tempat Baku',
-        explanation: 'Gunakan AT untuk titik jam dan alamat nomor. Gunakan ON untuk hari dan tanggal lengkap kalender. Gunakan IN untuk bulan, tahun, dan area luas.',
-        formula: 'Waktu: AT (Jam) ➔ ON (Hari/Tanggal) ➔ IN (Bulan/Tahun/Abad)',
+        stepNumber: '01',
+        title: 'Used to vs Be used to Matrix',
+        explanation: 'Membedakan kebiasaan lampau yang telah usai dengan kebiasaan adaptasi kontemporer.',
+        formula: 'Past Habit: S + used to + V1 | Familiarity: S + be/get used to + V-ing',
         examples: [
-          {
-            sentence: 'The symposium commences at 9:00 AM on Monday, October 15th, in Geneva.',
-            translation: 'Simposium dimulai pukul 09.00 (at), pada hari Senin 15 Oktober (on), di Jenewa (in).',
-          },
-        ],
-      },
+          { sentence: 'The scholar used to lecture at Harvard.', translation: 'Cendekiawan tersebut dulu biasa mengajar di Harvard (sekarang tidak lagi).', note: 'used to + V1' },
+          { sentence: 'Researchers are used to working under high pressure.', translation: 'Para peneliti terbiasa bekerja di bawah tekanan tinggi.', note: 'are used to + V-ing' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Task 1, ketepatan preposisi waktu (*in 2020*, *between 2010 and 2015*, *at the beginning of the period*) menentukan kejelasan deskripsi data.',
-      toeflApplication: 'TOEFL Structure secara reguler menguji pertukaran preposisi in/on/at pada tanggal dan tahun.',
-      scoringImpact: 'Mencegah ketidakakuratan koordinat data.',
+      ieltsApplication: 'Pembedaan *used to* dan *be used to* sering muncul pada Speaking Part 1 & Writing Task 2.',
+      toeflApplication: 'TOEFL Written Expression menguji bentuk gerund setelah *be used to*.',
+      scoringImpact: 'Mencegah distorsi makna kebiasaan masa lalu vs masa kini.'
     },
     goldenRules: [
-      'Gunakan At untuk jam spesifik dan alamat bernomor.',
-      'Gunakan On untuk hari dan tanggal lengkap kalender.',
-      'Gunakan In untuk bulan, tahun, dekade, abad, kota, dan negara.',
+      '*Used to* diikuti Verb 1 murni; *Be used to* diikuti Verb-ing / Noun.',
+      '*Had better* selalu berbentuk lampau "had" meskipun bermakna saran mendesak masa kini.'
     ],
     questions: [
       {
-        id: 'q15-1',
+        id: 'q-m15-1',
         category: 'Word Classes',
-        difficulty: 'Dasar',
-        question: 'Pilih preposisi waktu yang tepat: "The bilateral treaty was officially signed ________ July 24th, 2019."',
-        options: ['on', 'in', 'at', 'by'],
-        correctAnswer: 'on',
-        explanation: 'Untuk tanggal spesifik kalender lengkap (July 24th), preposisi waktu yang wajib digunakan adalah "on".',
-        ruleReference: 'Kaidah Emas: Hari dan tanggal kalender menggunakan preposisi "on".',
-      },
+        difficulty: 'Menengah',
+        question: 'The engineering team is used to _____ telemetry data under extreme weather conditions.',
+        options: ['analyze', 'analyzing', 'analyzed', 'analysis'],
+        correctAnswer: 'analyzing',
+        explanation: 'Setelah "is used to" (terbiasa), kata kerja wajib berbentuk Gerund (-ing) -> "analyzing".',
+        ruleReference: 'Modul 15: Be Used To + Gerund'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec15-1',
-        flawedSentence: 'The international climate agreement was signed at November in the year 2021.',
-        flawLocation: 'at November',
-        correctedSentence: 'The international climate agreement was signed in November in the year 2021.',
-        linguisticExplanation: 'Untuk nama bulan tanpa tanggal spesifik, preposisi waktu yang wajib digunakan adalah "in", bukan "at".',
+        id: 'ec-m15-1',
+        flawedSentence: 'You had better to back up the raw data immediately.',
+        flawLocation: 'had better to back up',
+        correctedSentence: 'You had better back up the raw data immediately.',
+        linguisticExplanation: '"Had better" diikuti Bare Infinitive tanpa "to" (*had better back up*).'
       }
     ]
   },
 
   {
-    id: 'modul-16-dependent-prepositions',
+    id: 'modul-16-royal-order-adjectives',
     stageNumber: 3,
-    stageName: 'Tahap 3: Modifikasi, Deskripsi & Relasi',
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
     categoryKey: 'Word Classes',
     moduleNumber: 16,
-    title: 'Dependent Prepositions & Fixed Prepositional Collocations',
-    subtitle: 'Pasangan preposisi tetap pada Verbs & Adjectives penentu skor internasional',
-    levelBadge: 'Modifikasi & Relasi · Modul 16',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 15: Prepositions',
-    mentalModelIntro: 'Banyak kata kerja dan kata sifat dalam bahasa Inggris yang terikat secara kaku dengan preposisi tertentu (Dependent Prepositions). Mengubah preposisi pasangannya akan menghasilkan kalimat yang salah dan tidak alami.',
-    coreConceptSummary: 'Hafalkan pasangan baku: rely on, depend on, succeed in, refrain from, consistent with, capable of, accustomed to, prone to, prohibited from.',
+    title: 'Adjectives & The Royal Order of Adjectives (OSASCOMP)',
+    subtitle: 'Urutan baku susunan kata sifat majemuk penutur asli',
+    levelBadge: 'Kata Sifat · Modul 16',
+    estimatedMinutes: 20,
+    mentalModelIntro: 'Ketika lebih dari satu kata sifat menerangkan satu kata benda, penutur asli bahasa Inggris secara intuitif mengikuti hierarki ketat: OSASCOMP (Opinion, Size, Age, Shape, Color, Origin, Material, Purpose).',
+    coreConceptSummary: 'Urutan: (1) Opinion (brilliant) -> (2) Size (large) -> (3) Age (new) -> (4) Shape (circular) -> (5) Color (blue) -> (6) Origin (German) -> (7) Material (steel) -> (8) Purpose (measuring) + NOUN.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Daftar Dependent Prepositions Wajib Ujian',
-        explanation: 'Kata kerja dan kata sifat tertentu selalu berpasangan dengan preposisi khusus.',
-        formula: 'Consistent with | Capable of | Rely on | Prohibit from | Succeed in | Accustomed to | Prone to',
+        stepNumber: '01',
+        title: 'Mnemonic OSASCOMP',
+        explanation: 'Menempatkan kata sifat evaluatif/opini di depan, dan kata sifat material/tujuan tepat sebelum benda.',
+        formula: 'Opinion + Size + Age + Shape + Color + Origin + Material + Purpose + Noun',
         examples: [
-          {
-            sentence: 'The empirical methodology is entirely consistent with the theoretical framework.',
-            translation: 'Metodologi empiris tersebut sepenuhnya konsisten dengan (consistent with) kerangka teoretis.',
-          },
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'The experimental methodology is consistent to the theoretical framework.',
-          correctSentence: 'The experimental methodology is consistent with the theoretical framework.',
-          linguisticReason: 'Kata sifat "consistent" secara baku berpasangan dengan preposisi "with", bukan "to".',
-        },
-      },
+          { sentence: 'They installed an innovative large new German measuring apparatus.', translation: 'Mereka memasang aparatus pengukur buatan Jerman baru berukuran besar yang inovatif.', note: 'Opinion -> Size -> Age -> Origin -> Purpose -> Noun' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Penggunaan Dependent Prepositions yang akurat adalah tolok ukur utama penilaian Lexical Resource dan Grammatical Accuracy di level Band 8.0+.',
-      toeflApplication: 'Soal Dependent Prepositions selalu muncul di TOEFL Structure sebagai jebakan pilihan kata.',
-      scoringImpact: 'Menghilangkan kesalahan idiomatis terjemahan harfiah.',
+      ieltsApplication: 'Menyusun deskripsi objek atau instrumen secara alami dan memukau penguji IELTS Writing Task 1.',
+      toeflApplication: 'TOEFL Structure menguji urutan kata sifat yang tidak lazim.',
+      scoringImpact: 'Meningkatkan kelancaran dan kealamian frasa nomina (Natural Collocations).'
     },
     goldenRules: [
-      'Preposisi SELALU diikuti oleh Noun, Pronoun, atau Gerund (Verb-ing).',
-      'Hafalkan pasangan Dependent Prepositions baku (capable of, consistent with, rely on).',
+      'Tempatkan kata sifat opini (subjective) sebelum kata sifat fakta fisik (objective).',
+      'Kata sifat bahan (material) dan tujuan (purpose) selalu berada paling dekat dengan kata benda utama.'
     ],
     questions: [
       {
-        id: 'q16-1',
+        id: 'q-m16-1',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'The laboratory purchased a _____ scanning electron microscope.',
+        options: ['new sophisticated Japanese', 'sophisticated new Japanese', 'Japanese new sophisticated', 'sophisticated Japanese new'],
+        correctAnswer: 'sophisticated new Japanese',
+        explanation: 'Sesuai OSASCOMP: Opinion (sophisticated) -> Age (new) -> Origin (Japanese).',
+        ruleReference: 'Modul 16: OSASCOMP Order'
+      }
+    ],
+    errorCorrectionTasks: [
+      {
+        id: 'ec-m16-1',
+        flawedSentence: 'The institute tested a metallic innovative rectangular device.',
+        flawLocation: 'metallic innovative rectangular',
+        correctedSentence: 'The institute tested an innovative rectangular metallic device.',
+        linguisticExplanation: 'Urutan OSASCOMP: Opinion (innovative) -> Shape (rectangular) -> Material (metallic).'
+      }
+    ]
+  },
+
+  {
+    id: 'modul-17-participle-adjectives',
+    stageNumber: 3,
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    categoryKey: 'Word Classes',
+    moduleNumber: 17,
+    title: 'Participle Adjectives: -ed vs -ing (Perasaan vs Karakteristik)',
+    subtitle: 'Membedakan kondisi internal yang dialami subjek dengan sifat penyebab dari luar',
+    levelBadge: 'Kata Sifat · Modul 17',
+    estimatedMinutes: 20,
+    mentalModelIntro: 'Participle Adjectives berakhiran -ed menggambarkan PERASAAN atau KONDISI yang dialami oleh seseorang (*I am interested*). Participle Adjectives berakhiran -ing menggambarkan KARAKTERISTIK atau SIFAT PENYEBAB dari suatu benda/situasi (*The lecture is interesting*).',
+    coreConceptSummary: '-ed = Receiver of feeling (Bored, Fascinated, Exhausted). -ing = Producer of feeling (Boring, Fascinating, Exhausting).',
+    sections: [
+      {
+        stepNumber: '01',
+        title: 'Hukum Internal vs Eksternal Modifier',
+        explanation: 'Menghindari salah tafsir antara orang yang merasakan dengan objek yang menimbulkan rasa.',
+        formula: 'Subject (Perasa) + To Be + -ed Adjective | Object/Cause (Penyebab) + To Be + -ing Adjective',
+        examples: [
+          { sentence: 'The researchers were astonished by the anomalous telemetry.', translation: 'Para peneliti terkejut oleh telemetri anomali tersebut.', note: '-ed = orang yang merasakan keheranan' },
+          { sentence: 'The telemetry yielded an astonishing discovery.', translation: 'Telemetri tersebut membuahkan penemuan yang mencengangkan.', note: '-ing = sifat penemuan yang menimbulkan rasa heran' }
+        ]
+      }
+    ],
+    examBridge: {
+      ieltsApplication: 'Kesalahan *I am very interesting in this topic ❌* langsung menurunkan skor Speaking dan Writing.',
+      toeflApplication: 'TOEFL Structure secara teratur menguji pembedaan -ed vs -ing participle modifiers.',
+      scoringImpact: 'Menghindari kesalahan makna semantik yang fatal.'
+    },
+    goldenRules: [
+      'Gunakan -ed bila subjek MENERIMA/MERASAKAN emosi atau kondisi internal.',
+      'Gunakan -ing bila subjek MENJADI PENYEBAB atau memiliki karakteristik tersebut.'
+    ],
+    questions: [
+      {
+        id: 'q-m17-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
-        question: 'Pilih dependent preposition yang tepat: "The findings of this laboratory trial are entirely consistent ________ the hypothesis."',
-        options: ['with', 'to', 'for', 'about'],
-        correctAnswer: 'with',
-        explanation: '"Consistent" secara baku berpasangan dengan preposisi "with".',
-        ruleReference: 'Kaidah Emas: Pasangan baku kata sifat consistent adalah "with".',
-      },
+        question: 'The committee members were deeply _____ by the unprecedented trial outcomes.',
+        options: ['impressing', 'impressed', 'impression', 'impressive'],
+        correctAnswer: 'impressed',
+        explanation: 'Para anggota komite adalah pihak yang merasakan kekaguman (receiver of emotion) -> "impressed".',
+        ruleReference: 'Modul 17: Participle Adjectives -ed'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec16-1',
-        flawedSentence: 'The newly appointed director is highly capable to manage multi-million dollar projects.',
-        flawLocation: 'capable to manage',
-        correctedSentence: 'The newly appointed director is highly capable of managing multi-million dollar projects.',
-        linguisticExplanation: 'Kata sifat "capable" secara baku berpasangan dengan preposisi "of" yang diikuti oleh Gerund ("capable of managing").',
+        id: 'ec-m17-1',
+        flawedSentence: 'The conference attendees were very boring during the lengthy speech.',
+        flawLocation: 'boring',
+        correctedSentence: 'The conference attendees were very bored during the lengthy speech.',
+        linguisticExplanation: 'Peserta konferensi merasakan kebosanan, sehingga harus menggunakan -ed Adjective "bored" (bukan "boring" yang berarti mereka yang membosankan).'
+      }
+    ]
+  },
+
+  {
+    id: 'modul-18-comparative-superlative',
+    stageNumber: 3,
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    categoryKey: 'Word Classes',
+    moduleNumber: 18,
+    title: 'Comparative & Superlative Degrees & Proportional Structures',
+    subtitle: 'Komparasi presisi, larangan double comparative, dan pola "The more... the more..."',
+    levelBadge: 'Komparasi · Modul 18',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Tingkat perbandingan (Degrees of Comparison) membandingkan 2 entitas (Comparative: -er / more ... than) atau membandingkan 1 entitas dengan seluruh kelompoknya (Superlative: the -est / the most). Struktur proporsional paralel (*The more... the more...*) adalah struktur bernilai tinggi dalam esai akademis.',
+    coreConceptSummary: '1 suku kata: -er / the -est (faster, the fastest). 2+ suku kata: more / the most (more complex, the most complex). Proportional: *The + comparative ..., the + comparative ...* (*The higher the temperature, the faster the reaction*).',
+    sections: [
+      {
+        stepNumber: '01',
+        title: 'Struktur Komparasi Proporsional Paralel',
+        explanation: 'Menghubungkan hubungan sebab-akibat korelasional dua variabel data secara simultan.',
+        formula: 'The + [Comparative Adj/Adv + Clause], the + [Comparative Adj/Adv + Clause]',
+        examples: [
+          { sentence: 'The more rigorous the methodology, the more reliable the empirical conclusions.', translation: 'Semakin ketat metodologinya, semakin andal kesimpulan empirisnya.', note: 'Proportional Double Comparative' }
+        ]
+      }
+    ],
+    examBridge: {
+      ieltsApplication: 'Keahlian membuat perbandingan data mutlak diperlukan untuk meraih Band 8.0+ pada IELTS Writing Task 1.',
+      toeflApplication: 'TOEFL Structure menguji struktur paralel *The more... the more...* yang sering kehilangan artikel "the".',
+      scoringImpact: 'Meningkatkan kompleksitas sintaksis dan variasi kalimat.'
+    },
+    goldenRules: [
+      'Jangan pernah menggabungkan "more" dengan akhiran "-er" (*more faster ❌*).',
+      'Struktur proporsional paralel WAJIB diawali "The" pada kedua klausa (*The higher..., the faster...*).'
+    ],
+    questions: [
+      {
+        id: 'q-m18-1',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: '_____ the dataset, the more accurate the neural network predictions become.',
+        options: ['Larger', 'The larger', 'The most large', 'As large as'],
+        correctAnswer: 'The larger',
+        explanation: 'Struktur perbandingan proporsional paralel menuntut pola "The + comparative" di kedua sisi -> "The larger".',
+        ruleReference: 'Modul 18: Proportional Comparative Structure'
+      }
+    ],
+    errorCorrectionTasks: [
+      {
+        id: 'ec-m18-1',
+        flawedSentence: 'The new algorithm is more faster than the legacy model.',
+        flawLocation: 'more faster',
+        correctedSentence: 'The new algorithm is faster / much faster than the legacy model.',
+        linguisticExplanation: '"Fast" adalah kata sifat 1 suku kata. Dilarang menggabungkan "more" dengan akhiran "-er" (double comparative).'
+      }
+    ]
+  },
+
+  {
+    id: 'modul-19-adverbs-placement',
+    stageNumber: 3,
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    categoryKey: 'Word Classes',
+    moduleNumber: 19,
+    title: 'Adverbs & Adverbial Placement (Manner, Frequency, Degree & Sentence Adverbs)',
+    subtitle: 'Posisi penempatan kata keterangan dan larangan memisahkan Verb dari Direct Object',
+    levelBadge: 'Kata Keterangan · Modul 19',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Adverbs memodifikasi Kata Kerja (Verb), Kata Sifat (Adjective), atau sesama Adverb. Aturan emas sintaksis bahasa Inggris: JANGAN PERNAH menyisipkan Adverb di antara Kata Kerja dan Objek Langsungnya (*He speaks fluently English ❌ -> He speaks English fluently ✔*).',
+    coreConceptSummary: 'Adverbs of Frequency (always, rarely, often) berada sebelum Main Verb tetapi setelah To Be/Auxiliary. Sentence Adverbs (Consequently, Furthermore, Surprisingly) berada di awal kalimat diikuti tanda koma.',
+    sections: [
+      {
+        stepNumber: '01',
+        title: 'Hukum Kesatuan Verb-Object & Posisi Mid-Position',
+        explanation: 'Verb dan Direct Object membentuk satu kesatuan frase verba inti yang tidak boleh dibelah oleh Adverb.',
+        formula: 'Subject + [Adverb of Frequency] + Auxiliary + [Mid-Adverb] + Main Verb + DIRECT OBJECT + [Manner/Time Adverb]',
+        examples: [
+          { sentence: 'The scientists carefully analyzed the chemical compounds.', translation: 'Para ilmuwan menganalisis senyawa kimia tersebut secara hati-hati.', note: 'Adverb sebelum verb atau setelah objek' }
+        ]
+      }
+    ],
+    examBridge: {
+      ieltsApplication: 'Penempatan adverb yang luwes dan alami membedakan penulis tingkat lanjut dari pemula.',
+      toeflApplication: 'TOEFL Structure menguji letak Adverbs of Frequency dan larangan pemisahan V-O.',
+      scoringImpact: 'Meningkatkan kelancaran aliran sintaksis kalimat.'
+    },
+    goldenRules: [
+      'Jangan pernah letakkan adverb di antara Kata Kerja dan Objek (*analyze carefully the data ❌ -> carefully analyze the data ✔*).',
+      'Sentence adverbs (*However, Consequently*) wajib diikuti tanda koma di awal kalimat.'
+    ],
+    questions: [
+      {
+        id: 'q-m19-1',
+        category: 'Word Classes',
+        difficulty: 'Dasar',
+        question: 'The research team _____ the anomalous data before releasing the press statement.',
+        options: ['thoroughly examined', 'examined thoroughly the', 'examined the thoroughly', 'thoroughly examine'],
+        correctAnswer: 'thoroughly examined',
+        explanation: 'Adverb "thoroughly" ditempatkan sebelum kata kerja "examined" agar tidak memisahkan kata kerja dari objeknya.',
+        ruleReference: 'Modul 19: Adverb Placement before Verb'
+      }
+    ],
+    errorCorrectionTasks: [
+      {
+        id: 'ec-m19-1',
+        flawedSentence: 'The professor explained clearly the mathematical formula to the students.',
+        flawLocation: 'explained clearly the mathematical formula',
+        correctedSentence: 'The professor clearly explained the mathematical formula to the students.',
+        linguisticExplanation: 'Dilarang meletakkan adverb "clearly" di antara kata kerja "explained" dan objek langsung "the mathematical formula".'
+      }
+    ]
+  },
+
+  {
+    id: 'modul-20-prepositions-hierarchy',
+    stageNumber: 3,
+    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    categoryKey: 'Word Classes',
+    moduleNumber: 20,
+    title: 'Prepositions: Hierarki Waktu, Ruang, dan Gerak (In, On, At & Movement)',
+    subtitle: 'Piramida koordinat waktu-tempat dari spesifik ke luas, serta preposisi arah',
+    levelBadge: 'Preposisi · Modul 20',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Preposisi In, On, dan At mengikuti piramida hierarki dimensional: AT = titik paling spesifik (jam, alamat presisi); ON = permukaan atau dimensi hari/tanggal; IN = wadah tertutup, area luas, kota, negara, bulan, atau abad.',
+    coreConceptSummary: 'WAKTU: At 5 PM (presisi) -> On Monday, On July 4th (hari/tanggal) -> In 2026, In December, In the 21st century (periode luas). RUANG: At the bus stop, At Oxford (titik koordinat) -> On the table, On Main Street (permukaan/jalan) -> In London, In the building (wadah/wilayah).',
+    sections: [
+      {
+        stepNumber: '01',
+        title: 'Piramida Hierarki Dimensi IN - ON - AT',
+        explanation: 'Memandu pemetaan dari koordinat sempit presisi hingga cakupan luas.',
+        formula: 'AT (Specific Point) -> ON (Line/Surface/Day) -> IN (Area/Volume/Period)',
+        examples: [
+          { sentence: 'The symposium convenes at 9:00 AM on Monday in the auditorium.', translation: 'Simposium dimulai pukul 09.00 pada hari Senin di dalam auditorium.', note: 'at (jam) -> on (hari) -> in (ruangan)' }
+        ]
+      }
+    ],
+    examBridge: {
+      ieltsApplication: 'Akurasi penggunaan preposisi waktu (*in 2015, between 2010 and 2020*) adalah kunci skor Task 1.',
+      toeflApplication: 'TOEFL Structure menguji preposisi penunjuk tanggal lengkap (*on May 5th*) vs bulan saja (*in May*).',
+      scoringImpact: 'Mencegah kesalahan preposisi yang sering terjadi pada pembelajar Indonesia.'
+    },
+    goldenRules: [
+      'Gunakan AT untuk jam dan titik lokasi presisi.',
+      'Gunakan ON untuk hari, tanggal lengkap, nama jalan, dan permukaan.',
+      'Gunakan IN untuk bulan, tahun, abad, musim, kota, dan negara.'
+    ],
+    questions: [
+      {
+        id: 'q-m20-1',
+        category: 'Word Classes',
+        difficulty: 'Dasar',
+        question: 'The global climate accord was ratified _____ Paris _____ 2015.',
+        options: ['in / in', 'at / in', 'in / at', 'on / in'],
+        correctAnswer: 'in / in',
+        explanation: 'Kota (Paris) menggunakan "in" dan tahun (2015) menggunakan "in" -> "in Paris in 2015".',
+        ruleReference: 'Modul 20: Prepositions of Place and Time'
+      }
+    ],
+    errorCorrectionTasks: [
+      {
+        id: 'ec-m20-1',
+        flawedSentence: 'The conference will take place in Monday morning at July.',
+        flawLocation: 'in Monday morning at July',
+        correctedSentence: 'The conference will take place on Monday morning in July.',
+        linguisticExplanation: 'Hari menggunakan "on" (*on Monday morning*) dan bulan menggunakan "in" (*in July*).'
       }
     ]
   },
 
   // =========================================================================
-  // TAHAP 4: SINTAKSIS & RANGKA KALIMAT TUNGGAL (SENTENCE ARCHITECTURE)
+  // TAHAP 4: SINTAKSIS, POLA KALIMAT & DIMENSI WAKTU
   // =========================================================================
   {
-    id: 'modul-17-clause-anatomy',
+    id: 'modul-21-dependent-prepositions',
     stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis & Rangka Kalimat Tunggal',
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    categoryKey: 'Word Classes',
+    moduleNumber: 21,
+    title: 'Dependent Prepositions & Fixed Prepositional Collocations',
+    subtitle: 'Pasangan preposisi tetap pada Verbs & Adjectives penentu skor internasional',
+    levelBadge: 'Kolokasi Preposisi · Modul 21',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Dalam bahasa Inggris tingkat tinggi, kata sifat dan kata kerja tertentu berpasangan secara mutlak dengan preposisi terikat (Dependent Prepositions). Menggantinya dengan preposisi lain yang tampak logis dalam bahasa Indonesia akan menghasilkan kalimat cacat (*depend to ❌ -> depend on ✔*).',
+    coreConceptSummary: 'Adjective + Prep: *capable of, prone to, deficient in, susceptible to, aware of*. Verb + Prep: *adhere to, abstain from, coincide with, compensate for, contribute to, depend on*.',
+    sections: [
+      {
+        stepNumber: '01',
+        title: 'Katalog Pasangan Preposisi Terikat Mutlak',
+        explanation: 'Pasangan ini harus dihafal sebagai satu unit leksikal utuh.',
+        formula: 'Verb/Adjective + Fixed Dependent Preposition + Noun / Gerund (-ing)',
+        examples: [
+          { sentence: 'The artificial intelligence model is capable of diagnosing rare ocular diseases.', translation: 'Model kecerdasan buatan tersebut mampu mendiagnosis penyakit mata langka.', note: 'capable + of + V-ing' }
+        ]
+      }
+    ],
+    examBridge: {
+      ieltsApplication: 'Penggunaan kolokasi preposisi yang presisi adalah syarat mutlak untuk meraih Band 8.5 pada kriteria Lexical Resource.',
+      toeflApplication: 'TOEFL Structure menguji dependent prepositions pada kata kerja akademik seperti *insist on*, *prevent from*.',
+      scoringImpact: 'Meningkatkan akurasi idiomatis dan leksikal.'
+    },
+    goldenRules: [
+      'Ingat pasangan baku: *capable of, adhere to, depend on, immune to, prone to*.',
+      'Setelah dependent preposition, kata kerja berikutnya selalu berbentuk Gerund (Verb-ing).'
+    ],
+    questions: [
+      {
+        id: 'q-m21-1',
+        category: 'Word Classes',
+        difficulty: 'Menengah',
+        question: 'All participating laboratories must strictly adhere _____ established bioethics protocols.',
+        options: ['with', 'to', 'for', 'in'],
+        correctAnswer: 'to',
+        explanation: 'Kata kerja "adhere" berpasangan secara mutlak dengan preposisi "to" -> "adhere to".',
+        ruleReference: 'Modul 21: Dependent Prepositions (Adhere to)'
+      }
+    ],
+    errorCorrectionTasks: [
+      {
+        id: 'ec-m21-1',
+        flawedSentence: 'The patient is susceptible for seasonal viral infections.',
+        flawLocation: 'susceptible for',
+        correctedSentence: 'The patient is susceptible to seasonal viral infections.',
+        linguisticExplanation: 'Kata sifat "susceptible" berpasangan tetap dengan preposisi "to" (bukan "for").'
+      }
+    ]
+  },
+
+  {
+    id: 'modul-22-clause-anatomy',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Sentence Architecture',
-    moduleNumber: 17,
+    moduleNumber: 22,
     title: 'Anatomy of a Clause: Subject, Finite Verb, Complements, and Adjuncts',
     subtitle: 'Membedah rangka konstituen kalimat dan membedakan Finite vs Non-finite Verb',
-    levelBadge: 'Struktur Kalimat · Modul 17',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 01 - 16',
-    mentalModelIntro: 'Setiap kalimat independen bahasa Inggris wajib memiliki minimal satu Subjek dan satu Finite Verb (kata kerja ber-tenses yang terkonjugasi). Frasa partisipel (-ing) atau to-infinitive BUKAN Finite Verb.',
-    coreConceptSummary: 'Clause = Subject + Finite Verb + [Objects/Complements/Adjuncts]. Finite Verb berubah bentuk mengikuti subjek dan tenses (is, was, writes, wrote), sedangkan Non-finite Verb tidak ber-tenses (writing, to write).',
+    levelBadge: 'Sintaksis Klausa · Modul 22',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Klausa adalah unit gramatikal terkecil yang mampu mengekspresikan proposisi lengkap. Setiap klausa independen wajib memiliki: (1) Subjek dan (2) Finite Verb (kata kerja berkonjugasi tenses). Non-finite verb (gerund, infinitive, participle) tidak bisa menjadi predikat tunggal suatu klausa.',
+    coreConceptSummary: 'Konstituen Klausa: [Subject] + [Finite Verb] + [Direct/Indirect Object] + [Complement] + [Adjunct/Keterangan opsional]. Finite verb memiliki tense dan keselarasan dengan subjek; non-finite verb tidak memiliki tense.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Pembedaan Finite vs Non-Finite Verb',
-        explanation: 'Kalimat tidak bisa berdiri sendiri tanpa Finite Verb. "The scientist writing the report" bukanlah kalimat lengkap (Sentence Fragment) karena "writing" adalah non-finite verb.',
-        formula: 'Sentence = Subject + FINITE VERB (bukan sekadar V-ing atau to-V1)',
+        stepNumber: '01',
+        title: 'Finite vs Non-Finite Verb',
+        explanation: 'Memastikan setiap kalimat memiliki predikat utama yang sah secara tenses.',
+        formula: 'Independent Clause = Subject + FINITE VERB (+ Object/Complement)',
         examples: [
-          {
-            sentence: 'The scientist (Subjek) wrote (Finite Verb) a comprehensive report (Direct Object).',
-            translation: 'Ilmuwan tersebut menulis laporan komprehensif.',
-          },
+          { sentence: 'The team analyzed the telemetry.', translation: 'Tim tersebut menganalisis telemetri.', note: 'analyzed = Finite Verb' }
         ],
-      },
+        contrastiveAnalysis: {
+          incorrectSentence: 'The scientist analyzing the data in the laboratory.',
+          correctSentence: 'The scientist analyzed the data in the laboratory. / The scientist is analyzing...',
+          linguisticReason: '"Analyzing" sendiri adalah non-finite participle yang tidak memiliki to be, sehingga kalimat ini cacat (Sentence Fragment).'
+        }
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Menghindari Sentence Fragments (kalimat menggantung tanpa finite verb) adalah syarat dasar mencapai Band 6.5 ke atas.',
-      toeflApplication: 'TOEFL Structure sering menguji kalimat rumpang yang kehilangan Finite Verb.',
-      scoringImpact: 'Menjamin keutuhan gramatikal setiap kalimat.',
+      ieltsApplication: 'Menghindari Sentence Fragments (klausa tanpa finite verb) adalah syarat dasar kelolosan Band 6.0+.',
+      toeflApplication: 'TOEFL Structure secara intensif menguji kalimat yang kehilangan finite verb utama.',
+      scoringImpact: 'Menjamin keutuhan struktural kalimat.'
     },
     goldenRules: [
-      'Setiap kalimat bahasa Inggris wajib memiliki minimal satu Subject dan satu Finite Verb.',
-      'Kata kerja berakhiran -ing dan to-infinitive adalah Non-Finite Verb dan tidak bisa menjadi predikat utama tanpa auxiliary.',
+      'Setiap kalimat bahasa Inggris wajib memiliki minimal 1 Finite Verb berkonjugasi tenses.',
+      'Verb-ing atau To-Infinitive yang berdiri sendiri tanpa auxiliary TIDAK BISA menjadi Finite Verb.'
     ],
     questions: [
       {
-        id: 'q17-1',
+        id: 'q-m22-1',
         category: 'Sentence Architecture',
         difficulty: 'Dasar',
-        question: 'Manakah dari pilihan berikut yang merupakan kalimat utuh (Complete Sentence) dan bukan Sentence Fragment?',
+        question: 'Which of the following contains a valid Finite Verb?',
         options: [
-          'The research team conducting several trials in the laboratory.',
-          'The research team conducted several trials in the laboratory.',
-          'The research team to conduct several trials in the laboratory.',
-          'The research team while conducting several trials in the laboratory.',
+          'The research team conducting the survey.',
+          'The research team conducted the survey.',
+          'The research team to conduct the survey.',
+          'The research team for conducting the survey.'
         ],
-        correctAnswer: 'The research team conducted several trials in the laboratory.',
-        explanation: '"Conducted" adalah Finite Verb (Past Simple). Opsi lain hanya memiliki non-finite verbs (conducting, to conduct) atau anak kalimat menggantung.',
-        ruleReference: 'Kaidah Emas: Kalimat utuh wajib memiliki Finite Verb.',
-      },
+        correctAnswer: 'The research team conducted the survey.',
+        explanation: '"Conducted" adalah Finite Verb bentuk Simple Past yang sah sebagai predikat klausa.',
+        ruleReference: 'Modul 22: Finite Verb Identification'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec17-1',
-        flawedSentence: 'The senior economist analyzing global inflation trends during the conference.',
-        flawLocation: 'analyzing',
-        correctedSentence: 'The senior economist analyzed global inflation trends during the conference.',
-        linguisticExplanation: '"Analyzing" adalah non-finite verb. Untuk membentuk kalimat utuh, ganti menjadi Finite Verb ("analyzed") atau tambahkan auxiliary ("was analyzing").',
+        id: 'ec-m22-1',
+        flawedSentence: 'The new renewable policy promising significant reductions in emissions.',
+        flawLocation: 'promising',
+        correctedSentence: 'The new renewable policy promises significant reductions in emissions.',
+        linguisticExplanation: '"Promising" adalah non-finite participle yang tidak sah sebagai predikat utama. Ubah menjadi finite verb "promises".'
       }
     ]
   },
 
   {
-    id: 'modul-18-5-sentence-patterns',
+    id: 'modul-23-five-sentence-patterns',
     stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis & Rangka Kalimat Tunggal',
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Sentence Architecture',
-    moduleNumber: 18,
+    moduleNumber: 23,
     title: 'The 5 Fundamental Sentence Patterns (S-V, S-V-O, S-V-C, S-V-IO-DO, S-V-O-OC)',
     subtitle: 'Arsitektur rangka dasar kalimat bahasa Inggris dari sederhana ke kompleks',
-    levelBadge: 'Struktur Kalimat · Modul 18',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 17: Clause Anatomy',
-    mentalModelIntro: 'Setiap kalimat bahasa Inggris adalah variasi dari 5 pola rangka dasar. Memahami posisi Subjek, Predikat, Objek, dan Komplemen memastikan tulisanmu memiliki struktur yang kokoh.',
-    coreConceptSummary: 'Pola 1 (S-V), Pola 2 (S-V-O), Pola 3 (S-V-C), Pola 4 (S-V-IO-DO), dan Pola 5 (S-V-O-OC).',
+    levelBadge: 'Pola Kalimat · Modul 23',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Semua kalimat bahasa Inggris di dunia, betapapun panjang dan rumitnya, dibangun di atas salah satu dari 5 pola dasar rangka sintaksis.',
+    coreConceptSummary: 'Pola 1 (S-V: *The ice melted*); Pola 2 (S-V-O: *She wrote a thesis*); Pola 3 (S-V-C: *The theory is sound*); Pola 4 (S-V-IO-DO: *The agency awarded the scientist a grant*); Pola 5 (S-V-O-OC: *The committee elected Dr. Vance chair*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Pola 1, 2, dan 3 (Intransitif, Transitif, Linking)',
-        explanation: 'Pola 1: S-V (The symposium concluded). Pola 2: S-V-O (Researchers published reports). Pola 3: S-V-C (The methodology appears robust).',
-        formula: 'Pola 1: S + V | Pola 2: S + V + DO | Pola 3: S + Linking Verb + SC',
+        stepNumber: '01',
+        title: '5 Arsitektur Rangka Sintaksis Baku',
+        explanation: 'Mengenali posisi Direct Object, Indirect Object, dan Object Complement.',
+        formula: 'P1: S-V | P2: S-V-O | P3: S-V-C | P4: S-V-IO-DO | P5: S-V-O-OC',
         examples: [
-          {
-            sentence: 'The proposed methodology appears robust.',
-            translation: 'Metodologi yang diajukan tersebut tampak kokoh (Pola 3 S-V-C).',
-          },
-        ],
-      },
-      {
-        stepNumber: 'Langkah 2: Pola 4 dan 5 (Objek Ganda & Object Complement)',
-        explanation: 'Pola 4: S-V-IO-DO (The board awarded the scholar a grant). Pola 5: S-V-O-OC (The committee appointed Dr. Evans chair).',
-        formula: 'Pola 4: S + V + IO + DO | Pola 5: S + V + DO + Object Complement',
-        examples: [
-          {
-            sentence: 'The committee declared the proposal acceptable.',
-            translation: 'Komite menyatakan proposal tersebut dapat diterima (Pola 5 S-V-O-OC).',
-          },
-        ],
-      },
+          { sentence: 'The board considered the proposal innovative.', translation: 'Dewan menganggap proposal tersebut inovatif.', note: 'Pola 5: S-V-O-OC' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Memvariasikan pola kalimat dari Pola 2 (S-V-O) ke Pola 5 (S-V-O-OC) memperkaya rentang struktur gramatikal di IELTS Writing.',
-      toeflApplication: 'TOEFL Structure sering menguji urutan kata antara Indirect Object dan Direct Object.',
-      scoringImpact: 'Meningkatkan variasi arsitektur sintaksis.',
+      ieltsApplication: 'Variasi 5 pola kalimat menghasilkan skor variasi struktur gramatikal yang tinggi (Band 8.0+).',
+      toeflApplication: 'TOEFL Structure menguji susunan kata pada pola ditransitif (IO-DO vs DO + to/for + IO).',
+      scoringImpact: 'Meningkatkan keluwesan penulisan akademik.'
     },
     goldenRules: [
-      'Pola 3 S-V-C menggunakan Linking Verb dan diakhiri Subject Complement.',
-      'Pola 5 S-V-O-OC melengkapi status atribut Direct Object.',
+      'Pada pola S-V-IO-DO (*give me the book*), jika DO diletakkan lebih dulu, gunakan preposisi to/for (*give the book to me*).',
+      'Object Complement menerangkan sifat atau jabatan dari Direct Object (*call him a genius*).'
     ],
     questions: [
       {
-        id: 'q18-1',
+        id: 'q-m23-1',
         category: 'Sentence Architecture',
-        difficulty: 'Dasar',
-        question: 'Tentukan pola kalimat dari: "The committee declared the proposal acceptable."',
-        options: ['S + V + O', 'S + V + C', 'S + V + IO + DO', 'S + V + O + OC'],
-        correctAnswer: 'S + V + O + OC',
-        explanation: '"Acceptable" adalah kata sifat yang melengkapi status objek langsung ("the proposal").',
-        ruleReference: 'Kaidah Emas: Pola 5 S-V-O-OC melengkapi status direct object.',
-      },
+        difficulty: 'Menengah',
+        question: 'Identify the sentence pattern: "The committee appointed Dr. Elena Vance principal investigator."',
+        options: ['S-V-O', 'S-V-C', 'S-V-IO-DO', 'S-V-O-OC'],
+        correctAnswer: 'S-V-O-OC',
+        explanation: 'Subjek = The committee; Verb = appointed; Object = Dr. Elena Vance; Object Complement = principal investigator.',
+        ruleReference: 'Modul 23: S-V-O-OC Sentence Pattern'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec18-1',
-        flawedSentence: 'The university awarded to the young researcher a prestigious grant.',
-        flawLocation: 'awarded to the young researcher a',
-        correctedSentence: 'The university awarded the young researcher a prestigious grant.',
-        linguisticExplanation: 'Pada Pola 4 (S-V-IO-DO), Indirect Object ("the young researcher") langsung diletakkan setelah kata kerja tanpa preposisi "to".',
+        id: 'ec-m23-1',
+        flawedSentence: 'The foundation gave to the laboratory a million-dollar endowment.',
+        flawLocation: 'gave to the laboratory a million-dollar endowment',
+        correctedSentence: 'The foundation gave the laboratory a million-dollar endowment. / gave a million-dollar endowment to the laboratory.',
+        linguisticExplanation: 'Pada pola S-V-IO-DO murni, tidak boleh ada preposisi "to" di depan Indirect Object.'
       }
     ]
   },
 
   {
-    id: 'modul-19-subject-verb-agreement',
+    id: 'modul-24-subject-verb-agreement-advanced',
     stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis & Rangka Kalimat Tunggal',
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Sentence Architecture',
-    moduleNumber: 19,
-    title: 'Subject-Verb Agreement: Master Rules (Intervening Phrases & Proximity)',
+    moduleNumber: 24,
+    title: 'Subject-Verb Agreement Lanjutan (Intervening Phrases & Proximity)',
     subtitle: 'Menyelaraskan jumlah subjek dan menembus frasa sisipan panjang',
-    levelBadge: 'Struktur Kalimat · Modul 19',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 18: Sentence Patterns',
-    mentalModelIntro: 'Kesalahan paling fatal dalam penulisan formal terjadi ketika pembelajar terkecoh oleh kata benda jamak yang berada di dalam frasa sisipan pengapit. Aturan kuncinya adalah menemukan Noun inti sebelum preposisi pertama.',
-    coreConceptSummary: 'Subjek tunggal = Kata kerja tunggal (is/was/has/Vs). Frasa "of...", "along with...", "as well as..." diabaikan dalam penentuan subjek-predikat.',
+    levelBadge: 'S-V Agreement Lanjutan · Modul 24',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Dalam penulisan akademik, subjek sejati sering kali terpisah puluhan kata dari kata kerjanya oleh frasa sisipan preposisi (*together with, as well as, including*) atau klausa penjelas. Jangan tertipu oleh kata benda jamak yang berada tepat sebelum kata kerja jika subjek sejatinya tunggal!',
+    coreConceptSummary: 'Hukum Frasa Sisipan: *Subject (+ with / as well as / along with / including + Noun) + Verb*. Verb tetap mengikuti Subjek Pertama di depan! Hukum Proksimitas: *Either A or B / Neither A nor B* -> Verb mengikuti subjek terdekat (B).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Menembus Frasa Sisipan Pengapit (Intervening Phrases)',
-        explanation: 'Frasa yang diawali "of", "along with", "together with" adalah pelengkap dan BUKAN subjek utama.',
-        formula: 'Core Noun (Singular) + [of + Plural Nouns...] + SINGULAR VERB (is / was / has / Vs)',
+        stepNumber: '01',
+        title: 'Hukum Subjek Pertama vs Hukum Kedekatan (Proximity)',
+        explanation: 'Membedakan frasa aditif (as well as) dengan kata hubung koordinatif (and).',
+        formula: 'Subj 1 + as well as / along with + Subj 2 -> Verb follows SUBJ 1 | Neither S1 nor S2 -> Verb follows S2',
         examples: [
-          {
-            sentence: 'The quality of these experimental samples is rigorously monitored.',
-            translation: 'Kualitas dari sampel-sampel eksperimen ini (is) dipantau secara ketat.',
-          },
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'A comprehensive analysis of recent financial trends have revealed major vulnerabilities.',
-          correctSentence: 'A comprehensive analysis of recent financial trends has revealed major vulnerabilities.',
-          linguisticReason: 'Subjek inti kalimat adalah "A comprehensive analysis" (tunggal). Frasa preposisi "of recent financial trends" tidak mengubah subjek menjadi jamak.',
-        },
-      },
+          { sentence: 'The professor, as well as his doctoral candidates, is attending the symposium.', translation: 'Profesor tersebut, bersama para mahasiswa doktoralnya, menghadiri simposium.', note: 'Verb "is" mengikuti subjek tunggal "The professor"' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Subject-Verb Agreement adalah salah satu kriteria utama "error-free sentences" pada deskriptor IELTS Band 7 ke atas.',
-      toeflApplication: 'Soal Subject-Verb Agreement dengan frasa pengapit panjang merupakan 25% dari variasi soal TOEFL iBT Structure.',
-      scoringImpact: 'Mengeliminasi kesalahan elementer subjek-predikat.',
+      ieltsApplication: 'Menjaga keselarasan S-V pada kalimat akademik panjang adalah pengujian utama kriteria Grammatical Accuracy.',
+      toeflApplication: 'TOEFL Structure paling sering menguji frasa sisipan *together with, along with* yang menjebak.',
+      scoringImpact: 'Mencegah pemotongan skor akurasi pada kalimat kompleks.'
     },
     goldenRules: [
-      'Abaikan kata benda di dalam frasa "of..." saat menentukan jumlah subjek utama.',
-      'Indefinite pronouns (Each, Every, Everyone, Neither) selalu menuntut kata kerja tunggal.',
+      '*As well as, along with, together with, in addition to* BUKAN kata hubung "and"; kata kerja tetap mengikuti subjek pertama di depan.',
+      'Pada *Neither... nor...* dan *Either... or...*, kata kerja mengikuti subjek yang paling dekat dengannya.'
     ],
     questions: [
       {
-        id: 'q19-1',
+        id: 'q-m24-1',
         category: 'Sentence Architecture',
-        difficulty: 'Dasar',
-        question: 'Pilih kata kerja yang tepat: "The collection of rare historical manuscripts ________ preserved in the national archive."',
+        difficulty: 'Menengah',
+        question: 'The lead epidemiologist, along with three laboratory technicians, _____ publishing the groundbreaking report.',
         options: ['is', 'are', 'were', 'have been'],
         correctAnswer: 'is',
-        explanation: 'Subjek utama kalimat adalah "The collection" (tunggal). Frasa preposisi "of rare historical manuscripts" diabaikan.',
-        ruleReference: 'Kaidah Emas: Frasa sisipan pengapit tidak mempengaruhi jumlah subjek inti.',
-      },
+        explanation: 'Frasa "along with..." adalah frasa sisipan. Subjek intinya tunggal ("The lead epidemiologist"), sehingga kata kerja yang benar adalah "is".',
+        ruleReference: 'Modul 24: Intervening Additive Phrases Agreement'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec19-1',
-        flawedSentence: 'A detailed evaluation of the clinical trial results indicate significant improvements.',
-        flawLocation: 'indicate',
-        correctedSentence: 'A detailed evaluation of the clinical trial results indicates significant improvements.',
-        linguisticExplanation: 'Subjek intinya adalah "A detailed evaluation" (tunggal), sehingga kata kerja pada Simple Present wajib berakhiran -s ("indicates").',
+        id: 'ec-m24-1',
+        flawedSentence: 'The discovery of ancient hominid fossils in the remote caves reveal new migration routes.',
+        flawLocation: 'reveal',
+        correctedSentence: 'The discovery of ancient hominid fossils in the remote caves reveals new migration routes.',
+        linguisticExplanation: 'Subjek sejati kalimat ini adalah "The discovery" (tunggal), bukan "fossils" atau "caves". Kata kerja harus "reveals".'
       }
     ]
   },
 
   {
-    id: 'modul-20-sentence-errors-elimination',
+    id: 'modul-25-sentence-errors-elimination',
     stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis & Rangka Kalimat Tunggal',
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Sentence Architecture',
-    moduleNumber: 20,
+    moduleNumber: 25,
     title: 'Sentence Errors Elimination: Fragments, Run-ons, dan Comma Splices',
     subtitle: 'Mendeteksi dan memperbaiki 3 kesalahan fatal penyambungan kalimat',
-    levelBadge: 'Struktur Kalimat · Modul 20',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 17 - 19',
-    mentalModelIntro: 'Dua kalimat independen tidak boleh digabungkan hanya dengan tanda koma (Comma Splice) atau tanpa tanda baca sama sekali (Run-on Sentence). Penutur asli menggunakan titik, titik koma (;), atau konjungsi koordinasi (FANBOYS) dengan koma.',
-    coreConceptSummary: 'Comma Splice terjadi saat 2 klausa independen disambung koma tanpa konjungsi. Perbaiki dengan: 1) Titik (.), 2) Titik Koma (;), atau 3) Koma + FANBOYS (, but / , and / , so).',
+    levelBadge: 'Eliminasi Error · Modul 25',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Tiga kesalahan paling mematikan dalam penulisan esai formal: (1) Sentence Fragment (klausa buntung tanpa finite verb/subjek), (2) Run-on Sentence (dua klausa independen digabung tanpa kata hubung/tanda baca), dan (3) Comma Splice (dua klausa independen hanya dihubungkan dengan koma saja tanpa konjungsi).',
+    coreConceptSummary: 'Memperbaiki Comma Splice: (a) Gunakan titik (.), (b) Gunakan titik koma (;), (c) Gunakan koma + FANBOYS (, and / , but / , so), atau (d) Jadikan salah satu klausa sebagai anak kalimat subordinasi (*Although...*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Menghilangkan Comma Splice',
-        explanation: 'Comma Splice adalah kesalahan fatal saat menggabungkan dua klausa independen hanya dengan tanda koma.',
-        formula: 'Salah: Clause 1, Clause 2. | Benar: Clause 1; Clause 2. ATAU Clause 1, and Clause 2.',
+        stepNumber: '01',
+        title: 'Bedah Comma Splice & Solusi Standar',
+        explanation: 'Koma tunggal tidak cukup kuat untuk menyatukan dua klausa independen utuh.',
+        formula: 'Salah: Indep Clause, Indep Clause ❌ | Benar: Indep Clause; Indep Clause ✔ | Indep Clause, and Indep Clause ✔',
         examples: [
-          {
-            sentence: 'The hypothesis was controversial; however, the empirical evidence was undeniable.',
-            translation: 'Hipotesis tersebut kontroversial; namun demikian, bukti empirisnya tak terbantahkan.',
-          },
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'The laboratory ordered modern sensors, the shipment was delayed by customs.',
-          correctSentence: 'The laboratory ordered modern sensors; however, the shipment was delayed by customs.',
-          linguisticReason: 'Dua klausa independen tidak boleh disambung hanya dengan tanda koma.',
-        },
-      },
+          { sentence: 'The empirical data was conclusive; consequently, the team proceeded to clinical trials.', translation: 'Data empiris tersebut konklusif; oleh karena itu, tim melanjutkan ke uji klinis.', note: 'Semicolon + Conjunctive Adverb' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Comma Splice adalah alasan nomor satu yang menjatuhkan nilai Grammatical Range & Accuracy di bawah Band 6.0.',
-      toeflApplication: 'TOEFL Structure selalu menguji eliminasi Run-on Sentences dan Comma Splices.',
-      scoringImpact: 'Menghasilkan kalimat majemuk yang bebas dari cacat tanda baca.',
+      ieltsApplication: 'Comma Splice dan Fragments langsung membatasi skor Grammatical Range & Accuracy maksimal pada Band 5.0.',
+      toeflApplication: 'TOEFL Structure menguji kemampuan mengidentifikasi kalimat yang disambung secara ilegal.',
+      scoringImpact: 'Menghilangkan penalti berat pada kriteria tata bahasa.'
     },
     goldenRules: [
-      'Jangan pernah menyambung dua klausa independen hanya dengan tanda koma.',
-      'Gunakan titik koma (;) sebelum conjunctive adverb seperti however, therefore, furthermore.',
+      'Jangan pernah menyambung dua klausa lengkap hanya dengan tanda koma (Comma Splice).',
+      'Gunakan titik koma (;) atau koma + konjungsi FANBOYS untuk menyatukan dua klausa independen.'
     ],
     questions: [
       {
-        id: 'q20-1',
+        id: 'q-m25-1',
         category: 'Sentence Architecture',
-        difficulty: 'Dasar',
-        question: 'Manakah kalimat yang bebas dari kesalahan tanda baca (Comma Splice)?',
+        difficulty: 'Menengah',
+        question: 'Which of the following sentences correctly resolves the comma splice?',
         options: [
-          'The laboratory ordered modern sensors, the shipment was delayed by customs.',
-          'The laboratory ordered modern sensors, however, the shipment was delayed by customs.',
-          'The laboratory ordered modern sensors; however, the shipment was delayed by customs.',
-          'The laboratory ordered modern sensors but, the shipment was delayed by customs.',
+          'The hypothesis was contested, the researchers repeated the trial.',
+          'The hypothesis was contested; therefore, the researchers repeated the trial.',
+          'The hypothesis was contested the researchers repeated the trial.',
+          'The hypothesis was contested, however, the researchers repeated the trial.'
         ],
-        correctAnswer: 'The laboratory ordered modern sensors; however, the shipment was delayed by customs.',
-        explanation: 'Conjunctive adverb "however" yang menghubungkan dua klausa independen wajib didahului oleh titik koma dan diikuti oleh koma ("; however,").',
-        ruleReference: 'Kaidah Emas: Tanda baca untuk conjunctive adverb adalah semicolon dan comma.',
-      },
+        correctAnswer: 'The hypothesis was contested; therefore, the researchers repeated the trial.',
+        explanation: 'Menggunakan titik koma (;) sebelum transitional adverb "therefore" dan koma setelahnya adalah solusi baku untuk comma splice.',
+        ruleReference: 'Modul 25: Comma Splice Correction with Semicolon'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec20-1',
-        flawedSentence: 'The initial trial failed, the research committee decided to modify the protocol.',
-        flawLocation: 'failed, the',
-        correctedSentence: 'The initial trial failed; therefore, the research committee decided to modify the protocol.',
-        linguisticExplanation: 'Pisahkan dua klausa independen dengan titik koma dan kata transisi ("; therefore,") atau gunakan konjungsi koordinasi (", so").',
+        id: 'ec-m25-1',
+        flawedSentence: 'The battery capacity degraded rapidly, the engineers redesigned the cooling module.',
+        flawLocation: 'rapidly, the',
+        correctedSentence: 'The battery capacity degraded rapidly; therefore, the engineers redesigned the cooling module.',
+        linguisticExplanation: 'Dua klausa independen tidak boleh disambung hanya dengan tanda koma (Comma Splice). Gunakan titik koma dan kata transisi.'
       }
     ]
   },
 
-  // =========================================================================
-  // TAHAP 5: DIMENSI WAKTU & LOGIKA TENSES LENGKAP (THE 12 TENSES MASTERCLASS)
-  // =========================================================================
   {
-    id: 'modul-21-present-tenses',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Dimensi Waktu & Logika Tenses Lengkap',
+    id: 'modul-26-present-dimensions',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Tenses Logic',
-    moduleNumber: 21,
+    moduleNumber: 26,
     title: 'Present Dimensions: Simple, Continuous, Perfect, dan Perfect Continuous',
     subtitle: 'Fakta abadi, tren kontemporer, akumulasi pengalaman, dan durasi berkelanjutan',
-    levelBadge: 'Logika Tenses · Modul 21',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 09: Primary Auxiliaries',
-    mentalModelIntro: 'Dimensi waktu kini terbagi 4 aspek: Simple Present (fakta permanen), Present Continuous (proses sementara), Present Perfect (hasil masa lalu relevan kini), dan Present Perfect Continuous (durasi tanpa jeda dari masa lalu hingga kini).',
-    coreConceptSummary: 'Simple Present (V1/Vs) = Fakta. Present Continuous (is/am/are V-ing) = Tren berjalan. Present Perfect (have/has V3) = Pengalaman tuntas relevan kini. Present Perfect Continuous (have/has been V-ing) = Durasi aktif.',
+    levelBadge: 'Dimensi Present · Modul 26',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Present Tense bukan sekadar "waktu sekarang". Simple Present menyatakan kebenaran ilmiah dan hukum alam abadi; Present Continuous menyatakan tren sementara yang sedang berlangsung; Present Perfect menghubungkan masa lalu dengan bukti nyata saat ini; Present Perfect Continuous menekankan durasi aksi yang masih terus berjalan hingga detik ini.',
+    coreConceptSummary: 'Simple Present (S + V1/s: *Water boils at 100°C*). Continuous (S + is/am/are + V-ing: *Emissions are rising*). Perfect (S + have/has + V3: *Scientists have proven*). Perfect Continuous (S + have/has + been + V-ing + for/since: *They have been studying climate change for decades*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Present Perfect vs Present Perfect Continuous',
-        explanation: 'Present Perfect berfokus pada HASIL TUNTAS (I have written the paper). Present Perfect Continuous berfokus pada PROSES DURASI yang masih berlangsung (I have been writing for five hours).',
-        formula: 'Present Perfect: have/has + V3 | Present Perfect Continuous: have/has + been + V-ing',
+        stepNumber: '01',
+        title: '4 Dimensi Sudut Pandang Present',
+        explanation: 'Membedakan fakta permanen, proses kontemporer, hasil selesai, dan durasi berkelanjutan.',
+        formula: 'Fact: S + V1 | Temporary: S + be + V-ing | Result: S + have/has + V3 | Duration: S + have/has + been + V-ing',
         examples: [
-          {
-            sentence: 'The team has been developing this vaccine for three years and has finally completed the phase III trial.',
-            translation: 'Tim telah mengembangkan vaksin ini selama 3 tahun (durasi: has been developing) dan akhirnya telah menyelesaikan uji fase III (hasil tuntas: has completed).',
-          },
-        ],
-      },
+          { sentence: 'Astronomers have been observing the exoplanet since 2018.', translation: 'Para astronom telah mengamati eksoplanet tersebut sejak 2018 (dan masih terus mengamati).', note: 'Present Perfect Continuous' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Writing Task 2, Present Perfect Continuous (*researchers have been debating...*) adalah pembuka paragraf isu kontemporer yang sangat elegan.',
-      toeflApplication: 'TOEFL Structure sering menguji penggunaan "since" dan "for" pada Present Perfect Continuous.',
-      scoringImpact: 'Meningkatkan variasi aspek tenses masa kini.',
+      ieltsApplication: 'Kerapian membedakan Present Simple (fakta data) dan Present Perfect (tren perubahan) adalah kunci IELTS Task 1 & 2.',
+      toeflApplication: 'TOEFL Structure menguji penggunaan *since + titik waktu* dan *for + rentang durasi*.',
+      scoringImpact: 'Meningkatkan akurasi pemilihan tenses.'
     },
     goldenRules: [
-      'Gunakan Present Perfect untuk hasil tuntas yang relevan dengan masa kini.',
-      'Gunakan Present Perfect Continuous untuk menekankan durasi aksi yang masih berlangsung.',
+      'Gunakan *since* untuk titik awal waktu lampau (*since 2010*); gunakan *for* untuk durasi kuantitas waktu (*for ten years*).',
+      'Gunakan Present Simple untuk teori ilmiah dan fakta umum yang selalu benar.'
     ],
     questions: [
       {
-        id: 'q21-1',
+        id: 'q-m26-1',
         category: 'Tenses Logic',
         difficulty: 'Dasar',
-        question: 'Pilih bentuk kata kerja yang tepat: "Scholars ________ the socio-economic impacts of automation since the early 2000s."',
-        options: ['have been investigating', 'are investigating', 'investigated', 'investigate'],
-        correctAnswer: 'have been investigating',
-        explanation: 'Frasa "since the early 2000s" menunjukkan durasi yang bermula di masa lampau dan terus berlanjut hingga kini ➔ Present Perfect Continuous ("have been investigating").',
-        ruleReference: 'Kaidah Emas: Durasi berkelanjutan dari masa lalu hingga kini memakai Present Perfect Continuous.',
-      },
+        question: 'Epidemiologists _____ the efficacy of the new therapeutic agent for over six months.',
+        options: ['are evaluating', 'have been evaluating', 'evaluated', 'evaluate'],
+        correctAnswer: 'have been evaluating',
+        explanation: 'Frasa durasi "for over six months" yang masih berlangsung hingga kini menuntut Present Perfect Continuous -> "have been evaluating".',
+        ruleReference: 'Modul 26: Present Perfect Continuous for Duration'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec21-1',
-        flawedSentence: 'The engineering team is testing this prototype for six months without success.',
-        flawLocation: 'is testing',
-        correctedSentence: 'The engineering team has been testing this prototype for six months without success.',
-        linguisticExplanation: 'Ada penanda durasi "for six months" yang berlanjut hingga sekarang, sehingga wajib menggunakan Present Perfect Continuous ("has been testing"), bukan Present Continuous.',
+        id: 'ec-m26-1',
+        flawedSentence: 'The research laboratory is operating in Geneva since 1995.',
+        flawLocation: 'is operating ... since 1995',
+        correctedSentence: 'The research laboratory has been operating in Geneva since 1995.',
+        linguisticExplanation: 'Keterangan waktu "since 1995" menuntut Present Perfect / Present Perfect Continuous, bukan Present Continuous "is operating".'
       }
     ]
   },
 
   {
-    id: 'modul-22-past-tenses',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Dimensi Waktu & Logika Tenses Lengkap',
+    id: 'modul-27-past-dimensions',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Tenses Logic',
-    moduleNumber: 22,
+    moduleNumber: 27,
     title: 'Past Dimensions: Simple Past, Past Continuous, Past Perfect, dan Past Perfect Continuous',
     subtitle: 'Kronologi peristiwa lampau, interupsi latar belakang, dan aksi terdahulu',
-    levelBadge: 'Logika Tenses · Modul 22',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 21: Present Tenses',
-    mentalModelIntro: 'Saat menceritakan masa lampau, penutur asli membedakan titik waktu definitif (Simple Past V2), latar belakang yang sedang berjalan (Past Continuous was/were V-ing), dan peristiwa yang terjadi LEBIH DAHULU sebelum peristiwa lampau lainnya (Past Perfect had V3).',
-    coreConceptSummary: 'Simple Past (V2) = Waktu lampau definitif. Past Continuous = Latar belakang terinterupsi. Past Perfect (had V3) = Peristiwa lampau pertama sebelum peristiwa lampau kedua.',
+    levelBadge: 'Dimensi Past · Modul 27',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Masa lampau memiliki kronologi berlapis: Simple Past menyatakan peristiwa yang tuntas pada waktu spesifik di masa lalu; Past Continuous menyatakan aksi latar belakang yang sedang berlangsung saat diinterupsi; Past Perfect (Had + V3) menyatakan aksi "paling lampau" yang terjadi SEBELUM peristiwa lampau lainnya.',
+    coreConceptSummary: 'Past Simple (S + V2: *The treaty was signed in 1945*). Past Continuous (S + was/were + V-ing: *While the sensors were recording...*). Past Perfect (S + had + V3: *When the audit began, they had already deleted the files*). Past Perfect Continuous (S + had been + V-ing: *He had been lecturing for an hour before the power failed*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Kronologi Past Perfect (had + V3)',
-        explanation: 'Bila ada 2 peristiwa lampau, peristiwa yang terjadi lebih dahulu wajib memakai Past Perfect (had + V3), dan peristiwa kedua memakai Simple Past (V2).',
-        formula: 'Peristiwa 1 (Lebih Dulu): HAD + V3 | Peristiwa 2 (Berikutnya): V2 (Past Simple)',
+        stepNumber: '01',
+        title: 'Hukum Kronologi Past Perfect (The Earlier Past)',
+        explanation: 'Past Perfect mutlak digunakan untuk membedakan urutan dua aksi yang sama-sama terjadi di masa lalu.',
+        formula: 'Past Perfect (Aksi 1 / Lebih Lampau: had + V3) -> Simple Past (Aksi 2 / Lebih Baru: V2)',
         examples: [
-          {
-            sentence: 'By the time the auditors arrived (V2), the accounting staff had already reconciled (had + V3) the balance sheet.',
-            translation: 'Saat para auditor tiba, staf akuntansi telah merekonsiliasi neraca keuangan terlebih dahulu.',
-          },
-        ],
-      },
+          { sentence: 'The satellite had transmitted the telemetry before communication was lost.', translation: 'Satelit tersebut telah mengirimkan telemetri sebelum komunikasi terputus.', note: 'had transmitted (Aksi 1) -> was lost (Aksi 2)' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Speaking Part 2 dan Writing Task 1, penggunaan Past Perfect untuk mendeskripsikan tren sebelum titik tahun tertentu adalah kunci Band 7.5+.',
-      toeflApplication: 'TOEFL Reading & Structure sering menguji urutan kronologis "By the time [Past], Subject had [V3]".',
-      scoringImpact: 'Menjaga konsistensi kronologi narasi ilmiah.',
+      ieltsApplication: 'IELTS Writing Task 1 grafik historis menuntut penguasaan Past Simple dan Past Perfect (*By 2000, production had overtaken consumption*).',
+      toeflApplication: 'TOEFL Structure menguji keabsahan urutan Past Perfect dengan kata hubung *by the time, before, after*.',
+      scoringImpact: 'Meningkatkan koherensi kronologis laporan data.'
     },
     goldenRules: [
-      'Simple Past (V2) wajib digunakan bila ada titik waktu lampau spesifik (yesterday, in 2018).',
-      'Past Perfect (had + V3) hanya digunakan bila membandingkan urutan kronologis 2 peristiwa masa lalu.',
+      'Gunakan Past Perfect (had + V3) hanya bila ada peristiwa masa lalu lain sebagai titik acuan pembanding.',
+      'Waktu lampau spesifik (*yesterday, in 2010, two days ago*) WAJIB menggunakan Simple Past (V2), bukan Present Perfect.'
     ],
     questions: [
       {
-        id: 'q22-1',
+        id: 'q-m27-1',
         category: 'Tenses Logic',
-        difficulty: 'Dasar',
-        question: 'Pilih kata kerja yang tepat: "The archaeological expedition ________ the site before the monsoon season began."',
-        options: ['had excavated', 'excavated', 'has excavated', 'was excavating'],
-        correctAnswer: 'had excavated',
-        explanation: 'Ekskavasi selesai terlebih dahulu (Past Perfect: "had excavated") sebelum musim hujan dimulai di masa lalu ("began").',
-        ruleReference: 'Kaidah Emas: Peristiwa lampau yang mendahului peristiwa lampau lainnya memakai Past Perfect.',
-      },
+        difficulty: 'Menengah',
+        question: 'By the time the peer review committee convened, the lead researcher _____ a revised manuscript.',
+        options: ['already submitted', 'had already submitted', 'has already submitted', 'was submitting'],
+        correctAnswer: 'had already submitted',
+        explanation: 'Peristiwa pengiriman naskah selesai SEBELUM komite berkumpul di masa lalu (Past Perfect) -> "had already submitted".',
+        ruleReference: 'Modul 27: Past Perfect Chronology'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec22-1',
-        flawedSentence: 'By the time the fire department arrived, the security guards already extinguished the fire.',
-        flawLocation: 'already extinguished',
-        correctedSentence: 'By the time the fire department arrived, the security guards had already extinguished the fire.',
-        linguisticExplanation: 'Pemadaman api terjadi lebih dahulu sebelum pemadam kebakaran tiba, sehingga wajib menggunakan Past Perfect ("had already extinguished").',
+        id: 'ec-m27-1',
+        flawedSentence: 'The economist has published a landmark paper in 1998.',
+        flawLocation: 'has published ... in 1998',
+        correctedSentence: 'The economist published a landmark paper in 1998.',
+        linguisticExplanation: 'Keterangan waktu lampau definit spesifik "in 1998" mewajibkan Simple Past (V2 "published"), bukan Present Perfect.'
       }
     ]
   },
 
   {
-    id: 'modul-23-future-tenses',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Dimensi Waktu & Logika Tenses Lengkap',
+    id: 'modul-28-future-dimensions',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Tenses Logic',
-    moduleNumber: 23,
+    moduleNumber: 28,
     title: 'Future Dimensions: Will, Be Going To, Future Continuous, dan Future Perfect',
     subtitle: 'Prediksi teoretis, rencana konkret, proyeksi proses, dan target tuntas batas waktu',
-    levelBadge: 'Logika Tenses · Modul 23',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 21 & 22',
-    mentalModelIntro: 'Masa depan diungkapkan berbeda berdasarkan derajat kepastiannya: Will untuk keputusan spontan atau prediksi teoretis, Be Going To untuk rencana yang sudah terancang atau ada bukti fisik, dan Future Perfect untuk target yang akan tuntas sebelum batas waktu.',
-    coreConceptSummary: 'Will + V1 (prediksi/keputusan). Be going to + V1 (rencana/bukti fisik). Future Continuous (will be V-ing = sedang berlangsung di masa depan). Future Perfect (will have V3 = tuntas sebelum waktu tertentu).',
+    levelBadge: 'Dimensi Future · Modul 28',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Masa depan dapat diproyeksikan dengan derajat kepastian berbeda: WILL untuk prediksi teoretis dan keputusan spontan; BE GOING TO untuk rencana berdasar bukti nyata saat ini; FUTURE CONTINUOUS (will be + V-ing) untuk aksi yang sedang berlangsung pada titik waktu masa depan; FUTURE PERFECT (will have + V3) untuk target yang diproyeksikan SUDAH SELESAI sebelum batas waktu masa depan.',
+    coreConceptSummary: 'Future Simple (*will + V1*). Future Intent (*be going to + V1*). Future Continuous (*will be + V-ing*). Future Perfect (*will have + V3 + by [future deadline]*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Future Perfect (will have + V3) dan Penanda "By"',
-        explanation: 'Future Perfect digunakan bersama penanda "By [waktu masa depan]" untuk menyatakan target tuntas sebelum batas waktu tersebut.',
-        formula: 'By + [Future Time], Subject + will have + Verb 3 (Past Participle)',
+        stepNumber: '01',
+        title: 'Future Perfect & Proyeksi Batas Waktu (By + Time)',
+        explanation: 'Menyatakan akumulasi pencapaian sebelum suatu target waktu di masa mendatang.',
+        formula: 'By + [Future Time] + Subject + will have + Verb 3 (Past Participle)',
         examples: [
-          {
-            sentence: 'By the year 2030, the consortium will have completed the renewable energy grid.',
-            translation: 'Menjelang tahun 2030, konsorsium akan telah menyelesaikan jaringan energi terbarukan.',
-          },
-        ],
-      },
+          { sentence: 'By 2030, the consortium will have completed the oceanic carbon sequestration grid.', translation: 'Menjelang tahun 2030, konsorsium tersebut akan telah menyelesaikan jaringan penyerapan karbon laut.', note: 'Future Perfect' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Pada IELTS Task 1 tipe proyeksi masa depan (*By 2050, solar capacity will have increased by 40%*), Future Perfect wajib digunakan.',
-      toeflApplication: 'TOEFL Structure sering menguji pasangan antara frasa "By [future year]" dan Future Perfect.',
-      scoringImpact: 'Mendemonstrasikan akurasi proyeksi data masa depan.',
+      ieltsApplication: 'Proyeksi masa depan pada grafik IELTS Task 1 (*It is projected that by 2050 emissions will have doubled...*) menghasilkan skor grammar tertinggi.',
+      toeflApplication: 'TOEFL Structure menguji struktur *by the time + Present Simple, S + will have + V3*.',
+      scoringImpact: 'Meningkatkan variasi tenses futuristik berstandar akademik.'
     },
     goldenRules: [
-      'Frasa "By + future time" selalu berpasangan dengan Future Perfect (will have + V3).',
+      'Gunakan Future Perfect (*will have + V3*) setiap kali ada penanda batas waktu *By [Future Year/Deadline]*.',
+      'Dalam anak kalimat waktu (time clause: *when, before, as soon as*), jangan gunakan "will", gunakan Simple Present (*When he arrives, BUKAN When he will arrive*).'
     ],
     questions: [
       {
-        id: 'q23-1',
+        id: 'q-m28-1',
         category: 'Tenses Logic',
-        difficulty: 'Dasar',
-        question: 'Pilih bentuk kata kerja yang tepat: "By the end of this decade, researchers ________ a sustainable alternative to lithium batteries."',
-        options: ['will have developed', 'develop', 'will develop', 'had developed'],
-        correctAnswer: 'will have developed',
-        explanation: 'Frasa penanda "By the end of this decade" menuntut Future Perfect ("will have developed").',
-        ruleReference: 'Kaidah Emas: Frasa "By + future time" berpasangan dengan Future Perfect (will have + V3).',
-      },
-    ],
-    errorCorrectionTasks: [
-      {
-        id: 'ec23-1',
-        flawedSentence: 'By the end of this semester, the postgraduate students will finish all laboratory dissertations.',
-        flawLocation: 'will finish',
-        correctedSentence: 'By the end of this semester, the postgraduate students will have finished all laboratory dissertations.',
-        linguisticExplanation: 'Frasa batas waktu masa depan "By the end of this semester" mewajibkan Future Perfect ("will have finished").',
+        difficulty: 'Menengah',
+        question: 'By the end of the fiscal decade, renewable energy sources _____ fossil fuels in total output.',
+        options: ['will surpass', 'will have surpassed', 'surpassed', 'have surpassed'],
+        correctAnswer: 'will have surpassed',
+        explanation: 'Penanda waktu "By the end of the fiscal decade" menuntut Future Perfect -> "will have surpassed".',
+        ruleReference: 'Modul 28: Future Perfect with By-Time Marker'
       }
-    ]
-  },
-
-  // =========================================================================
-  // TAHAP 6: HUBUNGAN ANTAR-KLAUSA & KALIMAT MAJEMUK (CLAUSAL RELATIONS)
-  // =========================================================================
-  {
-    id: 'modul-25-conjunctions-transitions',
-    stageNumber: 6,
-    stageName: 'Tahap 6: Hubungan Antar-Klausa & Kalimat Majemuk',
-    categoryKey: 'Complex Structures',
-    moduleNumber: 25,
-    title: 'Coordinating Conjunctions (FANBOYS), Subordinasi, dan Transisi Antar-Kalimat',
-    subtitle: 'Membangun jembatan logika antar gagasan tanpa kompromi tanda baca',
-    levelBadge: 'Hubungan Klausa · Modul 25',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 20: Sentence Errors',
-    mentalModelIntro: 'Konjungsi adalah jembatan logika antar gagasan. Penutur asli membedakan koordinasi setara (FANBOYS), subordinasi anak kalimat (Although, Because), dan kata keterangan transisi antar kalimat utuh (However, Therefore).',
-    coreConceptSummary: 'FANBOYS menghubungkan 2 klausa independen dengan didahului koma. Subordinating conjunctions melekat di awal dependent clause tanpa titik koma. Conjunctive adverbs membutuhkan titik koma (;) atau titik (.).',
-    sections: [
-      {
-        stepNumber: 'Langkah 1: Subordinating Conjunctions vs Conjunctive Adverbs',
-        explanation: 'Although/Because melekat pada anak kalimat. However/Therefore adalah transisi antar kalimat utuh yang membutuhkan titik koma (;).',
-        formula: 'Although Clause 1, Clause 2. | Sentence 1; however, Sentence 2.',
-        examples: [
-          {
-            sentence: 'Although the initial trial failed, the team persisted.',
-            translation: 'Meskipun uji coba awal gagal, tim tersebut tetap bertahan.',
-          },
-          {
-            sentence: 'The initial trial failed; however, the team persisted.',
-            translation: 'Uji coba awal gagal; namun demikian, tim tersebut tetap bertahan.',
-          },
-        ],
-      },
-    ],
-    examBridge: {
-      ieltsApplication: 'Variasi kata penghubung kohesif yang akurat adalah kunci skor 8.0 pada Coherence & Cohesion.',
-      toeflApplication: 'TOEFL Structure menguji tanda baca di sekitar conjunctive adverbs.',
-      scoringImpact: 'Menciptakan alur wacana yang mulus dan koheren.',
-    },
-    goldenRules: [
-      'Gunakan tanda koma sebelum konjungsi FANBOYS yang menggabungkan dua klausa independen.',
-      'Gunakan titik koma (;) sebelum however, therefore, furthermore di tengah kalimat majemuk.',
-    ],
-    questions: [
-      {
-        id: 'q25-1',
-        category: 'Complex Structures',
-        difficulty: 'Dasar',
-        question: 'Pilih konjungsi subordinasi yang tepat: "________ the initial funding was delayed, the construction project finished on time."',
-        options: ['Although', 'However', 'Therefore', 'Despite of'],
-        correctAnswer: 'Although',
-        explanation: '"Although" adalah subordinating conjunction yang tepat untuk mengawali dependent clause lengkap.',
-        ruleReference: 'Kaidah Emas: Subordinating conjunction mengawali dependent clause.',
-      },
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec25-1',
-        flawedSentence: 'The budget was severely reduced, however the research was completed on time.',
-        flawLocation: 'reduced, however the',
-        correctedSentence: 'The budget was severely reduced; however, the research was completed on time.',
-        linguisticExplanation: 'Conjunctive adverb "however" yang menghubungkan 2 klausa independen wajib didahului titik koma dan diikuti koma ("; however,").',
+        id: 'ec-m28-1',
+        flawedSentence: 'When the international delegation will arrive tomorrow, the rector will deliver the keynote address.',
+        flawLocation: 'will arrive',
+        correctedSentence: 'When the international delegation arrives tomorrow, the rector will deliver the keynote address.',
+        linguisticExplanation: 'Dalam anak kalimat waktu yang diawali "When", masa depan diungkapkan dengan Simple Present "arrives", bukan "will arrive".'
       }
     ]
   },
 
   {
-    id: 'modul-27-relative-clauses',
-    stageNumber: 6,
-    stageName: 'Tahap 6: Hubungan Antar-Klausa & Kalimat Majemuk',
-    categoryKey: 'Complex Structures',
-    moduleNumber: 27,
-    title: 'Relative Clauses: Defining vs Non-Defining & Relative Pronouns',
-    subtitle: 'Klausa penjelas esensial tanpa koma vs klausa penjelas tambahan berkoma',
-    levelBadge: 'Hubungan Klausa · Modul 27',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 04: Pronoun Cases',
-    mentalModelIntro: 'Relative Clause melekat pada kata benda untuk memberikan penjelasan identitas. Defining clause memberikan informasi esensial tanpa koma (bisa memakai "that"), sedangkan Non-defining clause memberikan informasi ekstra yang diapit koma (dilarang memakai "that", wajib memakai "which/who").',
-    coreConceptSummary: 'Defining (Tanpa Koma) = Identitas esensial. Non-defining (Dengan Koma) = Fakta tambahan (DILARANG MEMAKAI "THAT"). Gunakan Who (Subjek), Whom (Objek), Whose (Kepemilikan), Which/That (Benda).',
-    sections: [
-      {
-        stepNumber: 'Langkah 1: Defining vs Non-Defining Clauses',
-        explanation: 'Non-defining relative clause diapit tanda koma dan DILARANG menggunakan kata "that". Wajib menggunakan "which" untuk benda atau "who" untuk orang.',
-        formula: 'Non-defining: Proper Noun, [which / who + clause], Main Verb',
-        examples: [
-          {
-            sentence: 'Oxford University, which was founded in the eleventh century, remains a leading institution.',
-            translation: 'Universitas Oxford, yang didirikan pada abad kesebelas (Non-defining: info ekstra dengan koma), tetap menjadi institusi terkemuka.',
-          },
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'The solar project, that was launched in 2020, has exceeded energy targets.',
-          correctSentence: 'The solar project, which was launched in 2020, has exceeded energy targets.',
-          linguisticReason: 'Kata "that" DILARANG MUTLAK digunakan dalam Non-defining Relative Clause (klausa berkoma). Wajib menggunakan "which".',
-        },
-      },
-    ],
-    examBridge: {
-      ieltsApplication: 'Penggunaan Relative Clauses yang bervariasi adalah syarat mutlak meraih skor Band 7.0+ pada Grammatical Range & Accuracy.',
-      toeflApplication: 'TOEFL Structure sering menguji jebakan penggunaan "that" setelah tanda koma.',
-      scoringImpact: 'Memperkaya kompleksitas kalimat secara elegan.',
-    },
-    goldenRules: [
-      'Kata "that" tidak pernah digunakan setelah tanda koma pada relative clause.',
-      'Gunakan "whose" untuk kepemilikan orang maupun benda.',
-    ],
-    questions: [
-      {
-        id: 'q27-1',
-        category: 'Complex Structures',
-        difficulty: 'Dasar',
-        question: 'Pilih relative pronoun yang tepat: "The European Union, ________ headquarters are located in Brussels, introduced new climate regulations."',
-        options: ['whose', 'which', 'that', 'where'],
-        correctAnswer: 'whose',
-        explanation: '"Whose" menunjukkan kepemilikan markas besar milik Uni Eropa ("whose headquarters").',
-        ruleReference: 'Kaidah Emas: Relative pronoun kepemilikan adalah "whose".',
-      },
-    ],
-    errorCorrectionTasks: [
-      {
-        id: 'ec27-1',
-        flawedSentence: 'The new laboratory protocol, that was published last month, has received worldwide recognition.',
-        flawLocation: 'that was published',
-        correctedSentence: 'The new laboratory protocol, which was published last month, has received worldwide recognition.',
-        linguisticExplanation: 'Pada non-defining relative clause (diapit tanda koma), dilarang menggunakan "that". Bentuk yang benar adalah "which".',
-      }
-    ]
-  },
-
-  // =========================================================================
-  // TAHAP 7: TRANSFORMASI & POLA KALIMAT KOMPLEKS (ADVANCED TRANSFORMATIONS)
-  // =========================================================================
-  {
-    id: 'modul-29-passive-voice-mastery',
-    stageNumber: 7,
-    stageName: 'Tahap 7: Transformasi & Pola Kalimat Kompleks',
-    categoryKey: 'Complex Structures',
+    id: 'modul-29-passive-voice',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    categoryKey: 'Sentence Architecture',
     moduleNumber: 29,
-    title: 'Passive Voice Masterclass: Personal, Impersonal Passive, dan Causative Structures',
-    subtitle: 'Menggeser fokus ke data riset dan konstruksi impersonal "It is believed that..."',
-    levelBadge: 'Transformasi Lanjutan · Modul 29',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 06 & 21-23',
-    mentalModelIntro: 'Dalam penulisan ilmiah, siapa yang melakukan eksperimen seringkali tidak sepenting prosedur atau temuan data itu sendiri. Passive Voice menggeser fokus dari pelaku ke objek riset. Impersonal Passive ("It is argued that...") membangun nada akademik objektif.',
-    coreConceptSummary: 'Passive = Be + Past Participle (V3). Impersonal Passive = It is thought/argued/reported that + Clause. Causative = Have/Get + Object + V3.',
+    title: 'Passive Voice Transformation & Stative Passive Structures',
+    subtitle: 'Objektivitas penulisan ilmiah, agen tersembunyi, dan impersonal passive',
+    levelBadge: 'Kalimat Pasif · Modul 29',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Dalam penulisan sains dan akademik, pelaku eksperimen tidak sepenting proses atau hasil penelitian itu sendiri. Kalimat Pasif (Passive Voice) memindahkan fokus dari subjek pelaku ke objek penerima aksi untuk menciptakan nada objektif dan impersonal.',
+    coreConceptSummary: 'Rangka Pasif Mutlak: Subject + To Be (sesuai tenses) + Verb 3 (Past Participle) (+ by Agent). Impersonal Passive: *It is widely believed that... / The data is considered to be...*.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Impersonal Passive untuk Wacana Akademis',
-        explanation: 'Gunakan Impersonal Passive untuk melaporkan konsensus ilmiah tanpa menyebut subjek opini personal secara subjektif.',
-        formula: 'It is + [widely believed / argued / observed / reported] + that + Clause',
+        stepNumber: '01',
+        title: 'Formula Transformasi Pasif Lintas Tenses',
+        explanation: 'Mempertahankan dimensi tenses asli dengan mengubah bentuk To Be yang sesuai.',
+        formula: 'Active: Subj + Verb + Obj -> Passive: Obj + [To Be in Tense] + Verb 3 (+ by Subj)',
         examples: [
-          {
-            sentence: 'It is widely believed that renewable infrastructure accelerates economic resilience.',
-            translation: 'Diyakini secara luas bahwa infrastruktur terbarukan mempercepat ketahanan ekonomi.',
-          },
-        ],
-      },
+          { sentence: 'The samples were analyzed using mass spectrometry.', translation: 'Sampel-sampel tersebut dianalisis menggunakan spektrometri massa.', note: 'Passive Voice Simple Past' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Impersonal Passive adalah struktur wajib pada pengantar esai argumentatif IELTS Task 2 untuk menyatakan pandangan umum.',
-      toeflApplication: 'TOEFL Integrated Writing menilai kemampuan menyajikan data audio secara pasif objektif.',
-      scoringImpact: 'Menciptakan gaya penulisan ilmiah yang matang dan objektif.',
+      ieltsApplication: 'Penulisan IELTS Academic Task 1 diagram proses dan metodologi Task 2 mutlak menggunakan Passive Voice.',
+      toeflApplication: 'TOEFL Structure menguji keabsahan bentuk Past Participle setelah To Be pada kalimat pasif.',
+      scoringImpact: 'Meningkatkan register formal dan objektivitas ilmiah.'
     },
     goldenRules: [
-      'Rumus pasif: Be (sesuai tenses) + Verb 3 (Past Participle).',
-      'Kata kerja intransitif (occur, happen, exist, arrive) tidak pernah memiliki bentuk pasif.',
+      'Kalimat pasif WAJIB mengandung To Be + Verb 3.',
+      'Hanya kata kerja transitif (yang memiliki objek langsung) yang dapat dipasifkan.'
     ],
     questions: [
       {
-        id: 'q29-1',
-        category: 'Complex Structures',
+        id: 'q-m29-1',
+        category: 'Sentence Architecture',
         difficulty: 'Dasar',
-        question: 'Konversikan kalimat aktif ke pasif: "Scholars have established a robust theoretical model."',
-        options: [
-          'A robust theoretical model has been established by scholars.',
-          'A robust theoretical model was established by scholars.',
-          'A robust theoretical model had been established by scholars.',
-          'A robust theoretical model is established by scholars.',
-        ],
-        correctAnswer: 'A robust theoretical model has been established by scholars.',
-        explanation: 'Present Perfect pasif dibentuk dengan "has/have + been + V3" ➔ "has been established".',
-        ruleReference: 'Kaidah Emas: Passive Present Perfect menggunakan have/has been + V3.',
-      },
+        question: 'The clinical specimens _____ in a temperature-controlled cryogenic chamber.',
+        options: ['were stored', 'stored', 'were storing', 'have stored'],
+        correctAnswer: 'were stored',
+        explanation: 'Spesimen tidak menyimpan diri sendiri melainkan disimpan (pasif lampau) -> "were stored".',
+        ruleReference: 'Modul 29: Passive Voice Construction'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec29-1',
-        flawedSentence: 'An unprecedented anomaly was occurred during the final calibration phase.',
-        flawLocation: 'was occurred',
-        correctedSentence: 'An unprecedented anomaly occurred during the final calibration phase.',
-        linguisticExplanation: '"Occur" adalah kata kerja intransitif dan dilarang diubah ke bentuk pasif.',
+        id: 'ec-m29-1',
+        flawedSentence: 'The controversial report was publish by the ministry last week.',
+        flawLocation: 'was publish',
+        correctedSentence: 'The controversial report was published by the ministry last week.',
+        linguisticExplanation: 'Setelah To Be "was", kata kerja pasif wajib berakhiran Past Participle "published" (Verb 3).'
       }
     ]
   },
 
   {
-    id: 'modul-30-conditionals-inversion',
-    stageNumber: 7,
-    stageName: 'Tahap 7: Transformasi & Pola Kalimat Kompleks',
+    id: 'modul-30-conditionals-logic',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
     categoryKey: 'Complex Structures',
     moduleNumber: 30,
-    title: 'Conditionals Masterclass & Inversion (Zero, 1, 2, 3, Mixed & Inverted)',
-    subtitle: 'Struktur pengandaian formal dan pembalikan auxiliary tanpa kata "If"',
-    levelBadge: 'Transformasi Lanjutan · Modul 30',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 21 - 23 (Tenses)',
-    mentalModelIntro: 'Kalimat pengandaian (Conditionals) dan struktur Inversi adalah penanda variasi gramatikal tinggi yang sangat diperhitungkan dalam evaluasi IELTS Band 7.5+ dan TOEFL iBT 100+. Struktur inversi menghilangkan kata "if" dan membalik auxiliary ke depan subjek.',
-    coreConceptSummary: 'Type 1 (If V1, will V1). Type 2 (If V2, would V1). Type 3 (If had V3, would have V3). Inversi: Should you require... / Were the state to... / Had the team known...',
-    decisionTree: [
-      {
-            "step": "Langkah 1: Skrining Probabilitas & Realitas Pengandaian",
-            "question": "Apakah kondisi pengandaian nyata (realistis) atau berlawanan dengan fakta (hipotetis)?",
-            "branches": [
-                  {
-                        "condition": "Kemungkinan nyata di masa depan",
-                        "outcome": "First Conditional",
-                        "rule": "If + Present Simple, Will + V1. Inversi: Should you require assistance..."
-                  },
-                  {
-                        "condition": "Hipotetis masa sekarang (berlawanan dengan fakta)",
-                        "outcome": "Second Conditional",
-                        "rule": "If + Past Simple (Were), Would + V1. Inversi: Were the government to intervene..."
-                  },
-                  {
-                        "condition": "Penyesalan / hipotetis masa lalu",
-                        "outcome": "Third Conditional",
-                        "rule": "If + Past Perfect, Would have + V3. Inversi: Had the regulatory body acted..."
-                  }
-            ]
-      }
-],
-    registerLadder: {
-      "informal": "If the government helped earlier, the company would not fail.",
-      "standard": "If the government had intervened earlier, the company would not have collapsed.",
-      "academicHigh": "Had the regulatory authorities intervened in a timely manner, the financial institution would not have suffered catastrophic insolvency.",
-      "analysis": "Menerapkan Inverted Third Conditional tingkat tinggi (\"Had the authorities intervened...\") tanpa kata \"if\", menghasilkan nada formal jurnal ilmiah."
-},
-    canDoChecklist: [
-      "Saya menguasai struktur Inversi Pengandaian: Should (Type 1), Were (Type 2), dan Had (Type 3).",
-      "Saya paham bahwa dalam Second Conditional formal, subjek \"I/He/She/It\" selalu menggunakan \"were\", bukan \"was\".",
-      "Saya mampu mendeteksi Mixed Conditionals (kondisi masa lalu yang berakibat pada masa sekarang)."
-],
-    pocketAxioms: [
-      "Inversi Tipe 1: \"Should + S + V1\" menggantikan \"If + S + Present\".",
-      "Inversi Tipe 2: \"Were + S + to V1 / Adjective\" menggantikan \"If + S + Past\".",
-      "Inversi Tipe 3: \"Had + S + V3\" menggantikan \"If + S + had V3\"."
-],
+    title: 'Conditionals Logic: Zero, First, Second, Third, dan Mixed Conditionals',
+    subtitle: 'Pengandaian ilmiah, kemungkinan masa depan, hipotesis imajinatif, dan penyesalan lampau',
+    levelBadge: 'Kalimat Pengandaian · Modul 30',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Conditionals adalah instrumen logika untuk menghubungkan syarat (Condition) dengan konsekuensi (Result). Ada 5 jenis: Zero (Hukum alam), First (Kemungkinan nyata masa depan), Second (Hipotesis imajinatif masa kini), Third (Pengandaian masa lampau yang tidak terjadi), dan Mixed (Pengandaian masa lalu yang berdampak pada masa kini).',
+    coreConceptSummary: 'Zero (*If + Present, Present*). First (*If + Present, Will + V1*). Second (*If + Past Simple, Would + V1*). Third (*If + Past Perfect, Would have + V3*). Mixed (*If + had + V3, Would + V1 now*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Inverted Conditionals (Tanpa Kata "If")',
-        explanation: 'Dalam penulisan formal tingkat tinggi, kata "if" dihilangkan dan auxiliary verb dibalik ke depan subjek.',
-        formula: 'Type 1: Should you require... | Type 2: Were the government to... | Type 3: Had the team known...',
+        stepNumber: '01',
+        title: 'Matriks 5 Tipe Kalimat Pengandaian',
+        explanation: 'Memetakan tingkat probabilitas dan dimensi waktu secara presisi.',
+        formula: 'Type 1: If + V1, Will + V1 | Type 2: If + V2/were, Would + V1 | Type 3: If + had V3, Would have V3',
         examples: [
-          {
-            sentence: 'Had the team verified the calibration earlier, the error would have been prevented.',
-            translation: 'Seandainya tim memverifikasi kalibrasi lebih awal, kesalahan itu akan dapat dicegah.',
-          },
-        ],
-      },
+          { sentence: 'If the catalyst were added earlier, the chemical reaction would stabilize.', translation: 'Jika katalis tersebut ditambahkan lebih awal, reaksi kimia itu akan stabil (Second Conditional: bentuk were).', note: 'Second Conditional subjunctive were' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Menyertakan 1-2 kalimat inversi pada paragraf solusi di IELTS Task 2 secara langsung mendemonstrasikan penguasaan Complex Structures untuk Band 8.0+.',
-      toeflApplication: 'TOEFL Reading passages tingkat lanjut sering menggunakan struktur inversi formal.',
-      scoringImpact: 'Menaikkan skor Grammatical Range & Accuracy ke tingkat superior.',
+      ieltsApplication: 'Penggunaan Second & Third Conditionals dalam esai argumentatif membuktikan penguasaan grammar Band 8.0+.',
+      toeflApplication: 'TOEFL Structure menguji penggunaan "were" untuk semua subjek pada Second Conditional (*If I were you*).',
+      scoringImpact: 'Meningkatkan kompleksitas hipotesis dan argumen.'
     },
     goldenRules: [
-      'Inversi Type 1 diawali "Should"; Type 2 diawali "Were"; Type 3 diawali "Had".',
+      'Pada Second Conditional formal, gunakan "were" untuk SEMUA subjek (termasuk I, He, She, It).',
+      'Jangan pernah letakkan "would" di dalam anak kalimat "If" (*If I would have known ❌ -> If I had known ✔*).'
     ],
     questions: [
       {
-        id: 'q30-1',
+        id: 'q-m30-1',
         category: 'Complex Structures',
-        difficulty: 'Dasar',
-        question: 'Lengkapi kalimat inversion formal: "________ the policy been introduced sooner, the economic fallout would have been mitigated."',
-        options: ['Had', 'Were', 'Should', 'If had'],
-        correctAnswer: 'Had',
-        explanation: 'Inversi dari Third Conditional lampau diawali dengan "Had" + Subject + V3.',
-        ruleReference: 'Kaidah Emas: Inverted Third Conditional diawali kata Had.',
-      },
+        difficulty: 'Menengah',
+        question: 'If the epidemiological team _____ the anomaly earlier, the contagion would have been contained.',
+        options: ['detected', 'had detected', 'has detected', 'would detect'],
+        correctAnswer: 'had detected',
+        explanation: 'Induk kalimat menggunakan "would have been contained" (Third Conditional), sehingga klausa if membutuhkan Past Perfect "had detected".',
+        ruleReference: 'Modul 30: Third Conditional'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec30-1',
-        flawedSentence: 'If had the committee known about the budget cuts, they would have postponed the project.',
-        flawLocation: 'If had the committee known',
-        correctedSentence: 'Had the committee known about the budget cuts, they would have postponed the project.',
-        linguisticExplanation: 'Pada struktur inversi formal, kata "if" wajib dihilangkan sepenuhnya saat "Had" dipindahkan ke depan subjek.',
+        id: 'ec-m30-1',
+        flawedSentence: 'If the administration would have allocated more funds, the research would be completed.',
+        flawLocation: 'would have allocated',
+        correctedSentence: 'If the administration had allocated more funds, the research would be completed.',
+        linguisticExplanation: 'Klausa "If" tidak boleh mengandung modal "would have". Gunakan Past Perfect "had allocated".'
       }
     ]
   },
 
+  // =========================================================================
+  // TAHAP 5: RETORIKA AKADEMIK, KLAUSA KOMPLEKS & KESIAPAN UJIAN
+  // =========================================================================
   {
-    id: 'modul-31-negative-inversion',
-    stageNumber: 7,
-    stageName: 'Tahap 7: Transformasi & Pola Kalimat Kompleks',
+    id: 'modul-31-conjunctions-transitions',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
     categoryKey: 'Complex Structures',
     moduleNumber: 31,
-    title: 'Negative Adverb Inversion (Seldom, Rarely, Never, Not only... but also)',
-    subtitle: 'Pembalikan auxiliary setelah adverbia bernada negatif untuk penekanan retoris',
-    levelBadge: 'Transformasi Lanjutan · Modul 31',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 30: Conditionals & Inversion',
-    mentalModelIntro: 'Ketika kalimat diawali oleh kata keterangan bernada negatif atau restriktif (Seldom, Rarely, Hardly, Scarcely, Under no circumstances, Not only), susunan subjek dan auxiliary verb WAJIB DIBALIK seperti susunan kalimat tanya.',
-    coreConceptSummary: 'Negative Adverb + Auxiliary Verb + Subject + Main Verb. Contoh: "Seldom do researchers observe such anomalies."',
+    title: 'Coordinating Conjunctions (FANBOYS), Subordinasi, dan Transisi Antar-Kalimat',
+    subtitle: 'Membangun jembatan logika antar gagasan tanpa kompromi tanda baca',
+    levelBadge: 'Konjungsi & Transisi · Modul 31',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Penulisan esai formal membutuhkan penghubung logika yang kokoh. Ada 3 jenis konjungsi: Coordinating (FANBOYS: For, And, Nor, But, Or, Yet, So), Subordinating (Although, Because, Since, Whereas), dan Conjunctive Adverbs (However, Furthermore, Consequently, Nevertheless).',
+    coreConceptSummary: 'FANBOYS menghubungkan 2 klausa independen dengan tanda koma sebelumnya (, and / , but). Subordinasi mengubah klausa menjadi anak kalimat (*Although emissions fell, ...*). Conjunctive Adverbs memisahkan 2 kalimat mandiri (*; however, ...*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Rumus Inversi Negatif',
-        explanation: 'Letakkan auxiliary verb (do, does, did, has, had, will) sebelum subjek.',
-        formula: '[Seldom / Rarely / Never / Under no circumstances / Not only] + AUXILIARY + Subject + Main Verb',
+        stepNumber: '01',
+        title: 'Aturan Tanda Baca Konjungsi vs Adverbia Transisi',
+        explanation: 'Membedakan konjungsi gramatikal dengan kata keterangan transisi wacana.',
+        formula: 'Clause 1, [FANBOYS] Clause 2 | [Although Clause 1], Clause 2 | Clause 1; [However], Clause 2',
         examples: [
-          {
-            sentence: 'Not only did the researchers isolate the compound, but they also synthesized a stable derivative.',
-            translation: 'Tidak hanya para peneliti berhasil mengisolasi senyawa tersebut, tetapi mereka juga mensintesis turunan yang stabil.',
-          },
-        ],
-      },
+          { sentence: 'Solar costs plummeted; however, grid storage remains an engineering hurdle.', translation: 'Biaya tenaga surya anjlok; namun, penyimpanan jaringan listrik tetap menjadi hambatan teknis.', note: 'Semicolon + However + Comma' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Penggunaan *Not only did... but also...* pada paragraf kesimpulan esai IELTS Task 2 memberikan dampak retoris yang sangat kuat.',
-      toeflApplication: 'TOEFL Structure sering menguji inversi negatif dengan mengosongkan auxiliary verb.',
-      scoringImpact: 'Mencapai puncak penguasaan variasi kalimat tingkat mahir.',
+      ieltsApplication: 'Penggunaan cohesive devices yang bervariasi dan tidak mekanis adalah penentu skor Band 9.0 Coherence & Cohesion.',
+      toeflApplication: 'TOEFL Reading & Writing menguji transisi kontras (*whereas, despite, nonetheless*).',
+      scoringImpact: 'Meningkatkan kohesi dan kepadatan wacana argumentatif.'
     },
     goldenRules: [
-      'Inversi negatif mewajibkan susunan Auxiliary + Subject (seperti kalimat tanya) tanpa tanda tanya.',
+      '*Despite* dan *In spite of* diikuti Noun / Gerund (-ing), BUKAN klausa lengkap (*Despite it rained ❌ -> Despite the rain ✔*).',
+      '*Although* dan *Whereas* diikuti klausa lengkap (Subjek + Kata Kerja).'
     ],
     questions: [
       {
-        id: 'q31-1',
+        id: 'q-m31-1',
         category: 'Complex Structures',
         difficulty: 'Dasar',
-        question: 'Pilih susunan inversi negatif yang benar secara gramatikal:',
-        options: [
-          'Seldom researchers have observed such unprecedented environmental anomalies.',
-          'Seldom have researchers observed such unprecedented environmental anomalies.',
-          'Seldom researchers observed such unprecedented environmental anomalies.',
-          'Seldom do researchers observed such unprecedented environmental anomalies.',
-        ],
-        correctAnswer: 'Seldom have researchers observed such unprecedented environmental anomalies.',
-        explanation: 'Setelah kata negatif "Seldom", auxiliary verb ("have") wajib diletakkan sebelum subjek ("researchers").',
-        ruleReference: 'Kaidah Emas: Negative adverb di awal kalimat menuntut inversi Auxiliary + Subject.',
-      },
+        question: '_____ the severe budget reductions, the laboratory succeeded in meeting all research milestones.',
+        options: ['Although', 'Despite', 'Even though', 'Whereas'],
+        correctAnswer: 'Despite',
+        explanation: 'Frasa "the severe budget reductions" adalah Noun Phrase, sehingga memerlukan preposisi "Despite" (bukan konjungsi klausa "Although").',
+        ruleReference: 'Modul 31: Despite vs Although'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec31-1',
-        flawedSentence: 'Rarely the international advisory panel intervenes in local administrative disputes.',
-        flawLocation: 'Rarely the international advisory panel intervenes',
-        correctedSentence: 'Rarely does the international advisory panel intervene in local administrative disputes.',
-        linguisticExplanation: 'Setelah kata negatif "Rarely", wajib dilakukan inversi dengan menambahkan auxiliary ("does") sebelum subjek.',
+        id: 'ec-m31-1',
+        flawedSentence: 'Despite the empirical data was inconclusive, the team published their preliminary findings.',
+        flawLocation: 'Despite the empirical data was inconclusive',
+        correctedSentence: 'Although the empirical data was inconclusive, the team published their preliminary findings.',
+        linguisticExplanation: '"The empirical data was inconclusive" adalah klausa lengkap (S + V). Gunakan konjungsi "Although", bukan preposisi "Despite".'
       }
     ]
   },
 
-  // =========================================================================
-  // TAHAP 8: PEMADATAN SINTAKSIS & FRASA PARTISIPEL (SYNTACTIC REDUCTION)
-  // =========================================================================
   {
-    id: 'modul-33-gerunds-infinitives',
-    stageNumber: 8,
-    stageName: 'Tahap 8: Pemadatan Sintaksis & Frasa Partisipel',
+    id: 'modul-32-relative-clauses',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
+    categoryKey: 'Complex Structures',
+    moduleNumber: 32,
+    title: 'Relative Clauses: Defining vs Non-Defining, Punctuation, dan Relative Pronoun Omission',
+    subtitle: 'Klausa penjelas esensial vs tambahan, aturan koma, dan reduksi pronoun kontak',
+    levelBadge: 'Klausa Relatif · Modul 32',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Relative Clause menyematkan informasi deskriptif langsung ke dalam frasa nomina. Defining Relative Clause memberikan informasi vital tanpa koma (*The students who studied passed*); Non-Defining Relative Clause memberikan informasi pelengkap ekstra di antara dua tanda koma (*Dr. Vance, who studied at Oxford, presented the paper*).',
+    coreConceptSummary: 'Defining (Tanpa koma, boleh pakai "that"). Non-Defining (Wajib koma, DILARANG pakai "that", wajib who/which). Omission: Relative pronoun dapat dihilangkan jika berposisi sebagai OBJEK klausa (*The method [that] we used*).',
+    sections: [
+      {
+        stepNumber: '01',
+        title: 'Hukum Koma & Pantangan "That" pada Non-Defining',
+        explanation: 'Tanda koma mengubah makna dari penentu identitas menjadi sekadar keterangan tambahan.',
+        formula: 'Non-Defining: Noun, which/who + clause, ... (Dilarang menggunakan THAT setelah koma)',
+        examples: [
+          { sentence: 'The Large Hadron Collider, which is located in Geneva, resumed operations.', translation: 'Large Hadron Collider, yang berlokasi di Jenewa, kembali beroperasi.', note: 'Non-defining (koma + which)' }
+        ]
+      }
+    ],
+    examBridge: {
+      ieltsApplication: 'Ketepatan tanda koma pada Non-defining relative clauses sangat diperhatikan pada kriteria Grammatical Accuracy.',
+      toeflApplication: 'TOEFL Structure menguji larangan "that" setelah koma (*, that ❌*).',
+      scoringImpact: 'Meningkatkan presisi modifikasi nomina kompleks.'
+    },
+    goldenRules: [
+      'Jangan pernah gunakan "that" tepat setelah tanda koma pada relative clause.',
+      'Gunakan "whose" untuk kepemilikan orang maupun benda (*a theory whose implications...*).'
+    ],
+    questions: [
+      {
+        id: 'q-m32-1',
+        category: 'Complex Structures',
+        difficulty: 'Menengah',
+        question: 'The James Webb Space Telescope, _____ was launched in 2021, has revolutionized deep-space astrophysics.',
+        options: ['that', 'which', 'who', 'whose'],
+        correctAnswer: 'which',
+        explanation: 'Klausa ini adalah Non-Defining Relative Clause yang diapit koma, sehingga wajib menggunakan "which" (bukan "that").',
+        ruleReference: 'Modul 32: Non-Defining Relative Clauses'
+      }
+    ],
+    errorCorrectionTasks: [
+      {
+        id: 'ec-m32-1',
+        flawedSentence: 'The clinical trial, that began last March, yielded remarkable therapeutic results.',
+        flawLocation: 'that began',
+        correctedSentence: 'The clinical trial, which began last March, yielded remarkable therapeutic results.',
+        linguisticExplanation: 'Dilarang menggunakan relative pronoun "that" dalam klausa non-defining yang diapit tanda koma. Gunakan "which".'
+      }
+    ]
+  },
+
+  {
+    id: 'modul-33-noun-clauses-embedded-questions',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
     categoryKey: 'Complex Structures',
     moduleNumber: 33,
-    title: 'Gerunds vs Infinitives Masterclass (V-ing vs To + V1)',
-    subtitle: 'Daftar kata kerja khusus pembawa Gerund, Infinitive, dan perubahan makna',
-    levelBadge: 'Pemadatan Sintaksis · Modul 33',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 06: Verbs',
-    mentalModelIntro: 'Apakah kata kerja kedua harus berbentuk Gerund (V-ing) atau To-Infinitive (to + V1) bergantung sepenuhnya pada kata kerja utama yang mendahuluinya.',
-    coreConceptSummary: 'Verbs + Gerund (avoid, suggest, recommend, postpone). Verbs + Infinitive (decide, plan, hope, refuse). Verbs with Meaning Shift (stop, remember, forget).',
+    title: 'Noun Clauses & Embedded Questions',
+    subtitle: 'Klausa yang bertindak sebagai nomina dan susunan kata pernyataan dalam pertanyaan terselip',
+    levelBadge: 'Klausa Nomina · Modul 33',
+    estimatedMinutes: 25,
+    mentalModelIntro: 'Noun Clause adalah seluruh klausa (mengandung subjek dan kata kerja) yang berfungsi persis seperti satu kata benda (Noun) sebagai Subjek atau Objek kalimat. Embedded Question adalah pertanyaan yang terselip di dalam kalimat lain; susunan katanya WAJIB kembali ke urutan kalimat pernyataan normal (Subject + Verb), BUKAN susunan kalimat tanya (*where is it ❌ -> where it is ✔*).',
+    coreConceptSummary: 'That-clauses: *That the Earth warms is undeniable*. Wh-clauses / Embedded questions: *The researchers investigated why the reaction failed (BUKAN: why did the reaction fail)*. If/Whether clauses: *The board examined whether the data was authentic*.',
     sections: [
       {
-        stepNumber: 'Langkah 1: Verbs Diikuti Gerund vs To-Infinitive',
-        explanation: 'Avoid, recommend, suggest, postpone WAJIB diikuti Gerund. Decide, plan, hope WAJIB diikuti To-Infinitive.',
-        formula: 'Avoid / Suggest / Recommend + Verb-ing | Decide / Plan / Hope + To + V1',
+        stepNumber: '01',
+        title: 'Hukum Urutan Normal Embedded Questions',
+        explanation: 'Pertanyaan terselip membuang struktur inversi tanya dan operator do/does/did.',
+        formula: 'Main Clause + Question Word (Why/How/Where) + SUBJECT + FINITE VERB',
         examples: [
-          {
-            sentence: 'The advisory panel recommended postponing the clinical trial.',
-            translation: 'Panel penasihat merekomendasikan penundaan (postponing) uji klinis tersebut.',
-          },
-        ],
-      },
+          { sentence: 'Economists are debating how the new tariffs will affect inflation.', translation: 'Para ekonom sedang memperdebatkan bagaimana tarif baru tersebut akan mempengaruhi inflasi.', note: 'how + Subject (tariffs) + Verb (will affect)' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Menggunakan *suggest to do* (salah) adalah kesalahan umum pembelajar yang menurunkan akurasi gramatikal.',
-      toeflApplication: 'TOEFL Structure sering menguji pola kata kerja yang terikat dengan Gerund vs Infinitive.',
-      scoringImpact: 'Menjaga kepatuhan pola komplementasi kata kerja.',
+      ieltsApplication: 'Penggunaan noun clauses (*It is evident that... / The study explores how...*) memperkaya variasi klausa kompleks.',
+      toeflApplication: 'TOEFL Structure paling sering menjebak peserta dengan embedded questions yang masih mempertahankan inversi tanya (*why is the... ❌*).',
+      scoringImpact: 'Mencegah kesalahan susunan kata dasar dalam kalimat majemuk bertingkat.'
     },
     goldenRules: [
-      'Preposisi SELALU diikuti oleh Gerund (V-ing).',
-      'Suggest dan Recommend selalu diikuti Gerund (V-ing), tidak pernah "suggest to verb".',
+      'Dalam embedded question, urutan kata SELALU Subjek sebelum Kata Kerja (S + V).',
+      'Jangan gunakan auxiliary operator *do, does, did* di dalam embedded question (*I wonder where he goes, bukan where does he go*).'
     ],
     questions: [
       {
-        id: 'q33-1',
+        id: 'q-m33-1',
         category: 'Complex Structures',
         difficulty: 'Dasar',
-        question: 'Pilih kalimat yang benar:',
-        options: [
-          'The professor suggested to read the latest academic journals.',
-          'The professor suggested reading the latest academic journals.',
-          'The professor suggested us to read the latest academic journals.',
-          'The professor suggested read the latest academic journals.',
-        ],
-        correctAnswer: 'The professor suggested reading the latest academic journals.',
-        explanation: '"Suggest" wajib diikuti oleh Gerund ("reading").',
-        ruleReference: 'Kaidah Emas: Verb "suggest" diikuti oleh Gerund.',
-      },
+        question: 'The committee inquired _____ the clinical trial had been completed ahead of schedule.',
+        options: ['why did', 'why', 'how did', 'that why'],
+        correctAnswer: 'why',
+        explanation: 'Setelah kata tanya "why", kalimat terselip mempertahankan urutan normal (Subjek: "the clinical trial" + Verb: "had been completed") tanpa operator "did".',
+        ruleReference: 'Modul 33: Embedded Question Word Order'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec33-1',
-        flawedSentence: 'The committee avoided to make a definitive statement before the audit was complete.',
-        flawLocation: 'avoided to make',
-        correctedSentence: 'The committee avoided making a definitive statement before the audit was complete.',
-        linguisticExplanation: 'Kata kerja "avoid" secara baku wajib diikuti oleh Gerund ("making"), bukan to-infinitive.',
+        id: 'ec-m33-1',
+        flawedSentence: 'The investigators could not determine what caused the sudden power failure in the lab.',
+        flawLocation: 'what did cause',
+        correctedSentence: 'The investigators could not determine what caused the sudden power failure in the lab.',
+        linguisticExplanation: 'Dalam embedded question subjek, tidak boleh menyisipkan operator "did cause". Gunakan "what caused".'
       }
     ]
   },
 
   {
-    id: 'modul-34-participle-clauses',
-    stageNumber: 8,
-    stageName: 'Tahap 8: Pemadatan Sintaksis & Frasa Partisipel',
+    id: 'modul-34-subjunctive-and-inversion',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
     categoryKey: 'Complex Structures',
     moduleNumber: 34,
-    title: 'Participle Clauses & Reduced Relative Clauses',
-    subtitle: 'Meringkas kalimat panjang menjadi frasa partisipel padat dan elegan',
-    levelBadge: 'Pemadatan Sintaksis · Modul 34',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 27: Relative Clauses',
-    mentalModelIntro: 'Penulisan jurnal ilmiah penutur asli sangat padat (*syntactically dense*). Mereka meringkas anak kalimat aktif menjadi Present Participle (-ing) dan anak kalimat pasif menjadi Past Participle (-ed) untuk menghemat kata dan meningkatkan densitas informasi.',
-    coreConceptSummary: 'Aktif: "The scientist who discovered the gene..." ➔ "The scientist discovering the gene...". Pasif: "The report which was published yesterday..." ➔ "The report published yesterday...".',
+    title: 'Subjunctive Mood & Inversion for Emphasis',
+    subtitle: 'Modus mandat formal dan pembalikan subjek-predikat untuk penekanan retorika tingkat tinggi',
+    levelBadge: 'Subjunctive & Inversi · Modul 34',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Dua konstruksi paling prestisius dalam tata bahasa Inggris: (1) Subjunctive Mood (kata kerja dasar Bare Infinitive setelah verba mandat seperti *recommend that S + be/V1*), dan (2) Inversion (pembalikan kata kerja bantu sebelum subjek setelah kata keterangan negatif/pembatas seperti *Rarely, Seldom, Under no circumstances*).',
+    coreConceptSummary: 'Subjunctive: *It is essential that he BE informed (BUKAN is)*. Negative Inversion: *Negative Adverb + Auxiliary + Subject + Main Verb* (*Rarely have scientists observed such phenomena*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Reduksi Klausa Relatif Aktif vs Pasif',
-        explanation: 'Hilangkan relative pronoun dan be-verb. Pertahankan V-ing untuk makna aktif, dan V3 untuk makna pasif.',
-        formula: 'Active Reduction: Noun + Verb-ing | Passive Reduction: Noun + Verb 3 (Past Participle)',
+        stepNumber: '01',
+        title: 'Formula Negative Inversion & Mandative Subjunctive',
+        explanation: 'Menghadirkan gaya retorika canggih yang memikat penguji ujian internasional.',
+        formula: 'Subjunctive: recommend/insist that + S + BARE INFINITIVE | Inversion: Seldom/Rarely + Aux + S + Verb',
         examples: [
-          {
-            sentence: 'The methodology developed by the consortium yielded remarkable precision.',
-            translation: 'Metodologi yang dikembangkan oleh konsorsium (reduksi pasif dari "which was developed") menghasilkan presisi luar biasa.',
-          },
-        ],
-      },
+          { sentence: 'Seldom has an archaeological discovery provoked such intense academic debate.', translation: 'Jarang sekali sebuah penemuan arkeologi memicu perdebatan akademis yang begitu sengit.', note: 'Negative Inversion: Seldom + has + discovery + provoked' }
+        ]
+      }
     ],
     examBridge: {
-      ieltsApplication: 'Participle Clauses adalah ciri pembeda utama esai IELTS Band 8.0+ yang memadatkan informasi secara ringkas.',
-      toeflApplication: 'TOEFL Reading passages sangat sarat dengan reduced relative clauses.',
-      scoringImpact: 'Meningkatkan densitas leksikal dan efisiensi kata dalam esai formal.',
+      ieltsApplication: 'Satu kalimat inversi negatif yang tepat di paragraf pendahuluan atau konklusi IELTS Writing Task 2 langsung menandai status Band 8.5–9.0.',
+      toeflApplication: 'TOEFL Structure menguji Subjunctive Bare Infinitive setelah *insist that / demand that*.',
+      scoringImpact: 'Membuktikan penguasaan retorika tingkat ahli (Mastery Level).'
     },
     goldenRules: [
-      'Gunakan Present Participle (-ing) untuk reduksi klausa aktif.',
-      'Gunakan Past Participle (-ed / V3) untuk reduksi klausa pasif.',
+      'Setelah verba mandat (*demand, recommend, suggest, insist that*), kata kerja WAJIB Bare Infinitive tanpa -s atau to be (*he be, she submit*).',
+      'Awali inversi negatif dengan Auxiliary Verb sebelum Subjek (*Under no circumstances should you...*).'
     ],
     questions: [
       {
-        id: 'q34-1',
+        id: 'q-m34-1',
         category: 'Complex Structures',
-        difficulty: 'Dasar',
-        question: 'Pilih bentuk reduksi partisipel pasif yang benar: "The historical artifacts ________ during the recent excavation are now displayed in the museum."',
-        options: ['discovered', 'discovering', 'which discovered', 'were discovered'],
-        correctAnswer: 'discovered',
-        explanation: 'Reduksi klausa pasif dari "which were discovered" menyisakan Past Participle ("discovered").',
-        ruleReference: 'Kaidah Emas: Reduksi klausa pasif menggunakan Past Participle (V3).',
+        difficulty: 'Lanjutan',
+        question: 'The ethics oversight board recommended that the laboratory director _____ the experiment immediately.',
+        options: ['suspends', 'suspend', 'suspended', 'must suspend'],
+        correctAnswer: 'suspend',
+        explanation: 'Mandative Subjunctive setelah "recommended that" mewajibkan kata kerja dasar Bare Infinitive "suspend" (tanpa akhiran -s).',
+        ruleReference: 'Modul 34: Mandative Subjunctive'
       },
+      {
+        id: 'q-m34-2',
+        category: 'Complex Structures',
+        difficulty: 'Lanjutan',
+        question: 'Rarely _____ such extreme meteorological anomalies recorded in the temperate zone.',
+        options: ['have', 'have been', 'are', 'has been'],
+        correctAnswer: 'have',
+        explanation: 'Inversi negatif: "Rarely" + Auxiliary "have" + Subjek jamak ("such extreme meteorological anomalies") + V3 "been recorded" -> "Rarely have such anomalies been recorded".',
+        ruleReference: 'Modul 34: Negative Inversion'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec34-1',
-        flawedSentence: 'The candidate was giving the keynote lecture graduated from Harvard University.',
-        flawLocation: 'was giving',
-        correctedSentence: 'The candidate giving the keynote lecture graduated from Harvard University.',
-        linguisticExplanation: 'Hapus auxiliary "was" agar klausa tereduksi menjadi frasa partisipel aktif ("giving"), sehingga "graduated" menjadi Finite Verb utama kalimat.',
+        id: 'ec-m34-1',
+        flawedSentence: 'The dean insisted that the professor publishes the complete dataset.',
+        flawLocation: 'publishes',
+        correctedSentence: 'The dean insisted that the professor publish the complete dataset.',
+        linguisticExplanation: 'Setelah "insisted that", kata kerja harus berbentuk Subjunctive Bare Infinitive "publish" tanpa akhiran -s.'
       }
     ]
   },
 
   {
-    id: 'modul-35-dangling-modifiers',
-    stageNumber: 8,
-    stageName: 'Tahap 8: Pemadatan Sintaksis & Frasa Partisipel',
-    categoryKey: 'Complex Structures',
+    id: 'modul-35-participle-clauses-register-mastery',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
+    categoryKey: 'Exam Readiness',
     moduleNumber: 35,
-    title: 'Dangling & Misplaced Modifiers Identification',
-    subtitle: 'Menyelaraskan subjek logis frasa pembuka dengan subjek utama klausa independen',
-    levelBadge: 'Pemadatan Sintaksis · Modul 35',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 34: Participle Clauses',
-    mentalModelIntro: 'Dangling Modifier adalah kesalahan logika sintaksis paling berbahaya: ketika frasa pembuka partisipel (-ing/-ed) tidak memiliki subjek logis yang tepat pada kata benda pertama setelah tanda koma.',
-    coreConceptSummary: 'Subjek yang melakukan tindakan pada frasa pembuka WAJIB menjadi Subjek yang langsung berdiri setelah tanda koma.',
+    title: 'Participle Clauses, Absolute Structures & Academic Register Mastery (IELTS 8.5+ & TOEFL 110+)',
+    subtitle: 'Reduksi klausa tingkat tinggi, eliminasi dangling modifiers, dan pemadatan sintaksis puncak',
+    levelBadge: 'Mahakarya Retorika · Modul 35',
+    estimatedMinutes: 30,
+    mentalModelIntro: 'Puncak dari penguasaan tata bahasa dan sintaksis bahasa Inggris adalah kemampuan memadatkan ide-ide kompleks secara elegan tanpa pemborosan kata (Wordiness). Participle Clauses memungkinkan Anda menggabungkan dua kalimat menjadi satu struktur padat berbobot tinggi. Hati-hati dengan Dangling Modifiers (subjek participle yang tidak cocok dengan subjek utama).',
+    coreConceptSummary: 'Present Participle (*Analyzing the telemetry, the team discovered...*). Past Participle (*Published in 2020, the monograph revolutionized...*). Perfect Participle (*Having completed the trial, they presented...*). Absolute Structure (*The budget having been approved, construction commenced*).',
     sections: [
       {
-        stepNumber: 'Langkah 1: Menyelaraskan Subjek Frasa Pembuka',
-        explanation: 'Jika frasa pembuka diawali "Having analyzed the data,", subjek setelah koma WAJIB orang yang menganalisis (the scientist), BUKAN kesimpulannya (the conclusion).',
-        formula: 'Opening Modifier (-ing / -ed), LOGICAL AGENT (Subject) + Finite Verb...',
+        stepNumber: '01',
+        title: 'Pemadatan Sintaksis & Pencegahan Dangling Modifiers',
+        explanation: 'Subjek pelaku dari participle phrase pembuka WAJIB menjadi Subjek gramatikal dari induk kalimat.',
+        formula: '[Present/Past/Perfect Participle Phrase], + SUBJECT (Pelaku Sejati) + FINITE VERB',
         examples: [
-          {
-            sentence: 'Having analyzed the data meticulously, the research team identified a major breakthrough.',
-            translation: 'Setelah menganalisis data secara teliti, tim riset (pelaku analisis) mengidentifikasi terobosan besar.',
-          },
+          { sentence: 'Having analyzed the longitudinal dataset, the epidemiologists isolated the viral vector.', translation: 'Setelah menganalisis kumpulan data longitudinal, para ahli epidemiologi mengisolasi vektor virus tersebut.', note: 'Perfect Participle Reduction' }
         ],
         contrastiveAnalysis: {
-          incorrectSentence: 'Having analyzed the data meticulously, a major breakthrough was identified by the team.',
-          correctSentence: 'Having analyzed the data meticulously, the team identified a major breakthrough.',
-          linguisticReason: 'Pada kalimat salah, subjek setelah koma adalah "a major breakthrough" (yang berarti terobosan itulah yang menganalisis data - kesalahan logika Dangling Modifier). Subjek setelah koma harus pelaku logisnya ("the team").',
-        },
-      },
-    ],
-    examBridge: {
-      ieltsApplication: 'Menghindari Dangling Modifiers menjaga kejernihan logika kalimat pada kriteria Task Response dan GRA.',
-      toeflApplication: 'Soal identifikasi Dangling Modifier adalah tipe soal pembeda skor tertinggi di tes penulisan standar internasional.',
-      scoringImpact: 'Menjaga keselarasan logika sintaksis tingkat mahir.',
-    },
-    goldenRules: [
-      'Subjek setelah tanda koma wajib merupakan pelaku logis dari frasa pembuka.',
-    ],
-    questions: [
-      {
-        id: 'q35-1',
-        category: 'Complex Structures',
-        difficulty: 'Dasar',
-        question: 'Kalimat manakah yang bebas dari kesalahan Dangling Modifier?',
-        options: [
-          'Walking into the laboratory, the microscope was seen on the table.',
-          'Walking into the laboratory, the researcher saw the microscope on the table.',
-          'Walking into the laboratory, the table held the microscope.',
-          'Walking into the laboratory, an anomaly was observed.',
-        ],
-        correctAnswer: 'Walking into the laboratory, the researcher saw the microscope on the table.',
-        explanation: 'Pelaku yang berjalan ke laboratorium adalah "the researcher", sehingga dia wajib menjadi subjek langsung setelah tanda koma.',
-        ruleReference: 'Kaidah Emas: Subjek setelah koma wajib pelaku logis dari frasa pembuka.',
-      },
-    ],
-    errorCorrectionTasks: [
-      {
-        id: 'ec35-1',
-        flawedSentence: 'Upon reviewing the financial statements, several accounting discrepancies were discovered by the auditors.',
-        flawLocation: 'several accounting discrepancies were discovered by the auditors',
-        correctedSentence: 'Upon reviewing the financial statements, the auditors discovered several accounting discrepancies.',
-        linguisticExplanation: 'Pelaku yang meninjau laporan keuangan adalah para auditor ("the auditors"), sehingga subjek aktif setelah koma harus "the auditors".',
+          incorrectSentence: 'Walking into the laboratory, the microscope was broken.',
+          correctSentence: 'Walking into the laboratory, the scientist noticed that the microscope was broken.',
+          linguisticReason: 'Pada kalimat salah, subjek induk adalah "the microscope" (mikroskop tidak bisa berjalan!). Subjek pembuka harus diselaraskan dengan orang yang berjalan yaitu "the scientist" (Dangling Modifier fix).'
+        }
       }
-    ]
-  },
-
-  {
-    id: 'modul-36-parallelism',
-    stageNumber: 8,
-    stageName: 'Tahap 8: Pemadatan Sintaksis & Frasa Partisipel',
-    categoryKey: 'Complex Structures',
-    moduleNumber: 36,
-    title: 'Parallelism & Balanced Sentence Structures',
-    subtitle: 'Keseimbangan bentuk gramatikal dalam daftar, perbandingan, dan pasangan konjungsi',
-    levelBadge: 'Pemadatan Sintaksis · Modul 36',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 25: Conjunctions',
-    mentalModelIntro: 'Paralelisme menuntut agar elemen-elemen kalimat yang setara secara fungsi (dalam daftar koordinasi, perbandingan, atau pasangan Not only... but also) memiliki bentuk gramatikal yang simetris dan seimbang (Noun dengan Noun, Gerund dengan Gerund, Clause dengan Clause).',
-    coreConceptSummary: 'Struktur paralel menjaga keseimbangan ritme tulisan: Noun, Noun, and Noun | Verb-ing, Verb-ing, and Verb-ing. Pasangan korelatif: Not only A but also B (A dan B wajib paralel).',
-    sections: [
-      {
-        stepNumber: 'Langkah 1: Keseimbangan Elemen Majemuk',
-        explanation: 'Semua item dalam daftar harus memiliki bentuk gramatikal yang sama persis.',
-        formula: 'A, B, and C (Semua Noun / Semua Gerund / Semua Infinitive)',
-        examples: [
-          {
-            sentence: 'The candidate demonstrated exceptional analytical skills, effective leadership, and clear communication.',
-            translation: 'Kandidat tersebut mendemonstrasikan keahlian analitis, kepemimpinan efektif, dan komunikasi yang jelas (Semua Noun Phrase paralel).',
-          },
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'The job requires analyzing data, managing teams, and to communicate with clients.',
-          correctSentence: 'The job requires analyzing data, managing teams, and communicating with clients.',
-          linguisticReason: 'Elemen pertama dan kedua berbentuk Gerund ("analyzing", "managing"), sehingga elemen ketiga wajib berbentuk Gerund ("communicating"), bukan to-infinitive.',
-        },
-      },
     ],
     examBridge: {
-      ieltsApplication: 'Struktur paralel yang konsisten menciptakan keindahan ritme (*flow*) esai formal yang sangat diapresiasi penguji IELTS.',
-      toeflApplication: 'Soal Parallelism dengan pasangan *either/or*, *neither/nor*, dan *not only/but also* adalah materi standar TOEFL Structure.',
-      scoringImpact: 'Mencapai kesimetrisan gramatikal tingkat tinggi.',
+      ieltsApplication: 'Penggunaan Participle Clauses dan Absolute Structures yang presisi adalah mahkota dari pencapaian IELTS Band 9.0 Grammatical Range & Accuracy.',
+      toeflApplication: 'Section Writing TOEFL iBT Integrated & Academic Discussion memberikan skor 5/5 penuh pada esai yang menunjukkan kepadatan sintaksis participle tingkat lanjut.',
+      scoringImpact: 'Mencapai batas tertinggi skor kelulusan bahasa Inggris internasional.'
     },
     goldenRules: [
-      'Samakan bentuk seluruh elemen dalam daftar koordinasi (Gerund dengan Gerund, Noun dengan Noun).',
-      'Elemen setelah "Not only" harus paralel dengan elemen setelah "but also".',
+      'Pastikan subjek di awal kalimat participle adalah pihak yang benar-benar melakukan aksi tersebut (hindari Dangling Modifier).',
+      'Gunakan Perfect Participle (*Having + V3*) untuk menegaskan bahwa aksi pertama selesai sepenuhnya sebelum aksi kedua dimulai.'
     ],
     questions: [
       {
-        id: 'q36-1',
-        category: 'Complex Structures',
-        difficulty: 'Dasar',
-        question: 'Pilih kalimat dengan struktur paralel yang sempurna:',
-        options: [
-          'The internship provides practical experience, professional networking, and developing technical skills.',
-          'The internship provides practical experience, professional networking, and development of technical skills.',
-          'The internship provides to gain experience, networking, and technical skills.',
-          'The internship provides practical experience, professional networking, and to develop technical skills.',
-        ],
-        correctAnswer: 'The internship provides practical experience, professional networking, and development of technical skills.',
-        explanation: 'Semua elemen adalah Noun Phrase yang simetris ("practical experience", "professional networking", "development of technical skills").',
-        ruleReference: 'Kaidah Emas: Seluruh elemen dalam daftar koordinasi wajib paralel.',
-      },
-    ],
-    errorCorrectionTasks: [
-      {
-        id: 'ec36-1',
-        flawedSentence: 'The professor is known for his inspiring lectures, deep research, and to mentor young scholars.',
-        flawLocation: 'and to mentor young scholars',
-        correctedSentence: 'The professor is known for his inspiring lectures, deep research, and dedicated mentorship of young scholars.',
-        linguisticExplanation: 'Ganti to-infinitive "to mentor" dengan frasa kata benda ("dedicated mentorship of young scholars") agar paralel dengan "inspiring lectures" dan "deep research".',
-      }
-    ]
-  },
-
-  // =========================================================================
-  // TAHAP 9: RETORIKA AKADEMIK & STANDAR UJIAN INTERNASIONAL (ACADEMIC POLISH)
-  // =========================================================================
-  {
-    id: 'modul-37-academic-word-list',
-    stageNumber: 9,
-    stageName: 'Tahap 9: Retorika Akademik & Standar Ujian Internasional',
-    categoryKey: 'Exam Readiness',
-    moduleNumber: 37,
-    title: 'Academic Word List (AWL) & High-Yield Collocations',
-    subtitle: 'Pasangan kata alami baku penutur asli untuk skor maksimal IELTS & TOEFL',
-    levelBadge: 'Kesiapan Ujian · Modul 37',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 01 - 36',
-    mentalModelIntro: 'Penguji internasional dan pembaca jurnal ilmiah menilai kewajaran pasangan kata (Collocations) dan ketepatan variasi kata akademis daripada penggunaan kata-kata sulit yang dipaksakan secara canggung.',
-    coreConceptSummary: 'Kolokasi adalah pasangan kata alami baku yang selalu digunakan bersama oleh penutur asli. Hindari terjemahan harfiah.',
-    sections: [
-      {
-        stepNumber: 'Langkah 1: Pasangan Kolokasi Baku Akademis',
-        explanation: 'Gunakan kolokasi baku: conduct research, reach a consensus, substantiate a claim, draw a conclusion.',
-        formula: 'Conduct research (bukan make research) | Reach a consensus | Substantiate a claim | Draw a conclusion',
-        examples: [
-          {
-            sentence: 'The scientists conducted a meticulous investigation to substantiate their hypothesis.',
-            translation: 'Para ilmuwan melakukan investigasi yang teliti untuk membuktikan hipotesis mereka.',
-          },
-        ],
-      },
-    ],
-    examBridge: {
-      ieltsApplication: 'Pada kriteria Lexical Resource (LR) IELTS, penggunaan kolokasi presisi bernilai jauh lebih tinggi daripada menggunakan kosakata arkais/kuno.',
-      toeflApplication: 'TOEFL Academic Discussion memberikan skor tertinggi bagi respon yang menggunakan kolokasi akademik baku.',
-      scoringImpact: 'Mencegah frasa terjemahan kaku dan mendongkrak skor Lexical Resource ke Band 8.0+.',
-    },
-    goldenRules: [
-      'Gunakan "conduct research" atau "carry out research", bukan "make research".',
-      'Gunakan "reach a consensus" atau "arrive at a consensus".',
-      'Gunakan "substantiate a claim" untuk menyatakan pembuktian dengan data empiris.',
-    ],
-    questions: [
-      {
-        id: 'q37-1',
+        id: 'q-m35-1',
         category: 'Exam Readiness',
-        difficulty: 'Dasar',
-        question: 'Pilih pasangan kolokasi yang paling tepat untuk konteks akademis: "The committee was unable to ________ a definitive consensus."',
-        options: ['reach', 'catch', 'grab', 'gain'],
-        correctAnswer: 'reach',
-        explanation: '"Reach a consensus" adalah kolokasi baku dalam bahasa Inggris akademis.',
-        ruleReference: 'Kaidah Emas: Kolokasi baku untuk consensus adalah reach/arrive at.',
+        difficulty: 'Lanjutan',
+        question: '_____ all empirical verification protocols, the consortium published their findings in Nature.',
+        options: ['Having completed', 'Completed', 'Completing having', 'On completing of'],
+        correctAnswer: 'Having completed',
+        explanation: 'Perfect Participle "Having completed" menyatakan aksi penyelesaian seluruh protokol mendahului tindakan publikasi hasil.',
+        ruleReference: 'Modul 35: Perfect Participle Clauses'
       },
-    ],
-    errorCorrectionTasks: [
       {
-        id: 'ec37-1',
-        flawedSentence: 'The graduate students made a comprehensive research on renewable energy.',
-        flawLocation: 'made a comprehensive research',
-        correctedSentence: 'The graduate students conducted comprehensive research on renewable energy.',
-        linguisticExplanation: 'Kolokasi baku untuk riset ilmiah adalah "conduct research" (dan "research" adalah uncountable sehingga tidak memakai "a").',
-      }
-    ]
-  },
-
-  {
-    id: 'modul-38-academic-hedging',
-    stageNumber: 9,
-    stageName: 'Tahap 9: Retorika Akademik & Standar Ujian Internasional',
-    categoryKey: 'Exam Readiness',
-    moduleNumber: 38,
-    title: 'Academic Hedging & Cautious Language',
-    subtitle: 'Menggunakan bahasa berhati-hati untuk menyatakan klaim ilmiah tanpa generalisasi berlebih',
-    levelBadge: 'Kesiapan Ujian · Modul 38',
-    estimatedMinutes: 8,
-    prerequisite: 'Modul 09 & 37',
-    mentalModelIntro: 'Dalam tradisi akademik Anglo-Saxon, ilmuwan tidak pernah mengklaim kepastian 100% mutlak tanpa ruang untuk studi lanjutan (*Overgeneralization*). Mereka menggunakan *Hedging* (bahasa berhati-hati: *tends to indicate*, *appears to suggest*, *is likely to result in*) untuk menunjukkan integritas epistemologis.',
-    coreConceptSummary: 'Hedging Verbs (appear, seem, tend, suggest). Hedging Adverbs (arguably, potentially, largely). Hedging Modals (may, could, might).',
-    decisionTree: [
-      {
-            "step": "Langkah 1: Skrining Derajat Kepastian Klaim Ilmiah",
-            "question": "Apakah klaim merupakan fakta mutlak 100% atau interpretasi empiris yang berhati-hati?",
-            "branches": [
-                  {
-                        "condition": "Klaim interpretasi data penelitian / hipotesis",
-                        "outcome": "Gunakan Hedging Verbs / Adverbs",
-                        "rule": "Gunakan: suggests, indicates, appears to, tends to, potentially."
-                  },
-                  {
-                        "condition": "Hukum alam abadi / bukti matematis definitif",
-                        "outcome": "Factual Statement",
-                        "rule": "Gunakan present factual (The formula calculates equilibrium)."
-                  }
-            ]
-      }
-],
-    registerLadder: {
-      "informal": "This study proves that playing games is definitely bad for all children.",
-      "standard": "This study indicates that excessive video gaming is harmful to children.",
-      "academicHigh": "The empirical findings suggest that excessive exposure to interactive digital media may potentially impair cognitive attentiveness in pediatric cohorts.",
-      "analysis": "Menggantikan generalisasi mutlak (*proves that... definitely bad for all) dengan academic hedging elegan: \"suggests\", \"may potentially impair\", dan \"pediatric cohorts\"."
-},
-    canDoChecklist: [
-      "Saya menghindari kata over-klaim absolut seperti \"proves\", \"always\", \"never\", \"definitely\" dalam esai ilmiah.",
-      "Saya mampu menerapkan hedging verbs (suggests, appears, indicates) dan modal hedging (may, might, could).",
-      "Saya paham bahwa hedging adalah indikator utama kematangan berpikir akademis di IELTS & TOEFL."
-],
-    pocketAxioms: [
-      "Hindari over-generalization: jangan gunakan \"proves 100%\", gunakan \"strongly suggests\".",
-      "Gunakan modal hedging: \"may potentially lead to\" alih-alih \"will cause\".",
-      "Gunakan adverb of frequency yang terukur: \"frequently\", \"predominantly\", bukan \"always\"."
-],
-    sections: [
-      {
-        stepNumber: 'Langkah 1: Menghindari Generalisasi Mutlak (Overgeneralization)',
-        explanation: 'Ganti klaim mutlak ("X causes Y") dengan klaim ilmiah berhati-hati ("X appears to contribute significantly to Y").',
-        formula: 'Subject + [appears to / tends to / is likely to] + Verb | Data + [suggests / indicates] + that...',
-        examples: [
-          {
-            sentence: 'The preliminary data suggests that the new therapy may reduce recovery duration.',
-            translation: 'Data awal tersebut mengindikasikan bahwa terapi baru tersebut berpotensi mengurangi durasi pemulihan.',
-          },
-        ],
-      },
-    ],
-    examBridge: {
-      ieltsApplication: 'Pada kriteria Task Response IELTS Band 8.0+, deskriptor resmi menuntut kesimpulan yang "nuanced and appropriately qualified" melalui Hedging.',
-      toeflApplication: 'TOEFL Integrated Writing menilai kemampuan membedakan antara fakta mutlak dan hipotesis tentatif.',
-      scoringImpact: 'Menciptakan gaya bahasa akademis yang matang dan terpercaya.',
-    },
-    goldenRules: [
-      'Gunakan modal verbs (may, could) dan verbs of perception (suggest, appear, tend) untuk membatasi klaim ilmiah.',
-      'Hindari kata mutlak (always, completely, 100% proved) dalam penulisan esai argumentatif.',
-    ],
-    questions: [
-      {
-        id: 'q38-1',
+        id: 'q-m35-2',
         category: 'Exam Readiness',
-        difficulty: 'Dasar',
-        question: 'Pilih kalimat yang menerapkan Academic Hedging secara elegan tanpa overgeneralization:',
+        difficulty: 'Lanjutan',
+        question: 'Which of the following sentences is free from a dangling modifier error?',
         options: [
-          'Social media completely destroys the communication skills of all teenagers.',
-          'Social media tends to adversely impact the face-to-face interpersonal communication of many adolescents.',
-          'Social media always causes psychological damage to every teenager.',
-          'Social media 100% ruins human relationships.',
+          'Examining the telescope data, a new nebula was discovered by the astronomer.',
+          'Examining the telescope data, the astronomer discovered a new nebula.',
+          'Examining the telescope data, a discovery was made of a new nebula.',
+          'Having examined the telescope data, the nebula appeared clearly.'
         ],
-        correctAnswer: 'Social media tends to adversely impact the face-to-face interpersonal communication of many adolescents.',
-        explanation: 'Kalimat ini menggunakan hedging ("tends to adversely impact", "many adolescents") yang objektif dan terukur secara akademis.',
-        ruleReference: 'Kaidah Emas: Academic Hedging menghindari klaim mutlak berlebihan.',
-      },
+        correctAnswer: 'Examining the telescope data, the astronomer discovered a new nebula.',
+        explanation: 'Subjek induk kalimat "the astronomer" adalah pihak yang secara logis melakukan aksi "Examining the telescope data".',
+        ruleReference: 'Modul 35: Dangling Modifier Resolution'
+      }
     ],
     errorCorrectionTasks: [
       {
-        id: 'ec38-1',
-        flawedSentence: 'The study completely proves that artificial intelligence will destroy all white-collar jobs.',
-        flawLocation: 'completely proves that artificial intelligence will destroy all',
-        correctedSentence: 'The study suggests that artificial intelligence may significantly disrupt many white-collar jobs.',
-        linguisticExplanation: 'Terapkan Academic Hedging: ganti "completely proves" dengan "suggests", "will destroy" dengan "may significantly disrupt", dan "all" dengan "many".',
-      }
-    ]
-  },
-
-  {
-    id: 'modul-39-nominalization',
-    stageNumber: 9,
-    stageName: 'Tahap 9: Retorika Akademik & Standar Ujian Internasional',
-    categoryKey: 'Exam Readiness',
-    moduleNumber: 39,
-    title: 'Nominalization & Lexical Density in Formal Writing',
-    subtitle: 'Mengubah kata kerja/sifat menjadi kata benda abstrak untuk gaya penulisan formal berdensitas tinggi',
-    levelBadge: 'Kesiapan Ujian · Modul 39',
-    estimatedMinutes: 9,
-    prerequisite: 'Modul 01 & 37',
-    mentalModelIntro: 'Nominalisasi (*Nominalization*) adalah proses mengubah kata kerja (*verb*) atau kata sifat (*adjective*) menjadi kata benda abstrak (*noun*). Penutur asli menggunakan nominalisasi untuk memadatkan ide menjadi subjek yang elegan (contoh: *Because technology expanded rapidly...* ➔ *The rapid expansion of technology...*).',
-    coreConceptSummary: 'Nominalisasi meningkatkan densitas leksikal esai akademik: Verb ➔ Noun (expand ➔ expansion, reduce ➔ reduction, evaluate ➔ evaluation). Adjective ➔ Noun (stable ➔ stability, diverse ➔ diversity).',
-    decisionTree: [
-      {
-            "step": "Langkah 1: Transformasi Klausa Menjadi Frasa Benda",
-            "question": "Bagaimana memadatkan kalimat verbal sebab-akibat menjadi Noun Phrase berbobot?",
-            "branches": [
-                  {
-                        "condition": "Klausa verbal konjungtif (\"Because X happened, Y did...\")",
-                        "outcome": "Terapkan Nominalisasi",
-                        "rule": "The [Noun of Action] of X precipitated [Noun of Result] in Y."
-                  },
-                  {
-                        "condition": "Frasa kata sifat (\"The system is reliable...\")",
-                        "outcome": "Abstrak Noun",
-                        "rule": "The reliability of the system enhances operational efficacy."
-                  }
-            ]
-      }
-],
-    registerLadder: {
-      "informal": "Because the city grew very fast, water became very scarce.",
-      "standard": "Because the population expanded rapidly, water scarcity increased.",
-      "academicHigh": "Unprecedented urban expansion precipitated severe regional water scarcity.",
-      "analysis": "Mengubah klausa sebab-akibat panjang menjadi kalimat berdensitas leksikal tinggi dengan nominalisasi: \"Unprecedented urban expansion\" (S) + \"precipitated\" (V) + \"severe regional water scarcity\" (O)."
-},
-    canDoChecklist: [
-      "Saya mampu mengubah kata kerja (expand ➔ expansion, destroy ➔ destruction) menjadi kata benda formal.",
-      "Saya bisa memadatkan kalimat majemuk panjang menjadi klausa tunggal berdensitas leksikal tinggi.",
-      "Saya memahami peran nominalisasi dalam mendongkrak skor Lexical Resource IELTS Band 8.5+."
-],
-    pocketAxioms: [
-      "Nominalisasi memindahkan muatan makna dari kata kerja/kata hubung ke dalam Frasa Benda Padat.",
-      "Gunakan kata kerja relasional akademik: precipitate, induce, engender, correlate with, yield.",
-      "Jaga keseimbangan agar tulisan tetap jernih dan tidak terbebani tumpukan frasa benda yang berlebihan."
-],
-    sections: [
-      {
-        stepNumber: 'Langkah 1: Transformasi Klausa Bertele-tele Menjadi Noun Phrase Padat',
-        explanation: 'Ubah klausa verbal panjang menjadi frasa nominal yang berbobot.',
-        formula: 'Clause Verbal: "When the population increased rapidly..." ➔ Nominal: "The rapid increase in population..."',
-        examples: [
-          {
-            sentence: 'The rapid implementation of automated systems led to a significant reduction in operational costs.',
-            translation: 'Penerapan cepat sistem otomatis (Nominal) menyebabkan penurunan signifikan pada biaya operasional.',
-          },
-        ],
-      },
-    ],
-    examBridge: {
-      ieltsApplication: 'Nominalisasi adalah kunci utama menaikkan skor Grammatical Range & Accuracy dan Lexical Resource ke Band 8.5+.',
-      toeflApplication: 'TOEFL Academic Reading passages didominasi oleh struktur kalimat berbasis nominalisasi.',
-      scoringImpact: 'Menciptakan tulisan dengan densitas leksikal dan kematangan gaya bahasa penutur asli.',
-    },
-    goldenRules: [
-      'Gunakan nominalisasi untuk merangkum ide paragraf sebelumnya menjadi subjek kalimat berikutnya (The rapid expansion of..., The successful integration of...).',
-    ],
-    questions: [
-      {
-        id: 'q39-1',
-        category: 'Exam Readiness',
-        difficulty: 'Dasar',
-        question: 'Pilih versi kalimat yang menerapkan nominalisasi akademik secara paling efektif:',
-        options: [
-          'Because the committee evaluated the proposals rigorously, they selected the best candidate.',
-          'The committee\'s rigorous evaluation of the proposals ensured the selection of the optimal candidate.',
-          'When the committee was evaluating rigorously the proposals, they chose.',
-          'The committee evaluated and then selected.',
-        ],
-        correctAnswer: 'The committee\'s rigorous evaluation of the proposals ensured the selection of the optimal candidate.',
-        explanation: 'Kalimat ini menggunakan nominalisasi yang padat dan elegan ("rigorous evaluation", "selection of the optimal candidate").',
-        ruleReference: 'Kaidah Emas: Nominalisasi meningkatkan densitas leksikal formal.',
-      },
-    ],
-    errorCorrectionTasks: [
-      {
-        id: 'ec39-1',
-        flawedSentence: 'Because the government failed to regulate carbon emissions promptly, global temperatures rose quickly.',
-        flawLocation: 'Because the government failed to regulate carbon emissions promptly',
-        correctedSentence: 'The government\'s failure to promptly regulate carbon emissions contributed to the rapid rise in global temperatures.',
-        linguisticExplanation: 'Ubah klausa sebab-akibat menjadi frasa nominal yang berbobot: "The government\'s failure to promptly regulate carbon emissions...".',
+        id: 'ec-m35-1',
+        flawedSentence: 'Upon entering the cryogenic facility, the alarm was triggered by the technician.',
+        flawLocation: 'the alarm was triggered by the technician',
+        correctedSentence: 'Upon entering the cryogenic facility, the technician triggered the alarm.',
+        linguisticExplanation: 'Frasa pembuka "Upon entering..." menuntut subjek yang melakukan aksi masuk ("the technician"), bukan "the alarm" (Dangling modifier).'
       }
     ]
   }
 ];
+

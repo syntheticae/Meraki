@@ -94,7 +94,7 @@ type NavigationHub =
   | 'diagnostic';
 
 export default function MerakiApp() {
-  const [selectedTopicId, setSelectedTopicId] = useState<string>('modul-01-noun-types');
+  const [selectedTopicId, setSelectedTopicId] = useState<string>('modul-01-subject-pronouns');
   const [activeHub, setActiveHub] = useState<NavigationHub>('curriculum');
 
   const handleNavSelect = (hub: NavigationHub) => {
@@ -186,6 +186,8 @@ export default function MerakiApp() {
   const [trapSelected, setTrapSelected] = useState<string | null>(null);
 
   const [activePrepIndex, setActivePrepIndex] = useState<number>(0);
+  const [prepCategoryFilter, setPrepCategoryFilter] = useState<'all' | 'Adjective' | 'Verb' | 'Noun'>('all');
+  const [prepSearchQuery, setPrepSearchQuery] = useState<string>('');
   const [prepUserInput, setPrepUserInput] = useState<string>('');
   const [prepFeedback, setPrepFeedback] = useState<{ checked: boolean; isCorrect: boolean } | null>(null);
 
@@ -2417,100 +2419,304 @@ export default function MerakiApp() {
                 </div>
               )}
 
-              {/* Sub-tab 3: Dependent Prepositions */}
-              {collocationSubTab === 'prep' && (
-                <div className="max-w-2xl mx-auto w-full space-y-6">
-                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
-                    <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
-                      <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-3 py-1 rounded-md uppercase font-semibold">
-                        Kata: {currentPrepTask.word} ({currentPrepTask.partOfSpeech})
-                      </span>
-                      <span className="font-mono text-xs text-[#7A7265]">
-                        Soal {activePrepIndex + 1} dari {DEPENDENT_PREPOSITIONS_DATA.length}
-                      </span>
-                    </div>
+              {/* Sub-tab 3: Dependent Prepositions Master Studio */}
+              {collocationSubTab === 'prep' && (() => {
+                const filteredPreps = DEPENDENT_PREPOSITIONS_DATA.filter(item => {
+                  const matchesCat = prepCategoryFilter === 'all' || item.partOfSpeech === prepCategoryFilter;
+                  const matchesSearch = !prepSearchQuery.trim() ||
+                    item.word.toLowerCase().includes(prepSearchQuery.toLowerCase()) ||
+                    item.meaningId.toLowerCase().includes(prepSearchQuery.toLowerCase()) ||
+                    item.requiredPreposition.toLowerCase().includes(prepSearchQuery.toLowerCase());
+                  return matchesCat && matchesSearch;
+                });
 
-                    <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1 text-center">
-                      <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
-                        Lengkapi Preposisi Terikat yang Wajib (Dependent Preposition):
-                      </span>
-                      <p className="font-serif text-lg text-[#1E1B17]">"{currentPrepTask.clozeSentence}"</p>
-                    </div>
+                const activeItem = DEPENDENT_PREPOSITIONS_DATA[activePrepIndex] || DEPENDENT_PREPOSITIONS_DATA[0];
+                const commonPreps = ['to', 'for', 'of', 'in', 'on', 'with', 'from', 'against', 'between', 'into', 'towards'];
 
-                    <form onSubmit={handleCheckPrep} className="space-y-3">
-                      <div className="flex gap-2">
+                return (
+                  <div className="space-y-6 w-full">
+                    {/* Header Controls: Filters & Search */}
+                    <div className="p-4 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      {/* Category Chips */}
+                      <div className="flex flex-wrap gap-2">
+                        {(['all', 'Adjective', 'Verb', 'Noun'] as const).map(cat => {
+                          const count = cat === 'all'
+                            ? DEPENDENT_PREPOSITIONS_DATA.length
+                            : DEPENDENT_PREPOSITIONS_DATA.filter(p => p.partOfSpeech === cat).length;
+                          const isSel = prepCategoryFilter === cat;
+
+                          return (
+                            <button
+                              key={cat}
+                              onClick={() => setPrepCategoryFilter(cat)}
+                              className={clsx(
+                                'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1.5 min-h-[38px]',
+                                isSel
+                                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                                  : 'bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]'
+                              )}
+                            >
+                              <span>{cat === 'all' ? 'Semua Kategori' : cat}</span>
+                              <span className={clsx(
+                                'px-1.5 py-0.2 text-[10px] rounded-md font-mono',
+                                isSel ? 'bg-[#EFE9DF]/20 text-[#EFE9DF]' : 'bg-[#C8C0B0]/40 text-[#7A7265]'
+                              )}>
+                                {count}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {/* Search Bar */}
+                      <div className="relative w-full md:w-72">
+                        <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7265]" />
                         <input
                           type="text"
-                          value={prepUserInput}
-                          onChange={(e) => {
-                            setPrepUserInput(e.target.value);
-                            setPrepFeedback(null);
-                          }}
-                          placeholder="Ketik preposisi: in, on, at, to, for, of, with, from..."
-                          className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                          value={prepSearchQuery}
+                          onChange={(e) => setPrepSearchQuery(e.target.value)}
+                          placeholder="Cari kata atau arti..."
+                          className="w-full pl-9 pr-4 py-2 bg-[#DDD7CA] border border-[#C8C0B0] rounded-xl text-xs text-[#1E1B17] placeholder:text-[#7A7265] outline-hidden focus:border-[#A84A28] min-h-[38px]"
                         />
-                        <button
-                          type="submit"
-                          className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shrink-0 min-h-[44px]"
-                        >
-                          Periksa Preposisi
-                        </button>
                       </div>
-                    </form>
+                    </div>
 
-                    {prepFeedback && (
-                      <div className={clsx(
-                        'p-4 rounded-2xl border text-xs space-y-2 animate-in fade-in duration-200',
-                        prepFeedback.isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
-                      )}>
-                        <div className="flex items-center gap-2 font-semibold">
-                          {prepFeedback.isCorrect ? (
-                            <>
-                              <CheckCircle2 className="w-4 h-4 text-[#535841]" />
-                              <span>Preposisi Tepat! "{currentPrepTask.word} {currentPrepTask.requiredPreposition}"</span>
-                            </>
-                          ) : (
-                            <>
-                              <HelpCircle className="w-4 h-4 text-[#A84A28]" />
-                              <span>Preposisi kurang tepat. Preposisi baku adalah: <strong>"{currentPrepTask.requiredPreposition}"</strong></span>
-                            </>
-                          )}
+                    {/* 2-Column Main Studio */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                      {/* Left Column: Interactive Directory List */}
+                      <div className="lg:col-span-5 space-y-3">
+                        <div className="flex items-center justify-between px-1">
+                          <span className="font-mono text-[11px] text-[#7A7265] uppercase font-semibold">
+                            Direktori Kata ({filteredPreps.length} item)
+                          </span>
+                          <span className="text-[11px] font-mono text-[#535841]">
+                            Pilih kata untuk latihan
+                          </span>
                         </div>
 
-                        <p className="font-serif text-[#1E1B17] italic pt-1 border-t border-[#C8C0B0]/60">
-                          "{currentPrepTask.exampleSentence}"
-                        </p>
+                        <div className="space-y-2 max-h-[580px] overflow-y-auto pr-1">
+                          {filteredPreps.length === 0 ? (
+                            <div className="p-8 text-center bg-[#E6E0D4] border border-[#C8C0B0] rounded-2xl text-xs text-[#7A7265]">
+                              Tidak ada dependent preposition yang cocok dengan pencarian "{prepSearchQuery}".
+                            </div>
+                          ) : (
+                            filteredPreps.map((item) => {
+                              const isSelected = DEPENDENT_PREPOSITIONS_DATA.findIndex(p => p.id === item.id) === activePrepIndex;
+                              const realIndex = DEPENDENT_PREPOSITIONS_DATA.findIndex(p => p.id === item.id);
+
+                              return (
+                                <div
+                                  key={item.id}
+                                  onClick={() => {
+                                    setActivePrepIndex(realIndex);
+                                    setPrepUserInput('');
+                                    setPrepFeedback(null);
+                                  }}
+                                  className={clsx(
+                                    'p-3.5 rounded-2xl border transition-all cursor-pointer tactile-btn text-left flex items-center justify-between gap-3',
+                                    isSelected
+                                      ? 'bg-[#E6E0D4] border-[#A84A28] shadow-sm ring-1 ring-[#A84A28]/30'
+                                      : 'bg-[#E6E0D4]/70 hover:bg-[#E6E0D4] border-[#C8C0B0]'
+                                  )}
+                                >
+                                  <div className="space-y-1 flex-1 min-w-0">
+                                    <div className="flex items-center gap-2">
+                                      <span className="font-serif font-bold text-sm text-[#1E1B17]">
+                                        {item.word}
+                                      </span>
+                                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#DDD7CA] text-[#7A7265]">
+                                        {item.partOfSpeech}
+                                      </span>
+                                    </div>
+                                    <p className="text-xs text-[#7A7265] truncate font-sans">
+                                      {item.meaningId}
+                                    </p>
+                                  </div>
+
+                                  <div className="flex items-center gap-2 shrink-0">
+                                    <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#535841]/15 text-[#535841]">
+                                      + {item.requiredPreposition}
+                                    </span>
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        playNativeAudio(`${item.word} ${item.requiredPreposition}`);
+                                      }}
+                                      title="Dengarkan pengucapan"
+                                      className="p-1.5 rounded-lg hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17] transition-colors"
+                                    >
+                                      <Volume2 className="w-3.5 h-3.5" />
+                                    </button>
+                                  </div>
+                                </div>
+                              );
+                            })
+                          )}
+                        </div>
                       </div>
-                    )}
-                  </div>
 
-                  <div className="flex justify-between gap-3">
-                    <button
-                      onClick={() => {
-                        setActivePrepIndex(prev => Math.max(0, prev - 1));
-                        setPrepUserInput('');
-                        setPrepFeedback(null);
-                      }}
-                      disabled={activePrepIndex === 0}
-                      className="px-5 py-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
-                    >
-                      Preposisi Sebelumnya
-                    </button>
+                      {/* Right Column: Sticky Interactive Cloze Studio Card */}
+                      <div className="lg:col-span-7 lg:sticky lg:top-24 space-y-4">
+                        <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
+                          {/* Card Top Info */}
+                          <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
+                            <div className="flex items-center gap-2">
+                              <span className="font-serif text-lg font-bold text-[#1E1B17]">
+                                {activeItem.word}
+                              </span>
+                              <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-2.5 py-0.5 rounded-md uppercase font-semibold">
+                                {activeItem.partOfSpeech}
+                              </span>
+                            </div>
+                            <span className="font-mono text-xs text-[#7A7265]">
+                              Item {activePrepIndex + 1} dari {DEPENDENT_PREPOSITIONS_DATA.length}
+                            </span>
+                          </div>
 
-                    <button
-                      onClick={() => {
-                        setActivePrepIndex(prev => Math.min(DEPENDENT_PREPOSITIONS_DATA.length - 1, prev + 1));
-                        setPrepUserInput('');
-                        setPrepFeedback(null);
-                      }}
-                      disabled={activePrepIndex === DEPENDENT_PREPOSITIONS_DATA.length - 1}
-                      className="px-5 py-2.5 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
-                    >
-                      Preposisi Selanjutnya
-                    </button>
+                          {/* Indonesian Meaning Context */}
+                          <div className="px-3.5 py-2 rounded-xl bg-[#DDD7CA]/60 border border-[#C8C0B0]/60 text-xs text-[#1E1B17]">
+                            <span className="font-mono font-semibold text-[#7A7265] text-[10px] uppercase block">Makna Kontekstual:</span>
+                            {activeItem.meaningId}
+                          </div>
+
+                          {/* Cloze Prompt */}
+                          <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
+                            <div className="flex items-center justify-between">
+                              <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">
+                                Lengkapi Preposisi Terikat yang Tepat:
+                              </span>
+                              <button
+                                onClick={() => playNativeAudio(activeItem.clozeSentence.replace('_____', activeItem.requiredPreposition))}
+                                className="inline-flex items-center gap-1 text-[11px] font-mono text-[#535841] hover:text-[#1E1B17] transition-colors"
+                              >
+                                <Volume2 className="w-3.5 h-3.5" />
+                                <span>Dengar Kalimat</span>
+                              </button>
+                            </div>
+                            <p className="font-serif text-lg text-[#1E1B17] leading-relaxed">
+                              "{activeItem.clozeSentence}"
+                            </p>
+                          </div>
+
+                          {/* Rapid Preposition Selector Chips */}
+                          <div className="space-y-1.5">
+                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                              Pilih Cepat Preposisi:
+                            </span>
+                            <div className="flex flex-wrap gap-1.5">
+                              {commonPreps.map(p => (
+                                <button
+                                  key={p}
+                                  type="button"
+                                  onClick={() => {
+                                    setPrepUserInput(p);
+                                    setPrepFeedback(null);
+                                  }}
+                                  className={clsx(
+                                    'px-2.5 py-1 rounded-lg text-xs font-mono transition-all tactile-btn',
+                                    prepUserInput.trim().toLowerCase() === p
+                                      ? 'bg-[#A84A28] text-[#EFE9DF] font-bold shadow-xs'
+                                      : 'bg-[#DDD7CA] text-[#1E1B17] hover:bg-[#C8C0B0]'
+                                  )}
+                                >
+                                  {p}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Submission Form */}
+                          <form onSubmit={handleCheckPrep} className="space-y-3">
+                            <div className="flex gap-2">
+                              <input
+                                type="text"
+                                value={prepUserInput}
+                                onChange={(e) => {
+                                  setPrepUserInput(e.target.value);
+                                  setPrepFeedback(null);
+                                }}
+                                placeholder="Ketik atau pilih preposisi di atas..."
+                                className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17] font-mono"
+                              />
+                              <button
+                                type="submit"
+                                className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shrink-0 min-h-[44px]"
+                              >
+                                Periksa Preposisi
+                              </button>
+                            </div>
+                          </form>
+
+                          {/* Instant Feedback Panel */}
+                          {prepFeedback && (
+                            <div className={clsx(
+                              'p-4 rounded-2xl border text-xs space-y-2 animate-in fade-in duration-200',
+                              prepFeedback.isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                            )}>
+                              <div className="flex items-center gap-2 font-semibold">
+                                {prepFeedback.isCorrect ? (
+                                  <>
+                                    <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                                    <span>Preposisi Tepat! <strong>"{activeItem.word} {activeItem.requiredPreposition}"</strong></span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                                    <span>Preposisi kurang tepat. Preposisi baku adalah: <strong>"{activeItem.requiredPreposition}"</strong></span>
+                                  </>
+                                )}
+                              </div>
+
+                              <p className="font-serif text-[#1E1B17] italic pt-1 border-t border-[#C8C0B0]/60">
+                                "{activeItem.exampleSentence}"
+                              </p>
+                            </div>
+                          )}
+
+                          {/* Navigation Buttons */}
+                          <div className="flex justify-between gap-3 pt-2 border-t border-[#C8C0B0]">
+                            <button
+                              onClick={() => {
+                                setActivePrepIndex(prev => Math.max(0, prev - 1));
+                                setPrepUserInput('');
+                                setPrepFeedback(null);
+                              }}
+                              disabled={activePrepIndex === 0}
+                              className="px-4 py-2.5 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[40px]"
+                            >
+                              ← Sebelumnya
+                            </button>
+
+                            <button
+                              onClick={() => {
+                                const rand = Math.floor(Math.random() * DEPENDENT_PREPOSITIONS_DATA.length);
+                                setActivePrepIndex(rand);
+                                setPrepUserInput('');
+                                setPrepFeedback(null);
+                              }}
+                              className="px-3.5 py-2.5 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#7A7265] tactile-btn min-h-[40px]"
+                            >
+                              Acak Kata
+                            </button>
+
+                            <button
+                              onClick={() => {
+                                setActivePrepIndex(prev => Math.min(DEPENDENT_PREPOSITIONS_DATA.length - 1, prev + 1));
+                                setPrepUserInput('');
+                                setPrepFeedback(null);
+                              }}
+                              disabled={activePrepIndex === DEPENDENT_PREPOSITIONS_DATA.length - 1}
+                              className="px-4 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[40px]"
+                            >
+                              Selanjutnya →
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
 
               {/* Sub-tab 4: Confusable Words */}
               {collocationSubTab === 'confusables' && (

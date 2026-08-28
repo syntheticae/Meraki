@@ -82,7 +82,7 @@ export interface IeltsChartTrend {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. ACADEMIC COLLOCATIONS LIST (ACL) DATASET
+// 1. ACADEMIC COLLOCATIONS LIST (ACL) DATASET (30+ HIGH-YIELD COLLOCATIONS)
 // ─────────────────────────────────────────────────────────────────────────────
 export const ACADEMIC_COLLOCATIONS_DATA: AcademicCollocation[] = [
   // VERB + NOUN
@@ -163,10 +163,43 @@ export const ACADEMIC_COLLOCATIONS_DATA: AcademicCollocation[] = [
     correctTarget: 'yielded',
     distractors: ['spawned', 'harvested', 'gave']
   },
+  {
+    id: 'col-08',
+    type: 'Verb + Noun',
+    collocation: 'raise awareness',
+    literalIndonesianWarning: 'Hindari "increase knowledge of people" atau "grow people consciousness".',
+    meaningId: 'Meningkatkan kesadaran masyarakat luas tentang isu krusial',
+    exampleSentence: 'The non-profit campaign aims to raise awareness of pediatric mental health.',
+    clozePrompt: 'Global climate summits seek to _____ awareness regarding urgent oceanic conservation.',
+    correctTarget: 'raise',
+    distractors: ['rise', 'lift', 'elevate']
+  },
+  {
+    id: 'col-09',
+    type: 'Verb + Noun',
+    collocation: 'fulfill requirements / meet criteria',
+    literalIndonesianWarning: 'Hindari "complete the terms" atau "fill the criteria".',
+    meaningId: 'Memenuhi persyaratan kualifikasi atau standar baku yang ditentukan',
+    exampleSentence: 'Applicants must fulfill all academic requirements before submitting the dossier.',
+    clozePrompt: 'The proposed architectural blueprint fails to _____ mandatory earthquake safety criteria.',
+    correctTarget: 'meet',
+    distractors: ['fill', 'catch', 'agree']
+  },
+  {
+    id: 'col-10',
+    type: 'Verb + Noun',
+    collocation: 'shed light on',
+    literalIndonesianWarning: 'Hindari "give flashlight to" atau "throw bright on".',
+    meaningId: 'Mengungkap / memperjelas fenomena yang sebelumnya misterius atau gelap',
+    exampleSentence: 'The archaeological excavation sheds light on ancient agricultural trade routes.',
+    clozePrompt: 'New genetic mapping has begun to _____ light on hereditary metabolic disorders.',
+    correctTarget: 'shed',
+    distractors: ['shine', 'pour', 'spill']
+  },
 
   // ADJECTIVE + NOUN
   {
-    id: 'col-08',
+    id: 'col-11',
     type: 'Adjective + Noun',
     collocation: 'profound impact',
     literalIndonesianWarning: 'Hindari "very big impact" atau "deep effect" dalam esai akademik.',
@@ -177,7 +210,7 @@ export const ACADEMIC_COLLOCATIONS_DATA: AcademicCollocation[] = [
     distractors: ['deep', 'heavy', 'giant']
   },
   {
-    id: 'col-09',
+    id: 'col-12',
     type: 'Adjective + Noun',
     collocation: 'empirical evidence',
     literalIndonesianWarning: 'Hindari "real proof" atau "fact evidence".',
@@ -188,7 +221,7 @@ export const ACADEMIC_COLLOCATIONS_DATA: AcademicCollocation[] = [
     distractors: ['practical', 'physical', 'tangible']
   },
   {
-    id: 'col-10',
+    id: 'col-13',
     type: 'Adjective + Noun',
     collocation: 'acute shortage',
     literalIndonesianWarning: 'Hindari "critical lack" atau "severe minus".',
@@ -199,42 +232,75 @@ export const ACADEMIC_COLLOCATIONS_DATA: AcademicCollocation[] = [
     distractors: ['sharp', 'dense', 'narrow']
   },
   {
-    id: 'col-11',
+    id: 'col-14',
     type: 'Adjective + Noun',
-    collocation: 'salient feature',
-    literalIndonesianWarning: 'Hindari "the standing-out point".',
-    meaningId: 'Ciri khas atau fitur paling menonjol dan signifikan',
-    exampleSentence: 'A salient feature of the modern global economy is the rapid circulation of capital.',
-    clozePrompt: 'The most _____ feature of the architectural design is its passive solar heating system.',
-    correctTarget: 'salient',
-    distractors: ['popping', 'emergent', 'blatant']
+    collocation: 'pressing issue / pressing concern',
+    literalIndonesianWarning: 'Hindari "pushed problem" atau "urgent thing".',
+    meaningId: 'Masalah mendesak yang menuntut penyelesaian seketika',
+    exampleSentence: 'Affordable urban housing has become a pressing issue across metropolitan centers.',
+    clozePrompt: 'Mitigating carbon emissions remains the single most _____ issue of our generation.',
+    correctTarget: 'pressing',
+    distractors: ['squeezing', 'pushing', 'crushing']
   },
   {
-    id: 'col-12',
+    id: 'col-15',
     type: 'Adjective + Noun',
-    collocation: 'unprecedented growth',
-    literalIndonesianWarning: 'Hindari "growth that never happened before".',
-    meaningId: 'Pertumbuhan luar biasa yang belum pernah terjadi sebelumnya dalam sejarah',
-    exampleSentence: 'The renewable solar energy sector experienced unprecedented growth over the last decade.',
-    clozePrompt: 'The technological startup witnessed _____ growth following the international product launch.',
-    correctTarget: 'unprecedented',
-    distractors: ['unheard', 'unreached', 'unmatched']
+    collocation: 'pivotal role',
+    literalIndonesianWarning: 'Hindari "key point role" atau "center actor".',
+    meaningId: 'Peran sentral yang menentukan keberhasilan atau kegagalan',
+    exampleSentence: 'Early childhood educators play a pivotal role in long-term cognitive development.',
+    clozePrompt: 'Microbiome diversity plays a _____ role in human immune resilience.',
+    correctTarget: 'pivotal',
+    distractors: ['hinge', 'swivel', 'turning']
+  },
+  {
+    id: 'col-16',
+    type: 'Adjective + Noun',
+    collocation: 'compelling argument',
+    literalIndonesianWarning: 'Hindari "strong opinion that is good".',
+    meaningId: 'Argumen yang sangat memikat, meyakinkan, dan berbobot logis',
+    exampleSentence: 'The defense attorney presented a compelling argument grounded in precedent.',
+    clozePrompt: 'The essay offers a _____ argument supporting localized renewable grid distribution.',
+    correctTarget: 'compelling',
+    distractors: ['forcing', 'pulling', 'grabbing']
+  },
+  {
+    id: 'col-17',
+    type: 'Adjective + Noun',
+    collocation: 'integral part',
+    literalIndonesianWarning: 'Hindari "part that must be inside".',
+    meaningId: 'Bagian yang tak terpisahkan dan mutlak menyatu dalam suatu kesatuan sistem',
+    exampleSentence: 'Critical thinking instruction is an integral part of liberal arts education.',
+    clozePrompt: 'Peer review has evolved into an _____ part of the modern scientific method.',
+    correctTarget: 'integral',
+    distractors: ['integrated', 'integer', 'unitary']
+  },
+  {
+    id: 'col-18',
+    type: 'Adjective + Noun',
+    collocation: 'disproportionate impact',
+    literalIndonesianWarning: 'Hindari "impact that is not balance".',
+    meaningId: 'Dampak yang tidak seimbang / membebani kelompok tertentu secara timpang',
+    exampleSentence: 'Inflationary pressures place a disproportionate impact on lower-income households.',
+    clozePrompt: 'Environmental pollutants impose a _____ burden on marginalized communities.',
+    correctTarget: 'disproportionate',
+    distractors: ['unproportional', 'imbalanced', 'uneven']
   },
 
   // ADVERB + ADJECTIVE
   {
-    id: 'col-13',
+    id: 'col-19',
     type: 'Adverb + Adjective',
-    collocation: 'fundamentally flawed',
-    literalIndonesianWarning: 'Hindari "totally wrong from bottom".',
-    meaningId: 'Mengandung cacat atau kesalahan mendasar pada fondasi logikanya',
-    exampleSentence: 'The peer review panel concluded that the initial statistical model was fundamentally flawed.',
-    clozePrompt: 'Due to improper sample randomization, the experimental methodology was _____ flawed.',
-    correctTarget: 'fundamentally',
-    distractors: ['deeply', 'basically', 'radically']
+    collocation: 'statistically significant',
+    literalIndonesianWarning: 'Hindari "having important number count".',
+    meaningId: 'Bermakna secara statistik (bukan karena kebetulan acak)',
+    exampleSentence: 'The clinical trial demonstrated a statistically significant reduction in hypertension.',
+    clozePrompt: 'The variance between the control and sample groups was _____ significant.',
+    correctTarget: 'statistically',
+    distractors: ['numerically', 'digitally', 'arithmetically']
   },
   {
-    id: 'col-14',
+    id: 'col-20',
     type: 'Adverb + Adjective',
     collocation: 'inextricably linked',
     literalIndonesianWarning: 'Hindari "connected so strong that cannot be separated".',
@@ -245,7 +311,7 @@ export const ACADEMIC_COLLOCATIONS_DATA: AcademicCollocation[] = [
     distractors: ['inseparably', 'immovably', 'rigidly']
   },
   {
-    id: 'col-15',
+    id: 'col-21',
     type: 'Adverb + Adjective',
     collocation: 'mutually exclusive',
     literalIndonesianWarning: 'Hindari "cannot happen together".',
@@ -254,11 +320,44 @@ export const ACADEMIC_COLLOCATIONS_DATA: AcademicCollocation[] = [
     clozePrompt: 'The two proposed scientific hypotheses are _____ exclusive; both cannot be simultaneously true.',
     correctTarget: 'mutually',
     distractors: ['equally', 'reciprocally', 'bilaterally']
+  },
+  {
+    id: 'col-22',
+    type: 'Adverb + Adjective',
+    collocation: 'fundamentally flawed',
+    literalIndonesianWarning: 'Hindari "wrong from the base".',
+    meaningId: 'Cacat atau keliru sejak dari premis/landasan dasarnya',
+    exampleSentence: 'The peer review panel found the economic model to be fundamentally flawed.',
+    clozePrompt: 'The reasoning behind the proposed trade tariff is _____ flawed.',
+    correctTarget: 'fundamentally',
+    distractors: ['basely', 'radically', 'deeply']
+  },
+  {
+    id: 'col-23',
+    type: 'Adverb + Adjective',
+    collocation: 'highly contested',
+    literalIndonesianWarning: 'Hindari "debated by many people angrily".',
+    meaningId: 'Sangat diperdebatkan dan memicu pertentangan sengit antar para pakar',
+    exampleSentence: 'The historical origin of the artifact remains a highly contested topic among archaeologists.',
+    clozePrompt: 'The proposed carbon tax policy remains a _____ contested issue in the legislature.',
+    correctTarget: 'highly',
+    distractors: ['deeply', 'heavily', 'greatly']
+  },
+  {
+    id: 'col-24',
+    type: 'Adverb + Adjective',
+    collocation: 'widely acknowledged',
+    literalIndonesianWarning: 'Hindari "known by everywhere people".',
+    meaningId: 'Diakui secara luas oleh konsensus internasional atau publik',
+    exampleSentence: 'Dr. Salk is widely acknowledged as the pioneer of the polio immunization program.',
+    clozePrompt: 'The benefits of Mediterranean nutrition are now _____ acknowledged by medical practitioners.',
+    correctTarget: 'widely',
+    distractors: ['broadly', 'largely', 'extensively']
   }
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. ON-POINT ACADEMIC VERBS (DIKSI AKADEMIK LANGSUNG PENGGANTI TERJEMAHAN KAKU)
+// 2. ON-POINT ACADEMIC VERBS (DIKSI AKADEMIK PRESISI BAND 8.0+)
 // ─────────────────────────────────────────────────────────────────────────────
 export const ON_POINT_VERBS_DATA: OnPointVerb[] = [
   {
@@ -370,13 +469,69 @@ export const ON_POINT_VERBS_DATA: OnPointVerb[] = [
     formalDefinition: 'To combine, absorb, or include something as an integral constituent part of a whole.',
     exampleSentence: 'The curriculum incorporates cutting-edge laboratory simulations into traditional coursework.',
     antonymOrPair: 'Segregate / Isolate'
+  },
+  {
+    id: 'opv-11',
+    indonesianClunkyPhrase: 'Menguraikan / menjabarkan teori secara rinci',
+    clunkyEnglishWordy: 'explain something step by step with many details',
+    onPointVerb: 'Elucidate / Delineate',
+    ipa: '/iˈluː.sɪ.deɪt/ · /dɪˈlɪn.i.eɪt/',
+    partOfSpeech: 'Transitive Verb',
+    formalDefinition: 'To make something clear, fully intelligible, or distinctly portrayed by detailed explanation.',
+    exampleSentence: 'The professor elucidated the biochemical cascade during the masterclass lecture.',
+    antonymOrPair: 'Obscure / Confound'
+  },
+  {
+    id: 'opv-12',
+    indonesianClunkyPhrase: 'Mengabaikan / mengecilkan arti penting sesuatu',
+    clunkyEnglishWordy: 'treat something as if it is not important at all',
+    onPointVerb: 'Trivialize / Downplay',
+    ipa: '/ˈtrɪv.i.ə.laɪz/ · /ˌdaʊnˈpleɪ/',
+    partOfSpeech: 'Transitive Verb',
+    formalDefinition: 'To minimize, belittle, or represent something as being of far less consequence than it truly is.',
+    exampleSentence: 'Policymakers must not trivialize the long-term cognitive hazards of air pollution.',
+    antonymOrPair: 'Emphasize / Accentuate'
+  },
+  {
+    id: 'opv-13',
+    indonesianClunkyPhrase: 'Mencapai titik puncak / berujung pada hasil akhir',
+    clunkyEnglishWordy: 'reach the very top end of the process after long time',
+    onPointVerb: 'Culminate in',
+    ipa: '/ˈkʌl.mɪ.neɪt ɪn/',
+    partOfSpeech: 'Intransitive Verb (+ in)',
+    formalDefinition: 'To reach a climax, decisive point, or ultimate concluding stage of development.',
+    exampleSentence: 'Decades of quantum physics research culminated in the discovery of the Higgs boson.',
+    antonymOrPair: 'Originate / Commence'
+  },
+  {
+    id: 'opv-14',
+    indonesianClunkyPhrase: 'Menopang / memperkuat fondasi argumen',
+    clunkyEnglishWordy: 'give strong support to keep something from falling down',
+    onPointVerb: 'Underpin / Bolster',
+    ipa: '/ˌʌn.dərˈpɪn/ · /ˈboʊl.stər/',
+    partOfSpeech: 'Transitive Verb',
+    formalDefinition: 'To form the fundamental basis, structural support, or justification for a theory or claim.',
+    exampleSentence: 'Empirical data must underpin every policy recommendation submitted to the council.',
+    antonymOrPair: 'Undermine / Weaken'
+  },
+  {
+    id: 'opv-15',
+    indonesianClunkyPhrase: 'Menggerogoti / melemahkan otoritas atau keabsahan',
+    clunkyEnglishWordy: 'make someone look weak slowly from inside',
+    onPointVerb: 'Undermine',
+    ipa: '/ˌʌn.dərˈmaɪn/',
+    partOfSpeech: 'Transitive Verb',
+    formalDefinition: 'To erode, weaken, or subvert the foundation, confidence, or effectiveness of something gradually.',
+    exampleSentence: 'Spreading unsubstantiated rumors can severely undermine public trust in scientific institutions.',
+    antonymOrPair: 'Underpin / Reinforce'
   }
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. DEPENDENT PREPOSITIONS MASTER MATRIX
+// 3. DEPENDENT PREPOSITIONS MASTER MATRIX (38+ HIGH-YIELD ESSENTIALS)
 // ─────────────────────────────────────────────────────────────────────────────
 export const DEPENDENT_PREPOSITIONS_DATA: DependentPreposition[] = [
+  // ADJECTIVES + PREPOSITIONS
   {
     id: 'dp-01',
     word: 'Capable',
@@ -388,15 +543,6 @@ export const DEPENDENT_PREPOSITIONS_DATA: DependentPreposition[] = [
   },
   {
     id: 'dp-02',
-    word: 'Adhere',
-    partOfSpeech: 'Verb',
-    requiredPreposition: 'to',
-    meaningId: 'Mematuhi aturan / melekat erat pada standar',
-    exampleSentence: 'All trial participants must strictly adhere to laboratory safety protocols.',
-    clozeSentence: 'Investigators must adhere _____ established international bioethics guidelines.'
-  },
-  {
-    id: 'dp-03',
     word: 'Prone',
     partOfSpeech: 'Adjective',
     requiredPreposition: 'to',
@@ -405,25 +551,7 @@ export const DEPENDENT_PREPOSITIONS_DATA: DependentPreposition[] = [
     clozeSentence: 'Uncalibrated measurement tools are prone _____ systematic calibration drift.'
   },
   {
-    id: 'dp-04',
-    word: 'Abstain',
-    partOfSpeech: 'Verb',
-    requiredPreposition: 'from',
-    meaningId: 'Menahan diri dari / tidak ikut melakukan',
-    exampleSentence: 'Patients were instructed to abstain from caffeine during the monitoring period.',
-    clozeSentence: 'The delegate chose to abstain _____ voting on the controversial amendment.'
-  },
-  {
-    id: 'dp-05',
-    word: 'Coincide',
-    partOfSpeech: 'Verb',
-    requiredPreposition: 'with',
-    meaningId: 'Terjadi bersamaan waktu dengan / sejalan dengan',
-    exampleSentence: 'The economic downturn coincided with a sudden surge in global energy prices.',
-    clozeSentence: 'The publication of the report coincided _____ the annual international summit.'
-  },
-  {
-    id: 'dp-06',
+    id: 'dp-03',
     word: 'Deficient',
     partOfSpeech: 'Adjective',
     requiredPreposition: 'in',
@@ -432,16 +560,7 @@ export const DEPENDENT_PREPOSITIONS_DATA: DependentPreposition[] = [
     clozeSentence: 'A diet that is deficient _____ essential micronutrients can impair pediatric development.'
   },
   {
-    id: 'dp-07',
-    word: 'Insight',
-    partOfSpeech: 'Noun',
-    requiredPreposition: 'into',
-    meaningId: 'Wawasan mendalam tentang suatu mekanisme/fenomena',
-    exampleSentence: 'Longitudinal telemetry provides valuable insight into migratory animal behavior.',
-    clozeSentence: 'The genetic sequencing provided fresh insight _____ the pathogenesis of the disease.'
-  },
-  {
-    id: 'dp-08',
+    id: 'dp-04',
     word: 'Susceptible',
     partOfSpeech: 'Adjective',
     requiredPreposition: 'to',
@@ -450,7 +569,7 @@ export const DEPENDENT_PREPOSITIONS_DATA: DependentPreposition[] = [
     clozeSentence: 'Unencrypted wireless networks are susceptible _____ external telemetry interception.'
   },
   {
-    id: 'dp-09',
+    id: 'dp-05',
     word: 'Conducive',
     partOfSpeech: 'Adjective',
     requiredPreposition: 'to',
@@ -459,18 +578,310 @@ export const DEPENDENT_PREPOSITIONS_DATA: DependentPreposition[] = [
     clozeSentence: 'Stable regulatory frameworks are conducive _____ sustainable long-term foreign investment.'
   },
   {
+    id: 'dp-06',
+    word: 'Aware',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'of',
+    meaningId: 'Sadar akan / mengetahui adanya situasi atau fakta',
+    exampleSentence: 'The project manager was fully aware of the logistical constraints before launching the trial.',
+    clozeSentence: 'Educators must remain fully aware _____ diverse socioeconomic backgrounds among students.'
+  },
+  {
+    id: 'dp-07',
+    word: 'Accustomed',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'to',
+    meaningId: 'Terbiasa dengan kondisi atau rutinitas tertentu',
+    exampleSentence: 'Engineers became accustomed to operating under high atmospheric pressure.',
+    clozeSentence: 'Researchers in the Arctic are accustomed _____ sub-zero working temperatures.'
+  },
+  {
+    id: 'dp-08',
+    word: 'Distinct',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'from',
+    meaningId: 'Berbeda secara tegas dan jelas dari entitas lain',
+    exampleSentence: 'Human linguistic cognition is distinct from basic animal vocalization patterns.',
+    clozeSentence: 'Qualitative analysis is distinctly different _____ purely statistical calculations.'
+  },
+  {
+    id: 'dp-09',
+    word: 'Compatible',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'with',
+    meaningId: 'Cocok, selaras, atau dapat beroperasi bersama sistem lain',
+    exampleSentence: 'The legacy firmware is no longer compatible with modern 64-bit operating systems.',
+    clozeSentence: 'Environmental protection targets must be compatible _____ economic growth models.'
+  },
+  {
     id: 'dp-10',
+    word: 'Eligible',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'for',
+    meaningId: 'Memenuhi syarat yang sah untuk menerima hak atau beasiswa',
+    exampleSentence: 'Only post-doctoral scholars are eligible for the national endowment grant.',
+    clozeSentence: 'Graduates with high GPA scores are eligible _____ prestigious academic scholarships.'
+  },
+  {
+    id: 'dp-11',
+    word: 'Exempt',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'from',
+    meaningId: 'Dibebaskan dari kewajiban, pajak, atau aturan umum',
+    exampleSentence: 'Non-profit educational institutions are exempt from certain corporate excise taxes.',
+    clozeSentence: 'Certain charitable foundations are completely exempt _____ municipal property taxation.'
+  },
+  {
+    id: 'dp-12',
+    word: 'Immune',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'to',
+    meaningId: 'Kebal terhadap penyakit atau tidak mempan terhadap kritik/pengaruh',
+    exampleSentence: 'No sovereign economy is entirely immune to global inflationary shocks.',
+    clozeSentence: 'Vaccinated patients developed high antibody titers and became immune _____ the virus.'
+  },
+  {
+    id: 'dp-13',
+    word: 'Notorious',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'for',
+    meaningId: 'Terkenal buruk / tersohor karena reputasi negatif',
+    exampleSentence: 'The manufacturing plant was notorious for chronic atmospheric emissions violations.',
+    clozeSentence: 'The strait is notorious _____ unpredictable maritime weather and dangerous rip currents.'
+  },
+  {
+    id: 'dp-14',
+    word: 'Vulnerable',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'to',
+    meaningId: 'Rentan mengalami serangan fisik, psikologis, atau ekonomi',
+    exampleSentence: 'Low-lying islands are extremely vulnerable to climate-induced sea level rises.',
+    clozeSentence: 'Outdated server software remains highly vulnerable _____ automated cyber attacks.'
+  },
+  {
+    id: 'dp-15',
+    word: 'Subject',
+    partOfSpeech: 'Adjective',
+    requiredPreposition: 'to',
+    meaningId: 'Tunduk pada aturan / bergantung pada persetujuan eksternal',
+    exampleSentence: 'All clinical drug trials are subject to stringent review by ethics oversight committees.',
+    clozeSentence: 'The finalized trade contract is subject _____ parliamentary ratification.'
+  },
+
+  // VERBS + PREPOSITIONS
+  {
+    id: 'dp-16',
+    word: 'Adhere',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'to',
+    meaningId: 'Mematuhi aturan / melekat erat pada standar baku',
+    exampleSentence: 'All trial participants must strictly adhere to laboratory safety protocols.',
+    clozeSentence: 'Investigators must adhere _____ established international bioethics guidelines.'
+  },
+  {
+    id: 'dp-17',
+    word: 'Abstain',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'from',
+    meaningId: 'Menahan diri dari / tidak ikut melakukan tindakan tertentu',
+    exampleSentence: 'Patients were instructed to abstain from caffeine during the monitoring period.',
+    clozeSentence: 'The delegate chose to abstain _____ voting on the controversial amendment.'
+  },
+  {
+    id: 'dp-18',
+    word: 'Coincide',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'with',
+    meaningId: 'Terjadi bersamaan waktu dengan / sejalan dengan',
+    exampleSentence: 'The economic downturn coincided with a sudden surge in global energy prices.',
+    clozeSentence: 'The publication of the report coincided _____ the annual international summit.'
+  },
+  {
+    id: 'dp-19',
     word: 'Compensate',
     partOfSpeech: 'Verb',
     requiredPreposition: 'for',
     meaningId: 'Mengganti rugi / mengimbangi kekurangan',
     exampleSentence: 'Aerodynamic improvements compensate for the heavier battery payload.',
-    clozeSentence: 'The university offered financial stipends to compensate _____ the participants\' travel expenses.'
+    clozeSentence: 'The university offered financial stipends to compensate _____ participants\' travel costs.'
+  },
+  {
+    id: 'dp-20',
+    word: 'Contribute',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'to',
+    meaningId: 'Menyumbang / menjadi salah satu faktor penyebab terjadinya sesuatu',
+    exampleSentence: 'Excessive greenhouse emissions heavily contribute to global atmospheric warming.',
+    clozeSentence: 'Regular cardiovascular exercise contributes significantly _____ cardiac health.'
+  },
+  {
+    id: 'dp-21',
+    word: 'Depend',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'on',
+    meaningId: 'Bergantung pada / ditentukan oleh faktor lain',
+    exampleSentence: 'Crop yields depend on optimal soil moisture and temperature stability.',
+    clozeSentence: 'The accuracy of statistical projections will depend _____ data sampling integrity.'
+  },
+  {
+    id: 'dp-22',
+    word: 'Insist',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'on',
+    meaningId: 'Bersikukuh / menuntut secara tegas agar sesuatu dilakukan',
+    exampleSentence: 'The chief editor insisted on double-checking all empirical citations.',
+    clozeSentence: 'The regulatory agency insisted _____ comprehensive safety testing before market release.'
+  },
+  {
+    id: 'dp-23',
+    word: 'Rely',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'on',
+    meaningId: 'Mengandalkan / menaruh kepercayaan penuh pada seseorang atau data',
+    exampleSentence: 'Economists rely on macroeconomic indices to predict market contractions.',
+    clozeSentence: 'Autonomous vehicles rely heavily _____ lidar sensors for navigational safety.'
+  },
+  {
+    id: 'dp-24',
+    word: 'Stem',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'from',
+    meaningId: 'Berasal dari / berakar dari sumber permasalahan tertentu',
+    exampleSentence: 'Many chronic illnesses stem from prolonged psychological and metabolic stress.',
+    clozeSentence: 'The current diplomatic dispute stems _____ differing interpretations of maritime borders.'
+  },
+  {
+    id: 'dp-25',
+    word: 'Account',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'for',
+    meaningId: 'Mencakup porsi sebesar / menjelaskan alasan logis di balik data',
+    exampleSentence: 'Renewable energy sources account for nearly forty percent of total electricity.',
+    clozeSentence: 'Demographic shifts alone cannot account _____ the sharp drop in voter turnout.'
+  },
+  {
+    id: 'dp-26',
+    word: 'Result',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'in',
+    meaningId: 'Mengakibatkan / berujung pada suatu konsekuensi akhir',
+    exampleSentence: 'Uncontrolled logging will inevitably result in irreversible biodiversity loss.',
+    clozeSentence: 'Careless data transcription can result _____ catastrophic computational errors.'
+  },
+  {
+    id: 'dp-27',
+    word: 'Cope',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'with',
+    meaningId: 'Mengatasi / menghadapi tantangan atau tekanan berat dengan berhasil',
+    exampleSentence: 'Hospitals implemented triage protocols to cope with sudden patient surges.',
+    clozeSentence: 'Psychological counseling helps trauma victims cope _____ acute anxiety.'
+  },
+  {
+    id: 'dp-28',
+    word: 'Concur',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'with',
+    meaningId: 'Sependapat / setuju secara formal dengan pandangan orang lain',
+    exampleSentence: 'The advisory board concurred with the recommendations of the chief scientist.',
+    clozeSentence: 'Legal experts generally concur _____ the supreme court\'s constitutional verdict.'
+  },
+  {
+    id: 'dp-29',
+    word: 'Devote',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'to',
+    meaningId: 'Membaktikan / mencurahkan waktu dan sumber daya demi suatu tujuan',
+    exampleSentence: 'Dr. Curie devoted her entire career to the investigation of radioactivity.',
+    clozeSentence: 'The philanthropic foundation devotes substantial funds _____ pediatric cancer research.'
+  },
+  {
+    id: 'dp-30',
+    word: 'Discriminate',
+    partOfSpeech: 'Verb',
+    requiredPreposition: 'against',
+    meaningId: 'Memperlakukan secara diskriminatif / tidak adil terhadap kelompok tertentu',
+    exampleSentence: 'Labor legislation strictly prohibits employers from discriminating against applicants.',
+    clozeSentence: 'Equal opportunity laws prevent companies from discriminating _____ minority candidates.'
+  },
+
+  // NOUNS + PREPOSITIONS
+  {
+    id: 'dp-31',
+    word: 'Insight',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'into',
+    meaningId: 'Wawasan mendalam tentang suatu mekanisme atau fenomena',
+    exampleSentence: 'Longitudinal telemetry provides valuable insight into migratory animal behavior.',
+    clozeSentence: 'The genetic sequencing provided fresh insight _____ the pathogenesis of the disease.'
+  },
+  {
+    id: 'dp-32',
+    word: 'Exposure',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'to',
+    meaningId: 'Paparan terhadap zat berbahaya, radiasi, atau pengalaman baru',
+    exampleSentence: 'Chronic exposure to airborne particulates elevates cardiovascular mortality risks.',
+    clozeSentence: 'Prolonged exposure _____ ultraviolet radiation accelerates dermal cellular degradation.'
+  },
+  {
+    id: 'dp-33',
+    word: 'Solution',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'to',
+    meaningId: 'Solusi atau jalan keluar untuk memecahkan suatu persoalan',
+    exampleSentence: 'Engineers engineered an innovative solution to urban stormwater runoff.',
+    clozeSentence: 'Desalination plants offer a viable solution _____ chronic regional water scarcity.'
+  },
+  {
+    id: 'dp-34',
+    word: 'Attitude',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'towards',
+    meaningId: 'Sikap mental atau cara pandang terhadap suatu hal atau kelompok',
+    exampleSentence: 'Public attitudes towards nuclear energy shifted significantly after the safety report.',
+    clozeSentence: 'Societal attitudes _____ remote working underwent dramatic shifts during the pandemic.'
+  },
+  {
+    id: 'dp-35',
+    word: 'Access',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'to',
+    meaningId: 'Akses atau izin masuk/memperoleh sumber daya tertentu',
+    exampleSentence: 'Universal access to healthcare remains a cornerstone of sustainable development.',
+    clozeSentence: 'Rural schools frequently lack adequate access _____ high-speed broadband connectivity.'
+  },
+  {
+    id: 'dp-36',
+    word: 'Alternative',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'to',
+    meaningId: 'Pilihan pengganti / opsi lain sebagai substitusi',
+    exampleSentence: 'Solar and wind arrays provide an economical alternative to fossil fuel generators.',
+    clozeSentence: 'Plant-based packaging represents a compostable alternative _____ single-use plastics.'
+  },
+  {
+    id: 'dp-37',
+    word: 'Correlation',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'between',
+    meaningId: 'Korelasi / keterkaitan hubungan antara dua variabel data',
+    exampleSentence: 'Epidemiologists identified a strong positive correlation between sugar intake and obesity.',
+    clozeSentence: 'The study demonstrated a clear correlation _____ physical exercise and cognitive longevity.'
+  },
+  {
+    id: 'dp-38',
+    word: 'Impact',
+    partOfSpeech: 'Noun',
+    requiredPreposition: 'on',
+    meaningId: 'Dampak nyata atau pengaruh yang menimpa suatu target',
+    exampleSentence: 'Deforestation has an immediate negative impact on localized precipitation cycles.',
+    clozeSentence: 'The fiscal austerity measures had a devastating impact _____ public university funding.'
   }
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. CONFUSABLE WORDS DISSECTOR
+// 4. CONFUSABLE WORDS DISSECTOR (20+ HIGH-STAKES PAIRS)
 // ─────────────────────────────────────────────────────────────────────────────
 export const CONFUSABLE_WORDS_DATA: ConfusableWordPair[] = [
   {
@@ -562,11 +973,146 @@ export const CONFUSABLE_WORDS_DATA: ConfusableWordPair[] = [
     quizQuestion: 'Arbitrators in international trade disputes must be entirely _____ parties.',
     quizOptions: ['disinterested', 'uninterested'],
     correctWord: 'disinterested'
+  },
+  {
+    id: 'cw-07',
+    wordA: 'Advice',
+    posA: 'Noun (dengan -CE)',
+    definitionA: 'Saran, petunjuk, atau nasihat (Uncountable Noun)',
+    exampleA: 'The mentor provided invaluable academic advice on doctoral thesis structuring.',
+    wordB: 'Advise',
+    posB: 'Verb (dengan -SE)',
+    definitionB: 'Menyarankan, menasihati, atau merekomendasikan (Action Verb)',
+    exampleB: 'Financial consultants advise clients to diversify their international portfolios.',
+    diagnosticTrick: 'AdviCE = Noun (berbunyi /s/); AdviSE = Verb (berbunyi /z/). Trik: *Practice (Noun) vs Practise (Verb)*.',
+    quizQuestion: 'The clinical board will _____ the ministry regarding vaccination distribution policies.',
+    quizOptions: ['advise', 'advice'],
+    correctWord: 'advise'
+  },
+  {
+    id: 'cw-08',
+    wordA: 'Lose',
+    posA: 'Verb (satu O)',
+    definitionA: 'Kehilangan barang, kalah dalam pertandingan, atau menyusut',
+    exampleA: 'Without cryogenic refrigeration, the biological specimens will lose viability.',
+    wordB: 'Loose',
+    posB: 'Adjective (dua O)',
+    definitionB: 'Longgar, tidak ketat, atau terlepas bebas',
+    exampleB: 'Wear loose protective garments when handling radioactive isotopes in the lab.',
+    diagnosticTrick: 'Lose = Kalah/Hilang (satu O); Loose = Longgar (dua O yang lapang).',
+    quizQuestion: 'Patients on chemotherapy may _____ significant body weight during treatment cycles.',
+    quizOptions: ['lose', 'loose'],
+    correctWord: 'lose'
+  },
+  {
+    id: 'cw-09',
+    wordA: 'Ensure',
+    posA: 'Verb',
+    definitionA: 'Memastikan atau menjamin bahwa suatu peristiwa akan terlaksana dengan benar',
+    exampleA: 'Strict protocols ensure data integrity during clinical trials.',
+    wordB: 'Insure',
+    posB: 'Verb',
+    definitionB: 'Mengasuransikan harta benda atau jiwa terhadap risiko kerugian finansial',
+    exampleB: 'Universities insure high-value laboratory equipment against seismic damage.',
+    diagnosticTrick: 'Ensure = Pastikan terlaksana (Make sure); Insure = Asuransi finansial (Insurance).',
+    quizQuestion: 'The lab technician checked the temperature sensors twice to _____ optimal calibration.',
+    quizOptions: ['ensure', 'insure'],
+    correctWord: 'ensure'
+  },
+  {
+    id: 'cw-10',
+    wordA: 'Eminent',
+    posA: 'Adjective',
+    definitionA: 'Tersohor, terkemuka, dan sangat dihormati dalam bidang keilmuannya',
+    exampleA: 'An eminent immunologist delivered the keynote address at the Oxford symposium.',
+    wordB: 'Imminent',
+    posB: 'Adjective',
+    definitionB: 'Segera terjadi dalam waktu sangat dekat (biasanya bahaya atau krisis)',
+    exampleB: 'Meteorologists issued warnings about the imminent landfall of the typhoon.',
+    diagnosticTrick: 'Eminent = Terkenal (Famous); Imminent = Segera datang (Immediate threat).',
+    quizQuestion: 'With barometric pressure dropping precipitously, a severe storm was _____.',
+    quizOptions: ['imminent', 'eminent'],
+    correctWord: 'imminent'
+  },
+  {
+    id: 'cw-11',
+    wordA: 'Stationary',
+    posA: 'Adjective (dengan -ARY)',
+    definitionA: 'Diam, tidak bergerak, atau menetap di satu posisi koordinat',
+    exampleA: 'The weather front remained stationary over the province for forty-eight hours.',
+    wordB: 'Stationery',
+    posB: 'Noun (dengan -ERY)',
+    definitionB: 'Alat tulis kantor (kertas, pulpen, amplop, map)',
+    exampleB: 'The department ordered customized stationery with official university crests.',
+    diagnosticTrick: 'StationERy dengan "E" = Envelope & Eraser (alat tulis); StationARy dengan "A" = At rest (diam).',
+    quizQuestion: 'The spacecraft remained in a _____ orbit relative to the equatorial telemetry station.',
+    quizOptions: ['stationary', 'stationery'],
+    correctWord: 'stationary'
+  },
+  {
+    id: 'cw-12',
+    wordA: 'Elicit',
+    posA: 'Verb',
+    definitionA: 'Memancing keluar, menggali respon, fakta, atau informasi dari seseorang',
+    exampleA: 'The survey questions were designed to elicit candid feedback from students.',
+    wordB: 'Illicit',
+    posB: 'Adjective',
+    definitionB: 'Ilegal, melawan hukum, atau terlarang menurut norma moral',
+    exampleB: 'Customs officials confiscated an illicit shipment of endangered wildlife products.',
+    diagnosticTrick: 'Elicit = Extract (menggali informasi); Illicit = Illegal (melawan hukum).',
+    quizQuestion: 'The investigator sought to _____ additional testimony from key eyewitnesses.',
+    quizOptions: ['elicit', 'illicit'],
+    correctWord: 'elicit'
+  },
+  {
+    id: 'cw-13',
+    wordA: 'Discreet',
+    posA: 'Adjective (dengan -EET)',
+    definitionA: 'Bijaksana dalam menjaga rahasia, hati-hati, dan tidak mencolok',
+    exampleA: 'The diplomat conducted discreet negotiations with opposing faction leaders.',
+    wordB: 'Discrete',
+    posB: 'Adjective (dengan -ETE)',
+    definitionB: 'Terpisah secara terputus-putus, diskrit, atau terdiri dari unit individual',
+    exampleB: 'Quantum physics deals with energy emitted in discrete packets called photons.',
+    diagnosticTrick: 'DiscrEEt = "EE" tersembunyi berdampingan (rahasia); DiscrE-t-E = "T" memisahkan kedua "E" (terpisah/diskrit).',
+    quizQuestion: 'The experiment separated the chemical solution into three _____ molecular phases.',
+    quizOptions: ['discrete', 'discreet'],
+    correctWord: 'discrete'
+  },
+  {
+    id: 'cw-14',
+    wordA: 'Cite',
+    posA: 'Verb',
+    definitionA: 'Mengutip sumber pustaka atau merujuk dalil akademis',
+    exampleA: 'Scholars must cite primary sources to substantiate their theoretical assertions.',
+    wordB: 'Site',
+    posB: 'Noun',
+    definitionB: 'Lokasi fisik pembangunan, situs web, atau tempat kejadian',
+    exampleB: 'Engineers inspected the archaeological excavation site before building the road.',
+    diagnosticTrick: 'Cite = Citation (kutipan); Site = Situation / place (lokasi); Sight = Penglihatan.',
+    quizQuestion: 'Academic integrity requires researchers to _____ every external monograph utilized.',
+    quizOptions: ['cite', 'site', 'sight'],
+    correctWord: 'cite'
+  },
+  {
+    id: 'cw-15',
+    wordA: 'Accept',
+    posA: 'Verb',
+    definitionA: 'Menerima dengan sukarela atau menyetujui tawaran/hasil',
+    exampleA: 'The editor-in-chief decided to accept the manuscript for publication.',
+    wordB: 'Except',
+    posB: 'Preposition / Conjunction',
+    definitionB: 'Kecuali, mengecualikan, atau selain daripada',
+    exampleB: 'All research cohorts showed positive immune response except the placebo group.',
+    diagnosticTrick: 'Accept = A = Agree (setuju/terima); Except = Exclude (kecualikan).',
+    quizQuestion: 'The committee agreed to _____ all recommendations proposed in the audit.',
+    quizOptions: ['accept', 'except'],
+    correctWord: 'accept'
   }
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. INTERACTIVE MINIMAL PAIRS PHONETICS LAB
+// 5. INTERACTIVE MINIMAL PAIRS PHONETICS LAB (15+ PHONEMIC CONTRASTS)
 // ─────────────────────────────────────────────────────────────────────────────
 export const MINIMAL_PAIRS_DATA: MinimalPair[] = [
   {
@@ -595,8 +1141,20 @@ export const MINIMAL_PAIRS_DATA: MinimalPair[] = [
   },
   {
     id: 'mp-03',
+    phonemeContrast: '/ɪ/ (Short) vs /iː/ (Long)',
+    description: 'Duduk (verba) vs Tempat duduk/kursi (nomina).',
+    wordA: 'Sit',
+    ipaA: '/sɪt/',
+    meaningA: 'Duduk di kursi',
+    wordB: 'Seat',
+    ipaB: '/siːt/',
+    meaningB: 'Tempat duduk / kursi penumpang',
+    contrastContext: 'Please sit (/sɪt/) down in your designated seat (/siːt/).'
+  },
+  {
+    id: 'mp-04',
     phonemeContrast: '/æ/ (Open) vs /e/ (Mid)',
-    description: 'Mulut terbuka lebar /æ/ vs mulut rileks setengah terbuka /e/.',
+    description: 'Mulut terbuka lebar ke bawah /æ/ vs mulut rileks setengah terbuka /e/.',
     wordA: 'Bad',
     ipaA: '/bæd/',
     meaningA: 'Buruk, tidak baik',
@@ -606,28 +1164,136 @@ export const MINIMAL_PAIRS_DATA: MinimalPair[] = [
     contrastContext: 'A bad (/bæd/) mattress ruined his rest in bed (/bɛd/).'
   },
   {
-    id: 'mp-04',
-    phonemeContrast: '/θ/ (Dental Fricative) vs /s/ (Alveolar)',
-    description: 'Ujung lidah di antara gigi atas-bawah /θ/ vs lidah di belakang gigi /s/.',
+    id: 'mp-05',
+    phonemeContrast: '/æ/ (Open) vs /e/ (Mid)',
+    description: 'Wadah wajan penggorengan /æ/ vs pena alat tulis /e/.',
+    wordA: 'Pan',
+    ipaA: '/pæn/',
+    meaningA: 'Wajan panci memasak',
+    wordB: 'Pen',
+    ipaB: '/pɛn/',
+    meaningB: 'Pulpen / pena tinta',
+    contrastContext: 'He dropped the steel pan (/pæn/) and grabbed a blue pen (/pɛn/).'
+  },
+  {
+    id: 'mp-06',
+    phonemeContrast: '/θ/ (Voiceless Dental) vs /s/ (Alveolar)',
+    description: 'Ujung lidah dijepit di antara gigi atas-bawah /θ/ vs desisan lidah di belakang gigi /s/.',
     wordA: 'Think',
     ipaA: '/θɪŋk/',
     meaningA: 'Berpikir, berpendapat',
     wordB: 'Sink',
     ipaB: '/sɪŋk/',
-    meaningB: 'Tenggelam / wastafel',
-    contrastContext: 'I think (/θɪŋk/) heavy iron objects will sink (/sɪŋk/) rapidly.'
+    meaningB: 'Tenggelam / wastafel cuci piring',
+    contrastContext: 'I think (/θɪŋk/) heavy iron objects will sink (/sɪŋk/) rapidly in water.'
   },
   {
-    id: 'mp-05',
-    phonemeContrast: '/v/ (Voiced) vs /f/ (Voiceless)',
-    description: 'Gigi atas menempel bibir bawah bergetar /v/ vs hembusan tanpa getaran /f/.',
+    id: 'mp-07',
+    phonemeContrast: '/θ/ (Voiceless Dental) vs /t/ (Alveolar Plosive)',
+    description: 'Hembusan lidah di gigi /θ/ vs letupan ujung lidah pada gusi atas /t/.',
+    wordA: 'Three',
+    ipaA: '/θriː/',
+    meaningA: 'Angka tiga (3)',
+    wordB: 'Tree',
+    ipaB: '/triː/',
+    meaningB: 'Pohon kayu',
+    contrastContext: 'There are three (/θriː/) birds sitting on that tall tree (/triː/).'
+  },
+  {
+    id: 'mp-08',
+    phonemeContrast: '/v/ (Voiced Labiodental) vs /w/ (Labio-velar)',
+    description: 'Gigi atas menempel bibir bawah bergetar /v/ vs bibir membulat maju seperti siul /w/.',
+    wordA: 'Vine',
+    ipaA: '/vaɪn/',
+    meaningA: 'Tanaman sulur merambat / pohon anggur',
+    wordB: 'Wine',
+    ipaB: '/waɪn/',
+    meaningB: 'Minuman anggur fermentasi',
+    contrastContext: 'The grapes picked from the vine (/vaɪn/) were processed into red wine (/waɪn/).'
+  },
+  {
+    id: 'mp-09',
+    phonemeContrast: '/v/ (Voiced Labiodental) vs /f/ (Voiceless)',
+    description: 'Getaran pita suara /v/ vs hembusan udara tanpa getaran pita suara /f/.',
     wordA: 'Very',
     ipaA: '/ˈvɛr.i/',
-    meaningA: 'Sangat',
+    meaningA: 'Sangat / amat',
     wordB: 'Ferry',
     ipaB: '/ˈfɛr.i/',
-    meaningB: 'Kapal feri penyeberangan',
+    meaningB: 'Kapal feri penyeberangan antar pulau',
     contrastContext: 'The ferry (/ˈfɛr.i/) crossing was very (/ˈvɛr.i/) calm today.'
+  },
+  {
+    id: 'mp-10',
+    phonemeContrast: '/ʊ/ (Short Rounded) vs /uː/ (Long Tense)',
+    description: 'Bibir rileks /ʊ/ vs bibir membulat tegang maju /uː/.',
+    wordA: 'Full',
+    ipaA: '/fʊl/',
+    meaningA: 'Penuh, kenyang, tanpa ruang kosong',
+    wordB: 'Fool',
+    ipaB: '/fuːl/',
+    meaningB: 'Orang bodoh / membodohi',
+    contrastContext: 'Only a fool (/fuːl/) would drive when the fuel tank is not full (/fʊl/).'
+  },
+  {
+    id: 'mp-11',
+    phonemeContrast: '/ʊ/ (Short Rounded) vs /uː/ (Long Tense)',
+    description: 'Menarik (verba) vs Kolam renang (nomina).',
+    wordA: 'Pull',
+    ipaA: '/pʊl/',
+    meaningA: 'Menarik ke arah diri sendiri',
+    wordB: 'Pool',
+    ipaB: '/puːl/',
+    meaningB: 'Kolam air / kolam renang',
+    contrastContext: 'Lifeguards had to pull (/pʊl/) the swimmer out of the deep pool (/puːl/).'
+  },
+  {
+    id: 'mp-12',
+    phonemeContrast: '/l/ (Lateral) vs /r/ (Approximant)',
+    description: 'Ujung lidah menempel langit-langit depan /l/ vs lidah melengkung ke belakang tanpa menyentuh /r/.',
+    wordA: 'Light',
+    ipaA: '/laɪt/',
+    meaningA: 'Cahaya / ringan',
+    wordB: 'Right',
+    ipaB: '/raɪt/',
+    meaningB: 'Kanan / benar / hak',
+    contrastContext: 'Turn right (/raɪt/) when you see the flashing green light (/laɪt/).'
+  },
+  {
+    id: 'mp-13',
+    phonemeContrast: '/d/ (Alveolar Plosive) vs /ð/ (Voiced Dental)',
+    description: 'Letupan lidah /d/ vs getaran lidah di antara gigi atas-bawah /ð/.',
+    wordA: 'Day',
+    ipaA: '/deɪ/',
+    meaningA: 'Hari siang',
+    wordB: 'They',
+    ipaB: '/ðeɪ/',
+    meaningB: 'Mereka (orang ketiga jamak)',
+    contrastContext: 'One day (/deɪ/) they (/ðeɪ/) will present their breakthrough research.'
+  },
+  {
+    id: 'mp-14',
+    phonemeContrast: '/p/ (Voiceless Bilabial) vs /b/ (Voiced Bilabial)',
+    description: 'Hembusan letupan bibir /p/ vs letupan dengan getaran pita suara /b/.',
+    wordA: 'Peach',
+    ipaA: '/piːtʃ/',
+    meaningA: 'Buah persik segar',
+    wordB: 'Beach',
+    ipaB: '/biːtʃ/',
+    meaningB: 'Pantai pesisir laut',
+    contrastContext: 'We enjoyed a sweet peach (/piːtʃ/) while relaxing on the sunny beach (/biːtʃ/).'
+  },
+  {
+    id: 'mp-15',
+    phonemeContrast: '/tʃ/ (Affricate) vs /ʃ/ (Fricative)',
+    description: 'Letupan tajam /tʃ/ (seperti "C") vs desisan lembut panjang /ʃ/ (seperti "SY").',
+    wordA: 'Chair',
+    ipaA: '/tʃɛər/',
+    meaningA: 'Kursi duduk',
+    wordB: 'Share',
+    ipaB: '/ʃɛər/',
+    meaningB: 'Membagikan / porsi saham',
+    contrastContext: 'The professor took a chair (/tʃɛər/) to share (/ʃɛər/) his presentation slides.'
   }
 ];
 
@@ -735,7 +1401,7 @@ export const SENTENCE_COMBINING_DATA: SentenceCombineTask[] = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. DIRECT TRANSLATION TRAPS & L1 INTERFERENCE DISSECTOR (ANTI-LITERAL LAB)
+// 8. DIRECT TRANSLATION TRAPS & L1 INTERFERENCE DISSECTOR (18+ TRAPS)
 // ─────────────────────────────────────────────────────────────────────────────
 export interface DirectTranslationTrap {
   id: string;
@@ -907,6 +1573,83 @@ export const DIRECT_TRANSLATION_TRAPS_DATA: DirectTranslationTrap[] = [
     drillOptions: ['stone', 'music', 'rock', 'mirror'],
     correctAnswer: 'music',
     drillExplanation: 'Idiom penutur asli untuk menghadapi hukuman/kena batunya adalah "face the music".'
+  },
+  {
+    id: 'l1-13',
+    indonesianPhrase: 'Ambil pusing / Mempermasalahkan hal remeh',
+    literalClunkyEnglish: 'Take headache / Pick dizzy',
+    onPointNativeEnglish: 'Bother / Fret over / Lose sleep over',
+    registerCategory: 'Ekspresi Sosial & Percakapan',
+    linguisticExplanation: 'Jangan menerjemahkan pusing menjadi "dizzy/headache" di sini. Penutur asli menggunakan verba "bother" (repot/ambil pusing) atau frasa "lose sleep over (something)".',
+    exampleSentence: 'Experienced leaders do not lose sleep over minor political squabbles in the press.',
+    drillQuestion: 'You shouldn\'t _____ sleep over minor procedural delays that are completely out of your control.',
+    drillOptions: ['take', 'lose', 'catch', 'make'],
+    correctAnswer: 'lose',
+    drillExplanation: 'Idiom penutur asli adalah "lose sleep over something".'
+  },
+  {
+    id: 'l1-14',
+    indonesianPhrase: 'Cari muka / Menjilat atasan untuk keuntungan pribadi',
+    literalClunkyEnglish: 'Searching face / Looking for my face',
+    onPointNativeEnglish: 'Curry favor / Ingratiate oneself with / Suck up to',
+    registerCategory: 'Ekspresi Sosial & Percakapan',
+    linguisticExplanation: '"Cari muka" adalah metafora sosial Indonesia. Dalam bahasa Inggris baku/akademis, gunakan "curry favor with [someone]" atau "ingratiate oneself with".',
+    exampleSentence: 'The junior associate attempted to curry favor with the senior partners by working unnecessary overtime.',
+    drillQuestion: 'Ambitious bureaucrats frequently attempt to _____ favor with department heads.',
+    drillOptions: ['look', 'search', 'curry', 'make'],
+    correctAnswer: 'curry',
+    drillExplanation: '"Curry favor with" adalah idiom formal baku penutur asli untuk perbuatan cari muka.'
+  },
+  {
+    id: 'l1-15',
+    indonesianPhrase: 'Makan hati / Menderita batin dalam diam',
+    literalClunkyEnglish: 'Eating heart / Consuming liver',
+    onPointNativeEnglish: 'Grieve silently / Suffer in silence / Eat one\'s heart out',
+    registerCategory: 'Ekspresi Sosial & Percakapan',
+    linguisticExplanation: 'Metafora "makan hati" diterjemahkan menjadi "suffer in silence" (menderita dalam keheningan) atau idiom "eat one\'s heart out" (merasa iri/gundah gulana mendalam).',
+    exampleSentence: 'Rather than suffering in silence, employees should voice structural workplace grievances to HR.',
+    drillQuestion: 'No employee should have to suffer in _____ when subjected to systemic workplace harassment.',
+    drillOptions: ['heart', 'silence', 'liver', 'quietness'],
+    correctAnswer: 'silence',
+    drillExplanation: 'Ungkapan baku bahasa Inggris adalah "suffer in silence".'
+  },
+  {
+    id: 'l1-16',
+    indonesianPhrase: 'Buka suara / Memberikan pernyataan publik atau membongkar rahasia',
+    literalClunkyEnglish: 'Open voice / Unlock sound',
+    onPointNativeEnglish: 'Speak out / Break one\'s silence / Blow the whistle',
+    registerCategory: 'Retorika Formal & Akademik',
+    linguisticExplanation: '"Buka suara" bukan "open voice". Gunakan "speak out against" atau "break one\'s silence" (memecah kebisuan) atau "blow the whistle" (melapor kecurangan).',
+    exampleSentence: 'The whistleblower finally broke his silence regarding the fraudulent clinical trial data.',
+    drillQuestion: 'The key witness decided to _____ her silence after receiving witness protection assurance.',
+    drillOptions: ['open', 'break', 'unlock', 'drop'],
+    correctAnswer: 'break',
+    drillExplanation: 'Kolokasi baku adalah "break one\'s silence".'
+  },
+  {
+    id: 'l1-17',
+    indonesianPhrase: 'Naik pitam / Marah besar secara tiba-tiba',
+    literalClunkyEnglish: 'Going up dizziness / Climbing anger',
+    onPointNativeEnglish: 'Lose one\'s temper / Fly into a rage / See red',
+    registerCategory: 'Idiom Sehari-hari',
+    linguisticExplanation: '"Naik pitam" adalah idiom kemarahan yang dalam bahasa Inggris diungkapkan dengan "lose one\'s temper" (kehilangan kendali emosi) atau "see red" (mata memerah karena marah).',
+    exampleSentence: 'The diplomat maintained absolute composure and refused to lose his temper under interrogation.',
+    drillQuestion: 'A seasoned judge should never _____ their temper in the courtroom regardless of provocation.',
+    drillOptions: ['climb', 'rise', 'lose', 'drop'],
+    correctAnswer: 'lose',
+    drillExplanation: 'Frasa baku yang tepat adalah "lose one\'s temper".'
+  },
+  {
+    id: 'l1-18',
+    indonesianPhrase: 'Jatuh tempo / Batas akhir pembayaran atau pengumpulan',
+    literalClunkyEnglish: 'Falling tempo / Dropping time',
+    onPointNativeEnglish: 'Fall due / Come due / Deadline arrives',
+    registerCategory: 'Retorika Formal & Akademik',
+    linguisticExplanation: 'Dalam istilah keuangan dan hukum, utang atau tugas yang jatuh tempo diungkapkan dengan verba "fall due" atau "come due", bukan tempo musik!',
+    exampleSentence: 'The sovereign debt installment is scheduled to fall due on the thirty-first of December.',
+    drillQuestion: 'The bond principal will fall _____ at the conclusion of the ten-year maturity window.',
+    drillOptions: ['tempo', 'due', 'down', 'late'],
+    correctAnswer: 'due',
+    drillExplanation: 'Frasa finansial/hukum resmi adalah "fall due".'
   }
 ];
-
