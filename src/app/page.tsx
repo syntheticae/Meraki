@@ -79,7 +79,24 @@ import {
   SENTENCE_COMBINING_DATA,
   DIRECT_TRANSLATION_TRAPS_DATA
 } from '@/data/meraki-collocations';
+import { progressRepository } from '@/services/storage';
 import { clsx } from 'clsx';
+
+export interface MistakeItem {
+  id: string;
+  type: 'quiz' | 'doctor' | 'collocation' | 'prep';
+  title: string;
+  question: string;
+  prompt: string;
+  correctAnswer: string;
+  explanation: string;
+  timestamp: number;
+  timesMissed?: number;
+  category?: string;
+  srsStage?: number; // 1 (1 day), 2 (3 days), 3 (7 days), 4 (14 days), 5 (Mastered 30 days)
+  nextReviewDate?: number; // Epoch timestamp
+  lastReviewedDate?: number;
+}
 
 // Master Navigation Items
 type NavigationHub = 
@@ -218,26 +235,34 @@ export default function MerakiApp() {
   // Deterministic Writing Pad State (No AI, Rule-Based)
   const [writingPadText, setWritingPadText] = useState<string>('');
 
-  // Progress & Mistake Vault State
+  // Audio Speech Control Panel State
+  const [audioAccent, setAudioAccent] = useState<'en-US' | 'en-GB' | 'en-AU'>('en-US');
+  const [audioRate, setAudioRate] = useState<number>(0.9);
+  const [isAudioSettingsOpen, setIsAudioSettingsOpen] = useState<boolean>(false);
+
+  // Global Omnisearch & Command Palette State (Cmd+K)
+  const [isOmnisearchOpen, setIsOmnisearchOpen] = useState<boolean>(false);
+  const [omnisearchQuery, setOmnisearchQuery] = useState<string>('');
+  const [omnisearchSelectedIndex, setOmnisearchSelectedIndex] = useState<number>(0);
+
+  // Cheatsheets & Backup Modal State
+  const [isCheatsheetOpen, setIsCheatsheetOpen] = useState<boolean>(false);
+  const [activeCheatsheetTab, setActiveCheatsheetTab] = useState<'tenses' | 'preps' | 'agreement' | 'acl' | 'backup'>('tenses');
+  const [isBackupModalOpen, setIsBackupModalOpen] = useState<boolean>(false);
+
+  // Syntax Tree Mode in X-Ray
+  const [xrayViewMode, setXrayViewMode] = useState<'linear' | 'tree'>('linear');
+
+  // Progress & Mistake Vault State (with SRS Leitner Schedule)
   const [completedTopicIds, setCompletedTopicIds] = useState<string[]>([]);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
-  const [mistakeVault, setMistakeVault] = useState<Array<{ 
-    id: string; 
-    type: 'quiz' | 'doctor' | 'collocation' | 'prep'; 
-    title: string; 
-    question: string; 
-    prompt: string; 
-    correctAnswer: string; 
-    explanation: string; 
-    timestamp: number;
-    timesMissed?: number;
-    category?: string;
-  }>>([]);
+  const [mistakeVault, setMistakeVault] = useState<MistakeItem[]>([]);
+  const [vaultSrsFilter, setVaultSrsFilter] = useState<'all' | 'due'>('all');
   
   // Re-quiz in Vault State
   const [vaultReQuizId, setVaultReQuizId] = useState<string | null>(null);
   const [vaultReQuizAnswer, setVaultReQuizAnswer] = useState<string>('');
-  const [vaultReQuizFeedback, setVaultReQuizFeedback] = useState<{ checked: boolean; isCorrect: boolean } | null>(null);
+  const [vaultReQuizFeedback, setVaultReQuizFeedback] = useState<{ checked: boolean; isCorrect: boolean; srsAdvanced?: boolean } | null>(null);
 
   // Interactive Practice State
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<number>(0);
@@ -299,9 +324,33 @@ export default function MerakiApp() {
 
       const storedDiagSubmitted = localStorage.getItem('meraki_diagnostic_submitted');
       if (storedDiagSubmitted) setDiagnosticSubmitted(JSON.parse(storedDiagSubmitted));
+
+      const storedAudioAccent = localStorage.getItem('meraki_audio_accent') as 'en-US' | 'en-GB' | 'en-AU';
+      if (storedAudioAccent) setAudioAccent(storedAudioAccent);
+
+      const storedAudioRate = localStorage.getItem('meraki_audio_rate');
+      if (storedAudioRate) setAudioRate(parseFloat(storedAudioRate));
     } catch (e) {
       console.warn('Storage read error:', e);
     }
+  }, []);
+
+  // Global Keyboard Shortcuts (Cmd+K / Ctrl+K for Omnisearch)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsOmnisearchOpen((prev) => !prev);
+      }
+      if (e.key === 'Escape') {
+        setIsOmnisearchOpen(false);
+        setIsAudioSettingsOpen(false);
+        setIsCheatsheetOpen(false);
+        setIsBackupModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   // Auto-close mobile navigation drawer on screen resize
@@ -453,6 +502,22 @@ export default function MerakiApp() {
       localStorage.setItem('meraki_quiz_answers', JSON.stringify(updated));
     } catch (e) {}
 
+    // Check if all questions in topic are answered correctly
+    const allCorrect = currentTopic.questions.every(q => {
+      const ans = q.id === questionId ? answer : updated[q.id];
+      return ans === q.correctAnswer;
+    });
+    if (allCorrect) {
+      if (!completedTopicIds.includes(currentTopic.id)) {
+        const next = [...completedTopicIds, currentTopic.id];
+        setCompletedTopicIds(next);
+        try {
+          localStorage.setItem('meraki_completed_topics', JSON.stringify(next));
+        } catch (e) {}
+      }
+      progressRepository.markLessonComplete(currentTopic.id).catch(() => {});
+    }
+
     // If incorrect, automatically record in Mistake Vault!
     if (answer !== currentQuestion.correctAnswer) {
       recordMistake({
@@ -481,14 +546,22 @@ export default function MerakiApp() {
   }) => {
     setMistakeVault((prev) => {
       const existingIndex = prev.findIndex((m) => m.id === item.id);
-      let updated: typeof prev;
+      let updated: MistakeItem[];
+      const defaultSrs = {
+        srsStage: 1,
+        nextReviewDate: Date.now() + 24 * 60 * 60 * 1000, // 1 day
+        lastReviewedDate: Date.now(),
+      };
       if (existingIndex >= 0) {
         const existing = prev[existingIndex];
-        const updatedItem = {
+        const updatedItem: MistakeItem = {
           ...existing,
           ...item,
           timesMissed: (existing.timesMissed || 1) + 1,
           timestamp: Date.now(),
+          srsStage: 1, // reset to stage 1 upon new mistake
+          nextReviewDate: Date.now() + 24 * 60 * 60 * 1000,
+          lastReviewedDate: Date.now(),
         };
         updated = [
           updatedItem,
@@ -496,13 +569,68 @@ export default function MerakiApp() {
           ...prev.slice(existingIndex + 1),
         ];
       } else {
-        updated = [{ ...item, timesMissed: 1 }, ...prev];
+        updated = [{ ...item, timesMissed: 1, ...defaultSrs }, ...prev];
       }
       try {
         localStorage.setItem('meraki_mistake_vault', JSON.stringify(updated));
       } catch (e) {}
       return updated;
     });
+  };
+
+  const handleCheckVaultReQuiz = (item: MistakeItem, userAnswer: string) => {
+    const cleanInput = userAnswer.trim().toLowerCase().replace(/[.\s]+/g, ' ');
+    const cleanCorrect = item.correctAnswer.trim().toLowerCase().replace(/[.\s]+/g, ' ');
+    const isMatch = cleanInput === cleanCorrect;
+    
+    if (isMatch) {
+      // Advance SRS stage (1: +1d, 2: +3d, 3: +7d, 4: +14d, 5: Mastered +30d)
+      const currentStage = item.srsStage || 1;
+      const newStage = Math.min(5, currentStage + 1);
+      const intervals = [0, 1, 3, 7, 14, 30];
+      const nextIntervalMs = (intervals[newStage] || 30) * 24 * 60 * 60 * 1000;
+      const nextReview = Date.now() + nextIntervalMs;
+
+      setMistakeVault((prev) => {
+        const updated = prev.map((m) => {
+          if (m.id === item.id) {
+            return {
+              ...m,
+              srsStage: newStage,
+              nextReviewDate: nextReview,
+              lastReviewedDate: Date.now(),
+            };
+          }
+          return m;
+        });
+        try {
+          localStorage.setItem('meraki_mistake_vault', JSON.stringify(updated));
+        } catch (e) {}
+        return updated;
+      });
+      setVaultReQuizFeedback({ checked: true, isCorrect: true, srsAdvanced: true });
+    } else {
+      // Demote to stage 1
+      setMistakeVault((prev) => {
+        const updated = prev.map((m) => {
+          if (m.id === item.id) {
+            return {
+              ...m,
+              srsStage: 1,
+              nextReviewDate: Date.now() + 24 * 60 * 60 * 1000,
+              lastReviewedDate: Date.now(),
+              timesMissed: (m.timesMissed || 1) + 1,
+            };
+          }
+          return m;
+        });
+        try {
+          localStorage.setItem('meraki_mistake_vault', JSON.stringify(updated));
+        } catch (e) {}
+        return updated;
+      });
+      setVaultReQuizFeedback({ checked: true, isCorrect: false, srsAdvanced: false });
+    }
   };
 
   const handleRemoveFromVault = (id: string) => {
@@ -591,15 +719,266 @@ export default function MerakiApp() {
     }
   };
 
-  // Web Speech API: Native American TTS Audio
-  const playNativeAudio = (textToSpeak: string) => {
+  const handleAudioAccentChange = (accent: 'en-US' | 'en-GB' | 'en-AU') => {
+    setAudioAccent(accent);
+    try {
+      localStorage.setItem('meraki_audio_accent', accent);
+    } catch (e) {}
+  };
+
+  const handleAudioRateChange = (rate: number) => {
+    setAudioRate(rate);
+    try {
+      localStorage.setItem('meraki_audio_rate', String(rate));
+    } catch (e) {}
+  };
+
+  const handleExportBackupJson = () => {
+    const backupData = {
+      version: '1.0',
+      exportedAt: new Date().toISOString(),
+      completedTopicIds,
+      quizAnswers,
+      srsDeck,
+      mistakeVault,
+      checkedCanDo,
+      writingPadText,
+      diagnosticAnswers,
+      audioAccent,
+      audioRate,
+    };
+    const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `meraki-progress-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleRestoreBackupJson = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const parsed = JSON.parse(event.target?.result as string);
+        if (parsed.completedTopicIds) setCompletedTopicIds(parsed.completedTopicIds);
+        if (parsed.quizAnswers) setQuizAnswers(parsed.quizAnswers);
+        if (parsed.srsDeck) setSrsDeck(parsed.srsDeck);
+        if (parsed.mistakeVault) setMistakeVault(parsed.mistakeVault);
+        if (parsed.checkedCanDo) setCheckedCanDo(parsed.checkedCanDo);
+        if (parsed.writingPadText) setWritingPadText(parsed.writingPadText);
+        if (parsed.diagnosticAnswers) setDiagnosticAnswers(parsed.diagnosticAnswers);
+        if (parsed.audioAccent) setAudioAccent(parsed.audioAccent);
+        if (parsed.audioRate) setAudioRate(parsed.audioRate);
+
+        localStorage.setItem('meraki_completed_topics', JSON.stringify(parsed.completedTopicIds || []));
+        localStorage.setItem('meraki_quiz_answers', JSON.stringify(parsed.quizAnswers || {}));
+        localStorage.setItem('meraki_srs_deck', JSON.stringify(parsed.srsDeck || {}));
+        localStorage.setItem('meraki_mistake_vault', JSON.stringify(parsed.mistakeVault || []));
+        localStorage.setItem('meraki_can_do_checks', JSON.stringify(parsed.checkedCanDo || {}));
+        localStorage.setItem('meraki_writing_pad_text', parsed.writingPadText || '');
+        localStorage.setItem('meraki_diagnostic_answers', JSON.stringify(parsed.diagnosticAnswers || {}));
+        if (parsed.audioAccent) localStorage.setItem('meraki_audio_accent', parsed.audioAccent);
+        if (parsed.audioRate) localStorage.setItem('meraki_audio_rate', String(parsed.audioRate));
+
+        alert('Data progres belajar Meraki berhasil dipulihkan!');
+        setIsBackupModalOpen(false);
+      } catch (err) {
+        alert('Format file backup JSON tidak valid.');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  // Web Speech API: Configurable Multi-Accent & Rate TTS Audio
+  const playNativeAudio = (textToSpeak: string, customAccent?: string, customRate?: number) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
+    utterance.lang = customAccent || audioAccent || 'en-US';
+    utterance.rate = customRate || audioRate || 0.9;
+    
+    // Select specific accent voice if available in browser
+    try {
+      const voices = window.speechSynthesis.getVoices();
+      const targetLang = customAccent || audioAccent || 'en-US';
+      const voice = voices.find(v => v.lang.replace('_', '-').toLowerCase().startsWith(targetLang.toLowerCase().slice(0, 5)));
+      if (voice) utterance.voice = voice;
+    } catch (e) {}
+
     window.speechSynthesis.speak(utterance);
   };
+
+  // Global Omnisearch indexing (35 modules, 200+ verbs, 38+ preps, ACL collocations, confusables, traps, minimal pairs)
+  const omnisearchResults = useMemo(() => {
+    if (!omnisearchQuery.trim()) return [];
+    const q = omnisearchQuery.toLowerCase().trim();
+    const results: Array<{
+      id: string;
+      category: string;
+      title: string;
+      subtitle: string;
+      hubTarget: NavigationHub;
+      action: () => void;
+    }> = [];
+
+    // 1. Curriculum Modules (35 modules)
+    MERAKI_CURRICULUM.forEach((mod) => {
+      if (mod.title.toLowerCase().includes(q) || mod.subtitle.toLowerCase().includes(q) || mod.stageName.toLowerCase().includes(q)) {
+        results.push({
+          id: `mod-${mod.id}`,
+          category: 'Kurikulum Modul',
+          title: `Modul ${String(mod.moduleNumber).padStart(2, '0')}: ${mod.title}`,
+          subtitle: mod.subtitle,
+          hubTarget: 'curriculum',
+          action: () => {
+            setSelectedTopicId(mod.id);
+            setActiveHub('curriculum');
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    // 2. Dependent Prepositions
+    DEPENDENT_PREPOSITIONS_DATA.forEach((dp, idx) => {
+      if (dp.word.toLowerCase().includes(q) || dp.meaningId.toLowerCase().includes(q) || dp.requiredPreposition.toLowerCase().includes(q)) {
+        results.push({
+          id: `dp-${dp.id}`,
+          category: 'Dependent Preposition',
+          title: `${dp.word} + ${dp.requiredPreposition} (${dp.partOfSpeech})`,
+          subtitle: dp.meaningId,
+          hubTarget: 'collocations',
+          action: () => {
+            setActiveHub('collocations');
+            setCollocationSubTab('prep');
+            setActivePrepIndex(idx);
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    // 3. Academic Collocations (ACL)
+    ACADEMIC_COLLOCATIONS_DATA.forEach((col, idx) => {
+      if (col.collocation.toLowerCase().includes(q) || col.meaningId.toLowerCase().includes(q)) {
+        results.push({
+          id: `col-${col.id}`,
+          category: 'Academic Collocation (ACL)',
+          title: col.collocation,
+          subtitle: col.meaningId,
+          hubTarget: 'collocations',
+          action: () => {
+            setActiveHub('collocations');
+            setCollocationSubTab('acl');
+            setActiveCollocationIndex(idx);
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    // 4. On-Point Verbs
+    ON_POINT_VERBS_DATA.forEach((opv) => {
+      if (opv.onPointVerb.toLowerCase().includes(q) || opv.indonesianClunkyPhrase.toLowerCase().includes(q)) {
+        results.push({
+          id: `opv-${opv.id}`,
+          category: 'On-Point Academic Verb',
+          title: `${opv.onPointVerb} (${opv.ipa})`,
+          subtitle: `Pengganti: "${opv.indonesianClunkyPhrase}"`,
+          hubTarget: 'collocations',
+          action: () => {
+            setActiveHub('collocations');
+            setCollocationSubTab('on-point');
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    // 5. Confusable Words
+    CONFUSABLE_WORDS_DATA.forEach((cw, idx) => {
+      if (cw.wordA.toLowerCase().includes(q) || cw.wordB.toLowerCase().includes(q) || cw.diagnosticTrick.toLowerCase().includes(q)) {
+        results.push({
+          id: `cw-${cw.id}`,
+          category: 'Confusable Words',
+          title: `${cw.wordA} vs ${cw.wordB}`,
+          subtitle: cw.diagnosticTrick,
+          hubTarget: 'collocations',
+          action: () => {
+            setActiveHub('collocations');
+            setCollocationSubTab('confusables');
+            setActiveConfusableIndex(idx);
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    // 6. Direct Translation Traps
+    DIRECT_TRANSLATION_TRAPS_DATA.forEach((tr, idx) => {
+      if (tr.indonesianPhrase.toLowerCase().includes(q) || tr.onPointNativeEnglish.toLowerCase().includes(q)) {
+        results.push({
+          id: `trap-${tr.id}`,
+          category: 'L1 Translation Trap',
+          title: tr.indonesianPhrase,
+          subtitle: `Baku: ${tr.onPointNativeEnglish} (Hindari: ${tr.literalClunkyEnglish})`,
+          hubTarget: 'collocations',
+          action: () => {
+            setActiveHub('collocations');
+            setCollocationSubTab('traps');
+            setActiveTrapIndex(idx);
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    // 7. Irregular Verbs
+    IRREGULAR_VERBS_DATA.forEach((iv) => {
+      if (iv.v1.toLowerCase().includes(q) || iv.v2.toLowerCase().includes(q) || iv.v3.toLowerCase().includes(q) || iv.meaningId.toLowerCase().includes(q)) {
+        results.push({
+          id: `iv-${iv.id}`,
+          category: 'Irregular Verb',
+          title: `${iv.v1} - ${iv.v2} - ${iv.v3}`,
+          subtitle: `${iv.meaningId} · Pola ${iv.pattern}`,
+          hubTarget: 'matrices',
+          action: () => {
+            setActiveHub('matrices');
+            setMatrixSubTab('irregular');
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    // 8. Minimal Pairs Fonetik
+    MINIMAL_PAIRS_DATA.forEach((mp, idx) => {
+      if (mp.wordA.toLowerCase().includes(q) || mp.wordB.toLowerCase().includes(q) || mp.phonemeContrast.toLowerCase().includes(q)) {
+        results.push({
+          id: `mp-${mp.id}`,
+          category: 'Fonetik Minimal Pairs',
+          title: `${mp.wordA} (${mp.ipaA}) vs ${mp.wordB} (${mp.ipaB})`,
+          subtitle: mp.phonemeContrast,
+          hubTarget: 'phonetics',
+          action: () => {
+            setActiveHub('phonetics');
+            setActiveMinimalPairIndex(idx);
+            setIsOmnisearchOpen(false);
+          },
+        });
+      }
+    });
+
+    return results.slice(0, 25);
+  }, [omnisearchQuery]);
+
+  const dueMistakesCount = useMemo(() => {
+    const now = Date.now();
+    return mistakeVault.filter(m => !m.nextReviewDate || m.nextReviewDate <= now).length;
+  }, [mistakeVault]);
 
   // Dynamically extract ordered stages from MERAKI_CURRICULUM
   const stageGroups = Array.from(new Set(MERAKI_CURRICULUM.map((t) => t.stageName)));
@@ -1247,7 +1626,38 @@ export default function MerakiApp() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Global Omnisearch Trigger */}
+            <button
+              onClick={() => setIsOmnisearchOpen(true)}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#1E1B17] transition-all tactile-btn"
+              title="Pencarian Global (Cmd+K)"
+            >
+              <Search className="w-3.5 h-3.5 text-[#7A7265]" />
+              <span className="hidden md:inline text-[11px]">Cari</span>
+              <kbd className="hidden lg:inline-block px-1 py-0.2 text-[9px] bg-[#EFE9DF] border border-[#C8C0B0] rounded font-mono text-[#7A7265]">⌘K</kbd>
+            </button>
+
+            {/* Audio Settings Trigger */}
+            <button
+              onClick={() => setIsAudioSettingsOpen(true)}
+              className="p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn flex items-center gap-1 text-xs font-mono"
+              title="Pengaturan Suara TTS & Aksen"
+            >
+              <Headphones className="w-3.5 h-3.5 text-[#535841]" />
+              <span className="hidden xl:inline text-[10px] text-[#535841] font-mono font-semibold">{audioAccent.slice(3)} · {audioRate}x</span>
+            </button>
+
+            {/* Cheatsheets & Backup Trigger */}
+            <button
+              onClick={() => setIsCheatsheetOpen(true)}
+              className="p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn flex items-center gap-1 text-xs font-mono"
+              title="Lembar Ringkasan Cetak & Backup Data"
+            >
+              <FileText className="w-3.5 h-3.5 text-[#A84A28]" />
+              <span className="hidden xl:inline text-[10px] text-[#A84A28] font-mono font-semibold">Cheatsheet</span>
+            </button>
+
             {activeHub === 'curriculum' && (
               <div className="flex items-center gap-1 bg-[#DDD7CA] p-0.5 rounded-xl border border-[#C8C0B0] text-xs font-mono">
                 <button
@@ -1270,6 +1680,9 @@ export default function MerakiApp() {
               >
                 <Archive className="w-3.5 h-3.5" />
                 <span>{mistakeVault.length} Khilaf</span>
+                {dueMistakesCount > 0 && (
+                  <span className="w-2 h-2 rounded-full bg-[#A84A28] ring-2 ring-white animate-pulse" />
+                )}
               </button>
             )}
           </div>
@@ -4369,57 +4782,202 @@ export default function MerakiApp() {
                     const xray = XRAY_SENTENCES_DATA[activeXrayIndex];
                     return (
                       <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-6">
-                        <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
-                          <h3 className="font-serif text-xl text-[#1E1B17] font-semibold">{xray.title}</h3>
-                          <div className="flex gap-2">
-                            {XRAY_SENTENCES_DATA.map((_, idx) => (
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
+                          <div>
+                            <span className="font-mono text-[10px] uppercase text-[#7A7265] tracking-wider block font-semibold">
+                              Syntactic Constituent X-Ray
+                            </span>
+                            <h3 className="font-serif text-xl text-[#1E1B17] font-semibold">{xray.title}</h3>
+                          </div>
+                          
+                          {/* Case Selectors & View Mode Toggle */}
+                          <div className="flex flex-wrap items-center gap-2">
+                            {/* Linear vs Tree Toggle */}
+                            <div className="flex bg-[#DDD7CA] p-0.5 rounded-xl border border-[#C8C0B0]">
                               <button
-                                key={idx}
-                                onClick={() => setActiveXrayIndex(idx)}
+                                onClick={() => setXrayViewMode('linear')}
                                 className={clsx(
-                                  'px-3 py-1 rounded-xl text-xs font-mono',
-                                  activeXrayIndex === idx ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
+                                  'px-2.5 py-1 rounded-lg text-xs font-mono transition-all',
+                                  xrayViewMode === 'linear' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265]'
                                 )}
                               >
-                                Kasus {idx + 1}
+                                Linear
                               </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
-                          <span className="font-mono text-[10px] uppercase text-[#7A7265] block font-semibold">
-                            Visual Syntactic Layers (Klik & Sorot Konstituen):
-                          </span>
-                          <div className="text-base sm:text-lg font-serif leading-relaxed flex flex-wrap gap-1.5">
-                            {xray.breakdown.map((block, bIdx) => (
-                              <span
-                                key={bIdx}
+                              <button
+                                onClick={() => setXrayViewMode('tree')}
                                 className={clsx(
-                                  'px-2 py-0.5 rounded-lg border text-sm sm:text-base font-medium inline-block transition-all',
-                                  block.colorKey
+                                  'px-2.5 py-1 rounded-lg text-xs font-mono transition-all flex items-center gap-1',
+                                  xrayViewMode === 'tree' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265]'
                                 )}
-                                title={`${block.role}: ${block.explanation}`}
                               >
-                                {block.text}
-                              </span>
-                            ))}
+                                <Compass className="w-3 h-3" />
+                                <span>Pohon SVG</span>
+                              </button>
+                            </div>
+
+                            <div className="flex gap-1">
+                              {XRAY_SENTENCES_DATA.map((_, idx) => (
+                                <button
+                                  key={idx}
+                                  onClick={() => setActiveXrayIndex(idx)}
+                                  className={clsx(
+                                    'px-2.5 py-1 rounded-xl text-xs font-mono',
+                                    activeXrayIndex === idx ? 'bg-[#A84A28] text-white font-bold' : 'bg-[#DDD7CA] text-[#7A7265]'
+                                  )}
+                                >
+                                  Kasus {idx + 1}
+                                </button>
+                              ))}
+                            </div>
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {xray.breakdown.map((block, bIdx) => (
-                            <div key={bIdx} className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0] text-xs space-y-1">
-                              <span className="font-mono text-[10px] font-semibold uppercase text-[#A84A28] block">
-                                {block.role}
+                        {/* Mode 1: Linear Syntactic Layers */}
+                        {xrayViewMode === 'linear' && (
+                          <>
+                            <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
+                              <span className="font-mono text-[10px] uppercase text-[#7A7265] block font-semibold">
+                                Visual Syntactic Layers (Klik & Sorot Konstituen):
                               </span>
-                              <p className="font-serif text-[#1E1B17] italic">"{block.text}"</p>
-                              <p className="text-[11px] text-[#524C42] pt-1 border-t border-[#C8C0B0]/60">
-                                {block.explanation}
-                              </p>
+                              <div className="text-base sm:text-lg font-serif leading-relaxed flex flex-wrap gap-1.5">
+                                {xray.breakdown.map((block, bIdx) => (
+                                  <span
+                                    key={bIdx}
+                                    className={clsx(
+                                      'px-2 py-0.5 rounded-lg border text-sm sm:text-base font-medium inline-block transition-all',
+                                      block.colorKey
+                                    )}
+                                    title={`${block.role}: ${block.explanation}`}
+                                  >
+                                    {block.text}
+                                  </span>
+                                ))}
+                              </div>
                             </div>
-                          ))}
-                        </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                              {xray.breakdown.map((block, bIdx) => (
+                                <div key={bIdx} className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0] text-xs space-y-1">
+                                  <span className="font-mono text-[10px] font-semibold uppercase text-[#A84A28] block">
+                                    {block.role}
+                                  </span>
+                                  <p className="font-serif text-[#1E1B17] italic">"{block.text}"</p>
+                                  <p className="text-[11px] text-[#524C42] pt-1 border-t border-[#C8C0B0]/60">
+                                    {block.explanation}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        )}
+
+                        {/* Mode 2: Interactive Hierarchical Syntax Tree (Deterministic Pure SVG) */}
+                        {xrayViewMode === 'tree' && (
+                          <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-4">
+                            <div className="flex items-center justify-between">
+                              <span className="font-mono text-[10px] uppercase text-[#7A7265] block font-semibold">
+                                Hierarchical Phrase Structure Tree (Pohon Struktur Konstituen):
+                              </span>
+                              <span className="text-[10px] font-mono text-[#535841] bg-[#535841]/10 px-2 py-0.5 rounded">
+                                S → NP + VP
+                              </span>
+                            </div>
+
+                            {/* Responsive SVG Tree Diagram */}
+                            <div className="overflow-x-auto p-2 bg-[#EFE9DF] rounded-xl border border-[#C8C0B0]/70 flex justify-center">
+                              <svg viewBox="0 0 760 320" className="w-full max-w-[760px] h-auto font-mono text-[11px]">
+                                {/* Connecting Tree Lines */}
+                                {/* Root S to Children */}
+                                <line x1="380" y1="35" x2="160" y2="95" stroke="#7A7265" strokeWidth="2" />
+                                <line x1="380" y1="35" x2="560" y2="95" stroke="#7A7265" strokeWidth="2" />
+
+                                {/* Left Child (NP) to Sub-branches */}
+                                <line x1="160" y1="125" x2="90" y2="185" stroke="#A84A28" strokeWidth="1.5" strokeDasharray="3 3" />
+                                <line x1="160" y1="125" x2="230" y2="185" stroke="#A84A28" strokeWidth="1.5" />
+
+                                {/* Right Child (VP) to Sub-branches */}
+                                <line x1="560" y1="125" x2="430" y2="185" stroke="#535841" strokeWidth="1.5" />
+                                <line x1="560" y1="125" x2="570" y2="185" stroke="#535841" strokeWidth="1.5" />
+                                <line x1="560" y1="125" x2="690" y2="185" stroke="#535841" strokeWidth="1.5" strokeDasharray="3 3" />
+
+                                {/* Leaf connector lines to text */}
+                                <line x1="90" y1="215" x2="90" y2="260" stroke="#7A7265" strokeWidth="1" />
+                                <line x1="230" y1="215" x2="230" y2="260" stroke="#7A7265" strokeWidth="1" />
+                                <line x1="430" y1="215" x2="430" y2="260" stroke="#7A7265" strokeWidth="1" />
+                                <line x1="570" y1="215" x2="570" y2="260" stroke="#7A7265" strokeWidth="1" />
+                                <line x1="690" y1="215" x2="690" y2="260" stroke="#7A7265" strokeWidth="1" />
+
+                                {/* Root Node [S] */}
+                                <rect x="345" y="10" width="70" height="30" rx="8" fill="#1E1B17" />
+                                <text x="380" y="30" fill="#EFE9DF" textAnchor="middle" fontWeight="bold">S (Root)</text>
+
+                                {/* Level 1: [NP - Subject] and [VP - Predicate] */}
+                                <rect x="90" y="95" width="140" height="30" rx="8" fill="#A84A28" />
+                                <text x="160" y="115" fill="#FFFFFF" textAnchor="middle" fontWeight="bold">NP (Subjek)</text>
+
+                                <rect x="490" y="95" width="140" height="30" rx="8" fill="#535841" />
+                                <text x="560" y="115" fill="#FFFFFF" textAnchor="middle" fontWeight="bold">VP (Predikat)</text>
+
+                                {/* Level 2: Syntactic Roles */}
+                                <rect x="40" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
+                                <text x="90" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Det / Mod</text>
+
+                                <rect x="180" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
+                                <text x="230" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Head Noun</text>
+
+                                <rect x="380" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
+                                <text x="430" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Finite Verb</text>
+
+                                <rect x="520" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
+                                <text x="570" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Direct Object</text>
+
+                                <rect x="640" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
+                                <text x="690" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Adjunct / PP</text>
+
+                                {/* Level 3: Terminal Leaves (Sentence Chunks) */}
+                                <rect x="10" y="260" width="160" height="42" rx="8" fill="#E6E0D4" stroke="#A84A28" />
+                                <text x="90" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                  {xray.breakdown[0]?.text || 'Constituent 1'}
+                                </text>
+                                <text x="90" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                  {xray.breakdown[0]?.role || 'Modifier'}
+                                </text>
+
+                                <rect x="180" y="260" width="140" height="42" rx="8" fill="#E6E0D4" stroke="#A84A28" />
+                                <text x="250" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                  {xray.breakdown[1]?.text || 'Constituent 2'}
+                                </text>
+                                <text x="250" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                  {xray.breakdown[1]?.role || 'Head'}
+                                </text>
+
+                                <rect x="330" y="260" width="140" height="42" rx="8" fill="#E6E0D4" stroke="#535841" />
+                                <text x="400" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                  {xray.breakdown[2]?.text || 'Constituent 3'}
+                                </text>
+                                <text x="400" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                  {xray.breakdown[2]?.role || 'Verb'}
+                                </text>
+
+                                <rect x="480" y="260" width="135" height="42" rx="8" fill="#E6E0D4" stroke="#535841" />
+                                <text x="547" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                  {xray.breakdown[3]?.text || 'Constituent 4'}
+                                </text>
+                                <text x="547" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                  {xray.breakdown[3]?.role || 'Object'}
+                                </text>
+
+                                <rect x="625" y="260" width="130" height="42" rx="8" fill="#E6E0D4" stroke="#7A7265" />
+                                <text x="690" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                  {xray.breakdown[4]?.text || 'Constituent 5'}
+                                </text>
+                                <text x="690" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                  {xray.breakdown[4]?.role || 'Modifier'}
+                                </text>
+                              </svg>
+                            </div>
+                          </div>
+                        )}
 
                         <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
                           <strong>Ringkasan Arsitektur Kalimat:</strong>
@@ -5510,27 +6068,76 @@ export default function MerakiApp() {
                     );
                   })()}
 
-                  <div className="space-y-4">
-                    {mistakeVault.map((item) => {
-                      const isReQuizzing = vaultReQuizId === item.id;
+                  {/* SRS Review Filter Tabs */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0]">
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setVaultSrsFilter('all')}
+                        className={clsx(
+                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
+                          vaultSrsFilter === 'all'
+                            ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                            : 'bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]'
+                        )}
+                      >
+                        Semua Kesalahan ({mistakeVault.length})
+                      </button>
+                      <button
+                        onClick={() => setVaultSrsFilter('due')}
+                        className={clsx(
+                          'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1.5',
+                          vaultSrsFilter === 'due'
+                            ? 'bg-[#A84A28] text-white font-bold shadow-xs'
+                            : 'bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]'
+                        )}
+                      >
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>Jatuh Tempo Hari Ini ({dueMistakesCount})</span>
+                      </button>
+                    </div>
 
-                      const handleCheckReQuiz = (e: React.FormEvent) => {
+                    <span className="text-[11px] font-mono text-[#535841]">
+                      Algoritma Leitner SM-2 (5 Tahap)
+                    </span>
+                  </div>
+
+                  <div className="space-y-4">
+                    {mistakeVault
+                      .filter(item => vaultSrsFilter === 'due' ? (!item.nextReviewDate || item.nextReviewDate <= Date.now()) : true)
+                      .map((item) => {
+                      const isReQuizzing = vaultReQuizId === item.id;
+                      const srsStage = item.srsStage || 1;
+                      const isDue = !item.nextReviewDate || item.nextReviewDate <= Date.now();
+
+                      const handleFormSubmit = (e: React.FormEvent) => {
                         e.preventDefault();
-                        const cleanInput = vaultReQuizAnswer.trim().toLowerCase().replace(/[.\s]+/g, ' ');
-                        const cleanCorrect = item.correctAnswer.trim().toLowerCase().replace(/[.\s]+/g, ' ');
-                        const isMatch = cleanInput === cleanCorrect;
-                        setVaultReQuizFeedback({ checked: true, isCorrect: isMatch });
+                        handleCheckVaultReQuiz(item, vaultReQuizAnswer);
                       };
 
                       return (
                         <div key={item.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-3">
                           <div className="flex flex-wrap items-center justify-between gap-2">
-                            <div className="flex items-center gap-2">
+                            <div className="flex flex-wrap items-center gap-2">
                               <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
                                 {item.type === 'quiz' ? 'Pilihan Ganda' : item.type === 'doctor' ? 'Bedah Kalimat' : item.type === 'collocation' ? 'Kolokasi & Diksi' : 'Preposisi'}
                               </span>
+                              
+                              {/* SRS Stage Badge */}
+                              <span className={clsx(
+                                'font-mono text-[10px] px-2 py-0.5 rounded-full font-bold',
+                                srsStage >= 5 ? 'bg-[#535841] text-white' : 'bg-[#DDD7CA] text-[#535841]'
+                              )}>
+                                {srsStage >= 5 ? 'SRS Mastered (Tahap 5)' : `SRS Tahap ${srsStage}/5`}
+                              </span>
+
+                              {isDue && (
+                                <span className="font-mono text-[10px] bg-[#A84A28] text-white px-2 py-0.5 rounded-full font-semibold">
+                                  Perlu Review
+                                </span>
+                              )}
+
                               {item.timesMissed && item.timesMissed > 1 && (
-                                <span className="font-mono text-[10px] bg-[#A84A28] text-white px-2 py-0.5 rounded-full font-bold">
+                                <span className="font-mono text-[10px] bg-[#A84A28]/20 text-[#A84A28] px-2 py-0.5 rounded-full font-bold">
                                   Salah {item.timesMissed}x
                                 </span>
                               )}
@@ -5552,7 +6159,7 @@ export default function MerakiApp() {
                                 className="text-xs font-mono text-[#A84A28] hover:underline flex items-center gap-1 tactile-btn"
                               >
                                 <RotateCcw className="w-3.5 h-3.5" />
-                                <span>{isReQuizzing ? 'Tutup Uji Ulang' : 'Uji Ulang'}</span>
+                                <span>{isReQuizzing ? 'Tutup Uji Ulang' : 'Uji Ulang (SRS)'}</span>
                               </button>
                               <button
                                 onClick={() => handleRemoveFromVault(item.id)}
@@ -5570,7 +6177,7 @@ export default function MerakiApp() {
 
                           {/* Re-Quiz Interactive Flow */}
                           {isReQuizzing ? (
-                            <form onSubmit={handleCheckReQuiz} className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3 animate-in fade-in duration-200">
+                            <form onSubmit={handleFormSubmit} className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3 animate-in fade-in duration-200">
                               <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
                                 Coba Jawab Ulang Secara Mandiri:
                               </span>
@@ -5603,7 +6210,7 @@ export default function MerakiApp() {
                                       {vaultReQuizFeedback.isCorrect ? (
                                         <>
                                           <CheckCircle2 className="w-4 h-4 text-[#535841]" />
-                                          <span>Luar Biasa! Jawaban Anda Benar.</span>
+                                          <span>Luar Biasa! Jawaban Benar · Naik ke SRS Tahap {srsStage}</span>
                                         </>
                                       ) : (
                                         <>
@@ -5618,7 +6225,7 @@ export default function MerakiApp() {
                                         onClick={() => handleRemoveFromVault(item.id)}
                                         className="px-3 py-1 rounded-lg bg-[#535841] text-[#EFE9DF] text-[10px] font-mono font-medium tactile-btn"
                                       >
-                                        Hapus dari Vault
+                                        Hapus Permanen
                                       </button>
                                     )}
                                   </div>
@@ -5903,6 +6510,356 @@ export default function MerakiApp() {
           </button>
         </nav>
       </div>
+
+      {/* ───────────── GLOBAL MODAL 1: OMNISEARCH COMMAND PALETTE (CMD+K) ───────────── */}
+      {isOmnisearchOpen && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="w-full max-w-2xl bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl overflow-hidden flex flex-col max-h-[75vh]">
+            {/* Search Input Bar */}
+            <div className="p-4 border-b border-[#C8C0B0] flex items-center gap-3 bg-[#E6E0D4]">
+              <Search className="w-5 h-5 text-[#A84A28] shrink-0" />
+              <input
+                type="text"
+                autoFocus
+                value={omnisearchQuery}
+                onChange={(e) => setOmnisearchQuery(e.target.value)}
+                placeholder="Ketik materi, kata kerja, preposisi, kolokasi, atau fonetik..."
+                className="w-full bg-transparent text-sm sm:text-base font-serif text-[#1E1B17] placeholder:text-[#7A7265] outline-hidden"
+              />
+              <button
+                onClick={() => setIsOmnisearchOpen(false)}
+                className="p-1 rounded-full hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Search Results List */}
+            <div className="overflow-y-auto p-3 space-y-1 divide-y divide-[#C8C0B0]/40">
+              {!omnisearchQuery.trim() ? (
+                <div className="p-8 text-center space-y-2 text-[#7A7265]">
+                  <Compass className="w-8 h-8 mx-auto text-[#7A7265]/60" />
+                  <p className="text-xs font-mono font-semibold">Pencarian Terpadu Meraki English</p>
+                  <p className="text-xs">
+                    Ketik kata kunci untuk mencari cepat lintas 35 Modul Kurikulum, 200+ Irregular Verb, 38+ Dependent Prepositions, Academic Collocations, dan Fonetik.
+                  </p>
+                </div>
+              ) : omnisearchResults.length === 0 ? (
+                <div className="p-8 text-center text-xs text-[#7A7265]">
+                  Tidak ada materi atau kata yang cocok dengan "{omnisearchQuery}".
+                </div>
+              ) : (
+                omnisearchResults.map((res) => (
+                  <button
+                    key={res.id}
+                    onClick={res.action}
+                    className="w-full p-3 rounded-2xl hover:bg-[#DDD7CA] text-left transition-colors flex items-center justify-between gap-3 group tactile-btn"
+                  >
+                    <div className="space-y-0.5 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#DDD7CA] group-hover:bg-[#EFE9DF] text-[#7A7265] font-semibold">
+                          {res.category}
+                        </span>
+                        <h4 className="font-serif text-sm font-bold text-[#1E1B17] truncate">
+                          {res.title}
+                        </h4>
+                      </div>
+                      <p className="text-xs text-[#7A7265] truncate font-sans">
+                        {res.subtitle}
+                      </p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-[#7A7265] group-hover:text-[#A84A28] shrink-0" />
+                  </button>
+                ))
+              )}
+            </div>
+
+            {/* Footer Shortcut Helper */}
+            <div className="p-3 border-t border-[#C8C0B0] bg-[#DDD7CA]/60 flex items-center justify-between text-[11px] font-mono text-[#7A7265]">
+              <span>Gunakan <kbd className="px-1.5 py-0.5 bg-[#EFE9DF] border border-[#C8C0B0] rounded">Esc</kbd> untuk menutup</span>
+              <span>{omnisearchResults.length} hasil ditemukan</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ───────────── GLOBAL MODAL 2: AUDIO TTS CONTROL PANEL ───────────── */}
+      {isAudioSettingsOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="w-full max-w-md bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl p-6 space-y-6">
+            <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
+              <div className="flex items-center gap-2">
+                <Headphones className="w-5 h-5 text-[#535841]" />
+                <h3 className="font-serif text-lg font-bold text-[#1E1B17]">Pengaturan Audio & Aksen</h3>
+              </div>
+              <button
+                onClick={() => setIsAudioSettingsOpen(false)}
+                className="p-1.5 rounded-full hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Accent Selection */}
+            <div className="space-y-2">
+              <label className="font-mono text-xs text-[#7A7265] uppercase block font-semibold">
+                Pilihan Aksen Penutur Asli:
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { code: 'en-US', label: 'American', flag: '🇺🇸' },
+                  { code: 'en-GB', label: 'British', flag: '🇬🇧' },
+                  { code: 'en-AU', label: 'Australian', flag: '🇦🇺' },
+                ].map((acc) => (
+                  <button
+                    key={acc.code}
+                    onClick={() => handleAudioAccentChange(acc.code as any)}
+                    className={clsx(
+                      'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn flex flex-col items-center gap-1',
+                      audioAccent === acc.code
+                        ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-xs'
+                        : 'bg-[#DDD7CA] text-[#1E1B17] border-[#C8C0B0] hover:bg-[#C8C0B0]'
+                    )}
+                  >
+                    <span className="text-base">{acc.flag}</span>
+                    <span className="font-bold">{acc.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Speech Rate Selection */}
+            <div className="space-y-2">
+              <label className="font-mono text-xs text-[#7A7265] uppercase block font-semibold">
+                Kecepatan Pelafalan (Speech Rate):
+              </label>
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  { rate: 0.75, label: '0.75x', desc: 'Lambat' },
+                  { rate: 0.9, label: '0.9x', desc: 'Standar' },
+                  { rate: 1.0, label: '1.0x', desc: 'Normal' },
+                  { rate: 1.2, label: '1.2x', desc: 'Ujian' },
+                ].map((spd) => (
+                  <button
+                    key={spd.rate}
+                    onClick={() => handleAudioRateChange(spd.rate)}
+                    className={clsx(
+                      'p-2.5 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center',
+                      audioRate === spd.rate
+                        ? 'bg-[#535841] text-white border-[#535841] shadow-xs'
+                        : 'bg-[#DDD7CA] text-[#1E1B17] border-[#C8C0B0] hover:bg-[#C8C0B0]'
+                    )}
+                  >
+                    <span className="block font-bold">{spd.label}</span>
+                    <span className="text-[9px] opacity-75">{spd.desc}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Audio Test Preview Button */}
+            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center justify-between">
+              <div>
+                <span className="font-mono text-[10px] uppercase text-[#7A7265] block font-semibold">Uji Suara:</span>
+                <span className="font-serif text-sm text-[#1E1B17] italic">"The empirical evidence is compelling."</span>
+              </div>
+              <button
+                onClick={() => playNativeAudio("The empirical evidence is compelling.", audioAccent, audioRate)}
+                className="px-3.5 py-2 rounded-xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-1.5 tactile-btn"
+              >
+                <Volume2 className="w-3.5 h-3.5" />
+                <span>Putar</span>
+              </button>
+            </div>
+
+            <button
+              onClick={() => setIsAudioSettingsOpen(false)}
+              className="w-full py-2.5 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono font-medium tactile-btn"
+            >
+              Simpan & Tutup
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ───────────── GLOBAL MODAL 3: CHEATSHEETS & BACKUP STUDIO ───────────── */}
+      {isCheatsheetOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="w-full max-w-4xl bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
+            {/* Modal Header */}
+            <div className="p-5 border-b border-[#C8C0B0] flex flex-wrap items-center justify-between gap-3 bg-[#E6E0D4]">
+              <div className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-[#A84A28]" />
+                <h3 className="font-serif text-xl font-bold text-[#1E1B17]">Printable Cheatsheets & Backup Studio</h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => window.print()}
+                  className="px-3.5 py-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#1E1B17] flex items-center gap-1.5 tactile-btn"
+                  title="Cetak Dokumen"
+                >
+                  <span>Cetak (PDF / Print)</span>
+                </button>
+                <button
+                  onClick={() => setIsCheatsheetOpen(false)}
+                  className="p-1.5 rounded-full hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Navigation Tabs */}
+            <div className="flex flex-wrap gap-2 p-3 bg-[#DDD7CA]/70 border-b border-[#C8C0B0]">
+              {[
+                { id: 'tenses', label: 'Matriks 12 Tenses' },
+                { id: 'preps', label: 'Dependent Prepositions' },
+                { id: 'agreement', label: 'Aksioma S-V Agreement' },
+                { id: 'acl', label: 'Academic Collocations' },
+                { id: 'backup', label: 'Backup & Restore Data' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveCheatsheetTab(tab.id as any)}
+                  className={clsx(
+                    'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
+                    activeCheatsheetTab === tab.id
+                      ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                      : 'bg-[#E6E0D4] text-[#7A7265] hover:text-[#1E1B17]'
+                  )}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content Container */}
+            <div className="overflow-y-auto p-6 space-y-6 flex-1 bg-[#EFE9DF]">
+              {/* Tab 1: Tenses */}
+              {activeCheatsheetTab === 'tenses' && (
+                <div className="space-y-4">
+                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">Ringkasan Rumus 12 Tenses Esensial</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {TENSES_MASTER_DATA.map((t) => (
+                      <div key={t.id} className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between font-bold text-[#A84A28] font-serif text-sm">
+                          <span>{t.tenseName}</span>
+                          <span className="font-mono text-[10px] text-[#7A7265]">{t.timeDimension} · {t.aspect}</span>
+                        </div>
+                        <div className="p-2 rounded-xl bg-[#DDD7CA] font-mono text-[11px] font-semibold text-[#1E1B17]">
+                          Rumus: {t.positiveFormula}
+                        </div>
+                        <p className="font-serif italic text-[#38332A]">"{t.academicExample}"</p>
+                        <p className="text-[11px] text-[#7A7265]">Signal: {t.timeMarkers.join(', ')}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 2: Prepositions */}
+              {activeCheatsheetTab === 'preps' && (
+                <div className="space-y-4">
+                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">Daftar 38+ Dependent Prepositions Wajib</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs font-mono">
+                    {DEPENDENT_PREPOSITIONS_DATA.map((dp) => (
+                      <div key={dp.id} className="p-3 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-serif font-bold text-sm text-[#1E1B17]">{dp.word}</span>
+                          <span className="px-2 py-0.5 rounded bg-[#535841]/20 text-[#535841] font-bold">
+                            + {dp.requiredPreposition}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-[#7A7265] font-sans truncate">{dp.meaningId}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 3: S-V Agreement */}
+              {activeCheatsheetTab === 'agreement' && (
+                <div className="space-y-4 text-xs leading-relaxed">
+                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">5 Aksioma Emas Subject-Verb Agreement</h4>
+                  <div className="space-y-3">
+                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                      <span className="font-mono text-[#A84A28] font-bold block">Aksioma 1: Kata Ganti Tak Tentu (Indefinite Pronouns)</span>
+                      <p>Kata <em>Each, Every, Everyone, Someone, Nobody, Either, Neither</em> selalu mengikat kata kerja <strong>Tunggal (Singular Verb + -s/-es)</strong>.</p>
+                      <p className="font-mono text-[11px] text-[#535841]">Contoh: "Each of the participants <strong>is</strong> required to attend."</p>
+                    </div>
+                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                      <span className="font-mono text-[#A84A28] font-bold block">Aksioma 2: Intervening Prepositional Phrases</span>
+                      <p>Frasa preposisi di antara subjek dan kata kerja tidak pernah mengubah singularitas subjek inti.</p>
+                      <p className="font-mono text-[11px] text-[#535841]">Contoh: "The quality of these products <strong>has</strong> improved."</p>
+                    </div>
+                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                      <span className="font-mono text-[#A84A28] font-bold block">Aksioma 3: Either... Or / Neither... Nor (Proximity Rule)</span>
+                      <p>Kata kerja mengikuti subjek yang posisinya paling dekat dengan kata kerja tersebut.</p>
+                      <p className="font-mono text-[11px] text-[#535841]">Contoh: "Neither the teacher nor the students <strong>were</strong> aware."</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 4: ACL */}
+              {activeCheatsheetTab === 'acl' && (
+                <div className="space-y-4">
+                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">Academic Collocations List (ACL) Esensial</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    {ACADEMIC_COLLOCATIONS_DATA.map((col) => (
+                      <div key={col.id} className="p-3.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                        <span className="font-serif font-bold text-sm text-[#1E1B17] block">{col.collocation}</span>
+                        <p className="text-[11px] text-[#7A7265]">{col.meaningId}</p>
+                        <p className="font-serif italic text-[#524C42] pt-1 border-t border-[#C8C0B0]/50">"{col.exampleSentence}"</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 5: Backup & Restore */}
+              {activeCheatsheetTab === 'backup' && (
+                <div className="space-y-6 max-w-xl mx-auto py-4">
+                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 text-center">
+                    <Download className="w-8 h-8 text-[#A84A28] mx-auto" />
+                    <div>
+                      <h4 className="font-serif text-base font-bold text-[#1E1B17]">Unduh Cadangan Data (JSON)</h4>
+                      <p className="text-xs text-[#7A7265]">
+                        Simpan riwayat 35 modul, jawaban kuis, Mistake Vault, dan progres belajar ke file JSON lokal di komputer/ponsel Anda.
+                      </p>
+                    </div>
+                    <button
+                      onClick={handleExportBackupJson}
+                      className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn"
+                    >
+                      Unduh File Backup JSON
+                    </button>
+                  </div>
+
+                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 text-center">
+                    <Upload className="w-8 h-8 text-[#535841] mx-auto" />
+                    <div>
+                      <h4 className="font-serif text-base font-bold text-[#1E1B17]">Pulihkan Data dari File Cadangan</h4>
+                      <p className="text-xs text-[#7A7265]">
+                        Unggah file backup JSON yang sebelumnya telah Anda unduh untuk mengembalikan seluruh progres belajar.
+                      </p>
+                    </div>
+                    <label className="inline-block px-6 py-2.5 rounded-2xl bg-[#535841] hover:bg-[#3E4230] text-[#EFE9DF] text-xs font-mono font-medium transition-all cursor-pointer tactile-btn">
+                      <span>Pilih File Backup JSON</span>
+                      <input
+                        type="file"
+                        accept=".json"
+                        onChange={handleRestoreBackupJson}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

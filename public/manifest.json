@@ -1,27 +1,27 @@
-﻿{
-  "name": "Meraki — Oxford English Studio",
+{
+  "name": "Meraki English - Academic Grammar & Lexicon",
   "short_name": "Meraki",
-  "description": "Studio Fondasi & Retorika Bahasa Inggris Oxford",
+  "description": "Sistem Pembelajaran Mandiri Tata Bahasa & Retorika Bahasa Inggris Presisi Berbasis Kaidah Ilmiah",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#EFE9DF",
-  "theme_color": "#1E1B17",
-  "orientation": "portrait-primary",
+  "theme_color": "#EFE9DF",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/icon.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/icon.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/apple-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
