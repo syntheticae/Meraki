@@ -1544,6 +1544,27 @@ export default function MerakiApp() {
               </div>
               <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
             </Link>
+            <Link
+              href="/writing-pad"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+            >
+              <div className="flex items-center gap-3">
+                <PenTool className="w-4 h-4 text-[#535841]" />
+                <span>Writing Pad Studio</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
+            </Link>
+
+            <Link
+              href="/learn"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+            >
+              <div className="flex items-center gap-3">
+                <BookOpen className="w-4 h-4 text-[#A84A28]" />
+                <span>Kurikulum Tracks</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
+            </Link>
           </div>
         </div>
 

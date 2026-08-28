@@ -3,8 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Sparkles, Award, PenTool, LayoutDashboard, Menu, X, Library } from 'lucide-react';
-import { StreakWidget } from '@/components/ui/StreakWidget';
+import { 
+  BookOpen, 
+  Sparkles, 
+  Award, 
+  PenTool, 
+  LayoutDashboard, 
+  Menu, 
+  X, 
+  Library, 
+  ArrowLeft, 
+  Home,
+  Flame
+} from 'lucide-react';
 import { clsx } from 'clsx';
 
 export function Navbar() {
@@ -14,79 +25,97 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { href: '/learn', label: 'Curriculum', count: '7 Tracks', icon: BookOpen },
-    { href: '/vocabulary', label: 'Vocabulary', count: 'AWL', icon: Library },
-    { href: '/writing-pad', label: 'Writing Studio', count: 'Rubrics', icon: PenTool },
-    { href: '/exam', label: 'IELTS & TOEFL', count: 'Band 7+', icon: Award },
+    { href: '/', label: 'Workspace Utama', count: '35 Modul', icon: Home },
+    { href: '/learn', label: 'Kurikulum Tracks', count: '7 Jalur', icon: BookOpen },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/exam', label: 'IELTS & TOEFL', count: 'Band 7+', icon: Award },
+    { href: '/vocabulary', label: 'AWL Lexicon', count: 'Oxford', icon: Library },
+    { href: '/writing-pad', label: 'Writing Studio', count: '7 Prompt', icon: PenTool },
   ];
 
   return (
     <header
       className={clsx(
-        'sticky top-0 z-50 w-full transition-all duration-300',
+        'sticky top-0 z-50 w-full transition-all duration-200',
         scrolled
-          ? 'bg-[#F7F3EB]/85 backdrop-blur-md border-b border-[#1A1714]/10 shadow-xs'
-          : 'bg-transparent border-b border-transparent'
+          ? 'bg-[#EFE9DF]/90 backdrop-blur-md border-b border-[#C8C0B0] shadow-xs'
+          : 'bg-[#EFE9DF] border-b border-[#C8C0B0]'
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Mark */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <span className="w-8 h-8 rounded-full bg-[#1A1714] text-[#F7F3EB] flex items-center justify-center text-sm font-serif group-hover:scale-105 transition-transform">
-            ✺
-          </span>
-          <div className="flex flex-col">
-            <span className="font-serif text-2xl tracking-tight text-[#1A1714] font-normal leading-none">
-              Meraki <span className="italic text-[#C4502A]">English</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        {/* Left: Brand & Back to Home */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <span className="w-8 h-8 rounded-xl bg-[#1E1B17] text-[#EFE9DF] flex items-center justify-center text-sm font-serif group-hover:bg-[#A84A28] transition-colors shadow-xs">
+              ✺
             </span>
-            <span className="font-mono text-[10px] tracking-widest uppercase text-[#82796A] mt-0.5">
-              From Basic to IELTS & TOEFL
-            </span>
-          </div>
-        </Link>
+            <div className="flex flex-col">
+              <span className="font-serif text-xl tracking-tight text-[#1E1B17] font-semibold leading-none">
+                Meraki <span className="italic text-[#A84A28]">English</span>
+              </span>
+              <span className="font-mono text-[9px] tracking-widest uppercase text-[#7A7265] mt-0.5">
+                Academic & Precision
+              </span>
+            </div>
+          </Link>
+
+          {/* Quick Back to Main Workspace pill if not on home */}
+          {pathname !== '/' && (
+            <Link
+              href="/"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#1E1B17] transition-all tactile-btn"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Workspace 35 Modul</span>
+            </Link>
+          )}
+        </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 bg-white/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/80 shadow-xs">
+        <nav className="hidden lg:flex items-center gap-1 bg-[#DDD7CA] px-2 py-1 rounded-2xl border border-[#C8C0B0]">
           {navLinks.map((link) => {
-            const isActive = pathname.startsWith(link.href);
+            const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
+            const Icon = link.icon;
+
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={clsx(
-                  'px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-2',
+                  'px-3 py-1.5 rounded-xl text-xs font-mono transition-all duration-200 flex items-center gap-1.5 tactile-btn',
                   isActive
-                    ? 'bg-[#1A1714] text-white shadow-xs'
-                    : 'text-[#38332C] hover:text-[#1A1714] hover:bg-black/05'
+                    ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                    : 'text-[#524C42] hover:text-[#1E1B17] hover:bg-[#C8C0B0]/60'
                 )}
               >
+                <Icon className="w-3.5 h-3.5" />
                 <span>{link.label}</span>
-                {link.count && !isActive && (
-                  <span className="font-mono text-[10px] text-[#82796A] tracking-wider">
-                    ·{link.count}
-                  </span>
-                )}
               </Link>
             );
           })}
         </nav>
 
         {/* Header Right Actions */}
-        <div className="flex items-center gap-4">
-          <StreakWidget />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="/"
+            className="sm:hidden p-2 rounded-xl bg-[#DDD7CA] text-[#1E1B17] text-xs font-mono flex items-center gap-1"
+            title="Kembali ke Workspace"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </Link>
 
           {/* Mobile hamburger button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-full bg-white/70 border border-white/80 text-[#1A1714] hover:bg-white transition-colors"
+            className="lg:hidden p-2 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-colors tactile-btn"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -96,28 +125,37 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#F7F3EB]/95 backdrop-blur-xl border-b border-[#1A1714]/10 px-6 py-6 space-y-3 animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="lg:hidden bg-[#E8E2D6] border-b border-[#C8C0B0] px-4 py-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150 shadow-lg">
+          <div className="text-[10px] font-mono uppercase text-[#7A7265] px-2 font-semibold">
+            Navigasi Halaman
+          </div>
           {navLinks.map((link) => {
+            const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
             const Icon = link.icon;
-            const isActive = pathname.startsWith(link.href);
+
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={clsx(
-                  'flex items-center justify-between p-3.5 rounded-xl text-sm font-medium transition-all',
+                  'w-full p-3 rounded-2xl text-xs font-mono transition-all flex items-center justify-between tactile-btn',
                   isActive
-                    ? 'bg-[#1A1714] text-white'
-                    : 'bg-white/60 text-[#1A1714] hover:bg-white'
+                    ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                    : 'bg-[#DDD7CA] text-[#1E1B17] hover:bg-[#C8C0B0]'
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 opacity-70" />
+                <div className="flex items-center gap-2.5">
+                  <Icon className="w-4 h-4" />
                   <span>{link.label}</span>
                 </div>
                 {link.count && (
-                  <span className="font-mono text-xs opacity-60">{link.count}</span>
+                  <span className={clsx(
+                    'text-[10px] px-2 py-0.5 rounded-md font-mono',
+                    isActive ? 'bg-white/20 text-white' : 'bg-[#C8C0B0] text-[#524C42]'
+                  )}>
+                    {link.count}
+                  </span>
                 )}
               </Link>
             );

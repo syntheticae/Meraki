@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { PenTool, Sparkles, Clock, BookOpen, Award, CheckCircle, FileText } from 'lucide-react';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
+import { Navbar } from '@/components/layout/Navbar';
 import { WritingRubric } from '@/components/exercises/WritingRubric';
 import { WritingRubricExercise } from '@/types/exercise';
 
@@ -508,45 +509,48 @@ export default function WritingStudioPage() {
   const currentExercise = WRITING_PROMPTS[selectedPromptIndex];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
-      {/* Header */}
-      <div className="space-y-4 max-w-3xl">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#A84A28]" />
-          <span className="font-mono text-xs text-[#7A7265] uppercase tracking-widest">
-            Writing Studio & Assessment Pad
-          </span>
+    <div className="min-h-screen bg-[#EFE9DF] text-[#1E1B17] flex flex-col font-sans">
+      <Navbar />
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
+        {/* Header */}
+        <div className="space-y-4 max-w-3xl">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#A84A28]" />
+            <span className="font-mono text-xs text-[#7A7265] uppercase tracking-widest">
+              Writing Studio & Assessment Pad
+            </span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#1E1B17] font-bold">
+            Simulasi Penulisan Esai & Evaluasi Mandiri
+          </h1>
+          <p className="text-[#7A7265] text-sm sm:text-base leading-relaxed font-sans">
+            Ruang menulis bebas distraksi dengan timer waktu nyata, live word counter, analitik ritme kalimat, dan rubrik evaluasi standar Cambridge & ETS.
+          </p>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-serif text-[#1E1B17]">
-          Simulasi Penulisan Esai & Evaluasi Mandiri
-        </h1>
-        <p className="text-[#7A7265] text-base sm:text-lg leading-relaxed font-sans">
-          Ruang menulis bebas distraksi dengan timer waktu nyata, live word counter, analitik ritme kalimat, dan rubrik evaluasi standar Cambridge & ETS.
-        </p>
-      </div>
 
-      {/* Prompt Selector Pills */}
-      <div className="flex flex-wrap items-center gap-2.5">
-        {WRITING_PROMPTS.map((prompt, idx) => (
-          <button
-            key={prompt.id}
-            onClick={() => setSelectedPromptIndex(idx)}
-            className={`px-4 py-2.5 rounded-2xl text-xs font-mono transition-all flex items-center gap-2 tactile-btn min-h-[40px] ${
-              selectedPromptIndex === idx
-                ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
-                : 'bg-[#E6E0D4] hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17] border border-[#C8C0B0]'
-            }`}
-          >
-            <PenTool className="w-3.5 h-3.5" />
-            <span className="truncate max-w-[200px] sm:max-w-none">{prompt.title}</span>
-          </button>
-        ))}
-      </div>
+        {/* Prompt Selector Pills */}
+        <div className="flex flex-wrap items-center gap-2.5">
+          {WRITING_PROMPTS.map((prompt, idx) => (
+            <button
+              key={prompt.id}
+              onClick={() => setSelectedPromptIndex(idx)}
+              className={`px-4 py-2.5 rounded-2xl text-xs font-mono transition-all flex items-center gap-2 tactile-btn min-h-[40px] ${
+                selectedPromptIndex === idx
+                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
+                  : 'bg-[#E6E0D4] hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17] border border-[#C8C0B0]'
+              }`}
+            >
+              <PenTool className="w-3.5 h-3.5" />
+              <span className="truncate max-w-[200px] sm:max-w-none">{prompt.title}</span>
+            </button>
+          ))}
+        </div>
 
-      {/* Main Writing Pad Component */}
-      <GlassCard padded="lg" className="bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm">
-        <WritingRubric key={currentExercise.id} exercise={currentExercise} />
-      </GlassCard>
+        {/* Main Writing Pad Component */}
+        <GlassCard padded="lg" className="bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm">
+          <WritingRubric key={currentExercise.id} exercise={currentExercise} />
+        </GlassCard>
+      </main>
     </div>
   );
 }
