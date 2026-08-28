@@ -1581,8 +1581,8 @@ export default function MerakiApp() {
           </div>
         </div>
 
-        {/* Sidebar Footer: Progress Box & Backup Utilities */}
-        <div className="p-4 border-t border-[#C8C0B0] bg-[#E2DCD0]/60 space-y-3 shrink-0">
+        {/* Sidebar Footer */}
+        <div className="p-4 pb-safe pb-6 sm:pb-4 border-t border-[#C8C0B0] bg-[#E2DCD0]/60 space-y-3 shrink-0">
           <div className="p-3 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
             <div className="flex items-center justify-between text-xs font-mono">
               <span className="text-[#7A7265]">Kurikulum Selesai</span>
@@ -1603,7 +1603,7 @@ export default function MerakiApp() {
           <div className="flex items-center justify-between text-xs font-mono text-[#7A7265] pt-1">
             <button
               onClick={handleExportDataBackup}
-              className="hover:text-[#1E1B17] flex items-center gap-1 hover:underline"
+              className="hover:text-[#1E1B17] flex items-center gap-1 hover:underline min-h-[32px] px-1"
               title="Cadangkan Data Progres (.json)"
             >
               <Download className="w-3 h-3" />
@@ -1612,7 +1612,7 @@ export default function MerakiApp() {
 
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="hover:text-[#1E1B17] flex items-center gap-1 hover:underline"
+              className="hover:text-[#1E1B17] flex items-center gap-1 hover:underline min-h-[32px] px-1"
               title="Pulihkan Data Backup (.json)"
             >
               <Upload className="w-3 h-3" />
@@ -1621,7 +1621,7 @@ export default function MerakiApp() {
 
             <button
               onClick={handleResetProgress}
-              className="hover:text-[#A84A28] flex items-center gap-1 hover:underline"
+              className="hover:text-[#A84A28] flex items-center gap-1 hover:underline min-h-[32px] px-1"
               title="Reset Progres"
             >
               <RotateCcw className="w-3 h-3" />
@@ -1634,37 +1634,38 @@ export default function MerakiApp() {
       {/* ───────────── MAIN APP CONTAINER ───────────── */}
       <div className="flex-1 flex flex-col h-full overflow-hidden relative">
         {/* Top Minimal Toolbar */}
-        <header className="px-4 sm:px-6 pt-safe glass-header border-b border-[#C8C0B0] flex items-center justify-between shrink-0 z-30 min-h-12 py-1.5 sm:py-0">
-          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
+        <header className="px-3 sm:px-6 pt-safe glass-header border-b border-[#C8C0B0] flex items-center justify-between shrink-0 z-30 min-h-12 py-1.5 sm:py-0">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0">
             <button
               onClick={() => setIsNavOpen(true)}
-              className="p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn flex items-center gap-1.5 text-xs font-mono shrink-0"
+              className="p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn flex items-center gap-1.5 text-xs font-mono shrink-0 min-h-[36px]"
               title="Buka Menu Navigasi"
             >
               <Menu className="w-4 h-4" />
               <span className="hidden sm:inline">Menu</span>
             </button>
 
-            <div className="flex items-center gap-1.5 truncate">
-              <span className="font-serif text-sm font-semibold text-[#1E1B17] truncate">
+            <div className="flex items-center gap-1.5 truncate min-w-0">
+              <span className="font-serif text-sm font-semibold text-[#1E1B17] truncate shrink-0">
                 {getHubTitle()}
               </span>
               {activeHub === 'curriculum' && (
                 <>
-                  <span className="text-[#7A7265] text-xs">/</span>
-                  <span className="font-mono text-xs text-[#A84A28] truncate">
-                    Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}
+                  <span className="text-[#7A7265] text-xs shrink-0">/</span>
+                  <span className="font-mono text-xs text-[#A84A28] truncate font-bold">
+                    <span className="sm:hidden">M{String(currentTopic.moduleNumber).padStart(2, '0')}</span>
+                    <span className="hidden sm:inline">Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}</span>
                   </span>
                 </>
               )}
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             {/* Global Omnisearch Trigger */}
             <button
               onClick={() => setIsOmnisearchOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#1E1B17] transition-all tactile-btn"
+              className="p-1.5 sm:px-2.5 sm:py-1 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#1E1B17] transition-all tactile-btn flex items-center gap-1.5 min-h-[36px]"
               title="Pencarian Global (Cmd+K)"
             >
               <Search className="w-3.5 h-3.5 text-[#7A7265]" />
@@ -1675,7 +1676,7 @@ export default function MerakiApp() {
             {/* Audio Settings Trigger */}
             <button
               onClick={() => setIsAudioSettingsOpen(true)}
-              className="p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn flex items-center gap-1 text-xs font-mono"
+              className="hidden sm:flex p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn items-center gap-1 text-xs font-mono min-h-[36px]"
               title="Pengaturan Suara TTS & Aksen"
             >
               <Headphones className="w-3.5 h-3.5 text-[#535841]" />
@@ -1685,7 +1686,7 @@ export default function MerakiApp() {
             {/* Cheatsheets & Backup Trigger */}
             <button
               onClick={() => setIsCheatsheetOpen(true)}
-              className="p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn flex items-center gap-1 text-xs font-mono"
+              className="hidden sm:flex p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn items-center gap-1 text-xs font-mono min-h-[36px]"
               title="Lembar Ringkasan Cetak & Backup Data"
             >
               <FileText className="w-3.5 h-3.5 text-[#A84A28]" />
@@ -1693,27 +1694,26 @@ export default function MerakiApp() {
             </button>
 
             {activeHub === 'curriculum' && (
-              <div className="flex items-center gap-1 bg-[#DDD7CA] p-0.5 rounded-xl border border-[#C8C0B0] text-xs font-mono">
-                <button
-                  onClick={() => setIsModuleIndexOpen(!isModuleIndexOpen)}
-                  className={clsx(
-                    'px-2.5 py-1 rounded-lg transition-all tactile-btn flex items-center gap-1 text-[11px]',
-                    isModuleIndexOpen ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                  )}
-                >
-                  <BookOpen className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Daftar Modul</span>
-                </button>
-              </div>
+              <button
+                onClick={() => setIsModuleIndexOpen(!isModuleIndexOpen)}
+                className={clsx(
+                  'px-2.5 py-1.5 rounded-xl transition-all tactile-btn flex items-center gap-1 text-xs font-mono border border-[#C8C0B0] min-h-[36px]',
+                  isModuleIndexOpen ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold' : 'bg-[#DDD7CA] text-[#1E1B17]'
+                )}
+                title="Pilih Modul Kurikulum"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span className="text-[11px]">Modul</span>
+              </button>
             )}
 
             {mistakeVault.length > 0 && activeHub !== 'vault' && (
               <button
                 onClick={() => setActiveHub('vault')}
-                className="flex items-center gap-1.5 bg-[#A84A28]/15 border border-[#A84A28]/30 text-[#A84A28] hover:bg-[#A84A28] hover:text-white px-2.5 py-1 rounded-xl text-xs font-mono transition-all tactile-btn"
+                className="flex items-center gap-1 bg-[#A84A28]/15 border border-[#A84A28]/30 text-[#A84A28] hover:bg-[#A84A28] hover:text-white px-2 py-1 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]"
               >
                 <Archive className="w-3.5 h-3.5" />
-                <span>{mistakeVault.length} Khilaf</span>
+                <span className="hidden sm:inline">{mistakeVault.length} Khilaf</span>
                 {dueMistakesCount > 0 && (
                   <span className="w-2 h-2 rounded-full bg-[#A84A28] ring-2 ring-white animate-pulse" />
                 )}
@@ -6579,60 +6579,45 @@ export default function MerakiApp() {
           )}
         </main>
 
-        {/* ───────────── MOBILE BOTTOM BAR (IPHONE 13 OPTIMIZED) ───────────── */}
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 z-30 glass-header border-t border-[#C8C0B0] flex items-center justify-around py-1.5 px-2 pb-safe bg-[#E6E0D4]/95 backdrop-blur-md">
-          <button
-            onClick={() => handleNavSelect('curriculum')}
-            className={clsx(
-              'flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition-all tactile-btn min-w-[52px]',
-              activeHub === 'curriculum' ? 'text-[#A84A28] font-bold' : 'text-[#7A7265]'
-            )}
-          >
-            <BookOpen className="w-4 h-4" />
-            <span className="text-[9px] font-mono">Modul</span>
-          </button>
+        {/* ───────────── FLOATING GLASSMORPHISM IOS DYNAMIC ISLAND NAVBAR ───────────── */}
+        <div className="md:hidden fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none pb-safe animate-in slide-in-from-bottom-4 duration-300">
+          <nav className="pointer-events-auto flex items-center justify-between gap-1 p-1.5 px-2 rounded-full bg-[#E6E0D4]/88 backdrop-blur-2xl border border-white/60 shadow-[0_12px_36px_rgba(30,27,23,0.18)] ring-1 ring-[#C8C0B0]/60 w-full max-w-[340px] transition-all duration-300">
+            {[
+              { id: 'curriculum', label: 'Modul', icon: BookOpen },
+              { id: 'practice', label: 'Latihan', icon: ListCheck },
+              { id: 'collocations', label: 'Diksi', icon: Sparkles },
+              { id: 'matrices', label: 'Matriks', icon: Table },
+              { id: 'menu', label: 'Menu', icon: Menu, isMenuTrigger: true },
+            ].map((tab) => {
+              const Icon = tab.icon;
+              const isActive = !tab.isMenuTrigger && activeHub === tab.id;
 
-          <button
-            onClick={() => handleNavSelect('practice')}
-            className={clsx(
-              'flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition-all tactile-btn min-w-[52px]',
-              activeHub === 'practice' ? 'text-[#A84A28] font-bold' : 'text-[#7A7265]'
-            )}
-          >
-            <ListCheck className="w-4 h-4" />
-            <span className="text-[9px] font-mono">Latihan</span>
-          </button>
-
-          <button
-            onClick={() => handleNavSelect('collocations')}
-            className={clsx(
-              'flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition-all tactile-btn min-w-[52px]',
-              activeHub === 'collocations' ? 'text-[#A84A28] font-bold' : 'text-[#7A7265]'
-            )}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span className="text-[9px] font-mono">Diksi</span>
-          </button>
-
-          <button
-            onClick={() => handleNavSelect('matrices')}
-            className={clsx(
-              'flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition-all tactile-btn min-w-[52px]',
-              activeHub === 'matrices' ? 'text-[#A84A28] font-bold' : 'text-[#7A7265]'
-            )}
-          >
-            <Table className="w-4 h-4" />
-            <span className="text-[9px] font-mono">Matriks</span>
-          </button>
-
-          <button
-            onClick={() => setIsNavOpen(true)}
-            className="flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition-all tactile-btn min-w-[52px] text-[#7A7265]"
-          >
-            <Menu className="w-4 h-4" />
-            <span className="text-[9px] font-mono">Menu</span>
-          </button>
-        </nav>
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    if (tab.isMenuTrigger) {
+                      setIsNavOpen(true);
+                    } else {
+                      handleNavSelect(tab.id as any);
+                    }
+                  }}
+                  className={clsx(
+                    'flex flex-col items-center justify-center gap-0.5 py-1 px-2.5 rounded-full transition-all duration-200 tactile-btn min-h-[42px] flex-1',
+                    isActive
+                      ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-md shadow-black/15 font-bold scale-[1.03]'
+                      : 'text-[#7A7265] hover:text-[#1E1B17] hover:bg-[#DDD7CA]/60'
+                  )}
+                >
+                  <Icon className={clsx('w-4 h-4 transition-transform', isActive && 'scale-110 text-[#EFE9DF]')} />
+                  <span className={clsx('text-[10px] font-mono leading-none', isActive ? 'font-bold text-[#EFE9DF]' : 'font-normal')}>
+                    {tab.label}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
       </div>
 
       {/* ───────────── GLOBAL MODAL 1: OMNISEARCH COMMAND PALETTE (CMD+K) ───────────── */}
