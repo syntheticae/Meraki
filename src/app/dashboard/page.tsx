@@ -78,7 +78,7 @@ export default function UserDashboardPage() {
     <div className="min-h-screen bg-[#EFE9DF] text-[#1E1B17] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-28 sm:pb-36 space-y-10">
         {/* Top Header Breadcrumb & Profile */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-[#C8C0B0]">
           <div className="space-y-2">

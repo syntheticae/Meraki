@@ -132,7 +132,7 @@ export default function MockExamClient({ examType }: { examType: string }) {
     <div className="min-h-screen bg-[#EFE9DF] text-[#1E1B17] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-28 sm:pb-36 space-y-6">
         {/* Top Status Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs">
           <div className="flex items-center gap-3">

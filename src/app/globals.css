@@ -20,14 +20,21 @@
   --font-mono: var(--font-geist-mono), monospace;
 }
 
-html, body {
+html {
   background-color: var(--paper-bg);
   color: var(--ink-primary);
   font-family: var(--font-sans);
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--paper-bg);
+  color: var(--ink-primary);
 }
 
 /* Custom Editorial Ultra-Thin Scrollbars */

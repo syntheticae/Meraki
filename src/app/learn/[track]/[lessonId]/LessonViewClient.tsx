@@ -94,7 +94,7 @@ export default function LessonViewClient({
     <div className="min-h-screen bg-[#EFE9DF] text-[#1E1B17] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 pb-28 sm:pb-36 space-y-8">
         {/* Top Breadcrumbs & Actions */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#C8C0B0]">
           <Link
