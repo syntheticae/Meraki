@@ -2322,7 +2322,7 @@ export default function MerakiApp() {
 
               {/* Right Practice Area */}
               <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-36 md:pb-16 flex flex-col justify-between">
-                <div className="max-w-2xl mx-auto w-full space-y-5 sm:space-y-6 my-auto">
+                <div className="max-w-2xl mx-auto w-full space-y-5 sm:space-y-6 py-2">
                   {/* Mobile Quick Module Chips */}
                   <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#C8C0B0]/60">
                     {MERAKI_CURRICULUM.map((topic) => {
@@ -3511,152 +3511,202 @@ export default function MerakiApp() {
                   <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Master Reference & Drill Matrices</h2>
                 </div>
 
-                <div className="flex items-center gap-1.5 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
-                  <button
-                    onClick={() => setMatrixSubTab('have-has-had')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'have-has-had' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Have / Has / Had
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('in-on-at')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'in-on-at' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    In / On / At (Piramida)
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('pronouns')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'pronouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Pronouns (Kasus)
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('do-does-did')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'do-does-did' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Do / Does / Did
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('to-be')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'to-be' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    To Be (Verbal vs Nominal)
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('past-modals')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'past-modals' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Past Modals
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('subjunctive')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'subjunctive' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Subjunctive
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('reported-speech')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'reported-speech' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Reported Speech
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('embedded-questions')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'embedded-questions' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Embedded Questions
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('cleft-sentences')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'cleft-sentences' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Cleft Sentences
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('geographical-articles')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'geographical-articles' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Geographical Articles
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('irregular')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'irregular' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Irregular Verbs ({IRREGULAR_VERBS_DATA.length})
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('nouns')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'nouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Noun Taxonomy
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('tenses')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'tenses' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    12 Tenses Master
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('phrasal')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'phrasal' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Phrasal Verbs
-                  </button>
-                  <button
-                    onClick={() => setMatrixSubTab('punctuation')}
-                    className={clsx(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      matrixSubTab === 'punctuation' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
-                    )}
-                  >
-                    Tanda Baca
-                  </button>
+                {/* Category Switcher Tabs */}
+                <div className="flex flex-wrap items-center gap-2">
+                  {[
+                    { id: 'fondasi', label: 'Fondasi & Subjek (6)', subs: ['pronouns', 'to-be', 'do-does-did', 'have-has-had', 'in-on-at', 'nouns'] },
+                    { id: 'tenses', label: 'Tenses & Verba (4)', subs: ['tenses', 'irregular', 'phrasal', 'punctuation'] },
+                    { id: 'clauses', label: 'Klausa & Logika (3)', subs: ['subjunctive', 'cleft-sentences', 'geographical-articles'] },
+                    { id: 'advanced', label: 'Struktur Lanjutan (3)', subs: ['past-modals', 'reported-speech', 'embedded-questions'] },
+                  ].map((cat) => {
+                    const isCatActive = cat.subs.includes(matrixSubTab);
+                    return (
+                      <button
+                        key={cat.id}
+                        onClick={() => setMatrixSubTab(cat.subs[0] as any)}
+                        className={clsx(
+                          'px-4 py-2 rounded-2xl text-xs font-mono font-semibold transition-all tactile-btn min-h-[38px]',
+                          isCatActive
+                            ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
+                            : 'bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#7A7265] hover:text-[#1E1B17]'
+                        )}
+                      >
+                        {cat.label}
+                      </button>
+                    );
+                  })}
                 </div>
+              </div>
+
+              {/* Sub-Matrix Selector Pills (Grouped by Category) */}
+              <div className="flex items-center gap-1.5 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full">
+                {/* 1. Fondasi Group */}
+                {['pronouns', 'to-be', 'do-does-did', 'have-has-had', 'in-on-at', 'nouns'].includes(matrixSubTab) && (
+                  <>
+                    <button
+                      onClick={() => setMatrixSubTab('pronouns')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'pronouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Pronouns (Kasus Subjek/Objek)
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('to-be')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'to-be' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      To Be (Verbal vs Nominal)
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('do-does-did')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'do-does-did' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Do / Does / Did
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('have-has-had')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'have-has-had' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Have / Has / Had
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('in-on-at')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'in-on-at' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      In / On / At (Piramida)
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('nouns')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'nouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Noun Taxonomy
+                    </button>
+                  </>
+                )}
+
+                {/* 2. Tenses Group */}
+                {['tenses', 'irregular', 'phrasal', 'punctuation'].includes(matrixSubTab) && (
+                  <>
+                    <button
+                      onClick={() => setMatrixSubTab('tenses')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'tenses' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      12 Tenses Master Grid
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('irregular')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'irregular' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Irregular Verbs ({IRREGULAR_VERBS_DATA.length})
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('phrasal')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'phrasal' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Phrasal Verbs
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('punctuation')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'punctuation' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Tanda Baca & Sintaksis
+                    </button>
+                  </>
+                )}
+
+                {/* 3. Clauses Group */}
+                {['subjunctive', 'cleft-sentences', 'geographical-articles'].includes(matrixSubTab) && (
+                  <>
+                    <button
+                      onClick={() => setMatrixSubTab('subjunctive')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'subjunctive' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Subjunctive Mood
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('cleft-sentences')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'cleft-sentences' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Cleft Sentences (It- & What-)
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('geographical-articles')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'geographical-articles' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Geographical Articles (The / Ø)
+                    </button>
+                  </>
+                )}
+
+                {/* 4. Advanced Group */}
+                {['past-modals', 'reported-speech', 'embedded-questions'].includes(matrixSubTab) && (
+                  <>
+                    <button
+                      onClick={() => setMatrixSubTab('past-modals')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'past-modals' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Past Modals of Deduction
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('reported-speech')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'reported-speech' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Reported Speech (Indirect)
+                    </button>
+                    <button
+                      onClick={() => setMatrixSubTab('embedded-questions')}
+                      className={clsx(
+                        'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
+                        matrixSubTab === 'embedded-questions' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      )}
+                    >
+                      Embedded Questions
+                    </button>
+                  </>
+                )}
               </div>
 
               {/* ───────────── SUB-TAB 1: HAVE / HAS / HAD MASTER DISSECTOR ───────────── */}
@@ -4738,7 +4788,7 @@ export default function MerakiApp() {
 
               {/* Paraphrasing */}
               {studioSubTab === 'paraphrase' && (
-                <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 my-auto">
+                <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 py-2">
                   <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
@@ -4843,7 +4893,7 @@ export default function MerakiApp() {
 
               {/* X-Ray */}
               {studioSubTab === 'xray' && (
-                <div className="max-w-4xl mx-auto w-full flex-1 overflow-y-auto space-y-6 my-auto">
+                <div className="max-w-4xl mx-auto w-full flex-1 overflow-y-auto space-y-6 py-2">
                   {(() => {
                     const xray = XRAY_SENTENCES_DATA[activeXrayIndex];
                     return (
@@ -5057,7 +5107,7 @@ export default function MerakiApp() {
 
               {/* IELTS Task 1 */}
               {studioSubTab === 'ielts-task1' && (
-                <div className="max-w-4xl mx-auto w-full flex-1 overflow-y-auto space-y-6 my-auto">
+                <div className="max-w-4xl mx-auto w-full flex-1 overflow-y-auto space-y-6 py-2">
                   <div className="flex gap-2 pb-2 border-b border-[#C8C0B0]">
                     {IELTS_TASK1_TRENDS_DATA.map((tr, idx) => (
                       <button
@@ -5142,7 +5192,7 @@ export default function MerakiApp() {
 
               {/* Combining */}
               {studioSubTab === 'combine' && (
-                <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 my-auto">
+                <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 py-2">
                   <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
@@ -5869,7 +5919,7 @@ export default function MerakiApp() {
               </aside>
 
               <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 pb-36 md:pb-16 flex flex-col justify-between space-y-6 sm:space-y-8">
-                <div className="max-w-2xl mx-auto w-full space-y-6 sm:space-y-8 my-auto">
+                <div className="max-w-2xl mx-auto w-full space-y-6 sm:space-y-8 py-2">
                   <div className="p-5 sm:p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5 sm:space-y-6 text-center">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
