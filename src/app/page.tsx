@@ -80,6 +80,7 @@ import {
   DIRECT_TRANSLATION_TRAPS_DATA
 } from '@/data/meraki-collocations';
 import { progressRepository } from '@/services/storage';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { clsx } from 'clsx';
 
 export interface MistakeItem {
@@ -1662,6 +1663,9 @@ export default function MerakiApp() {
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+            {/* Obsidian Dark Mode Toggle */}
+            <ThemeToggle className="min-h-[36px] min-w-[36px]" />
+
             {/* Global Omnisearch Trigger */}
             <button
               onClick={() => setIsOmnisearchOpen(true)}
