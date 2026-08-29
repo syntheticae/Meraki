@@ -1328,7 +1328,7 @@ export default function MerakiApp() {
   };
 
   return (
-    <div className="h-[100dvh] min-h-[100dvh] w-full max-w-[100vw] flex bg-[#EFE9DF] text-[#1E1B17] overflow-hidden antialiased select-text">
+    <div className="h-[100dvh] min-h-[100dvh] w-full max-w-[100vw] flex bg-[#EFE9DF] text-[#1E1B17] overflow-hidden antialiased select-text overscroll-none touch-pan-y">
       {/* Hidden File Input for Data Restore */}
       <input
         type="file"
@@ -6580,44 +6580,46 @@ export default function MerakiApp() {
         </main>
 
         {/* ───────────── FLOATING GLASSMORPHISM IOS DYNAMIC ISLAND NAVBAR ───────────── */}
-        <div className="md:hidden fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none pb-safe animate-in slide-in-from-bottom-4 duration-300">
-          <nav className="pointer-events-auto flex items-center justify-between gap-1 p-1.5 px-2 rounded-full bg-[#E6E0D4]/88 backdrop-blur-2xl border border-white/60 shadow-[0_12px_36px_rgba(30,27,23,0.18)] ring-1 ring-[#C8C0B0]/60 w-full max-w-[340px] transition-all duration-300">
-            {[
-              { id: 'curriculum', label: 'Modul', icon: BookOpen },
-              { id: 'practice', label: 'Latihan', icon: ListCheck },
-              { id: 'collocations', label: 'Diksi', icon: Sparkles },
-              { id: 'matrices', label: 'Matriks', icon: Table },
-              { id: 'menu', label: 'Menu', icon: Menu, isMenuTrigger: true },
-            ].map((tab) => {
-              const Icon = tab.icon;
-              const isActive = !tab.isMenuTrigger && activeHub === tab.id;
+        {!isNavOpen && (
+          <div className="md:hidden fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none pb-safe animate-in slide-in-from-bottom-4 duration-300">
+            <nav className="pointer-events-auto flex items-center justify-between gap-1 p-1.5 px-2 rounded-full bg-[#E6E0D4]/88 backdrop-blur-2xl border border-white/60 shadow-[0_12px_36px_rgba(30,27,23,0.18)] ring-1 ring-[#C8C0B0]/60 w-full max-w-[340px] transition-all duration-300">
+              {[
+                { id: 'curriculum', label: 'Modul', icon: BookOpen },
+                { id: 'practice', label: 'Latihan', icon: ListCheck },
+                { id: 'collocations', label: 'Diksi', icon: Sparkles },
+                { id: 'matrices', label: 'Matriks', icon: Table },
+                { id: 'menu', label: 'Menu', icon: Menu, isMenuTrigger: true },
+              ].map((tab) => {
+                const Icon = tab.icon;
+                const isActive = !tab.isMenuTrigger && activeHub === tab.id;
 
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => {
-                    if (tab.isMenuTrigger) {
-                      setIsNavOpen(true);
-                    } else {
-                      handleNavSelect(tab.id as any);
-                    }
-                  }}
-                  className={clsx(
-                    'flex flex-col items-center justify-center gap-0.5 py-1 px-2.5 rounded-full transition-all duration-200 tactile-btn min-h-[42px] flex-1',
-                    isActive
-                      ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-md shadow-black/15 font-bold scale-[1.03]'
-                      : 'text-[#7A7265] hover:text-[#1E1B17] hover:bg-[#DDD7CA]/60'
-                  )}
-                >
-                  <Icon className={clsx('w-4 h-4 transition-transform', isActive && 'scale-110 text-[#EFE9DF]')} />
-                  <span className={clsx('text-[10px] font-mono leading-none', isActive ? 'font-bold text-[#EFE9DF]' : 'font-normal')}>
-                    {tab.label}
-                  </span>
-                </button>
-              );
-            })}
-          </nav>
-        </div>
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      if (tab.isMenuTrigger) {
+                        setIsNavOpen(true);
+                      } else {
+                        handleNavSelect(tab.id as any);
+                      }
+                    }}
+                    className={clsx(
+                      'flex flex-col items-center justify-center gap-0.5 py-1 px-2.5 rounded-full transition-all duration-200 tactile-btn min-h-[42px] flex-1',
+                      isActive
+                        ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-md shadow-black/15 font-bold scale-[1.03]'
+                        : 'text-[#7A7265] hover:text-[#1E1B17] hover:bg-[#DDD7CA]/60'
+                    )}
+                  >
+                    <Icon className={clsx('w-4 h-4 transition-transform', isActive && 'scale-110 text-[#EFE9DF]')} />
+                    <span className={clsx('text-[10px] font-mono leading-none', isActive ? 'font-bold text-[#EFE9DF]' : 'font-normal')}>
+                      {tab.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        )}
       </div>
 
       {/* ───────────── GLOBAL MODAL 1: OMNISEARCH COMMAND PALETTE (CMD+K) ───────────── */}
