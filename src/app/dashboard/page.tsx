@@ -20,7 +20,10 @@ import {
   Layers,
   ChevronRight,
   TrendingUp,
-  BarChart2
+  BarChart2,
+  Target,
+  Download,
+  Upload
 } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { GlassCard } from '@/components/ui/GlassCard';
@@ -319,66 +322,151 @@ export default function UserDashboardPage() {
             </div>
           </div>
 
-          {/* Right Column: Saved Bookmarks & Quick Hub Shortcuts */}
+          {/* Right Column: Saved Bookmarks, Daily Goal, and Data Backup */}
           <div className="lg:col-span-5 space-y-6">
+            {/* Daily Goal Widget */}
+            <div className="p-5 rounded-3xl bg-[#E6E0D4] dark:bg-[#1E1B18] border border-[#C8C0B0] dark:border-[#3A342D] shadow-xs space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[#C8C0B0] dark:border-[#3A342D]">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#1E1B17] dark:text-[#EFEAE1] font-semibold flex items-center gap-1.5">
+                  <Target className="w-3.5 h-3.5 text-[#A84A28] dark:text-[#D45B34]" />
+                  <span>Target Belajar Harian</span>
+                </span>
+                <span className="font-mono text-xs px-2 py-0.5 rounded-md bg-[#535841]/20 text-[#535841] dark:text-[#7A855F] font-bold">
+                  20 Menit / Hari
+                </span>
+              </div>
+              <p className="text-xs text-[#7A7265] dark:text-[#948B7C]">
+                Selesaikan minimal 1 modul fondasi dan tinjau 10 kartu kata Oxford 3000 setiap hari untuk mempertahankan retensi 90%+.
+              </p>
+            </div>
+
+            {/* One-Click JSON Backup & Restore Card */}
+            <div className="p-5 rounded-3xl bg-[#E6E0D4] dark:bg-[#1E1B18] border border-[#C8C0B0] dark:border-[#3A342D] shadow-xs space-y-4">
+              <div className="flex items-center justify-between pb-2 border-b border-[#C8C0B0] dark:border-[#3A342D]">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#1E1B17] dark:text-[#EFEAE1] font-semibold flex items-center gap-1.5">
+                  <Archive className="w-3.5 h-3.5 text-[#535841] dark:text-[#7A855F]" />
+                  <span>Cadangan & Portabilitas Data</span>
+                </span>
+              </div>
+              <p className="text-xs text-[#7A7265] dark:text-[#948B7C] leading-relaxed">
+                Amankan seluruh histori belajar, bank khilaf, dan esai tersimpan ke dalam file JSON agar tidak hilang saat reinstall atau ganti perangkat.
+              </p>
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <button
+                  onClick={() => {
+                    try {
+                      const backupData: Record<string, string | null> = {};
+                      for (let i = 0; i < localStorage.length; i++) {
+                        const key = localStorage.key(i);
+                        if (key && key.startsWith('meraki_')) {
+                          backupData[key] = localStorage.getItem(key);
+                        }
+                      }
+                      const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `meraki-backup-${new Date().toISOString().split('T')[0]}.json`;
+                      a.click();
+                      URL.revokeObjectURL(url);
+                    } catch (e) {
+                      alert('Gagal mengekspor data.');
+                    }
+                  }}
+                  className="px-3.5 py-2 rounded-2xl bg-[#1E1B17] dark:bg-[#D45B34] hover:bg-[#A84A28] text-[#EFE9DF] dark:text-white text-xs font-mono font-medium transition-all tactile-btn flex items-center gap-1.5 shadow-xs"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Ekspor Cadangan (.json)</span>
+                </button>
+
+                <label className="px-3.5 py-2 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] text-[#1E1B17] dark:text-[#EFEAE1] text-xs font-mono font-medium transition-all tactile-btn flex items-center gap-1.5 cursor-pointer border border-[#C8C0B0] dark:border-[#3A342D]">
+                  <Upload className="w-3.5 h-3.5" />
+                  <span>Impor File</span>
+                  <input
+                    type="file"
+                    accept=".json"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        try {
+                          const parsed = JSON.parse(event.target?.result as string);
+                          Object.entries(parsed).forEach(([key, val]) => {
+                            if (typeof val === 'string') localStorage.setItem(key, val);
+                          });
+                          alert('Data berhasil dipulihkan! Halaman akan dimuat ulang.');
+                          window.location.reload();
+                        } catch (err) {
+                          alert('File cadangan tidak valid.');
+                        }
+                      };
+                      reader.readAsText(file);
+                    }}
+                  />
+                </label>
+              </div>
+            </div>
+
             {/* Quick Hub Hub Jumps */}
-            <div className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-3">
-              <span className="font-mono text-xs uppercase tracking-wider text-[#1E1B17] font-semibold block">
+            <div className="p-5 rounded-3xl bg-[#E6E0D4] dark:bg-[#1E1B18] border border-[#C8C0B0] dark:border-[#3A342D] shadow-xs space-y-3">
+              <span className="font-mono text-xs uppercase tracking-wider text-[#1E1B17] dark:text-[#EFEAE1] font-semibold block">
                 Pusat Studi Cepat
               </span>
               <div className="grid grid-cols-2 gap-2.5 text-xs font-mono">
                 <Link
                   href="/writing-pad"
-                  className="p-3 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] border border-[#C8C0B0] flex flex-col gap-1 tactile-btn text-[#1E1B17]"
+                  className="p-3 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] border border-[#C8C0B0] dark:border-[#3A342D] flex flex-col gap-1 tactile-btn text-[#1E1B17] dark:text-[#EFEAE1]"
                 >
-                  <PenTool className="w-4 h-4 text-[#A84A28]" />
+                  <PenTool className="w-4 h-4 text-[#A84A28] dark:text-[#D45B34]" />
                   <span className="font-bold">Writing Pad</span>
-                  <span className="text-[10px] text-[#7A7265]">Simulasi Esai</span>
+                  <span className="text-[10px] text-[#7A7265] dark:text-[#948B7C]">Simulasi Esai</span>
                 </Link>
 
                 <Link
                   href="/exam"
-                  className="p-3 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] border border-[#C8C0B0] flex flex-col gap-1 tactile-btn text-[#1E1B17]"
+                  className="p-3 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] border border-[#C8C0B0] dark:border-[#3A342D] flex flex-col gap-1 tactile-btn text-[#1E1B17] dark:text-[#EFEAE1]"
                 >
-                  <GraduationCap className="w-4 h-4 text-[#535841]" />
+                  <GraduationCap className="w-4 h-4 text-[#535841] dark:text-[#7A855F]" />
                   <span className="font-bold">IELTS & TOEFL</span>
-                  <span className="text-[10px] text-[#7A7265]">Skor Diagnostic</span>
+                  <span className="text-[10px] text-[#7A7265] dark:text-[#948B7C]">Skor Diagnostic</span>
                 </Link>
 
                 <Link
                   href="/vocabulary"
-                  className="p-3 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] border border-[#C8C0B0] flex flex-col gap-1 tactile-btn text-[#1E1B17]"
+                  className="p-3 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] border border-[#C8C0B0] dark:border-[#3A342D] flex flex-col gap-1 tactile-btn text-[#1E1B17] dark:text-[#EFEAE1]"
                 >
-                  <BookOpen className="w-4 h-4 text-[#A84A28]" />
+                  <BookOpen className="w-4 h-4 text-[#A84A28] dark:text-[#D45B34]" />
                   <span className="font-bold">AWL Lexicon</span>
-                  <span className="text-[10px] text-[#7A7265]">Academic Words</span>
+                  <span className="text-[10px] text-[#7A7265] dark:text-[#948B7C]">Academic Words</span>
                 </Link>
 
                 <Link
                   href="/"
-                  className="p-3 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] border border-[#C8C0B0] flex flex-col gap-1 tactile-btn text-[#1E1B17]"
+                  className="p-3 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] border border-[#C8C0B0] dark:border-[#3A342D] flex flex-col gap-1 tactile-btn text-[#1E1B17] dark:text-[#EFEAE1]"
                 >
-                  <Layers className="w-4 h-4 text-[#535841]" />
+                  <Layers className="w-4 h-4 text-[#535841] dark:text-[#7A855F]" />
                   <span className="font-bold">35 Modul</span>
-                  <span className="text-[10px] text-[#7A7265]">Workspace Inti</span>
+                  <span className="text-[10px] text-[#7A7265] dark:text-[#948B7C]">Workspace Inti</span>
                 </Link>
               </div>
             </div>
 
             {/* Bookmarks */}
-            <div className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#1E1B17] font-semibold flex items-center gap-1.5">
-                  <Bookmark className="w-3.5 h-3.5 text-[#A84A28]" />
+            <div className="p-5 rounded-3xl bg-[#E6E0D4] dark:bg-[#1E1B18] border border-[#C8C0B0] dark:border-[#3A342D] shadow-xs space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0] dark:border-[#3A342D]">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#1E1B17] dark:text-[#EFEAE1] font-semibold flex items-center gap-1.5">
+                  <Bookmark className="w-3.5 h-3.5 text-[#A84A28] dark:text-[#D45B34]" />
                   <span>Pelajaran Tersimpan</span>
                 </span>
-                <span className="font-mono text-xs text-[#7A7265]">
+                <span className="font-mono text-xs text-[#7A7265] dark:text-[#948B7C]">
                   {bookmarkedLessonsData.length} Disimpan
                 </span>
               </div>
 
               {bookmarkedLessonsData.length === 0 ? (
-                <p className="text-xs text-[#7A7265] py-4 text-center">
+                <p className="text-xs text-[#7A7265] dark:text-[#948B7C] py-4 text-center">
                   Belum ada materi yang ditandai. Klik ikon bookmark pada halaman pelajaran untuk menyimpan.
                 </p>
               ) : (
@@ -387,12 +475,12 @@ export default function UserDashboardPage() {
                     <Link
                       key={l.id}
                       href={`/learn/${l.trackId}/${l.slug}`}
-                      className="p-3 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] border border-[#C8C0B0] block space-y-1 transition-colors"
+                      className="p-3 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] border border-[#C8C0B0] dark:border-[#3A342D] block space-y-1 transition-colors"
                     >
-                      <span className="text-xs font-serif font-bold text-[#1E1B17] line-clamp-1">
+                      <span className="text-xs font-serif font-bold text-[#1E1B17] dark:text-[#EFEAE1] line-clamp-1">
                         {l.title}
                       </span>
-                      <span className="font-mono text-[10px] text-[#7A7265]">
+                      <span className="font-mono text-[10px] text-[#7A7265] dark:text-[#948B7C]">
                         {l.difficulty} · {l.readTimeMin}m
                       </span>
                     </Link>

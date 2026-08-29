@@ -14,6 +14,20 @@
   --accent-sage: #535841;
 }
 
+.dark, [data-theme="dark"] {
+  --paper-bg: #141210;
+  --paper-surface: #1E1B17;
+  --paper-card: #28241F;
+  --paper-card-subtle: #221E19;
+  --paper-border: #3A352D;
+  --paper-border-subtle: rgba(236, 230, 218, 0.12);
+  --ink-primary: #EFEAE1;
+  --ink-secondary: #C4BCAD;
+  --ink-muted: #948B7C;
+  --accent-terracotta: #D45B34;
+  --accent-sage: #7A855F;
+}
+
 @theme {
   --font-serif: var(--font-serif), Georgia, serif;
   --font-sans: var(--font-geist-sans), -apple-system, sans-serif;

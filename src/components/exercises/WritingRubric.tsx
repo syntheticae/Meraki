@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Clock, CheckCircle, Award, BookOpen, ChevronDown, ChevronUp, Sparkles, Send, Check } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Clock, CheckCircle, Award, BookOpen, ChevronDown, ChevronUp, Sparkles, Send, Check, AlertTriangle, ShieldCheck, Zap, Activity } from 'lucide-react';
 import { WritingRubricExercise } from '@/types/exercise';
 import { progressRepository } from '@/services/storage';
+import { analyzeAcademicText, WritingMetrics } from '@/services/linter';
 import { clsx } from 'clsx';
 
 interface Props {
@@ -38,9 +39,12 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
     return () => clearInterval(interval);
   }, [timerRunning, timeLeftSec]);
 
-  // Word count calculation
-  const words = essayText.trim().split(/\s+/).filter((w) => w.length > 0);
-  const wordCount = essayText.trim() === '' ? 0 : words.length;
+  // Real-time Text Analytics & Linter
+  const metrics: WritingMetrics = useMemo(() => {
+    return analyzeAcademicText(essayText);
+  }, [essayText]);
+
+  const wordCount = metrics.wordCount;
 
   const minutes = Math.floor(timeLeftSec / 60);
   const seconds = timeLeftSec % 60;
@@ -94,23 +98,23 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
       <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-xs text-[#7A7265] uppercase tracking-wider font-semibold">
+            <span className="font-mono text-xs text-[#7A7265] dark:text-[#948B7C] uppercase tracking-wider font-semibold">
               {exercise.taskType} · Writing Studio
             </span>
-            <span className="font-mono text-xs bg-[#A84A28]/15 text-[#A84A28] px-2.5 py-0.5 rounded-full font-bold">
+            <span className="font-mono text-xs bg-[#A84A28]/15 dark:bg-[#D45B34]/20 text-[#A84A28] dark:text-[#D45B34] px-2.5 py-0.5 rounded-full font-bold">
               Min. {exercise.minWordCount} Kata
             </span>
           </div>
 
           {/* Timer pill */}
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-xs text-[#1E1B17]">
-              <Clock className="w-3.5 h-3.5 text-[#A84A28]" />
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] border border-[#C8C0B0] dark:border-[#3A342D] font-mono text-xs text-[#1E1B17] dark:text-[#EFEAE1]">
+              <Clock className="w-3.5 h-3.5 text-[#A84A28] dark:text-[#D45B34]" />
               <span className="font-bold">{formattedTime}</span>
             </div>
             <button
               onClick={() => setTimerRunning(!timerRunning)}
-              className="px-3.5 py-1.5 rounded-2xl text-xs font-mono bg-[#1E1B17] text-[#EFE9DF] hover:bg-[#A84A28] transition-colors tactile-btn"
+              className="px-3.5 py-1.5 rounded-2xl text-xs font-mono bg-[#1E1B17] dark:bg-[#D45B34] text-[#EFE9DF] dark:text-white hover:bg-[#A84A28] transition-colors tactile-btn"
             >
               {timerRunning ? 'Jeda Timer' : 'Mulai Timer'}
             </button>
@@ -118,18 +122,18 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
         </div>
 
         {/* Prompt Card */}
-        <div className="p-6 rounded-3xl bg-[#DDD7CA] border border-[#C8C0B0] shadow-xs space-y-2">
-          <h3 className="text-lg font-serif font-bold text-[#1E1B17] leading-snug">
+        <div className="p-6 rounded-3xl bg-[#DDD7CA] dark:bg-[#201D19] border border-[#C8C0B0] dark:border-[#3A342D] shadow-xs space-y-2">
+          <h3 className="text-lg font-serif font-bold text-[#1E1B17] dark:text-[#EFEAE1] leading-snug">
             {exercise.prompt}
           </h3>
-          <p className="text-xs text-[#7A7265]">
+          <p className="text-xs text-[#7A7265] dark:text-[#948B7C]">
             Tuliskan esai lengkap dengan struktur pendahuluan, paragraf tubuh argumen, dan kesimpulan.
           </p>
         </div>
       </div>
 
-      {/* Editor & Word count bar */}
-      <div className="space-y-2.5">
+      {/* Editor & Live Analytics */}
+      <div className="space-y-3">
         <div className="relative">
           <textarea
             value={essayText}
@@ -139,42 +143,130 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
             }}
             rows={12}
             placeholder="Mulai ketik esaimu di sini..."
-            className="w-full p-5 sm:p-6 rounded-3xl bg-[#EFE9DF] border border-[#C8C0B0] focus:border-[#A84A28] outline-hidden text-[#1E1B17] leading-relaxed font-sans text-sm sm:text-base transition-all resize-y shadow-inner"
+            className="w-full p-5 sm:p-6 rounded-3xl bg-[#EFE9DF] dark:bg-[#141210] border border-[#C8C0B0] dark:border-[#3A342D] focus:border-[#A84A28] dark:focus:border-[#D45B34] outline-hidden text-[#1E1B17] dark:text-[#EFEAE1] leading-relaxed font-sans text-sm sm:text-base transition-all resize-y shadow-inner placeholder:text-[#7A7265] dark:placeholder:text-[#6A6255]"
           />
         </div>
 
-        {/* Live Word Count Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-2 text-xs font-mono text-[#7A7265]">
-          <div className="flex items-center gap-3">
+        {/* Live Word Count & Real-time Telemetry Strip */}
+        <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#DDD7CA]/60 dark:bg-[#201D19]/60 border border-[#C8C0B0] dark:border-[#3A342D] text-xs font-mono text-[#7A7265] dark:text-[#948B7C]">
+          <div className="flex flex-wrap items-center gap-4">
             <span>
-              Jumlah Kata:{' '}
+              Kata:{' '}
               <strong
                 className={clsx(
                   wordCount >= exercise.minWordCount
-                    ? 'text-[#535841] font-bold text-sm'
-                    : 'text-[#A84A28]'
+                    ? 'text-[#535841] dark:text-[#7A855F] font-bold text-sm'
+                    : 'text-[#A84A28] dark:text-[#D45B34]'
                 )}
               >
                 {wordCount}
               </strong>{' '}
-              / {exercise.minWordCount} kata
+              / {exercise.minWordCount}
             </span>
-            {wordCount >= exercise.minWordCount && (
-              <span className="text-[#535841] flex items-center gap-1 font-bold">
-                <Check className="w-3.5 h-3.5" /> Target Terpenuhi
+
+            <span>
+              Kalimat: <strong className="text-[#1E1B17] dark:text-[#EFEAE1]">{metrics.sentenceCount}</strong>
+            </span>
+
+            <span>
+              Rata-rata Kata/Kalimat:{' '}
+              <strong className="text-[#1E1B17] dark:text-[#EFEAE1]">{metrics.avgSentenceLength}</strong>
+            </span>
+
+            <span className="flex items-center gap-1">
+              <Activity className="w-3.5 h-3.5 text-[#535841] dark:text-[#7A855F]" />
+              <span>
+                Densitas Leksikal:{' '}
+                <strong className={clsx(
+                  metrics.lexicalDiversityPercent >= 60 ? 'text-[#535841] dark:text-[#7A855F] font-bold' : 'text-[#A84A28] dark:text-[#D45B34]'
+                )}>
+                  {metrics.lexicalDiversityPercent}%
+                </strong>
               </span>
-            )}
+            </span>
           </div>
 
           <button
             onClick={handleSaveSubmission}
-            className="flex items-center gap-1.5 px-5 py-2 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] transition-all text-xs font-mono font-medium shadow-xs tactile-btn"
+            className="flex items-center gap-1.5 px-5 py-2 rounded-2xl bg-[#1E1B17] dark:bg-[#D45B34] hover:bg-[#A84A28] text-[#EFE9DF] dark:text-white transition-all text-xs font-mono font-medium shadow-xs tactile-btn"
           >
             <Send className="w-3.5 h-3.5" />
             <span>Simpan Esai</span>
           </button>
         </div>
       </div>
+
+      {/* Live Academic Linter Diagnostics Card */}
+      {essayText.trim().length > 0 && (
+        <div className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] dark:bg-[#1E1B18] border border-[#C8C0B0] dark:border-[#3A342D] space-y-4 shadow-xs">
+          <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0] dark:border-[#3A342D]">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#A84A28] dark:text-[#D45B34]" />
+              <h4 className="font-mono text-xs uppercase tracking-wider font-bold text-[#1E1B17] dark:text-[#EFEAE1]">
+                Academic Linter & L1 Diagnostics
+              </h4>
+            </div>
+            <span className={clsx(
+              'font-mono text-[11px] px-2.5 py-0.5 rounded-full font-bold',
+              metrics.issues.length === 0
+                ? 'bg-[#535841]/20 text-[#535841] dark:text-[#7A855F]'
+                : 'bg-[#A84A28]/20 text-[#A84A28] dark:text-[#D45B34]'
+            )}>
+              {metrics.issues.length === 0 ? '✓ Tidak Ada Jebakan Terdeteksi' : `${metrics.issues.length} Poin Evaluasi`}
+            </span>
+          </div>
+
+          {metrics.issues.length === 0 ? (
+            <p className="text-xs text-[#535841] dark:text-[#7A855F] font-sans">
+              Struktur kalimat dan kolokasi tulisanmu sejauh ini bersih dari kesalahan umum interferensi bahasa ibu.
+            </p>
+          ) : (
+            <div className="space-y-2.5">
+              {metrics.issues.map((issue) => (
+                <div
+                  key={issue.id}
+                  className="p-3.5 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] border-l-4 border-l-[#A84A28] dark:border-l-[#D45B34] border-y border-r border-[#C8C0B0] dark:border-[#3A342D] space-y-1.5 text-xs"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-mono font-bold text-[#A84A28] dark:text-[#D45B34]">
+                      "{issue.phrase}"
+                    </span>
+                    <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#C8C0B0] dark:bg-[#3A352D] text-[#524C42] dark:text-[#C4BCAD]">
+                      {issue.type === 'l1-error' ? 'Jebakan Bahasa Ibu (L1)' : issue.type === 'grammar' ? 'Grammar Rule' : 'Stylistic'}
+                    </span>
+                  </div>
+                  <p className="text-[#1E1B17] dark:text-[#EFEAE1] font-medium">{issue.message}</p>
+                  {issue.replacementSuggestion && (
+                    <p className="text-[11px] font-mono text-[#535841] dark:text-[#7A855F]">
+                      Saran: <strong>{issue.replacementSuggestion}</strong>
+                    </p>
+                  )}
+                  <p className="text-[11px] text-[#7A7265] dark:text-[#948B7C] italic">{issue.linguisticRationale}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Repetitive Words Tracker */}
+          {metrics.repetitiveWords.length > 0 && (
+            <div className="pt-3 border-t border-[#C8C0B0] dark:border-[#3A342D] space-y-2 text-xs">
+              <span className="font-mono text-[11px] text-[#7A7265] dark:text-[#948B7C] uppercase font-semibold">
+                Kata Berfrekuensi Tinggi (&gt; 3x Pemakaian):
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {metrics.repetitiveWords.map((item) => (
+                  <span
+                    key={item.word}
+                    className="px-2.5 py-1 rounded-xl bg-[#DDD7CA] dark:bg-[#28241F] border border-[#C8C0B0] dark:border-[#3A342D] font-mono text-[11px] text-[#1E1B17] dark:text-[#EFEAE1]"
+                  >
+                    "{item.word}" ({item.count}x)
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Recommended Vocabulary Chips */}
       {exercise.recommendedVocabulary && exercise.recommendedVocabulary.length > 0 && (
