@@ -130,7 +130,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Taksonomi Kasus Gramatikal: Nominative vs Accusative Case",
-                "explanation": "Dalam tata bahasa deskriptif bahasa Inggris, Personal Pronouns adalah salah satu dari sedikit elemen yang masih mempertahankan sistem kasus infleksional (Case System). Nominative Case (I, You, He, She, It, We, They) bertindak sebagai agen atau argumen eksternal verba. Sebaliknya, Accusative/Objective Case (me, you, him, her, it, us, them) bertindak sebagai argumen internal yang menerima tindakan kata kerja atau menjadi objek dari frasa preposisional (Prepositional Complement).",
+                "explanation": "Bayangkan sebuah drama panggung di mana aktor dan korban memiliki kostum yang berbeda. Dalam tata bahasa Inggris, kata ganti orang (Personal Pronouns) masih memakai 'kostum' yang berbeda tergantung peran mereka, sesuatu yang kita sebut Case System. Jika mereka menjadi aktor yang melakukan aksi (Nominative Case seperti I, You, He, She), posisinya kokoh di depan sebagai subjek. Tapi coba perhatikan saat mereka menjadi pihak yang menerima aksi atau objek (Accusative Case seperti me, you, him, her), bentuknya otomatis berubah. Perubahan wujud inilah yang menjadi pondasi awal menyusun kalimat bahasa Inggris yang tepat.",
                 "formula": "Nominative Pronoun (Subject) + Finite Verb + Accusative Pronoun (Direct/Indirect Object) / Preposition + Accusative Pronoun",
                 "examples": [
                         {
@@ -158,7 +158,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Ekspletif & Dummy Subject (\"It\" dan \"There\")",
-                "explanation": "Bahasa Indonesia adalah bahasa pro-drop yang memungkinkan penanggalan subjek ketika konteks cuaca atau eksistensi dibahas (contoh: \"Sedang hujan lebat\" atau \"Penting untuk dicatat bahwa...\"). Namun, bahasa Inggris mewajibkan posisi subjek (Spec,TP) terisi secara fonologis. Untuk proposisi tanpa agen semantis konkret, digunakanlah Dummy/Expletive Subject \"It\" (untuk cuaca, waktu, jarak, dan evaluasi klausa ekstraposisi) serta \"There\" (untuk proposisi eksistensial).",
+                "explanation": "Dalam bahasa Indonesia, kita biasa santai bilang \"Lagi hujan nih\" tanpa perlu repot mencari siapa pelakunya. Nah, bahasa Inggris itu sangat kaku soal aturan ini; setiap kalimat wajib punya subjek yang mengisi kursi kosong, meski tidak ada pelaku aslinya. Untuk menyiasati hal ini, digunakanlah subjek 'palsu' atau Expletive Subject seperti 'It' untuk membicarakan cuaca, waktu, atau jarak. Ingat juga penggunaan 'There' ketika kamu hanya ingin menyatakan keberadaan sesuatu. Jadi, subjek palsu ini sebenarnya adalah pahlawan tanpa tanda jasa yang membuat kalimatmu sah secara tata bahasa.",
                 "formula": "It + is/was + [Adjective/Noun Complement] + [that-clause / to-infinitive] | There + is/are/was/were + [Noun Phrase]",
                 "examples": [
                         {
@@ -182,7 +182,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Urutan Kesopanan & Kasus pada Subjek Majemuk (Compound Subjects)",
-                "explanation": "Ketika dua atau lebih subjek digabungkan menggunakan konjungsi koordinatif \"and\", konvensi preskriptif baku menuntut dua aturan: (1) Urutan Kesopanan (Politeness Hierarchy), di mana pihak lain disebut sebelum diri sendiri (Second/Third person sebelum First person), dan (2) Integritas Kasus (Case Integrity), di mana pronoun tetap harus berbentuk nominatif. Cara termudah memvalidasinya adalah dengan menguji kalimat tersebut jika pihak lain dihilangkan.",
+                "explanation": "Coba bayangkan kamu dan temanmu memenangkan sebuah lomba; rasanya lebih sopan jika kamu menyebut nama temanmu dulu, bukan? Konvensi kesopanan ini juga berlaku ketat dalam bahasa Inggris ketika kamu menggabungkan dua subjek dengan kata 'and'. Selain menyebut pihak lain sebelum diri sendiri, kamu juga wajib menjaga Integritas Kasus, artinya kata ganti (pronoun) harus tetap konsisten berbentuk subjek (nominatif). Cara paling jitu untuk memvalidasinya adalah dengan membuang sementara nama temanmu, dan dengarkan apakah kata ganti untuk dirimu terdengar janggal jika dibaca sendirian.",
                 "formula": "[Noun/Name/Third Person Pronoun] + and + I + [Finite Verb]",
                 "examples": [
                         {
@@ -205,7 +205,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Kohesi Anafora & Pronoun Referencing dalam Retorika Akademik",
-                "explanation": "Dalam penulisan esai akademik (IELTS Task 2 & TOEFL Writing), pronoun berfungsi sebagai peranti kohesi leksikal (Anaphoric Reference) yang merujuk kembali ke Nomina Anteseden (Antecedent Noun). Masalah fatal yang sering mengurangi skor Coherence & Cohesion adalah Pronoun-Antecedent Disagreement (ketidakcocokan jumlah/gender) dan Vague Pronoun Reference (ambiguitas ketika ada dua nomina yang berpotensi menjadi rujukan).",
+                "explanation": "Pernahkah kamu membaca cerita yang tiba-tiba muncul kata 'dia', tapi kamu bingung 'dia' yang mana yang dimaksud? Dalam penulisan esai akademik, pronoun berfungsi sebagai jembatan cerdas (Anaphoric Reference) yang merujuk kembali ke kata benda sebelumnya (Antecedent Noun). Masalah fatal yang sering membuat skor anjlok adalah ketika pronoun tersebut tidak selaras jumlahnya dengan kata benda aslinya (Pronoun-Antecedent Disagreement), atau malah merujuk pada hal yang terlalu samar (Vague Pronoun Reference). Makanya, selalu pastikan setiap kata ganti yang kamu tulis memiliki jangkar yang jelas dan tak terbantahkan di kalimat-kalimat sebelumnya.",
                 "formula": "Antecedent Noun (Tunggal/Jamak) ----[Kesesuaian Fitur Gramatikal]----> Anaphoric Pronoun",
                 "examples": [
                         {
@@ -323,7 +323,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Peran Kopula (Copular Verb) & Predikatif Kalimat",
-                "explanation": "Istilah \"Kopula\" (Copula) berasal dari bahasa Latin yang berarti \"pengikat\" atau \"rantai\". Dalam sintaksis, Copular Verb adalah kata kerja yang menghubungkan Subjek dengan Predikatifnya (Subject Complement), baik berupa Frasa Adjektiva (Adjective Phrase), Frasa Nomina (Noun Phrase), atau Frasa Preposisional (Prepositional Phrase). Berbeda dengan kata kerja aksi transitif, kopula tidak pernah mengambil direct object penderita.",
+                "explanation": "Bayangkan sebuah jembatan kokoh yang sekadar menghubungkan dua daratan tanpa melakukan aksi apa pun. Itulah fungsi utama To Be sebagai 'Kopula', sebuah kata dari bahasa Latin yang memang berarti pengikat. Alih-alih menunjukkan aksi seperti memukul atau berlari, kopula hanya menghubungkan Subjek dengan penjelasnya (Subject Complement), entah itu kata sifat, kata benda, atau keterangan. Ingat, karena dia bukan kata kerja aksi, kopula tidak pernah memiliki objek penderita, melainkan hanya cermin yang memantulkan kembali identitas sang subjek.",
                 "formula": "Subject + To Be (Kopula) + Subject Complement [Adjective / Noun / Prepositional Phrase]",
                 "examples": [
                         {
@@ -351,7 +351,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Matriks Dimensi Waktu & Keselarasan Subjek (Subject-Verb Agreement pada To Be)",
-                "explanation": "To Be adalah kata kerja paling ireguler dalam bahasa Inggris dengan pembedaan bentuk berdasarkan waktu (Tense) dan jumlah subjek (Number/Person). Waktu sekarang (Present) membedakan: \"am\" (1st Person Singular), \"is\" (3rd Person Singular: He, She, It, Nomina Tunggal/Uncountable), dan \"are\" (Plural & 2nd Person: You, We, They). Waktu lampau (Past) membedakan: \"was\" (I, He, She, It, Singular) dan \"were\" (You, We, They, Plural).",
+                "explanation": "Coba perhatikan bagaimana bunglon bisa berubah warna menyesuaikan tempatnya berpijak. To Be adalah kata kerja paling ireguler dalam bahasa Inggris karena ia berubah wujud tergantung pada dua hal: waktu kejadian (Tense) dan jumlah subjeknya. Di masa sekarang, ia membelah diri menjadi 'am' untuk I, 'is' untuk si tunggal He/She/It, dan 'are' untuk kawanan jamak You/We/They. Saat ditarik ke masa lalu, wujudnya menyusut hanya menjadi 'was' dan 'were', memaksa kamu untuk selalu waspada menyelaraskan subjek dan waktunya.",
                 "formula": "Present: I am | He/She/It is | You/We/They are || Past: I/He/She/It was | You/We/They were",
                 "examples": [
                         {
@@ -370,7 +370,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "To Be sebagai Auxiliary Verb: Aspek Kontinu & Pasif",
-                "explanation": "Selain sebagai Main Verb (Kopula), To Be juga memegang peran vital sebagai Auxiliary Verb (Kata Kerja Bantu). Dalam Aspek Kontinu (Continuous/Progressive), To Be digabungkan dengan Present Participle (V-ing) untuk menyatakan aksi yang sedang berlangsung. Dalam Kalimat Pasif (Passive Voice), To Be digabungkan dengan Past Participle (V3) untuk mempromosikan objek menjadi fokus kalimat.",
+                "explanation": "Di dunia kerja, seorang manajer utama terkadang harus turun tangan menjadi asisten untuk proyek khusus. To Be pun demikian; selain menjadi kata kerja utama (Kopula), ia sangat sering mengambil peran sebagai kata kerja bantu (Auxiliary Verb). Bayangkan saat kamu ingin menceritakan kejadian yang sedang berlangsung (Aspek Kontinu), To Be akan bergandengan tangan dengan kata kerja -ing. Lebih jauh lagi, ketika kamu ingin mengubah kalimat menjadi pasif, To Be akan berkolaborasi dengan kata kerja bentuk ketiga (V3) untuk mengangkat sang objek menjadi bintang utama.",
                 "formula": "Continuous Aspect: To Be + [Verb-ing] | Passive Voice: To Be + [Past Participle / V3]",
                 "examples": [
                         {
@@ -388,7 +388,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Zero Copula Transfer Trap & Analisis Interferensi L1",
-                "explanation": "Fenomena \"Zero Copula\" adalah kecenderungan pembelajar bahasa ibu Indonesia untuk menghilangkan kata kerja To Be ketika menyusun kalimat deklaratif bahasa Inggris. Hal ini terjadi karena tata bahasa Austronesia (seperti bahasa Indonesia) tidak memiliki ekuivalen kopula wajib di depan kata sifat, kata keterangan tempat, atau frasa nominal. Mengatasi jebakan ini membutuhkan pembiasaan mental memeriksa keberadaan finite verb pada setiap klausa.",
+                "explanation": "Kita orang Indonesia sangat terbiasa mengatakan 'Dia cantik' atau 'Mereka mahasiswa' secara langsung tanpa kata penghubung apa pun. Jebakan perbedaan bahasa inilah yang sering membuat kita lupa memasukkan To Be, sebuah fenomena berbahaya yang disebut 'Zero Copula'. Karena bahasa Indonesia tidak mewajibkan kopula di depan kata sifat atau kata benda, otak kita sering menerjemahkannya mentah-mentah ke bahasa Inggris. Untuk lepas dari kebiasaan ini, kamu perlu membangun insting baru: selalu periksa apakah setiap klausamu sudah memiliki kata kerja (finite verb) yang berdetak di dalamnya.",
                 "formula": "Pemeriksaan Sintaksis: Apakah kalimat memiliki Main Verb? Jika tidak ada verba aksi, WAJIB ada To Be!",
                 "examples": [
                         {
@@ -514,7 +514,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Dualitas Peran: Main Verb (Kepemilikan) vs Auxiliary Verb (Aspek Perfek)",
-                "explanation": "Perbedaan mendasar terletak pada keberadaan kata kerja lain setelahnya. Jika HAVE berdiri sendiri diikuti Frasa Nomina, ia adalah Main Verb berstatus statif yang menyatakan kepemilikan (*possession*). Namun, jika HAVE diikuti oleh Past Participle (V3), ia berfungsi sebagai Auxiliary Verb yang membentuk Present Perfect, Past Perfect, atau Future Perfect.",
+                "explanation": "Bayangkan seorang aktor serbabisa yang bisa menjadi pemeran utama atau sekadar asisten sutradara yang hebat. Kata 'HAVE' memiliki dualitas peran yang sangat unik; jika ia berdiri sendiri ditemani kata benda, ia adalah Main Verb yang dengan bangga menyatakan kepemilikan. Tapi coba perhatikan saat HAVE berpasangan dengan kata kerja bentuk ketiga (V3), ia rela mundur menjadi Auxiliary Verb. Dalam peran pembantu inilah ia membantu menciptakan nuansa waktu yang kompleks seperti Present Perfect, Past Perfect, atau Future Perfect.",
                 "formula": "Main Verb: Subject + HAVE/HAS/HAD + Noun Phrase | Auxiliary Verb: Subject + HAVE/HAS/HAD + Past Participle (V3)",
                 "examples": [
                         {
@@ -537,7 +537,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Morfologi Infleksi & Keselarasan Subjek Waktu (Concord)",
-                "explanation": "Pada waktu sekarang (Present Tense), HAVE berubah menjadi HAS khusus untuk subjek Orang Ketiga Tunggal (3rd Person Singular: He, She, It, Singular Noun, Uncountable Noun). Pada waktu lampau (Past Tense), bentuk HAVE dan HAS lebur menjadi HAD untuk semua subjek tanpa terkecuali.",
+                "explanation": "Pernah merasa aturan bahasa Inggris itu kadang pilih kasih? Nah, perhatikan tingkah HAVE di masa sekarang (Present Tense), di mana ia harus berubah bentuk menjadi HAS khusus untuk melayani subjek Orang Ketiga Tunggal yang eksklusif (He, She, It, atau benda tunggal). Namun, cerita ini menjadi jauh lebih sederhana dan merata saat kita masuk ke masa lampau (Past Tense). Semua pembedaan subjek itu dilebur habis, di mana HAVE dan HAS bersatu menjadi wujud tunggal yang kokoh: HAD.",
                 "formula": "Present: [I/You/We/They/Plural] HAVE | [He/She/It/Singular/Uncountable] HAS || Past: [All Subjects] HAD",
                 "examples": [
                         {
@@ -555,7 +555,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Konstruksi Kausatif: \"Have something done\" vs \"Have someone do\"",
-                "explanation": "Dalam ragam formal dan akademik, HAVE sering digunakan dalam struktur Kausatif (Causative Construction) untuk menyatakan bahwa subjek mengatur atau menginstruksikan pihak lain untuk melakukan suatu tindakan, alih-alih melakukannya sendiri.",
+                "explanation": "Tidak selamanya kamu harus mengotori tanganmu sendiri untuk menyelesaikan suatu pekerjaan, bukan? Dalam ragam formal, HAVE sering dimanfaatkan dalam struktur Kausatif (Causative Construction) yang sangat elegan. Alih-alih melakukan aksi itu sendiri, kamu menggunakan struktur ini untuk menunjukkan bahwa kamu mengatur atau menginstruksikan pihak profesional lain untuk melakukannya. Ini adalah cara tata bahasa untuk bilang: 'Aku punya kuasa agar hal ini diselesaikan oleh orang lain.'",
                 "formula": "Kausatif Pasif: Subject + HAVE/HAS/HAD + Object + Past Participle (V3) | Kausatif Aktif: Subject + HAVE + Agent + Bare Infinitive (V1)",
                 "examples": [
                         {
@@ -573,7 +573,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Jebakan Statif vs Dinamis pada Kata Kerja \"Have\"",
-                "explanation": "Ketika HAVE bermakna kepemilikan (*possession*) atau status hubungan, HAVE adalah Stative Verb dan DILARANG digunakan dalam bentuk Continuous/Progressive (-ing). Namun, ketika HAVE bermakna aktivitas dinamis seperti makan (*having lunch*), mengalami (*having difficulty*), atau mengadakan (*having a meeting*), bentuk -ing sepenuhnya legal.",
+                "explanation": "Bayangkan bedanya memegang status sebagai pemilik rumah, dengan sedang asyik menikmati makan malam di dalamnya. Saat HAVE bermakna kepemilikan mutlak (Stative Verb), ia adalah status diam yang haram hukumnya ditambahkan akhiran -ing (Continuous). Tapi coba perhatikan saat HAVE berubah wujud menjadi aktivitas dinamis, seperti sedang makan (having lunch) atau mengadakan rapat (having a meeting). Di momen-momen penuh aksi inilah, bentuk -ing sepenuhnya legal dan terdengar sangat natural.",
                 "formula": "Statif (Kepemilikan): DILARANG -ing! | Dinamis (Aktivitas): BOLEH -ing!",
                 "examples": [
                         {
@@ -697,8 +697,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     sections: [
       {
         stepNumber: '01',
-        title: 'Mekanisme Operator & Bare Infinitive',
-        explanation: 'Operator memikul beban gramatikal tenses dan kesesuaian orang ketiga tunggal.',
+        title: 'Mekanisme Do-Support & Penyelamat Beban Sintaksis',
+        explanation: "Ketika mobilmu mogok, kamu pasti membutuhkan truk derek dari luar untuk menariknya. Nah, prinsip 'Do-Support' dalam bahasa Inggris bekerja persis seperti truk derek penyelamat tersebut. Ketika sebuah kalimat ingin mengatakan \"tidak\" (negasi) atau ingin ditukar menjadi pertanyaan, tapi tidak punya kata kerja bantu bawaan, disisipkanlah verba dummy DO. Ia tidak membawa makna apa-apa secara leksikal, tapi kehadirannya mutlak diperlukan untuk menampung partikel 'not' agar struktur kalimatmu tidak runtuh.",
         formula: 'Negasi: S + do/does/did + NOT + Verb 1 (Bare Infinitive) | Tanya: Do/Does/Did + S + Verb 1?',
         examples: [
           { sentence: 'The experiment does not require radioactive reagents.', translation: 'Eksperimen tersebut tidak memerlukan reagen radioaktif.', note: 'does not + require (V1 murni)' },
@@ -708,6 +708,47 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
           incorrectSentence: 'The patient did not responded to the initial treatment.',
           correctSentence: 'The patient did not respond to the initial treatment.',
           linguisticReason: 'Karena "did not" sudah menunjukkan masa lampau, kata kerja berikutnya wajib kembali ke bentuk dasar "respond" (bukan "responded").'
+        }
+      },
+      {
+        stepNumber: '02',
+        title: 'Hukum Bare Infinitive & Bahaya Double Marking',
+        explanation: "Dalam dunia efisiensi, tidak ada gunanya mempekerjakan dua orang untuk melakukan satu tanda yang sama (Double Marking). Ketika DID sudah sukses menandai bahwa kejadian itu di masa lampau, atau DOES sudah menanggung beban penanda orang ketiga tunggal, tugas mereka sudah selesai. Akibatnya, kata kerja utama yang mengikuti di belakangnya HARUS tampil apa adanya dalam bentuk murni (Bare Infinitive). Ingat, jangan pernah tambahkan sisipan -ed, akhiran -s, atau awalan 'to' lagi pada kata kerja utamanya.",
+        formula: 'DO / DOES / DID + Subject + [BARE INFINITIVE (V1 Polos tanpa -s/-ed/to)]',
+        examples: [
+          { sentence: 'Does the professor explain the quantum mechanics theorem clearly?', translation: 'Apakah profesor tersebut menjelaskan teorema mekanika kuantum dengan jelas?', note: 'Does + professor + explain (V1 murni tanpa -s).' },
+          { sentence: 'The software update did not resolve the network latency issues.', translation: 'Pembaruan perangkat lunak tidak menyelesaikan masalah latensi jaringan.', note: 'did not + resolve (V1 murni tanpa -d/-ed).' }
+        ],
+        contrastiveAnalysis: {
+          incorrectSentence: 'She does not understands the statistical modeling methodology.',
+          correctSentence: 'She does not understand the statistical modeling methodology.',
+          linguisticReason: 'Setelah operator "does not", akhiran -s pada "understands" wajib dicopot menjadi bentuk dasar "understand".'
+        }
+      },
+      {
+        stepNumber: '03',
+        title: 'Emphatic DO: Menegaskan Kebenaran & Membantah Keraguan',
+        explanation: "Sesekali, kamu pasti ingin menggebrak meja untuk meyakinkan seseorang yang meragukan ucapanmu. Dalam tata bahasa Inggris, menyisipkan kata DO, DOES, atau DID langsung ke dalam kalimat positif deklaratif adalah cara elegan untuk melakukan \"gebrakan\" tersebut (Emphatic Mood). Kehadirannya seketika memberikan penekanan retoris yang sangat kuat. Jadi, saat dosenmu ragu, kamu bisa menggunakan struktur ini untuk membantah keraguan itu dan mempertegas temuanmu dengan telak.",
+        formula: 'Subject + [DO / DOES / DID (Emphatic)] + Bare Infinitive + Complement',
+        examples: [
+          { sentence: 'Although the initial hypothesis was contested, subsequent tests did corroborate the findings.', translation: 'Meskipun hipotesis awal sempat diperdebatkan, pengujian lanjutan memang benar-benar menguatkan temuan tersebut.', note: 'did corroborate = penegasan fakta masa lalu yang kuat.' },
+          { sentence: 'The clinical data does show a statistically significant improvement.', translation: 'Data klinis tersebut memang benar-benar menunjukkan perbaikan yang signifikan secara statistik.', note: 'does show = penegasan di masa kini.' }
+        ],
+        commonPitfall: 'Jangan gunakan Emphatic DO secara berlebihan di setiap kalimat esai; gunakan hanya saat ingin membantah sanggahan atau menegaskan kontras.'
+      },
+      {
+        stepNumber: '04',
+        title: 'Main Verb DO vs Auxiliary DO: Konstruksi Kembar',
+        explanation: "Jangan terkecoh, DO ini punya kehidupan ganda yang tak kalah sibuk; selain menjadi asisten, ia juga bisa tampil sebagai kata kerja utama yang maknanya \"melakukan\" atau \"mengerjakan\". Nah, keunikannya muncul ketika si Main Verb DO ini ingin dinegasikan atau dijadikan kalimat tanya. Ia tetap tidak bisa mandiri dan mewajibkan kembarannya, si Auxiliary DO, untuk hadir membantunya. Itulah mengapa kamu akan sering menemukan konstruksi yang seolah berulang seperti 'do not do' atau 'did not do' dalam satu kalimat.",
+        formula: 'Negasi Main Verb DO: Subject + [do/does/did not (Aux)] + [do (Main Verb)]',
+        examples: [
+          { sentence: 'The research team did not do any preliminary field trials.', translation: 'Tim peneliti tidak melakukan uji lapangan pendahuluan apa pun.', note: 'did not (auxiliary) + do (main verb).' },
+          { sentence: 'Why do they not do the mandatory background checks?', translation: 'Mengapa mereka tidak melakukan pemeriksaan latar belakang yang wajib?', note: 'do (auxiliary) + do (main verb).' }
+        ],
+        contrastiveAnalysis: {
+          incorrectSentence: 'The candidate did not the required assignments on time.',
+          correctSentence: 'The candidate did not do the required assignments on time.',
+          linguisticReason: 'Kata "did not" hanyalah kata bantu negasi; kalimat tetap membutuhkan kata kerja utama "do" untuk menyatakan tindakan mengerjakan.'
         }
       }
     ],
@@ -813,7 +854,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Kaidah Inti Concord Singular/Plural & Infleksi Akhiran -s/-es",
-                "explanation": "Dalam bahasa Inggris, terdapat fenomena asimetris: Nomina Jamak biasanya berakhiran -s (students, hypotheses, factors), sedangkan Verba Tunggal yang berakhiran -s (analyzes, runs, is, has). Keselarasan gramatikal (Concord) menuntut verba menyesuaikan jumlah gramatikal dari Head Noun (inti kata benda subjek), bukan kata benda yang kebetulan berada paling dekat dengan kata kerja.",
+                "explanation": "Coba perhatikan sebuah paradoks unik yang sering menjebak pemula: dalam bahasa Inggris, tanda -s itu punya dua fungsi yang berkebalikan. Jika ia menempel pada kata benda, itu artinya mereka jamak, tapi anehnya, jika tanda -s menempel pada kata kerja (seperti analyzes atau is), itu justru penanda subjek tunggal! Keselarasan harmoni inilah yang disebut Concord, di mana kata kerja harus selalu taat pada jumlah Subjek Inti (Head Noun). Ingat, verba dilarang keras sekadar menyamakan bentuk dengan kata benda mana pun yang kebetulan numpang lewat di dekatnya.",
                 "formula": "Singular Subject + Verb[-s/-es] | Plural Subject + Verb[Base Form]",
                 "examples": [
                         {
@@ -831,7 +872,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Frasa Penyela (Intervening Phrases) & The Proximity Trap",
-                "explanation": "Jebakan Proksimitas (The Proximity Trap) terjadi ketika penulis menyelaraskan kata kerja dengan kata benda di dalam frasa preposisional penyela (seperti *along with, as well as, together with, in addition to, accompanied by*), alih-alih dengan subjek sejati di awal kalimat.",
+                "explanation": "Bayangkan kamu sedang menatap seorang tokoh penting, tapi pandanganmu terhalang oleh pengawal yang berdiri di depannya. Inilah 'Jebakan Proksimitas' (The Proximity Trap), kesalahan fatal di mana penulis malah menyelaraskan kata kerja dengan kata benda di dalam frasa penyela (seperti along with, as well as). Padahal, frasa-frasa pengecoh ini sama sekali tidak mengubah jumlah subjek utama yang sesungguhnya. Mata tata bahasamu harus tajam menembus pengawal ini untuk menemukan subjek sejati yang bersandar di awal kalimat.",
                 "formula": "[HEAD NOUN (Subjek Sejati)] + [Frasa Penyela: as well as / together with / along with ...] + [VERB SESUAI HEAD NOUN]",
                 "examples": [
                         {
@@ -854,7 +895,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Indefinite Pronouns: Singular Absolut vs Distributive Concord",
-                "explanation": "Pronoun tak tentu (Indefinite Pronouns) yang berakhiran -one, -body, -thing (*Everyone, Everybody, Everything, Someone, Anyone, No one, Each, Either, Neither*) secara preskriptif dihitung sebagai TUNGGAL (Singular) dan selalu mewajibkan verba berakhiran -s.",
+                "explanation": "Pernah merasa kalau memikirkan kata 'semua orang' (Everyone) itu terbayang seperti kerumunan besar yang pastinya jamak? Buang jauh-jauh bayangan itu saat menulis esai akademik. Pronoun tak tentu (Indefinite Pronouns) yang berakhiran -one, -body, atau -thing secara hukum preskriptif dikunci mati sebagai entitas TUNGGAL. Artinya, sekumpulan besar 'Everybody' atau 'Somebody' tetap dihitung sebagai satu kesatuan utuh, sehingga selalu mewajibkan kata kerja tunggal yang berakhiran -s.",
                 "formula": "Everyone / Each / Neither / Either of [Plural Noun] + [SINGULAR VERB (-s)]",
                 "examples": [
                         {
@@ -872,7 +913,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Kuantifier Fraksional & Subjek Inversi Ekspletif (There is/are)",
-                "explanation": "Pada kuantifier fraksional atau persentase (*none of, all of, majority of, percentage of*), jumlah verba ditentukan oleh nomina yang mengikutinya (Countable Plural -> Jamak; Uncountable -> Tunggal). Pada konstruksi \"There is / There are\", subjek gramatikal berada SETELAH kata kerja kopula.",
+                "explanation": "Aturan bahasa kadang menuntut kita untuk sedikit fleksibel, terutama saat berhadapan dengan ukuran pecahan atau porsi (Fractional Quantifiers) seperti 'all of' atau 'majority of'. Di sini, nasib kata kerja ditentukan sepenuhnya oleh kata benda yang mengikutinya di belakang: apakah ia bisa dihitung atau tidak. Lebih menantang lagi pada konstruksi 'There is / There are' — coba perhatikan, posisinya terbalik; alih-alih di depan, subjek gramatikal aslinya justru bersembunyi persis SETELAH kata kerja kopula.",
                 "formula": "There + is/was + [Singular/Uncountable Noun] | There + are/were + [Plural Noun Phrase]",
                 "examples": [
                         {
@@ -973,7 +1014,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Taksonomi 4 Kategori Nomina & Karakteristik Sintaksis",
-                "explanation": "Proper Nouns merujuk pada entitas tunggal spesifik (seperti *Oxford University, Dr. Vance, Indonesia*) dan selalu diawali huruf kapital tanpa memerlukan artikel penentu umum. Common Nouns adalah kata benda generik yang dapat dihitung (Countable) dan wajib memiliki determiner jika berbentuk tunggal (*a hypothesis, the laboratory*). Collective Nouns merujuk pada kesatuan kelompok (*team, committee, faculty*), sedangkan Abstract Nouns merujuk pada ide, keadaan, atau kualitas (*integrity, sustainability, validity*).",
+                "explanation": "Bayangkan kamu masuk ke perpustakaan raksasa yang koleksinya dipisah rapi ke dalam empat ruang. Ruang VIP adalah 'Proper Nouns' untuk nama-nama spesifik yang selalu diagungkan dengan huruf kapital, seperti Oxford University atau Dr. Vance. Di ruang sebelahnya ada 'Common Nouns', benda-benda generik yang butuh pengawal pengikat (determiner) jika berdiri tunggal. Lalu ada 'Collective Nouns' tempat rombongan kelompok berkumpul, dan terakhir 'Abstract Nouns', tempat bersemayamnya ide-ide tanpa wujud fisik namun esensial seperti integritas dan validitas.",
                 "formula": "Proper Noun [Kapital] | Common Noun [Determiner + Noun] | Collective Noun [Grup] | Abstract Noun [Konsep Nirwujud]",
                 "examples": [
                         {
@@ -991,7 +1032,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Collective Nouns: Keselarasan Tunggal vs Jamak (American vs British Concord)",
-                "explanation": "Collective Nouns (seperti *family, government, jury, audience, committee*) dapat mengambil verba tunggal atau jamak tergantung fokus semantisnya. Dalam American English, fokusnya adalah pada kesatuan tunggal (Single Unit) -> Verba Tunggal (*The committee has decided*). Dalam British English, jika fokusnya adalah anggota individual di dalam kelompok, verba jamak diperbolehkan (*The committee have decided*). Dalam penulisan akademik formal internasional (IELTS/TOEFL), penggunaan verba tunggal adalah standar yang paling aman dan konsisten.",
+                "explanation": "Coba amati bagaimana orang Amerika dan Inggris memandang sebuah tim sepak bola secara berbeda. Bagi American English, sebuah komite atau tim dilihat murni sebagai satu kesatuan solid, sehingga verbanya tunggal (The committee has decided). Namun dalam British English, jika mereka ingin menyoroti anggota individunya yang bergerak masing-masing, kata kerja jamak pun diperbolehkan. Nah, sebagai penulis akademik formal, mengambil rute Amerika dengan menganggapnya tunggal adalah jalur yang paling aman dan tak terbantahkan.",
                 "formula": "Collective Noun (Sebagai 1 Entitas Utuh) + SINGULAR VERB (has / is / analyzes)",
                 "examples": [
                         {
@@ -1010,7 +1051,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Nomina Abstrak & Pembentukan Suffix Akademik",
-                "explanation": "Nomina Abstrak adalah pondasi kosakata akademik (Academic Word List / AWL). Nomina ini dibentuk melalui proses morfologis derivasional dengan menambahkan imbuhan akhiran (suffixes) pada verba atau adjektiva, seperti -tion (*distribution*), -ment (*development*), -ity (*feasibility*), -ance/-ence (*significance, coherence*), dan -ness (*awareness*).",
+                "explanation": "Kalau kamu ingin tulisanmu memancarkan aura ilmiah, kamu harus berteman baik dengan Nomina Abstrak. Menariknya, kata-kata sakti ini tidak muncul begitu saja, melainkan diciptakan di 'pabrik morfologi' dari kata kerja atau kata sifat yang diberi imbuhan. Bayangkan sebuah kata kerja biasa tiba-tiba disulap menjadi konsep gagah hanya dengan menempelkan akhiran derivasional seperti -tion (distribution), -ment (development), -ity (feasibility), atau -ence (significance). Inilah pondasi utama yang akan memperkaya kosakata akademikmu.",
                 "formula": "Verb/Adj + Suffix (-tion / -ment / -ity / -ence) -> Abstract Noun",
                 "examples": [
                         {
@@ -1023,7 +1064,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Noun Compounds & Kaidah Modifikasi Jamak Asimetris",
-                "explanation": "Ketika dua kata benda digabungkan menjadi Noun Compound (misal: *research methodology, student dormitory*), kata benda pertama berfungsi sebagai Modifying Noun (Adjektiva Semantis). Modifying Noun ini WAJIB selalu berbentuk tunggal, meskipun konsepnya jamak.",
+                "explanation": "Apa yang terjadi jika dua kata benda bertabrakan dan melebur menjadi satu istilah baru? Terciptalah Noun Compound, di mana kata benda terdepan mendadak beralih profesi menjadi modifikator (Modifying Noun). Ada aturan emas yang tak boleh ditawar di sini: sang modifikator WAJIB menanggalkan identitas jamaknya dan selalu tampil dalam wujud tunggal. Itulah mengapa kita menyebutnya 'shoe store', bukan 'shoes store', tak peduli ada berapa ribu pasang sepatu yang dijual di dalam toko tersebut.",
                 "formula": "Modifying Noun (SELALU TUNGGAL) + Head Noun (Bisa Tunggal/Jamak)",
                 "examples": [
                         {
@@ -1128,7 +1169,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Logika Entitas Diskrit vs Entitas Kontinu/Massa",
-                "explanation": "Countable Nouns memiliki batas fisik yang jelas (Discontinuous/Discrete Entities). Sebaliknya, Uncountable Nouns dipandang sebagai satu kesatuan kontinu (Continuous Mass) atau konsep payung kategorikal (Hypernyms). Oleh karena itu, Uncountable Nouns selalu mengambil verba tunggal dan tidak boleh dimodifikasi langsung dengan angka (*three informations ❌*).",
+                "explanation": "Bayangkan perbedaan antara memegang segenggam kelereng dan segenggam air. Kelereng (Countable Nouns) memiliki wujud fisik yang terpisah jelas, sehingga sangat mudah untuk dihitung satu per satu. Sebaliknya, air (Uncountable Nouns) dipandang sebagai satu kesatuan kontinu atau konsep yang tak bertepi. Karena wujudnya yang menyatu inilah, Uncountable Nouns selalu dikunci dengan kata kerja tunggal dan haram hukumnya langsung disandingkan dengan angka.",
                 "formula": "Countable: [Number / a/an] + Singular Noun | [Many / Few] + Plural Noun[-s] || Uncountable: [Much / Little / Amount of] + Uncountable Noun (Singular Verb)",
                 "examples": [
                         {
@@ -1146,7 +1187,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Struktur Partitif (Partitive Structures): Mengukur Uncountable Nouns",
-                "explanation": "Untuk mengukur atau membilang kata benda tak dapat dihitung, bahasa Inggris menggunakan Struktur Partitif (Partitive Measure Nouns). Rumusnya adalah menggunakan partitif yang dapat dihitung + \"of\" + kata benda tak dapat dihitung.",
+                "explanation": "Lalu bagaimana caranya kalau kita benar-benar butuh mengukur 'air' atau hal-hal abstrak tadi? Bahasa Inggris menyiapkan wadah khusus yang disebut Struktur Partitif. Idenya sangat brilian: kamu ambil sebuah wadah takaran yang BISA dihitung, lalu sambungkan dengan kata penghubung 'of', baru tuangkan kata benda tak bisa dihitungmu ke dalamnya. Dengan formula ini, kamu bisa membuat hal yang tak berbatas menjadi terukur rapi.",
                 "formula": "[Countable Partitive: piece / item / article / sheet / slice] + of + [Uncountable Noun]",
                 "examples": [
                         {
@@ -1164,7 +1205,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Dual-Class Nouns: Kata Benda Berperan Ganda",
-                "explanation": "Banyak kata benda akademik yang dapat berstatus Uncountable ketika merujuk pada konsep umum, tetapi menjadi Countable ketika merujuk pada jenis tertentu (*a specific type*) atau peristiwa diskrit (*a specific instance*). Contoh: *research* (uncountable umum) vs *a study / studies* (countable), *experience* (pengalaman hidup - uncountable) vs *an experience* (kejadian spesifik - countable).",
+                "explanation": "Pernah melihat alat yang bisa berubah fungsi tergantung tombol mana yang kamu tekan? Banyak kosakata akademik kelas atas juga bersifat bunglon atau 'Dual-Class Nouns'. Saat kata 'experience' membicarakan pengalaman hidup secara meluas, ia adalah benda Uncountable. Tapi perhatikan betapa ajaibnya saat kamu membicarakan satu kejadian spesifik; ia tiba-tiba merubah wujud menjadi Countable ('an experience'), yang menuntut artikel dan bisa dijamakkan layaknya kejadian diskrit.",
                 "formula": "General Concept -> Uncountable | Specific Instance / Variety -> Countable",
                 "examples": [
                         {
@@ -1182,7 +1223,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Daftar 10 Uncountable Absolut Paling Sering Diuji di IELTS/TOEFL",
-                "explanation": "Berikut adalah kata-kata benda yang PALING SERING disalahartikan sebagai kata benda jamak oleh penutur Indonesia: Information (*bukan informations*), Equipment (*bukan equipments*), Furniture (*bukan furnitures*), Evidence (*bukan evidences*), Advice (*bukan advices*), Accommodation, Baggage, Traffic, Feedback, Knowledge. Seluruh kata ini SELALU bersubjek tunggal (*is / was / requires*).",
+                "explanation": "Waspadalah, karena ada 10 kata sakral yang paling sering menipu insting penutur Indonesia. Kita sering terjebak membayangkan Information, Equipment, Furniture, Evidence, Advice, Accommodation, Baggage, Traffic, Feedback, dan Knowledge sebagai sesuatu yang berwujud banyak atau jamak. Padahal, dalam kacamata bahasa Inggris, kesepuluh kata ini adalah Uncountable Absolut. Ingat baik-baik: mereka SELALU bersubjek tunggal dan tidak akan pernah mentolerir kehadiran akhiran jamak -s.",
                 "formula": "[Uncountable Absolut] + SINGULAR VERB (is / has / shows)",
                 "examples": [
                         {
@@ -1287,7 +1328,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Fonetik Artikel Indefinit (A vs An Berdasarkan Bunyi Vokal)",
-                "explanation": "Pemilihan antara \"a\" dan \"an\" ditentukan murni oleh BUNYI FONETIK PERTAMA (Initial Phonetic Sound), BUKAN huruf alfabet ortografis. Jika kata diawali bunyi konsonan (termasuk bunyi semivokal /j/ seperti \"university\" atau /w/ seperti \"one-way\"), gunakan \"A\". Jika kata diawali bunyi vokal murni (meskipun huruf awalnya H mati seperti \"hour\" atau akronim \"an FBI agent\"), gunakan \"AN\".",
+                "explanation": "Banyak dari kita diajarkan bahwa 'A' untuk huruf konsonan dan 'An' untuk huruf vokal — sekarang, lupakan aturan di atas kertas itu! Pemilihan ini sejatinya diatur murni oleh BUNYI fonetik pertama yang keluar dari mulutmu. Bayangkan kata 'university'; meski diawali huruf U, bunyinya adalah konsonan (/j/), sehingga ia wajib dipasangkan dengan 'A'. Sebaliknya, saat huruf H diam membisu di kata 'hour', telinga kita menangkap bunyi vokal murni, sehingga sang 'AN' lah yang berhak menemaninya.",
                 "formula": "A + [Bunyi Konsonan: /b/, /k/, /j/ (university), /w/ (one)] | AN + [Bunyi Vokal: /æ/, /e/, /ɪ/, /ɒ/, /ʌ/, /aʊ/ (hour)]",
                 "examples": [
                         {
@@ -1310,7 +1351,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Artikel Definit \"The\": Prinsip Shared Knowledge, Uniqueness & Anaphora",
-                "explanation": "Artikel \"The\" digunakan ketika pembaca dan penulis memiliki pengetahuan bersama (Shared Knowledge) mengenai identitas benda tersebut. Terdapat 3 pemicu utama \"The\": (1) Anaphoric Reference (sudah disebutkan sebelumnya), (2) Situational Uniqueness (hanya ada satu di alam semesta atau konteks tersebut, misal *the sun, the president, the environment*), dan (3) Cataphoric Definition (dipersempit oleh klausa penjelas di belakangnya, misal *the report that was published yesterday*).",
+                "explanation": "Artikel 'The' bukanlah sekadar kata pelengkap biasa; ia adalah sebuah kedipan rahasia antara penulis dan pembaca. Saat kamu menyematkan 'The', kamu seolah berkata, 'Kita berdua tahu persis benda spesifik mana yang sedang aku bicarakan.' Pengetahuan bersama (Shared Knowledge) ini biasanya dipicu oleh tiga hal: bendanya sudah disebut sebelumnya (Anaphoric Reference), bendanya hanya ada satu di dunia (Uniqueness), atau identitasnya langsung dipersempit oleh klausa penjelas di belakangnya.",
                 "formula": "The + [Entitas Spesifik / Rujukan Anafonis / Unik di Konteks]",
                 "examples": [
                         {
@@ -1328,7 +1369,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Kaidah Zero Article (Ø) pada Generalisasi Plural & Nomina Abstrak",
-                "explanation": "Ketika membuat pernyataan umum (Generalization) mengenai kelompok plural atau konsep abstrak secara universal, DILARANG menggunakan artikel \"the\". Penambahan \"the\" akan mengubah maknanya menjadi kelompok spesifik tertentu.",
+                "explanation": "Kadang-kadang, ketiadaan justru adalah aturan itu sendiri. Saat kamu ingin membuat generalisasi atau pernyataan universal tentang kelompok plural dan konsep abstrak, kamu DILARANG menggunakan artikel 'the' sama sekali (Zero Article). Penambahan kata sakti ini justru akan berakibat fatal pada makna kalimatmu. Begitu 'the' disematkan, pernyataan universalmu seketika menyusut menjadi pembicaraan tentang satu kelompok sempit yang sangat spesifik.",
                 "formula": "Ø + [Plural Noun / Uncountable Noun] = Pernyataan Universal / Konsep Umum",
                 "examples": [
                         {
@@ -1351,7 +1392,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Konvensi Artikel Geografis & Institusional Baku",
-                "explanation": "Aturan artikel geografis memiliki pola baku: Gunakan \"The\" untuk pegunungan jamak (*The Alps, The Himalayas*), kepulauan jamak (*The Philippines*), samudra/laut/sungai (*The Atlantic, The Nile*), dan negara berbentuk serikat/republik (*The United States, The Netherlands*). JANGAN gunakan artikel untuk nama gunung tunggal (*Mount Everest*), pulau tunggal (*Java*), benua (*Asia*), atau danau tunggal (*Lake Michigan*).",
+                "explanation": "Coba perhatikan bagaimana peta dunia memiliki tata krama bahasa Inggrisnya sendiri yang cukup ketat. Aturan geografisnya begini: kucurkan artikel 'The' untuk sesuatu yang berupa kumpulan, seperti pegunungan jamak (The Alps), kepulauan, negara serikat (The United States), atau aliran panjang lautan dan sungai (The Nile). Tapi awas, jangan pernah berikan artikel apa pun untuk entitas yang berdiri tunggal dan soliter. Benua, gunung tunggal (Mount Everest), danau tunggal, atau pulau tunggal lebih suka dibiarkan telanjang tanpa hiasan 'The'.",
                 "formula": "Gugusan Jamak / Sungai / Samudra / Negara Serikat -> THE | Gunung Tunggal / Danau / Pulau / Benua -> ZERO ARTICLE",
                 "examples": [
                         {
@@ -1445,13 +1486,53 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     sections: [
       {
         stepNumber: '01',
-        title: 'Matriks Possessive vs Reflexive vs Relative',
-        explanation: 'Membedakan fungsi atributif (menempel pada noun) dan substantif (berdiri sendiri).',
-        formula: 'Possessive Adj + Noun | Possessive Pronoun (Stand-alone) | Reflexive (Subject = Object)',
+        title: 'Possessive Determiners vs Independent Possessive Pronouns',
+        explanation: "Bayangkan perbedaan antara seorang asisten yang selalu mengekor, dan seorang bos yang bisa berdiri sendiri. Possessive Determiners (seperti my, your, her, their, its) adalah sang asisten; mereka bertindak murni sebagai modifikator dan TIDAK PERNAH bisa hidup tanpa kata benda di sampingnya. Sebaliknya, Independent Possessive Pronouns (seperti mine, yours, hers, ours, theirs) adalah sang bos. Mereka diciptakan khusus untuk menggantikan kombinasi frasa panjang tersebut agar tulisanmu terbebas dari repetisi yang membosankan.",
+        formula: 'Possessive Determiner + Noun (my report) | Possessive Pronoun (This report is mine)',
         examples: [
-          { sentence: 'The organization updated its privacy policy.', translation: 'Organisasi tersebut memperbarui kebijakan privasinya.', note: 'its = Possessive (tanpa apostrof)' },
-          { sentence: 'The scholar whom the university recruited is a Nobel laureate.', translation: 'Cendekiawan yang direkrut universitas tersebut adalah peraih Nobel.', note: 'whom = Relative Pronoun (Object posisi)' }
+          { sentence: 'The pharmaceutical corporation increased its research budget.', translation: 'Perusahaan farmasi tersebut meningkatkan anggaran risetnya.', note: 'its + research budget (Possessive Determiner).' },
+          { sentence: 'Our methodology was rigorous, but theirs lacked empirical controls.', translation: 'Metodologi kami ketat, namun metodologi milik mereka tidak memiliki kontrol empiris.', note: 'theirs = their methodology (Possessive Pronoun).' }
         ]
+      },
+      {
+        stepNumber: '02',
+        title: 'Reflexive Pronouns: Fungsi Cermin & Senjata Penekanan (Intensif)',
+        explanation: "Pernahkah kamu bercermin dan menyadari bahwa orang yang menatapmu adalah dirimu sendiri? Itulah esensi dari Reflexive Pronouns (seperti myself, yourself, itself, themselves). Kata ganti ini melayani dua tujuan elegan: pertama, sebagai cermin (Refleksif Murni) ketika subjek dan objek kalimat adalah entitas yang persis sama. Kedua, ia bisa disisipkan sebagai senjata penekanan (Intensif) untuk meyakinkan pembaca bahwa sang subjek benar-benar melakukan tindakan tersebut sendirian tanpa campur tangan orang lain.",
+        formula: 'Refleksif: Subject = Direct/Indirect Object (S + V + Reflexive) | Intensif: Subject + Reflexive + V',
+        examples: [
+          { sentence: 'The machine automatically recalibrates itself every twenty-four hours.', translation: 'Mesin tersebut secara otomatis mengkalibrasi ulang dirinya sendiri setiap dua puluh empat jam.', note: 'itself = objek aksi recalibrate (Refleksif Murni).' },
+          { sentence: 'The lead author herself verified all statistical computations.', translation: 'Penulis utama itu sendiri yang memverifikasi semua komputasi statistik.', note: 'herself = penekanan emfatik/intensif.' }
+        ],
+        contrastiveAnalysis: {
+          incorrectSentence: 'The manager sent the document to my colleague and myself.',
+          correctSentence: 'The manager sent the document to my colleague and me.',
+          linguisticReason: 'Reflexive pronoun "myself" hanya sah jika subjeknya "I". Pada posisi objek setelah preposisi "to", gunakan object pronoun "me".'
+        }
+      },
+      {
+        stepNumber: '03',
+        title: 'Reciprocal Pronouns: Dinamika Dua Arah (Each Other vs One Another)',
+        explanation: "Dalam dinamika sosial, ada interaksi intim yang hanya berdua, dan ada aksi beramai-ramai yang melibatkan banyak pihak. Tata bahasa Inggris sangat peka terhadap jumlah partisipan ini melalui Reciprocal Pronouns. Jika hubungan timbal balik itu eksklusif hanya terjadi di antara DUA entitas, maka 'Each other' adalah jembatan yang paling tepat. Namun, begitu interaksi saling membalas itu melebar melibatkan TIGA entitas atau lebih, saatnya kamu beralih menggunakan 'One another'.",
+        formula: 'Dua Pihak -> Each Other | Tiga Pihak atau Lebih -> One Another',
+        examples: [
+          { sentence: 'The two competing laboratories shared their data with each other.', translation: 'Kedua laboratorium yang bersaing itu saling berbagi data satu sama lain.', note: 'two laboratories -> each other.' },
+          { sentence: 'All five research consortia collaborated with one another seamlessly.', translation: 'Kelima konsorsium riset tersebut saling berkolaborasi satu sama lain dengan lancar.', note: 'five consortia -> one another.' }
+        ]
+      },
+      {
+        stepNumber: '04',
+        title: 'ITS vs IT\'S: Jebakan Apostrof yang Sering Menipu',
+        explanation: "Coba perhatikan baik-baik, karena setitik tanda kutip kecil (apostrof) bisa menghancurkan wibawa esai akademikmu. 'ITS' tanpa apostrof adalah penanda kepemilikan mutlak untuk benda atau hewan, layaknya seragam resmi mereka. Sebaliknya, 'IT'S' dengan apostrof hanyalah sebuah kontraksi atau singkatan malas dari 'It is' atau 'It has'. Ingat aturan emas ini: dalam arena penulisan akademik yang formal, kontraksi semacam 'it's' sebaiknya kamu lenyapkan sepenuhnya dari kosakatamu.",
+        formula: 'ITS = Milik dia (benda/hewan) | IT\'S = Singkatan dari \'It is\' atau \'It has\'',
+        examples: [
+          { sentence: 'The research institute celebrated its fiftieth anniversary.', translation: 'Institut riset tersebut merayakan ulang tahunnya yang ke-50.', note: 'its = kepemilikan institute.' },
+          { sentence: 'It is widely acknowledged that solar energy reduces carbon emissions.', translation: 'Diakui secara luas bahwa energi surya mengurangi emisi karbon.', note: 'Tulis utuh \'It is\', bukan kontraksi \'It\'s\'.' }
+        ],
+        contrastiveAnalysis: {
+          incorrectSentence: 'The committee published it\'s annual assessment report yesterday.',
+          correctSentence: 'The committee published its annual assessment report yesterday.',
+          linguisticReason: '\'It\'s\' berarti \'it is\' atau \'it has\'. Untuk menyatakan kepemilikan dari The committee, gunakan \'its\' tanpa tanda petik.'
+        }
       }
     ],
     examBridge: {
@@ -1536,7 +1617,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Saxon Genitive ('s / s'): Makhluk Bernyawa & Ukuran Waktu",
-                "explanation": "Saxon Genitive menggunakan apostrof-s ('s) untuk kata benda tunggal atau jamak tak beraturan (*the scientist's lab, the children's ward*), dan apostrof saja (s') untuk kata benda jamak reguler yang sudah berakhiran -s (*the scientists' lab*). Struktur ini juga baku untuk ukuran waktu (*a week's delay, today's economy*).",
+                "explanation": "Coba bayangkan sebuah lencana kecil berbentuk apostrof-s ('s) yang disematkan untuk memproklamirkan hak milik. Struktur klasik bernama Saxon Genitive ini sangat wajar ditempelkan pada kata benda tunggal manusia, hewan, atau jamak tak beraturan (the scientist's lab, the children's ward). Jika kata benda jamaknya sudah mendesis dengan akhiran -s, cukup beri koma atas saja (the scientists' lab). Menariknya, konvensi ini juga sah secara baku untuk mengikat konsep ukuran waktu abstrak, seperti 'a week's delay' atau 'today's economy'.",
                 "formula": "Singular: Noun + 's + Noun | Regular Plural: Noun-s + ' + Noun | Time: Time Expression + 's + Noun",
                 "examples": [
                         {
@@ -1559,7 +1640,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Norman Genitive (Of-Phrase): Benda Mati & Nomina Kompleks",
-                "explanation": "Benda mati (Inanimate Objects) secara preskriptif tidak dapat \"memiliki\" sesuatu, sehingga menghindari penggunaan 's (hindari *the car's door ❌*). Gunakan Norman Genitive dengan preposisi \"of\" (*the door of the car* atau compound noun *the car door*). Struktur ini juga wajib digunakan ketika pemiliknya adalah frasa nominal yang panjang.",
+                "explanation": "Tapi tunggu dulu, apakah benda mati bisa 'memiliki' sesuatu secara harfiah layaknya manusia? Tata bahasa preskriptif berpendapat tidak, sehingga kamu harus mencabut hak pemakaian lencana 's dari mereka. Sebagai gantinya, gunakanlah struktur Norman Genitive yang lebih elegan dengan menyisipkan preposisi 'of' di antaranya (the door of the car). Strategi ini bukan cuma untuk benda mati, tapi wajib kamu pakai ketika sang pemilik memiliki nama (frasa nominal) yang terlalu panjang untuk sekadar ditempeli apostrof.",
                 "formula": "The + [Possessed Noun] + of + [Inanimate Entity / Long Noun Phrase]",
                 "examples": [
                         {
@@ -1577,7 +1658,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Double Genitive Construction",
-                "explanation": "Konstruksi \"Double Genitive\" (atau Double Possessive) menggabungkan preposisi \"of\" dengan bentuk possessive pronoun atau Saxon genitive 's. Pola ini digunakan untuk menyatakan \"salah satu dari beberapa yang dimiliki\", berbeda maknanya dengan rujukan definit tunggal.",
+                "explanation": "Pernah merasa satu cara saja tidak cukup untuk menegaskan kepemilikan suatu benda? Di sinilah bahasa Inggris memamerkan konstruksi rakus bernama 'Double Genitive'. Sesuai namanya, pola ini menggabungkan sekaligus preposisi 'of' dengan bentuk apostrof 's atau possessive pronoun di akhir frasa. Alih-alih membingungkan, pola ganda ini justru melahirkan nuansa yang sangat tajam, yakni untuk menyatakan 'salah satu dari beberapa barang spesifik yang dimiliki oleh pihak tersebut'.",
                 "formula": "A / An / Some / This + [Noun] + of + [Possessor's / Possessive Pronoun]",
                 "examples": [
                         {
@@ -1595,7 +1676,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Kepemilikan Bersama (Joint) vs Terpisah (Separate Possession)",
-                "explanation": "Ketika dua orang memiliki satu benda yang sama (Joint Possession), apostrof 's hanya disematkan pada nama ORANG TERAKHIR (*Alice and Bob's laboratory* = 1 lab milik bersama). Namun, jika masing-masing memiliki benda terpisah (Separate Possession), apostrof 's disematkan pada SETIAP NAMA dan kata bendanya dijamakkan (*Alice's and Bob's laboratories* = 2 lab berbeda).",
+                "explanation": "Bayangkan kamu dan temanmu patungan membeli satu benda yang sama; siapa yang berhak memegang lencana apostrof ('s)? Dalam Joint Possession atau kepemilikan bersama, hukumnya sangat efisien: apostrof 's cukup disematkan pada nama orang yang disebut TERAKHIR saja (Alice and Bob's laboratory = 1 lab milik bersama). Namun, beda ceritanya jika kamu dan temanmu masing-masing memiliki benda tersebut secara terpisah (Separate Possession). Demi keadilan, apostrof 's wajib disematkan satu per satu pada SETIAP nama pemiliknya (Alice's and Bob's laboratories = 2 lab berbeda).",
                 "formula": "Joint (1 Benda Bersama): [A and B]'s + Singular/Plural Noun | Separate (Benda Masing-masing): A's and B's + Plural Noun",
                 "examples": [
                         {
@@ -1696,7 +1777,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Valensi Verba & Kebutuhan Objek Penderita (Transitive vs Intransitive)",
-                "explanation": "Transitive Verbs adalah kata kerja yang memerlukan argumen internal berupa Direct Object (Objek Langsung). Tanpa objek, makna kalimat menggantung secara sintaksis. Intransitive Verbs adalah kata kerja yang aksinya berhenti pada subjek itu sendiri dan tidak pernah dapat diikuti objek langsung tanpa perantara preposisi.",
+                "explanation": "Pernahkah kamu merasa ada kalimat yang seperti menggantung dan belum selesai? Nah, di sinilah kita mengenal yang namanya Transitive Verbs, yaitu kata kerja yang butuh 'korban' atau objek langsung supaya maknanya utuh. Sebaliknya, coba perhatikan Intransitive Verbs yang aksinya sudah tuntas pada si subjek itu sendiri, tanpa perlu melibatkan objek lain. Kata kerja jenis ini sangat mandiri, sehingga kalaupun kamu ingin menambahkan keterangan, kamu harus memakai kata depan atau preposisi sebagai perantaranya.",
                 "formula": "Transitive: Subject + Transitive Verb + Direct Object | Intransitive: Subject + Intransitive Verb + (Prepositional Modifier)",
                 "examples": [
                         {
@@ -1714,7 +1795,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Ditransitive Verbs (SVOO) & Operasi Dative Shift",
-                "explanation": "Ditransitive Verbs (seperti *give, send, offer, provide, assign, grant*) mengambil DUA objek: Indirect Object (Penerima/Beneficiary) dan Direct Object (Benda/Penderita). Bahasa Inggris memungkinkan transformasi sintaksis yang disebut \"Dative Shift\", yaitu memindahkan Direct Object ke depan diikuti preposisi *to* atau *for*.",
+                "explanation": "Bayangkan kamu sedang memberi kado; pasti ada barang yang diberikan dan ada orang yang menerimanya, bukan? Inilah inti dari Ditransitive Verbs seperti give, send, atau offer, yang memang dirancang untuk memegang dua objek sekaligus: benda dan penerimanya. Serunya, dalam bahasa Inggris kamu bisa melakukan sedikit sulap posisi yang disebut Dative Shift. Kamu tinggal memindahkan objek bendanya ke depan, lalu menyisipkan preposisi 'to' atau 'for' sebelum menyebutkan siapa penerimanya, sehingga kalimatmu jadi lebih dinamis.",
                 "formula": "Pola 1 (SVOO): Subject + Verb + Indirect Object + Direct Object | Pola 2 (Dative Shift): Subject + Verb + Direct Object + TO/FOR + Indirect Object",
                 "examples": [
                         {
@@ -1732,7 +1813,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Ergative & Ambitransitive Verbs",
-                "explanation": "Ergative Verbs (seperti *open, close, melt, boil, increase, decrease, accelerate*) adalah kata kerja fleksibel yang dapat bertindak secara transitif (agensi aktif: *The scientist increased the temperature*) maupun intransitif di mana objek penderita naik menjadi subjek alami (*The temperature increased*).",
+                "explanation": "Ada kalanya kata kerja bisa bersikap sangat fleksibel, dan inilah yang kita sebut dengan Ergative Verbs seperti open, close, atau melt. Coba perhatikan, kata-kata ini bisa bertindak layaknya bos yang butuh objek, misalnya saat kamu bilang 'The scientist increased the temperature'. Tapi ajaibnya, mereka juga bisa berdiri sendiri sebagai intransitive di mana objek penderita tadi tiba-tiba naik pangkat menjadi subjek utama, seperti dalam kalimat 'The temperature increased'. Memahami sifat ganda ini akan membuat kalimat-kalimatmu terasa jauh lebih natural dan variatif.",
                 "formula": "Transitif: Agent + Verb + Patient | Ergatif Intransitif: Patient + Verb (Aksi terjadi secara otomatis)",
                 "examples": [
                         {
@@ -1750,7 +1831,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Larangan Mutlak Memasifkan Verba Intransitif",
-                "explanation": "Kesalahan paling fatal yang kerap menggugurkan skor gramatikal di IELTS/TOEFL adalah memaksakan bentuk pasif pada verba intransitif murni seperti *occur, happen, exist, remain, disappear, arrive, consist*. Karena verba intransitif tidak memiliki objek penderita, bentuk pasif seperti \"*was happened ❌*\" atau \"*was occurred ❌*\" adalah pelanggaran gramatikal mutlak.",
+                "explanation": "Satu hal yang wajib banget kamu hindari adalah memaksakan bentuk pasif pada kata kerja yang secara alami memang intransitif murni, seperti occur, happen, atau exist. Ingat ya, bentuk pasif itu ibarat memutar balik fokus kalimat dari pelaku ke objek penderita. Nah, karena kata kerja intransitif ini sedari awal memang tidak punya objek, memaksakan bentuk seperti 'was happened' atau 'was occurred' adalah sebuah pelanggaran fatal. Jadi, biarkan saja mereka tampil apa adanya dalam bentuk aktif tanpa perlu dipasifkan.",
                 "formula": "DILARANG: [To Be + V3] untuk verba intransitif! (occurred ✔, was occurred ❌)",
                 "examples": [
                         {
@@ -1849,7 +1930,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Prinsip Fonologis Ablaut Pattern (Gradasi Vokal)",
-                "explanation": "Fenomena \"Ablaut\" (Apophony) adalah perubahan vokal internal pada akar kata kerja untuk menandai perubahan bentuk waktu (Past Tense / V2) dan aspek perfektif (Past Participle / V3). Memahami perubahan /i/ -> /æ/ -> /ʌ/ (*sing-sang-sung, drink-drank-drunk, begin-began-begun*) mempermudah retensi puluhan kata kerja sekaligus.",
+                "explanation": "Pernah bertanya-tanya kenapa sing berubah jadi sang dan bukan singed? Ini karena adanya fenomena Ablaut, yaitu sebuah trik kuno bahasa Inggris di mana vokal di dalam kata itu sendiri berubah untuk menandakan waktu yang berbeda. Daripada menghafal ratusan kata tanpa arah, coba perhatikan pola vokal /i/ yang bergeser ke /æ/ lalu ke /ʌ/, seperti pada drink-drank-drunk atau begin-began-begun. Dengan mengenali irama perubahan suara ini, kamu bisa menaklukkan puluhan kata kerja ireguler sekaligus dengan jauh lebih mudah.",
                 "formula": "V1 (Base /i/) -> V2 (Past /æ/) -> V3 (Participle /ʌ/)",
                 "examples": [
                         {
@@ -1867,7 +1948,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Klasifikasi 4 Pola Morfologis Utama",
-                "explanation": "Irregular verbs terbagi ke dalam 4 pola struktural: (1) Pola Invarian AAA (tanpa perubahan: *cost-cost-cost, cut-cut-cut, spread-spread-spread*), (2) Pola V2=V3 ABB (*buy-bought-bought, teach-taught-taught, find-found-found*), (3) Pola V1=V3 ABA (*run-ran-run, become-became-become*), dan (4) Pola Diferensial Penuh ABC (*write-wrote-written, drive-drove-driven, speak-spoke-spoken*).",
+                "explanation": "Menghafal irregular verbs atau kata kerja tak beraturan tidak harus terasa seperti mimpi buruk kalau kamu tahu rahasia pengelompokannya. Sebenarnya, mereka cuma terbagi ke dalam empat pola morfologis yang sangat sederhana. Ada kelompok AAA yang super malas karena tidak berubah sama sekali (seperti cost-cost-cost), kelompok ABB di mana bentuk kedua dan ketiganya kembar (buy-bought-bought), lalu kelompok ABA yang bentuk pertama dan ketiganya sama (run-ran-run), dan terakhir kelompok ABC di mana ketiganya tampil beda penuh (write-wrote-written). Begitu kamu mengenali pola-pola ini, otakmu akan otomatis mengelompokkannya tanpa perlu dipaksa.",
                 "formula": "AAA: V1=V2=V3 | ABB: V2=V3 | ABA: V1=V3 | ABC: V1≠V2≠V3",
                 "examples": [
                         {
@@ -1885,7 +1966,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Partisipel Past Berfungsi Adjektiva vs Verba",
-                "explanation": "Beberapa verba ireguler memiliki dua bentuk partisipel lampau yang berbeda fungsinya: bentuk arkais berakhiran -en digunakan murni sebagai Adjektiva Prediktif/Atributif, sedangkan bentuk modern digunakan sebagai Verba. Contoh: *drunken behavior* (Adjektiva) vs *he has drunk* (Verba), *sunken treasure* (Adjektiva) vs *the ship has sunk* (Verba).",
+                "explanation": "Tahukah kamu bahwa beberapa irregular verbs punya dua bentuk masa lampau yang fungsinya bertolak belakang? Bentuk kuno yang berakhiran -en sekarang sudah beralih profesi dan bertindak murni sebagai kata sifat atau Adjectiva, seperti saat kita menyebut 'drunken behavior' atau 'sunken treasure'. Di sisi lain, bentuk yang lebih modern tetap setia pada tugas aslinya sebagai kata kerja (Verba) untuk menyatakan aktivitas yang sudah selesai, seperti 'he has drunk' atau 'the ship has sunk'. Jadi, perhatikan baik-baik apakah kamu sedang mendeskripsikan suatu benda atau menceritakan sebuah tindakan.",
                 "formula": "Adjektiva Atributif: [Archaic -en Participle] + Noun | Verba Perfek: HAVE + [Standard V3 Participle]",
                 "examples": [
                         {
@@ -1903,7 +1984,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Verba Rancu Kerap Tertukar: Lie/Lay & Rise/Raise",
-                "explanation": "Dua pasang kata kerja yang paling sering salah digunakan dalam ujian internasional adalah: (1) *LIE* (Intransitif: berbaring/terletak - *lie/lay/lain*) vs *LAY* (Transitif: meletakkan - *lay/laid/laid*), dan (2) *RISE* (Intransitif: naik sendiri - *rise/rose/risen*) vs *RAISE* (Transitif: menaikkan/mengangkat - *raise/raised/raised*).",
+                "explanation": "Ini dia dua pasang kata kerja yang paling sering menjebak bahkan penutur asli sekalipun: LIE melawan LAY, dan RISE melawan RAISE. Kunci rahasianya ada pada kebutuhan akan objek; Lie (berbaring) dan Rise (naik sendiri) adalah intransitif yang aksinya dilakukan oleh subjek tanpa melibatkan benda lain. Sebaliknya, Lay (meletakkan sesuatu) dan Raise (menaikkan sesuatu) adalah transitif yang selalu butuh objek yang dikenai pekerjaan tersebut. Ingat saja, kamu bisa 'raise your hand' karena ada tangan yang diangkat, tapi matahari akan 'rise' dengan sendirinya di pagi hari.",
                 "formula": "LIE (Intransitif, No Object): lie / lay / lain || LAY (Transitif, + Object): lay / laid / laid",
                 "examples": [
                         {
@@ -2010,7 +2091,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Karakteristik Sintaksis Modals Murni",
-                "explanation": "Modal Auxiliaries murni memiliki 3 sifat sintaksis yang kaku: (1) Invarian (tidak pernah menambahkan -s pada orang ketiga tunggal: *he can, bukan he cans*), (2) Bare Infinitive Complement (selalu langsung diikuti verba dasar tanpa \"to\": *must study, bukan must to study*), dan (3) Operator Mandiri (dapat langsung dinegasikan dengan not dan diinversikan dalam kalimat tanya tanpa Do-Support).",
+                "explanation": "Coba bayangkan Modal Auxiliaries seperti can, will, atau must ini sebagai kata kerja dengan prinsip yang sangat kaku dan pantang diubah. Pertama, mereka ini invarian, artinya tidak akan pernah mau ditambahi akhiran '-s' meskipun subjeknya orang ketiga tunggal. Kedua, mereka selalu menuntut pasangannya berupa Bare Infinitive Complement, alias kata kerja dasar yang tampil polos tanpa embel-embel 'to' di depannya. Terakhir, mereka adalah operator mandiri yang sangat tangguh, sehingga kamu bisa langsung menempelkan kata 'not' tanpa perlu repot-repot memanggil kata bantu seperti 'do' atau 'does'.",
                 "formula": "Subject + Modal + not + Bare Infinitive (V1)",
                 "examples": [
                         {
@@ -2023,7 +2104,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Modalitas Deontik vs Modalitas Epistemik",
-                "explanation": "Modalitas Deontik berkaitan dengan izin, kewajiban, atau keharusan (*You must wear a protective mask*). Modalitas Epistemik berkaitan dengan kesimpulan logis penutur berdasarkan bukti empiris (*The sample must be contaminated because readings are abnormal* = 95%+ yakin berdasarkan bukti). Memahami spektrum epistemik (*Must > Should > May > Might > Could*) sangat krusial untuk penulisan esai.",
+                "explanation": "Ketika kamu memakai modals, kamu sebenarnya sedang menyiarkan dua jenis pesan yang berbeda: Deontik atau Epistemik. Modalitas Deontik itu ibarat kamu sedang menjadi polisi aturan; fokusnya pada izin, kewajiban, atau keharusan seperti saat kamu menegaskan 'You must wear a mask'. Namun, saat kamu memakai Modalitas Epistemik, kamu sedang menjadi detektif yang menarik kesimpulan logis dari bukti-bukti yang ada. Di sinilah kamu bermain dengan spektrum keyakinan, mulai dari Must kalau kamu sangat yakin, turun ke Should untuk kemungkinan besar, sampai ke Might atau Could kalau kamu sekadar menebak secara spekulatif.",
                 "formula": "Epistemik Hierarchy: MUST (Sangat Yakin/Pasti) > SHOULD (Kemungkinan Besar) > MAY/MIGHT/COULD (Mungkin/Spekulatif)",
                 "examples": [
                         {
@@ -2041,7 +2122,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Past Modal Modulations: Deduksi & Penyesalan Masa Lalu",
-                "explanation": "Untuk mengekspresikan modalitas pada masa lampau, modals digabungkan dengan Present Perfect (HAVE + V3). *Must have + V3* = Kesimpulan logis masa lalu (\"Pasti telah...\"). *Could have + V3* = Peluang masa lalu yang tidak terwujud (\"Sebenarnya bisa...\"). *Should have + V3* = Evaluasi penyesalan (\"Seharusnya telah...\"). *Can't have + V3* = Ketidakmungkinan masa lalu (\"Mustahil telah...\").",
+                "explanation": "Bagaimana caranya bercerita tentang keharusan atau kemungkinan di masa lalu kalau modals sendiri seringkali tidak punya bentuk lampau yang pas? Trik rahasianya adalah dengan menggabungkan modals tersebut dengan wujud Present Perfect, yaitu HAVE diikuti kata kerja bentuk ketiga (V3). Perpaduan ini menciptakan nuansa makna yang sangat spesifik, misalnya Must have untuk kesimpulan pasti di masa lalu, atau Could have untuk membicarakan peluang yang sayangnya tidak pernah terwujud. Kamu bahkan bisa memakai Should have untuk mengekspresikan evaluasi bernada penyesalan tentang hal yang semestinya dilakukan tapi terabaikan.",
                 "formula": "Subject + Modal + HAVE + Past Participle (V3)",
                 "examples": [
                         {
@@ -2059,7 +2140,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Semi-Modals & Peran Register Akademik",
-                "explanation": "Semi-modals (seperti *have to, ought to, be able to, be supposed to, need to*) menggabungkan fungsi modal dengan infleksi verba reguler. Dalam penulisan akademik, semi-modals seperti *be able to* digunakan untuk mengisi kekosongan bentuk infinitif atau future yang tidak dimiliki modal murni (*will be able to, bukan will can*).",
+                "explanation": "Kadang-kadang, modals murni punya keterbatasan karena mereka tidak bisa digabungkan satu sama lain atau diubah bentuknya. Di sinilah Semi-modals seperti have to, ought to, atau be able to datang sebagai pahlawan penyelamat. Mereka sangat unik karena menggabungkan kekuatan makna modal dengan keluwesan kata kerja reguler yang bisa diinfleksikan sesuka hati. Alhasil, kamu bisa menutupi celah tata bahasa, misalnya memakai 'will be able to' untuk bentuk masa depan, karena formasi 'will can' jelas tidak mungkin diucapkan dalam bahasa Inggris.",
                 "formula": "Future Ability: will be able to + V1 | Obligasi Objektif: has/have to + V1",
                 "examples": [
                         {
@@ -2156,7 +2237,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Ciri Semantis Verba Keadaan (Stativity) & 4 Kategori Utamanya",
-                "explanation": "Stative Verbs mendeskripsikan keadaan berkelanjutan tanpa usaha dinamis. Terdapat 4 kelompok besar: (1) Kognisi & Opini (*know, understand, believe, doubt, recognize*), (2) Emosi & Sikap (*love, hate, prefer, appreciate, desire*), (3) Kepemilikan & Relasi (*possess, own, belong, contain, consist, depend*), dan (4) Persepsi Sensoris (*see, hear, smell, taste, seem, appear*).",
+                "explanation": "Pernahkah kamu menyadari bahwa tidak semua kata kerja itu melibatkan gerakan fisik atau keringat? Coba berkenalan dengan Stative Verbs, kata kerja tenang yang tugasnya sekadar mendeskripsikan kondisi yang terus berlangsung tanpa ada usaha yang dinamis. Kamu bisa mengelompokkan mereka ke dalam empat kubu sederhana: kognisi atau pikiran (know, believe), emosi dan perasaan (love, hate), status kepemilikan (possess, own), dan kemampuan indera sensoris kita (see, taste). Intinya, kata-kata ini merekam sebuah 'keadaan', bukan menceritakan sebuah 'tindakan'.",
                 "formula": "Stative Verbs -> Gunakan Simple Tenses (DILARANG bentuk Continuous -ing)",
                 "examples": [
                         {
@@ -2179,7 +2260,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Dual-Meaning Verbs: Pergeseran Makna pada Bentuk Progresif",
-                "explanation": "Beberapa verba dapat bertindak statif atau dinamis tergantung maknanya: (1) *THINK*: Statif = berpendapat (*I think it is valid*), Dinamis = proses menimbang/memikirkan (*I am thinking about the problem*); (2) *HAVE*: Statif = memiliki (*She has a degree*), Dinamis = melakukan aktivitas (*She is having lunch*); (3) *SEE*: Statif = melihat/memahami (*I see what you mean*), Dinamis = bertemu/berkonsultasi (*The patient is seeing a specialist*).",
+                "explanation": "Hati-hati, ada beberapa kata kerja bunglon yang suka bermain peran ganda alias Dual-Meaning Verbs. Terkadang mereka bersikap statif dan menolak bentuk '-ing', tapi di lain waktu mereka bisa tiba-tiba menjadi sangat dinamis tergantung konteks ceritanya. Ambil contoh kata think; jika maknanya adalah memiliki pendapat, ia bersifat statif, namun jika kamu benar-benar sedang memeras otak memikirkan sesuatu, ia berubah menjadi aksi dinamis. Begitu pula dengan have yang statif saat berarti kepemilikan, tapi seketika menjadi dinamis saat bermakna melakukan aktivitas seperti 'having breakfast'.",
                 "formula": "Makna Opini/Kepemilikan -> Simple | Makna Proses Mental/Aktivitas -> Continuous",
                 "examples": [
                         {
@@ -2197,7 +2278,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Verba Persepsi Sensoris: Copula vs Dynamic Actions",
-                "explanation": "Verba sensoris (*taste, smell, look, sound, feel*) bertindak sebagai Copular Verb ketika mendeskripsikan kualitas subjek (wajib diikuti Adjektiva: *The soup tastes delicious*), namun bertindak sebagai Dynamic Action Verb ketika subjek sengaja melakukan aksi penginderaan (wajib diikuti Adverbia: *The chef tasted the soup carefully*).",
+                "explanation": "Kelompok verba sensoris seperti taste, smell, atau feel punya aturan main yang sangat menarik. Saat kata-kata ini berfungsi menceritakan kualitas atau sifat benda, mereka bertindak sebagai Copular Verb dan harus dipasangkan dengan kata sifat (Adjectiva), seperti 'The soup tastes delicious'. Tapi tunggu dulu, jika subjek kalimatnya benar-benar melakukan aksi fisik mencicipi atau mengendus, verba ini seketika berubah wujud menjadi Dynamic Action Verb. Saat itulah kamu diwajibkan memakai kata keterangan (Adverbia) untuk menjelaskan cara kerjanya, misalnya 'The chef tasted the soup carefully'.",
                 "formula": "Kualitas Subjek: Subject + Sensory Verb + ADJECTIVE | Aksi Subjek: Subject + Sensory Verb + Object + ADVERB",
                 "examples": [
                         {
@@ -2215,7 +2296,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Analisis Interferensi L1 Bahasa Indonesia pada Aspek Progresif",
-                "explanation": "Dalam bahasa Indonesia, kata \"sedang\" atau \"lagi\" bisa dilekatkan ke kata apa pun (\"Saya sedang paham\", \"Dia sedang punya uang\"). Akibatnya, pembelajar kerap menerjemahkan secara harfiah menjadi \"*I am understanding*\" atau \"*He is having money*\". Kunci mengatasinya adalah mengidentifikasi apakah verba tersebut menyatakan aksi fisik nyata yang bisa direkam kamera video (Dynamic) atau sekadar status keberadaan (Stative).",
+                "explanation": "Ini dia jebakan terbesar bagi kita yang berbahasa ibu Indonesia: kata 'sedang' rasanya bisa bebas ditempelkan ke kata apa saja, seperti 'saya sedang paham' atau 'saya sedang suka'. Sayangnya, kalau kebiasaan ini diterjemahkan mentah-mentah ke bahasa Inggris, kalimatmu akan berakhir canggung seperti 'I am understanding'. Cara terbaik untuk menghindari jebakan ini adalah dengan selalu bertanya pada diri sendiri sebelum memakai bentuk '-ing'. Jika kata tersebut murni hanya menggambarkan status atau keberadaan (Stative), bukan aksi fisik nyata (Dynamic), maka lupakan sejenak bentuk continuous tersebut.",
                 "formula": "Uji Video Mental: Apakah aksi bisa diperagakan secara fisik? Jika TIDAK -> Stative (Gunakan Simple Tense).",
                 "examples": [
                         {
@@ -2312,7 +2393,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Hierarki Urutan Adjektiva Baku (OSASCOMP)",
-                "explanation": "Ketika lebih dari satu kata sifat mendahului kata benda (Attributive Position), urutannya mengikuti hierarki OSASCOMP: (1) Opinion (*innovative, beautiful*), (2) Size (*large, microscopic*), (3) Age (*ancient, modern*), (4) Shape (*cylindrical, spherical*), (5) Color (*crimson, translucent*), (6) Origin (*British, Indonesian*), (7) Material (*metallic, synthetic*), dan (8) Purpose (*sampling, testing*).",
+                "explanation": "Pernahkah kamu bingung saat harus menjajarkan banyak kata sifat sekaligus di depan sebuah kata benda? Tenang saja, bahasa Inggris punya aturan emas yang disebut hierarki OSASCOMP untuk membuat deretan tersebut terdengar rapi dan tidak berantakan. Bayangkan kamu sedang menyaring informasi: mulailah dari pendapat subjektifmu (Opinion), lalu ukuran (Size), umur (Age), dan bentuknya (Shape). Setelah itu, barulah kamu tambahkan detail fisik seperti warna (Color), asal usul (Origin), bahan pembuat (Material), hingga tujuan penggunaannya (Purpose).",
                 "formula": "Determiner + Opinion + Size + Age + Shape + Color + Origin + Material + Purpose + NOUN",
                 "examples": [
                         {
@@ -2325,7 +2406,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Gradable vs Non-Gradable (Extreme) Adjectives & Intensifiers",
-                "explanation": "Gradable Adjectives mendeskripsikan kualitas bertingkat dan berkolokasi dengan \"very, extremely, slightly\" (*very cold, extremely important*). Non-Gradable / Absolute / Extreme Adjectives sudah mengandung makna mutlak di dalamnya (misal: *freezing = extremely cold, vital = extremely important*) dan DILARANG digabungkan dengan \"very\". Gunakan intensifier absolut seperti *absolutely, completely, utterly, entirely*.",
+                "explanation": "Sama seperti cabai yang level pedasnya bisa diukur, kebanyakan kata sifat itu Gradable atau bisa diatur tingkat intensitasnya dengan tambahan kata 'very' atau 'slightly'. Tapi hati-hati dengan yang namanya Non-Gradable atau Extreme Adjectives, karena mereka ini sudah membawa makna yang sangat mutlak di dalam dirinya. Memasangkan kata 'very' dengan kata sifat ekstrem ini ibarat menuangkan air ke gelas yang sudah penuh luber—sangat terlarang secara gramatikal! Sebagai gantinya, pakailah penguat yang sepadan seperti 'absolutely', 'completely', atau 'utterly' untuk memberikan kesan maksimal tanpa terdengar aneh.",
                 "formula": "Gradable + VERY / EXTREMELY | Extreme/Non-Gradable + ABSOLUTELY / COMPLETELY / UTTERLY",
                 "examples": [
                         {
@@ -2343,7 +2424,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Penempatan Posisi Adverbia: Manner, Frequency & Stance",
-                "explanation": "Adverbia memiliki aturan penempatan spesifik: (1) Adverbs of Frequency (*always, often, seldom*) diletakkan sebelum Main Verb atau setelah To Be; (2) Adverbs of Manner (*carefully, rigorously*) diletakkan setelah objek atau sebelum verba; (3) Stance / Sentence Adverbs (*consequently, inevitably, surprisingly*) diletakkan di awal kalimat berapit tanda koma untuk mengomentari seluruh proposisi.",
+                "explanation": "Menempatkan kata keterangan atau Adverbs di dalam kalimat itu ibarat menata furnitur; salah letak bisa merusak kenyamanan. Untuk keterangan seberapa sering sesuatu terjadi (Adverbs of Frequency), tempat favorit mereka adalah tepat sebelum kata kerja utama atau bersembunyi persis setelah To Be. Kalau kamu mendeskripsikan cara sebuah tindakan dilakukan (Adverbs of Manner), letakkanlah ia dengan manis setelah objek selesai disebut. Nah, untuk keterangan yang menyampaikan sikap penulis (Stance Adverbs) seperti consequently atau inevitably, mereka suka tampil elegan di awal kalimat dengan pengawalan tanda koma.",
                 "formula": "Frequency: Subject + Adverb + Verb | Stance: Adverb, + Subject + Verb + Object + Manner Adverb",
                 "examples": [
                         {
@@ -2356,7 +2437,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Flat Adverbs vs Turunan -ly yang Berubah Makna Total",
-                "explanation": "Flat Adverbs adalah kata keterangan yang bentuknya identik dengan kata sifatnya tanpa akhiran -ly (*fast, hard, late, high*). Menambahkan -ly pada kata-kata ini akan MENGUBAH MAKNANYA SECARA TOTAL: *hard* (keras/sungguh-sungguh) vs *hardly* (hampir tidak pernah/jarang sekali), *late* (terlambat) vs *lately* (akhir-akhir ini).",
+                "explanation": "Jangan terkecoh dengan anggapan bahwa semua kata keterangan pasti berakhiran '-ly'. Kenyataannya, ada kelompok keras kepala bernama Flat Adverbs yang bentuknya dibiarkan sama persis dengan kata sifatnya, seperti fast, hard, late, dan high. Berhati-hatilah, karena memaksakan akhiran '-ly' pada mereka justru akan mengubah maknanya secara drastis! Bayangkan betapa berbedanya menceritakan seseorang yang bekerja sangat keras (hard) dibandingkan seseorang yang hampir tidak pernah bekerja (hardly), atau mengatakan kamu tiba terlambat (late) dengan bercerita tentang kejadian akhir-akhir ini (lately).",
                 "formula": "HARD = Giat/Keras | HARDLY = Hampir Tidak Pernah || LATE = Terlambat | LATELY = Akhir-akhir ini",
                 "examples": [
                         {
@@ -2458,7 +2539,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Matriks Geometri Spasial & Temporal: Logika AT, ON, IN",
-                "explanation": "Secara ruang: AT merujuk pada titik spesifik (*at the airport, at the intersection*); ON merujuk pada permukaan atau media komunikasi (*on the table, on the internet*); IN merujuk pada ruang bervolume atau wilayah geografis (*in the laboratory, in Indonesia*). Secara waktu: AT untuk jam presisi (*at 9:00 AM*); ON untuk hari dan tanggal spesifik (*on Monday, on July 4th*); IN untuk bulan, tahun, dekade, dan abad (*in 2025, in the 21st century*).",
+                "explanation": "Membedakan AT, ON, dan IN tidak akan memusingkan kalau kamu tahu filosofi ruang dan waktu di baliknya. Secara ruang, bayangkan sebuah zoom in: gunakan IN untuk area yang luas bervolume, ON untuk permukaan datar yang menempel, dan AT untuk titik spesifik yang akurat. Konsep yang sama berlaku persis untuk waktu, dari yang paling umum ke yang paling presisi. Pakailah IN untuk bulan, tahun, atau dekade yang panjang, sempitkan dengan ON untuk hari dan tanggal, lalu tunjuk dengan AT untuk jam yang sangat spesifik.",
                 "formula": "Waktu: AT (Jam) -> ON (Hari/Tanggal) -> IN (Bulan/Tahun/Abad) || Ruang: AT (Titik) -> ON (Permukaan) -> IN (Wilayah/Wadah)",
                 "examples": [
                         {
@@ -2471,7 +2552,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Preposisi Gerak Dinamis vs Posisi Statis",
-                "explanation": "Bahasa Inggris membedakan secara ketat antara posisi diam dan pergerakan menembus batas: IN (posisi di dalam) vs INTO (pergerakan masuk ke dalam); ON (posisi di atas permukaan) vs ONTO (pergerakan mendarat ke atas permukaan); AT (posisi pada titik) vs TOWARD (pergerakan mengarah ke titik).",
+                "explanation": "Bahasa Inggris sangat cerewet dalam membedakan benda yang sedang diam dengan benda yang sedang bergerak pindah tempat. Kalau sesuatu sudah berada di suatu lokasi yang stabil, kamu cukup menggunakan IN (di dalam), ON (di atas), atau AT (pada titik). Namun, begitu kamu menambahkan unsur pergerakan dinamis, posisinya harus berubah menjadi bentuk transit. Gunakan INTO untuk menembus masuk ke dalam, ONTO untuk mendarat ke atas sebuah permukaan, dan TOWARD saat pergerakannya mengarah ke sebuah tujuan tertentu.",
                 "formula": "Statis: in / on / at | Dinamis (Arah Gerak): into / onto / toward",
                 "examples": [
                         {
@@ -2484,7 +2565,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Preposisi Terikat (Dependent Prepositions) Akademik",
-                "explanation": "Banyak kata kerja, kata sifat, dan kata benda akademik yang menuntut preposisi terikat khusus (Kolokasi Baku): *rely on / depend on* (BUKAN depend of), *consist of* (terdiri dari), *interested in* (BUKAN interested for), *prevent from* (mencegah dari), *superior to / inferior to* (BUKAN superior than), *insight into* (wawasan tentang).",
+                "explanation": "Banyak kata dalam bahasa akademik bahasa Inggris yang bersikap eksklusif; mereka hanya mau berpasangan dengan preposisi tertentu yang disebut Dependent Prepositions. Hubungan romantis ini sifatnya mutlak dan dikenal sebagai kolokasi baku, jadi kamu tidak bisa menebak atau menerjemahkannya secara harfiah. Mau tidak mau, kamu harus membiasakan diri bahwa rely akan selalu menggandeng on, consist tak pernah lepas dari of, dan interested setia dengan in. Menghafalnya sebagai satu kesatuan frasa utuh adalah rahasia utama untuk terdengar natural layaknya penutur asli.",
                 "formula": "Adjective + Dependent Preposition | Verb + Dependent Preposition",
                 "examples": [
                         {
@@ -2502,7 +2583,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Verba Transitif yang Sering Salah Diberi Preposisi",
-                "explanation": "Akibat interferensi bahasa Indonesia, pembelajar kerap menyisipkan preposisi redundan setelah verba transitif murni: *Discuss about ❌ -> Discuss ✔* (\"berdiskusi tentang\"), *Emphasize on ❌ -> Emphasize ✔* (\"menekankan pada\"), *Explain me ❌ -> Explain to me ✔* (\"menjelaskan kepada saya\"), *Reach at ❌ -> Reach ✔* (\"mencapai\").",
+                "explanation": "Karena terbiasa dengan bahasa Indonesia, kita sering kali tanpa sadar menyisipkan preposisi redundan setelah kata kerja transitif dalam bahasa Inggris. Kata kerja transitif itu sangat mandiri dan maunya langsung menyentuh objek penderitanya tanpa dihalangi kata depan apa pun. Jadi, kebiasaan mengatakan 'discuss about' atau 'emphasize on' harus segera ditinggalkan dan ubah menjadi 'discuss' atau 'emphasize' saja. Sebaliknya, saat subjek memberi penjelasan kepada seseorang, ingatlah untuk memakai 'explain to me', bukan sekadar 'explain me' yang justru terdengar keliru.",
                 "formula": "Transitive Verb + DIRECT OBJECT (Tanpa Preposisi)",
                 "examples": [
                         {
@@ -2604,7 +2685,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Konjungsi Koordinatif (FANBOYS) & Aturan Koma",
-                "explanation": "Tujuh konjungsi koordinatif dirangkum dalam akronim FANBOYS: For (kausalitas), And (penambahan), Nor (negasi ganda), But (pertentangan), Or (pilihan), Yet (konsesi kontras), So (konsekuensi). Ketika menghubungkan dua Independent Clauses (klausa yang masing-masing memiliki Subjek dan Verba lengkap), tanda KOMA WAJIB diletakkan TEPAT SEBELUM konjungsi.",
+                "explanation": "Bayangkan kamu punya dua kalimat independen kuat yang ingin disambungkan; di sinilah tujuh pahlawan FANBOYS (For, And, Nor, But, Or, Yet, So) turun tangan sebagai konjungsi koordinatif. Mereka bertugas menjaga keseimbangan kalimat agar kedua sisi tetap sejajar dan setara kedudukannya. Namun, ada satu aturan ketat yang tidak boleh dilanggar saat mereka menghubungkan dua klausa mandiri. Kamu wajib meletakkan tanda koma tepat sebelum kata hubung ini, sebagai tanda jeda napas yang merangkai ide tanpa membuatnya bertabrakan.",
                 "formula": "[Independent Clause 1], + [FANBOYS] + [Independent Clause 2].",
                 "examples": [
                         {
@@ -2617,7 +2698,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Konjungsi Subordinatif & Kalimat Kompleks",
-                "explanation": "Konjungsi Subordinatif (*Although, Even though, Because, Since, Whereas, While, Unless, Provided that*) mengubah klausa independen menjadi Dependent Clause (Klausa Bawahan). Jika klausa subordinatif berada di depan kalimat, ia WAJIB diikuti tanda koma sebelum klausa utama.",
+                "explanation": "Kalau konjungsi koordinatif menjaga kesetaraan, Konjungsi Subordinatif seperti Although, Because, atau Unless justru bermain pangkat. Begitu kata-kata ini diletakkan di depan sebuah kalimat independen, status kalimat tersebut langsung turun menjadi klausa bawahan (Dependent Clause) yang maknanya akan menggantung. Jika kamu memutuskan untuk membuka ceritamu dengan klausa subordinatif ini di awal, jangan lupa untuk memisahkan ide utamanya dengan sebuah tanda koma. Tanda koma ini adalah sinyal penting bahwa inti kalimat yang sebenarnya baru akan segera menyusul.",
                 "formula": "[Subordinator + Dependent Clause], + [Independent Clause]. | [Independent Clause] + [Subordinator + Dependent Clause] (Tanpa Koma)",
                 "examples": [
                         {
@@ -2630,7 +2711,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Conjunctive Adverbs (Transisi Diskursus) & Aturan Titik Koma (;)",
-                "explanation": "Conjunctive Adverbs (seperti *However, Furthermore, Consequently, Nevertheless, In contrast, Therefore*) BUKAN konjungsi gramatikal, melainkan Adverbia Transisi. Kata-kata ini TIDAK BISA menggabungkan dua klausa hanya dengan koma. Menggabungkannya dengan koma saja menghasilkan kesalahan fatal Comma Splice. Gunakan titik-koma (;) sebelum transisi dan koma (,) setelahnya, atau pisahkan menjadi dua kalimat mandiri.",
+                "explanation": "Seringkali kita terkecoh dengan kata transisi anggun seperti However, Furthermore, atau Consequently, mengiranya sebagai kata hubung sungguhan. Padahal, secara gramatikal mereka ini hanyalah Conjunctive Adverbs alias keterangan transisi biasa yang tidak punya kekuatan merekatkan klausa. Memaksakan penggabungan dua klausa penuh hanya dengan koma dan transisi ini akan menghasilkan kesalahan fatal yang disebut Comma Splice. Solusi paling elegannya? Pasanglah titik koma (;) sebelum transisi untuk menautkan ide, dan berikan koma (,) manis setelahnya.",
                 "formula": "[Independent Clause 1]; however, + [Independent Clause 2]. OR [Clause 1]. However, + [Clause 2].",
                 "examples": [
                         {
@@ -2643,7 +2724,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Eliminasi Total Kesalahan Double Conjunction & Comma Splice",
-                "explanation": "Bahasa Indonesia mengizinkan pola \"Meskipun ... tetapi\" atau \"Karena ... maka\". Dalam bahasa Inggris, ini adalah kesalahan tata bahasa fatal (Double Conjunction Trap). Anda HANYA BOLEH memilih SATU: gunakan *Although* saja TANPA *but*, atau gunakan *Because* saja TANPA *so*.",
+                "explanation": "Dalam kebiasaan bahasa Indonesia, sah-sah saja kita bilang 'Meskipun hujan, tetapi saya tetap pergi.' Namun, dalam logika bahasa Inggris, menumpuk dua kata hubung semacam ini adalah sebuah jebakan tata bahasa yang disebut Double Conjunction Trap. Bahasa Inggris menuntut efisiensi tinggi, sehingga kamu harus memilih salah satu saja untuk menghubungkan ide tersebut. Putuskan dengan tegas: mau pakai 'Although' di awal tanpa embel-embel 'but', atau 'Because' di depan tanpa ditutup dengan 'so' di tengah jalan.",
                 "formula": "PILIH SALAH SATU: Although [A], [B] ATAU [A], but [B] (DILARANG: Although [A], but [B] ❌)",
                 "examples": [
                         {
@@ -2745,7 +2826,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Hakikat Gerund (Verbal Noun) vs To-Infinitive (Potensi Masa Depan)",
-                "explanation": "Secara filosofi linguistik, Gerund (V-ing) mengekspresikan tindakan nyata yang sudah terjadi, sedang berlangsung, atau dialami secara faktual. To-Infinitive (to + V1) mengekspresikan aksi hipotetis, potensi masa depan, atau tujuan kehendak yang belum tentu terealisasi.",
+                "explanation": "Pernah bingung kapan harus pakai -ing dan kapan harus pakai to? Secara filosofis, Gerund atau kata kerja berakhiran -ing itu mewakili hal-hal yang nyata, sudah terjadi, atau sudah kamu rasakan pengalamannya secara faktual. Di seberang sana, To-Infinitive membawa nuansa kehendak yang lebih hipotetis dan futuristik. Jadi, setiap kali kamu membicarakan sebuah potensi di masa depan, niat, atau sesuatu yang belum tuntas, bentuk to ditambah kata kerja dasar adalah pilihan utamanya.",
                 "formula": "Gerund = Pengalaman / Realitas Faktual | To-Infinitive = Kehendak / Rencana / Potensi Masa Depan",
                 "examples": [
                         {
@@ -2763,7 +2844,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Daftar Verba Pengambil Gerund vs Infinitif Wajib",
-                "explanation": "Verba pengambil Gerund murni: *admit, appreciate, avoid, consider, defer, deny, enjoy, finish, involve, postpone, recommend, risk, suggest*. Verba pengambil To-Infinitive murni: *afford, agree, arrange, decide, demand, expect, hesitate, hope, manage, offer, plan, refuse, tend, volunteer*.",
+                "explanation": "Terkadang, tata bahasa itu ibarat klub eksklusif di mana setiap kata kerja utama punya preferensi tamu bawaan masing-masing. Ada verba yang murni mewajibkan Gerund, seperti saat kamu mengakui (admit), menikmati (enjoy), atau menunda (postpone) sesuatu. Namun, kelompok verba lain yang berorientasi pada masa depan seperti setuju (agree), memutuskan (decide), atau berharap (hope), hanya mau ditemani oleh To-Infinitive. Mengingat kelompok kata ini memang butuh pembiasaan, tapi pola niat vs. realitas tadi bisa sangat membantu instingmu.",
                 "formula": "SUGGEST / RECOMMEND / AVOID + [VERB-ING] | DECIDE / REFUSE / PLAN + [TO + V1]",
                 "examples": [
                         {
@@ -2781,7 +2862,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Verba Dual-Meaning: Pergeseran Makna Signifikan",
-                "explanation": "Tiga verba utama mengubah makna secara radikal berdasarkan pilihan komplemennya: (1) *STOP*: *Stop doing* = Menghentikan kebiasaan/aktivitas; *Stop to do* = Berhenti sejenak demi melakukan hal lain; (2) *REMEMBER*: *Remember doing* = Mengingat memori masa lalu; *Remember to do* = Ingat untuk menjalankan tugas; (3) *REGRET*: *Regret doing* = Menyesali tindakan masa lalu; *Regret to inform* = Menyesal harus menyampaikan kabar buruk.",
+                "explanation": "Hati-hati dengan segelintir kata kerja bunglon yang maknanya bisa berubah 180 derajat tergantung pasangannya! Coba perhatikan kata stop; jika kamu bilang 'stop doing', kamu menghentikan kebiasaan itu selamanya, tapi 'stop to do' berarti kamu malah berhenti dari kegiatan lain demi melakukan hal tersebut. Hal yang sama berlaku untuk remember dan regret. Menggunakan Gerund setelah kata-kata ini akan membawamu kembali ke memori atau penyesalan di masa lalu, sedangkan memakai Infinitive menunjuk pada tugas yang harus dijalankan ke depannya.",
                 "formula": "Stop doing (Berhenti total) vs Stop to do (Berhenti untuk tujuan lain)",
                 "examples": [
                         {
@@ -2799,7 +2880,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Bare Infinitives setelah Verba Persepsi & Kausatif",
-                "explanation": "Verba Persepsi (*see, hear, notice, watch*) dan Verba Kausatif (*make, let, have*) mewajibkan Bare Infinitive (tanpa \"to\") ketika subjek mengamati seluruh tindakan dari awal hingga akhir atau memaksa/mengizinkan suatu aksi.",
+                "explanation": "Dalam dunia kalimat bahasa Inggris, ada pengecualian unik saat membicarakan kata kerja persepsi (see, watch) dan kausatif (make, let). Ketika kamu melihat sebuah tindakan secara utuh dari awal sampai selesai, atau ketika ada paksaan dan izin yang diberikan, kata 'to' mendadak dilucuti kekuasaannya. Akibatnya, kamu wajib menggunakan yang namanya Bare Infinitive, alias kata kerja dasar yang tampil polos tanpa pelindung 'to'. Bayangkan kalimat 'She made me cry'; rasanya langsung menusuk ke intinya tanpa ada perantara, bukan?",
                 "formula": "Subject + MAKE / LET / HEAR / SEE + Object + BARE INFINITIVE (V1)",
                 "examples": [
                         {
@@ -2896,7 +2977,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Anatomi Partikel Adverbial vs Preposisi",
-                "explanation": "Perbedaan mendasar antara Verba Berpreposisi (*Prepositional Verbs*) dan Verba Berpartikel (*Phrasal Verbs*) terletak pada sifat partikelnya. Partikel pada phrasal verb terikat erat secara semantis dengan verba untuk membentuk arti kiasan baru (misal: *give up* = berhenti/menyerah, sangat berbeda dari *give*).",
+                "explanation": "Bayangkan mencampurkan warna biru dan kuning; hasilnya pasti warna hijau yang sama sekali baru, bukan? Nah, itulah anatomi dari sebuah Phrasal Verb, di mana kata kerja bertemu dengan sebuah partikel kecil (seperti up, in, atau out). Partikel ini bukan sekadar preposisi penunjuk tempat biasa, melainkan menyatu secara semantis untuk menciptakan arti kiasan yang baru. Makanya, jangan heran kalau give up (menyerah) punya makna yang sangat jauh berbeda dari sekadar give (memberi).",
                 "formula": "Base Verb + Adverbial Particle (On/Off/Up/Down/Out/Away)",
                 "examples": [
                         {
@@ -2909,7 +2990,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Transitive Separable Phrasal Verbs & Aturan Pronoun",
-                "explanation": "Pada Transitive Separable Phrasal Verbs, jika objeknya adalah Frasa Nomina biasa, objek boleh diletakkan setelah partikel ATAU di antara verba dan partikel (*turn on the light* atau *turn the light on*). Namun, JIKA OBJEKNYA ADALAH PRONOUN (it, them, him, her), OBJEK WAJIB DILETAKKAN DI TENGAH (*turn it on ✔, turn on it ❌*).",
+                "explanation": "Untuk jenis Phrasal Verbs yang bisa dipisah (Separable), posisinya lumayan fleksibel selama objek penderitanya berupa nama benda atau frasa utuh. Kamu boleh meletakkan objeknya sebelum atau sesudah partikel sesuka hatimu. Namun, ada satu aturan emas yang tak boleh dilanggar: begitu objekmu menyusut menjadi kata ganti atau Pronoun kecil seperti it, them, atau him, ia wajib dikurung di tengah-tengah! Itulah kenapa kita selalu berkata 'turn it on' dan tidak pernah mengucapkan 'turn on it'.",
                 "formula": "Pronoun Object: Verb + [PRONOUN] + Particle (WAJIB DI TENGAH)",
                 "examples": [
                         {
@@ -2932,7 +3013,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Inseparable & Three-Part Phrasal Verbs",
-                "explanation": "Inseparable Phrasal Verbs (*look into, come across, run into*) dan Three-Part Phrasal Verbs (*look forward to, put up with, come up with, catch up with*) TIDAK BISA dipisahkan oleh objek apa pun. Objek harus selalu berada di akhir setelah seluruh partikel selesai.",
+                "explanation": "Kalau kelompok separable suka fleksibilitas, berhati-hatilah dengan yang namanya Inseparable Phrasal Verbs dan kawanan Three-Part Phrasal Verbs. Kata-kata seperti look into, come across, atau look forward to adalah satu kesatuan utuh yang diikat dengan lem super kuat. Apapun yang terjadi dan sepanjang apa pun objekmu, kamu tidak bisa menyelipkannya di tengah-tengah untuk memisahkan mereka. Mereka menuntut kesetiaan penuh, jadi biarkan objek penderitanya menunggu dengan sabar di belakang rangkaian frasa tersebut.",
                 "formula": "Verb + Particle 1 + Preposition 2 + OBJECT (Tidak Boleh Dipisah)",
                 "examples": [
                         {
@@ -2950,7 +3031,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Transformasi Phrasal Verbs ke Register Formal Akademik",
-                "explanation": "Dalam penulisan esai akademik resmi (IELTS Task 2 / TOEFL / Jurnal Ilmiah), phrasal verbs bernuansa informal sehari-hari sebaiknya ditransformasikan ke padanan verba formal turunan Latin/Prancis (Single-Word Academic Verbs): *carry out -> conduct*, *look into -> investigate*, *put off -> postpone*, *give up -> relinquish*, *bring about -> cause/generate*, *point out -> indicate*.",
+                "explanation": "Meskipun phrasal verbs membuat percakapanmu terdengar sangat natural dan kekinian, di dunia akademik kamu harus sedikit mengubah gaya penampilanmu. Kata-kata kiasan kasual ini seringkali kurang pantas masuk ke dalam esai resmi atau jurnal ilmiah. Karena itu, latihlah dirimu untuk menaikkan level tulisan dengan mentransformasi phrasal verbs menjadi satu kata kerja formal yang anggun. Daripada menulis 'look into', gunakanlah 'investigate', dan ubah 'put off' menjadi 'postpone' agar argumenmu memancarkan wibawa ilmiah.",
                 "formula": "Informal Phrasal Verb ----[Academic Register Elevation]----> Single-Word Latinate Verb",
                 "examples": [
                         {
@@ -3054,7 +3135,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Present Participle (Aktif) vs Past Participle (Pasif)",
-                "explanation": "Present Participle (-ing) mereduksi klausa aktif (*The student who conducts research -> The student conducting research*). Sebaliknya, Past Participle (-ed/V3) mereduksi klausa pasif (*The paper that was published in Nature -> The paper published in Nature*).",
+                "explanation": "Pernahkah kamu ingin menyingkat kalimat panjang yang dipenuhi kata 'who' atau 'which' agar lebih lincah? Di sinilah Participles datang memangkas klausa menjadi frasa yang ringkas. Jika kamu ingin menyusutkan klausa aktif, panggil saja Present Participle berakhiran -ing, sehingga 'the student who conducts research' berubah elegan menjadi 'the student conducting research'. Sebaliknya, jika yang kamu ringkas adalah kalimat pasif, gunakanlah Past Participle (-ed/V3) agar 'the paper that was published' cukup ditulis menjadi 'the paper published'.",
                 "formula": "Aktif: Noun + [Verb-ing Phrase] | Pasif: Noun + [Past Participle Phrase / V3]",
                 "examples": [
                         {
@@ -3072,7 +3153,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Reduksi Klausa Menjadi Participial Modifier di Awal Kalimat",
-                "explanation": "Klausa keterangan waktu atau sebab-akibat (*When/Because the team analyzed the data, they discovered...*) dapat diringkas menjadi frasa partisipel pembuka (*Analyzing the data, the team discovered...*).",
+                "explanation": "Bukan cuma kata sifat pembatas yang bisa dipangkas; klausa awal yang berisi alasan atau waktu kejadian juga bisa disulap menjadi Participial Modifier. Daripada memulai kalimat dengan bertele-tele seperti 'Because the team analyzed the data', kamu bisa langsung memukul intinya. Tarik saja aksi utamanya ke bentuk partisipel pembuka sehingga kalimatmu menjadi 'Analyzing the data, the team discovered...'. Hasilnya, tulisanmu akan terasa jauh lebih profesional, bertenaga, dan mengalir dengan cepat.",
                 "formula": "[Present/Past Participle Phrase], + [SUBJECT SEJATI] + [FINITE VERB]",
                 "examples": [
                         {
@@ -3085,7 +3166,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Perfect Participle (Having + V3): Penegasan Kronologis",
-                "explanation": "Ketika Anda ingin menegaskan bahwa tindakan pertama SELESAI SEPENUHNYA sebelum tindakan kedua dimulai, gunakan Perfect Participle (*Having + V3* untuk aktif, *Having been + V3* untuk pasif).",
+                "explanation": "Kadang-kadang, menceritakan dua kejadian yang beruntun butuh kejelasan ekstra, terutama saat kamu ingin menegaskan bahwa kejadian pertama sudah tuntas 100% sebelum yang kedua dimulai. Untuk menciptakan efek 'sesudah selesai' ini, persenjataan terbaikmu adalah Perfect Participle dengan formula Having + V3. Bentuk ini menegaskan jarak waktu yang tegas antara kedua tindakan tersebut. Jika situasinya pasif, kamu cukup menyisipkan kata been menjadi 'Having been + V3', dan urutan kronologismu akan tergambar sempurna.",
                 "formula": "Aktif: Having + [Past Participle (V3)], + Subject + Verb | Pasif: Having been + [Past Participle (V3)], + Subject + Verb",
                 "examples": [
                         {
@@ -3103,7 +3184,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Eliminasi Total Kesalahan Dangling Modifier",
-                "explanation": "Dangling Modifier terjadi ketika subjek dari klausa utama TIDAK COCOK dengan pelaku aksi pada participle phrase pembuka. Contoh salah: \"*Walking into the lab, the microscope was broken ❌*\" (mikroskop tidak bisa berjalan!). Subjek kalimat utama WAJIB adalah orang yang berjalan (*Walking into the lab, the scientist noticed that the microscope was broken ✔*).",
+                "explanation": "Jebakan paling mematikan dalam menggunakan frasa partisipel pembuka adalah melahirkan sebuah Dangling Modifier. Kesalahan ini terjadi ketika pelaku aksi di frasa pembuka sama sekali tidak nyambung dengan subjek utama setelah tanda koma. Coba perhatikan kalimat keliru ini: 'Walking into the lab, the microscope was broken'. Tentu saja mikroskop tidak punya kaki untuk berjalan, bukan? Ingat selalu, siapa pun tokoh yang berada persis setelah tanda koma, ia WAJIB menjadi pelaku sejati dari aksi di awal kalimatmu.",
                 "formula": "Uji Penyelarasan Subjek: Apakah Subjek setelah koma adalah pelaku sejati dari verba partisipel pembuka?",
                 "examples": [
                         {
@@ -3209,7 +3290,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "5 Pola Dasar Konstituen Kalimat Bahasa Inggris",
-                "explanation": "Seluruh kalimat bahasa Inggris, serumit apa pun klausa tambahannya, dapat didekonstruksi menjadi salah satu dari 5 pola dasar: (1) SV: *The reaction ceased*; (2) SVO: *The team analyzed the data*; (3) SVC: *The hypothesis remains valid*; (4) SVOO: *The agency awarded the team a grant*; (5) SVOC: *The committee appointed Dr. Aris chair*.",
+                "explanation": "Kerumitan sebuah kalimat dalam bahasa Inggris sebenarnya hanyalah ilusi semata. Sebanyak apa pun kata yang ada, setiap kalimat secara fundamental bisa dibedah dan dikembalikan ke salah satu dari lima cetakan dasar. Ada kalimat S-V yang selesai begitu saja tanpa objek, S-V-O yang standar menembak satu target, hingga pola S-V-C yang sifatnya menjelaskan kondisi subjek. Lalu ada S-V-O-O yang melibatkan penerima dan barang yang diberi, serta S-V-O-C yang memberikan embel-embel status baru bagi sang objek penderita.",
                 "formula": "SV | SVO | SVC | SVOO | SVOC",
                 "examples": [
                         {
@@ -3222,7 +3303,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Subject Complement (Pelengkap Subjek) setelah Linking Verbs",
-                "explanation": "Subject Complement adalah Frasa Adjektiva atau Frasa Nomina yang mengikuti Linking Verbs (seperti *be, seem, become, appear, remain, look, sound*). Fungsinya adalah mendefinisikan identitas atau sifat subjek. Karena itu, ia SELALU berbentuk Adjektiva, BUKAN Adverbia.",
+                "explanation": "Ketika kamu menggunakan Linking Verbs (seperti be, seem, atau become), kata kerja tersebut tidak menghasilkan tindakan melainkan sekadar jembatan ke Subject Complement. Pelengkap ini bertugas untuk mendefinisikan ulang identitas subjek, atau mendeskripsikan sifat dan karakteristiknya. Karena ia melekat kuat untuk menyifati sang subjek (yang berupa benda), maka pelengkap ini SELALU hadir dalam wujud kata sifat (Adjectiva) atau frasa benda, dan sama sekali BUKAN kata keterangan cara (Adverbia).",
                 "formula": "Subject + Linking Verb + SUBJECT COMPLEMENT [Adjective / Noun]",
                 "examples": [
                         {
@@ -3235,7 +3316,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Object Complement pada Pola SVOC",
-                "explanation": "Dalam pola SVOC (Complex Transitive), kata kerja diikuti Direct Object dan dilanjutkan oleh Object Complement yang menjelaskan status, gelar, atau perubahan keadaan objek tersebut (*elect, make, consider, deem, declare, appoint, name*).",
+                "explanation": "Pada pola yang agak elit yaitu S-V-O-C, sang kata kerja tidak puas hanya dengan mengenai objek penderita secara langsung. Kata kerja seperti elect, make, atau consider juga menyeret Object Complement untuk meresmikan status baru atau memvalidasi keadaan si objek tersebut. Bayangkan kalimat 'The committee appointed Dr. Aris chair'; kata chair di sana adalah gelar baru yang melekat pada Dr. Aris berkat aksi penunjukan itu. Pola ini sangat ampuh dipakai untuk menyatakan keputusan resmi atau pemberian penilaian.",
                 "formula": "Subject + Verb + Direct Object + OBJECT COMPLEMENT [Noun / Adjective]",
                 "examples": [
                         {
@@ -3253,7 +3334,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Pencegahan Sentence Fragments & Comma Splices",
-                "explanation": "Sentence Fragment adalah kelompok kata yang tidak memiliki Subjek atau Finite Verb mandiri (misal: klausa dependen yang berdiri sendiri diawali *Because* tanpa induk kalimat). Pastikan setiap kalimat memiliki minimal satu Independent Clause utuh.",
+                "explanation": "Pernahkah kamu menemui sekumpulan kata yang panjangnya menyerupai kalimat namun maknanya malah buntu? Itulah yang disebut Sentence Fragment, sebuah potongan cacat yang kehilangan roh utamanya berupa Subjek utuh atau Finite Verb yang mandiri. Sebaliknya, ketika kamu merekatkan ide-ide mandiri itu hanya dengan setitik koma, kamu telah terjerumus ke dalam kesalahan Comma Splice. Pastikan setiap gagasanmu berdiri tegak sebagai satu Independent Clause dengan kerangka Subjek dan Verba finitis yang utuh.",
                 "formula": "Klausa Independen Wajib: [SUBJECT] + [FINITE VERB] (+ Objek/Komplemen jika diperlukan)",
                 "examples": [
                         {
@@ -3357,7 +3438,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Matriks 2 Dimensi: 3 Waktu x 4 Aspek",
-                "explanation": "Waktu (Time) menjawab \"KAPAN\" (Past, Present, Future). Aspek (Aspect) menjawab \"BAGAIMANA STRUKTUR INTERNAL AKSI TERSEBUT\" (apakah fakta rutin, proses sedang berlangsung, keterkaitan hasil, atau durasi akumulatif). Kombinasi 3x4 menghasilkan 12 konfigurasi tenses yang sistematis.",
+                "explanation": "Banyak orang gentar melihat 12 nama Tenses, padahal semuanya hanya hasil kali silang dari dua dimensi sederhana: Waktu dan Aspek. Waktu (Time) bertugas menjawab pertanyaan dasar 'Kapan?' yang hanya terbagi tiga, yaitu Past, Present, atau Future. Sementara itu, Aspek menjawab 'Bagaimana wujud internal aksinya?'—apakah itu sekadar fakta, sebuah proses yang berlangsung, hasil yang berkaitan, atau durasi yang bergulir. Bertemunya 3 titik Waktu dengan 4 dimensi Aspek inilah yang menciptakan matriks lengkap 12 wujud kalimatmu.",
                 "formula": "TENSE = [Time: Past / Present / Future] x [Aspect: Simple / Continuous / Perfect / Perfect Continuous]",
                 "examples": [
                         {
@@ -3380,7 +3461,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Prinsip Simple Aspect vs Continuous Aspect",
-                "explanation": "Simple Aspect digunakan untuk kebenaran umum, hukum alam, jadwal tetap, dan fakta stabil. Continuous Aspect digunakan untuk situasi sementara (*temporary situations*), tren yang sedang berubah, atau aksi yang sedang terjadi tepat pada saat pembicaraan.",
+                "explanation": "Memilih antara Simple dan Continuous itu ibarat memilih lensa kamera saat memotret waktu. Jika kamu membidik fakta mutlak, kebiasaan rutin, hukum alam, atau hal yang permanen, gunakanlah lensa Simple Aspect yang jernih tak berbatas. Sebaliknya, saat subjekmu merupakan keadaan sementara, perubahan tren sesaat, atau aktivitas yang sedang intens berlangsung tepat ketika dibicarakan, bidiklah dengan Continuous Aspect. Dengan ini, kamu bisa menyampaikan nuansa sebuah peristiwa yang dinamis di tengah perjalanan waktunya.",
                 "formula": "Simple: Subject + V1(-s) / V2 | Continuous: Subject + BE + Verb-ing",
                 "examples": [
                         {
@@ -3398,7 +3479,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Sequence of Tenses dalam Kalimat Majemuk",
-                "explanation": "Dalam kalimat majemuk bertingkat (Complex Sentences), jika induk kalimat berada dalam Past Tense, klausa bawahan secara umum harus diselaraskan ke dalam bentuk lampau (*Sequence of Tenses Rule*), kecuali jika membahas fakta abadi atau hukum alam yang tidak berubah.",
+                "explanation": "Dalam sebuah kalimat yang punya klausa utama dan bawahan, aturan harmonisasi sangat dijunjung tinggi lewat prinsip Sequence of Tenses. Jika kalimat utamamu sudah berjangkar di perairan masa lalu (Past Tense), klausa anakannya tidak boleh seenaknya berlayar di perairan Present; ia wajib menundukkan bentuk ke masa lampau juga demi keselarasan alur mundur. Namun, fleksibilitas tetap berlaku—kalau sang anakan menyampaikan fakta saintifik abadi yang tidak berubah dari dulu hingga sekarang, kamu boleh membiarkannya tetap utuh di bentuk awalnya.",
                 "formula": "Past Main Clause + Past Subordinate Clause (Kecuali Universal Truth)",
                 "examples": [
                         {
@@ -3416,7 +3497,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Pembedaan Waktu Masa Depan (Future Modalities)",
-                "explanation": "Bahasa Inggris membedakan 3 cara menyatakan masa depan: (1) *WILL* = Keputusan spontan, prediksi logis, atau janji formal; (2) *BE GOING TO* = Rencana/niat yang sudah diputuskan sebelumnya atau prediksi berdasarkan bukti fisik saat ini; (3) *PRESENT CONTINUOUS* = Jadwal perjanjian sosial yang sudah terorganisasi (*fixed arrangement*).",
+                "explanation": "Meskipun kita hanya melangkah ke satu dimensi masa depan, bahasa Inggris memberimu tiga perangkat Future Modalities untuk menceritakan nuansanya secara berbeda. Pakailah WILL kalau niatmu baru muncul spontan detik ini, membuat janji buta, atau memprediksi sesuatu yang masih samar. Beralihlah ke BE GOING TO kalau di tanganmu sudah ada bukti konkret yang akan terjadi atau rencana yang matang diputuskan. Namun, untuk jadwal resmi dan agenda kepastian tingkat dewa, pinjamlah PRESENT CONTINUOUS untuk mengunci komitmen tersebut.",
                 "formula": "Will (Prediksi/Spontan) | Be going to (Niat/Bukti Fisik) | Present Continuous (Jadwal Teratur)",
                 "examples": [
                         {
@@ -3518,7 +3599,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Present Perfect: Jembatan Waktu Masa Lalu ke Masa Kini",
-                "explanation": "Present Perfect digunakan ketika waktu pasti masa lalu TIDAK DISEBUTKAN atau TIDAK PENTING; yang penting adalah dampak/relevansi hasilnya saat ini. DILARANG menggunakan Present Perfect dengan penanda waktu lampau spesifik seperti *yesterday, in 2020, two days ago* (wajib gunakan Simple Past).",
+                "explanation": "Bayangkan kamu sedang menceritakan sebuah pencapaian, tapi kamu tidak ingat atau tidak peduli kapan tepatnya hal itu terjadi. Nah, di sinilah Present Perfect bertindak sebagai jembatan yang menghubungkan masa lalumu dengan efeknya di masa sekarang. Yang penting adalah relevansi hasilnya saat ini, bukan kapan kejadiannya. Ingat ya, karena fokusnya pada masa sekarang, kamu dilarang keras menambahkan penanda waktu masa lalu spesifik seperti yesterday atau in 2020—untuk itu, kembalilah gunakan Simple Past.",
                 "formula": "Subject + HAVE / HAS + Past Participle (V3)",
                 "examples": [
                         {
@@ -3536,7 +3617,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Time Markers Presisi: SINCE vs FOR vs ALREADY/YET",
-                "explanation": "*SINCE* digunakan untuk titik awal waktu spesifik (*since 2015, since Monday*). *FOR* digunakan untuk total durasi rentang waktu (*for five years, for two decades*). *ALREADY* untuk penegasan bahwa aksi sudah selesai lebih cepat dari dugaan; *YET* untuk kalimat negatif/tanya mengenai hal yang diharapkan terjadi.",
+                "explanation": "Pernah bingung kapan harus memakai since dan for? Coba perhatikan ini: gunakan since ketika kamu ingin menunjuk satu titik awal waktu yang spesifik, ibarat menancapkan bendera di tahun 2015 atau hari Senin. Sebaliknya, gunakan for kalau kamu ingin menghitung total durasinya, seperti merangkum perjalananmu selama lima tahun terakhir. Selain itu, kamu bisa menyisipkan already untuk menegaskan bahwa sebuah aksi sudah beres, atau gunakan yet dalam kalimat negatif dan tanya ketika kamu masih menantikan sesuatu yang belum terjadi.",
                 "formula": "SINCE + [Titik Awal Waktu] | FOR + [Durasi Waktu]",
                 "examples": [
                         {
@@ -3554,7 +3635,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Past Perfect (HAD + V3): \"Past of the Past\"",
-                "explanation": "Past Perfect digunakan ketika ada DUA peristiwa masa lalu, dan Anda perlu memperjelas peristiwa mana yang terjadi LEBIH DULU secara kronologis. Aksi yang terjadi lebih dulu menggunakan Past Perfect (*Had + V3*); aksi yang terjadi setelahnya menggunakan Simple Past (*V2*).",
+                "explanation": "Coba bayangkan kamu sedang menceritakan dua kejadian dramatis yang sama-sama sudah lewat di masa lalu. Kalau kamu butuh menegaskan kejadian mana yang curi start alias terjadi lebih dulu, Past Perfect (had + V3) adalah andalanmu. Ia bertugas sebagai 'masa lalu dari masa lalu' untuk aksi yang mendahului, sementara aksi yang menyusul cukup menggunakan Simple Past (V2). Dengan begitu, alur ceritamu jadi sangat rapi dan tidak membingungkan pendengar.",
                 "formula": "[Aksi 1 Lebih Dulu: HAD + V3] ... before ... [Aksi 2 Menyusul: Simple Past / V2]",
                 "examples": [
                         {
@@ -3567,7 +3648,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Present Perfect Continuous: Fokus Durasi & Akumulasi Proses",
-                "explanation": "Present Perfect Continuous (*have/has been + V-ing*) digunakan untuk aksi yang dimulai di masa lalu, berlangsung terus-menerus tanpa henti, dan MASIH SEDANG BERLANGSUNG saat ini, atau baru saja berhenti dengan bukti fisik nyata yang tampak.",
+                "explanation": "Pernah melihat temanmu ngos-ngosan dan berkeringat setelah lari maraton? Untuk situasi seperti ini, Present Perfect Continuous (have/has been + V-ing) sangat cocok digunakan. Tenses ini sempurna untuk menggambarkan aksi yang dimulai di masa lalu, terus berlangsung tanpa henti, dan entah masih berlanjut hingga detik ini, atau baru saja berhenti tapi masih meninggalkan jejak atau bukti fisik yang jelas. Ini adalah cara alami untuk mengatakan bahwa usahamu benar-benar menguras energi dan waktu yang panjang.",
                 "formula": "Subject + HAVE / HAS + been + [Verb-ing] + since/for",
                 "examples": [
                         {
@@ -3664,7 +3745,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Mekanisme Transformasi Aktif ke Pasif & Rumus BE + V3",
-                "explanation": "Transformasi pasif mempromosikan Direct Object menjadi Subjek Gramatikal. Kata kerja utama diubah menjadi Past Participle (V3), dan To Be disisipkan dengan bentuk waktu (Tense) yang persis sama dengan verba aktif aslinya.",
+                "explanation": "Bayangkan objek penderita dari kalimatmu tiba-tiba mendapat promosi jabatan menjadi bintang utama; itulah inti dari kalimat pasif! Dalam transformasi ini, Direct Object diangkat menjadi Subjek Gramatikal. Agar strukturnya sah, kata kerja utama harus kamu ubah menjadi Past Participle (V3), dan jangan lupa selipkan To Be yang tenses-nya sengaja di-copy paste persis dari kalimat aktif aslinya. Hasilnya, fokus kalimat langsung bergeser secara mulus tanpa kehilangan makna.",
                 "formula": "Aktif: Subject + Verb + Object ----> Pasif: Object + [BE sesuai Tense] + Past Participle (V3) (+ by Agent)",
                 "examples": [
                         {
@@ -3682,7 +3763,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Pasif pada Modals & Aspek Kontinu/Perfek",
-                "explanation": "Rumus pasif berlaku di seluruh tenses: (1) Modal: *must be analyzed*; (2) Present Continuous: *is being evaluated*; (3) Past Continuous: *was being constructed*; (4) Present Perfect: *has been verified*; (5) Past Perfect: *had been documented*.",
+                "explanation": "Kabar baiknya, rumus pasif ini sangat fleksibel dan bisa kamu terapkan di hampir semua tenses layaknya bunglon. Baik itu Modal seperti must be analyzed, atau nuansa Continuous yang sedang berlangsung seperti is being evaluated dan was being constructed. Bahkan, kamu bisa menggabungkannya ke dalam Present Perfect menjadi has been verified. Intinya, selama kamu tahu cara menyesuaikan To Be, menggeser kalimat apa pun menjadi pasif bukan lagi hal yang menakutkan!",
                 "formula": "Continuous Passive: BE + being + V3 | Perfect Passive: HAVE/HAS/HAD + been + V3 | Modal Passive: Modal + be + V3",
                 "examples": [
                         {
@@ -3700,7 +3781,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Impersonal Passive untuk Objektivitas Akademik",
-                "explanation": "Impersonal Passive digunakan untuk melaporkan pendapat umum, teori ilmiah, atau konsensus pakar tanpa menyebutkan individu secara subjektif. Terdapat dua pola: Pola Dummy It (*It is believed that...*) dan Pola Subjek Dinaikkan (*The economy is predicted to expand...*).",
+                "explanation": "Terkadang, menulis opini pribadi bisa terdengar kurang meyakinkan, bukan? Nah, untuk menyulap tulisanmu menjadi setara jurnal ilmiah, gunakan Impersonal Passive agar kamu bisa melaporkan pendapat umum tanpa terkesan subjektif. Kamu bisa memakai trik Dummy It seperti 'It is believed that...' yang terdengar sangat elegan. Alternatif lainnya, kamu bisa langsung menaikkan subjeknya menjadi bintang utama, contohnya 'The economy is predicted to expand...', sehingga argumenmu tampak sangat berwibawa dan objektif.",
                 "formula": "Pola 1: It is [thought / claimed / estimated / reported] that + [Clause] | Pola 2: Subject + is [thought / expected] + to [Infinitive]",
                 "examples": [
                         {
@@ -3718,7 +3799,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Kapan Menggunakan Pasif vs Aktif dalam Esai Akademik",
-                "explanation": "Gunakan Pasif ketika: (1) Pelaku tidak diketahui atau tidak penting (*The artifact was discovered in 1920*); (2) Fokus riset adalah metodologi/proses (*The solution was heated to 100°C*); (3) Menjaga alur kohesi tema-rema. Hindari pasif jika membuat kalimat berbelit-belit tanpa alasan jelas.",
+                "explanation": "Meski terdengar keren, kamu harus tahu kapan waktu yang tepat untuk mengeluarkan kartu pasif ini. Gunakanlah ketika si pelaku memang misterius atau tidak penting, saat kamu ingin pamer proses metodologi, atau sekadar menjaga alur paragraf tetap nyambung dari satu ide ke ide lainnya. Tapi awas, jangan sampai terjebak! Kalau pemakaian pasif malah bikin kalimatmu berbelit-belit dan bikin pusing, lebih baik putar balik ke kalimat aktif yang lebih segar dan langsung to the point.",
                 "formula": "Fokus Metodologi & Objektivitas -> Pasif | Fokus Aksi & Kejelasan Argumen -> Aktif",
                 "examples": [
                         {
@@ -3815,7 +3896,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Zero & First Conditionals: Realitas & Prediksi Nyata",
-                "explanation": "Zero Conditional menyatakan hukum alam atau fakta sains universal di mana hasil pasti terjadi jika syarat terpenuhi (*If water reaches 100°C, it boils*). First Conditional menyatakan situasi nyata di masa depan yang memiliki probabilitas tinggi untuk terjadi jika kondisi terpenuhi (*If policy remains unchanged, emissions will rise*).",
+                "explanation": "Coba bayangkan saat kamu memanaskan air hingga 100 derajat Celcius—pasti mendidih, kan? Fakta ilmiah yang tak terbantahkan ini adalah habitat asli dari Zero Conditional. Tapi, kalau kamu sedang membicarakan rencanamu nanti sore yang sangat mungkin terjadi, bergeserlah ke First Conditional. Keduanya memang membicarakan syarat, tapi yang satu mengikat seperti hukum alam, sementara yang lain menatap masa depan dengan peluang yang cerah.",
                 "formula": "Zero: If + Simple Present, + Simple Present | First: If + Simple Present, + WILL / CAN / MAY + V1",
                 "examples": [
                         {
@@ -3833,7 +3914,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Second Conditional: Hipotesis Kontrafaktual Masa Kini",
-                "explanation": "Second Conditional menyatakan situasi imajinatif atau tidak nyata pada masa sekarang (Unreal Present). Klausa IF menggunakan Past Subjunctive (di mana kata kerja To Be SELALU menggunakan \"were\" untuk semua subjek: *If I were, If she were*), dan klausa utama menggunakan *would / could / might + V1*.",
+                "explanation": "Pernah berkhayal jadi miliarder mendadak hari ini? Nah, untuk mengutarakan angan-angan kosong di masa sekarang ini, kita gunakan Second Conditional atau Unreal Present. Uniknya, pada klausa pengandaian 'IF', kamu wajib memakai Past Subjunctive di mana To Be yang digunakan SELALU were untuk semua subjek—iya, bahkan untuk I dan He/She/It. Setelah berandai-andai dengan 'IF', sempurnakan mimpimu di klausa utama menggunakan would, could, atau might ditambah V1.",
                 "formula": "If + Past Subjunctive (V2 / were), + WOULD / COULD / MIGHT + Bare Infinitive (V1)",
                 "examples": [
                         {
@@ -3846,7 +3927,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Third Conditional & Mixed Conditionals: Evaluasi Masa Lalu & Silang Waktu",
-                "explanation": "Third Conditional mengevaluasi pengandaian masa lalu yang sudah tidak bisa diubah (*If + had V3, would have V3*). Mixed Conditionals menggabungkan sebab masa lalu dengan akibat masa sekarang (*If we had invested in solar in 2010, we would be energy-independent today*).",
+                "explanation": "Terkadang kita suka menyesali kejadian di masa lalu yang mustahil untuk diulang kembali. Untuk momen seperti ini, Third Conditional hadir dengan rumusnya yang kuat: If ditambah had V3, lalu diakhiri dengan would have V3. Tapi tunggu dulu, bagaimana jika kesalahan masa lalumu malah berimbas pada nasibmu hari ini? Di situlah Mixed Conditionals bersinar, memadukan sebab di masa lalu yang tak tertolong dengan akibat nyata yang sedang kamu rasakan detik ini.",
                 "formula": "Third: If + HAD + V3, + WOULD HAVE + V3 | Mixed: If + HAD + V3, + WOULD + V1 (Today)",
                 "examples": [
                         {
@@ -3864,7 +3945,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Inversi Kondisional Formal (Tanpa \"IF\")",
-                "explanation": "Dalam penulisan akademik tingkat tinggi (IELTS Band 8.5+), kata \"IF\" dapat dihilangkan dengan melakukan Inversi Auxiliary-Subjek: (1) First: *Should you require further data...*; (2) Second: *Were the government to enact reforms...*; (3) Third: *Had the committee approved the grant...*.",
+                "explanation": "Ingin tulisan esaimu terlihat seketika seperti karya profesor? Trik rahasianya adalah Conditional Inversion, di mana kita membuang kata IF yang membosankan dan menarik auxiliary ke depan kalimat. Untuk tipe pertama, gunakan 'Should you require...'; untuk tipe kedua yang lebih hipotetis, pakai 'Were the government to...'; dan untuk penyesalan masa lalu di tipe ketiga, ubah menjadi 'Had the committee approved...'. Langkah kecil ini akan memberikan sentuhan elegan dan otoritatif pada setiap argumen akademismu.",
                 "formula": "First: Should + Subj + V1 | Second: Were + Subj + to V1 / were + Subj | Third: Had + Subj + V3",
                 "examples": [
                         {
@@ -3968,7 +4049,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Mandative Subjunctive: Kaidah Bare Infinitive Tanpa -s",
-                "explanation": "Setelah verba desakan/anjuran (*demand, insist, propose, recommend, request, suggest, urge*) atau adjektiva esensial (*essential, crucial, imperative, vital, mandatory that*), kata kerja dalam that-clause WAJIB berbentuk Bare Infinitive (bentuk murni tanpa -s, tanpa -ed, tanpa to), terlepas dari apakah subjeknya tunggal atau jamak.",
+                "explanation": "Pernahkah kamu memperhatikan bahasa formal yang digunakan bos saat memberi instruksi tegas? Di sinilah Mandative Subjunctive beraksi. Setelah kata kerja desakan seperti demand dan suggest, atau kata sifat penting seperti crucial dan imperative, aturan mainnya berubah total. Di dalam that-clause, kata kerja wajib 'telanjang' alias berbentuk Bare Infinitive—hilangkan semua embel-embel akhiran -s, -ed, maupun to, tak peduli seberapa tunggal atau jamaknya subjek yang kamu pakai.",
                 "formula": "Subject + DEMAND / SUGGEST / INSIST + that + Subject + [BARE INFINITIVE (V1)]",
                 "examples": [
                         {
@@ -3991,7 +4072,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Past Subjunctive (Were-Subjunctive)",
-                "explanation": "Past Subjunctive menggunakan bentuk \"WERE\" untuk semua subjek (I, He, She, It) dalam klausa pengandaian atau perumpamaan kontrafaktual (*as if, as though, if only*).",
+                "explanation": "Coba perhatikan temanmu yang kadang bertingkah layaknya seorang raja padahal bukan. Untuk menggambarkan perumpamaan yang berlawanan dengan kenyataan ini, gunakan Past Subjunctive. Kuncinya, saat memakai frasa seperti as if, as though, atau if only, kamu WAJIB menggunakan to be were untuk semua subjek tanpa terkecuali. Aturan unik ini sengaja dibuat agar pendengar langsung sadar bahwa apa yang kamu katakan hanyalah sebuah pengandaian semata.",
                 "formula": "Subject + WISH / AS IF + Subject + WERE [Adjective/Noun]",
                 "examples": [
                         {
@@ -4004,7 +4085,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Konstruksi WISH & IF ONLY: Mekanisme Mundur Waktu (Backshift)",
-                "explanation": "Struktur *Wish* mengekspresikan keinginan yang berlawanan dengan kenyataan. Waktu saat ini dimundurkan menjadi Simple Past (*I wish I knew*). Waktu masa lalu dimundurkan menjadi Past Perfect (*I wish I had studied*). Keinginan mengubah perilaku orang lain menggunakan *would + V1*.",
+                "explanation": "Kata wish adalah alat ajaib untuk mengekspresikan keinginan yang bertolak belakang dengan realita. Rahasianya ada pada trik backshift: kalau kamu berharap kenyataan hari ini berbeda, mundurkan tenses-nya ke Simple Past (seperti 'I wish I knew'). Kalau kamu menyesali masa lalu, mundurkan lagi ke Past Perfect ('I wish I had studied'). Dan kalau kamu sekadar gemas ingin mengubah kelakuan menjengkelkan orang lain, cukup gunakan would + V1 untuk menyindirnya dengan halus.",
                 "formula": "Present Unreal: Wish + Simple Past | Past Unreal: Wish + Past Perfect (Had + V3)",
                 "examples": [
                         {
@@ -4022,7 +4103,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Konstruksi \"It is high time that...\"",
-                "explanation": "Idiom formal \"It is high time that...\" (Sudah saatnya/sudah terlambat bagi...) secara gramatikal mewajibkan verba dalam bentuk Simple Past (V2) untuk menandai urgensi tindakan yang sudah tertunda.",
+                "explanation": "Bayangkan tenggat waktu sudah di depan mata dan kamu belum mulai mengerjakan tugas sama sekali. Untuk momen mendesak ini, bahasa Inggris punya ungkapan formal 'It is high time that...' yang sangat elegan sekaligus tegas. Meski terdengar membahas masa sekarang, idiom ini mewajibkan kata kerja setelahnya memakai bentuk Simple Past (V2). Bentuk masa lalu ini sengaja dipakai untuk memberi efek kejut, menyiratkan bahwa tindakan tersebut seharusnya sudah kamu selesaikan dari tadi.",
                 "formula": "It is high time (that) + Subject + [SIMPLE PAST VERB (V2)]",
                 "examples": [
                         {
@@ -4121,7 +4202,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Inversi Auxiliary-Subjek pada Kalimat Tanya Langsung (Direct Questions)",
-                "explanation": "Kalimat tanya langsung mewajibkan Auxiliary Verb (Do/Be/Have/Modal) melompat ke posisi sebelum Subjek. Jika kalimat tidak memiliki auxiliary, operator Do-Support (Do/Does/Did) wajib disisipkan.",
+                "explanation": "Saat kamu ingin melontarkan pertanyaan secara langsung, bayangkan ada aturan lalu lintas yang harus dipatuhi. Aturan utamanya: sang kata kerja bantu atau Auxiliary Verb (seperti Do, Be, Have, atau Modal) harus melompat ke depan, tepat sebelum subjek kalimat. Namun, kalau kalimat aslimu ternyata tidak punya asisten ini, jangan panik! Kamu wajib memanggil tenaga bala bantuan bernama Do-Support agar posisi tanyanya tetap valid dan strukturnya enak didengar.",
                 "formula": "[Question Word / WH] + [AUXILIARY VERB] + [SUBJECT] + [MAIN VERB]?",
                 "examples": [
                         {
@@ -4134,7 +4215,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Indirect / Embedded Questions: Aturan Pengembalian Urutan S+V",
-                "explanation": "Ketika sebuah pertanyaan disematkan di dalam kalimat lain (*Could you explain..., The study investigated...*), struktur kalimatnya BERUBAH MENJADI PERNYATAAN DEKLARATIF NORMAL (Subject + Verb). DILARANG melakukan inversi auxiliary atau menggunakan do/does/did dalam embedded question!",
+                "explanation": "Coba perhatikan saat sebuah pertanyaan 'disembunyikan' ke dalam kalimat lain, misalnya 'I wonder where he went'. Begitu pertanyaan ini menyusup menjadi embedded question, ia langsung kehilangan wujud tanyanya dan berubah total menjadi kalimat pernyataan deklaratif normal (Subject + Verb). Ingat baik-baik, di posisi ini kamu dilarang keras melakukan lompatan inversi auxiliary seperti pada pertanyaan langsung. Kesalahan fatal ini sering terjadi, jadi jaga agar susunan katamu tetap kalem dan teratur.",
                 "formula": "Introductory Phrase + WH-word / if / whether + [SUBJECT] + [FINITE VERB] (Tanpa Inversi)",
                 "examples": [
                         {
@@ -4152,7 +4233,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Tag Questions: Polaritas Berlawanan & Intonasi",
-                "explanation": "Question Tags menggunakan Auxiliary yang sesuai dengan verba utama dengan polaritas berlawanan: Kalimat Positif menuntut Tag Negatif (*The data is conclusive, isn't it?*); Kalimat Negatif menuntut Tag Positif (*The vaccine hasn't failed, has it?*).",
+                "explanation": "Pernahkah kamu ngobrol dan mencari persetujuan dari lawan bicaramu dengan tambahan '...kan?' di akhir kalimat? Itulah fungsi Question Tags! Aturannya mirip magnet yang saling tarik-menarik dengan polaritas berlawanan. Jika kalimatmu positif, tag di belakang harus negatif ('The data is conclusive, isn't it?'), dan sebaliknya, kalimat negatif selalu menuntut akhir yang positif. Ini adalah trik jitu untuk membuat percakapanmu terasa jauh lebih hidup dan memancing respons.",
                 "formula": "Positive Statement, + Negative Tag? | Negative Statement, + Positive Tag?",
                 "examples": [
                         {
@@ -4165,7 +4246,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Pertanyaan Subjek vs Pertanyaan Objek",
-                "explanation": "Ketika kata tanya WH (Who/What/Which) bertindak sebagai SUBJEK dari kalimat, DILARANG menggunakan operator Do-Support (Do/Does/Did). Urutan kata persis seperti kalimat deklaratif positif.",
+                "explanation": "Ada satu jebakan batman dalam membuat pertanyaan yang sering bikin orang bingung. Ketika kata tanya andalanmu (Who atau What) ternyata berperan langsung sebagai pelaku utama atau Subjek, aturan main berubah drastis. Kamu DILARANG keras menyisipkan Do-Support di dalamnya. Susun saja kata-katanya persis seperti kalimat pernyataan biasa, seperti 'Who discovered the Higgs boson?', dan kalimat tanyamu akan mengalir mulus tanpa terkesan kaku.",
                 "formula": "Subject Question: WHO / WHAT + [VERB] + [OBJECT]? (Tanpa Do/Does/Did)",
                 "examples": [
                         {
@@ -4267,7 +4348,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Prinsip Backshift of Tenses pada Reporting Verbs Lampau",
-                "explanation": "Ketika Reporting Verb berada dalam Past Tense (*said, stated, observed, reported*), seluruh tenses dalam klausa yang dilaporkan secara otomatis dimundurkan satu tingkat ke masa lampau: Present Simple -> Past Simple; Present Continuous -> Past Continuous; Present Perfect / Past Simple -> Past Perfect; Will -> Would; Can -> Could.",
+                "explanation": "Bayangkan kamu menjadi seorang pembawa berita yang menceritakan kembali gosip kemarin. Kalau kata pengantarmu menggunakan bentuk masa lalu seperti said atau reported, bersiaplah melakukan backshift atau memundurkan waktu! Seluruh tenses di dalam cerita yang kamu laporkan harus ikut mundur satu langkah: Present Simple menjadi Past Simple, Will menjadi Would, dan Can menjadi Could. Penyesuaian waktu ini wajib agar ceritamu akurat dan tidak melampaui kenyataan saat ini.",
                 "formula": "Direct: \"The model is accurate\" -> Reported: He stated that the model was accurate.",
                 "examples": [
                         {
@@ -4285,7 +4366,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Pengecualian Backshift: Kebenaran Abadi & Fakta Universal",
-                "explanation": "Jika informasi yang dilaporkan adalah hukum alam, fakta ilmiah abadi, atau situasi yang masih 100% berlaku saat ini, Backshift TIDAK DILAKUKAN. Kata kerja tetap dipertahankan dalam Present Tense.",
+                "explanation": "Tapi tunggu dulu, aturan backshift ternyata punya pengecualian keren! Kalau kamu melaporkan fakta ilmiah abadi, hukum alam, atau sesuatu yang kebenarannya masih sangat valid sampai detik ini, kamu bebas dari kewajiban memundurkan tenses. Kata kerjanya tetap dipertahankan dalam Present Tense. Jadi, saat menceritakan bahwa bumi itu bulat, kamu tak perlu mengubahnya ke masa lalu—karena kebenarannya tidak pernah kedaluwarsa.",
                 "formula": "Past Reporting Verb + that + [UNIVERSAL TRUTH DALAM PRESENT TENSE]",
                 "examples": [
                         {
@@ -4298,7 +4379,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Penyesuaian Deiksis Waktu, Tempat, dan Pronomina (Deictic Shifts)",
-                "explanation": "Deiksis (rujukan spasial dan temporal) wajib disesuaikan dari sudut pandang pembicara saat ini: *now -> then/at that time*, *today -> that day*, *yesterday -> the previous day / the day before*, *tomorrow -> the following day*, *here -> there*, *this -> that*.",
+                "explanation": "Selain memundurkan tenses, jangan lupa bahwa perspektif waktu dan tempat juga ikut bergeser saat melaporkan ucapan orang lain. Kamu harus menyesuaikan 'kapan' dan 'di mana' kejadian itu berlangsung dari sudut pandang ceritamu sekarang. Otomatis, deiksis seperti now berubah menjadi then, today disulap jadi that day, dan here harus bergeser menjadi there. Trik ini penting agar pendengarmu tidak kebingungan dan merasa sedang berada di ruang waktu yang salah.",
                 "formula": "now -> then | today -> that day | tomorrow -> the following day | here -> there",
                 "examples": [
                         {
@@ -4311,7 +4392,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Reporting Verbs Akademik Tingkat Tinggi & Pola Sintaksisnya",
-                "explanation": "Hindari repetisi kata \"said\" atau \"told\" dalam esai akademik. Gunakan Reporting Verbs yang merefleksikan sikap kritis: (1) Verb + that-clause (*argue, assert, demonstrate, hypothesize*); (2) Verb + Object + to-infinitive (*urge, advise, encourage*); (3) Verb + Gerund (*admit, deny, recommend*).",
+                "explanation": "Jujur saja, menulis kata said berulang kali dalam esai akademik itu rasanya sangat membosankan dan kurang meyakinkan. Mulai sekarang, tingkatkan wibawa tulisanmu dengan Reporting Verbs yang lebih kritis dan bertenaga! Gunakan argue, assert, atau demonstrate untuk memperkuat argumen, dan coba urge atau advise untuk menyarankan sesuatu. Dengan variasi kata kerja yang tepat, esaimu seketika akan terdengar sekelas publikasi peneliti profesional.",
                 "formula": "Academic Verbs: hypothesize / contend / demonstrate / emphasize that...",
                 "examples": [
                         {
@@ -4408,7 +4489,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Defining Relative Clauses: Pembatas Identitas Esensial",
-                "explanation": "Defining (Restrictive) Relative Clause memberikan informasi esensial yang menentukan identitas kata benda yang diterangkan. Jika klausa ini dihilangkan, makna kalimat menjadi rancu atau tidak lengkap. DILARANG menggunakan tanda koma pada Defining Clauses. Kata ganti yang sah: *who* (orang), *which/that* (benda).",
+                "explanation": "Pernahkah kamu menunjuk seseorang di keramaian dan harus mendeskripsikannya agar temanmu tidak salah orang? Itulah peran Defining Relative Clause, yang memberikan informasi sangat esensial dan tak terpisahkan dari benda atau orang yang dibicarakan. Kalau kamu nekat menghapus klausa ini, makna kalimatmu akan langsung buyar dan menjadi rancu. Karena informasinya sangat vital, kamu dilarang keras memisahkannya dengan tanda koma!",
                 "formula": "Head Noun + [who / which / that + Clause] (TANPA TANDA KOMA)",
                 "examples": [
                         {
@@ -4421,7 +4502,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Non-Defining Relative Clauses: Keterangan Ekstra Berapit Koma",
-                "explanation": "Non-Defining (Non-Restrictive) Relative Clause memberikan informasi tambahan non-esensial tentang kata benda yang identitasnya sudah jelas spesifik (seperti Proper Nouns). Klausa ini WAJIB diapit tanda koma, dan DILARANG KERAS menggunakan kata ganti \"THAT\" (wajib gunakan *who* atau *which*).",
+                "explanation": "Berbeda cerita jika benda atau orang yang kamu bicarakan identitasnya sudah sangat jelas sejak awal, misalnya nama kota terkenal. Di sini, kamu menggunakan Non-Defining Relative Clause untuk sekadar menempelkan bumbu informasi tambahan yang sebenarnya tidak wajib ada. Karena sifatnya hanya sisipan ekstra, klausa ini WAJIB dikarantina menggunakan sepasang tanda koma. Dan ingat pantangan terbesarnya: haram hukumnya menggunakan kata ganti THAT di dalam struktur ini.",
                 "formula": "Head Noun, + [who / which + Clause], + Main Predicate (DILARANG MENGGUNAKAN THAT ❌)",
                 "examples": [
                         {
@@ -4439,7 +4520,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Kasus Pronominal Relatif: WHOM, WHOSE, dan Preposisi di Depan (Pied-Piping)",
-                "explanation": "*WHOM* digunakan ketika kata ganti bertindak sebagai objek verba atau objek preposisi. *WHOSE* digunakan untuk kepemilikan. Dalam register akademik formal, preposisi ditarik ke depan kata ganti relatif (Pola *Pied-Piping*: *in which, to whom, with which*), alih-alih dibiarkan menggantung di akhir kalimat (*Preposition Stranding*).",
+                "explanation": "Coba perhatikan cara orang berpendidikan menyusun kalimatnya; mereka selalu jeli membedakan peran kata ganti. Kalau kata gantinya menjadi sasaran objek, gunakan si elegan WHOM, sementara untuk urusan kepemilikan, pakailah WHOSE. Agar tulisan akademikmu makin menyala, cobalah trik Pied-Piping, yaitu menarik preposisi dari akhir kalimat langsung ke depan kata ganti relatif, sehingga menghasilkan frasa anggun seperti 'in which' atau 'to whom'.",
                 "formula": "Formal Pied-Piping: Preposition + WHOM / WHICH + Subject + Verb",
                 "examples": [
                         {
@@ -4457,7 +4538,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Contact Clauses (Penanggalan Pronoun Relatif Objek)",
-                "explanation": "Ketika Relative Pronoun (*who, which, that, whom*) bertindak sebagai OBJEK di dalam Defining Relative Clause, kata ganti tersebut dapat dihilangkan sepenuhnya (Zero Relative / Contact Clause) untuk meningkatkan kelancaran membaca.",
+                "explanation": "Kadang, kesederhanaan adalah kunci agar kalimatmu mengalir selembut sutra saat dibaca. Saat Relative Pronoun kebetulan hanya bertugas sebagai OBJEK di dalam sebuah Defining Relative Clause, kamu punya hak istimewa untuk menghapusnya sama sekali! Fenomena hilangnya kata ganti ini dikenal sebagai Contact Clause. Dengan membuang kata yang tak perlu, ritme membacamu akan terasa jauh lebih natural dan gesit.",
                 "formula": "Noun + [Subject + Verb] (Relative pronoun dihilangkan)",
                 "examples": [
                         {
@@ -4556,7 +4637,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Inversi Bersyarat setelah Negative & Limiting Adverbials",
-                "explanation": "Ketika kata keterangan bernuansa negatif atau pembatas (*Hardly, Scarcely, Seldom, Rarely, Barely, Never before, Little, Under no circumstances, In no way*) ditarik ke awal kalimat untuk penekanan (Fronting), pola kalimat WAJIB diinversikan menjadi format pertanyaan: [Negative Adverb] + [Auxiliary Verb] + [Subject] + [Main Verb].",
+                "explanation": "Bayangkan kamu ingin membuka pidatomu dengan pukulan dramatis yang tak terlupakan. Caranya gampang: tarik kata keterangan bernuansa negatif seperti Rarely, Never before, atau Hardly ke posisi paling depan! Tapi awas, teknik penekanan ini punya efek domino. Begitu kata negatif ini mendarat di depan, pola kalimatmu WAJIB diinversikan layaknya format pertanyaan: letakkan Auxiliary dulu, baru disusul Subject, dan terakhir Main Verb. Ledakan maknanya akan terasa sangat elegan dan bertenaga.",
                 "formula": "[Negative Adverbial] + [AUXILIARY VERB] + [SUBJECT] + [MAIN VERB]",
                 "examples": [
                         {
@@ -4579,7 +4660,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Inversi Konstruksi \"Not only ... but also\" & \"No sooner ... than\"",
-                "explanation": "Konstruksi *Not only* di awal kalimat memicu inversi pada klausa pertama. Konstruksi *No sooner* mewajibkan Past Perfect berinversi pada klausa pertama dan dipasangkan dengan *than* pada klausa kedua.",
+                "explanation": "Ada dua tamu VIP di awal kalimat yang suka bikin aturan sendiri: Not only dan No sooner. Begitu Not only tampil di depan panggung, ia langsung memicu inversi pada klausa pertamanya secara heroik. Hal yang sama berlaku untuk No sooner, namun ia secara khusus mewajibkan inversi pada tenses Past Perfect di klausa pertama, dan selalu minta dipasangkan dengan kata than di klausa keduanya.",
                 "formula": "Not only + [Aux + Subj + Verb], but + [Subj + also + Verb] | No sooner + HAD + [Subj + V3] + than + [Simple Past Clause]",
                 "examples": [
                         {
@@ -4597,7 +4678,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Inversi Kondisional Tanpa \"IF\" (Had / Were / Should)",
-                "explanation": "Dalam ragam formal tingkat tinggi, kalimat pengandaian dapat diinversikan dengan membuang kata \"IF\" dan memajukan auxiliary ke awal: (1) *Had we known...* (Third Conditional); (2) *Were the policy to fail...* (Second Conditional); (3) *Should you require assistance...* (First Conditional).",
+                "explanation": "Ingin membuat esaimu tidak berbau klise dengan rentetan kata IF yang membosankan? Buang saja kata IF itu, dan mulailah sulap Conditional Inversion! Caranya sangat magis: dorong auxiliary maju ke baris depan sebagai ganti si 'IF'. Kamu bisa pakai pola Had + Subjek untuk penyesalan dramatis, Were + Subjek + to V1 untuk pengandaian elegan, atau Should + Subjek untuk saran formal. Trik ini langsung mendongkrak gaya bahasamu ke level akademisi murni.",
                 "formula": "Had + Subj + V3 | Were + Subj + to V1 | Should + Subj + V1",
                 "examples": [
                         {
@@ -4610,7 +4691,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Fronting Lokatif & Adverbial Arah (Full Inversion)",
-                "explanation": "Ketika frasa preposisional tempat atau arah ditarik ke depan kalimat untuk menciptakan variasi deskriptif yang dramatis, terjadi Inversi Penuh (Full Inversion), di mana seluruh Main Verb mendahului subjek tanpa do-support.",
+                "explanation": "Terkadang, menceritakan latar lokasi terlebih dahulu bisa menciptakan suasana visual yang sangat dramatis dalam sebuah narasi. Saat kamu menarik frasa preposisional tempat ke garis depan kalimat, terjadilah keajaiban Full Inversion alias inversi penuh. Di kondisi ini, seluruh Main Verb langsung melompat berani mendahului subjek, tanpa perlu repot memanggil bantuan do-support. Susunan seperti ini akan menyajikan deskripsimu layaknya adegan pembuka film yang megah.",
                 "formula": "[Prepositional Phrase of Place/Direction] + [MAIN VERB] + [SUBJECT NOUN]",
                 "examples": [
                         {
@@ -4710,7 +4791,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Teori Theme and Rheme: Prinsip Given-to-New Information",
-                "explanation": "Dalam linguistik sistemik fungsional, \"Theme\" adalah titik tolak kalimat (biasanya informasi yang sudah dibahas pada kalimat sebelumnya / *Given Information*), sedangkan \"Rheme\" adalah pesan inti baru yang ingin disampaikan (*New Information*). Paragraf yang mengalir sempurna menghubungkan Rheme dari kalimat A menjadi Theme pada kalimat B.",
+                "explanation": "Bayangkan setiap kalimatmu adalah sebuah kereta api yang sedang melaju. Gerbong depan adalah Theme—titik tolak berisi informasi lama yang sudah akrab dengan pembaca. Sebaliknya, muatan kejutan di gerbong belakang adalah Rheme, yakni informasi baru yang segar! Rahasia paragraf yang mengalir semulus sutra adalah keahlianmu merangkaikan keduanya: tangkap Rheme dari kalimat pertama, dan jadikan ia sebagai Theme yang akrab untuk membuka kalimat berikutnya.",
                 "formula": "Kalimat 1: [Theme A] -> [Rheme B] ====> Kalimat 2: [Theme B / Rujukan] -> [Rheme C]",
                 "examples": [
                         {
@@ -4723,7 +4804,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Rantai Leksikal (Lexical Chains) & Variasi Sinonim",
-                "explanation": "Kohesi leksikal dicapai bukan dengan mengulang kata yang sama berkali-kali, melainkan melalui Rantai Leksikal (Lexical Chains) yang mencakup sinonim kontekstual, hipernim (kata yang lebih umum), dan parafrasa pronominal.",
+                "explanation": "Membaca esai yang mengulang-ulang kata yang sama itu ibarat mendengar kaset rusak—sangat membosankan! Penulis yang cerdas menciptakan ikatan kohesi yang kuat lewat apa yang disebut Lexical Chains. Alih-alih sekadar mengulang kata, mereka cerdik menggunakan sinonim yang pas, hipernim yang cakupannya lebih luas, atau melakukan parafrasa secara luwes. Hasilnya, paragrafmu bukan sekadar kumpulan kalimat, melainkan jaring laba-laba ide yang terjalin estetik.",
                 "formula": "Term Spesifik -> Hypernym / Sinonim Akademik -> Pronominal Reference",
                 "examples": [
                         {
@@ -4736,7 +4817,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Variasi Struktur Awal Kalimat (Sentence Openers)",
-                "explanation": "Paragraf yang monoton selalu diawali dengan formula \"Subjek + Verba\". Penulis mahir memvariasikan pembuka kalimat menggunakan: (1) Frasa Preposisional, (2) Frasa Partisipel, (3) Klausa Subordinatif, atau (4) Adverbia Transisi.",
+                "explanation": "Coba periksa esaimu; apakah semua kalimatnya terus-menerus dibuka dengan Subjek lalu Kata Kerja? Kalau ya, tulisanmu sedang terkena sindrom monoton! Penulis mahir tahu betul cara memecah kebosanan ini dengan merotasi menu pembuka kalimat. Mulailah sesekali dengan Frasa Preposisional yang cantik, ayunkan dengan Frasa Partisipel yang dinamis, atau pancing rasa penasaran lewat Klausa Subordinatif agar pembaca tak pernah bisa menebak ritmemu.",
                 "formula": "Variasi Pembuka: Prepositional Phrase, / Participial Phrase, / Dependent Clause, / Stance Adverb,",
                 "examples": [
                         {
@@ -4749,7 +4830,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Transisi Antar-Paragraf yang Halus & Tematik",
-                "explanation": "Jembatan antar-paragraf yang kuat tidak hanya mengandalkan kata mekanis seperti \"Secondly\" atau \"Moreover\", melainkan merangkum ide paragraf sebelumnya pada kalimat topik (Topic Sentence) paragraf berikutnya.",
+                "explanation": "Merangkai paragraf itu butuh seni tinggi, bukan sekadar menempelkan kata-kata transisi mekanis yang kaku seperti Secondly atau Moreover. Jembatan penghubung yang sejati justru tercipta saat kamu berhasil menyelipkan gema ide dari paragraf lama ke dalam kalimat topik paragraf baru. Dengan merangkum esensi masa lalu untuk memperkenalkan gagasan baru, transisi tulisanmu akan terasa sangat organik dan membimbing logika pembaca tanpa paksaan.",
                 "formula": "Topic Sentence: [Rangkuman Singkat Paragraf Lalu] + [Fokus Utama Paragraf Baru]",
                 "examples": [
                         {
@@ -4848,7 +4929,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Mekanisme Morfologis & Sintaksis Nominalisasi",
-                "explanation": "Nominalisasi memadatkan sebuah klausa lengkap yang terdiri dari Subjek + Verba + Keterangan menjadi sebuah Frasa Nomina Tunggal yang padat. Verba diubah menjadi nomina menggunakan suffix (-tion, -ment, -ance, -ity), dan kata keterangan (Adverb) diubah menjadi kata sifat (Adjective) yang memodifikasi nomina baru tersebut.",
+                "explanation": "Pernahkah kamu merasa kalimatmu terlalu panjang dan bertele-tele? Di sinilah mekanisme Nominalisasi datang menyelamatkanmu layaknya alat pengepres! Ia mampu menyulap satu klausa lengkap yang berhamburan menjadi sebuah Frasa Nomina tunggal yang luar biasa padat. Caranya mudah: ubah saja kata kerjamu menjadi kata benda dengan menambahkan akhiran seperti -tion atau -ment, lalu sulap kata keterangan menjadi kata sifat yang siap menempel mendampingi benda barumu.",
                 "formula": "Klausa: [Subject + Verb + Adverb] ----> Frasa Nomina: [Adjective + Nominalized Noun + of-Phrase]",
                 "examples": [
                         {
@@ -4866,7 +4947,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Peningkatan Kepadatan Leksikal (Lexical Density)",
-                "explanation": "Kepadatan leksikal adalah proporsi kata bermakna (Content Words: nomina, adjektiva, verba utama) dibandingkan kata fungsi gramatikal (preposisi, artikel, pronoun). Nominalisasi menggabungkan beberapa ide ke dalam satu kalimat padat berbobot tinggi tanpa pemborosan kata (*Wordiness*).",
+                "explanation": "Dalam dunia akademik, semakin sedikit kata 'receh' yang kamu pakai, semakin tinggi nilai tulisanmu. Konsep ini disebut Kepadatan Leksikal (Lexical Density), di mana kita memperbanyak proporsi kata-kata berbobot seperti nomina dan adjektiva. Melalui sihir nominalisasi, kamu berhasil menyusupkan banyak ide ke dalam satu wadah kalimat yang padat. Hasil akhirnya? Tulisanmu terbebas dari pemborosan kata dan argumenmu tersampaikan dengan utuh.",
                 "formula": "Kepadatan Leksikal Tinggi = [Banyak Kata Benda Konseptual per Kalimat]",
                 "examples": [
                         {
@@ -4879,7 +4960,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Mencegah \"Zombie Nouns\" & Menjaga Kejelasan Kalimat",
-                "explanation": "Meskipun nominalisasi sangat penting, penyalahgunaan berlebihan dapat menghasilkan \"Zombie Nouns\" (tulisan yang kaku, berbelit-belit, dan mengaburkan siapa pelaku tindakan sebenarnya). Jika kalimat menjadi terlalu abstrak dan tidak dapat dipahami, kembalikan aksi utama ke verba dinamis yang kuat.",
+                "explanation": "Namun hati-hati, jangan sampai kamu mabuk nominalisasi! Jika terlalu sering mengubah kata kerja menjadi benda, tulisanmu akan dipenuhi oleh Zombie Nouns—kata-kata mati yang membuat paragraf kaku dan mengaburkan siapa sebenarnya yang menjadi pelaku tindakan. Jika kamu merasa kalimatmu mulai tersesat di alam abstrak yang membingungkan, segeralah putar haluan. Bangkitkan kembali aksi utamanya dengan memanggil kata kerja dinamis yang jauh lebih jernih dan bertenaga.",
                 "formula": "Aturan Kejelasan: Pastikan Agen/Subjek Kunci dan Tindakan Inti tetap jelas!",
                 "examples": [
                         {
@@ -4897,7 +4978,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Transformasi Latihan: Dari Gaya Percakapan ke Gaya Akademik",
-                "explanation": "Pelajari pola transformasi standar: *analyze -> analysis*, *evaluate -> evaluation*, *degrade -> degradation*, *fluctuate -> fluctuation*, *intervene -> intervention*, *disclose -> disclosure*.",
+                "explanation": "Untuk mulai mengubah tulisanmu menjadi kelas wahid, kamu hanya perlu mengenali pola transformasi gaya akademik ini. Bayangkan betapa elegan perubahannya saat verba analyze menyusut menjadi analysis, atau saat tindakan evaluate mengkristal menjadi evaluation. Deretan pergeseran ini terus berlanjut seperti fluctuate ke fluctuation atau disclose ke disclosure. Dengan menguasai perubahan wujud ini, kamu memegang kunci emas menuju penulisan akademik yang mumpuni.",
                 "formula": "Verb + Suffix -> Academic Noun Concept",
                 "examples": [
                         {
@@ -5001,7 +5082,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Arsitektur It-Clefts & Mekanisme Pergeseran Fokus",
-                "explanation": "It-Cleft membelah kalimat normal *[Subject + Verb + Object]* menjadi konstruksi berawalan ekspletif *It is/was*. Elemen yang ingin Anda sorot diletakkan tepat setelah *is/was*, diikuti oleh klausa *that/who*.",
+                "explanation": "Bayangkan kamu punya sebuah lampu sorot di atas panggung kalimatmu. Saat kamu memakai It-Cleft, kamu sengaja membelah sebuah kalimat normal untuk memberikan sorotan pada satu elemen spesifik. Caranya, awali saja dengan ekspletif 'It is' atau 'It was', lalu letakkan bintang utamamu persis di belakangnya! Setelah bintangmu tampil bersinar, tutup dengan manis menggunakan klausa that atau who agar konteks ceritanya tetap utuh dan mendebarkan.",
                 "formula": "It + is/was + [UNSUR YANG DISOROT / FOCUS] + that / who + [Sisa Kalimat]",
                 "examples": [
                         {
@@ -5019,7 +5100,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Arsitektur Wh-Clefts (Pseudo-Clefts)",
-                "explanation": "Wh-Clefts (atau Pseudo-Clefts) mengemas informasi latar belakang ke dalam klausa nominal berawalan *What*, dan meletakkan elemen kunci yang menjadi jawaban/solusi di posisi akhir setelah kata kerja *is/was*.",
+                "explanation": "Kalau kamu lebih suka menyimpan kejutan di akhir cerita, maka Wh-Cleft (atau Pseudo-Cleft) adalah trik favorit yang wajib kamu coba! Alih-alih langsung blak-blakan, gaya ini mengemas informasi latar belakang ke dalam sebuah bungkusan klausa yang diawali dengan What. Begitu pembaca mulai penasaran menyusuri kalimatmu, berikanlah elemen kunci di posisi akhir, tepat setelah kata is atau was, untuk menciptakan efek retoris yang menawan.",
                 "formula": "What + [Subject + Verb] + is/was + [UNSUR FOKUS / SOLUSI]",
                 "examples": [
                         {
@@ -5032,7 +5113,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Reverse Wh-Clefts & Penegasan Kausalitas",
-                "explanation": "Reverse Wh-Cleft membalik urutan: Unsur fokus diletakkan di paling depan kalimat, diikuti *is/was what...*. Pola ini sangat efektif untuk menyimpulkan penyebab dalam paragraf evaluatif.",
+                "explanation": "Suka tampil beda dan langsung menusuk ke inti argumen? Coba mainkan Reverse Wh-Cleft yang membalik semua aturannya! Di sini, kamu langsung menaruh elemen fokusmu di posisi paling depan bagaikan jagoan utama. Baru setelah itu, ikuti dengan rangkaian pendorong 'is/was what...'. Pola tegas ini sangat jitu dan meyakinkan, terutama saat kamu ingin menutup paragraf evaluatif dan menunjuk langsung apa sebenarnya akar penyebab masalahnya.",
                 "formula": "[UNSUR FOKUS] + is/was + what + [Subject + Verb]",
                 "examples": [
                         {
@@ -5045,7 +5126,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Aplikasi Retorika Cleft Sentences dalam Esai Argumentatif",
-                "explanation": "Gunakan Cleft Sentences secara strategis pada Kalimat Tesis (Thesis Statement), Bantahan Argumen (Counter-Argument Refutation), atau Kalimat Kesimpulan Utama untuk menciptakan resonansi intelektual yang kuat.",
+                "explanation": "Menulis esai yang berkesan bukan sekadar masalah tata bahasa yang benar, melainkan seni strategi penempatan. Senjata rahasia bernama Cleft Sentences ini jangan dibuang sembarangan! Simpan dan gunakan secara strategis pada Kalimat Tesis, saat membanting argumen lawan, atau saat memahat Kalimat Kesimpulan. Dengan penempatan yang cerdas, tulisanmu akan memancarkan resonansi intelektual yang kuat dan sukses meninggalkan kesan mendalam di benak pembaca.",
                 "formula": "Gunakan Cleft untuk membantah miskonsepsi umum: It is not [A], but rather [B] that...",
                 "examples": [
                         {
@@ -5142,7 +5223,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Kaidah Paralelisme pada Konjungsi Korelatif",
-                "explanation": "Konjungsi Korelatif (*Not only ... but also, Either ... or, Neither ... nor, Both ... and, Whether ... or*) menuntut struktur gramatikal yang SIMETRIS SEMPURNA tepat setelah masing-masing pasangannya. Jika setelah *Not only* ada Frasa Preposisi, maka setelah *but also* WAJIB ada Frasa Preposisi.",
+                "explanation": "Coba perhatikan timbangan emas yang seimbang sempurna; begitulah seharusnya kamu memperlakukan Konjungsi Korelatif! Saat kamu memasangkan kata seperti Not only dengan but also, atau Either dengan or, keduanya punya tuntutan yang sangat kaku. Mereka mewajibkan agar struktur gramatikal yang menyusul di belakang masing-masing pasangannya memiliki bentuk yang SIMETRIS SEMPURNA. Kalau yang satu diikuti frasa nomina, pasangannya pantang diisi oleh klausa yang berbeda bentuk!",
                 "formula": "Not only + [BENTUK X], + but also + [BENTUK X YANG IDENTIK]",
                 "examples": [
                         {
@@ -5160,7 +5241,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Paralelisme Bentuk Kata dalam Daftar dan Serial",
-                "explanation": "Ketika membuat daftar tindakan atau karakteristik dalam satu kalimat, seluruh butir serial harus berbentuk sama: semua Gerund (-ing), semua Bare Infinitive, semua Frasa Nomina, atau semua Klausa.",
+                "explanation": "Pernah merasa ada yang janggal saat membaca sebuah daftar aktivitas, seolah iramanya tersandung? Itulah bahayanya melupakan paralelisme saat membuat serial! Kunci utamanya adalah kekompakan wujud: kalau butir pertama kamu mulai dengan Gerund (-ing), maka butir-butir selanjutnya harus setia memakai -ing juga. Entah kamu memilih Frasa Nomina, Bare Infinitive, atau Klausa, pastikan seluruh daftarmu memakai seragam sintaksis yang sama persis agar enak dibaca.",
                 "formula": "[Verb-ing A], [Verb-ing B], and [Verb-ing C] | [Noun A], [Noun B], and [Noun C]",
                 "examples": [
                         {
@@ -5173,7 +5254,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Paralelisme dalam Struktur Komparatif (More than, As ... as)",
-                "explanation": "Dalam perbandingan menggunakan *than* atau *as... as*, dua entitas yang diperbandingkan harus berkedudukan gramatikal setara. Membandingkan tindakan dengan kata benda adalah kesalahan paralelisme fatal (*Faulty Comparison*).",
+                "explanation": "Bayangkan kamu membandingkan rasa sebuah apel dengan bentuk sebuah mobil—sangat tidak nyambung, bukan? Logika yang sama berlaku saat kamu menimbang dua hal menggunakan than atau as...as. Dua entitas yang saling kamu adu ini wajib memiliki kedudukan gramatikal yang setara. Membandingkan sebuah tindakan (kata kerja) secara langsung dengan sebuah benda mati adalah kesalahan paralelisme fatal yang akan merusak kredibilitas perbandinganmu.",
                 "formula": "[Gerund Phrase A] + is more effective than + [Gerund Phrase B]",
                 "examples": [
                         {
@@ -5186,7 +5267,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Dampak Retorika Paralelisme pada Irama Kalimat (Cadence)",
-                "explanation": "Paralelisme tingkat tinggi (seperti trikolon atau kalimat seimbang) memberikan resonansi retoris yang kuat dan persuasif pada paragraf kesimpulan esai.",
+                "explanation": "Ingin paragraf kesimpulanmu bergaung megah layaknya pidato memukau? Keluarkanlah jurus paralelisme tingkat tinggi, seperti Trikolon yang menyajikan deretan tiga elemen beruntun dengan seimbang. Saat struktur kalimatmu berjajar dengan irama ketukan (cadence) yang sempurna, kalimat tersebut seketika memancarkan resonansi retoris yang magis dan sangat persuasif. Ini adalah pamungkas brilian untuk memastikan pembaca terhipnotis dengan argumen terakhirmu!",
                 "formula": "Trikolon Seimbang: [Struktur A], [Struktur A], and [Struktur A]",
                 "examples": [
                         {
@@ -5278,7 +5359,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "01",
                 "title": "Absolute Structures: Frasa Partisipel Mandiri",
-                "explanation": "Absolute Structure (atau Nominative Absolute) adalah konstruksi partisipel yang memiliki SUBJEK GRAMATIKALNYA SENDIRI yang terpisah dari subjek klausa utama. Karena memiliki subjek sendiri, struktur ini TIDAK PERNAH terancam kesalahan Dangling Modifier.",
+                "explanation": "Pernah trauma dengan kesalahan Dangling Modifier yang bikin subjek kalimatmu terlihat konyol? Tenang saja, Absolute Structure hadir sebagai pahlawan penyelamat! Konstruksi partisipel luar biasa ini punya keistimewaan membawa SUBJEK GRAMATIKALNYA SENDIRI, terpisah dan merdeka dari subjek utama di klausa induk. Karena ia mandiri mengatur urusannya sendiri, struktur elegan ini dijamin anti-nyasar dan tidak akan pernah terkena jebakan modifier yang menggantung.",
                 "formula": "[Noun / Pronoun] + [Participle Phrase (V-ing / V3)], + [Independent Clause]",
                 "examples": [
                         {
@@ -5296,7 +5377,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "02",
                 "title": "Pemadatan Participle Pasif & Sempurna pada Esai Tingkat Tinggi",
-                "explanation": "Menggabungkan Past Participle dan Perfect Participle dengan frasa preposisional memadatkan paragraf panjang menjadi kalimat pembuka yang sangat tajam dan kaya informasi.",
+                "explanation": "Terkadang esaimu terasa sesak dengan penjelasan panjang yang memakan banyak tempat. Solusi elegannya adalah dengan memadatkan informasi itu layaknya ahli bedah bahasa! Dengan cerdik menggabungkan Past Participle atau Perfect Participle ke dalam sebuah frasa, kamu bisa menekan paragraf yang gemuk menjadi kalimat pembuka yang luar biasa tajam. Teknik ini memastikan tulisanmu kaya akan informasi namun tetap efisien dan cepat dicerna pembaca.",
                 "formula": "Published in [Tahun], + [Subject] + [Verb] | Having analyzed [Objek], + [Subject] + [Verb]",
                 "examples": [
                         {
@@ -5309,7 +5390,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "03",
                 "title": "Matriks Epistemic Stance & Hedging Ilmiah",
-                "explanation": "Penulis berkaliber tinggi tidak pernah membuat klaim mutlak yang naif (*This proves that X is bad*). Mereka menggunakan Matriks Hedging terukur: (1) Tentative Verbs (*suggest, indicate, imply*); (2) Probability Adverbs (*plausibly, arguably, predominantly*); (3) Modal Modulations (*may contribute to, appears to stem from*).",
+                "explanation": "Coba perhatikan tulisan para sarjana kelas dunia: mereka pantang membuat klaim mutlak yang terkesan naif. Mereka jago bersiasat menggunakan Matriks Hedging untuk meredam nada kalimat tanpa menghilangkan ketajamannya. Melalui sentuhan halus Tentative Verbs seperti suggest dan imply, atau bantuan Probability Adverbs semacam arguably, klaim mereka berubah menjadi pandangan akademis (epistemic stance) yang canggih, objektif, dan sangat sulit untuk dipatahkan!",
                 "formula": "Klaim Naif: [X causes Y] ----[Academic Hedging]----> [The evidence suggests that X may substantially contribute to Y]",
                 "examples": [
                         {
@@ -5322,7 +5403,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
         {
                 "stepNumber": "04",
                 "title": "Kriteria Mahakarya: Sintesis Sintaksis untuk IELTS 9.0 & TOEFL 120",
-                "explanation": "Pencapaian skor tertinggi menuntut variasi sintaksis terpadu: menggabungkan Nominalisasi, Inversi, Clefting, dan Participle Clauses dalam satu esai yang mengalir secara alami, kohesif, dan bertenaga.",
+                "explanation": "Akhirnya, sampailah kita pada puncak gunung penulisan akademik! Untuk merebut skor tertinggi dari sang penguji, kamu tak bisa hanya mengandalkan satu trik dasar. Kesempurnaan dicapai saat kamu berhasil mensintesis berbagai variasi sintaksis: padukan sihir Nominalisasi, letupan dramatis Inversi, fokus tajam dari Clefting, dan efisiensi Participle Clauses. Jika semuanya berpadu dalam satu esai yang mengalir deras, kohesif, dan bertenaga, tulisanmu niscaya menuai nilai maksimal.",
                 "formula": "Integrasi Sintaksis: [Participle Reduction] + [Nominalized Concept] + [Balanced Parallelism] + [Hedging Stance]",
                 "examples": [
                         {
