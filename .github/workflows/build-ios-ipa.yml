@@ -1,4 +1,4 @@
-﻿name: Build iOS IPA for SideStore
+name: Build iOS IPA for SideStore
 
 on:
   push:
@@ -31,6 +31,18 @@ jobs:
         run: |
           npx cap add ios || true
           npx cap sync ios
+
+      - name: Inject Meraki Official App Icon
+        run: |
+          if [ -d "ios/App/App/Assets.xcassets/AppIcon.appiconset" ]; then
+            for icon in ios/App/App/Assets.xcassets/AppIcon.appiconset/*.png; do
+              if [ -f "$icon" ]; then
+                cp public/favicon.png "$icon"
+              fi
+            done
+            cp public/favicon.png ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png || true
+            cp public/favicon.png ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon.png || true
+          fi
 
       - name: Build Xcode Project (Unsigned / Ad-Hoc for SideStore)
         run: |

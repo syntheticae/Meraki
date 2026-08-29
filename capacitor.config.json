@@ -1,13 +1,15 @@
-﻿{
+{
   "appId": "com.syntheticae.meraki",
   "appName": "Meraki",
   "webDir": "out",
+  "backgroundColor": "#EFE9DF",
   "bundledWebRuntime": false,
   "ios": {
-    "contentInset": "automatic",
+    "contentInset": "never",
     "allowsLinkPreview": false,
-    "scrollEnabled": true,
-    "preferredContentMode": "mobile"
+    "scrollEnabled": false,
+    "preferredContentMode": "mobile",
+    "backgroundColor": "#EFE9DF"
   },
   "server": {
     "androidScheme": "https"
