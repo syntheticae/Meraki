@@ -107,77 +107,135 @@ html.dark body {
   color: #EFEAE1 !important;
 }
 
-html.dark .bg-\[\#EFE9DF\],
-html.dark .bg-\[\#EFE9DF\]\/90 {
+/* Base Canvas / Page background */
+html.dark [class*="bg-[#EFE9DF]"] {
   background-color: #141210 !important;
 }
 
-html.dark .bg-\[\#E6E0D4\],
-html.dark .bg-\[\#E8E2D6\],
-html.dark .bg-\[\#E6E0D4\]\/88,
-html.dark .bg-\[\#E8E2D6\]\/90 {
+/* Primary Surface / Panels / Sidebar */
+html.dark [class*="bg-[#E6E0D4]"],
+html.dark [class*="bg-[#E8E2D6]"] {
   background-color: #1E1B18 !important;
 }
 
-html.dark .bg-\[\#DDD7CA\],
-html.dark .bg-\[\#DDD7CA\]\/50,
-html.dark .bg-\[\#DDD7CA\]\/60,
-html.dark .bg-\[\#DDD7CA\]\/40 {
-  background-color: #28241F !important;
+/* Cards, Inputs, & Modal Backgrounds */
+html.dark [class*="bg-[#DDD7CA]"] {
+  background-color: #27231E !important;
 }
 
-html.dark .bg-\[\#E2DCD0\],
-html.dark .bg-\[\#E2DCD0\]\/60 {
-  background-color: #221E19 !important;
+/* Subtle Cards & Unselected Pill Items */
+html.dark [class*="bg-[#E2DCD0]"] {
+  background-color: #211D19 !important;
 }
 
-html.dark .border-\[\#C8C0B0\],
-html.dark .border-\[\#C8C0B0\]\/60,
-html.dark .border-\[\#C8C0B0\]\/30,
-html.dark .border-\[\#C8C0B0\]\/40 {
-  border-color: #3A352D !important;
+/* Active Selected Navigation Pill / Primary Black Buttons */
+html.dark [class*="bg-[#1E1B17]"],
+html.dark [class*="bg-[#1A1714]"] {
+  background-color: #342D25 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 
-html.dark .text-\[\#1E1B17\],
-html.dark .text-\[\#1A1714\],
-html.dark .text-\[\#38332A\],
-html.dark .text-\[\#38332C\] {
+/* White elements in Dark Mode */
+html.dark [class*="bg-white"] {
+  background-color: #27231E !important;
   color: #EFEAE1 !important;
 }
 
-html.dark .text-\[\#524C42\] {
-  color: #C4BCAD !important;
+/* Borders */
+html.dark [class*="border-[#C8C0B0]"],
+html.dark [class*="border-white/"],
+html.dark [class*="border-black/"] {
+  border-color: #38322B !important;
 }
 
-html.dark .text-\[\#7A7265\],
-html.dark .text-\[\#82796A\] {
-  color: #948B7C !important;
+/* Primary Ink & Text */
+html.dark [class*="text-[#1E1B17]"],
+html.dark [class*="text-[#1A1714]"],
+html.dark [class*="text-[#38332A]"],
+html.dark [class*="text-[#38332C]"],
+html.dark .text-black,
+html.dark .text-gray-900 {
+  color: #EFEAE1 !important;
 }
 
-html.dark .hover\:bg-\[\#C8C0B0\]:hover {
-  background-color: #3A352D !important;
+/* Secondary Ink */
+html.dark [class*="text-[#524C42]"] {
+  color: #C8C0B2 !important;
 }
 
-html.dark .hover\:bg-\[\#DDD7CA\]:hover {
-  background-color: #28241F !important;
+/* Muted Ink */
+html.dark [class*="text-[#7A7265]"],
+html.dark [class*="text-[#82796A]"] {
+  color: #9C9385 !important;
 }
 
+/* Terracotta Glowing Accents */
+html.dark [class*="text-[#A84A28]"],
+html.dark [class*="text-[#C4502A]"],
+html.dark [class*="text-[#B5663F]"] {
+  color: #E06D44 !important;
+}
+
+/* Sage Green Accents */
+html.dark [class*="text-[#535841]"],
+html.dark [class*="text-[#5F6244]"] {
+  color: #8C996E !important;
+}
+
+/* Left Border Accents on Callouts */
+html.dark [class*="border-l-[#A84A28]"],
+html.dark [class*="border-l-[#C4502A]"] {
+  border-left-color: #E06D44 !important;
+}
+
+html.dark [class*="border-l-[#535841]"],
+html.dark [class*="border-l-[#5F6244]"] {
+  border-left-color: #8C996E !important;
+}
+
+/* Tinted Callout Backgrounds (Mental Model, Badges, Pills) */
+html.dark [class*="bg-[#A84A28]"] {
+  background-color: rgba(224, 109, 68, 0.18) !important;
+}
+
+html.dark [class*="bg-[#535841]"] {
+  background-color: rgba(140, 153, 110, 0.18) !important;
+}
+
+/* Hover States */
+html.dark [class*="hover:bg-[#C8C0B0]"]:hover {
+  background-color: #38322B !important;
+}
+
+html.dark [class*="hover:bg-[#DDD7CA]"]:hover {
+  background-color: #2D2721 !important;
+}
+
+/* Glassmorphism & Floating Nav in Dark Mode */
 html.dark .glass-header {
-  background-color: rgba(20, 18, 16, 0.92) !important;
-  border-bottom: 1px solid #3A352D !important;
+  background-color: rgba(20, 18, 16, 0.94) !important;
+  border-bottom: 1px solid #38322B !important;
 }
 
 html.dark .glass-card {
-  background-color: rgba(30, 27, 24, 0.88) !important;
-  border: 1px solid #3A352D !important;
+  background-color: rgba(30, 27, 24, 0.9) !important;
+  border: 1px solid #38322B !important;
 }
 
+html.dark nav[class*="backdrop-blur-2xl"] {
+  background-color: rgba(30, 27, 24, 0.92) !important;
+  border: 1px solid #38322B !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Custom Scrollbars in Dark Mode */
 html.dark ::-webkit-scrollbar-thumb {
-  background: rgba(212, 91, 52, 0.35);
+  background: rgba(224, 109, 68, 0.35);
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 91, 52, 0.6);
+  background: rgba(224, 109, 68, 0.6);
 }
 
 /* Drop Cap Typography */
