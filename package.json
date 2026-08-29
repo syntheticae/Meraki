@@ -45,7 +45,7 @@
     "files": [
       "electron/**/*",
       "out/**/*",
-      "build/icon.ico",
+      "public/icon.ico",
       "package.json"
     ],
     "win": {
@@ -63,7 +63,7 @@
           ]
         }
       ],
-      "icon": "build/icon.ico",
+      "icon": "public/icon.ico",
       "artifactName": "${productName}-${version}-${target}.${ext}"
     },
     "nsis": {

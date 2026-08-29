@@ -26,7 +26,7 @@ function createWindow() {
     minWidth: 980,
     minHeight: 640,
     title: 'Meraki English',
-    icon: path.join(__dirname, '..', 'build', 'icon.ico'),
+    icon: path.join(__dirname, '..', 'public', 'icon.ico'),
     backgroundColor: '#EFE9DF',
     show: false,
     webPreferences: {
