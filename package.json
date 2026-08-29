@@ -2,6 +2,8 @@
   "name": "meraki-english",
   "version": "0.1.0",
   "private": true,
+  "description": "Meraki English Studio - Master English with Depth, Grammar Architecture & Intuition",
+  "author": "Syntheticae Studio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -63,8 +65,7 @@
           ]
         }
       ],
-      "icon": "public/icon.ico",
-      "artifactName": "${productName}-${version}-${target}.${ext}"
+      "icon": "public/icon.ico"
     },
     "nsis": {
       "oneClick": false,
