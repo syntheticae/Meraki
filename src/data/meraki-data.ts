@@ -217,7 +217,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-02-to-be-foundations',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
+    stageName: 'Tahap 1: Fondasi Mutlak & Subjek-Predikat Inti',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 2,
     title: 'Fondasi To Be (Am, Is, Are, Was, Were, Been, Being) & Kalimat Nominal vs Verbal',
@@ -334,7 +334,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-03-have-has-had-mastery',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
+    stageName: 'Tahap 1: Fondasi Mutlak & Subjek-Predikat Inti',
     categoryKey: 'Word Classes',
     moduleNumber: 3,
     title: 'Fondasi Auxiliary Utama: HAVE, HAS, HAD (Kepemilikan, Aspek Selesai, dan Keharusan)',
@@ -452,7 +452,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-04-do-does-did-operator',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
+    stageName: 'Tahap 1: Fondasi Mutlak & Subjek-Predikat Inti',
     categoryKey: 'Word Classes',
     moduleNumber: 4,
     title: 'Fondasi Auxiliary Operator: DO, DOES, DID (Negasi, Tanya, dan Emfasis)',
@@ -567,7 +567,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-05-subject-verb-agreement-fundamental',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
+    stageName: 'Tahap 1: Fondasi Mutlak & Subjek-Predikat Inti',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 5,
     title: 'Subject-Verb Agreement Fundamental & Kaidah Akhiran -s/-es',
@@ -684,8 +684,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-06-noun-types',
-    stageNumber: 2,
-    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
+    stageNumber: 1,
+    stageName: 'Tahap 1: Fondasi Mutlak & Subjek-Predikat Inti',
     categoryKey: 'Word Classes',
     moduleNumber: 6,
     title: 'Arsitektur Noun: Proper, Common, Concrete, Abstract, dan Collective Nouns',
@@ -777,7 +777,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-07-countable-uncountable',
     stageNumber: 2,
-    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
+    stageName: 'Tahap 2: Sistem Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 7,
     title: 'Countable vs Uncountable Nouns & Partitive Expressions',
@@ -873,7 +873,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-08-articles-system',
     stageNumber: 2,
-    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
+    stageName: 'Tahap 2: Sistem Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 8,
     title: 'The Article System: A, An, The vs Zero Article',
@@ -965,7 +965,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-09-pronoun-declension-advanced',
     stageNumber: 2,
-    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
+    stageName: 'Tahap 2: Sistem Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 9,
     title: 'Pronoun Declension Lanjutan (Possessive, Reflexive, Reciprocal, Relative)',
@@ -1055,7 +1055,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-10-quantifiers-distributives',
     stageNumber: 2,
-    stageName: 'Tahap 2: Morfologi Kata Benda & Penentu',
+    stageName: 'Tahap 2: Sistem Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 10,
     title: 'Demonstratives, Quantifiers & Distributives',
@@ -1147,8 +1147,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-11-core-verb-types',
-    stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageNumber: 2,
+    stageName: 'Tahap 2: Sistem Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 11,
     title: 'Core Verb Types: Transitive, Intransitive, dan Ergative Verbs',
@@ -1244,7 +1244,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-12-stative-vs-dynamic-verbs',
     stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageName: 'Tahap 3: Tipologi Verba & Modalitas',
     categoryKey: 'Word Classes',
     moduleNumber: 12,
     title: 'Stative Verbs vs Dynamic Verbs: Kognisi, Emosi, Persepsi & Kepemilikan',
@@ -1342,7 +1342,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-13-linking-verbs',
     stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageName: 'Tahap 3: Tipologi Verba & Modalitas',
     categoryKey: 'Word Classes',
     moduleNumber: 13,
     title: 'Linking Verbs & Subject Complements (Be, Seem, Appear, Remain, Become)',
@@ -1435,7 +1435,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-14-modals-auxiliaries',
     stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageName: 'Tahap 3: Tipologi Verba & Modalitas',
     categoryKey: 'Word Classes',
     moduleNumber: 14,
     title: 'Modal Auxiliaries: Primary vs Modals (Can, Could, Must, Should, May, Might)',
@@ -1528,7 +1528,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-15-semi-modals-phrasals',
     stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageName: 'Tahap 3: Tipologi Verba & Modalitas',
     categoryKey: 'Word Classes',
     moduleNumber: 15,
     title: 'Semi-Modals & Phrasal Modals: Ought to, Had better, Be able to, Used to vs Be used to',
@@ -1621,8 +1621,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-16-royal-order-adjectives',
-    stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Modifiers, Kolokasi & Konektor Kalimat',
     categoryKey: 'Word Classes',
     moduleNumber: 16,
     title: 'Adjectives & The Royal Order of Adjectives (OSASCOMP)',
@@ -1714,8 +1714,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-17-participle-adjectives',
-    stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Modifiers, Kolokasi & Konektor Kalimat',
     categoryKey: 'Word Classes',
     moduleNumber: 17,
     title: 'Participle Adjectives: -ed vs -ing (Perasaan vs Karakteristik)',
@@ -1808,8 +1808,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-18-comparative-superlative',
-    stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Modifiers, Kolokasi & Konektor Kalimat',
     categoryKey: 'Word Classes',
     moduleNumber: 18,
     title: 'Comparative & Superlative Degrees & Proportional Structures',
@@ -1901,8 +1901,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-19-adverbs-placement',
-    stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Bentuk Non-Finite & Verba Frasa',
     categoryKey: 'Word Classes',
     moduleNumber: 19,
     title: 'Adverbs & Adverbial Placement (Manner, Frequency, Degree & Sentence Adverbs)',
@@ -1996,8 +1996,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-20-prepositions-hierarchy',
-    stageNumber: 3,
-    stageName: 'Tahap 3: Morfologi Kata Kerja, Modals & Modifier',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Bentuk Non-Finite & Verba Frasa',
     categoryKey: 'Word Classes',
     moduleNumber: 20,
     title: 'Prepositions: Hierarki Waktu, Ruang, dan Gerak (In, On, At & Movement)',
@@ -2093,8 +2093,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-21-dependent-prepositions',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Bentuk Non-Finite & Verba Frasa',
     categoryKey: 'Word Classes',
     moduleNumber: 21,
     title: 'Dependent Prepositions & Fixed Prepositional Collocations',
@@ -2188,8 +2188,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-22-clause-anatomy',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 6,
+    stageName: 'Tahap 6: Sintaksis, Dimensi Waktu & Pasif',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 22,
     title: 'Anatomy of a Clause: Subject, Finite Verb, Complements, and Adjuncts',
@@ -2291,8 +2291,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-23-five-sentence-patterns',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 6,
+    stageName: 'Tahap 6: Sintaksis, Dimensi Waktu & Pasif',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 23,
     title: 'The 5 Fundamental Sentence Patterns (S-V, S-V-O, S-V-C, S-V-IO-DO, S-V-O-OC)',
@@ -2384,8 +2384,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-24-subject-verb-agreement-advanced',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 6,
+    stageName: 'Tahap 6: Sintaksis, Dimensi Waktu & Pasif',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 24,
     title: 'Subject-Verb Agreement Lanjutan (Intervening Phrases & Proximity)',
@@ -2477,8 +2477,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-25-sentence-errors-elimination',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 6,
+    stageName: 'Tahap 6: Sintaksis, Dimensi Waktu & Pasif',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 25,
     title: 'Sentence Errors Elimination: Fragments, Run-ons, dan Comma Splices',
@@ -2577,8 +2577,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-26-present-dimensions',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 7,
+    stageName: 'Tahap 7: Modus Kondisional & Hipotesis',
     categoryKey: 'Tenses Logic',
     moduleNumber: 26,
     title: 'Present Dimensions: Simple, Continuous, Perfect, dan Perfect Continuous',
@@ -2672,8 +2672,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-27-past-dimensions',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 7,
+    stageName: 'Tahap 7: Modus Kondisional & Hipotesis',
     categoryKey: 'Tenses Logic',
     moduleNumber: 27,
     title: 'Past Dimensions: Simple Past, Past Continuous, Past Perfect, dan Past Perfect Continuous',
@@ -2765,8 +2765,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-28-future-dimensions',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 8,
+    stageName: 'Tahap 8: Transformasi Klausa & Inversi',
     categoryKey: 'Tenses Logic',
     moduleNumber: 28,
     title: 'Future Dimensions: Will, Be Going To, Future Continuous, dan Future Perfect',
@@ -2858,8 +2858,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-29-passive-voice',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 8,
+    stageName: 'Tahap 8: Transformasi Klausa & Inversi',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 29,
     title: 'Passive Voice Transformation & Stative Passive Structures',
@@ -2953,8 +2953,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-30-conditionals-logic',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Sintaksis, Pola Kalimat & Dimensi Waktu',
+    stageNumber: 8,
+    stageName: 'Tahap 8: Transformasi Klausa & Inversi',
     categoryKey: 'Complex Structures',
     moduleNumber: 30,
     title: 'Conditionals Logic: Zero, First, Second, Third, dan Mixed Conditionals',
@@ -3049,8 +3049,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-31-conjunctions-transitions',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
+    stageNumber: 8,
+    stageName: 'Tahap 8: Transformasi Klausa & Inversi',
     categoryKey: 'Complex Structures',
     moduleNumber: 31,
     title: 'Coordinating Conjunctions (FANBOYS), Subordinasi, dan Transisi Antar-Kalimat',
@@ -3144,8 +3144,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-32-relative-clauses',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
+    stageNumber: 9,
+    stageName: 'Tahap 9: Retorika Akademik & Sintaksis Mahir',
     categoryKey: 'Complex Structures',
     moduleNumber: 32,
     title: 'Relative Clauses: Defining vs Non-Defining, Punctuation, dan Relative Pronoun Omission',
@@ -3239,8 +3239,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-33-noun-clauses-embedded-questions',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
+    stageNumber: 9,
+    stageName: 'Tahap 9: Retorika Akademik & Sintaksis Mahir',
     categoryKey: 'Complex Structures',
     moduleNumber: 33,
     title: 'Noun Clauses & Embedded Questions',
@@ -3332,8 +3332,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-34-subjunctive-and-inversion',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
+    stageNumber: 9,
+    stageName: 'Tahap 9: Retorika Akademik & Sintaksis Mahir',
     categoryKey: 'Complex Structures',
     moduleNumber: 34,
     title: 'Subjunctive Mood & Inversion for Emphasis',
@@ -3420,8 +3420,8 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-35-participle-clauses-register-mastery',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Retorika Akademik, Klausa Kompleks & Kesiapan Ujian',
+    stageNumber: 9,
+    stageName: 'Tahap 9: Retorika Akademik & Sintaksis Mahir',
     categoryKey: 'Exam Readiness',
     moduleNumber: 35,
     title: 'Participle Clauses, Absolute Structures & Academic Register Mastery (IELTS 8.5+ & TOEFL 110+)',

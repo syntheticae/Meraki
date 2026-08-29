@@ -196,7 +196,7 @@ export default function UserDashboardPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
             <div>
               <span className="font-mono text-[10px] uppercase text-[#7A7265] tracking-wider block font-semibold">
-                Matriks Penguasaan 5 Tahap
+                Matriks Penguasaan 9 Tahap
               </span>
               <h2 className="text-2xl font-serif font-bold text-[#1E1B17]">
                 Progres Kurikulum Fondasi Inti (35 Modul)
@@ -211,7 +211,7 @@ export default function UserDashboardPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {stageNames.map((stageName, sIdx) => {
               const stageModules = MERAKI_CURRICULUM.filter(m => m.stageName === stageName);
               const stageCompleted = stageModules.filter(m => coreCompletedIds.includes(m.id)).length;
