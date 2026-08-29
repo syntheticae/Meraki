@@ -1971,9 +1971,13 @@ export default function MerakiApp() {
                           Mental Model & Nalar Penutur Asli:
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-[#38332A] leading-relaxed italic">
-                        "{currentTopic.mentalModelIntro}"
-                      </p>
+                      <div className="text-xs sm:text-sm text-[#38332A] leading-relaxed space-y-3 font-serif">
+                        {currentTopic.mentalModelIntro.split('\n\n').map((paragraph, pIdx) => (
+                          <p key={pIdx} className="leading-relaxed">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   )}
 

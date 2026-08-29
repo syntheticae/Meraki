@@ -92,14 +92,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   {
     id: 'modul-01-subject-pronouns',
     stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Arsitektur Subjek-Predikat Inti',
+    stageName: 'Tahap 1: Fondasi Mutlak & Subjek-Predikat Inti',
     categoryKey: 'Word Classes',
     moduleNumber: 1,
     title: 'Subjek Inti & Sistem Pronoun: I, You, They, We, He, She, It',
     subtitle: 'Mengenali aktor pembicaraan, pembagian orang ke-1/2/3, dan kasus Subject vs Object',
     levelBadge: 'Fondasi Mutlak · Modul 01',
     estimatedMinutes: 20,
-    mentalModelIntro: 'Setiap kalimat bahasa Inggris wajib memiliki Subjek yang jelas. Bahasa Inggris adalah bahasa non-pro-drop (tidak mengenal penanggalan subjek seperti bahasa Indonesia). Anda tidak bisa mengatakan "Is raining" melainkan harus "It is raining". Pronoun adalah kata ganti ringkas berkelas tertutup (closed word class) yang menggantikan nomina agar tidak terjadi repetisi yang melelahkan dalam diskursus ilmiah.',
+    mentalModelIntro: "Pernahkah kamu menyadari betapa santainya bahasa Indonesia memperlakukan subjek? Kita bisa dengan mudah berucap \"Kemarin hujan lebat\" atau \"Enak ya tinggal di sini\" tanpa pernah memikirkan siapa sebenarnya pelaku dari kalimat tersebut. Namun, dalam semesta tata bahasa Inggris, sebuah kalimat diibaratkan seperti jembatan gantung: ia mutlak membutuhkan tiang pancang yang kokoh agar tidak runtuh. Penutur asli memprogram otak mereka untuk selalu mencari jangkar aktor (Subject) sebelum meluncurkan tindakan apa pun. Ketika tidak ada pelaku nyata di alam fisik, mereka secara elegan menciptakan dummy subjects seperti \"It\" dan \"There\" sebagai penopang gramatikal.\n\nDi modul pembuka ini, kita akan membangun kembali intuisi dasarmu mengenai arsitektur kalimat. Kamu akan menyelami mengapa pronoun harus berubah wujud secara presisi saat berpindah peran dari pelaku (nominative) menjadi penerima aksi (accusative). Kita juga akan membedah bagaimana merangkai subjek majemuk (compound subject) tanpa terjebak kerancuan, serta menjaga kejelasan rujukan (pronoun referencing) agar gagasanmu selalu tersampaikan dengan jernih dan berwibawa. Bersiaplah meletakkan fondasi terkuat bagi perjalanan bahasa Inggrismu.",
     coreConceptSummary: 'Subjek terbagi atas 3 sudut pandang gramatikal: 1st Person (I/We), 2nd Person (You), dan 3rd Person (He/She/It/They). Bentuk kasus nominatif (Subject Pronoun) hanya boleh menduduki posisi pelaku sebelum kata kerja utama, sedangkan kasus akusatif (Object Pronoun: me, him, her, us, them) wajib menduduki posisi penderita setelah verba transitif atau komplementasi preposisi.',
     decisionTree: [
       {
@@ -292,7 +292,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Mengenali esensi predikat To Be, Subject Complement, dan pemisahan mutlak kalimat verbal vs nominal',
     levelBadge: 'Fondasi Mutlak · Modul 02',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Dalam bahasa Indonesia, kata sifat atau kata benda bisa langsung berfungsi sebagai predikat tanpa kata kerja bantu (misal: "Dia pintar", "Mereka dokter"). Namun, dalam bahasa Inggris, KALIMAT WAJIB MEMILIKI VERBA. To Be bertindak sebagai jembatan kopula (Copular Verb) yang menghubungkan subjek dengan pelengkap predikatifnya (Subject Complement).',
+    mentalModelIntro: "Bayangkan sebuah sirkuit listrik. Arus daya tidak akan pernah mengalir jika kedua ujung kabel tidak terhubung oleh sakelar penghubung. Dalam bahasa Indonesia, kita bisa langsung menyandingkan subjek dan kata sifat: \"Dia lelah\" atau \"Kopi ini manis\". Namun, bahasa Inggris memandang kalimat sebagai mesin dinamis yang mutlak membutuhkan kata kerja sebagai sumber energinya. Ketika tidak ada tindakan fisik yang terjadi, hadirlah To Be sebagai jembatan kopula—tanda sama dengan (=) yang mengaitkan subjek dengan identitas, lokasi, maupun kondisinya.\n\nBagi penutur asli, To Be bukan sekadar kata tempelan, melainkan kompas waktu dan penggerak gramatikal. Melalui modul ini, kamu akan melepaskan jebakan Zero Copula yang kerap terbawa dari bahasa ibu. Kita akan memetakan matriks waktu am, is, are, was, dan were, serta memahami peran gandanya saat bertransformasi menjadi kata kerja bantu (auxiliary) untuk merajut aksi yang sedang berlangsung maupun membentuk kalimat pasif. Kuasai jembatan ini, dan setiap kalimatmu akan berdiri kokoh dengan presisi waktu yang sempurna.",
     coreConceptSummary: 'To Be memiliki 8 bentuk infleksi morfologis (be, am, is, are, was, were, being, been). Sebagai kata kerja kopulatif (Copula), To Be tidak menyatakan aksi fisik melainkan status keberadaan, identitas nomina, atau keadaan adjektiva.',
     decisionTree: [
       {
@@ -482,7 +482,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Membedakan HAVE sebagai Kata Kerja Utama (Possession), Auxiliary (Perfect Aspect), dan Modalitas (Obligation)',
     levelBadge: 'Fondasi Mutlak · Modul 03',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kata kerja "HAVE" adalah pilar ganda dalam tata bahasa Inggris. Ketika bertindak sebagai Kata Kerja Utama (Main Verb), HAVE menyatakan kepemilikan material, hubungan keluarga, atau pengalaman. Namun, ketika bertindak sebagai Kata Kerja Bantu (Auxiliary Verb), HAVE bertindak sebagai mesin waktu yang menggerakkan Aspek Perfek (Perfect Aspect), menghubungkan tindakan masa lalu dengan titik acuan saat ini.',
+    mentalModelIntro: "Dalam bahasa kita sehari-hari, kata \"punya\" dan \"sudah\" berada di dua ruangan pikiran yang terpisah jauh. Kita mengatakan \"Saya punya mobil\" untuk kepemilikan barang, dan \"Saya sudah makan\" sebagai penanda selesainya waktu. Namun di dalam benak penutur bahasa Inggris, kata HAVE adalah sebuah permata multifaset yang menyatukan kedua konsep tersebut dalam satu nafas gramatikal yang luar biasa elegan. Memahami HAVE, HAS, dan HAD berarti membuka kunci rahasia bagaimana waktu, kepemilikan, dan relasi tindakan dikonstruksikan.\n\nDi modul ini, kamu akan diajak menelusuri dualitas memukau antara have sebagai kata kerja utama bermakna statif maupun dinamis, serta perannya sebagai auxiliary verb yang membentuk jembatan waktu sempurna (Perfect aspect). Kita juga akan mengeksplorasi struktur kausatif—seni mendelegasikan tindakan kepada orang lain secara alami. Setelah menuntaskan modul ini, kamu tidak akan lagi ragu membedakan kapan have berdiri mandiri sebagai pemilik makna dan kapan ia bertindak sebagai mesin penggerak kalimat.",
     coreConceptSummary: 'HAVE memiliki tiga bentuk infleksi utama: Have (Present: I/You/We/They), Has (Present: He/She/It), dan Had (Past: Semua Subjek). Membedakan kapan HAVE memerlukan do-support dan kapan HAVE berfungsi mandiri sebagai auxiliary adalah kompetensi fundamental untuk menguasai tenses lanjutan.',
     decisionTree: [
       {
@@ -667,7 +667,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Mekanisme kata kerja bantu pembentuk kalimat negatif, interogatif, penekanan, dan hukum mutlak Bare Infinitive',
     levelBadge: 'Fondasi Mutlak · Modul 04',
     estimatedMinutes: 20,
-    mentalModelIntro: 'Dalam bahasa Inggris, kata kerja aksi biasa (seperti work, study, write) tidak bisa langsung ditempeli kata "not" atau dibalik posisinya untuk membuat pertanyaan (*He works not ❌, Works he? ❌*). Mereka membutuhkan "mesin operator pembantu" yaitu DO, DOES (Present), atau DID (Past). Begitu operator ini muncul, kata kerja utama kembali ke bentuk aslinya (Bare Infinitive).',
+    mentalModelIntro: "Bayangkan seorang aktor utama dalam film laga yang membutuhkan peran pengganti (stunt double) untuk melakukan manuver-manuver berat dan berbahaya. Dalam tata bahasa Inggris, kata kerja aksi biasa seperti eat, sleep, atau analyze adalah aktor utama yang tidak bisa membentuk kalimat tanya atau sangkalan seorang diri. Di sinilah keluarga DO, DOES, dan DID hadir sebagai operator penyelamat—sebuah mekanisme tata bahasa unik bernama Do-Support.\n\nOperator ini dengan sigap mengambil alih beban waktu dan negasi di pundaknya, sehingga kata kerja utama terbebas dari konjugasi dan kembali ke bentuk paling murninya (bare infinitive). Di modul ini, kamu akan memahami secara mendalam kapan DO bekerja sebagai pembantu setia, kapan ia bersinar sebagai kata kerja utama, dan bagaimana ia bisa dimanfaatkan untuk memberikan penekanan emosional (emphatic DO) yang memikat. Melalui pemahaman ini, kamu akan menyusun sangkalan dan pertanyaan dengan kelancaran naluriah layaknya penutur jati.",
     coreConceptSummary: 'DO (I, You, They, We), DOES (He, She, It), DID (Semua subjek di masa lampau). Hukum Mutlak: Setelah DO / DOES / DID / DON\'T / DOESN\'T / DIDN\'T, kata kerja yang menyusul WAJIB berbentuk kata kerja dasar murni (Verb 1 / Bare Infinitive) tanpa akhiran -s, -es, atau -ed.',
     decisionTree: [
       {
@@ -823,7 +823,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Menyelaraskan subjek tunggal vs jamak, aturan ortografi akhiran -s/-es, dan logika Simple Present',
     levelBadge: 'Fondasi Mutlak · Modul 05',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Subject-Verb Agreement (Keselarasan Subjek-Verba) adalah aturan sintaksis paling mendasar: Subjek Tunggal membutuhkan Verba Tunggal, dan Subjek Jamak membutuhkan Verba Jamak. Tantangan terbesar dalam esai akademik muncul ketika subjek dipisahkan dari verba oleh frasa penyela yang panjang (Intervening Phrases) atau ketika kuantifier ambigu digunakan.',
+    mentalModelIntro: "Coba perhatikan keindahan simfoni orkestra: setiap instrumen harus memainkan nada dalam tangga nada yang selaras agar tercipta harmoni yang merdu. Bahasa Indonesia memperlakukan kata kerja dengan sangat santai; kita berkata \"Dia berjalan\" dan \"Mereka berjalan\" tanpa perlu mengubah satu huruf pun. Sebaliknya, bahasa Inggris menuntut adanya kesepakatan mutlak antara pelaku dan aksinya—sebuah prinsip fundamental yang kita kenal sebagai Subject-Verb Agreement. Menambahkan akhiran -s atau -es pada kata kerja tunggal adalah cara bahasa Inggris mengunci keharmonisan tersebut.\n\nTantangan sesungguhnya muncul saat kalimat mulai dipenuhi gangguan visual. Dalam modul ini, kita akan melatih kejelian intuisimu untuk menembus perangkap frasa sisipan (proximity trap) yang kerap mengecoh. Kamu juga akan menguasai perilaku unik dari indefinite pronouns seperti everyone dan each yang menuntut perlakuan tunggal, serta menavigasi kuantifier fraksional yang fleksibel mengikuti nomina intinya. Kuasai modul ini untuk memastikan setiap kalimat yang kamu susun selalu anggun dan bebas dari cacat gramatikal mendasar.",
     coreConceptSummary: 'Pada Present Tense, verba tunggal orang ketiga diakhiri dengan akhiran morfologis -s/-es (*The student analyzes*), sedangkan verba jamak tidak memiliki akhiran -s (*The students analyze*). Identifikasi Subjek Utama (Head Noun) secara tepat adalah kunci mencegah error.',
     decisionTree: [
       {
@@ -1000,15 +1000,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-06-noun-types',
-    stageNumber: 1,
-    stageName: 'Tahap 1: Fondasi Mutlak & Subjek-Predikat Inti',
+    stageNumber: 2,
+    stageName: 'Tahap 2: Sistem Morfologi Kata Benda & Penentu',
     categoryKey: 'Word Classes',
     moduleNumber: 6,
     title: 'Arsitektur Noun: Proper, Common, Concrete, Abstract, dan Collective Nouns',
     subtitle: 'Mengenali entitas pembicaraan dan klasifikasi substantif dari konsep paling dasar',
     levelBadge: 'Morfologi Noun · Modul 06',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Nomina (Kata Benda) adalah blok bangunan utama dalam setiap kalimat. Dalam penulisan akademik, Anda harus mampu membedakan 4 kategori nomina (Proper, Common, Collective, dan Abstract) karena masing-masing memiliki implikasi kapitalisasi, penggunaan artikel, dan keselarasan subjek-verba (Subject-Verb Agreement) yang berbeda.',
+    mentalModelIntro: "Jika kata kerja adalah denyut jantung kalimat, maka kata benda (noun) adalah tulang punggung yang membentuk seluruh wujud realitas. Di sekitar kita, pikiran manusia terus-menerus mengelompokkan dunia: dari nama-nama spesifik yang melekat pada identitas unik, objek umum sehari-hari, hingga konsep tak kasat mata yang hanya hidup dalam ruang abstraksi. Penutur bahasa Inggris membangun arsitektur nomina yang sangat terstruktur untuk mendefinisikan batas-batas gagasan tersebut secara akurat.\n\nDalam modul ini, kamu akan diajak menata ulang cara pandangmu terhadap empat kategori nomina utama: Proper, Common, Collective, dan Abstract Nouns. Kita akan membedah nuansa kesepakatan gramatikal nomina kolektif antara tradisi Amerika dan British, menyingkap rahasia pembentukan konsep abstrak melalui sufiks derivasional tingkat lanjut, serta menguasai kaidah modifying noun saat sebuah kata benda bertransformasi menjadi kata sifat. Pemahaman ini akan memperkaya perbendaharaan kata dan memperhalus ketepatan akademismu secara signifikan.",
     coreConceptSummary: 'Proper Nouns menamai entitas unik berhuruf kapital. Common Nouns menamai objek generik. Collective Nouns menamai kelompok individu. Abstract Nouns menamai konsep kualitatif nirwujud yang menjadi tulang punggung wacana ilmiah dan analitis.',
     sections: [
         {
@@ -1163,7 +1163,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Penanganan substansi massa, konsep abstrak, dan takaran hitung partitif',
     levelBadge: 'Morfologi Noun · Modul 07',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Pembedaan antara Countable Nouns (Kata Benda Dapat Dihitung) dan Uncountable Nouns (Kata Benda Massa/Tak Dapat Dihitung) adalah salah satu sumber kesalahan paling kronis bagi pembelajar bahasa Inggris. Bahasa Indonesia dapat menambahkan kata "banyak" ke kata apa saja ("banyak informasi", "banyak peralatan"), namun bahasa Inggris mewajibkan aturan kuantifikasi dan partisi yang sangat presisi.',
+    mentalModelIntro: "Bayangkan kamu sedang memandangi segelas air dan beberapa butir apel di atas meja. Secara alami, matamu langsung melihat apel sebagai objek-objek diskrit yang terpisah dan bisa dihitung, sementara air dipandang sebagai satu kesatuan massa kontinu yang mengalir tanpa sekat. Pola persepsi inilah yang mendasari pemisahan mendalam antara Countable dan Uncountable Nouns dalam bahasa Inggris. Kesalahan umum pembelajar kerap berakar dari memaksakan logika bahasa ibu—seperti menganggap kata \"informasi\", \"nasihat\", atau \"peralatan\" bisa begitu saja dijamakkan dengan akhiran -s.\n\nModul ini akan mempertajam kemampuanmu membedakan entitas diskrit dari massa kontinu. Kamu akan menguasai struktur partitif untuk menakar nomina tak terhitung secara presisi, menaklukkan 10 nomina tak terhitung absolut yang paling sering menjebak dalam komunikasi profesional, serta memahami kata benda kelas ganda (dual-class) yang maknanya bergeser dinamis sesuai konteks. Kuasai materi ini untuk berbicara dan menulis tentang kuantitas dengan presisi seorang pakar.",
     coreConceptSummary: 'Countable Nouns merujuk pada unit diskrit yang dapat diberi angka langsung (one sample, two samples) dan memiliki bentuk jamak -s. Uncountable Nouns merujuk pada zat cair, gas, massa tak terbagi, atau konsep abstrak murni yang TIDAK BOLEH diawali angka, tidak boleh diawali artikel a/an, dan tidak pernah memiliki akhiran jamak -s.',
     sections: [
         {
@@ -1322,7 +1322,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Presisi definit vs indefinit, aturan fonetik pengucapan, dan konsep universal',
     levelBadge: 'Penentu & Artikel · Modul 08',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Artikel (A, An, The, dan Zero Article) adalah penentu status definiteness (kekhususan identitas). Memilih artikel yang tepat adalah indikator kecakapan bahasa Inggris tingkat tinggi. Bahasa Inggris membedakan antara entitas yang baru pertama kali diperkenalkan (Indefinite: A/An) dan entitas yang sudah diketahui bersama oleh pembaca/pendengar (Definite: The).',
+    mentalModelIntro: "Bayangkan kamu sedang memandu seorang sahabat di dalam ruangan berkabut menggunakan lampu sorot. Saat kamu ingin menunjuk benda sembarang apa saja, kamu menyalakan lampu pendar luas (A/An). Namun saat kamu ingin mengarahkan fokusnya ke satu objek spesifik yang sudah kalian ketahui bersama, kamu menyempitkan sorot lampu menjadi sinar laser yang presisi (The). Dan ketika kamu ingin membicarakan konsep umum di alam semesta, kamu mematikan lampu sorot tersebut (Zero Article). Inilah sistem artikel bahasa Inggris: koordinat navigasi pikiran pendengar.\n\nBagi penutur bahasa Indonesia yang tidak memiliki padanan artikel definit setara, sistem ini kerap terasa membingungkan. Di modul ini, kita akan membongkar tuntas misteri fonetik di balik pemilihan a vs an, memetakan konsep shared knowledge pada artikel the, memahami filosofi generalisasi tanpa artikel, hingga menavigasi konvensi geografis global. Setelah menuntaskan modul ini, kamu akan mampu menempatkan artikel secara naluriah dan akurat dalam setiap wacana.",
     coreConceptSummary: 'Artikel terbagi 3: Indefinite (A/An - untuk countable singular umum), Definite (The - untuk identitas spesifik/unik), dan Zero Article (Ø - untuk generalisasi plural atau uncountable).',
     sections: [
         {
@@ -1481,7 +1481,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Pembedaan its vs it\'s, possessive adjectives vs pronouns, dan rujukan relatif who vs whom',
     levelBadge: 'Kasus Pronoun · Modul 09',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Pronoun memiliki sistem kasus (case system) yang kaya: kepemilikan terikat (Possessive Adjective: my, your, its), kepemilikan mandiri (Possessive Pronoun: mine, yours, its), aksi memantul ke diri sendiri (Reflexive: myself, itself), dan kata hubung rujukan (Relative: who, whom, whose, which).',
+    mentalModelIntro: "Dalam komunikasi tingkat tinggi, pengulangan nama atau subjek yang berlebihan ibarat mendengarkan rekaman musik yang tersendat—melelahkan dan membosankan. Sistem pronoun bahasa Inggris diciptakan sebagai tongkat estafet yang lincah, menggantikan identitas subjek tanpa kehilangan sedikit pun kejelasan makna. Namun, relasi kepemilikan dan penegasan diri menuntut ketelitian deklinasi yang jauh melampaui sekadar kata ganti orang biasa.\n\nModul ini dirancang untuk menyempurnakan kemampuanmu bernavigasi di ranah pronoun tingkat lanjut. Kita akan membedah batas tegas antara kata penentu kepemilikan (possessive determiners) dan pronoun mandiri (independent pronouns), memanfaatkan cermin psikologis reflexive pronouns baik sebagai pelengkap objek maupun penegas intensif, serta menerapkan relasi timbal balik (reciprocal) each other dan one another secara presisi. Tak ketinggalan, kita akan melenyapkan kerancuan abadi antara ITS kepemilikan dan IT'S kontraksi selamanya.",
     coreConceptSummary: 'ITS (tanpa apostrof) = kepemilikan (*The bird flapped its wings*). IT\'S (dengan apostrof) = singkatan dari "it is" atau "it has". WHO bertindak sebagai subjek relative clause; WHOM bertindak sebagai objek relative clause.',
     sections: [
       {
@@ -1611,7 +1611,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Kesesuaian kuantitas: Much vs Many, Few vs Little, Each vs Every vs All',
     levelBadge: 'Penentu Kuantitas · Modul 10',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Menyatakan relasi kepemilikan dan keterkaitan dalam bahasa Inggris dilakukan melalui dua jalur gramatikal: Saxon Genitive (akhiran apostrof -s) dan Norman Genitive (frasa preposisional "of"). Memilih struktur yang tepat menjaga register formal dan kelancaran membaca.',
+    mentalModelIntro: "Bagaimana cara kita menandai batas kepemilikan dan relasi antar-entitas dalam bahasa? Dalam bahasa Indonesia, kita cukup menyandingkan dua kata berdampingan: \"mobil ayah\" atau \"atap rumah\". Namun, bahasa Inggris menawarkan dua tradisi besar yang kaya sejarah untuk menyatakan kepemilikan: kehangatan intim dari Saxon Genitive (akhiran 's) untuk makhluk hidup, serta keanggunan formal dari Norman Genitive (frasa of) untuk benda mati dan struktur hierarkis.\n\nDi modul penutup rangkaian fondasi ini, kamu akan menguasai seni menentukan kepemilikan dan distribusi dengan kejelasan mutlak. Kita akan membedah aturan apostrof kepemilikan tunggal maupun jamak, menjelajahi konstruksi unik Double Genitive, hingga membedakan kepemilikan bersama (joint possession) dari kepemilikan terpisah (separate possession). Bersama pemahaman demonstratif dan kuantifier distributif, modul ini akan menyempurnakan keahlianmu dalam membangun frasa nomina yang kaya, tertata rapi, dan berdaya pikat tinggi.",
     coreConceptSummary: 'Saxon Genitive (\'s / s\') digunakan untuk makhluk bernyawa (manusia, hewan), organisasi kolektif, dan ekspresi waktu. Norman Genitive (of-phrase) digunakan untuk benda mati, konsep abstrak, atau frasa nominal panjang.',
     sections: [
         {
@@ -1763,15 +1763,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-11-core-verb-types',
-    stageNumber: 2,
-    stageName: 'Tahap 2: Sistem Morfologi Kata Benda & Penentu',
+    stageNumber: 3,
+    stageName: 'Tahap 3: Tipologi Verba & Modalitas',
     categoryKey: 'Word Classes',
     moduleNumber: 11,
     title: 'Core Verb Types: Transitive, Intransitive, dan Ergative Verbs',
     subtitle: 'Memahami predikat berobjek, predikat tanpa objek, dan kata kerja dua arah',
     levelBadge: 'Morfologi Verb · Modul 11',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Valensi Verba (Verb Valency) menentukan berapa banyak argumen nomina yang diwajibkan oleh suatu kata kerja. Kata kerja Transitif membutuhkan objek langsung (Direct Object) untuk melengkapi aksinya. Sebaliknya, kata kerja Intransitif sudah memiliki makna utuh tanpa objek. Memahami pembedaan ini adalah syarat mutlak untuk menghindari kesalahan fatal memasifkan verba intransitif.',
+    mentalModelIntro: "Bayangkan sebuah bola tenis dalam sebuah pertandingan. Ada pukulan yang sengaja diarahkan ke raket lawan agar permainannya berlanjut—sebuah aksi yang menembus sasaran. Namun, ada pula gerakan seperti melompat atau bersorak yang energinya selesai pada tubuh si pemain itu sendiri tanpa menyentuh apa pun di sekitarnya. Dalam tata bahasa Inggris, energi dari setiap kata kerja bekerja persis seperti ini.\n\nSetiap kata kerja memiliki 'daya tampung' atau valensi yang menentukan berapa banyak pendamping yang ia butuhkan. Sebagian verba menuntut hadirnya objek penderita (Transitive) karena tanpa sasaran langsung, kalimatmu akan terasa menggantung dan tidak tuntas. Sebaliknya, kata kerja yang mandiri (Intransitive) sudah memiliki makna yang utuh dan selesai dengan dirinya sendiri. Memahami batas ini adalah kunci rahasia agar kamu tidak terjebak kesalahan fatal, seperti memaksakan bentuk pasif pada kata kerja yang sedari awal memang tidak pernah memiliki objek—misalnya fenomena yang terjadi (occur/happen) atau keberadaan yang muncul (appear).\n\nDi modul ini, kamu akan diajak menelusuri bagaimana verba mengalirkan energinya: mulai dari kata kerja berobjek tunggal, kata kerja pemurah yang membagikan dua hadiah sekaligus (Ditransitive), hingga keajaiban kata kerja fleksibel dua arah (Ergative) yang bisa membalik sudut pandang tanpa perlu diubah menjadi pasif. Begitu kamu menangkap logikanya, menyusun kalimat aktif maupun pasif yang presisi akan terasa sangat alami.",
     coreConceptSummary: 'Transitive Verbs (SVO) menyalurkan aksi ke objek (e.g. *analyze the data*). Intransitive Verbs (SV) tidak memiliki objek penderita (e.g. *the reaction occurred*). Ditransitive Verbs (SVOO) mengambil dua objek sekaligus dan memungkinkan operasi Dative Shift.',
     sections: [
         {
@@ -1924,7 +1924,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Memahami mengapa kata kerja kondisi permanen menolak bentuk continuous (-ing)',
     levelBadge: 'Morfologi Verb · Modul 12',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kata kerja tidak beraturan (Irregular Verbs) dalam bahasa Inggris bukanlah kebetulan acak, melainkan warisan sistem *Strong Verbs* bahasa Jermanik Kuno yang mengubah vokal internal (Ablaut Pattern). Menguasai pola-pola vokal ini mengubah hafalan mekanis menjadi pemahaman morfologis yang logis.',
+    mentalModelIntro: "Bayangkan fosil pohon purba yang cincin kayunya mencatat pergantian musim dari dalam batangnya sendiri, bukan karena ditempeli lapisan kulit buatan dari luar. Kata kerja tidak beraturan (Irregular Verbs) dalam bahasa Inggris sebenarnya bekerja dengan cara yang sama. Mereka bukan kumpulan kata acak tanpa aturan yang sengaja diciptakan untuk menyiksa ingatanmu, melainkan jejak bahasa Jermanik Kuno yang menandai perubahan waktu dari dalam jantung katanya—lewat pergeseran bunyi vokal yang disebut Ablaut Pattern.\n\nAlih-alih menghafal ratusan kata secara buta seperti deretan nomor telepon acak, kamu hanya perlu mengenali melodi perubahannya. Saat kamu melihat bagaimana sing-sang-sung berbagi irama yang sama persis dengan ring-rang-rung dan drink-drank-drunk, kamu sedang menyalakan peta pola di otakmu. Dari pola yang sama sekali tidak berubah wujudnya (hit-hit-hit), yang hanya berganti satu vokal internal, hingga yang membelah diri menjadi kata sifat anggun (frozen, broken), semuanya memiliki arsitektur morfologis yang sangat simetris dan elegan.\n\nModul ini akan membongkar empat keluarga besar pola kata kerja kuat ini, sekaligus meluruskan pasangan kata yang sering mengecoh penutur Indonesia seperti lie versus lay atau rise versus raise. Begitu kamu menguasai peta fonologis ini, kamu tidak lagi sekadar menebak-nebak bentuk lampau, melainkan membaca logika internal bahasa Inggris dengan penuh percaya diri.",
     coreConceptSummary: 'Irregular Verbs tidak menggunakan akhiran reguler -ed melainkan perubahan vokal batang (Apophony/Ablaut). Terdapat 5 kelompok pola utama: AAA (hit-hit-hit), ABB (bring-brought-brought), ABA (come-came-come), ABC (sing-sang-sung / break-broke-broken), dan Verba Rancu (*lie vs lay*).',
     sections: [
         {
@@ -2085,7 +2085,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Menghubungkan atribut sifat ke subjek dan pantangan penggunaan adverb',
     levelBadge: 'Morfologi Verb · Modul 13',
     estimatedMinutes: 20,
-    mentalModelIntro: 'Modal Auxiliaries (Kata Kerja Bantu Modal) adalah instrumen linguistik yang digunakan penutur untuk mengekspresikan sikap (Stance), derajat kemungkinan (Certainty), kewajiban moral (Obligation), atau izin (Permission). Dalam penulisan akademik, modals adalah senjata utama teknik "Hedging" (memperhalus klaim ilmiah agar tidak terdengar arogan atau mutlak).',
+    mentalModelIntro: "Bayangkan kamu sedang memutar kenop volume atau memasang filter warna pada kameramu. Fakta dasarnya tetap sama—sebuah mobil sedang melaju—namun filter yang kamu pasang bisa mengubah pesan itu menjadi sebuah keharusan mutlak, izin santai, atau sekadar tebakan penuh keraguan. Inilah peran ajaib Modal Auxiliaries (can, must, might, should). Mereka bukan kata kerja aksi biasa, melainkan instrumen sikap (stance) yang memberi jiwa, intensitas, dan warna emosi pada kalimatmu.\n\nDalam bahasa Indonesia, kita terbiasa menyisipkan kata 'pasti', 'harus', atau 'mungkin' di mana saja tanpa mengubah bentuk kata kerja di sekitarnya. Namun dalam bahasa Inggris, modals adalah kata bantu invarian yang memiliki aturan kaku: mereka tidak pernah mau ditambah akhiran -s dan selalu menuntut kata kerja di belakangnya tampil polos dan murni (Bare Infinitive). Lebih dari itu, modals membelah cara pandang menjadi dua: ranah aturan dan kewajiban sosial (Deontic) serta ranah penalaran berbasis bukti (Epistemic).\n\nDi modul ini, kamu akan menguasai cara mengendalikan derajat kepastian dengan presisi tinggi, menjelajah masa lalu lewat rumus deduksi have + V3, serta memanfaatkan semi-modals untuk memperkaya tulisan formalmu. Kemampuan inilah yang menjadi senjata utama seorang penulis akademik untuk berargumen secara cerdas, objektif, dan meyakinkan melalui teknik hedging.",
     coreConceptSummary: 'Modals murni (can, could, may, might, must, shall, should, will, would) tidak pernah menerima infleksi -s, tidak memiliki bentuk infinitif/gerund, dan selalu diikuti Bare Infinitive. Modals mengekspresikan modalitas Deontik (tindakan/aturan) dan Epistemik (penalaran berbasis bukti).',
     sections: [
         {
@@ -2231,7 +2231,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Mekanisme kata kerja bantu modalitas, derajat kepastian, dan hukum mutlak Bare Infinitive',
     levelBadge: 'Modal Auxiliaries · Modul 14',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kata kerja bahasa Inggris terbagi atas dua watak semantis: Dynamic Verbs (menyatakan aksi fisik berproses yang memiliki awal dan akhir) dan Stative Verbs (menyatakan kondisi mental, perasaan, kepemilikan, atau relasi yang statis tanpa aksi fisik). Menggunakan Stative Verbs dalam bentuk Continuous (-ing) adalah salah satu kesalahan transfer bahasa ibu paling umum.',
+    mentalModelIntro: "Bayangkan perbedaan antara sebuah rekaman video langsung dan sebuah lukisan potret cat minyak. Video menangkap gerakan dinamis yang bisa kamu putar maju-mundur, jeda, atau percepat karena aksinya membutuhkan energi fisik yang terus bergulir. Sebaliknya, lukisan potret menangkap sebuah kondisi batin yang utuh dan menetap—ia tidak bergerak ke mana-mana, melainkan sekadar ada. Inilah garis batas fundamental antara Dynamic Verbs dan Stative Verbs.\n\nPenutur bahasa Indonesia sering terjebak menyematkan kata 'sedang' ke segala situasi, sehingga kalimat seperti 'I am understanding' atau 'She is having two cars' terdengar wajar di kepala kita. Padahal, bagi penutur asli bahasa Inggris, pikiran (know), perasaan (love), kepemilikan (belong), dan persepsi sensoris (smell) adalah sebuah keadaan batin (state), bukan aktivitas fisik yang sedang berproses. Memaksa kata kerja statis ke dalam bentuk continuous (-ing) sama anehnya dengan mencoba memutar video dari sebuah foto diam.\n\nModul ini akan mempertajam instingmu untuk mengenali empat wilayah kata kerja statif, mengungkap rahasia kata-kata bunglon yang bisa berganti makna saat berubah wujud dinamis, serta menguasai verba indera sensoris. Dengan memahami filosofi ini, kamu akan terbebas selamanya dari jebakan transfer bahasa ibu dan mampu menulis dengan cita rasa bahasa Inggris yang alami.",
     coreConceptSummary: 'Stative Verbs (know, believe, understand, belong, contain, prefer) secara alami menolak bentuk Continuous (-ing). Dual-Meaning Verbs (think, have, see, taste) dapat berbentuk -ing hanya jika maknanya bergeser menjadi aksi dinamis yang disengaja.',
     sections: [
         {
@@ -2379,15 +2379,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-15-semi-modals-phrasals',
-    stageNumber: 3,
-    stageName: 'Tahap 3: Tipologi Verba & Modalitas',
+    stageNumber: 4,
+    stageName: 'Tahap 4: Modifiers, Kolokasi & Konektor Kalimat',
     categoryKey: 'Word Classes',
     moduleNumber: 15,
     title: 'Semi-Modals & Phrasal Modals: Ought to, Had better, Be able to, Used to vs Be used to',
     subtitle: 'Konstruksi modal berfrasa, peringatan urgensi, dan pembedaan Used to vs Be used to',
     levelBadge: 'Semi-Modals · Modul 15',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Modifier (Penjelas) memperkaya kalimat dengan detail kualitatif dan kuantitatif. Adjektiva memodifikasi kata benda, sedangkan Adverbia memodifikasi kata kerja, kata sifat lain, atau seluruh klausa. Urutan kata sifat memiliki tata letak kaku (OSASCOMP) yang mencerminkan psikologi persepsi penutur asli.',
+    mentalModelIntro: "Bayangkan kamu sedang menata interior sebuah galeri seni mewah. Kamu tidak bisa meletakkan lukisan dinding di atas karpet lantai atau menumpuk kursi di atas meja makan begitu saja tanpa menciptakan kekacauan visual. Dalam tata bahasa Inggris, kata sifat (Adjectives) dan kata keterangan (Adverbs) adalah elemen penjelas yang memiliki arsitektur penataan yang sangat teratur dan anggun, bukan sekadar tempelan kata acak.\n\nSaat kamu ingin mendeskripsikan sebuah benda dengan banyak detail, otak penutur asli memiliki hierarki persepsi alami yang disebut OSASCOMP—bergerak teratur dari opini pribadi, ukuran fisik, hingga fungsi utamanya. Begitu pula saat kamu mengukur intensitas; kamu tidak boleh menambahkan kata 'sangat' (very) pada kata sifat yang sudah bermakna ekstrem di puncaknya, seperti essential atau freezing. Selain itu, kamu perlu cermat menempatkan kata keterangan agar tidak memotong hubungan intim antara kata kerja dan objeknya, serta waspada terhadap Flat Adverbs yang bentuknya tidak berakhiran -ly.\n\nDi modul ini, kamu akan mempelajari formula tata letak kata penjelas secara runtut, menavigasi pemakaian penguat makna dengan akurat, dan menempatkan adverbs laksana seorang perancang kalimat profesional. Penguasaan ini akan mengubah deskripsimu yang kaku menjadi prosa yang berbobot, berirama, dan berstandar akademik tinggi.",
     coreConceptSummary: 'Urutan kata sifat: Opinion, Size, Age, Shape, Color, Origin, Material, Purpose (OSASCOMP). Adjektiva terbagi menjadi Gradable (bisa diberi very) dan Non-Gradable/Extreme (wajib diberi absolutely/completely). Flat Adverbs (fast, hard, late) tidak menggunakan akhiran -ly.',
     sections: [
         {
@@ -2533,7 +2533,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Urutan baku susunan kata sifat majemuk penutur asli',
     levelBadge: 'Kata Sifat · Modul 16',
     estimatedMinutes: 20,
-    mentalModelIntro: 'Preposisi (Kata Depan) adalah pengatur relasi ruang, waktu, dan keterikatan logika antarelemen kalimat. Memahami preposisi dalam bahasa Inggris memerlukan pemetaan model spasial mental: AT (titik koordinat nol dimensi), ON (permukaan atau garis satu dimensi), dan IN (volume ruang tertutup atau periode waktu luas tiga dimensi).',
+    mentalModelIntro: "Bayangkan kamu sedang membuka peta navigasi satelit di ponsel pintarmu. Saat layarmu menampilkan batas seluruh benua atau kota, pandanganmu sangat luas dan bervolume; saat kamu memperbesar ke ruas jalan raya, kamu melihat garis permukaan; dan saat kamu mengetuk tepat di atas pin penanda sebuah gedung, kamu mengunci satu titik koordinat presisi. Tiga lapis perspektif spasial inilah yang menjadi jiwa dari trio preposisi legendaris: IN, ON, dan AT.\n\nDalam bahasa Indonesia, kita dimanjakan oleh kata serbaguna 'di' dan 'pada' untuk hampir semua urusan ruang dan waktu. Akibatnya, kita sering merasa preposisi bahasa Inggris itu tidak tertebak. Padahal, semuanya berpijak pada geometri mental: AT untuk titik spesifik, ON untuk permukaan datar, dan IN untuk volume ruang tertutup maupun periode waktu luas. Begitu ada dinamika gerak yang menembus batas, mereka bertransformasi dinamis menjadi into atau onto. Tantangannya semakin menarik saat kata kerja tertentu mewajibkan preposisi terikat (Dependent Prepositions), atau sebaliknya menolak mentah-mentah preposisi redundan yang sering kita selipkan.\n\nModul ini akan memprogram ulang insting ruang dan waktumu, membebaskanmu dari jebakan salah pasang seperti 'discuss about', dan menanamkan kolokasi preposisi baku yang menjadi penentu utama skor kecakapan bahasa tingkat lanjut.",
     coreConceptSummary: 'Preposisi terbagi atas: Spasial (At/On/In), Temporal (At/On/In), Gerak/Arah (Into, Onto, Toward), dan Preposisi Terikat (Dependent Prepositions pada verba, adjektiva, dan nomina).',
     sections: [
         {
@@ -2679,7 +2679,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Membedakan kondisi internal yang dialami subjek dengan sifat penyebab dari luar',
     levelBadge: 'Kata Sifat · Modul 17',
     estimatedMinutes: 20,
-    mentalModelIntro: 'Konjungsi (Kata Hubung) adalah lem perekat sintaksis yang merangkai klausa independen dan dependen menjadi argumen utuh. Dalam penulisan esai formal, Anda harus mampu membedakan 3 kelas peranti penghubung: Konjungsi Koordinatif (FANBOYS), Konjungsi Subordinatif, dan Conjunctive Adverbs (Transisi Diskursus).',
+    mentalModelIntro: "Bayangkan kamu sedang merancang jembatan penghubung antarpulau. Ada jembatan kabel baja kokoh yang menghubungkan dua daratan besar yang sama kuatnya agar berdiri sejajar. Ada jembatan gantung anakan yang hanya bisa bertahan jika dikaitkan pada pilar utama. Dan ada pula lampu suar penunjuk arah yang bertugas memandu jalannya lalu lintas tanpa ikut menopang beban fisik jembatan. Dalam arsitektur kalimat, peranti penghubung bekerja persis seperti infrastruktur tersebut.\n\nBanyak pembelajar mengira semua kata sambung itu setara asalkan maknanya mirip. Kesalahpahaman ini melahirkan dua penyakit kronis dalam penulisan: kalimat buntung (Sentence Fragments) dan sambungan koma rapuh (Comma Splices). Kamu perlu memahami kasta sintaksis: FANBOYS menghubungkan dua klausa mandiri yang setara, konjungsi subordinatif menurunkan derajat klausa menjadi anak kalimat yang bergantung, sedangkan Conjunctive Adverbs (however, therefore) adalah transisi pemandu logika yang menuntut tanda baca titik koma. Di atas segalanya, kita harus membuang kebiasaan bahasa ibu yang gemar menumpuk dua kata hubung sekaligus seperti 'Although... but...'.\n\nMelalui modul ini, kamu akan menguasai mekanika perakitan kalimat majemuk yang kokoh, memahami aturan penempatan tanda baca yang presisi, dan merangkai alur logika argumenmu secara mulus. Tulisanmu akan bertransformasi menjadi rentetan gagasan yang utuh, elegan, dan bertenaga.",
     coreConceptSummary: 'Konjungsi Koordinatif (For, And, Nor, But, Or, Yet, So) menghubungkan 2 klausa setara dengan tanda koma. Konjungsi Subordinatif (Although, Because, Whereas) membentuk klausa bawahan. Conjunctive Adverbs (However, Furthermore, Consequently) membutuhkan titik-koma (;) atau titik (.) dan tanda koma.',
     sections: [
         {
@@ -2812,15 +2812,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-18-comparative-superlative',
-    stageNumber: 4,
-    stageName: 'Tahap 4: Modifiers, Kolokasi & Konektor Kalimat',
+    stageNumber: 5,
+    stageName: 'Tahap 5: Bentuk Non-Finite & Verba Frasa',
     categoryKey: 'Word Classes',
     moduleNumber: 18,
     title: 'Comparative & Superlative Degrees & Proportional Structures',
     subtitle: 'Komparasi presisi, larangan double comparative, dan pola "The more... the more..."',
     levelBadge: 'Komparasi · Modul 18',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Verba Non-Finite (Gerund dan Infinitif) adalah bentuk kata kerja yang tidak terikat waktu dan jumlah subjek, melainkan berfungsi sebagai nomina atau komplemen predikat. Gerund (-ing) berorientasi pada realitas/pengalaman nyata, sedangkan To-Infinitive berorientasi pada potensi/tujuan di masa depan.',
+    mentalModelIntro: "Bayangkan sebuah album foto kenangan dan sebuah brosur rencana perjalanan masa depan. Album foto merekam peristiwa nyata, hal-hal yang sudah terbukti terjadi, dan pengalaman konkret yang kamu nikmati secara faktual. Sebaliknya, brosur perjalanan memuat harapan, komitmen, serta potensi yang masih menunggu untuk diwujudkan. Pertentangan filosofis antara realitas yang telah dialami dan potensi yang belum terjadi inilah yang mendasari perbedaan abadi antara Gerund (-ing) dan To-Infinitive.\n\nMengapa kata enjoy mewajibkan Gerund sementara decide menuntut Infinitive? Jawabannya bukan semata-mata hafalan mekanis, melainkan cara penutur bahasa Inggris memandang waktu dan realitas. Gerund berakar pada pengalaman nyata (fact/experience), sedangkan To-Infinitive melesat maju menunjuk niat atau tujuan masa depan (potential/purpose). Ketika kamu memahami poros makna ini, kata-kata berkepribadian ganda seperti remember atau stop akan langsung masuk akal: berhenti melakukan suatu kebiasaan (stop smoking) sangat berbeda maknanya dari berhenti melangkah sejenak demi merokok (stop to smoke).\n\nModul ini akan membimbingmu menembus labirin verba non-finit, menguasai verba persepsi dan kausatif yang melucuti partikel 'to' menjadi Bare Infinitive, serta membangun insting gramatikal yang tajam. Kamu tidak akan lagi ragu memilih bentuk kata kerja yang tepat untuk mengekspresikan maksudmu secara presisi.",
     coreConceptSummary: 'Gerund (-ing) berfungsi sebagai verbal noun. To-Infinitive (to + V1) berfungsi sebagai pelengkap tujuan. Verba tertentu mewajibkan gerund (admit, avoid, consider), verba lain mewajibkan infinitif (decide, hope, plan), dan verba dual-meaning (stop, remember, regret) mengubah makna secara drastis.',
     sections: [
         {
@@ -2971,7 +2971,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Posisi penempatan kata keterangan dan larangan memisahkan Verb dari Direct Object',
     levelBadge: 'Kata Keterangan · Modul 19',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Phrasal Verbs menggabungkan kata kerja dasar dengan satu atau dua partikel adverbial/preposisional (seperti *out, up, into, off*) untuk menciptakan idiom semantis baru yang maknanya tidak bisa ditebak dari unsur kata kerjanya saja. Dalam penulisan akademik, Anda harus memahami aturan pemisahan objek pronominal dan kemampuan mentransformasikannya ke register formal Latin.',
+    mentalModelIntro: "Bayangkan reaksi kimia di laboratorium ketika dua zat sederhana disatukan dan tiba-tiba menghasilkan senyawa baru dengan sifat yang sama sekali berbeda dari unsur asalnya. Inilah fenomena di balik Phrasal Verbs. Ketika kata kerja dasar seperti give (memberi) bertemu dengan partikel kecil seperti up (atas), mereka tidak lagi berbicara tentang menyerahkan benda ke arah langit, melainkan melahirkan satu konsep idiomatis baru yang utuh: menyerah.\n\nPenutur bahasa Inggris sangat gemar menggunakan partikel karena partikel memberi arah tuntas dan nuansa metaforis pada tindakan. Namun di balik keluwesannya, ada hukum sintaksis yang sangat tertib. Ada kelompok yang mengizinkan objeknya disisipkan di tengah (Separable), dengan satu aturan mutlak: jika objeknya berupa kata ganti (Pronoun seperti it, them), ia wajib dikurung di antara kata kerja dan partikelnya. Ada pula kelompok yang terikat mati dan tak boleh dipisahkan (Inseparable). Di panggung formal, tantanganmu adalah mengetahui kapan harus mempertahankan frasa ini dan kapan harus menaikkannya menjadi kata kerja Latin tunggal yang anggun.\n\nDi modul ini, kamu akan membongkar mekanika phrasal verbs, menguasai hukum penempatan objek, serta melatih kemampuan elevasi register bahasa dari percakapan santai menuju standar tulisan akademik internasional. Hasilnya, bahasamu akan terdengar natural sekaligus berwibawa.",
     coreConceptSummary: 'Phrasal Verbs terbagi atas: Separable Transitive (turn on / turn off), Inseparable Transitive (look into / cope with), Intransitive (break down / show up), dan Three-Part Verbs (look forward to / come up with).',
     sections: [
         {
@@ -3129,7 +3129,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Piramida koordinat waktu-tempat dari spesifik ke luas, serta preposisi arah',
     levelBadge: 'Preposisi · Modul 20',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Partisipel (Present Participle -ing dan Past Participle -ed/V3) adalah instrumen sintaksis paling elegan untuk mereduksi kalimat majemuk yang panjang menjadi frasa penjelas yang padat dan berbobot tinggi. Kesalahan paling fatal dalam pemakaiannya adalah "Dangling Participle", yaitu ketika subjek pembuka tidak cocok dengan pelaku kalimat.',
+    mentalModelIntro: "Bayangkan seorang editor film ulung yang memotong adegan-adegan panjang bertele-tele dan merangkainya menjadi montase visual yang padat, dinamis, dan memukau tanpa kehilangan sedikit pun esensi cerita. Dalam dunia penulisan tingkat lanjut, Participles (Present Participle -ing dan Past Participle -ed/V3) adalah instrumen terbaikmu untuk memangkas kalimat majemuk yang gemuk menjadi frasa penjelas yang ramping dan bertenaga.\n\nDaripada menulis dua kalimat terpisah atau menumpuk anak kalimat dengan kata penghubung yang melelahkan, kamu bisa mereduksinya secara elegan. Cukup gunakan bentuk -ing untuk aksi aktif yang sedang berlangsung, bentuk V3 untuk status pasif yang diterima, atau formasi Having + V3 untuk menegaskan bahwa satu peristiwa telah selesai sempurna sebelum aksi berikutnya dimulai. Namun, kekuatan besar ini menuntut ketelitian logika. Jebakan paling fatal dalam pemakaiannya adalah Dangling Modifier—yaitu ketika frasa pembuka menggantung tanpa tuan karena subjek setelah tanda koma ternyata bukan pelaku aksi yang sebenarnya.\n\nModul ini akan melatihmu menyusun Participial Clauses yang anggun, menjaga keselarasan logika subjek, dan memadatkan proposisi kompleks secara profesional. Keterampilan inilah yang secara instan melesatkan kualitas tulisanmu ke standar penulisan esai akademik berkelas dunia.",
     coreConceptSummary: 'Present Participle (-ing) menyatakan makna aktif atau simultan. Past Participle (V3) menyatakan makna pasif atau kondisi terselesaikan. Perfect Participle (Having + V3) menegaskan bahwa aksi pertama tuntas sebelum aksi kedua dimulai.',
     sections: [
         {
@@ -3276,15 +3276,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-21-dependent-prepositions',
-    stageNumber: 5,
-    stageName: 'Tahap 5: Bentuk Non-Finite & Verba Frasa',
+    stageNumber: 6,
+    stageName: 'Tahap 6: Sintaksis, Dimensi Waktu & Pasif',
     categoryKey: 'Word Classes',
     moduleNumber: 21,
     title: 'Dependent Prepositions & Fixed Prepositional Collocations',
     subtitle: 'Pasangan preposisi tetap pada Verbs & Adjectives penentu skor internasional',
     levelBadge: 'Kolokasi Preposisi · Modul 21',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Sintaksis kalimat bahasa Inggris dibangun di atas 5 pola konstituen dasar. Memahami relasi antara Subjek, Verba, Objek Langsung/Tak Langsung, dan Pelengkap (Subject/Object Complement) adalah fondasi untuk menganalisis kalimat rumit dan menghindari fragmen kalimat (Sentence Fragments).',
+    mentalModelIntro: "Bayangkan sebuah mahakarya arsitektur dengan berbagai macam ruangan, ornamen kaca, dan dekorasi megah. Sekompleks apa pun wujud bangunannya, seluruh struktur itu selalu bertumpu pada rangka beton utama yang terdiri dari tiang, balok, dan fondasi dasar. Dalam sintaksis bahasa Inggris, jutaan kalimat yang pernah ditulis manusia sebenarnya hanyalah variasi dari lima cetakan rangka konstituen utama: SV, SVO, SVC, SVOO, dan SVOC.\n\nMemahami kalimat bahasa Inggris bukan soal menghitung panjangnya kata, melainkan membedah fungsi di antara organ-organnya. Kamu perlu mengenali kapan sebuah kata kerja tuntas dengan dirinya sendiri (SV), kapan ia menuntut sasaran langsung (SVO), dan kapan ia sekadar menjadi cermin penghubung antara subjek dan pelengkap sifatnya (SVC). Pada pola yang lebih kompleks, kamu akan melihat bagaimana sebuah kata kerja memberikan dua objek sekaligus (SVOO) atau menganugerahkan status dan identitas baru kepada objek penderitanya (SVOC). Menguasai anatomi ini adalah benteng pertahanan mutlak agar tulisanmu terbebas dari kalimat buntung (Fragments) atau sambungan cacat.\n\nModul ini akan memberimu kacamata bedah sintaksis untuk menganalisis kalimat serumit apa pun dengan tenang, memahami peran pelengkap secara presisi, dan membangun struktur kalimat yang utuh, seimbang, dan kokoh dari fondasinya.",
     coreConceptSummary: '5 Pola Utama: (1) SV (Intransitif), (2) SVO (Monotransitif), (3) SVC (Kopulatif), (4) SVOO (Ditransitif), dan (5) SVOC (Kompleks Transitif). Pelengkap Subjek melengkapi kondisi subjek; Pelengkap Objek mendefinisikan status objek penderita.',
     sections: [
         {
@@ -3432,7 +3432,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Membedah rangka konstituen kalimat dan membedakan Finite vs Non-finite Verb',
     levelBadge: 'Sintaksis Klausa · Modul 22',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Sistem 12 Tenses bahasa Inggris adalah matriks 2 dimensi: Sumbu Waktu (Time: Past, Present, Future) x Sumbu Aspek (Aspect: Simple, Continuous, Perfect, Perfect Continuous). Memahami logika aspek membebaskan Anda dari menghafal 12 rumus secara mekanis.',
+    mentalModelIntro: "Bayangkan sebuah papan catur dengan sumbu horizontal dan vertikal. Banyak orang merasa terintimidasi oleh sebutan '12 Tenses' dan membayangkannya sebagai monster hafalan rumus yang rumit. Padahal, sistem waktu bahasa Inggris sebenarnya hanyalah sebuah matriks dua dimensi yang sangat logis dan rapi: perpotongan antara tiga titik Garis Waktu (Past, Present, Future) dengan empat Lensa Aspek (Simple, Continuous, Perfect, Perfect Continuous).\n\nGaris Waktu (Time) sekadar menjawab pertanyaan faktual tentang 'kapan peristiwa itu berada', sedangkan Lensa Aspek (Aspect) adalah cara pembicara memotret wujud internal aksinya—apakah sebagai fakta utuh yang permanen (Simple), proses sementara yang sedang bergulir (Continuous), hasil yang menjembatani dua titik waktu (Perfect), atau durasi yang terus mengalir (Perfect Continuous). Begitu kamu menguasai matriks ini, kamu akan memahami harmoni pergeseran tenses dalam kalimat majemuk (Sequence of Tenses) serta membedakan tiga cara memandang masa depan: dari keputusan spontan (will), rencana berdasar bukti nyata (be going to), hingga komitmen jadwal yang terkunci rapi (Present Continuous).\n\nModul ini akan meruntuhkan beban hafalan mekanis dan menggantikannya dengan pemahaman spasio-temporal yang jernih. Kamu akan mampu menavigasi lorong waktu bahasa Inggris dengan presisi tinggi, keselarasan kronologis yang anggun, dan kepercayaan diri penutur tingkat mahir.",
     coreConceptSummary: 'Simple Aspect menyatakan fakta permanen/tuntas. Continuous Aspect menyatakan proses temporer/sedang berjalan. Perfect Aspect menghubungkan aksi masa lalu dengan titik acuan. Perfect Continuous menyatakan durasi proses yang berlanjut.',
     sections: [
         {
@@ -3593,7 +3593,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Arsitektur rangka dasar kalimat bahasa Inggris dari sederhana ke kompleks',
     levelBadge: 'Pola Kalimat · Modul 23',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Aspek Perfek (Perfect Aspect) adalah konsep "Jembatan Waktu". Present Perfect menghubungkan peristiwa masa lalu dengan relevansi masa kini. Past Perfect menghubungkan peristiwa lampau yang lebih dulu selesai sebelum peristiwa lampau lainnya terjadi.',
+    mentalModelIntro: "Dalam bahasa Indonesia, kita cukup menempelkan kata \"sudah\" untuk semua hal yang telah lewat, tanpa memedulikan apakah dampaknya masih terasa sekarang atau sudah terkubur di masa lalu. Bahasa Inggris jauh lebih peka terhadap hubungan waktu: Aspek Perfek bukan sekadar penanda kejadian lampau, melainkan sebuah jembatan waktu yang menghubungkan peristiwa di masa lalu dengan realitas yang kamu pijak saat ini.\n\nBayangkan kamu berdiri di masa kini sambil memegang tali yang terikat pada sebuah kejadian di masa lampau. Ketika kamu menggunakan Present Perfect, yang dipedulikan bukan tanggal kalendernya, melainkan buah atau bekas dari kejadian itu yang masih bergema detik ini. Begitu kamu butuh melangkah lebih jauh lagi ke masa lalu sebelum kejadian lampau lainnya terjadi, Past Perfect hadir sebagai mesin waktu lapis kedua untuk merapikan kronologi agar ceritamu tidak saling bertubrukan.\n\nDi modul ini, kamu akan membedah bagaimana jembatan Present Perfect bekerja, menguasai ketukan presisi penanda waktu seperti since dan for, menavigasi lorong Past of the Past, hingga menangkap tetesan proses panjang dalam Present Perfect Continuous. Begitu mental model ini kamu kuasai, kamu tidak akan lagi ragu memilih tenses saat menceritakan pengalaman hidup maupun merangkum data riset secara meyakinkan.",
     coreConceptSummary: 'Present Perfect (have/has + V3) menekankan hasil atau pengalaman hidup. Past Perfect (had + V3) berfungsi sebagai "Past of the Past". Present Perfect Continuous (have/has been + V-ing) menekankan durasi proses yang masih berlangsung.',
     sections: [
         {
@@ -3739,7 +3739,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Menyelaraskan jumlah subjek dan menembus frasa sisipan panjang',
     levelBadge: 'S-V Agreement Lanjutan · Modul 24',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kalimat Pasif (Passive Voice) adalah instrumen utama gaya penulisan ilmiah objektif. Dalam laporan riset dan jurnal akademik, fokus diletakkan pada FENOMENA, DATA, atau PROSES, bukan pada siapa individu yang melakukannya. Menguasai pasif impersonal adalah ciri khas penulisan IELTS Band 8.0+.',
+    mentalModelIntro: "Coba bayangkan kamu sedang mengarahkan kamera film di sebuah laboratorium sains. Dalam percakapan sehari-hari, kameramu wajar menyorot siapa orang yang sedang bekerja. Namun dalam dunia akademik dan profesional, sorotan utama justru harus jatuh pada spesimen yang diteliti, formula yang bereaksi, atau data yang ditemukan—bukan pada siapa yang memegang tabung reaksi.\n\nInilah esensi sejati dari Kalimat Pasif (Passive Voice): menaikkan pangkat objek penderita menjadi bintang utama kalimat. Alih-alih sibuk menyebut pelaku yang sudah jelas atau bahkan tidak relevan, bahasa Inggris menggunakan kombinasi bunglon To Be + Verb 3 untuk menggeser sudut pandang secara elegan. Lebih jauh lagi, konstruksi pasif impersonal seperti it is believed that memungkinkanmu menyajikan argumen ilmiah dengan tingkat objektivitas yang tinggi tanpa terdengar subjektif atau arogan.\n\nMelalui modul ini, kamu akan menelusuri bagaimana objek dipromosikan ke posisi subjek, cara mudah mengadaptasi rumus pasif ke berbagai dimensi tenses dan modal, membedah struktur pasif impersonal khas jurnal internasional, hingga mengetahui kapan waktu paling tepat memilih pasif dibanding aktif. Bersiaplah mentransformasi tulisanmu menjadi jauh lebih berwibawa, objektif, dan matang.",
     coreConceptSummary: 'Rumus Pasif: Objek dinaikkan menjadi Subjek + [To Be sesuai Tense] + Past Participle (V3) + (by Agent). Impersonal Passive menggunakan konstruksi "It is argued/believed that..." atau "The trend is expected to...".',
     sections: [
         {
@@ -3882,15 +3882,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-25-sentence-errors-elimination',
-    stageNumber: 6,
-    stageName: 'Tahap 6: Sintaksis, Dimensi Waktu & Pasif',
+    stageNumber: 7,
+    stageName: 'Tahap 7: Modus Kondisional & Hipotesis',
     categoryKey: 'Sentence Architecture',
     moduleNumber: 25,
     title: 'Sentence Errors Elimination: Fragments, Run-ons, dan Comma Splices',
     subtitle: 'Mendeteksi dan memperbaiki 3 kesalahan fatal penyambungan kalimat',
     levelBadge: 'Eliminasi Error · Modul 25',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kalimat Pengandaian (Conditionals) mengekspresikan spektrum probabilitas: dari hukum alam mutlak (Zero Conditional), kemungkinan nyata masa depan (First Conditional), hipotesis imajinatif saat ini (Second Conditional), penyesalan masa lalu (Third Conditional), hingga kondisi silang (Mixed Conditionals).',
+    mentalModelIntro: "Pernahkah kamu memutar skenario simulasi di kepalamu: \"Bagaimana jika hal ini terjadi, apa akibatnya?\" Dalam bahasa Indonesia, kata \"jika\" atau \"seandainya\" bisa dipakai bebas untuk segala situasi tanpa mengubah struktur kalimat. Namun dalam bahasa Inggris, pikiran pengandaian itu dipetakan ke dalam spektrum probabilitas yang sangat terstruktur—mulai dari kepastian hukum alam, peluang masa depan, khayalan kontrafaktual hari ini, hingga penyesalan masa lalu yang mustahil diulang.\n\nKunci menguasai Conditionals adalah memahami jarak psikologis antara apa yang kamu ucapkan dengan realitas nyata. Semakin mustahil atau semakin jauh suatu kondisi dari kenyataan saat ini, struktur kalimatnya akan sengaja ditarik mundur satu langkah ke masa lampau (tense backshift). Karena itulah, saat berandai-andai tentang hal yang bertolak belakang dengan realita hari ini, kamu menggunakan bentuk masa lalu seperti were alih-alih bentuk masa kini.\n\nDalam modul ini, kamu akan menjelajahi seluruh spektrum pengandaian: dari kepastian mutlak tipe Zero dan peluang nyata tipe Satu, melompat ke dunia paralel tipe Dua dan Tiga, merajut sebab-akibat silang waktu dalam Mixed Conditionals, hingga membuang kata IF melalui teknik inversi formal tingkat tinggi. Pelajari logikanya, dan kamu akan mampu menyusun hipotesis ilmiah serta argumen kritis dengan presisi luar biasa.",
     coreConceptSummary: 'Zero (If + Present, Present) = Fakta Alam. 1st (If + Present, Will + V1) = Peluang Nyata. 2nd (If + Past / were, Would + V1) = Hipotesis Sekarang. 3rd (If + Had V3, Would Have V3) = Pengandaian Masa Lalu. Inversi kondisional menghilangkan "If" untuk register tinggi.',
     sections: [
         {
@@ -4043,7 +4043,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Fakta abadi, tren kontemporer, akumulasi pengalaman, dan durasi berkelanjutan',
     levelBadge: 'Dimensi Present · Modul 26',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Modus Subjungtif (Subjunctive Mood) digunakan untuk mengekspresikan urgensi, keharusan normatif, rekomendasi resmi, atau keinginan kontrafaktual. Penguasaan Mandative Subjunctive (menggunakan Bare Infinitive tanpa -s) adalah salah satu penanda akurasi tata bahasa tingkat lanjut.',
+    mentalModelIntro: "Bayangkan kamu memasuki ruang sidang etik atau meja perundingan diplomatik tingkat tinggi di mana bahasa yang digunakan tidak lagi sekadar mendeskripsikan fakta, melainkan memancarkan desakan moral, ketetapan resmi, atau harapan terdalam. Inilah wilayah Subjunctive Mood—sebuah modus tata bahasa khusus yang digunakan ketika kita membicarakan dunia bukan sebagaimana adanya, melainkan sebagaimana dunia itu didesak atau diharapkan terjadi.\n\nMengapa aturan ini menanggalkan akhiran -s pada kata kerja tunggal dan mewajibkan bentuk telanjang (Bare Infinitive), atau memaksa kita memakai were untuk semua subjek? Jawabannya sederhana: dalam ranah subjungtif, fakta realitas dinonaktifkan sementara. Ketika sebuah tuntutan atau saran krusial dilontarkan, kita tidak sedang menyatakan aksi yang sudah pasti terjadi, melainkan menetapkan mandat normatif murni yang harus dipenuhi.\n\nDi modul ini, kamu akan menguasai Mandative Subjunctive setelah kata-kata desakan, menyelami keanggunan Were-Subjunctive dalam perumpamaan kontrafaktual, mengoperasikan mesin mundur waktu pada ungkapan WISH, serta memahami urgensi idiomatis It is high time that. Begitu kamu menguasai nuansa ini, tulisan formalmu akan memancarkan standar kecakapan bahasa Inggris tingkat lanjut yang sangat meyakinkan.",
     coreConceptSummary: 'Mandative Subjunctive menggunakan Bare Infinitive setelah verba/adjektiva desakan (suggest, demand, insist, essential that). Were-Subjunctive digunakan untuk hipotesis kontrafaktual. Pola Wish memundurkan tenses satu tingkat ke masa lampau (Backshift).',
     sections: [
         {
@@ -4188,15 +4188,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
 
   {
     id: 'modul-27-past-dimensions',
-    stageNumber: 7,
-    stageName: 'Tahap 7: Modus Kondisional & Hipotesis',
+    stageNumber: 8,
+    stageName: 'Tahap 8: Transformasi Klausa & Inversi',
     categoryKey: 'Tenses Logic',
     moduleNumber: 27,
     title: 'Past Dimensions: Simple Past, Past Continuous, Past Perfect, dan Past Perfect Continuous',
     subtitle: 'Kronologi peristiwa lampau, interupsi latar belakang, dan aksi terdahulu',
     levelBadge: 'Dimensi Past · Modul 27',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Pembentukan kalimat tanya dalam bahasa Inggris diatur oleh aturan inversi subjek-kata kerja bantu. Dalam penulisan akademik, Anda akan sering menggunakan Indirect/Embedded Questions untuk menjaga kesantunan dan formalitas ilmiah saat merumuskan pertanyaan penelitian (Research Questions).',
+    mentalModelIntro: "Coba perhatikan betapa santainya kita bertanya dalam bahasa Indonesia: cukup gunakan kalimat berita biasa, lalu naikkan intonasi di ujung kata. Namun dalam bahasa Inggris, bertanya adalah sebuah operasi sintaksis yang presisi. Bahasa ini menuntut adanya sinyal mekanis di awal kalimat agar pendengar seketika tahu bahwa kamu sedang membuka penyelidikan atau meminta klarifikasi informasi.\n\nSinyal tersebut diwujudkan melalui inversi: kata kerja bantu (auxiliary verb) melompat maju mendahului subjek, atau memanggil bala bantuan Do-Support jika kalimat aslimu tidak memiliki asisten kata kerja. Namun, begitu pertanyaan itu diselipkan ke dalam kalimat lain (Embedded Questions) untuk menjaga kesantunan akademik, aturan lalu lintasnya berbalik 180 derajat kembali ke susunan deklaratif normal. Menguasai kapan harus membalik posisi dan kapan harus menahannya adalah kunci utama kejelasan komunikasi ilmiah.\n\nModul ini akan membimbingmu menuntaskan pola inversi langsung, merapikan struktur pertanyaan terselubung dalam rumusan masalah penelitian, memainkan polaritas magnetik pada Question Tags, hingga menyingkap rahasia pertanyaan subjek yang membebaskanmu dari kebutuhan Do-Support. Pahami arsitekturnya, dan kamu akan merumuskan pertanyaan dengan penuh percaya diri dan elegan.",
     coreConceptSummary: 'Direct Questions melakukan inversi (Auxiliary + Subject + Verb). Indirect/Embedded Questions MENGEMBALIKAN urutan kata menjadi kalimat deklaratif normal (Subject + Verb). Subject Questions tidak memerlukan do-support.',
     sections: [
         {
@@ -4342,7 +4342,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Prediksi teoretis, rencana konkret, proyeksi proses, dan target tuntas batas waktu',
     levelBadge: 'Dimensi Future · Modul 28',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kalimat Tidak Langsung (Reported Speech) digunakan dalam sintesis literatur akademik untuk mengutip dan mengintegrasikan temuan peneliti lain. Pemilihan Reporting Verbs yang bernuansa presisi (*assert, dispute, concede, demonstrate*) meningkatkan kualitas analisis literatur.',
+    mentalModelIntro: "Bayangkan kamu seorang peneliti yang menyalin kutipan wawancara dari seorang pakar, lalu harus menyampaikannya kembali ke dalam laporanmu hari ini. Dalam bahasa Indonesia, kita cukup menambahkan kata \"katanya\" tanpa perlu mengubah bentuk kata kerjanya. Namun dalam bahasa Inggris, menceritakan kembali ucapan masa lalu menuntut penyesuaian perspektif ruang dan waktu secara menyeluruh.\n\nInilah hakikat dari Reported Speech dan prinsip Tense Backshift: ketika kata kerja pengantar berada di masa lampau (said, reported), seluruh dimensi waktu di dalam kalimat yang dilaporkan harus ikut ditarik mundur satu langkah agar selaras dengan sudut pandang saat ini. Namun, ada pengecualian yang sangat logis: kebenaran ilmiah yang abadi dan hukum alam universal tetap dipertahankan dalam bentuk masa kini karena faktanya tidak pernah kedaluwarsa.\n\nSepanjang modul ini, kamu akan melatih intuisi memundurkan tenses secara akurat, mengenali pengecualian fakta universal, menggeser deiksis waktu dan tempat dengan mulus, hingga mengganti kata said yang monoton dengan Academic Reporting Verbs bernuansa tajam seperti assert, contend, dan demonstrate. Keterampilan ini akan menjadi senjata utamamu dalam menyusun tinjauan pustaka dan sintesis literatur bertaraf internasional.",
     coreConceptSummary: 'Prinsip Backshift memundurkan tenses satu tingkat ke masa lampau ketika reporting verb berbentuk lampau (*said, found*). Deiksis waktu dan tempat disesuaikan. Pengecualian backshift berlaku untuk fakta ilmiah abadi.',
     sections: [
         {
@@ -4483,7 +4483,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Objektivitas penulisan ilmiah, agen tersembunyi, dan impersonal passive',
     levelBadge: 'Kalimat Pasif · Modul 29',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Klausa Relatif (Adjective Clauses) adalah alat sintaksis untuk memberikan informasi detail tentang kata benda tanpa harus membuat kalimat baru. Anda harus mampu membedakan secara tegas antara Defining Relative Clauses (informasi pembatas esensial tanpa koma) dan Non-Defining Relative Clauses (informasi tambahan berapit koma).',
+    mentalModelIntro: "Bayangkan kamu sedang menatap rak perpustakaan berisi ribuan buku. Jika kamu hanya berkata \"Tolong ambilkan buku,\" rekanmu pasti bingung mencari buku yang mana. Tetapi jika kamu menambahkan \"buku yang bersampul biru\", kamu seketika mengunci identitas buku tersebut secara spesifik. Dalam bahasa Inggris, peranti penjelas ini dirancang sangat cerdas melalui Relative Clauses untuk memperkaya detail kata benda tanpa harus memecahnya menjadi kalimat-kalimat pendek yang melelahkan.\n\nMental model terpenting di sini adalah membedakan antara informasi pembatas (Defining) yang mutlak menentukan identitas subjek tanpa tanda koma, dan informasi pelengkap (Non-Defining) yang sekadar sisipan ekstra berapit koma. Memahami batas ini menjelaskan mengapa kata ganti that pantang dipakai setelah tanda koma, serta membuka jalan bagi struktur anggun seperti Pied-Piping di mana preposisi ditarik ke depan demi memancarkan wibawa formal.\n\nDi modul ini, kamu akan membedah perbedaan tegas klausa pembatas versus tambahan, menguasai kasus pronominal whom dan whose, menerapkan teknik penarikan preposisi formal, hingga memanfaatkan keluwesan Contact Clauses dengan menanggalkan pronoun objek. Kuasai modul ini untuk merajut kalimat kompleks yang padat, presisi, dan mengalir anggun.",
     coreConceptSummary: 'Defining Clauses menentukan identitas subjek (who, which, that) tanpa tanda koma. Non-Defining Clauses memberikan keterangan ekstra berapit koma (DILARANG menggunakan "that"). Contact Clauses menghilangkan pronoun objek.',
     sections: [
         {
@@ -4631,7 +4631,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Pengandaian ilmiah, kemungkinan masa depan, hipotesis imajinatif, dan penyesalan lampau',
     levelBadge: 'Kalimat Pengandaian · Modul 30',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Inversi (Inversion) adalah pembalikan posisi normal subjek dan kata kerja bantu (Auxiliary Verb mendahului Subjek) untuk memberikan penekanan retoris yang dramatis, formal, dan berbobot tinggi. Ini adalah salah satu struktur gramatikal puncak (Band 8.5–9.0 IELTS) yang membedakan penutur mahir.',
+    mentalModelIntro: "Pernahkah kamu menyaksikan adegan film di mana lampu panggung mendadak padam, lalu satu berkas cahaya tajam langsung menembak ke sosok utama untuk memicu ketegangan dramatis? Dalam dunia sintaksis bahasa Inggris tingkat tinggi, Inversion adalah teknik lampu sorot tersebut. Dengan sengaja membalik urutan alami subjek dan predikat, kamu memberi sinyal kuat bahwa informasi yang kamu bawa memiliki urgensi retoris yang luar biasa.\n\nMengapa bahasa Inggris mengharuskan kata kerja bantu mendahului subjek saat kata keterangan bernuansa negatif seperti Rarely, Seldom, atau Under no circumstances ditaruh di awal kalimat? Karena penempatan kata pembatas di baris terdepan mengubah gravitasi nada seluruh klausa. Pola inversi ini bukan sekadar pamer kerumitan rumus, melainkan peranti retorika formal para akademisi ulung untuk menegaskan kontras tajam, menonjolkan bobot argumen, atau melukiskan latar spasial secara hidup (Full Inversion).\n\nMelalui modul ini, kamu akan menguasai inversi adverbial negatif, menata struktur heroik Not only dan No sooner, menghapus kata IF dalam pengandaian formal, hingga mengoperasikan Locative Fronting. Struktur puncak ini adalah pembeda utama tulisan penutur biasa dengan karya berstandar IELTS Band 8.5–9.0.",
     coreConceptSummary: 'Negative Inversion dipicu ketika frasa adverbial negatif diletakkan di awal kalimat (Hardly, Seldom, Rarely, Never before, Under no circumstances). Inversi juga berlaku pada konstruksi Not only... but also dan inversi kondisional.',
     sections: [
         {
@@ -4777,15 +4777,15 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // =========================================================================
   {
     id: 'modul-31-conjunctions-transitions',
-    stageNumber: 8,
-    stageName: 'Tahap 8: Transformasi Klausa & Inversi',
+    stageNumber: 9,
+    stageName: 'Tahap 9: Retorika Akademik & Sintaksis Mahir',
     categoryKey: 'Complex Structures',
     moduleNumber: 31,
     title: 'Coordinating Conjunctions (FANBOYS), Subordinasi, dan Transisi Antar-Kalimat',
     subtitle: 'Membangun jembatan logika antar gagasan tanpa kompromi tanda baca',
     levelBadge: 'Konjungsi & Transisi · Modul 31',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kohesi (keterikatan gramatikal antarkalimat) dan Koherensi (kelogisan alur gagasan) adalah kriteria penentu skor tertinggi dalam IELTS Task 2 dan TOEFL Writing. Teori Theme-Rheme (Prinsip Given-to-New) memastikan bahwa setiap kalimat baru berpijak pada informasi yang sudah diketahui pembaca sebelum memperkenalkan ide baru.',
+    mentalModelIntro: "Bayangkan kamu sedang menyeberangi sungai berbatu yang deras. Jika batu pijakan berikutnya diletakkan terlalu jauh atau melompat tanpa arah yang jelas, kamu pasti akan terpeleset. Paragraf akademik yang baik bekerja persis seperti jembatan batu tersebut: setiap kalimat baru harus berpijak kokoh pada informasi yang sudah dikenal pembaca sebelum mengulurkan tangan memperkenalkan gagasan baru.\n\nInilah rahasia dari Kohesi dan Koherensi sejati, yang berakar pada teori Theme-Rheme (Prinsip Given-to-New). Tulisan yang membosankan sering kali mengulang pola kalimat yang kaku atau hanya menempelkan kata sambung mekanis seperti Moreover dan Furthermore. Sebaliknya, tulisan berkelas mengikat wacana menggunakan rantai leksikal (Lexical Chains), memvariasikan pembuka kalimat secara dinamis, dan merangkum esensi paragraf sebelumnya untuk membuka babak bahasan baru secara organik.\n\nDi modul ini, kamu akan mempelajari cara mengalirkan informasi dari Theme ke Rheme, membangun jaring sinonim dan parafrasa yang elegan, merotasi menu pembuka kalimat, serta memahat jembatan transisi tematik antarseksi. Bersiaplah menciptakan esai yang mengalir deras, memikat, dan mudah dicerna dari kalimat pembuka hingga kesimpulan akhir.",
     coreConceptSummary: 'Prinsip Theme-Rheme: Awali kalimat dengan informasi yang sudah dikenal (Theme), dan akhiri dengan informasi baru (Rheme). Rantai Leksikal dan peranti transisi mengunci aliran logika paragraf secara mulus.',
     sections: [
         {
@@ -4923,7 +4923,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Klausa penjelas esensial vs tambahan, aturan koma, dan reduksi pronoun kontak',
     levelBadge: 'Klausa Relatif · Modul 32',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Nominalisasi (Academic Nominalization) adalah proses mengubah kata kerja (Verbs) atau kata sifat (Adjectives) menjadi kata benda (Nouns). Ini adalah ciri gramatikal paling dominan dari prosa ilmiah, laporan kebijakan, dan jurnal internasional karena mampu memadatkan informasi dan meningkatkan kepadatan leksikal (Lexical Density).',
+    mentalModelIntro: "Coba bandingkan dua cara menyampaikan pesan ini: \"Karena populasi perkotaan bertambah sangat cepat, pemerintah harus membangun banyak jalan baru\" versus \"Pertumbuhan pesat populasi perkotaan menuntut ekspansi infrastruktur transportasi.\" Kalimat kedua terasa jauh lebih padat, berbobot, dan berwibawa. Seni memadatkan rentetan aksi menjadi konsep benda inilah yang disebut Academic Nominalization.\n\nMengapa prosa ilmiah di jurnal internasional dan laporan kebijakan dunia begitu gemar menggunakan nominalisasi? Karena dengan mengubah kata kerja (proliferate) atau kata sifat (dense) menjadi kata benda (proliferation, density), kamu dapat melipatgandakan kepadatan leksikal (Lexical Density). Kamu mengemas proposisi rumit ke dalam satu wadah nomina yang kokoh. Namun, kamu juga perlu menjaga keseimbangan agar tulisan tidak terserang Zombie Nouns—rangkaian nomina berlebihan yang justru mematikan kejelasan dan mengaburkan siapa pelaku tindakan sesungguhnya.\n\nDalam modul ini, kamu akan menguasai teknik morfologis mengubah verba ke nomina bernilai akademis tinggi, merampingkan klausa menjadi frasa padat berbobot AWL (Academic Word List), mengenali batas kejelasan tulisan, serta berlatih menyulap kalimat kasual menjadi prosa ilmiah berkelas. Langkah ini akan melipatgandakan maturitas tulisan akademikmu secara instan.",
     coreConceptSummary: 'Nominalisasi mentransformasikan klausa berbasis aksi (*Because the climate changed rapidly...*) menjadi frasa nominal padat (*Rapid climate change caused...*). Kuncinya adalah menjaga keseimbangan agar tidak menghasilkan "Zombie Nouns" yang mengaburkan kejelasan.',
     sections: [
         {
@@ -5076,7 +5076,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Klausa yang bertindak sebagai nomina dan susunan kata pernyataan dalam pertanyaan terselip',
     levelBadge: 'Klausa Nomina · Modul 33',
     estimatedMinutes: 25,
-    mentalModelIntro: 'Kalimat Belah (Cleft Sentences) adalah struktur sintaksis yang "membelah" satu klausa normal menjadi dua bagian untuk memberikan sorotan fokus (Focalization) yang sangat tajam pada elemen tertentu (apakah Pelaku, Waktu, Alasan, atau Objek). Ini adalah peranti retorika tingkat mahir untuk menegaskan argumen puncak.',
+    mentalModelIntro: "Pernahkah kamu mendengarkan seorang orator ulung yang saat menyampaikan poin paling penting tiba-tiba menurunkan intonasinya, memberi jeda, lalu berkata: \"Bukan dana yang menjadi kendala kita, melainkan kemauan politik\"? Seketika seluruh ruangan terdiam dan memusatkan perhatian pada gagasan tersebut. Dalam tata bahasa Inggris, efek retoris memukau ini diciptakan melalui Cleft Sentences (Kalimat Belah).\n\nSecara harfiah, cleft berarti membelah satu klausa tunggal menjadi dua bilik untuk memfokuskan sorotan (focalization) pada satu elemen kunci—apakah itu sang pelaku, faktor penyebab, atau waktu peristiwa. Struktur It-Cleft bekerja bagai lampu sorot langsung di depan panggung, sedangkan Wh-Cleft (atau Pseudo-Cleft) menahan rasa penasaran pembaca sebelum memberikan kejutan resolusi di bagian akhir kalimat. Teknik ini adalah instrumen retorika terbaik untuk mematahkan argumen lawan atau menancapkan kalimat tesis yang tak tergoyahkan.\n\nModul ini akan melatihmu merancang konstruksi It-Clefts, menyusun dinamika antisipasi lewat Wh-Clefts, menegaskan hubungan kausalitas dengan Reverse Wh-Clefts, serta memposisikan struktur belah ini secara strategis di titik-titik krusial esaimu. Bersiaplah memberikan pukulan argumentasi yang tajam, persuasif, dan meninggalkan kesan intelektual mendalam.",
     coreConceptSummary: 'It-Clefts (It is/was [Elemen Fokus] that [Sisa Informasi]). Wh-Clefts / Pseudo-Clefts (What we need is...). Reverse Wh-Clefts (This is what caused...).',
     sections: [
         {
@@ -5217,7 +5217,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Modus mandat formal dan pembalikan subjek-predikat untuk penekanan retorika tingkat tinggi',
     levelBadge: 'Subjunctive & Inversi · Modul 34',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Paralelisme Sintaksis (Parallelism) adalah prinsip keseimbangan bentuk gramatikal ketika dua atau lebih elemen digabungkan dalam serial, daftar, atau konjungsi berpasangan. Struktur yang paralel menghasilkan irama membaca yang anggun, logis, dan mudah dipahami.',
+    mentalModelIntro: "Bayangkan kamu sedang mengagumi sebuah jembatan gantung mahakarya arsitektur. Jika kabel penopang di sisi kanan terbuat dari baja kokoh sementara di sisi kiri hanya berupa seutas tali plastik, jembatan itu bukan hanya tampak timpang, melainkan akan runtuh saat dilewati beban. Logika estetika dan keseimbangan ini berlaku mutlak dalam kalimat melalui prinsip Paralelisme Sintaksis (Parallelism).\n\nOtak manusia dirancang untuk menyukai simetri, ritme, dan keteraturan pola. Ketika kamu menyusun daftar gagasan, menimbang perbandingan, atau memasangkan konjungsi korelatif seperti not only... but also, elemen-elemen yang digabungkan wajib mengenakan 'seragam gramatikal' yang identik—gerund dengan gerund, frasa preposisi dengan frasa preposisi, klausa dengan klausa. Pelanggaran paralelisme bukan hanya merusak irama membaca (cadence), melainkan juga mengaburkan hierarki logika berpikir di hadapan pembaca kritis.\n\nDi modul ini, kamu akan melatih kepekaan simetri pada pasangan konjungsi korelatif, menyelaraskan bentuk kata dalam serial daftar, memperbaiki perbandingan yang timpang (faulty comparison), hingga merangkai pola Trikolon retoris yang megah. Terapkan prinsip ini, dan tulisanmu akan mengalun dengan irama yang anggun, kokoh, dan berwibawa.",
     coreConceptSummary: 'Elemen yang digabungkan oleh and/or, konjungsi korelatif (not only... but also, either... or), atau komparasi (more than) WAJIB memiliki kelas kata dan struktur sintaksis yang identik (Gerund dengan Gerund, Klausa dengan Klausa).',
     sections: [
         {
@@ -5353,7 +5353,7 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     subtitle: 'Reduksi klausa tingkat tinggi, eliminasi dangling modifiers, dan pemadatan sintaksis puncak',
     levelBadge: 'Mahakarya Retorika · Modul 35',
     estimatedMinutes: 30,
-    mentalModelIntro: 'Puncak dari penguasaan sintaksis bahasa Inggris adalah kemampuan memadatkan proposisi kompleks secara elegan menggunakan Participle Clauses, Absolute Structures, dan Matriks Epistemic Stance. Pada level ini, tulisan Anda mencapai standar jurnal internasional dan kriteria IELTS Band 8.5–9.0 serta TOEFL 110+.',
+    mentalModelIntro: "Bayangkan seorang konduktor orkestra simfoni kelas dunia yang memimpin puluhan instrumen berbeda—gesekan biola, tiupan flute, dan dentum simbal—berpadu harmonis tanpa ada satu nada pun yang sumbang atau saling berebut perhatian. Modul penutup ini adalah panggung simfoni sintaksis tempat seluruh instrumen tata bahasa tingkat lanjut yang telah kamu pelajari disatukan menjadi mahakarya prosa ilmiah yang utuh.\n\nPada level tertinggi penulisan akademik (IELTS Band 8.5–9.0 dan TOEFL 110+), keunggulan bukan lagi sekadar menulis kalimat tanpa salah, melainkan kemampuan mengorkestrasi pemadatan makna yang luar biasa efisien. Di sini, kamu menggunakan Absolute Structures yang memiliki subjek partisipel mandiri untuk melenyapkan risiko Dangling Modifiers, memadatkan klausa panjang dengan Participle Reduction, serta memasang Matriks Hedging epistemik agar setiap klaim risetmu terdengar objektif, tajam, dan tidak terbantahkan.\n\nDi modul pamungkas ini, kamu akan menyatukan konstruksi absolut berdaulat, membedah teknik pemadatan partisipel perfek, menguasai seni bersiasat dengan academic stance, hingga mensintesis seluruh variasi sintaksis ke dalam satu esai paripurna. Melangkah ke tahap ini berarti kamu telah siap menulis di level akademisi global dengan rasa percaya diri penuh dan keanggunan linguistik sejati.",
     coreConceptSummary: 'Absolute Structures memiliki subjek partisipel mandiri tanpa konjungsi. Dangling Modifiers dieliminasi total. Matriks Stance & Hedging mengatur tingkat kepastian ilmiah secara objektif dan elegan.',
     sections: [
         {
