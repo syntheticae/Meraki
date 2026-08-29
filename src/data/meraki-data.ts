@@ -312,6 +312,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     errorCorrectionTasks: [
       {
+      id: "err-m02-2",
+      flawedSentence: "The result of the comprehensive blood tests are normal.",
+      flawLocation: "are normal",
+      correctedSentence: "The result of the comprehensive blood tests is normal.",
+      linguisticExplanation: "Head Noun dari subjek kalimat adalah \"The result\" (tunggal), bukan \"blood tests\" yang berada di dalam prepositional phrase. To Be yang tepat adalah \"is\".",
+      acceptedVariations: [
+            "The results of the comprehensive blood tests are normal."
+      ]
+},
+      {
         id: 'ec-m02-1',
         flawedSentence: 'The senior engineer is understand the complexities of the quantum algorithm.',
         flawLocation: 'is understand',
@@ -420,6 +430,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     errorCorrectionTasks: [
       {
+      id: "err-m03-2",
+      flawedSentence: "She has not any sufficient financial resources for tuition.",
+      flawLocation: "has not any",
+      correctedSentence: "She does not have any sufficient financial resources for tuition.",
+      linguisticExplanation: "Dalam Simple Present saat \"have\" berfungsi sebagai Main Verb kepemilikan (bukan auxiliary), bentuk negatifnya wajib menggunakan operator \"does not have\" (American/International standard).",
+      acceptedVariations: [
+            "She has no sufficient financial resources for tuition."
+      ]
+},
+      {
         id: 'ec-m03-1',
         flawedSentence: 'The clinical team have discovered an unexpected correlation in the data.',
         flawLocation: 'have discovered',
@@ -526,6 +546,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m04-2",
+      flawedSentence: "Does the professor explains the quantum mechanics theorem clearly?",
+      flawLocation: "explains",
+      correctedSentence: "Does the professor explain the quantum mechanics theorem clearly?",
+      linguisticExplanation: "Setelah auxiliary operator \"Does\", kata kerja utama (Main Verb) wajib kembali ke bentuk dasar / Bare Infinitive (\"explain\", bukan \"explains\"). Fenomena ini disebut Do-Support Inflection Stripping.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m04-1',
         flawedSentence: 'The software update does not resolves the network latency issues.',
@@ -634,6 +662,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     errorCorrectionTasks: [
       {
+      id: "err-m05-2",
+      flawedSentence: "Every student and teacher were present at the annual convocation.",
+      flawLocation: "were present",
+      correctedSentence: "Every student and teacher was present at the annual convocation.",
+      linguisticExplanation: "Subjek yang diawali oleh determiner \"Every\" atau \"Each\", meskipun menggabungkan beberapa nomina dengan \"and\", selalu berstatus tunggal (singular concord) dan menuntut verba \"was\".",
+      acceptedVariations: []
+},
+      {
         id: 'ec-m05-1',
         flawedSentence: 'The quality of the chemical reagents determine the accuracy of the experiment.',
         flawLocation: 'determine',
@@ -682,6 +718,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m06-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Which of the following sentences correctly utilizes a collective noun with plural concord to emphasize individual actions of its members?",
+      options: [
+            "The jury are divided in their individual opinions regarding the forensic evidence.",
+            "The jury is divided in their individual opinions regarding the forensic evidence.",
+            "The jury were agreed to its final singular verdict.",
+            "The jury was arguing with themselves all afternoon."
+      ],
+      correctAnswer: "The jury are divided in their individual opinions regarding the forensic evidence.",
+      explanation: "Dalam British English (dan diakui dalam standar akademik internasional), collective noun seperti \"jury\", \"team\", atau \"committee\" dapat menggunakan verba dan pronoun jamak (\"are divided in their opinions\") ketika menyoroti tindakan terpisah dari masing-masing anggota kelompok.",
+      ruleReference: "Modul 06: Collective Noun Concord Nuances"
+},
+      {
         id: 'q-m06-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -703,6 +754,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m06-2",
+      flawedSentence: "The criterion for selecting candidates are extremely demanding.",
+      flawLocation: "criterion ... are",
+      correctedSentence: "The criteria for selecting candidates are extremely demanding.",
+      linguisticExplanation: "\"Criterion\" adalah bentuk tunggal (Greek singular). Untuk verba jamak \"are\", bentuk jamaknya adalah \"criteria\". Jika ingin tetap tunggal, gunakan \"The criterion is...\".",
+      acceptedVariations: [
+            "The criterion for selecting candidates is extremely demanding."
+      ]
+},
       {
         id: 'ec-m06-1',
         flawedSentence: 'The informations provided by the ministry were insufficient.',
@@ -753,6 +814,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m07-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence that correctly avoids the common uncountability error in academic writing:",
+      options: [
+            "The researcher gathered numerous qualitative and quantitative evidences.",
+            "The researcher gathered numerous pieces of qualitative and quantitative evidence.",
+            "An important research was published in the medical journal yesterday.",
+            "Every informations provided by the respondents were discarded."
+      ],
+      correctAnswer: "The researcher gathered numerous pieces of qualitative and quantitative evidence.",
+      explanation: "\"Evidence\", \"research\", dan \"information\" adalah Uncountable Nouns mutlak dalam bahasa Inggris. Kata-kata tersebut tidak boleh ditambah akhiran -s atau didahului artikel \"a/an\" maupun quantifier \"every/numerous\" secara langsung. Untuk membilang, gunakan partitif seperti \"pieces of evidence\".",
+      ruleReference: "Modul 07: Uncountable Noun Partitives"
+},
+      {
         id: 'q-m07-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -774,6 +850,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m07-2",
+      flawedSentence: "The university purchased several modern equipments for the laboratory.",
+      flawLocation: "several modern equipments",
+      correctedSentence: "The university purchased several pieces of modern equipment for the laboratory.",
+      linguisticExplanation: "\"Equipment\" adalah Uncountable Noun murni dan tidak pernah memiliki bentuk jamak *equipments*. Gunakan partitif \"pieces of equipment\" atau \"items of equipment\".",
+      acceptedVariations: [
+            "The university purchased new modern equipment for the laboratory."
+      ]
+},
       {
         id: 'ec-m07-1',
         flawedSentence: 'The forensic team discovered several new evidences at the scene.',
@@ -820,6 +906,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m08-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Choose the sentence with flawless academic article usage:",
+      options: [
+            "The technology has transformed modern education dramatically.",
+            "Technology has transformed modern education dramatically.",
+            "A technology has transformed the modern educations dramatically.",
+            "The technologies in general has transformed modern education."
+      ],
+      correctAnswer: "Technology has transformed modern education dramatically.",
+      explanation: "Ketika membicarakan konsep abstrak atau bidang secara umum (generalisasi), kita menggunakan Zero Article (tanpa \"the\"). Penggunaan \"The technology\" hanya tepat jika merujuk pada teknologi spesifik yang telah didefinisikan sebelumnya (misal: \"The technology developed by NASA\").",
+      ruleReference: "Modul 08: Zero Article in Generalizations"
+},
+      {
         id: 'q-m08-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -841,6 +942,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m08-2",
+      flawedSentence: "He graduated with a master degree in the physics from Oxford.",
+      flawLocation: "the physics",
+      correctedSentence: "He graduated with a master's degree in physics from Oxford.",
+      linguisticExplanation: "Nama bidang ilmu dan disiplin akademis (seperti *physics, chemistry, economics, linguistics*) menggunakan Zero Article (tanpa \"the\").",
+      acceptedVariations: [
+            "He graduated with a master degree in physics from Oxford."
+      ]
+},
       {
         id: 'ec-m08-1',
         flawedSentence: 'The researchers submitted an unique hypothesis to the journal.',
@@ -887,6 +998,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m09-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Select the sentence where the reciprocal pronoun is used with grammatical precision:",
+      options: [
+            "The two competing laboratories shared their data with each other.",
+            "The two competing laboratories shared their data with one another.",
+            "All five research teams cooperated with each other seamlessly.",
+            "Both participants blamed one another for the experiment failure."
+      ],
+      correctAnswer: "The two competing laboratories shared their data with each other.",
+      explanation: "Dalam aturan preskriptif tradisional yang dihargai dalam tes formal, \"each other\" digunakan tepat untuk dua entitas (\"two laboratories\"), sedangkan \"one another\" digunakan untuk tiga entitas atau lebih.",
+      ruleReference: "Modul 09: Reciprocal Pronouns (Each Other vs One Another)"
+},
+      {
         id: 'q-m09-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -908,6 +1034,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m09-2",
+      flawedSentence: "The manager sent the document to my colleague and myself.",
+      flawLocation: "myself",
+      correctedSentence: "The manager sent the document to my colleague and me.",
+      linguisticExplanation: "Reflexive pronoun (*myself*) hanya boleh digunakan jika subjek dan objek adalah orang yang sama (e.g. *I hurt myself*). Pada posisi objek setelah preposisi \"to\", gunakan Object Pronoun \"me\".",
+      acceptedVariations: []
+},
       {
         id: 'ec-m09-1',
         flawedSentence: 'The research lab celebrated it\'s twentieth anniversary yesterday.',
@@ -954,6 +1088,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m10-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Which sentence correctly demonstrates the formal agreement rule for \"Either of\" and \"Neither of\"?",
+      options: [
+            "Neither of the proposed hypotheses is supported by the empirical data.",
+            "Neither of the proposed hypotheses are supported by the empirical data.",
+            "Either of the candidates are qualified to lead the department.",
+            "Neither of the two solutions have been tested in real-world scenarios."
+      ],
+      correctAnswer: "Neither of the proposed hypotheses is supported by the empirical data.",
+      explanation: "Dalam tata bahasa formal dan tes internasional (IELTS/TOEFL), frasa \"Neither of [plural noun]\" dan \"Either of [plural noun]\" bermakna distributif (\"tidak satu pun dari keduanya\") sehingga menuntut kata kerja tunggal (*is*, *has*, *was*).",
+      ruleReference: "Modul 10: Distributive Quantifier Subject-Verb Concord"
+},
+      {
         id: 'q-m10-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -975,6 +1124,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m10-2",
+      flawedSentence: "There are lesser students enrolling in humanities courses this semester.",
+      flawLocation: "lesser students",
+      correctedSentence: "There are fewer students enrolling in humanities courses this semester.",
+      linguisticExplanation: "Untuk Countable Nouns (\"students\"), perbandingan kuantitas yang lebih sedikit wajib menggunakan **fewer** (BUKAN *less* atau *lesser*). *Less* hanya digunakan untuk Uncountable Nouns.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m10-1',
         flawedSentence: 'The government allocated much funds to renewable energy infrastructure.',
@@ -1028,6 +1185,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m11-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence containing an Ergative Verb (a verb that can be both transitive and intransitive with the object becoming the subject):",
+      options: [
+            "The global temperature increased by 1.5 degrees Celsius over the decade.",
+            "The scientist devoured the technical documentation eagerly.",
+            "The laboratory technician slept soundly after the night shift.",
+            "The supervisor handed the confidential memorandum directly to the dean."
+      ],
+      correctAnswer: "The global temperature increased by 1.5 degrees Celsius over the decade.",
+      explanation: "\"Increase\" adalah verba ergatif: kita bisa mengatakan \"The emissions increased the temperature\" (transitive/causative) atau \"The temperature increased\" (intransitive/ergative tanpa perlu bentuk pasif).",
+      ruleReference: "Modul 11: Ergative and Labile Verbs in Academic Prose"
+},
+      {
         id: 'q-m11-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -1049,6 +1221,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m11-2",
+      flawedSentence: "The patient lay down the heavy medical charts on the desk.",
+      flawLocation: "lay down",
+      correctedSentence: "The patient laid down the heavy medical charts on the desk.",
+      linguisticExplanation: "\"Lay\" (transitive: meletakkan sesuatu) bentuk lampaunya adalah **laid** (*laid down the charts*). \"Lie\" (intransitive: berbaring) bentuk lampaunya adalah **lay** (*he lay on the bed*).",
+      acceptedVariations: [
+            "The patient put down the heavy medical charts on the desk."
+      ]
+},
       {
         id: 'ec-m11-1',
         flawedSentence: 'A major breakthrough was occurred during the third trial.',
@@ -1098,6 +1280,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m12-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Choose the sentence that correctly adheres to stative perception verb rules:",
+      options: [
+            "The newly formulated disinfectant smells distinctly of eucalyptus.",
+            "The newly formulated disinfectant is smelling distinctly of eucalyptus.",
+            "The chemist is smelling like eucalyptus after the spill.",
+            "The disinfectant was smelling badly during synthesis."
+      ],
+      correctAnswer: "The newly formulated disinfectant smells distinctly of eucalyptus.",
+      explanation: "Verba persepsi sensorik (*smell, taste, sound, look*) saat menerangkan karakteristik intrinsik objek berstatus Stative Linking Verb dan wajib menggunakan Simple Tense + Adjective/Prepositional phrase.",
+      ruleReference: "Modul 12: Sensory Stative Verbs"
+},
+      {
+      id: "q-m12-2",
+      category: "Word Classes",
+      difficulty: "Menengah",
+      question: "Which of the following stative verbs is used correctly in continuous form due to a shift to dynamic meaning?",
+      options: [
+            "The lead investigator is having severe doubts about the statistical validity.",
+            "The lead investigator is having three post-doctoral degrees.",
+            "The laboratory sample is containing excessive amounts of lead.",
+            "This compound is seeming completely inert under room temperature."
+      ],
+      correctAnswer: "The lead investigator is having severe doubts about the statistical validity.",
+      explanation: "\"Have\" saat berarti kepemilikan fisik statis (*possession*) tidak boleh continuous (*is having degrees ❌*). Namun saat berarti \"mengalami\" (*experiencing*) keraguan/masalah, \"have\" beralih fungsi menjadi dynamic action sehingga continuous diperbolehkan (*is having doubts ✔*).",
+      ruleReference: "Modul 12: Polysemous Stative-Dynamic Shifts"
+},
+      {
         id: 'q-m12-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -1109,6 +1321,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m12-2",
+      flawedSentence: "I am not understanding what the author is implying in this paragraph.",
+      flawLocation: "am not understanding",
+      correctedSentence: "I do not understand what the author is implying in this paragraph.",
+      linguisticExplanation: "\"Understand\" adalah stative verb of cognition (proses kognitif mental) yang tidak boleh digunakan dalam bentuk continuous / progressive.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m12-1',
         flawedSentence: 'The experimental cohort is consisting of forty adult volunteers.',
@@ -1153,6 +1373,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m13-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Which of the following sentences uses \"prove\" as a Linking Copula rather than a Transitive Verb?",
+      options: [
+            "The preliminary hypothesis proved completely false upon closer inspection.",
+            "The defense attorney proved the innocence of his client beyond reasonable doubt.",
+            "The mathematician proved the theorem using mathematical induction.",
+            "The team must prove their competency before receiving the grant."
+      ],
+      correctAnswer: "The preliminary hypothesis proved completely false upon closer inspection.",
+      explanation: "Dalam \"The hypothesis proved false\", *proved* bertindak sebagai Copular Linking Verb (bersinonim dengan *turned out to be*), menghubungkan subjek dengan adjective complement \"false\".",
+      ruleReference: "Modul 13: Copular Verbs with Dual Functions"
+},
+      {
+      id: "q-m13-2",
+      category: "Word Classes",
+      difficulty: "Menengah",
+      question: "Identify the sentence where a linking verb is correctly followed by a Subject Complement (Adjective):",
+      options: [
+            "The participant remained silent throughout the interview session.",
+            "The participant remained silently throughout the interview session.",
+            "The chemical reaction appeared quickly and violently.",
+            "The newly installed filter works efficiently under high pressure."
+      ],
+      correctAnswer: "The participant remained silent throughout the interview session.",
+      explanation: "\"Remain\" di sini adalah Linking Verb yang menghubungkan subjek (\"The participant\") dengan keadaan dirinya, sehingga membutuhkan Adjective (*silent*), bukan Adverb (*silently*).",
+      ruleReference: "Modul 13: Linking Verbs and Predicate Adjectives"
+},
+      {
         id: 'q-m13-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -1164,6 +1414,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m13-2",
+      flawedSentence: "The experimental synthetic fabric feels very smoothly.",
+      flawLocation: "feels very smoothly",
+      correctedSentence: "The experimental synthetic fabric feels very smooth.",
+      linguisticExplanation: "\"Feel\" dalam konteks tekstur material adalah Linking Verb yang menghubungkan subjek dengan Subject Complement (Adjective \"smooth\", bukan Adverb \"smoothly\").",
+      acceptedVariations: []
+},
       {
         id: 'ec-m13-1',
         flawedSentence: 'The proposed solution sounds realistically to the board.',
@@ -1208,6 +1466,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m14-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Choose the sentence that correctly distinguishes between \"needn't have done\" and \didn't need to do\:",
+      options: [
+            "We needn't have printed the 100-page dossier because digital copies were already distributed beforehand.",
+            "We didn't need to print the dossier, so we printed all 100 pages anyway.",
+            "We needn't print the dossier yesterday as it was optional.",
+            "We must not have printed the dossier since the client requested it."
+      ],
+      correctAnswer: "We needn't have printed the 100-page dossier because digital copies were already distributed beforehand.",
+      explanation: "\"Needn't have V3\" berarti aksi tersebut **sudah terlanjur dilakukan padahal sebenarnya tidak diperlukan**. Sebaliknya, \"didn't need to do\" berarti tidak perlu dilakukan dan biasanya tidak jadi dilakukan.",
+      ruleReference: "Modul 14: Nuanced Past Necessity Modals"
+},
+      {
+      id: "q-m14-2",
+      category: "Word Classes",
+      difficulty: "Menengah",
+      question: "Which sentence correctly expresses logical deduction / high certainty in the past?",
+      options: [
+            "The security cameras must have recorded the unauthorized entry last night.",
+            "The security cameras should record the unauthorized entry last night.",
+            "The security cameras can have recorded the unauthorized entry last night.",
+            "The security cameras had to have record the unauthorized entry last night."
+      ],
+      correctAnswer: "The security cameras must have recorded the unauthorized entry last night.",
+      explanation: "Untuk menyatakan kesimpulan logis yang sangat diyakini di masa lampau (*high certainty deduction*), formulanya adalah **Must + have + Past Participle (V3)**.",
+      ruleReference: "Modul 14: Past Modals of Epistemic Deduction"
+},
+      {
         id: 'q-m14-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -1219,6 +1507,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m14-2",
+      flawedSentence: "You had better to consult your academic advisor before submitting.",
+      flawLocation: "had better to consult",
+      correctedSentence: "You had better consult your academic advisor before submitting.",
+      linguisticExplanation: "Frasa semi-modal \"had better\" wajib diikuti langsung oleh **Bare Infinitive** tanpa partikel \"to\" (*had better consult* ✔️, BUKAN *had better to consult* ❌).",
+      acceptedVariations: []
+},
       {
         id: 'ec-m14-1',
         flawedSentence: 'The administration should to reconsider its funding allocation.',
@@ -1264,6 +1560,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m15-3",
+      category: "Word Classes",
+      difficulty: "Lanjutan",
+      question: "Select the sentence containing an intransitive inseparable three-part phrasal verb:",
+      options: [
+            "The team finally came up against formidable institutional bureaucracy.",
+            "The technician looked up the technical error in the manual.",
+            "The manager gave the company secret away inadvertently.",
+            "The researchers put the critical safety goggles on."
+      ],
+      correctAnswer: "The team finally came up against formidable institutional bureaucracy.",
+      explanation: "\"Come up against\" adalah three-part phrasal verb (Verb + Adverb + Preposition) yang bersifat inseparable (tidak bisa disisipkan di tengah).",
+      ruleReference: "Modul 15: Three-part Multi-word Verbs"
+},
+      {
+      id: "q-m15-2",
+      category: "Word Classes",
+      difficulty: "Menengah",
+      question: "Which separable phrasal verb sentence violates English pronoun placement rules?",
+      options: [
+            "The committee turned down it without further review.",
+            "The committee turned it down without further review.",
+            "The committee turned down the proposal without further review.",
+            "The committee turned the proposal down without further review."
+      ],
+      correctAnswer: "The committee turned down it without further review.",
+      explanation: "Pada Transitive Separable Phrasal Verbs, jika objek berupa **Pronoun** (*it, them, him, her*), objek **WAJIB** diletakkan di tengah antara verba dan partikel (*turned it down* ✔️, BUKAN *turned down it* ❌).",
+      ruleReference: "Modul 15: Phrasal Verb Object Infix Rule"
+},
+      {
         id: 'q-m15-1',
         category: 'Word Classes',
         difficulty: 'Menengah',
@@ -1275,6 +1601,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m15-2",
+      flawedSentence: "The government called off it due to nationwide public health concerns.",
+      flawLocation: "called off it",
+      correctedSentence: "The government called it off due to nationwide public health concerns.",
+      linguisticExplanation: "Pada transitive separable phrasal verbs, pronoun object (*it*) wajib disisipkan di antara verba dan partikel preposisi (*called it off*).",
+      acceptedVariations: []
+},
       {
         id: 'ec-m15-1',
         flawedSentence: 'You had better to back up the raw data immediately.',
@@ -1319,6 +1653,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m16-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Which phrase demonstrates the correct placement of a purpose/qualifier adjective relative to material and origin?",
+      options: [
+            "A sleek Italian leather running shoe",
+            "A running sleek Italian leather shoe",
+            "An Italian sleek leather running shoe",
+            "A leather sleek Italian running shoe"
+      ],
+      correctAnswer: "A sleek Italian leather running shoe",
+      explanation: "Opinion (*sleek*) ➔ Origin (*Italian*) ➔ Material (*leather*) ➔ Purpose/Qualifier (*running*) + Noun (*shoe*). Purpose selalu menempel persis sebelum Head Noun.",
+      ruleReference: "Modul 16: Purpose Adjective Position"
+},
+      {
+      id: "q-m16-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Apply the Royal Order of Adjectives (OSASCOMP) to arrange the descriptors correctly:",
+      options: [
+            "The museum acquired a valuable antique Japanese ceramic vase.",
+            "The museum acquired an antique valuable ceramic Japanese vase.",
+            "The museum acquired a Japanese valuable antique ceramic vase.",
+            "The museum acquired a ceramic antique valuable Japanese vase."
+      ],
+      correctAnswer: "The museum acquired a valuable antique Japanese ceramic vase.",
+      explanation: "Urutan OSASCOMP: Opinion (*valuable*) ➔ Age (*antique*) ➔ Origin (*Japanese*) ➔ Material (*ceramic*) + Noun (*vase*).",
+      ruleReference: "Modul 16: OSASCOMP Canonical Hierarchy"
+},
+      {
         id: 'q-m16-1',
         category: 'Word Classes',
         difficulty: 'Menengah',
@@ -1330,6 +1694,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m16-2",
+      flawedSentence: "They bought a wooden round antique table for the faculty lounge.",
+      flawLocation: "wooden round antique",
+      correctedSentence: "They bought an antique round wooden table for the faculty lounge.",
+      linguisticExplanation: "Berdasarkan urutan OSASCOMP: Age (*antique*) ➔ Shape (*round*) ➔ Material (*wooden*) + Noun (*table*).",
+      acceptedVariations: []
+},
       {
         id: 'ec-m16-1',
         flawedSentence: 'The institute tested a metallic innovative rectangular device.',
@@ -1375,6 +1747,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m17-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence with an incorrectly formed participle compound adjective:",
+      options: [
+            "The policy resulted in a wide-spreaded economic consequence across the region.",
+            "The policy resulted in a widespread economic consequence across the region.",
+            "The university constructed a state-of-the-art, purpose-built laboratory.",
+            "The report highlighted several forward-thinking strategies."
+      ],
+      correctAnswer: "The policy resulted in a wide-spreaded economic consequence across the region.",
+      explanation: "\"Spread\" adalah irregular verb dengan bentuk V3 yang tetap \"spread\" (bukan *spreaded* ❌). Bentuk compound adjective yang benar adalah \"widespread\" atau \"wide-spread\".",
+      ruleReference: "Modul 17: Irregular Participle Compounds"
+},
+      {
+      id: "q-m17-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Choose the sentence that correctly uses -ing and -ed participle adjectives:",
+      options: [
+            "The exhausting symposium left all participating delegates completely exhausted.",
+            "The exhausted symposium left all participating delegates completely exhausting.",
+            "The exhausting symposium left all participated delegates completely exhausted.",
+            "The exhausted symposium left all exhausting delegates completely participated."
+      ],
+      correctAnswer: "The exhausting symposium left all participating delegates completely exhausted.",
+      explanation: "-ing participle (*exhausting*) mendeskripsikan sifat simposium yang menguras energi (penyebab). -ed participle (*exhausted*) mendeskripsikan kondisi emosi/fisik delegasi yang terkuras energinya (penerima efek). *Participating* adalah active present participle.",
+      ruleReference: "Modul 17: Active vs Passive Participle Adjectives"
+},
+      {
         id: 'q-m17-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -1386,6 +1788,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m17-2",
+      flawedSentence: "The students were very confusing by the ambiguous lecture notes.",
+      flawLocation: "were very confusing",
+      correctedSentence: "The students were very confused by the ambiguous lecture notes.",
+      linguisticExplanation: "Subjek \"The students\" adalah pihak yang merasakan kebingungan (penerima efek), sehingga membutuhkan Past Participle adjective **confused**.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m17-1',
         flawedSentence: 'The conference attendees were very boring during the lengthy speech.',
@@ -1430,6 +1840,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m18-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence that avoids an illogical comparison / faulty parallelism:",
+      options: [
+            "The tuition fee at private universities is significantly higher than that of public institutions.",
+            "The tuition fee at private universities is significantly higher than public institutions.",
+            "The climate in tropical regions is more humid than temperate regions.",
+            "Her research methodology is much more comprehensive than her advisor."
+      ],
+      correctAnswer: "The tuition fee at private universities is significantly higher than that of public institutions.",
+      explanation: "Membandingkan *tuition fee* (biaya) dengan *institutions* (lembaga) adalah kesalahan Illogical Comparison. Wajib menggunakan kata ganti penunjuk \"that of\" untuk merujuk kembali ke \"the tuition fee\".",
+      ruleReference: "Modul 18: Illogical Comparison and Pronoun Substitution"
+},
+      {
+      id: "q-m18-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Which sentence correctly demonstrates the double comparative / proportional correlation pattern?",
+      options: [
+            "The more rigorous the experimental design is, the more reliable the resulting data becomes.",
+            "The more rigorous the experimental design, more reliable the resulting data becomes.",
+            "More rigorous the experimental design, the more reliable the data.",
+            "The most rigorous the experimental design is, the most reliable the data becomes."
+      ],
+      correctAnswer: "The more rigorous the experimental design is, the more reliable the resulting data becomes.",
+      explanation: "Pola perbandingan korelatif (*Proportional Comparative*) wajib menggunakan struktur paralel: **The + Comparative ..., the + Comparative ...**.",
+      ruleReference: "Modul 18: Parallel Proportional Comparatives"
+},
+      {
         id: 'q-m18-1',
         category: 'Word Classes',
         difficulty: 'Menengah',
@@ -1441,6 +1881,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m18-2",
+      flawedSentence: "This statistical software is more superior than the legacy version.",
+      flawLocation: "more superior than",
+      correctedSentence: "This statistical software is superior to the legacy version.",
+      linguisticExplanation: "Adjektiva asal Latin (*superior, inferior, senior, junior, prior*) sudah bermakna komparatif inheren (tidak boleh didahului \"more\") dan berkolokasi dengan preposisi **to** (BUKAN *than*).",
+      acceptedVariations: []
+},
       {
         id: 'ec-m18-1',
         flawedSentence: 'The new algorithm is more faster than the legacy model.',
@@ -1485,6 +1933,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m19-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Which sentence correctly avoids the split infinitive error in ultra-formal academic style?",
+      options: [
+            "The university decided to examine the allegations thoroughly.",
+            "The university decided to thoroughly examine the allegations.",
+            "The university decided thoroughly to examine the allegations quickly.",
+            "The university decided to examine thoroughly not the allegations."
+      ],
+      correctAnswer: "The university decided to examine the allegations thoroughly.",
+      explanation: "Meskipun *split infinitive* (*to thoroughly examine*) umum dalam percakapan modern, dalam gaya penulisan akademik yang sangat presisi, adverb of manner ditempatkan setelah objek (*to examine the allegations thoroughly*).",
+      ruleReference: "Modul 19: Split Infinitive Nuances in Academic Registers"
+},
+      {
+      id: "q-m19-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Where should the frequency adverb \"seldom\" be positioned in a sentence with an auxiliary verb?",
+      options: [
+            "The meteorological department has seldom recorded such elevated rainfall figures.",
+            "The meteorological department seldom has recorded such elevated rainfall figures.",
+            "The meteorological department has recorded seldom such elevated rainfall figures.",
+            "Seldom the meteorological department has recorded such elevated rainfall figures."
+      ],
+      correctAnswer: "The meteorological department has seldom recorded such elevated rainfall figures.",
+      explanation: "Posisi baku adverbs of frequency (*seldom, always, never, often*) adalah di antara Auxiliary Verb (*has*) dan Main Verb (*recorded*): **Subject + Aux + Adverb + Main Verb**.",
+      ruleReference: "Modul 19: Mid-Position Adverbs in Complex Verb Phrases"
+},
+      {
         id: 'q-m19-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -1496,6 +1974,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m19-2",
+      flawedSentence: "The researcher described clearly the complex biological process.",
+      flawLocation: "described clearly the complex biological process",
+      correctedSentence: "The researcher described the complex biological process clearly.",
+      linguisticExplanation: "Dalam kaidah sintaksis bahasa Inggris, jangan menyisipkan Adverb di antara Transitive Verb (\"described\") dan Direct Object (\"the complex biological process\"). Tempatkan Adverb di akhir kalimat atau sebelum kata kerja.",
+      acceptedVariations: [
+            "The researcher clearly described the complex biological process."
+      ]
+},
       {
         id: 'ec-m19-1',
         flawedSentence: 'The professor explained clearly the mathematical formula to the students.',
@@ -1541,6 +2029,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m20-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence that correctly uses \"between\" versus \among\:",
+      options: [
+            "A bilateral free-trade pact was negotiated between the three independent sovereign states.",
+            "A multilateral pact was negotiated among the three independent sovereign states.",
+            "The inheritance was equally divided between the ten family members.",
+            "There is strong consensus between the entire student body."
+      ],
+      correctAnswer: "A multilateral pact was negotiated among the three independent sovereign states.",
+      explanation: "\"Among\" digunakan ketika merujuk pada tiga pihak atau lebih sebagai kelompok kolektif tanpa hubungan bilateral terpisah satu per satu.",
+      ruleReference: "Modul 20: Between vs Among Relational Dynamics"
+},
+      {
+      id: "q-m20-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Choose the sentence with correct spatial preposition usage for media and transportation:",
+      options: [
+            "The scholar read the editorial in the newspaper while traveling on the train.",
+            "The scholar read the editorial on the newspaper while traveling in the train.",
+            "The scholar read the editorial at the newspaper while traveling on the taxi.",
+            "The scholar read the editorial in the website while traveling by the foot."
+      ],
+      correctAnswer: "The scholar read the editorial in the newspaper while traveling on the train.",
+      explanation: "Media cetak 2D berhalaman (*newspaper, book, journal*) menggunakan preposisi **in**. Transportasi umum berkapasitas besar di mana penumpang dapat berdiri/berjalan (*train, bus, plane, ship*) menggunakan preposisi **on**.",
+      ruleReference: "Modul 20: Prepositions of Medium and Transit"
+},
+      {
         id: 'q-m20-1',
         category: 'Word Classes',
         difficulty: 'Dasar',
@@ -1552,6 +2070,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m20-2",
+      flawedSentence: "The symposium will commence in Monday morning at 9:00 AM.",
+      flawLocation: "in Monday morning",
+      correctedSentence: "The symposium will commence on Monday morning at 9:00 AM.",
+      linguisticExplanation: "Meskipun bagian hari menggunakan \"in the morning\", jika hari spesifik disebutkan (\"Monday morning\"), preposisi yang menguasai adalah **on** (*on Monday morning*).",
+      acceptedVariations: []
+},
       {
         id: 'ec-m20-1',
         flawedSentence: 'The conference will take place in Monday morning at July.',
@@ -1599,6 +2125,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m21-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Identify the verb that is incorrectly paired with a preposition in academic English:",
+      options: [
+            "The committee discussed about the proposed curriculum reform at great length.",
+            "The committee discussed the proposed curriculum reform at great length.",
+            "The findings contributed to the existing body of scholarly literature.",
+            "The professor elaborated on the underlying thermodynamic principles."
+      ],
+      correctAnswer: "The committee discussed about the proposed curriculum reform at great length.",
+      explanation: "Verba \"discuss\" adalah **transitive verb** murni dan langsung mengambil direct object tanpa preposisi (*discuss the issue* ✔️, BUKAN *discuss about the issue* ❌). Kesalahan ini sangat sering dilakukan penutur Indonesia karena pengaruh \"berdiskusi tentang\".",
+      ruleReference: "Modul 21: Pseudo-Preposition Intrusion on Transitive Verbs"
+},
+      {
+      id: "q-m21-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Which sentence correctly matches the adjective with its fixed dependent preposition?",
+      options: [
+            "The research director was skeptical of the unverified data assertions.",
+            "The research director was skeptical with the unverified data assertions.",
+            "The research director was skeptical about to the unverified data assertions.",
+            "The research director was skeptical at the unverified data assertions."
+      ],
+      correctAnswer: "The research director was skeptical of the unverified data assertions.",
+      explanation: "Kolokasi preposisi terikat untuk kata sifat \"skeptical\" adalah **skeptical of** (atau terkadang *skeptical about*), bukan *skeptical with* atau *skeptical at*.",
+      ruleReference: "Modul 21: Adjective-Preposition Collocation Pairs"
+},
+      {
         id: 'q-m21-1',
         category: 'Word Classes',
         difficulty: 'Menengah',
@@ -1610,6 +2166,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m21-2",
+      flawedSentence: "The committee emphasizes on the critical necessity of ethical integrity.",
+      flawLocation: "emphasizes on",
+      correctedSentence: "The committee emphasizes the critical necessity of ethical integrity.",
+      linguisticExplanation: "\"Emphasize\" saat berfungsi sebagai kata kerja adalah Transitive murni dan langsung mengambil direct object tanpa preposisi *on*. Preposisi *on* hanya digunakan pada bentuk nomina (*place an emphasis on*).",
+      acceptedVariations: [
+            "The committee places an emphasis on the critical necessity of ethical integrity."
+      ]
+},
       {
         id: 'ec-m21-1',
         flawedSentence: 'The patient is susceptible for seasonal viral infections.',
@@ -1659,6 +2225,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m22-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence containing an Adverbial Clause of Concession:",
+      options: [
+            "Even though the sample size was limited, the statistical findings achieved significance.",
+            "The researcher who designed the questionnaire received an academic award.",
+            "The committee discovered that the laboratory logs had been falsified.",
+            "Where the tectonic plates converge, severe volcanic activity occurs regularly."
+      ],
+      correctAnswer: "Even though the sample size was limited, the statistical findings achieved significance.",
+      explanation: "\"Even though the sample size was limited\" adalah Adverbial Clause of Concession (konsesi/pertentangan) yang diawali oleh subordinating conjunction *Even though*.",
+      ruleReference: "Modul 22: Subordinate Clause Taxonomy"
+},
+      {
+      id: "q-m22-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Which of the following examples is a grammatically complete Independent Clause?",
+      options: [
+            "Although the experimental results contradicted standard statistical models.",
+            "The experimental results contradicted standard statistical models.",
+            "Because the statistical models had not been calibrated properly.",
+            "Which contradicted standard statistical models across all parameters."
+      ],
+      correctAnswer: "The experimental results contradicted standard statistical models.",
+      explanation: "Independent Clause wajib memiliki Subject (\"The experimental results\") + Finite Verb (\"contradicted\") dan mampu berdiri sendiri sebagai kalimat lengkap tanpa subordinator pemotong makna seperti *Although*, *Because*, atau *Which*.",
+      ruleReference: "Modul 22: Independent vs Dependent Clause Criteria"
+},
+      {
         id: 'q-m22-1',
         category: 'Sentence Architecture',
         difficulty: 'Dasar',
@@ -1675,6 +2271,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m22-2",
+      flawedSentence: "Although the data was robust. The committee rejected the manuscript.",
+      flawLocation: "Although the data was robust.",
+      correctedSentence: "Although the data was robust, the committee rejected the manuscript.",
+      linguisticExplanation: "\"Although the data was robust\" adalah Dependent Clause (Sentence Fragment) yang tidak boleh diakhiri titik sendirian. Harus digabungkan dengan Independent Clause menggunakan tanda koma.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m22-1',
         flawedSentence: 'The new renewable policy promising significant reductions in emissions.',
@@ -1719,6 +2323,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m23-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Which of the following sentences exhibits the SVOO (Ditransitive) pattern?",
+      options: [
+            "The faculty awarded the outstanding graduate a prestigious research fellowship.",
+            "The faculty considered the outstanding graduate extremely talented.",
+            "The faculty elected the outstanding graduate department representative.",
+            "The faculty grew increasingly concerned about graduate employment rates."
+      ],
+      correctAnswer: "The faculty awarded the outstanding graduate a prestigious research fellowship.",
+      explanation: "Subject: \"The faculty\", Verb: \"awarded\", Indirect Object (Receiver): \"the outstanding graduate\", Direct Object (Entity): \"a prestigious research fellowship\".",
+      ruleReference: "Modul 23: SVOO Ditransitive Ergonomics"
+},
+      {
+      id: "q-m23-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Classify the structural pattern of the following sentence: \"The board appointed Dr. Sarah chief scientific officer.\"",
+      options: [
+            "SVOC (Subject + Verb + Object + Object Complement)",
+            "SVOO (Subject + Verb + Indirect Object + Direct Object)",
+            "SVO (Subject + Verb + Object)",
+            "SVC (Subject + Verb + Subject Complement)"
+      ],
+      correctAnswer: "SVOC (Subject + Verb + Object + Object Complement)",
+      explanation: "Subject: \"The board\", Verb: \"appointed\", Direct Object: \"Dr. Sarah\", Object Complement: \"chief scientific officer\" (menerangkan jabatan/identitas baru dari direct object).",
+      ruleReference: "Modul 23: SVOC Structural Pattern"
+},
+      {
         id: 'q-m23-1',
         category: 'Sentence Architecture',
         difficulty: 'Menengah',
@@ -1730,6 +2364,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m23-2",
+      flawedSentence: "The board explained him the newly established safety protocol.",
+      flawLocation: "explained him the",
+      correctedSentence: "The board explained the newly established safety protocol to him.",
+      linguisticExplanation: "Verba \"explain\" (serta *describe, suggest, introduce*) tidak mengikuti pola SVOO (*explain someone something* ❌). Pola yang wajib digunakan adalah **explain something to someone**.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m23-1',
         flawedSentence: 'The foundation gave to the laboratory a million-dollar endowment.',
@@ -1774,6 +2416,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m24-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Which sentence correctly adheres to the \"One of the [plural noun] who [verb]\" relative clause agreement rule?",
+      options: [
+            "She is one of the scholars who have pioneered quantum computing research.",
+            "She is one of the scholars who has pioneered quantum computing research.",
+            "She is the only one of the scholars who have received the Nobel prize.",
+            "He is one of those employees that always arrives late."
+      ],
+      correctAnswer: "She is one of the scholars who have pioneered quantum computing research.",
+      explanation: "Dalam pola \"one of the [plural noun] who...\", antecedent dari relative pronoun \"who\" adalah plural noun (\"scholars\"), sehingga verbanya wajib jamak (\"have pioneered\"). Sebaliknya, jika ada kata \"the only one of...\", antecedent-nya adalah singular \"one\" sehingga verbanya tunggal.",
+      ruleReference: "Modul 24: Relative Clause Antecedent Concord Nuances"
+},
+      {
+      id: "q-m24-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Select the sentence with correct Subject-Verb Agreement involving intervening parenthetical phrases:",
+      options: [
+            "The principal investigator, along with five post-doctoral researchers, has published the monograph.",
+            "The principal investigator, along with five post-doctoral researchers, have published the monograph.",
+            "The principal investigator, together with his team, are conducting the field trials.",
+            "The principal investigator, as well as the lab assistants, were present at the conference."
+      ],
+      correctAnswer: "The principal investigator, along with five post-doctoral researchers, has published the monograph.",
+      explanation: "Frasa sisipan seperti \"along with\", \"as well as\", dan \"together with\" adalah preposisi parentetikal dan BUKAN konjungsi penambah subjek. Subjek sejati tetaplah \"The principal investigator\" (tunggal), sehingga verba yang tepat adalah **has published**.",
+      ruleReference: "Modul 24: Intervening Parenthetical Phrases and Concord"
+},
+      {
         id: 'q-m24-1',
         category: 'Sentence Architecture',
         difficulty: 'Menengah',
@@ -1785,6 +2457,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m24-2",
+      flawedSentence: "Ten kilometers are a formidable distance for novice marathon runners.",
+      flawLocation: "are a formidable distance",
+      correctedSentence: "Ten kilometers is a formidable distance for novice marathon runners.",
+      linguisticExplanation: "Ukuran jarak, waktu, uang, dan berat (e.g. *ten kilometers, five years, one million dollars*) dipandang sebagai satu unit kesatuan tunggal dan membutuhkan verba singular \"is\".",
+      acceptedVariations: []
+},
       {
         id: 'ec-m24-1',
         flawedSentence: 'The discovery of ancient hominid fossils in the remote caves reveal new migration routes.',
@@ -1829,6 +2509,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m25-3",
+      category: "Sentence Architecture",
+      difficulty: "Lanjutan",
+      question: "Which of the following sentences correctly repairs a Comma Splice using appropriate punctuation?",
+      options: [
+            "The survey sample was representative; consequently, the statistical validity remained unquestioned.",
+            "The survey sample was representative, consequently the statistical validity remained unquestioned.",
+            "The survey sample was representative, the statistical validity remained unquestioned.",
+            "The survey sample was representative; but the statistical validity remained unquestioned."
+      ],
+      correctAnswer: "The survey sample was representative; consequently, the statistical validity remained unquestioned.",
+      explanation: "Ketika menghubungkan dua independent clause menggunakan conjunctive adverb seperti \"consequently\" atau \"however\", struktur wajibnya adalah **Semicolon + Conjunctive Adverb + Comma (; consequently, )**.",
+      ruleReference: "Modul 25: Comma Splice and Conjunctive Adverb Mechanics"
+},
+      {
+      id: "q-m25-2",
+      category: "Sentence Architecture",
+      difficulty: "Menengah",
+      question: "Identify the sentence that is free from the Dangling Modifier error:",
+      options: [
+            "Having reviewed the experimental data thoroughly, the researchers drafted the manuscript.",
+            "Having reviewed the experimental data thoroughly, the manuscript was drafted quickly.",
+            "Walking into the laboratory, the anomalous smell was noticed immediately.",
+            "To improve test accuracy, several recalibrations were conducted by the instrument."
+      ],
+      correctAnswer: "Having reviewed the experimental data thoroughly, the researchers drafted the manuscript.",
+      explanation: "Pelaku dari frasa partisipial \"Having reviewed...\" adalah \"the researchers\". Subjek utama kalimat wajib diletakkan tepat setelah tanda koma agar modifier tidak \"menggantung\" (dangling).",
+      ruleReference: "Modul 25: Dangling Modifier Correction"
+},
+      {
         id: 'q-m25-1',
         category: 'Sentence Architecture',
         difficulty: 'Menengah',
@@ -1845,6 +2555,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m25-2",
+      flawedSentence: "The thesis is well-researched, it provides groundbreaking empirical evidence.",
+      flawLocation: "well-researched, it provides",
+      correctedSentence: "The thesis is well-researched; it provides groundbreaking empirical evidence.",
+      linguisticExplanation: "Menggabungkan dua independent clause hanya dengan tanda koma tanpa coordinating conjunction (FANBOYS) menghasilkan kesalahan Comma Splice. Gunakan Semicolon (;) atau tambahkan konjungsi \"and\".",
+      acceptedVariations: [
+            "The thesis is well-researched, and it provides groundbreaking empirical evidence."
+      ]
+},
       {
         id: 'ec-m25-1',
         flawedSentence: 'The battery capacity degraded rapidly, the engineers redesigned the cooling module.',
@@ -1889,6 +2609,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m26-3",
+      category: "Tenses Logic",
+      difficulty: "Lanjutan",
+      question: "Which sentence correctly demonstrates the \"Timeless Academic Present\" (Literary/Scientific Present)?",
+      options: [
+            "In his groundbreaking 1905 paper, Einstein posits that the speed of light is constant in all inertial frames.",
+            "In his groundbreaking 1905 paper, Einstein was positing that the speed of light was constant.",
+            "In his groundbreaking 1905 paper, Einstein has posited that the speed of light had been constant.",
+            "In his groundbreaking 1905 paper, Einstein is posited that the speed of light is constant."
+      ],
+      correctAnswer: "In his groundbreaking 1905 paper, Einstein posits that the speed of light is constant in all inertial frames.",
+      explanation: "Dalam penulisan esai akademik dan sitasi ilmiah (IELTS Task 2 & TOEFL Writing), teori atau klaim literatur yang masih berlaku hingga kini disitasi menggunakan **Simple Present Tense** (*posits, argues, demonstrates*).",
+      ruleReference: "Modul 26: The Academic / Literary Present"
+},
+      {
+      id: "q-m26-2",
+      category: "Tenses Logic",
+      difficulty: "Menengah",
+      question: "Choose the sentence that correctly uses the Present Perfect Continuous to emphasize duration and visible current evidence:",
+      options: [
+            "The engineering department has been developing this aerospace turbine for five consecutive years.",
+            "The engineering department is developing this aerospace turbine since five years.",
+            "The engineering department has developed this aerospace turbine since five years ago continuously.",
+            "The engineering department had been developing this aerospace turbine for five years now."
+      ],
+      correctAnswer: "The engineering department has been developing this aerospace turbine for five consecutive years.",
+      explanation: "Present Perfect Continuous (**has/have been + V-ing**) digunakan untuk menekankan kontinuitas durasi aksi yang dimulai di masa lampau dan masih terus berlangsung hingga saat ini.",
+      ruleReference: "Modul 26: Present Perfect Continuous Aspect"
+},
+      {
         id: 'q-m26-1',
         category: 'Tenses Logic',
         difficulty: 'Dasar',
@@ -1900,6 +2650,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m26-2",
+      flawedSentence: "I am living in Oxford since three years.",
+      flawLocation: "am living ... since three years",
+      correctedSentence: "I have been living in Oxford for three years.",
+      linguisticExplanation: "Untuk durasi rentang waktu (\"tiga tahun\"), gunakan preposisi **for** (bukan *since*) dan tenses **Present Perfect Continuous** (bukan *am living*). *Since* hanya untuk titik awal waktu (*since 2021*).",
+      acceptedVariations: [
+            "I have lived in Oxford for three years."
+      ]
+},
       {
         id: 'ec-m26-1',
         flawedSentence: 'The research laboratory is operating in Geneva since 1995.',
@@ -1944,6 +2704,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m27-3",
+      category: "Tenses Logic",
+      difficulty: "Lanjutan",
+      question: "Which sentence correctly employs \"used to\" versus \"would\" for past states versus repeated past actions?",
+      options: [
+            "The historic university town used to have a flourishing textile trade in the nineteenth century.",
+            "The historic university town would have a flourishing textile trade in the nineteenth century.",
+            "The historic university town was used to have a flourishing textile trade.",
+            "The historic university town used to having a flourishing textile trade."
+      ],
+      correctAnswer: "The historic university town used to have a flourishing textile trade in the nineteenth century.",
+      explanation: "Untuk menyatakan **stative conditions** (kondisi/keadaan statis di masa lampau seperti kepemilikan/eksistensi), kita HANYA boleh menggunakan **used to** (BUKAN *would*). *Would* hanya digunakan untuk *repeated dynamic actions* (kebiasaan berulang).",
+      ruleReference: "Modul 27: Used to vs Would in Historical Registers"
+},
+      {
+      id: "q-m27-2",
+      category: "Tenses Logic",
+      difficulty: "Menengah",
+      question: "Identify the sentence that correctly uses the Past Perfect to establish chronological priority between two past events:",
+      options: [
+            "By the time the emergency response team arrived, the fire had consumed the warehouse archives.",
+            "By the time the emergency response team had arrived, the fire consumed the warehouse archives.",
+            "By the time the emergency response team arrived, the fire has consumed the warehouse archives.",
+            "When the emergency response team was arriving, the fire already consumed the warehouse archives."
+      ],
+      correctAnswer: "By the time the emergency response team arrived, the fire had consumed the warehouse archives.",
+      explanation: "Peristiwa yang terjadi lebih dulu di masa lampau (kebakaran melalap arsip) wajib menggunakan **Past Perfect (had consumed)**, sedangkan peristiwa masa lampau yang menyusul (tim damkar tiba) menggunakan **Simple Past (arrived)**.",
+      ruleReference: "Modul 27: Past Perfect Temporal Sequencing"
+},
+      {
         id: 'q-m27-1',
         category: 'Tenses Logic',
         difficulty: 'Menengah',
@@ -1955,6 +2745,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m27-2",
+      flawedSentence: "The laboratory technician had completed the titration yesterday.",
+      flawLocation: "had completed ... yesterday",
+      correctedSentence: "The laboratory technician completed the titration yesterday.",
+      linguisticExplanation: "Ketika keterangan waktu lampau spesifik disebutkan (\"yesterday\"), gunakan **Simple Past**, bukan Past Perfect. Past Perfect hanya digunakan jika ada keterkaitan sebelum peristiwa lampau lainnya.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m27-1',
         flawedSentence: 'The economist has published a landmark paper in 1998.',
@@ -1999,6 +2797,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m28-3",
+      category: "Tenses Logic",
+      difficulty: "Lanjutan",
+      question: "Which sentence correctly follows the future time clause rule (subordinate clause after \"as soon as\", \"when\", \"until\")?",
+      options: [
+            "The clinical trial will proceed as soon as the regulatory authority grants ethical clearance.",
+            "The clinical trial will proceed as soon as the regulatory authority will grant ethical clearance.",
+            "The clinical trial proceeds as soon as the regulatory authority will have granted ethical clearance.",
+            "The clinical trial will have proceeded as soon as the regulatory authority shall grant clearance."
+      ],
+      correctAnswer: "The clinical trial will proceed as soon as the regulatory authority grants ethical clearance.",
+      explanation: "Dalam anak kalimat keterangan waktu masa depan (*Future Time Clause* setelah *when, as soon as, before, until*), verba TIDAK boleh menggunakan *will*, melainkan wajib menggunakan **Simple Present (grants)**.",
+      ruleReference: "Modul 28: Future Time Clauses and Present Indicative Rule"
+},
+      {
+      id: "q-m28-2",
+      category: "Tenses Logic",
+      difficulty: "Menengah",
+      question: "Choose the sentence that correctly applies the Future Perfect tense for a future milestone:",
+      options: [
+            "By the end of this decade, artificial intelligence will have transformed medical diagnostic procedures.",
+            "By the end of this decade, artificial intelligence will transform medical diagnostic procedures.",
+            "By the end of this decade, artificial intelligence is going to have transform medical diagnostic procedures.",
+            "By the end of this decade, artificial intelligence will be transformed medical diagnostic procedures."
+      ],
+      correctAnswer: "By the end of this decade, artificial intelligence will have transformed medical diagnostic procedures.",
+      explanation: "Frasa penanda batas waktu masa depan \"By + [future time]\" menuntut penggunaan **Future Perfect (will have + V3)** untuk menunjukkan bahwa aksi tersebut akan telah tuntas sebelum batas waktu tersebut tercapai.",
+      ruleReference: "Modul 28: Future Perfect Milestone Constructions"
+},
+      {
         id: 'q-m28-1',
         category: 'Tenses Logic',
         difficulty: 'Menengah',
@@ -2010,6 +2838,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m28-2",
+      flawedSentence: "When the international delegates will arrive tomorrow, we will start the summit.",
+      flawLocation: "will arrive",
+      correctedSentence: "When the international delegates arrive tomorrow, we will start the summit.",
+      linguisticExplanation: "Dalam anak kalimat keterangan waktu (Time Clause setelah *when, as soon as, before*), gunakan Simple Present (*arrive*), bukan modal *will*.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m28-1',
         flawedSentence: 'When the international delegation will arrive tomorrow, the rector will deliver the keynote address.',
@@ -2054,6 +2890,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m29-3",
+      category: "Complex Structures",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence where an intransitive verb is incorrectly passivized:",
+      options: [
+            "The catastrophic volcanic eruption was occurred in the late afternoon.",
+            "The catastrophic volcanic eruption occurred in the late afternoon.",
+            "The experimental hypothesis was thoroughly tested by the team.",
+            "The preliminary findings were confirmed during peer review."
+      ],
+      correctAnswer: "The catastrophic volcanic eruption was occurred in the late afternoon.",
+      explanation: "Verba intransitif seperti *occur, happen, exist, vanish, arrive* tidak memiliki objek langsung dan **TIDAK PERNAH BISA DIJADIKAN PASIF** (*was occurred ❌ ➔ occurred ✔️*). Ini adalah salah satu kesalahan paling fatal dalam esai IELTS/TOEFL.",
+      ruleReference: "Modul 29: Non-Passivizable Intransitive Verbs"
+},
+      {
+      id: "q-m29-2",
+      category: "Complex Structures",
+      difficulty: "Menengah",
+      question: "Convert the active sentence into impersonal academic passive: \"Scholars believe that climate change exacerbates extreme weather events.\"",
+      options: [
+            "It is believed that climate change exacerbates extreme weather events.",
+            "Climate change was believed to exacerbate extreme weather events.",
+            "Extreme weather events are believed to be exacerbated by climate change by scholars.",
+            "It was believed that extreme weather events exacerbated climate change."
+      ],
+      correctAnswer: "It is believed that climate change exacerbates extreme weather events.",
+      explanation: "Impersonal passive menggunakan struktur **It + is + V3 (believed/thought/hypothesized) + that clause** untuk menjaga nada objektif tanpa menyebutkan pelaku secara eksplisit.",
+      ruleReference: "Modul 29: Impersonal Reporting Passive in Academic Writing"
+},
+      {
         id: 'q-m29-1',
         category: 'Sentence Architecture',
         difficulty: 'Dasar',
@@ -2065,6 +2931,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m29-2",
+      flawedSentence: "The solar eclipse was occurred without significant cloud obstruction.",
+      flawLocation: "was occurred",
+      correctedSentence: "The solar eclipse occurred without significant cloud obstruction.",
+      linguisticExplanation: "\"Occur\" adalah Intransitive Verb murni dan tidak pernah memiliki bentuk pasif (*was occurred* ❌).",
+      acceptedVariations: [
+            "The solar eclipse took place without significant cloud obstruction."
+      ]
+},
       {
         id: 'ec-m29-1',
         flawedSentence: 'The controversial report was publish by the ministry last week.',
@@ -2109,6 +2985,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m30-3",
+      category: "Complex Structures",
+      difficulty: "Lanjutan",
+      question: "Which of the following inverted conditional structures correctly replaces \"If the government were to implement this policy\"?",
+      options: [
+            "Were the government to implement this policy, economic expansion would accelerate.",
+            "Had the government to implement this policy, economic expansion would accelerate.",
+            "Should the government implemented this policy, economic expansion would accelerate.",
+            "Was the government to implement this policy, economic expansion would accelerate."
+      ],
+      correctAnswer: "Were the government to implement this policy, economic expansion would accelerate.",
+      explanation: "Inversi pada Conditional Type 2 dengan bentuk \"were to\" diubah menjadi: **Were + Subject + to + Verb (Were the government to implement...)**.",
+      ruleReference: "Modul 30: Conditional Inversion with \"Were to\""
+},
+      {
+      id: "q-m30-2",
+      category: "Complex Structures",
+      difficulty: "Menengah",
+      question: "Select the Mixed Conditional sentence (Past cause leading to a Present result):",
+      options: [
+            "If the aviation engineer had detected the micro-fracture yesterday, the aircraft would not be grounded today.",
+            "If the aviation engineer had detected the micro-fracture yesterday, the aircraft would not have crashed.",
+            "If the aviation engineer detected the micro-fracture today, the aircraft would be grounded tomorrow.",
+            "If the aviation engineer will detect the micro-fracture, the aircraft will be repaired."
+      ],
+      correctAnswer: "If the aviation engineer had detected the micro-fracture yesterday, the aircraft would not be grounded today.",
+      explanation: "Mixed Conditional (Type 3 + Type 2): If clause menggunakan **Past Perfect (had detected)** untuk kondisi masa lampau, sedangkan Main clause menggunakan **would + bare infinitive (would not be)** untuk akibat di masa kini.",
+      ruleReference: "Modul 30: Mixed Conditionals (Past Cause -> Present Effect)"
+},
+      {
         id: 'q-m30-1',
         category: 'Complex Structures',
         difficulty: 'Menengah',
@@ -2120,6 +3026,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m30-2",
+      flawedSentence: "If the government will subsidize renewable energy, adoption rates will skyrocket.",
+      flawLocation: "will subsidize",
+      correctedSentence: "If the government subsidizes renewable energy, adoption rates will skyrocket.",
+      linguisticExplanation: "Dalam Conditional Type 1, klausa syarat (if-clause) menggunakan **Simple Present (subsidizes)**, bukan modal *will*. Modal *will* diletakkan pada klausa akibat (main clause).",
+      acceptedVariations: []
+},
       {
         id: 'ec-m30-1',
         flawedSentence: 'If the administration would have allocated more funds, the research would be completed.',
@@ -2167,6 +3081,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m31-3",
+      category: "Complex Structures",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence that correctly pairs the correlative conjunction \Not only ... but also\:",
+      options: [
+            "The educational reform not only improved literacy rates but also fostered critical analytical thinking.",
+            "The educational reform not only improved literacy rates, but it also fostered critical analytical thinking as well.",
+            "Not only the educational reform improved literacy rates, but also fostered critical thinking.",
+            "The educational reform improved not only literacy rates, but also fostering critical thinking."
+      ],
+      correctAnswer: "The educational reform not only improved literacy rates but also fostered critical analytical thinking.",
+      explanation: "Correlative conjunction menuntut **kesejajaran gramatikal (parallelism)**: \"not only [Past Verb: improved] ... but also [Past Verb: fostered]\".",
+      ruleReference: "Modul 31: Correlative Conjunction Parallelism"
+},
+      {
+      id: "q-m31-2",
+      category: "Complex Structures",
+      difficulty: "Menengah",
+      question: "Choose the sentence that correctly employs a transitional conjunctive adverb with proper punctuation:",
+      options: [
+            "The methodology lacked rigorous sampling; nevertheless, the observational data provided valuable qualitative insights.",
+            "The methodology lacked rigorous sampling, nevertheless, the observational data provided valuable qualitative insights.",
+            "The methodology lacked rigorous sampling; although the observational data provided valuable qualitative insights.",
+            "The methodology lacked rigorous sampling nevertheless the observational data provided valuable qualitative insights."
+      ],
+      correctAnswer: "The methodology lacked rigorous sampling; nevertheless, the observational data provided valuable qualitative insights.",
+      explanation: "Conjunctive adverb \"nevertheless\" yang menghubungkan dua kalimat mandiri wajib diawali tanda titik koma (;) dan diakhiri tanda koma (,).",
+      ruleReference: "Modul 31: Conjunctive Adverb Punctuation and Flow"
+},
+      {
         id: 'q-m31-1',
         category: 'Complex Structures',
         difficulty: 'Dasar',
@@ -2178,6 +3122,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m31-2",
+      flawedSentence: "Although he prepared exhaustively, but he failed to secure the scholarship.",
+      flawLocation: "Although ... but",
+      correctedSentence: "Although he prepared exhaustively, he failed to secure the scholarship.",
+      linguisticExplanation: "Jangan menggunakan konjungsi subordinatif (*Although*) dan koordinatif (*but*) secara bersamaan dalam satu kalimat (Double Conjunction error). Pilih salah satu.",
+      acceptedVariations: [
+            "He prepared exhaustively, but he failed to secure the scholarship."
+      ]
+},
       {
         id: 'ec-m31-1',
         flawedSentence: 'Despite the empirical data was inconclusive, the team published their preliminary findings.',
@@ -2222,6 +3176,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m32-3",
+      category: "Complex Structures",
+      difficulty: "Lanjutan",
+      question: "Select the sentence featuring a reduced relative clause (participial reduction):",
+      options: [
+            "The chemicals synthesized in the laboratory exhibited remarkable thermal stability.",
+            "The chemicals which were synthesized in the laboratory exhibited remarkable thermal stability.",
+            "The chemicals that being synthesized in the laboratory exhibited remarkable thermal stability.",
+            "The chemicals having synthesized in the laboratory exhibited remarkable thermal stability."
+      ],
+      correctAnswer: "The chemicals synthesized in the laboratory exhibited remarkable thermal stability.",
+      explanation: "Klausa \"which were synthesized in the laboratory\" dapat direduksi dengan menghapus relative pronoun *which* dan be-verb *were*, menyisakan past participle phrase: **The chemicals synthesized in the laboratory...**.",
+      ruleReference: "Modul 32: Reduced Relative Clauses (Participle Reduction)"
+},
+      {
+      id: "q-m32-2",
+      category: "Complex Structures",
+      difficulty: "Menengah",
+      question: "Identify the Non-Defining (Non-Restrictive) Relative Clause with flawless comma placement:",
+      options: [
+            "The James Webb Space Telescope, which was launched in December 2021, has captured unprecedented cosmological imagery.",
+            "The James Webb Space Telescope that was launched in December 2021 has captured unprecedented cosmological imagery.",
+            "The James Webb Space Telescope, that was launched in December 2021, has captured unprecedented cosmological imagery.",
+            "The James Webb Space Telescope which was launched in December 2021 has captured unprecedented cosmological imagery."
+      ],
+      correctAnswer: "The James Webb Space Telescope, which was launched in December 2021, has captured unprecedented cosmological imagery.",
+      explanation: "Non-defining relative clause (memberikan informasi tambahan tentang benda yang sudah spesifik) wajib diapit oleh **dua tanda koma** dan menggunakan **which** (TIDAK BOLEH menggunakan *that*).",
+      ruleReference: "Modul 32: Non-Defining Relative Clauses and Punctuation"
+},
+      {
         id: 'q-m32-1',
         category: 'Complex Structures',
         difficulty: 'Menengah',
@@ -2233,6 +3217,16 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m32-2",
+      flawedSentence: "The professor which delivered the keynote speech is a prominent economist.",
+      flawLocation: "which delivered",
+      correctedSentence: "The professor who delivered the keynote speech is a prominent economist.",
+      linguisticExplanation: "Untuk merujuk pada manusia (*The professor*), gunakan relative pronoun **who** (atau *whom/whose*), BUKAN **which** yang khusus untuk benda/hewan.",
+      acceptedVariations: [
+            "The professor that delivered the keynote speech is a prominent economist."
+      ]
+},
       {
         id: 'ec-m32-1',
         flawedSentence: 'The clinical trial, that began last March, yielded remarkable therapeutic results.',
@@ -2277,6 +3271,36 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m33-3",
+      category: "Complex Structures",
+      difficulty: "Lanjutan",
+      question: "Identify the sentence containing a Noun Clause acting as a Subject Complement:",
+      options: [
+            "The primary concern is that the preliminary sample may have been contaminated.",
+            "That the preliminary sample was contaminated concerned the lead investigator.",
+            "The investigator wondered whether the preliminary sample was contaminated.",
+            "The investigator analyzed the sample that was contaminated."
+      ],
+      correctAnswer: "The primary concern is that the preliminary sample may have been contaminated.",
+      explanation: "Klausa \"that the preliminary sample may have been contaminated\" terletak setelah linking verb *is* dan berfungsi menjelaskan identitas dari subjek \"The primary concern\", sehingga berkedudukan sebagai **Subject Complement Noun Clause**.",
+      ruleReference: "Modul 33: Noun Clause Syntactic Functions"
+},
+      {
+      id: "q-m33-2",
+      category: "Complex Structures",
+      difficulty: "Menengah",
+      question: "Choose the sentence with a grammatically correct embedded question in formal inquiry:",
+      options: [
+            "Could you please clarify what the total projected expenditure will be?",
+            "Could you please clarify what will the total projected expenditure be?",
+            "Could you please clarify what is the total projected expenditure?",
+            "Could you please clarify how much will be the total projected expenditure?"
+      ],
+      correctAnswer: "Could you please clarify what the total projected expenditure will be?",
+      explanation: "Dalam Embedded Question (pertanyaan terselubung setelah frasa pembuka), susunan kata kembali ke format kalimat deklaratif: **Question Word + Subject + Verb** (*what the expenditure will be* ✔️, BUKAN format tanya *what will the expenditure be* ❌).",
+      ruleReference: "Modul 33: Embedded Question Word Order"
+},
+      {
         id: 'q-m33-1',
         category: 'Complex Structures',
         difficulty: 'Dasar',
@@ -2288,6 +3312,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m33-2",
+      flawedSentence: "The survey asks how do respondents evaluate public transportation efficiency.",
+      flawLocation: "how do respondents evaluate",
+      correctedSentence: "The survey asks how respondents evaluate public transportation efficiency.",
+      linguisticExplanation: "Dalam Noun Clause / Embedded Question, hapus auxiliary do-support (*do*) dan susun kalimat dengan urutan afirmatif: **Question Word + Subject + Verb** (*how respondents evaluate*).",
+      acceptedVariations: []
+},
       {
         id: 'ec-m33-1',
         flawedSentence: 'The investigators could not determine what caused the sudden power failure in the lab.',
@@ -2332,6 +3364,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m34-3",
+      category: "Exam Readiness",
+      difficulty: "Lanjutan",
+      question: "Select the sentence that correctly applies negative inversion with \Not until\:",
+      options: [
+            "Not until the peer review was finalized did the editorial board approve the publication.",
+            "Not until the peer review was finalized the editorial board approved the publication.",
+            "Not until did the peer review finalize the editorial board approved the publication.",
+            "Not until the peer review was finalized had the editorial board approve publication."
+      ],
+      correctAnswer: "Not until the peer review was finalized did the editorial board approve the publication.",
+      explanation: "Pada struktur \"Not until [time clause], [main clause]\", inversi (Auxiliary + Subject + Main Verb) terjadi pada **Main Clause** (*did the editorial board approve*), bukan pada anak kalimat *not until*.",
+      ruleReference: "Modul 34: Negative Inversion with \"Not Until\""
+},
+      {
         id: 'q-m34-1',
         category: 'Complex Structures',
         difficulty: 'Lanjutan',
@@ -2353,6 +3400,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m34-2",
+      flawedSentence: "The dean demanded that the dishonest student is expelled immediately.",
+      flawLocation: "is expelled",
+      correctedSentence: "The dean demanded that the dishonest student be expelled immediately.",
+      linguisticExplanation: "Present Mandative Subjunctive setelah verba tuntutan (*demand, require, insist that*) mewajibkan penggunaan **Bare Infinitive (be)** untuk semua subjek tanpa memedulikan subjek tunggal/jamak.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m34-1',
         flawedSentence: 'The dean insisted that the professor publishes the complete dataset.',
@@ -2402,6 +3457,21 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
     ],
     questions: [
       {
+      id: "q-m35-3",
+      category: "Exam Readiness",
+      difficulty: "Lanjutan",
+      question: "Which of the following sentences exhibits high-level academic nominalization to enhance lexical density?",
+      options: [
+            "The rapid proliferation of urban development caused significant degradation of local wetland ecosystems.",
+            "Because cities proliferated rapidly, local wetland ecosystems degraded significantly.",
+            "Cities grew very fast, so wetlands in the local area were damaged a lot.",
+            "The way cities were developing fast was the reason why wetlands got degraded."
+      ],
+      correctAnswer: "The rapid proliferation of urban development caused significant degradation of local wetland ecosystems.",
+      explanation: "Nominalisasi (*proliferation* dari *proliferate*, *degradation* dari *degrade*) memadatkan klausa verba menjadi frasa nomina yang berbobot (*high lexical density*), yang merupakan ciri khas penulisan ilmiah Band 8.5+ IELTS dan jurnal internasional.",
+      ruleReference: "Modul 35: Academic Nominalization and Lexical Density"
+},
+      {
         id: 'q-m35-1',
         category: 'Exam Readiness',
         difficulty: 'Lanjutan',
@@ -2428,6 +3498,14 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
       }
     ],
     errorCorrectionTasks: [
+      {
+      id: "err-m35-2",
+      flawedSentence: "Having finished the quantitative analysis, the computer was turned off.",
+      flawLocation: "Having finished the quantitative analysis, the computer",
+      correctedSentence: "Having finished the quantitative analysis, the researcher turned off the computer.",
+      linguisticExplanation: "Komputer tidak bisa melakukan analisis kuantitatif secara mandiri (Dangling Participle). Subjek sejati (\"the researcher\") harus diletakkan tepat setelah frasa partisipial.",
+      acceptedVariations: []
+},
       {
         id: 'ec-m35-1',
         flawedSentence: 'Upon entering the cryogenic facility, the alarm was triggered by the technician.',

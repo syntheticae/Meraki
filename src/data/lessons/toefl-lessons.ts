@@ -62,6 +62,38 @@ export const toeflLessons: Lesson[] = [
       'Panjang ideal adalah 120-150 kata dengan tata bahasa yang bersih.',
     ],
     prevLessonId: 'toefl-01',
+    nextLessonId: 'toefl-03',
+  },
+  {
+    id: 'toefl-03',
+    trackId: 'toefl-prep',
+    slug: 'integrated-writing-synthesis',
+    title: 'TOEFL Integrated Writing: Reading-Lecture Synthesis',
+    order: 3,
+    summary: 'Kuasai teknik menulis esai sintesis 20 menit (150-225 kata) yang membandingkan 3 poin bacaan akademis dengan sanggahan profesor di rekaman kuliah.',
+    readTimeMin: 9,
+    difficulty: 'TOEFL 90+',
+    objectives: [
+      'Membuat catatan kontras 3 poin antara Reading Passage dan Lecture.',
+      'Menggunakan Reporting Verbs objektif (asserts, contends, rebuts, refutes, casts doubt on).',
+      'Menghindari memasukkan opini pribadi pada Integrated Writing.',
+    ],
+    sections: [
+      {
+        id: 'sec-toefl-3',
+        title: 'Formula Esai Integrated Writing 4 Paragraf',
+        badge: 'Synthesis Blueprint',
+        content: `1. **Introduction (2-3 kalimat)**: Sebutkan topik utama, klaim artikel bacaan, dan bagaimana kuliah kuliah membantah klaim tersebut (*The reading passage asserts that X is viable; however, the lecturer strongly refutes this claim by presenting three major counterarguments*).
+2. **Body 1 (Point 1 - 3-4 kalimat)**: Poin bacaan #1 ➔ Sanggahan dosen #1 (*First, the author claims that... In contrast, the speaker argues that...*).
+3. **Body 2 (Point 2 - 3-4 kalimat)**: Poin bacaan #2 ➔ Sanggahan dosen #2.
+4. **Body 3 (Point 3 - 3-4 kalimat)**: Poin bacaan #3 ➔ Sanggahan dosen #3.`,
+      },
+    ],
+    keyTakeaways: [
+      'Fokus 70% isi tulisan harus dialokasikan untuk detail dari LECTURE (rekaman kuliah).',
+      'DILARANG menulis opini pribadi atau kesimpulan baru.',
+    ],
+    prevLessonId: 'toefl-02',
   },
 ];
 
@@ -137,6 +169,24 @@ export const toeflExercises: Record<string, Exercise[]> = {
         { term: 'Alleviate congestion', definition: 'Meringankan kemacetan lalu lintas', example: 'Public transit helps alleviate heavy highway congestion.' },
       ],
       points: 20,
+    },
+  ],
+  'toefl-03': [
+    {
+      id: 'ex-toefl03-1',
+      lessonId: 'toefl-03',
+      type: 'multiple-choice',
+      title: 'Reporting Verbs untuk Sanggahan (Refutation)',
+      instruction: 'Pilih frasa pelapor yang paling tepat untuk menunjukkan bahwa dosen membantah klaim artikel.',
+      question: 'The reading passage claims that solar mirrors can easily clean space debris. In the lecture, the professor _____ this assertion by explaining that mirrors would quickly degrade due to micro-meteorite collisions.',
+      options: [
+        { id: 'a', text: 'casts doubt on', explanation: 'Tepat! "Casts doubt on" adalah kolokasi standar TOEFL untuk menyatakan sanggahan ilmiah.' },
+        { id: 'b', text: 'corroborates', explanation: '"Corroborate" berarti membenarkan/mendukung, bukan membantah.' },
+        { id: 'c', text: 'substantiates', explanation: '"Substantiate" berarti membuktikan kebenaran suatu klaim.' },
+        { id: 'd', text: 'advocates for', explanation: '"Advocate for" berarti membela atau mendukung.' },
+      ],
+      correctAnswerId: 'a',
+      points: 15,
     },
   ],
 };

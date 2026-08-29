@@ -659,6 +659,42 @@ export const PUNCTUATION_GUIDE_DATA: PunctuationGuideItem[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 export const PARAPHRASING_TASKS_DATA: ParaphraseTask[] = [
   {
+  id: "para-06",
+  technique: "Clause to Participle",
+  originalSentence: "After they had analyzed the epidemiological telemetry for six consecutive weeks, the public health officials issued a nationwide advisory.",
+  targetFocus: "Gunakan Perfect Participle (\"Having analyzed...\") untuk memadatkan urutan waktu lampau.",
+  sampleParaphrase: "Having analyzed the epidemiological telemetry for six consecutive weeks, the public health officials issued a nationwide advisory.",
+  acceptableVariations: [
+    "Having analyzed the epidemiological telemetry for six weeks, public health officials issued a nationwide advisory.",
+    "After analyzing the epidemiological telemetry for six consecutive weeks, public health officials issued a nationwide advisory."
+  ],
+  explanation: "Perfect Participle (\"Having analyzed...\") menunjukkan bahwa aksi analisis data telah tuntas sepenuhnya sebelum pengumuman nasional diterbitkan."
+},
+  {
+  id: "para-05",
+  technique: "Active to Passive",
+  originalSentence: "The scientific evaluation panel rejected the proposal because the applicant had omitted critical baseline demographic metrics.",
+  targetFocus: "Ubah klausa utama menjadi bentuk pasif impersonal objektif.",
+  sampleParaphrase: "The proposal was rejected by the scientific evaluation panel due to the omission of critical baseline demographic metrics.",
+  acceptableVariations: [
+    "The proposal was rejected due to the omission of critical baseline demographic metrics by the applicant.",
+    "The proposal was rejected because critical baseline demographic metrics had been omitted."
+  ],
+  explanation: "Bentuk pasif (\"The proposal was rejected...\") menempatkan fokus utama pada nasib dokumen proposal, bukan pada panel evaluator."
+},
+  {
+  id: "para-04",
+  technique: "Nominalization",
+  originalSentence: "Because the government heavily subsidized electric vehicle infrastructure, citizens adopted renewable transport much faster.",
+  targetFocus: "Ubah klausa verbal \"Because the government heavily subsidized...\" menjadi Noun Phrase subjek.",
+  sampleParaphrase: "Heavy government subsidization of electric vehicle infrastructure accelerated the adoption of renewable transport among citizens.",
+  acceptableVariations: [
+    "Heavy government subsidies for electric vehicle infrastructure accelerated the adoption of renewable transport.",
+    "The provision of heavy government subsidies for electric vehicle infrastructure significantly accelerated renewable transport adoption."
+  ],
+  explanation: "Nominalisasi (\"Heavy government subsidization...\") mengubah kalimat sebab-akibat menjadi konstruksi akademis yang padat dan berwibawa."
+},
+  {
     id: 'para-01',
     technique: 'Active to Passive',
     originalSentence: 'Governments around the world must enforce stricter environmental policies to curb industrial carbon emissions.',
@@ -702,6 +738,72 @@ export const PARAPHRASING_TASKS_DATA: ParaphraseTask[] = [
 // 7. SENTENCE X-RAY DISSECTOR (MULTI-LAYER COMPLEX CLAUSE ANALYSIS)
 // ─────────────────────────────────────────────────────────────────────────────
 export const XRAY_SENTENCES_DATA: XRaySentence[] = [
+  {
+  id: "xray-04",
+  title: "Bedah Kalimat Cleft Emphatic 32 Kata (Rhetorical Precision)",
+  fullSentence: "It was the profound disparity in secondary educational funding between metropolitan and rural districts that provoked widespread parliamentary scrutiny and compelled comprehensive legislative reforms.",
+  translation: "Kesenjangan mendalam dalam pendanaan pendidikan menengah antara distrik metropolitan dan pedesaanlah yang memicu pengawasan ketat parlemen dan mendorong reformasi legislatif yang komprehensif.",
+  architecturalSummary: "Kalimat ini menggunakan konstruksi It-Cleft (It was [Focus Noun Phrase] that [Compound Predicate]) untuk memberikan penekanan retoris tajam pada akar penyebab reformasi.",
+  breakdown: [
+    {
+      text: "It was",
+      role: "Subject",
+      colorKey: "bg-[#A84A28]/20 text-[#A84A28] border-[#A84A28]/30",
+      explanation: "Struktur Pembuka It-Cleft (Dummy Pronoun + Copula Past)."
+    },
+    {
+      text: "the profound disparity in secondary educational funding between metropolitan and rural districts",
+      role: "Complement",
+      colorKey: "bg-[#535841]/20 text-[#535841] border-[#535841]/30",
+      explanation: "Elemen Fokus Inti (Focused Noun Phrase) yang disorot secara dramatis."
+    },
+    {
+      text: "that provoked widespread parliamentary scrutiny and compelled comprehensive legislative reforms.",
+      role: "Relative Clause",
+      colorKey: "bg-[#2563EB]/20 text-[#1D4ED8] border-[#2563EB]/30",
+      explanation: "Cleft Clause yang memuat dua predikat verba koordinatif (provoked ... and compelled ...)."
+    }
+  ]
+},
+  {
+  id: "xray-03",
+  title: "Bedah Kalimat Nominalisasi & Partisipial 36 Kata (Academic Band 8.5+)",
+  fullSentence: "The accelerated degradation of coastal marine habitats, primarily driven by unconstrained industrial effluent discharge, necessitates the immediate enforcement of stringent cross-border environmental regulations across all signatory jurisdictions.",
+  translation: "Degradasi habitat laut pesisir yang terakselerasi, yang terutama didorong oleh pembuangan limbah industri yang tak terkendali, mengharuskan penegakan segera peraturan lingkungan lintas batas yang ketat di seluruh yurisdiksi penandatangan.",
+  architecturalSummary: "Kalimat ini menggunakan Dense Noun Phrase sebagai Subjek, diperluas oleh Reduced Passive Participle Phrase (driven by...), dan menggerakkan verba transitif formal (necessitates) dengan Heavy Nominal Object.",
+  breakdown: [
+    {
+      text: "The accelerated degradation of coastal marine habitats,",
+      role: "Subject",
+      colorKey: "bg-[#535841]/20 text-[#535841] border-[#535841]/30",
+      explanation: "Subjek Inti Utama berbentuk Noun Phrase padat (Head Noun: \"degradation\")."
+    },
+    {
+      text: "primarily driven by unconstrained industrial effluent discharge,",
+      role: "Participle Phrase",
+      colorKey: "bg-[#7A7265]/20 text-[#524C42] border-[#7A7265]/30",
+      explanation: "Reduced Passive Participle Phrase non-restrictive yang menerangkan penyebab degradasi."
+    },
+    {
+      text: "necessitates",
+      role: "Finite Verb",
+      colorKey: "bg-[#2563EB]/20 text-[#1D4ED8] border-[#2563EB]/30",
+      explanation: "Predikat Finit Utama (Transitive Verb Present Simple tunggal)."
+    },
+    {
+      text: "the immediate enforcement of stringent cross-border environmental regulations",
+      role: "Direct Object",
+      colorKey: "bg-[#9333EA]/20 text-[#7E22CE] border-[#9333EA]/30",
+      explanation: "Objek Langsung berbentuk frasa nomina berbobot tinggi."
+    },
+    {
+      text: "across all signatory jurisdictions.",
+      role: "Prepositional Phrase",
+      colorKey: "bg-[#A84A28]/20 text-[#A84A28] border-[#A84A28]/30",
+      explanation: "Frasa Preposisi (Spatial/Jurisdictional Scope) yang membatasi wilayah penegakan aturan."
+    }
+  ]
+},
   {
     id: 'xray-01',
     title: 'Bedah Kalimat Akademik 38 Kata (Syntactic Density)',
