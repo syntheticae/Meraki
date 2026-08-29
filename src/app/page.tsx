@@ -1957,9 +1957,13 @@ export default function MerakiApp() {
                     <h1 className="text-2xl sm:text-4xl font-serif text-[#1E1B17] leading-tight">
                       {currentTopic.title}
                     </h1>
-                    <p className="text-sm text-[#524C42] leading-relaxed drop-cap">
-                      {currentTopic.coreConceptSummary}
-                    </p>
+                    <div className="text-sm sm:text-base text-[#524C42] leading-relaxed space-y-3 font-serif">
+                      {currentTopic.coreConceptSummary.split('\n\n').map((para, pIdx) => (
+                        <p key={pIdx} className={pIdx === 0 ? "drop-cap leading-relaxed" : "leading-relaxed"}>
+                          {para}
+                        </p>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Mental Model Intro */}
