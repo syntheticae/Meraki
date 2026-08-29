@@ -34,13 +34,9 @@ jobs:
       - name: Inject Meraki Official App Icon
         run: |
           if [ -d "ios/App/App/Assets.xcassets/AppIcon.appiconset" ]; then
-            for icon in ios/App/App/Assets.xcassets/AppIcon.appiconset/*.png; do
-              if [ -f "$icon" ]; then
-                cp public/favicon.png "$icon"
-              fi
-            done
-            cp public/favicon.png ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png || true
-            cp public/favicon.png ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon.png || true
+            cp public/icon-1024.png ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png
+            sips -z 1024 1024 ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png || true
+            rm -f ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon.png
           fi
 
       - name: Build Xcode Project (Ad-Hoc / Unsigned for SideStore)
