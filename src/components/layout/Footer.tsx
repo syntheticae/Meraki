@@ -21,7 +21,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-3 font-mono text-xs text-[#82796A]">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-600 animate-ping" />
-              <span>Local Stage Active · Supabase Ready Data Architecture</span>
+              <span>100% Offline-First · Local Device Storage</span>
             </div>
           </div>
 

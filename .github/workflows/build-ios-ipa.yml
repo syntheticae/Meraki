@@ -16,13 +16,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install Dependencies
         run: |
           npm ci || npm install
-          npm install @capacitor/core @capacitor/cli @capacitor/ios --save
 
       - name: Build Next.js Static Export
         run: npm run build
@@ -44,7 +43,7 @@ jobs:
             cp public/favicon.png ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon.png || true
           fi
 
-      - name: Build Xcode Project (Unsigned / Ad-Hoc for SideStore)
+      - name: Build Xcode Project (Ad-Hoc / Unsigned for SideStore)
         run: |
           cd ios/App
           xcodebuild -workspace App.xcworkspace \
@@ -52,9 +51,12 @@ jobs:
                      -configuration Release \
                      -destination 'generic/platform=iOS' \
                      -derivedDataPath build \
-                     CODE_SIGN_IDENTITY="" \
+                     CODE_SIGN_IDENTITY="-" \
                      CODE_SIGNING_REQUIRED=NO \
-                     CODE_SIGNING_ALLOWED=NO \
+                     CODE_SIGNING_ALLOWED=YES \
+                     AD_HOC_CODE_SIGNING_ALLOWED=YES \
+                     ENABLE_USER_SCRIPT_SANDBOXING=NO \
+                     COMPILER_INDEX_STORE_ENABLE=NO \
                      clean build
 
       - name: Package Payload into IPA
@@ -62,7 +64,7 @@ jobs:
           mkdir -p build/Payload
           cp -r ios/App/build/Build/Products/Release-iphoneos/App.app build/Payload/
           cd build
-          zip -r Meraki-SideStore.ipa Payload
+          zip -qr Meraki-SideStore.ipa Payload
           cd ..
 
       - name: Upload IPA Artifact
