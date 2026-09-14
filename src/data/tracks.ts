@@ -1,5 +1,6 @@
 import { Track, Lesson } from '@/types/course';
 import { Exercise } from '@/types/exercise';
+import { introEnglishLessons, introEnglishExercises } from './lessons/intro-english';
 import { basicGrammarLessons, basicGrammarExercises } from './lessons/basic-grammar';
 import { intermediateGrammarLessons, intermediateGrammarExercises } from './lessons/intermediate-grammar';
 import { vocabularyLessons, vocabularyExercises } from './lessons/vocabulary';
@@ -7,9 +8,32 @@ import { readingWritingLessons, readingWritingExercises } from './lessons/readin
 import { ieltsLessons, ieltsExercises } from './lessons/ielts-lessons';
 import { toeflLessons, toeflExercises } from './lessons/toefl-lessons';
 
+
 export const TRACKS: Track[] = [
   {
+    id: 'intro-english',
+    slug: 'intro-english',
+    title: 'Intro to English',
+    subtitle: 'Start from zero: alphabet, numbers, greetings, questions, and the verb to be',
+    level: 'basic',
+    category: 'grammar',
+    description: 'Modul pengenalan absolut untuk pemula: mulai dari alfabet, fonetik, angka, warna, salam, kata tanya, hingga kalimat pertama dengan kata kerja "to be".',
+    iconName: 'Star',
+    badgeText: 'Level 0 · Absolute Beginner',
+    estimatedHours: 6,
+    totalLessons: introEnglishLessons.length,
+    colorTheme: {
+      primary: '#1A1714',
+      secondary: '#6B5E4E',
+      accent: '#E07B39',
+      border: 'rgba(224, 123, 57, 0.25)',
+      bgGlow: 'rgba(224, 123, 57, 0.08)',
+    },
+    lessons: introEnglishLessons,
+  },
+  {
     id: 'basic-fundamentals',
+
     slug: 'basic-fundamentals',
     title: 'Basic English & Core Grammar',
     subtitle: 'From zero to solid foundations: parts of speech, 16 tenses, and sentence patterns',
@@ -138,6 +162,7 @@ export const TRACKS: Track[] = [
 
 // Unified Exercise Lookup Map
 export const ALL_EXERCISES: Record<string, Exercise[]> = {
+  ...introEnglishExercises,
   ...basicGrammarExercises,
   ...intermediateGrammarExercises,
   ...vocabularyExercises,
