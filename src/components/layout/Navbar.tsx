@@ -47,7 +47,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Workspace Utama', count: '35 Modul', icon: Home },
+    { href: '/', label: 'Workspace Utama', count: '36 Modul', icon: Home },
     { href: '/learn', label: 'Kurikulum Tracks', count: '7 Jalur', icon: BookOpen },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/exam', label: 'IELTS & TOEFL', count: 'Band 7+', icon: Award },

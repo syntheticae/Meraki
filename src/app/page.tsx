@@ -112,7 +112,7 @@ type NavigationHub =
   | 'diagnostic';
 
 export default function MerakiApp() {
-  const [selectedTopicId, setSelectedTopicId] = useState<string>('modul-01-subject-pronouns');
+  const [selectedTopicId, setSelectedTopicId] = useState<string>('modul-00-pengenalan-awal');
   const [activeHub, setActiveHub] = useState<NavigationHub>('curriculum');
 
   const handleNavSelect = (hub: NavigationHub) => {
