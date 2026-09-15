@@ -6664,7 +6664,7 @@ export default function MerakiApp() {
                   <Compass className="w-8 h-8 mx-auto text-[#7A7265]/60" />
                   <p className="text-xs font-mono font-semibold">Pencarian Terpadu Meraki English</p>
                   <p className="text-xs">
-                    Ketik kata kunci untuk mencari cepat lintas 35 Modul Kurikulum, 200+ Irregular Verb, 38+ Dependent Prepositions, Academic Collocations, dan Fonetik.
+                    Ketik kata kunci untuk mencari cepat lintas 36 Modul Kurikulum, 200+ Irregular Verb, 38+ Dependent Prepositions, Academic Collocations, dan Fonetik.
                   </p>
                 </div>
               ) : omnisearchResults.length === 0 ? (
@@ -6948,7 +6948,7 @@ export default function MerakiApp() {
                     <div>
                       <h4 className="font-serif text-base font-bold text-[#1E1B17]">Unduh Cadangan Data (JSON)</h4>
                       <p className="text-xs text-[#7A7265]">
-                        Simpan riwayat 35 modul, jawaban kuis, Mistake Vault, dan progres belajar ke file JSON lokal di komputer/ponsel Anda.
+                        Simpan riwayat 36 modul, jawaban kuis, Mistake Vault, dan progres belajar ke file JSON lokal di komputer/ponsel Anda.
                       </p>
                     </div>
                     <button

@@ -89,7 +89,7 @@ export function Navbar() {
                 className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] text-xs font-mono text-[#1E1B17] dark:text-[#EFEAE1] transition-all tactile-btn"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Workspace 35 Modul</span>
+                <span>Workspace 36 Modul</span>
               </Link>
             )}
           </div>
