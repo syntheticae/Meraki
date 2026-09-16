@@ -47,7 +47,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Workspace Utama', count: '36 Modul', icon: Home },
+    { href: '/', label: 'Workspace Utama', count: '40 Modul', icon: Home },
     { href: '/learn', label: 'Kurikulum Tracks', count: '7 Jalur', icon: BookOpen },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/exam', label: 'IELTS & TOEFL', count: 'Band 7+', icon: Award },
@@ -89,7 +89,7 @@ export function Navbar() {
                 className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] text-xs font-mono text-[#1E1B17] dark:text-[#EFEAE1] transition-all tactile-btn"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Workspace 36 Modul</span>
+                <span>Workspace 40 Modul</span>
               </Link>
             )}
           </div>

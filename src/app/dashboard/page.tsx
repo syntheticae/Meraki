@@ -199,7 +199,7 @@ export default function UserDashboardPage() {
                 Matriks Penguasaan 9 Tahap
               </span>
               <h2 className="text-2xl font-serif font-bold text-[#1E1B17]">
-                Progres Kurikulum Fondasi Inti (36 Modul)
+                Progres Kurikulum Fondasi Inti (40 Modul)
               </h2>
             </div>
             <Link
@@ -447,7 +447,7 @@ export default function UserDashboardPage() {
                   className="p-3 rounded-2xl bg-[#DDD7CA] dark:bg-[#28241F] hover:bg-[#C8C0B0] dark:hover:bg-[#3A352D] border border-[#C8C0B0] dark:border-[#3A342D] flex flex-col gap-1 tactile-btn text-[#1E1B17] dark:text-[#EFEAE1]"
                 >
                   <Layers className="w-4 h-4 text-[#535841] dark:text-[#7A855F]" />
-                  <span className="font-bold">36 Modul</span>
+                  <span className="font-bold">40 Modul</span>
                   <span className="text-[10px] text-[#7A7265] dark:text-[#948B7C]">Workspace Inti</span>
                 </Link>
               </div>

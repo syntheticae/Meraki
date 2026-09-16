@@ -66,7 +66,7 @@ export interface LearningTopic {
   stageNumber: number;
   stageName: string;
   categoryKey: 'Word Classes' | 'Sentence Architecture' | 'Tenses Logic' | 'Complex Structures' | 'Exam Readiness';
-  moduleNumber: number;
+  moduleNumber: number | string;
   title: string;
   subtitle: string;
   levelBadge: string;
@@ -90,293 +90,1204 @@ export const MERAKI_CURRICULUM: LearningTopic[] = [
   // TAHAP 0: ORIENTASI & PENGENALAN AWAL BAHASA INGGRIS (LEVEL NOL MUTLAK)
   // =========================================================================
   {
-    id: 'modul-00-pengenalan-awal',
-    stageNumber: 0,
-    stageName: 'Tahap 0: Orientasi & Pengenalan Awal Bahasa Inggris',
-    categoryKey: 'Word Classes',
-    moduleNumber: 0,
-    title: 'Pengenalan Awal: Alfabet, Fonetik, Kosakata Harian & Salam Sapaan',
-    subtitle: 'Mulai dari nol mutlak: bunyi vokal & konsonan, angka, warna, salam, kata tanya 5W1H, dan kalimat pertama',
-    levelBadge: 'Nol Mutlak · Modul 00',
-    estimatedMinutes: 25,
-    prerequisite: 'None (Mulai dari Nol)',
-    mentalModelIntro: "Banyak pemula merasa minder belajar bahasa Inggris karena mengira bahasa ini harus langsung dimulai dari menghafal rumus tenses yang rumit. Padahal, bahasa pada hakikatnya adalah alat komunikasi yang dimulai dari bunyi (fonem), simbol (alfabet), dan kata-kata konkret di sekitar kita.\n\nBahasa Inggris memiliki keunikan mendasar dibanding bahasa Indonesia: ejaannya tidak selalu sama dengan cara membacanya (non-phonetic language). Huruf 'A' misalnya, bisa berbunyi pendek seperti pada 'cat' /æ/ atau berbunyi panjang seperti pada 'cake' /eɪ/. Di modul ini, kamu akan membangun rasa percaya diri dari akar yang paling dasar: bagaimana melafalkan 26 alfabet dengan benar, mengenal angka dan warna, menyapa orang secara sopan, mengajukan pertanyaan sederhana, hingga menyusun kalimat pertamamu menggunakan kata kerja 'to be'. Kuasai modul ini sebagai pijakan kokoh sebelum memasuki tata bahasa formal di Modul 01.",
-    coreConceptSummary: "Bahasa Inggris menggunakan 26 huruf alfabet Latin standar, namun memuat sekitar 44 bunyi fonetik (20 bunyi vokal dan 24 bunyi konsonan). Bunyi vokal terbagi menjadi Short Vowels (vokal pendek tertahan: cat, bed, sit, hot, but) dan Long Vowels (vokal panjang mengalir: cake, beet, bite, boat, cute). Digraf konsonan seperti ch, sh, th, ph, wh juga memiliki karakteristik bunyi unik yang wajib dilatih sejak awal.\n\nDalam kosakata sehari-hari, kuasai angka kardinal (1, 2, 3...) untuk jumlah, angka ordinal (1st, 2nd, 3rd...) untuk urutan dan tanggal, serta aturan posisi kata sifat (adjective) yang SELALU diletakkan sebelum kata benda (red car, bukan car red). Untuk berinteraksi, gunakan salam formal (Good morning/afternoon/evening) dan salam santai (Hello/Hi), serta kuasai 6 kata tanya inti (What, Who, Where, When, Why, How) yang digabungkan dengan kata kerja bantu 'to be' (Am, Is, Are) untuk membentuk kalimat tanya pertama.",
-    decisionTree: [
-      {
-        step: 'Langkah 1: Menentukan Tipe Bunyi Vokal Kata Bahasa Inggris',
-        question: 'Apakah kata berakhir dengan pola Konsonan-Vokal-Konsonan (CVC) atau memiliki huruf \'e\' bisu di akhir (Magic E)?',
-        branches: [
-          { condition: 'Pola CVC Tertutup (e.g. hat, pin, not, cut)', outcome: 'Lafalkan dengan Short Vowel (vokal pendek terpotong)', rule: 'Contoh: hat /hæt/, pin /pɪn/, cut /kʌt/.' },
-          { condition: 'Pola Vokal + Konsonan + E Bisu (e.g. hate, pine, note, cute)', outcome: 'Lafalkan dengan Long Vowel (bunyi nama hurufnya)', rule: 'Contoh: hate /heɪt/, pine /paɪn/, note /noʊt/, cute /kjuːt/.' }
-        ]
-      },
-      {
-        step: 'Langkah 2: Menentukan Kata Kerja To Be (Present Simple)',
-        question: 'Siapakah subjek pelaku yang dibicarakan?',
-        branches: [
-          { condition: 'Subjek orang pertama tunggal \'I\'', outcome: 'Gunakan \'am\' (I am / I\'m)', rule: 'Contoh: I am a student. I am happy.' },
-          { condition: 'Subjek tunggal ketiga \'He\', \'She\', \'It\', atau nama orang tunggal', outcome: 'Gunakan \'is\' (He is / She is / It is)', rule: 'Contoh: She is a doctor. It is cold.' },
-          { condition: 'Subjek jamak \'You\', \'We\', \'They\', atau benda jamak', outcome: 'Gunakan \'are\' (You are / We are / They are)', rule: 'Contoh: We are ready. They are friendly.' }
-        ]
-      }
-    ],
-    registerLadder: {
-      informal: 'Hey, what\'s up? I\'m Alex.',
-      standard: 'Hello, good morning. My name is Alex. Nice to meet you.',
-      academicHigh: 'Good morning, esteemed colleagues. Allow me to introduce myself; my name is Alexander Vance.',
-      analysis: 'Tingkatan sapaan bahasa Inggris bergerak dari kasual (Hey, what\'s up) untuk teman sebaya, standar formal sehari-hari (Hello/Good morning + My name is), hingga protokol resmi akademis (Allow me to introduce myself).'
-    },
-    canDoChecklist: [
-      'Mampu melafalkan 26 huruf alfabet bahasa Inggris dan membedakan vokal pendek vs vokal panjang.',
-      'Mampu menyebutkan angka 1-100, tanggal lahir, dan warna benda di sekitar dengan struktur yang tepat (Adjective + Noun).',
-      'Mampu menyapa, memperkenalkan diri, dan mengucapkan terima kasih serta maaf dengan ekspresi yang lazim.',
-      'Mampu mengajukan pertanyaan dasar menggunakan 5W1H dan kata kerja to be (am/is/are).'
-    ],
-    pocketAxioms: [
-      'Aksioma Posisi Sifat: Dalam bahasa Inggris, kata sifat SELALU mendahului kata benda (a blue pen ✔, a pen blue ❌).',
-      'Aksioma Vokal Non-Fonetik: Huruf tulisan tidak sama dengan bunyi ucapan; pelajari simbol fonetik dasar.',
-      'Aksioma Pasangan To Be: I berpasangan dengan am, He/She/It dengan is, dan You/We/They dengan are.'
-    ],
-    sections: [
-      {
-        stepNumber: '01',
-        title: 'Sistem 26 Alfabet, Fonetik IPA & Vokal Pendek vs Panjang',
-        explanation: 'Bahasa Inggris menggunakan 26 alfabet Latin, namun ejaannya terkenal tidak mencerminkan bunyi secara langsung. Perhatikan perbedaan bunyi Short Vowels (pendek tertahan) dan Long Vowels (panjang mengalir):\n- A pendek: cat /kæt/ vs A panjang: cake /keɪk/\n- E pendek: bed /bɛd/ vs E panjang: beet /biːt/\n- I pendek: sit /sɪt/ vs I panjang: site /saɪt/\n- O pendek: hop /hɒp/ vs O panjang: hope /hoʊp/\n- U pendek: cut /kʌt/ vs U panjang: cute /kjuːt/\n\nWaspadai juga konsonan gabungan (digraphs):\n- \'th\' bersuara (/ð/): this, that, they\n- \'th\' tanpa suara (/θ/): think, thank, three\n- \'sh\' (/ʃ/): ship, shoe, English\n- \'ch\' (/tʃ/): chair, check, teacher\n- Huruf bisu (Silent Letters): knee (/niː/), write (/raɪt/), comb (/koʊm/).',
-        formula: 'Short Vowel (CVC: cat, sit, hop) vs Long Vowel (CVCe: cake, site, hope)',
-        examples: [
+      "id": "modul-00a-alphabet-phonetics",
+      "stageNumber": 0,
+      "stageName": "Tahap 0: Orientasi & Pengenalan Awal Bahasa Inggris",
+      "categoryKey": "Word Classes",
+      "moduleNumber": "0A",
+      "title": "Sistem 26 Alfabet, Fonetik IPA & Pelafalan Bunyi Bahasa Inggris",
+      "subtitle": "Mulai dari akar: membedakan vokal pendek vs panjang, konsonan digraf, silent letters, dan intonasi",
+      "levelBadge": "Level Nol · Modul 0A",
+      "estimatedMinutes": 20,
+      "prerequisite": "None (Mulai dari Nol)",
+      "mentalModelIntro": "Banyak pembelajar pemula merasa bingung saat pertama kali belajar bahasa Inggris karena tulisan dan cara membacanya sering kali berbeda jauh. Bahasa Indonesia adalah bahasa fonemis di mana huruf 'A' hampir selalu dibaca 'A'. Sebaliknya, bahasa Inggris adalah non-phonetic language—satu huruf bisa melahirkan beberapa bunyi yang sama sekali berlainan tergantung posisinya di dalam kata.\n\nDi modul ini, kita akan membangun pondasi telinga dan lidahmu. Kamu akan mengenali 26 huruf alfabet Latin beserta sekitar 44 bunyi ucapan nyatanya, membedakan vokal pendek yang tersentak dari vokal panjang yang mengalir, menaklukkan huruf bisu (silent letters) yang sering menjebak, serta melatih konsonan gabungan seperti 'th' dan 'sh' agar pelafalanmu terdengar alami sejak hari pertama.",
+      "coreConceptSummary": "Bahasa Inggris memuat 26 huruf alfabet namun memiliki sekitar 44 fonem (bunyi). Kunci penguasaan membaca terletak pada pembedaan Short Vowels (vokal pendek seperti pada cat, bed, sit, hot, but) dan Long Vowels (vokal panjang seperti pada cake, beet, bite, boat, cute). Salah satu kaidah terpenting adalah Magic E: huruf 'e' di akhir kata membuat vokal sebelumnya berubah menjadi vokal panjang.\n\nSelain vokal, perhatikan konsonan digraf seperti 'th' (ada yang bersuara seperti 'this' dan tanpa suara seperti 'think'), 'sh' (ship), dan 'ch' (chair). Waspadai pula Silent Letters di mana huruf tertentu ditulis tetapi dilarang diucapkan, seperti huruf 'k' pada 'know' dan 'knife'.",
+      "decisionTree": [
           {
-            sentence: 'The cat sat on the comfortable mat.',
-            translation: 'Kucing itu duduk di atas keset yang nyaman.',
-            note: 'cat, sat, mat semuanya menggunakan vokal pendek /æ/.'
+              "step": "Langkah 1: Menentukan Tipe Bunyi Vokal Kata",
+              "question": "Apakah kata berakhiran pola Konsonan-Vokal-Konsonan (CVC) atau memiliki huruf e di akhir (CVCe)?",
+              "branches": [
+                  {
+                      "condition": "Pola CVC Tertutup (contoh: hat, pin, not, cut)",
+                      "outcome": "Lafalkan dengan Short Vowel (bunyi vokal pendek tersentak)",
+                      "rule": "Contoh: hat diucapkan /hæt/, pin diucapkan /pɪn/."
+                  },
+                  {
+                      "condition": "Pola CVCe dengan E di akhir (contoh: hate, pine, note, cute)",
+                      "outcome": "Lafalkan dengan Long Vowel (bunyi nama huruf aslinya)",
+                      "rule": "Contoh: hate diucapkan /heɪt/, pine diucapkan /paɪn/."
+                  }
+              ]
           },
           {
-            sentence: 'Please take your time to write the note.',
-            translation: 'Silakan luangkan waktumu untuk menulis catatan itu.',
-            note: 'take, time, note semuanya memiliki huruf \'e\' bisu di akhir yang membuat vokal sebelumnya berbunyi panjang.'
+              "step": "Langkah 2: Menghadapi Huruf K di Depan Huruf N",
+              "question": "Apakah huruf K berada persis sebelum huruf N di awal suku kata?",
+              "branches": [
+                  {
+                      "condition": "Ya, kombinasi KN (knife, know, knee, knight)",
+                      "outcome": "Huruf K adalah Silent Letter (jangan diucapkan sama sekali)",
+                      "rule": "Contoh: knife diucapkan /naɪf/, bukan /knaɪf/."
+                  },
+                  {
+                      "condition": "Tidak, huruf K berdiri mandiri (king, keep, kangaroo)",
+                      "outcome": "Lafalkan huruf K secara jelas dan teraspirasi /k/",
+                      "rule": "Contoh: king diucapkan /kɪŋ/."
+                  }
+              ]
           }
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'I want to by a car yesterday.',
-          correctSentence: 'I want to buy a car yesterday.',
-          linguisticReason: 'Bahasa Inggris memiliki homofon (kata dengan bunyi sama persis tetapi tulisan dan artinya berbeda: by, buy, bye; to, too, two).'
-        },
-        commonPitfall: 'Melafalkan huruf \'k\' pada kata seperti \'knife\', \'know\', atau \'knee\'. Huruf K di depan N selalu BISU (silent).'
+      ],
+      "registerLadder": {
+          "informal": "Gimme a sec, I gotta check the spelling.",
+          "standard": "Could you please spell that word for me?",
+          "academicHigh": "The orthographic representation of English phonemes exhibits considerable historical variation.",
+          "analysis": "Pemahaman fonetik memampukan pembelajar berpindah dari keraguan mengeja ke artikulasi yang presisi dan percaya diri."
       },
-      {
-        stepNumber: '02',
-        title: 'Angka (Kardinal & Ordinal), Warna & Urutan Kata Sifat (Adjective + Noun)',
-        explanation: 'Ada dua jenis angka yang wajib dikuasai sejak hari pertama:\n1. **Cardinal Numbers (Jumlah)**: one (1), two (2), three (3), ten (10), twenty (20), one hundred (100).\n   *Perhatian penekanan suku kata*: thirTEEN (13) vs THIRty (30), fifTEEN (15) vs FIFty (50).\n2. **Ordinal Numbers (Urutan/Tanggal)**: 1st (first), 2nd (second), 3rd (third), 4th (fourth), 21st (twenty-first).\n\n**Aturan Posisi Kata Sifat (Adjective Order):**\nDalam bahasa Indonesia kita menyebut "mobil merah" (benda + sifat). Namun dalam bahasa Inggris, urutannya TERBALIK: kata sifat selalu berada di depan kata benda:\n- Red car (bukan car red)\n- Tall building (bukan building tall)\n- Friendly teacher (bukan teacher friendly)',
-        formula: 'Article (a / an / the) + Adjective (sifat/warna) + Noun (kata benda)',
-        examples: [
+      "canDoChecklist": [
+          "Mampu melafalkan 26 huruf alfabet bahasa Inggris dengan artikulasi yang tepat.",
+          "Mampu membedakan pasangan vokal pendek dan vokal panjang (contoh: ship vs sheep, bit vs beat).",
+          "Mengenali dan tidak melafalkan huruf bisu umum seperti silent K, W, dan B.",
+          "Mampu melafalkan konsonan digraf th bersuara dan th tanpa suara."
+      ],
+      "pocketAxioms": [
+          "Aksioma Magic E: Huruf E bisu di akhir kata mengubah bunyi vokal sebelumnya menjadi vokal panjang.",
+          "Aksioma Silent Letters: Huruf tertulis tidak selalu berbunyi; abaikan K pada KN dan W pada WR.",
+          "Aksioma Pasangan Minimal: Perbedaan panjang vokal dapat mengubah arti kata (ship kapal vs sheep domba)."
+      ],
+      "sections": [
           {
-            sentence: 'She drives an elegant black car to the university.',
-            translation: 'Dia mengendarai sebuah mobil hitam yang elegan ke universitas.',
-            note: 'an + elegant (sifat) + black (warna) + car (benda).'
+              "stepNumber": "01",
+              "title": "Taksonomi 26 Alfabet & Sifat Non-Fonetik Bahasa Inggris",
+              "explanation": "Bahasa Inggris menggunakan 26 alfabet Latin yang terbagi atas 5 huruf vokal utama (A, E, I, O, U) dan 21 konsonan. Namun tantangan terbesar bagi penutur bahasa Indonesia adalah sifatnya yang non-fonetis: ejaan huruf tidak mencerminkan satu bunyi pasti. Satu huruf vokal dapat menghasilkan beberapa bunyi berbeda tergantung lingkungan fonetiknya di dalam kata.",
+              "formula": "26 Huruf Alfabet -> 44 Bunyi Fonem Nyata (20 Bunyi Vokal + 24 Bunyi Konsonan)",
+              "examples": [
+                  {
+                      "sentence": "The English alphabet has twenty-six letters from A to Z.",
+                      "translation": "Alfabet bahasa Inggris memiliki dua puluh enam huruf dari A sampai Z.",
+                      "note": "Huruf Z dilafalkan /zɛd/ dalam British English dan /ziː/ dalam American English."
+                  },
+                  {
+                      "sentence": "Can you spell your last name, please?",
+                      "translation": "Bisakah Anda mengeja nama belakang Anda?",
+                      "note": "Mengeja alfabet per huruf (spelling) adalah keterampilan komunikasi dasar yang esensial."
+                  }
+              ],
+              "commonPitfall": "Membaca huruf bahasa Inggris persis seperti membaca bahasa Indonesia. Ingat bahwa alfabet hanyalah simbol visual, bukan petunjuk bunyi mutlak."
           },
           {
-            sentence: 'Today is my twenty-first birthday.',
-            translation: 'Hari ini adalah hari ulang tahun saya yang ke-21.',
-            note: 'twenty-first (ordinal) untuk menyatakan urutan ulang tahun.'
-          }
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'I have a house big with a door white.',
-          correctSentence: 'I have a big house with a white door.',
-          linguisticReason: 'Dalam sintaksis bahasa Inggris, frasa nomina (noun phrase) mewajibkan modifier sifat mendahului inti kata bendanya (Pre-nominal Adjective Placement).'
-        }
-      },
-      {
-        stepNumber: '03',
-        title: 'Salam Sapaan (Greetings), Perkenalan Diri & Ungkapan Sehari-hari',
-        explanation: 'Kuasai register sapaan berdasarkan waktu dan tingkat keakraban:\n- **Pagi (hingga 12.00 siang)**: Good morning!\n- **Siang ke Sore (12.00 - 18.00)**: Good afternoon!\n- **Malam (Sapaan bertemu)**: Good evening! (Ingat: \'Good night\' hanya untuk berpamitan tidur, BUKAN untuk menyapa saat tiba!).\n\n**Formula Perkenalan Diri (Introducing Yourself):**\n- "Hello, my name is Sarah." / "Hi, I\'m Sarah."\n- "I am from Jakarta, Indonesia."\n- "I am a university student." / "I work as a software engineer."\n- "Nice to meet you!" ➔ Balasan: "Nice to meet you too!"\n\n**Ungkapan Kesopanan Esensial:**\n- Please (Tolong/Silakan)\n- Thank you very much / Thanks a lot (Terima kasih)\n- You\'re welcome / Don\'t mention it (Sama-sama)\n- Excuse me (Permisi - untuk menarik perhatian atau lewat)\n- I am sorry (Maaf - untuk penyesalan atas kekeliruan)',
-        formula: 'Greeting + [My name is / I am...] + [I am from...] + [Nice to meet you!]',
-        examples: [
-          {
-            sentence: 'Good morning, everyone. My name is David, and I am delighted to be here today.',
-            translation: 'Selamat pagi, semuanya. Nama saya David, dan saya sangat senang berada di sini hari ini.',
-            note: 'Format perkenalan standar yang sopan dan profesional.'
+              "stepNumber": "02",
+              "title": "Vokal Pendek (Short Vowels) vs Vokal Panjang (Long Vowels)",
+              "explanation": "Perbedaan mendasar vokal bahasa Inggris terletak pada durasi dan posisi lidah. Vokal pendek diucapkan tersentak dan santai, umumnya muncul pada kata satu suku kata dengan pola konsonan-vokal-konsonan. Sebaliknya, vokal panjang diucapkan mengalir dan berbunyi mirip dengan nama huruf itu sendiri ketika kita mengeja alfabet.",
+              "formula": "Pola CVC (Short Vowel) vs Pola CVC + Silent E (Long Vowel)",
+              "examples": [
+                  {
+                      "sentence": "The cat sat on the mat.",
+                      "translation": "Kucing itu duduk di atas keset.",
+                      "note": "Kata cat, sat, dan mat seluruhnya menggunakan vokal pendek /æ/."
+                  },
+                  {
+                      "sentence": "Bake a cake and take it home.",
+                      "translation": "Pangganglah sebuah kue dan bawalah pulang ke rumah.",
+                      "note": "Kata bake, cake, take, dan home memiliki huruf E di akhir yang memperpanjang vokal sebelumnya."
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "I saw a big sheep sailing on the ocean.",
+                  "correctSentence": "I saw a big ship sailing on the ocean.",
+                  "linguisticReason": "Kata sheep (/ʃiːp/) bermakna domba dengan vokal panjang, sedangkan kapal adalah ship (/ʃɪp/) dengan vokal pendek. Kesalahan durasi vokal mengubah total arti kalimat."
+              }
           },
           {
-            sentence: 'Excuse me, could you please tell me where the library is? — You are welcome.',
-            translation: 'Permisi, bisakah Anda memberitahu saya di mana perpustakaannya? — Sama-sama.',
-            note: 'Penggunaan \'Excuse me\' untuk membuka pertanyaan kepada orang yang belum dikenal.'
-          }
-        ],
-        commonPitfall: 'Mengucapkan "Good night" saat baru tiba di sebuah acara malam hari. Gunakan "Good evening" untuk menyapa, dan "Good night" hanya saat berpamitan pulang/tidur.'
-      },
-      {
-        stepNumber: '04',
-        title: 'Kata Tanya Inti (5W1H) & Struktur Pertanyaan Sederhana',
-        explanation: 'Untuk menggali informasi dalam bahasa Inggris, gunakan 6 Question Words utama (5W1H):\n1. **What** (Apa): Menanyakan benda, tindakan, atau informasi (*What is your name? What do you do?*)\n2. **Who** (Siapa): Menanyakan orang atau pelaku (*Who is that man? Who is your teacher?*)\n3. **Where** (Di mana / Ke mana): Menanyakan tempat atau lokasi (*Where do you live? Where is the hospital?*)\n4. **When** (Kapan): Menanyakan waktu (*When is the meeting? When does the class start?*)\n5. **Why** (Mengapa): Menanyakan alasan atau penyebab (*Why are you learning English?*)\n6. **How** (Bagaimana / Berapa): Menanyakan cara, kondisi, atau kuantitas (*How are you? How much does it cost? How old are you?*)\n\n**Pola Pertanyaan dengan To Be:**\nQuestion Word + be (am/is/are) + Subject?\nContoh: *Where is your house? / Who are those people?*',
-        formula: 'WH-Question Word + [am / is / are] + Subject + [Complement / Preposition]?',
-        examples: [
-          {
-            sentence: 'Where are you from? — I am from Indonesia.',
-            translation: 'Dari mana Anda berasal? — Saya berasal dari Indonesia.',
-            note: 'Pola standar menanyakan asal dengan kata kerja to be.'
+              "stepNumber": "03",
+              "title": "Konsonan Digraf Esensial (TH, SH, CH, PH, WH)",
+              "explanation": "Digraf adalah gabungan dua huruf konsonan yang bersatu membentuk satu bunyi baru yang khas. Yang paling unik bagi lidah penutur Indonesia adalah bunyi TH: ada yang bergetar (voiced) dengan meletakkan ujung lidah di antara gigi atas dan bawah seperti pada kata this, that, dan there; serta ada yang tanpa getaran (unvoiced) seperti pada kata think, thank, dan three.",
+              "formula": "Dua Huruf Konsonan Bersatu -> Satu Bunyi Fonetik Khas (Digraph)",
+              "examples": [
+                  {
+                      "sentence": "This Thursday, thirty researchers will think about the solution.",
+                      "translation": "Hari Kamis ini, tiga puluh peneliti akan memikirkan solusinya.",
+                      "note": "This menggunakan TH bersuara (/ð/), sedangkan Thursday, thirty, dan think menggunakan TH tanpa suara (/θ/)."
+                  },
+                  {
+                      "sentence": "She showed the child a short chapter of the book.",
+                      "translation": "Dia memperlihatkan bab pendek buku itu kepada sang anak.",
+                      "note": "She dan short menggunakan bunyi desis /ʃ/, sedangkan child dan chapter menggunakan bunyi letup /tʃ/."
+                  }
+              ],
+              "commonPitfall": "Melafalkan bunyi TH sebagai huruf T atau S biasa (misalnya mengucapkan three sebagai tree atau think sebagai sink)."
           },
           {
-            sentence: 'Why is English important for your career? — Because it opens international opportunities.',
-            translation: 'Mengapa bahasa Inggris penting bagi karier Anda? — Karena membuka peluang internasional.',
-            note: 'Pertanyaan \'Why\' dijawab dengan klausa alasan berawalan \'Because\'.'
+              "stepNumber": "04",
+              "title": "Fenomena Huruf Bisu (Silent Letters: K, W, B, L)",
+              "explanation": "Bahasa Inggris menyimpan jejak sejarah panjang di mana huruf-huruf tertentu yang dulunya berbunyi kini telah menjadi huruf bisu. Huruf K di depan N selalu bisu (knife, know, knee). Huruf W di depan R selalu bisu (write, wrong, wrist). Huruf B setelah M di akhir kata selalu bisu (climb, thumb, comb). Jangan pernah melafalkan huruf-huruf tersembunyi ini.",
+              "formula": "KN- (K bisu) | WR- (W bisu) | -MB (B bisu) | -LK (L bisu)",
+              "examples": [
+                  {
+                      "sentence": "He knows how to write with his right hand.",
+                      "translation": "Dia tahu cara menulis dengan tangan kanannya.",
+                      "note": "Huruf K pada knows dan huruf W pada write sama sekali tidak dibunyikan."
+                  },
+                  {
+                      "sentence": "The little boy climbed the tall tree with a calm expression.",
+                      "translation": "Anak laki-laki kecil itu memanjat pohon tinggi dengan ekspresi tenang.",
+                      "note": "Huruf B pada climbed dan huruf L pada calm tidak dilafalkan."
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "He used a sharp knife to cut the apple.",
+                  "correctSentence": "He used a sharp knife to cut the apple.",
+                  "linguisticReason": "Secara tulisan knife sudah benar, namun pembelajar pemula sering keliru melafalkannya menjadi /knaɪf/. Pelafalan yang baku adalah /naɪf/."
+              }
           }
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'Where you come from?',
-          correctSentence: 'Where are you from? / Where do you come from?',
-          linguisticReason: 'Dalam bahasa Inggris, kalimat tanya tidak boleh hanya membalik intonasi; wajib menyertakan auxiliary verb (do/does) atau linking verb (am/is/are).'
-        }
+      ],
+      "examBridge": {
+          "ieltsApplication": "Pada IELTS Speaking, akurasi pelafalan fonem dasar dan pembedaan vokal pendek vs panjang dinilai langsung di bawah kriteria Pronunciation (25% bobot total).",
+          "toeflApplication": "Pada TOEFL Listening, kemampuan membedakan kata mirip (minimal pairs) sangat penting untuk menangkap maksud percakapan kuliah tanpa salah tafsir.",
+          "scoringImpact": "Mencegah distorsi pemahaman pendengar akibat pelafalan konsonan dan vokal yang tertukar."
       },
-      {
-        stepNumber: '05',
-        title: 'Pengenalan Kata Kerja \'To Be\' (Am, Is, Are) untuk Identitas, Asal & Sifat',
-        explanation: 'Kata kerja \'To Be\' adalah tulang punggung kalimat deskriptif dalam bahasa Inggris. Berbeda dengan bahasa Indonesia yang bisa langsung menggabungkan subjek dan sifat ("Saya senang", "Dia dokter"), bahasa Inggris mewajibkan hadirnya To Be sebagai jembatan:\n\n| Subjek | Bentuk To Be | Bentuk Singkat (Contraction) | Bentuk Negatif |\n|---|---|---|---|\n| **I** | am | I\'m | I am not (I\'m not) |\n| **You** | are | You\'re | You are not (You aren\'t) |\n| **He** | is | He\'s | He is not (He isn\'t) |\n| **She** | is | She\'s | She is not (She isn\'t) |\n| **It** | is | It\'s | It is not (It isn\'t) |\n| **We** | are | We\'re | We are not (We aren\'t) |\n| **They** | are | They\'re | They are not (They aren\'t) |\n\n**3 Fungsi Utama To Be:**\n1. **Menyatakan Identitas / Profesi**: *I am a doctor. She is a teacher.*\n2. **Menyatakan Sifat / Emosi**: *They are very kind. He is tall.*\n3. **Menyatakan Lokasi / Keberadaan**: *The keys are on the desk. We are in Jakarta.*',
-        formula: 'Subject + [am / is / are] + [Noun / Adjective / Prepositional Phrase]',
-        examples: [
+      "goldenRules": [
+          "Jangan pernah melafalkan huruf K di depan N (knife, know) atau W di depan R (write, wrong).",
+          "Perhatikan huruf E di akhir kata satu suku kata: ia mengubah vokal sebelumnya menjadi vokal panjang (hop menjadi hope).",
+          "Latih posisi lidah di antara gigi atas dan bawah saat membunyikan konsonan TH."
+      ],
+      "questions": [
           {
-            sentence: 'She is an experienced architect, and they are her colleagues.',
-            translation: 'Dia adalah seorang arsitek berpengalaman, dan mereka adalah rekan-rekannya.',
-            note: 'She berpasangan dengan is; they berpasangan dengan are.'
+              "id": "q-m00a-1",
+              "category": "Word Classes",
+              "difficulty": "Dasar",
+              "question": "Kata manakah di bawah ini yang memiliki vokal panjang (Long Vowel)?",
+              "options": [
+                  "hop",
+                  "cut",
+                  "cake",
+                  "sit"
+              ],
+              "correctAnswer": "cake",
+              "explanation": "Kata cake memiliki pola vokal diikuti konsonan dan diakhiri huruf E bisu (CVCe), sehingga vokal A dilafalkan panjang /keɪk/. Kata hop, cut, dan sit adalah vokal pendek.",
+              "ruleReference": "Modul 0A: Long Vowels & Magic E"
           },
           {
-            sentence: 'The weather is not warm today; it is rather chilly.',
-            translation: 'Cuacanya tidak hangat hari ini; hawanya agak dingin.',
-            note: 'Bentuk negatif to be: is not.'
+              "id": "q-m00a-2",
+              "category": "Word Classes",
+              "difficulty": "Dasar",
+              "question": "Huruf manakah yang merupakan silent letter (huruf bisu tidak dilafalkan) pada kata KNIFE?",
+              "options": [
+                  "Huruf K",
+                  "Huruf N",
+                  "Huruf I",
+                  "Huruf F"
+              ],
+              "correctAnswer": "Huruf K",
+              "explanation": "Pada kombinasi huruf KN di awal kata (seperti knife, know, knee, knight), huruf K selalu bisu dan tidak dilafalkan.",
+              "ruleReference": "Modul 0A: Silent Letters (KN-)"
+          },
+          {
+              "id": "q-m00a-3",
+              "category": "Word Classes",
+              "difficulty": "Menengah",
+              "question": "Kata manakah yang menggunakan bunyi TH bersuara (voiced TH seperti pada THIS)?",
+              "options": [
+                  "think",
+                  "that",
+                  "thank",
+                  "three"
+              ],
+              "correctAnswer": "that",
+              "explanation": "Kata that menggunakan bunyi TH bersuara /ð/ di mana pita suara bergetar. Sebaliknya, kata think, thank, dan three menggunakan TH tanpa suara /θ/.",
+              "ruleReference": "Modul 0A: Voiced vs Unvoiced TH Digraph"
+          },
+          {
+              "id": "q-m00a-4",
+              "category": "Word Classes",
+              "difficulty": "Menengah",
+              "question": "Pilihlah pasangan kata yang membedakan vokal pendek dan vokal panjang (Minimal Pairs):",
+              "options": [
+                  "ship dan sheep",
+                  "book dan pen",
+                  "cat dan dog",
+                  "sun dan moon"
+              ],
+              "correctAnswer": "ship dan sheep",
+              "explanation": "Ship memiliki vokal pendek /ɪ/, sedangkan sheep memiliki vokal panjang /iː/. Pasangan ini adalah minimal pair klasik dalam fonetik bahasa Inggris.",
+              "ruleReference": "Modul 0A: Minimal Pairs and Vowel Length"
           }
-        ],
-        contrastiveAnalysis: {
-          incorrectSentence: 'I agree with you because I am agree.',
-          correctSentence: 'I agree with you because I agree.',
-          linguisticReason: 'Kata "agree" dalam bahasa Inggris adalah VERBA (kata kerja aksi pemikiran), bukan kata sifat. Mengucapkan "I am agree" adalah kekeliruan fatal yang sangat sering dibuat pemula.'
-        },
-        commonPitfall: 'Menghilangkan to be seperti "She very smart" alih-alih "She is very smart". Setiap kalimat wajib memiliki kata kerja.'
-      }
-    ],
-    examBridge: {
-      ieltsApplication: 'Pada IELTS Listening Section 1, penguji selalu mengeja nama orang, kode pos, dan nomor telepon huruf per huruf (e.g. "B-A-N-K-S"). Menguasai fonetik alfabet adalah syarat mutlak menghindari kehilangan 5-10 poin gratis di awal tes.',
-      toeflApplication: 'Pada TOEFL Speaking Task 1, kejelasan artikulasi pengucapan huruf vokal dan kata tanya dasar menentukan skor Delivery dan kelancaran alur bicara.',
-      scoringImpact: 'Mencegah kesalahan ejaan nama dan angka di seksi awal ujian internasional, yang berpotensi mengangkat skor dasar Listening sebesar 0.5 - 1.0 band.'
-    },
-    goldenRules: [
-      'Kata sifat SELALU berada di depan kata benda: \'a yellow jacket\', bukan \'a jacket yellow\'.',
-      'Setiap kalimat bahasa Inggris wajib memiliki kata kerja; gunakan To Be (am/is/are) jika tidak ada kata kerja aksi.',
-      'Perhatikan huruf bisu (silent letters): K di depan N pada knife/know/knee TIDAK dibaca.',
-      'Gunakan \'Good evening\' untuk menyapa malam hari, dan simpan \'Good night\' hanya untuk pamitan tidur.'
-    ],
-    questions: [
-      {
-        id: 'q-m00-1',
-        category: 'Word Classes',
-        difficulty: 'Dasar',
-        question: 'Manakah pasangan kata berikut yang keduanya menggunakan bunyi vokal pendek (Short Vowel)?',
-        options: ['cat dan sit', 'cake dan site', 'cute dan boat', 'note dan pine'],
-        correctAnswer: 'cat dan sit',
-        explanation: '\'cat\' menggunakan vokal pendek /æ/ dan \'sit\' menggunakan vokal pendek /ɪ/. Opsi lainnya menggunakan long vowels.',
-        ruleReference: 'Modul 00: Fonetik Vokal Pendek vs Panjang'
-      },
-      {
-        id: 'q-m00-2',
-        category: 'Sentence Architecture',
-        difficulty: 'Dasar',
-        question: 'Pilihlah susunan frasa kata benda bahasa Inggris yang tepat sesuai kaidah tata bahasa:',
-        options: ['a red expensive car', 'an expensive red car', 'a car expensive red', 'an expensive car red'],
-        correctAnswer: 'an expensive red car',
-        explanation: 'Kata sifat kualitas (expensive) diletakkan sebelum kata sifat warna (red), dan keduanya mendahului kata benda (car).',
-        ruleReference: 'Modul 00: Urutan Kata Sifat (Adjective + Noun)'
-      },
-      {
-        id: 'q-m00-3',
-        category: 'Word Classes',
-        difficulty: 'Dasar',
-        question: 'Lengkapi kalimat berikut: "Good afternoon. Mr. Robert _____ our new biology teacher, and we _____ his students."',
-        options: ['is / are', 'are / is', 'am / are', 'is / am'],
-        correctAnswer: 'is / are',
-        explanation: 'Mr. Robert adalah subjek tunggal ketiga (He) sehingga menggunakan \'is\', sedangkan \'we\' adalah subjek jamak sehingga menggunakan \'are\'.',
-        ruleReference: 'Modul 00: Pasangan To Be Subjek'
-      },
-      {
-        id: 'q-m00-4',
-        category: 'Sentence Architecture',
-        difficulty: 'Menengah',
-        question: 'Pertanyaan yang paling tepat untuk menanyakan alasan seseorang mempelajari bahasa Inggris adalah:',
-        options: ['Why are you learning English?', 'What are you learning English?', 'Where you learn English?', 'Who is you learning English?'],
-        correctAnswer: 'Why are you learning English?',
-        explanation: '\'Why\' digunakan untuk menanyakan alasan atau tujuan, dengan struktur to be \'are\' mendahului subjek \'you\'.',
-        ruleReference: 'Modul 00: Kata Tanya 5W1H'
-      },
-      {
-        id: 'q-m00-5',
-        category: 'Word Classes',
-        difficulty: 'Dasar',
-        question: 'Manakah kata berikut yang memiliki huruf bisu (Silent Letter) yang TIDAK boleh dilafalkan?',
-        options: ['knife', 'kitchen', 'pencil', 'blanket'],
-        correctAnswer: 'knife',
-        explanation: 'Pada kata \'knife\', huruf \'k\' di awal kata sebelum huruf \'n\' adalah silent letter sehingga dilafalkan /naɪf/.',
-        ruleReference: 'Modul 00: Silent Letters'
-      },
-      {
-        id: 'q-m00-6',
-        category: 'Sentence Architecture',
-        difficulty: 'Menengah',
-        question: 'Seseorang baru saja berkenalan dengan Anda di sebuah konferensi internasional dan berkata: "Nice to meet you." Respon paling tepat dan alami adalah:',
-        options: ['Nice to meet you too!', 'You are very welcome.', 'Good night, sir.', 'Yes, I am agree.'],
-        correctAnswer: 'Nice to meet you too!',
-        explanation: 'Respon baku dan sopan terhadap sapaan "Nice to meet you" adalah "Nice to meet you too!".',
-        ruleReference: 'Modul 00: Salam & Perkenalan Diri'
-      },
-      {
-        id: 'q-m00-7',
-        category: 'Word Classes',
-        difficulty: 'Menengah',
-        question: 'Pilihlah bentuk kalimat negatif yang paling tepat dari kalimat: "They are ready for the examination."',
-        options: ['They are not ready for the examination.', 'They not are ready for the examination.', 'They do not ready for the examination.', 'They is not ready for the examination.'],
-        correctAnswer: 'They are not ready for the examination.',
-        explanation: 'Bentuk negatif kalimat dengan kata kerja to be dibentuk cukup dengan menambahkan \'not\' setelah to be (\'are not\' atau \'aren\'t\').',
-        ruleReference: 'Modul 00: Bentuk Negatif To Be'
-      },
-      {
-        id: 'q-m00-8',
-        category: 'Exam Readiness',
-        difficulty: 'Lanjutan',
-        question: 'Pada IELTS Listening Section 1, jika resepsionis mengeja nama keluarga tamu sebagai "C-L-A-R-K-E", bagaimana penulisan yang benar di lembar jawaban?',
-        options: ['Clarke', 'Clark', 'Clerk', 'Clairk'],
-        correctAnswer: 'Clarke',
-        explanation: 'Ejaan huruf per huruf harus dicatat persis: C-L-A-R-K-E = Clarke (dengan huruf e di akhir).',
-        ruleReference: 'Modul 00: Ejaan Alfabet Ujian Internasional'
-      }
-    ],
-    errorCorrectionTasks: [
-      {
-        id: 'ec-m00-1',
-        flawedSentence: 'She bought a dress blue for the party yesterday.',
-        flawLocation: 'dress blue',
-        correctedSentence: 'She bought a blue dress for the party yesterday.',
-        linguisticExplanation: 'Dalam bahasa Inggris, kata sifat (adjective) seperti \'blue\' wajib diletakkan SEBELUM kata benda (noun) \'dress\'.'
-      },
-      {
-        id: 'ec-m00-2',
-        flawedSentence: 'I am agree with your opinion regarding the new schedule.',
-        flawLocation: 'am agree',
-        correctedSentence: 'I agree with your opinion regarding the new schedule.',
-        linguisticExplanation: '\'Agree\' adalah kata kerja (verb), bukan kata sifat. Kalimat present tense cukup menyatakan \'I agree\', bukan \'I am agree\'.'
-      },
-      {
-        id: 'ec-m00-3',
-        flawedSentence: 'Where you live now in this city?',
-        flawLocation: 'Where you live',
-        correctedSentence: 'Where do you live now in this city?',
-        linguisticExplanation: 'Kalimat tanya bahasa Inggris wajib menyertakan kata kerja bantu (auxiliary verb) seperti \'do\' setelah kata tanya \'Where\'.'
-      },
-      {
-        id: 'ec-m00-4',
-        flawedSentence: 'Good night, everyone! Welcome to our seminar this evening.',
-        flawLocation: 'Good night',
-        correctedSentence: 'Good evening, everyone! Welcome to our seminar this evening.',
-        linguisticExplanation: '\'Good night\' hanya digunakan untuk berpamitan pergi atau tidur. Untuk menyapa audiens di malam hari, gunakan \'Good evening\'.'
-      }
-    ]
+      ],
+      "errorCorrectionTasks": [
+          {
+              "id": "ec-m00a-1",
+              "flawedSentence": "He hurt his knee while playing football yesterday.",
+              "flawLocation": "knee",
+              "correctedSentence": "He hurt his knee while playing football yesterday.",
+              "linguisticExplanation": "Secara tulisan kalimat ini sudah benar, namun dalam pengucapan lisan huruf K pada knee wajib ditiadakan (/niː/, bukan /kniː/)."
+          },
+          {
+              "id": "ec-m00a-2",
+              "flawedSentence": "Please right your full name on the attendance sheet.",
+              "flawLocation": "right",
+              "correctedSentence": "Please write your full name on the attendance sheet.",
+              "linguisticExplanation": "Kata right (benar/kanan) dan write (menulis) adalah homofon berbunyi sama /raɪt/, namun untuk tindakan menulis ejaan baku yang benar adalah write dengan silent W."
+          }
+      ]
   },
+
+  {
+      "id": "modul-00b-numbers-colors-time",
+      "stageNumber": 0,
+      "stageName": "Tahap 0: Orientasi & Pengenalan Awal Bahasa Inggris",
+      "categoryKey": "Word Classes",
+      "moduleNumber": "0B",
+      "title": "Angka, Waktu, Warna & Penempatan Kata Sifat (Adjective + Noun)",
+      "subtitle": "Kardinal vs ordinal, menyatakan jam dan tanggal, warna, serta kaidah posisi sifat terbalik",
+      "levelBadge": "Level Nol · Modul 0B",
+      "estimatedMinutes": 20,
+      "prerequisite": "Modul 0A (Alfabet & Fonetik)",
+      "mentalModelIntro": "Setiap hari kita berinteraksi dengan kuantitas, waktu, dan sifat fisik benda: berapa jumlahnya, kapan jadwalnya, dan bagaimana wujudnya. Dalam bahasa Inggris, menyampaikan hal-hal konkret ini memiliki kaidah sintaksis yang sangat khas dan berlawanan dengan bahasa Indonesia.\n\nDi modul ini, kamu akan menguasai dua sistem angka: Cardinal Numbers untuk menghitung jumlah dan Ordinal Numbers untuk menyatakan urutan atau tanggal. Kamu juga akan membedah salah satu perbedaan terbesar antara bahasa Inggris dan Indonesia: aturan posisi kata sifat (Adjective Placement) yang selalu mendahului kata bendanya, serta belajar membaca waktu dan tanggal secara akurat.",
+      "coreConceptSummary": "Angka dalam bahasa Inggris terbagi dua: Cardinal Numbers (one, two, three...) untuk menyatakan kuantitas, dan Ordinal Numbers (first, second, third, fourth...) untuk menyatakan urutan peringkat, lantai gedung, dan tanggal.\n\nKaidah sintaksis paling mendasar pada frasa benda adalah Pre-nominal Adjective Placement: kata sifat (warna, ukuran, kualitas) SELALU diletakkan sebelum kata benda inti. Katakan 'a blue pen' (bukan 'a pen blue'), 'a big house' (bukan 'a house big'). Untuk menyatakan waktu, gunakan preposisi AT untuk jam spesifik, ON untuk hari dan tanggal, serta IN untuk bulan dan tahun.",
+      "decisionTree": [
+          {
+              "step": "Langkah 1: Menentukan Jenis Angka yang Dibutuhkan",
+              "question": "Apakah kamu menyatakan kuantitas jumlah benda atau urutan posisi/tanggal?",
+              "branches": [
+                  {
+                      "condition": "Kuantitas Jumlah Benda (ada 3 buku, 10 siswa)",
+                      "outcome": "Gunakan Cardinal Numbers (one, two, three, ten)",
+                      "rule": "Contoh: I have three books. There are ten students."
+                  },
+                  {
+                      "condition": "Urutan Posisi / Peringkat / Tanggal Kalender (juara 1, tanggal 5)",
+                      "outcome": "Gunakan Ordinal Numbers (first, second, fifth, twenty-first)",
+                      "rule": "Contoh: She won the first prize. My birthday is on May fifth."
+                  }
+              ]
+          },
+          {
+              "step": "Langkah 2: Menyusun Frasa Kata Sifat dan Kata Benda",
+              "question": "Di manakah posisi kata sifat (warna, ukuran, sifat) terhadap kata benda?",
+              "branches": [
+                  {
+                      "condition": "Bahasa Inggris Baku",
+                      "outcome": "Letakkan kata sifat PERSIS sebelum kata benda",
+                      "rule": "Contoh: a red car, an expensive watch, a cold morning."
+                  }
+              ]
+          }
+      ],
+      "registerLadder": {
+          "informal": "Meet me around five ish, wearing that dark shirt.",
+          "standard": "Please meet me at five o'clock. I will be wearing a dark blue shirt.",
+          "academicHigh": "The experimental cohort comprised forty-five participants evaluated over a three-week interval.",
+          "analysis": "Ketepatan menyebut angka dan mendeskripsikan atribut benda adalah keterampilan kunci dalam penulisan saintifik maupun komunikasi harian."
+      },
+      "canDoChecklist": [
+          "Mampu menghitung 1 sampai 100 dan membedakan pelafalan -teen vs -ty (contoh: 13 thirteen vs 30 thirty).",
+          "Mampu menyebutkan tanggal lahir dan urutan menggunakan angka ordinal (first, second, third, dll).",
+          "Tidak pernah lagi menyusun frasa sifat terbalik seperti car red (selalu red car).",
+          "Mampu membaca jam dan menyebutkan hari serta bulan dengan preposisi yang tepat (at 7:00, on Monday, in July)."
+      ],
+      "pocketAxioms": [
+          "Aksioma Posisi Sifat: Kata sifat SELALU berada di depan kata benda (Adjective + Noun).",
+          "Aksioma Penekanan Belasan vs Puluhan: Belasan ditekan di akhir (thirTEEN), puluhan ditekan di awal (THIRty).",
+          "Aksioma Tanggal Kalender: Gunakan angka ordinal untuk tanggal dan awali dengan preposisi ON."
+      ],
+      "sections": [
+          {
+              "stepNumber": "01",
+              "title": "Angka Kardinal 1-100 & Pembedaan Tekanan Kata (-teen vs -ty)",
+              "explanation": "Angka kardinal digunakan murni untuk menghitung banyaknya benda. Perhatikan jebakan pelafalan antara angka belasan yang berakhiran -teen dan angka puluhan yang berakhiran -ty. Pada angka belasan, tekanan suara jatuh di suku kata terakhir (-TEEN). Pada angka puluhan, tekanan suara jatuh di suku kata depan.",
+              "formula": "Cardinal Numbers: 1 (one), 2 (two), 3 (three) ... 13 (thirTEEN) vs 30 (THIRty)",
+              "examples": [
+                  {
+                      "sentence": "There are fifteen students in the small classroom.",
+                      "translation": "Ada lima belas siswa di dalam ruang kelas kecil itu.",
+                      "note": "fifTEEN bertekanan di belakang untuk membedakannya dari FIFty (50)."
+                  },
+                  {
+                      "sentence": "The project requires fifty hours of intensive fieldwork.",
+                      "translation": "Proyek tersebut membutuhkan lima puluh jam kerja lapangan yang intensif.",
+                      "note": "FIFty bertekanan di suku kata pertama."
+                  }
+              ],
+              "commonPitfall": "Salah mendengar antara 14 (fourteen) dan 40 (forty) saat bertransaksi atau mendengarkan rekaman audio karena tidak memperhatikan posisi tekanan kata."
+          },
+          {
+              "stepNumber": "02",
+              "title": "Angka Ordinal (1st-31st) untuk Urutan, Peringkat & Tanggal",
+              "explanation": "Angka ordinal menunjukkan posisi urutan atau peringkat dalam sebuah deretan, serta digunakan secara wajib saat menyebut tanggal kalender. Tiga angka pertama memiliki bentuk tak beraturan: 1st (first), 2nd (second), dan 3rd (third). Mulai angka 4 dan seterusnya, sebagian besar dibentuk dengan menambahkan akhiran -th.",
+              "formula": "1st (first) | 2nd (second) | 3rd (third) | 4th-20th (-th) | 21st (twenty-first)",
+              "examples": [
+                  {
+                      "sentence": "Our office is located on the third floor of the building.",
+                      "translation": "Kantor kami berlokasi di lantai tiga gedung tersebut.",
+                      "note": "Gunakan ordinal third floor untuk menyatakan lantai urutan ke-3."
+                  },
+                  {
+                      "sentence": "The international symposium begins on the twenty-first of August.",
+                      "translation": "Simposium internasional tersebut dimulai pada tanggal dua puluh satu Agustus.",
+                      "note": "Tanggal selalu menggunakan angka ordinal (twenty-first, bukan twenty-one)."
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "My birthday is on July twenty-one.",
+                  "correctSentence": "My birthday is on July twenty-first.",
+                  "linguisticReason": "Tanggal penanggalan dalam bahasa Inggris wajib dinyatakan dengan angka ordinal (twenty-first), bukan angka kardinal (twenty-one)."
+              }
+          },
+          {
+              "stepNumber": "03",
+              "title": "Warna & Kaidah Baku Penempatan Kata Sifat (Pre-nominal Adjective)",
+              "explanation": "Dalam bahasa Indonesia, kita biasa meletakkan kata sifat setelah kata benda: mobil (benda) merah (sifat). Namun sintaksis bahasa Inggris memiliki hukum mutlak yang berkebalikan: kata sifat wajib diletakkan di depan kata benda yang diterangkannya. Hal ini berlaku untuk seluruh kata sifat warna, ukuran, bentuk, dan kualitas.",
+              "formula": "Determiner (a / an / the / my) + Adjective (sifat/warna) + Noun (kata benda)",
+              "examples": [
+                  {
+                      "sentence": "She carries a heavy leather bag to work every morning.",
+                      "translation": "Dia membawa sebuah tas kulit yang berat ke tempat kerja setiap pagi.",
+                      "note": "heavy (sifat) dan leather (bahan) diletakkan sebelum bag (benda)."
+                  },
+                  {
+                      "sentence": "The researcher analyzed the bright green leaves under the microscope.",
+                      "translation": "Peneliti tersebut menganalisis daun hijau cerah itu di bawah mikroskop.",
+                      "note": "bright green (warna) mendahului leaves (benda)."
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "I bought a car red with seats comfortable.",
+                  "correctSentence": "I bought a red car with comfortable seats.",
+                  "linguisticReason": "Kata sifat red dan comfortable dilarang mengekor di belakang kata benda; keduanya wajib ditaruh di depan benda yang diterangkan."
+              }
+          },
+          {
+              "stepNumber": "04",
+              "title": "Membaca Jam, Hari, Bulan & Dimensi Waktu Keseharian",
+              "explanation": "Menyatakan dimensi waktu membutuhkan kejelasan jam dan preposisi yang tepat. Untuk membaca jam, cara paling mudah dan modern adalah sistem digital langsung (contoh: 7:15 dibaca seven fifteen, 7:30 dibaca seven thirty). Kuasai juga preposisi waktu esensial: gunakan AT untuk jam, ON untuk hari dan tanggal, serta IN untuk bulan, tahun, dan musim.",
+              "formula": "At + [Jam Spesifik] | On + [Hari / Tanggal] | In + [Bulan / Tahun]",
+              "examples": [
+                  {
+                      "sentence": "The lecture begins at nine o'clock on Monday morning.",
+                      "translation": "Kuliah dimulai pada pukul sembilan tepat pada Senin pagi.",
+                      "note": "at nine o'clock (jam) dan on Monday (hari)."
+                  },
+                  {
+                      "sentence": "The new semester will start in September.",
+                      "translation": "Semester baru akan dimulai pada bulan September.",
+                      "note": "in September (bulan tanpa tanggal spesifik)."
+                  }
+              ],
+              "commonPitfall": "Tertukar menggunakan in untuk hari (misalnya in Monday ❌ alih-alih on Monday ✔)."
+          }
+      ],
+      "examBridge": {
+          "ieltsApplication": "Pada IELTS Listening Section 1, mencatat angka telepon, harga, jam, dan tanggal adalah tipe soal paling sering muncul yang menentukan skor band awal.",
+          "toeflApplication": "TOEFL Listening menuntut kecepatan menangkap rincian angka dan penanggalan sejarah dalam kuliah akademis.",
+          "scoringImpact": "Mencegah kehilangan poin mudah pada tes listening akibat salah mencatat angka belasan vs puluhan."
+      },
+      "goldenRules": [
+          "Kata sifat selalu mendahului kata benda (a clean room, bukan a room clean).",
+          "Gunakan angka ordinal (1st, 2nd, 3rd) untuk tanggal lahir, lantai, dan peringkat.",
+          "Gunakan preposisi AT untuk jam, ON untuk hari dan tanggal, IN untuk bulan dan tahun."
+      ],
+      "questions": [
+          {
+              "id": "q-m00b-1",
+              "category": "Word Classes",
+              "difficulty": "Dasar",
+              "question": "Pilihlah susunan frasa kata sifat dan kata benda yang benar dalam bahasa Inggris:",
+              "options": [
+                  "house white",
+                  "white house",
+                  "a house white",
+                  "the house white"
+              ],
+              "correctAnswer": "white house",
+              "explanation": "Dalam sintaksis bahasa Inggris, kata sifat (white) selalu diletakkan sebelum kata benda inti (house) -> white house.",
+              "ruleReference": "Modul 0B: Pre-nominal Adjective Placement"
+          },
+          {
+              "id": "q-m00b-2",
+              "category": "Word Classes",
+              "difficulty": "Dasar",
+              "question": "Angka ordinal yang tepat untuk menyatakan tanggal 21 adalah:",
+              "options": [
+                  "twenty-one",
+                  "twenty-one th",
+                  "twenty-first",
+                  "twenty-oneth"
+              ],
+              "correctAnswer": "twenty-first",
+              "explanation": "Angka 21 dalam bentuk ordinal adalah twenty-first (disingkat 21st). Angka 1, 2, 3 pada posisi satuan selalu menjadi first, second, third.",
+              "ruleReference": "Modul 0B: Ordinal Numbers for Dates"
+          },
+          {
+              "id": "q-m00b-3",
+              "category": "Word Classes",
+              "difficulty": "Menengah",
+              "question": "Preposisi waktu yang tepat untuk melengkapi kalimat \"The meeting is scheduled _____ 2:30 PM _____ Friday.\" adalah:",
+              "options": [
+                  "on / at",
+                  "at / on",
+                  "in / on",
+                  "at / in"
+              ],
+              "correctAnswer": "at / on",
+              "explanation": "Gunakan preposisi \"at\" untuk jam spesifik (at 2:30 PM) dan preposisi \"on\" untuk hari dalam seminggu (on Friday).",
+              "ruleReference": "Modul 0B: Prepositions of Time (at/on/in)"
+          },
+          {
+              "id": "q-m00b-4",
+              "category": "Word Classes",
+              "difficulty": "Menengah",
+              "question": "Manakah penekanan suku kata (syllable stress) yang benar untuk membedakan angka 13 dan 30?",
+              "options": [
+                  "thirTEEN (tekanan di akhir) vs THIRty (tekanan di awal)",
+                  "THIRteen (tekanan di awal) vs thirTY (tekanan di akhir)",
+                  "Keduanya memiliki tekanan suara persis sama",
+                  "Tekanan suara bebas dan tidak mempengaruhi makna"
+              ],
+              "correctAnswer": "thirTEEN (tekanan di akhir) vs THIRty (tekanan di awal)",
+              "explanation": "Angka belasan (-teen) mendapat tekanan kuat di suku kata terakhir, sedangkan angka puluhan (-ty) mendapat tekanan kuat di suku kata depan.",
+              "ruleReference": "Modul 0B: Stress Differentiation on -teen vs -ty"
+          }
+      ],
+      "errorCorrectionTasks": [
+          {
+              "id": "ec-m00b-1",
+              "flawedSentence": "He drives a car black to the university campus every day.",
+              "flawLocation": "a car black",
+              "correctedSentence": "He drives a black car to the university campus every day.",
+              "linguisticExplanation": "Kata sifat warna (black) wajib mendahului kata benda (car) -> a black car."
+          },
+          {
+              "id": "ec-m00b-2",
+              "flawedSentence": "The conference will take place in Monday at July.",
+              "flawLocation": "in Monday at July",
+              "correctedSentence": "The conference will take place on Monday in July.",
+              "linguisticExplanation": "Hari menggunakan preposisi on (on Monday), sedangkan bulan tanpa tanggal spesifik menggunakan preposisi in (in July)."
+          }
+      ]
+  },
+
+  {
+      "id": "modul-00c-greetings-social-expressions",
+      "stageNumber": 0,
+      "stageName": "Tahap 0: Orientasi & Pengenalan Awal Bahasa Inggris",
+      "categoryKey": "Word Classes",
+      "moduleNumber": "0C",
+      "title": "Salam Sapaan, Perkenalan Diri & Ungkapan Sosial Keseharian",
+      "subtitle": "Register formal vs kasual, memperkenalkan identitas, etika kesopanan, dan perpisahan",
+      "levelBadge": "Level Nol · Modul 0C",
+      "estimatedMinutes": 20,
+      "prerequisite": "Modul 0B (Angka & Waktu)",
+      "mentalModelIntro": "Bahasa pada hakikatnya adalah jembatan relasi antarmanusia. Sebelum kita membahas analisis rumit atau teori akademis, hal pertama yang diucapkan kepada orang lain adalah sapaan hangat dan perkenalan diri. Penutur asli bahasa Inggris sangat memperhatikan kesopanan linguistik (linguistic politeness)—sebuah cara bertutur yang menghargai ruang dan kenyamanan lawan bicara.\n\nDi modul ini, kamu akan mempelajari bagaimana memilih salam sapaan yang tepat sesuai waktu dan suasana, cara memperkenalkan diri secara profesional maupun santai, serta menguasai ungkapan kesopanan esensial seperti please, thank you, excuse me, dan sorry yang membuat komunikasimu dihargai di mana pun kamu berada.",
+      "coreConceptSummary": "Salam sapaan dalam bahasa Inggris terikat pada dimensi waktu: Good morning (pagi hingga siang), Good afternoon (siang hingga sore pukul 18.00), dan Good evening (sapaan bertemu di malam hari). Ingat bahwa 'Good night' BUKAN sapaan saat bertemu, melainkan ungkapan perpisahan saat hendak tidur atau pulang di larut malam.\n\nUntuk memperkenalkan diri, gunakan formula: Salam + Nama (My name is... / I am...) + Asal (I am from...) + Profesi (I am a student / I work as...). Lengkapi percakapan dengan kata-kata ajaib kesopanan: 'Excuse me' untuk permisi atau menarik perhatian sopan, 'Please' saat meminta sesuatu, 'Thank you' untuk apresiasi, dan 'You are welcome' untuk membalas terima kasih.",
+      "decisionTree": [
+          {
+              "step": "Langkah 1: Menentukan Sapaan Waktu Malam Hari",
+              "question": "Apakah kamu baru saja bertemu/menyapa seseorang di malam hari atau hendak berpamitan pergi tidur?",
+              "branches": [
+                  {
+                      "condition": "Baru Bertemu / Menyapa di Malam Hari (misalnya pukul 19.00)",
+                      "outcome": "Gunakan 'Good evening'",
+                      "rule": "Contoh: Good evening, ladies and gentlemen. Welcome to our seminar."
+                  },
+                  {
+                      "condition": "Berpamitan Pulang / Hendak Tidur di Larut Malam",
+                      "outcome": "Gunakan 'Good night'",
+                      "rule": "Contoh: It was a wonderful dinner. Good night, see you tomorrow!"
+                  }
+              ]
+          },
+          {
+              "step": "Langkah 2: Meminta Bantuan atau Menarik Perhatian Orang Asing",
+              "question": "Apakah kamu ingin bertanya kepada seseorang yang belum kamu kenal di tempat umum?",
+              "branches": [
+                  {
+                      "condition": "Membuka Percakapan Secara Sopan",
+                      "outcome": "Awali dengan 'Excuse me' diikuti pertanyaan dengan 'please'",
+                      "rule": "Contoh: Excuse me, could you please tell me where the station is?"
+                  }
+              ]
+          }
+      ],
+      "registerLadder": {
+          "informal": "Hey, I'm Leo. Nice to meet ya!",
+          "standard": "Hello, my name is Leonard. It is a pleasure to meet you.",
+          "academicHigh": "Good morning, esteemed colleagues. Allow me to introduce myself; my name is Leonard Vance.",
+          "analysis": "Penguasaan tingkatan sapaan menunjukkan kepekaan sosial pembelajar dalam beradaptasi di lingkungan profesional internasional."
+      },
+      "canDoChecklist": [
+          "Mampu memilih sapaan yang tepat berdasarkan waktu (Good morning/afternoon/evening).",
+          "Tidak pernah keliru menggunakan Good night sebagai salam pembuka saat bertemu orang.",
+          "Mampu memperkenalkan nama, asal negara/kota, dan pekerjaan dalam kalimat bahasa Inggris yang runtut.",
+          "Menggunakan please, thank you, excuse me, dan you are welcome secara spontan dan tepat situasi."
+      ],
+      "pocketAxioms": [
+          "Aksioma Salam Malam: Good evening untuk menyapa saat tiba; Good night untuk berpamitan tidur.",
+          "Aksioma Kesopanan: Sertakan kata please saat meminta tolong agar tidak terdengar seperti perintah kasar.",
+          "Aksioma Perkenalan: Tanggapi Nice to meet you dengan Nice to meet you too."
+      ],
+      "sections": [
+          {
+              "stepNumber": "01",
+              "title": "Hierarki Salam Sapaan Berdasarkan Waktu & Formalitas",
+              "explanation": "Penutur asli bahasa Inggris menyapa lawan bicaranya berdasarkan jam dalam sehari. Salam formal baku meliputi Good morning (hingga pukul 12.00 siang), Good afternoon (pukul 12.00 hingga 18.00 sore), dan Good evening (pukul 18.00 hingga malam). Untuk situasi santai bersama teman sebaya, sapaan kasual seperti Hello, Hi, atau Hey sangat lazim digunakan.",
+              "formula": "Pagi: Good morning | Siang-Sore: Good afternoon | Malam: Good evening | Kasual: Hello / Hi",
+              "examples": [
+                  {
+                      "sentence": "Good morning, Dr. Vance. I hope you are having a productive day.",
+                      "translation": "Selamat pagi, Dr. Vance. Saya harap hari Anda produktif.",
+                      "note": "Sapaan formal yang sangat lazim di lingkungan universitas dan kantor."
+                  },
+                  {
+                      "sentence": "Hi Sarah, how are you doing today?",
+                      "translation": "Hai Sarah, bagaimana kabarmu hari ini?",
+                      "note": "Sapaan kasual ramah untuk rekan sebaya."
+                  }
+              ],
+              "commonPitfall": "Mengucapkan Good night saat baru tiba di sebuah acara makan malam. Ingat, Good night adalah salam perpisahan tidur, bukan salam sapaan."
+          },
+          {
+              "stepNumber": "02",
+              "title": "Formula Memperkenalkan Diri (Nama, Asal, Profesi & Status)",
+              "explanation": "Saat memperkenalkan diri, ada struktur runtut yang membuat informasi tersampaikan dengan jelas: mulailah dari sapaan, sebutkan nama lengkap atau panggilan, sebutkan asal kota atau negara, dan jelaskan peran atau profesi saat ini. Akhiri dengan ungkapan keramahan seperti Nice to meet you.",
+              "formula": "Greeting + [My name is...] + [I am from...] + [I am a / I work as...] + [Nice to meet you!]",
+              "examples": [
+                  {
+                      "sentence": "Hello, my name is Alex. I am from Jakarta, Indonesia, and I work as a graphic designer.",
+                      "translation": "Halo, nama saya Alex. Saya berasal dari Jakarta, Indonesia, dan saya bekerja sebagai desainer grafis.",
+                      "note": "Format perkenalan lengkap yang padat dan informatif."
+                  },
+                  {
+                      "sentence": "It is a pleasure to meet you, Professor. My name is Maya.",
+                      "translation": "Senang bertemu dengan Anda, Profesor. Nama saya Maya.",
+                      "note": "It is a pleasure to meet you adalah padanan formal dari Nice to meet you."
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "My name is Alex. Nice to meet you. — Response: Nice to meet you.",
+                  "correctSentence": "My name is Alex. Nice to meet you. — Response: Nice to meet you too.",
+                  "linguisticReason": "Saat membalas salam keramahan Nice to meet you, penutur bahasa Inggris wajib menambahkan kata too di akhir kalimat (Nice to meet you too)."
+              }
+          },
+          {
+              "stepNumber": "03",
+              "title": "Ungkapan Kesopanan Wajib (Please, Thank You, Excuse Me, Sorry)",
+              "explanation": "Empat pilar kesopanan bahasa Inggris adalah kata-kata kecil yang memiliki dampak besar: Please mengubah kalimat imperatif menjadi permohonan santun. Thank you mengapresiasi bantuan orang lain. Excuse me digunakan untuk menarik perhatian secara sopan atau saat hendak lewat. I am sorry menyatakan penyesalan atas ketidaknyamanan yang terjadi.",
+              "formula": "Permohonan: Please... / ...please | Apresiasi: Thank you -> You are welcome | Permisi: Excuse me",
+              "examples": [
+                  {
+                      "sentence": "Could you please pass the salt, thank you very much.",
+                      "translation": "Bisakah Anda tolong memberikan garam itu, terima kasih banyak.",
+                      "note": "Penggunaan please dan thank you membuat permohonan terdengar sangat santun."
+                  },
+                  {
+                      "sentence": "Excuse me, is this seat taken? — No, it is free. Please sit down.",
+                      "translation": "Permisi, apakah kursi ini ada yang menempati? — Tidak, kursi ini kosong. Silakan duduk.",
+                      "note": "Excuse me digunakan untuk membuka interaksi dengan sopan kepada orang yang tidak dikenal."
+                  }
+              ],
+              "commonPitfall": "Membalas Thank you dengan mengulang kata Thank you. Gunakan jawaban baku: You are welcome atau Don't mention it."
+          },
+          {
+              "stepNumber": "04",
+              "title": "Menutup Percakapan & Ungkapan Perpisahan (Farewells)",
+              "explanation": "Menutup percakapan dengan baik sama pentingnya dengan membukanya. Jangan tiba-tiba menghentikan pembicaraan. Gunakan ungkapan perpisahan yang lazim seperti Goodbye, See you later, Have a great day, atau Good night bila hari sudah larut.",
+              "formula": "Perpisahan: Goodbye / Bye | Janji Bertemu: See you tomorrow / See you soon | Harapan: Have a nice day!",
+              "examples": [
+                  {
+                      "sentence": "Thank you for your valuable time, sir. Have a wonderful afternoon! — Goodbye!",
+                      "translation": "Terima kasih atas waktu berharga Anda, Pak. Semoga siang Anda menyenangkan! — Selamat tinggal!",
+                      "note": "Penutup percakapan profesional yang berwibawa."
+                  },
+                  {
+                      "sentence": "It was great talking to you. See you next week!",
+                      "translation": "Senang sekali bisa berbincang denganmu. Sampai jumpa minggu depan!",
+                      "note": "Ungkapan perpisahan hangat untuk rekan kerja atau sahabat."
+                  }
+              ]
+          }
+      ],
+      "examBridge": {
+          "ieltsApplication": "IELTS Speaking Part 1 diawali dengan sapaan dan perkenalan identitas dasar; pembukaan yang tenang dan fasih langsung memberi impresi positif kepada penguji.",
+          "toeflApplication": "TOEFL Speaking Task 2 menyimulasikan percakapan mahasiswa di area kampus yang penuh dengan sapaan dan ungkapan kesopanan natural.",
+          "scoringImpact": "Meningkatkan kelancaran interaksional (fluency and coherence) sejak detik pertama ujian lisan."
+      },
+      "goldenRules": [
+          "Gunakan Good evening untuk menyapa di malam hari; Good night HANYA untuk berpamitan tidur.",
+          "Selalu sertakan please saat meminta sesuatu dan balas thank you dengan you are welcome.",
+          "Gunakan Excuse me untuk meminta izin lewat atau menarik perhatian orang yang belum dikenal."
+      ],
+      "questions": [
+          {
+              "id": "q-m00c-1",
+              "category": "Word Classes",
+              "difficulty": "Dasar",
+              "question": "Kamu tiba di sebuah seminar internasional pada pukul 19.30 malam. Sapaan pembuka manakah yang tepat?",
+              "options": [
+                  "Good night!",
+                  "Good evening!",
+                  "Good sleep!",
+                  "Good midnight!"
+              ],
+              "correctAnswer": "Good evening!",
+              "explanation": "Good evening adalah sapaan resmi saat bertemu orang di malam hari. Good night hanya digunakan saat berpamitan pulang atau hendak tidur.",
+              "ruleReference": "Modul 0C: Evening vs Night Greetings"
+          },
+          {
+              "id": "q-m00c-2",
+              "category": "Word Classes",
+              "difficulty": "Dasar",
+              "question": "Seseorang berkata kepadamu: \"Nice to meet you!\" Jawaban balasan yang paling tepat dan sopan adalah:",
+              "options": [
+                  "Nice to meet you too!",
+                  "You are welcome.",
+                  "Never mind.",
+                  "Excuse me."
+              ],
+              "correctAnswer": "Nice to meet you too!",
+              "explanation": "Jawaban baku untuk membalas \"Nice to meet you\" adalah dengan mengulang kalimat tersebut dan menambahkan kata \"too\" di akhir -> \"Nice to meet you too!\"",
+              "ruleReference": "Modul 0C: Responding to Social Greetings"
+          },
+          {
+              "id": "q-m00c-3",
+              "category": "Word Classes",
+              "difficulty": "Menengah",
+              "question": "Kamu ingin menanyakan letak toilet kepada seorang petugas bandara. Kalimat pembuka manakah yang paling sopan?",
+              "options": [
+                  "Where is the toilet now?",
+                  "Excuse me, could you please tell me where the restroom is?",
+                  "Hey you, show me the toilet!",
+                  "I want toilet immediately."
+              ],
+              "correctAnswer": "Excuse me, could you please tell me where the restroom is?",
+              "explanation": "Mengawali dengan \"Excuse me\" dan menyertakan kata \"please\" adalah standar kesopanan internasional saat meminta informasi dari orang yang belum dikenal.",
+              "ruleReference": "Modul 0C: Politeness in Information Inquiries"
+          },
+          {
+              "id": "q-m00c-4",
+              "category": "Word Classes",
+              "difficulty": "Menengah",
+              "question": "Bagaimanakah respons yang tepat dan lazim saat seseorang mengucapkan \"Thank you very much for your help\"?",
+              "options": [
+                  "You are welcome.",
+                  "Please.",
+                  "Yes, of course I am.",
+                  "Thank you too much."
+              ],
+              "correctAnswer": "You are welcome.",
+              "explanation": "Respons baku untuk ucapan terima kasih (Thank you) adalah \"You are welcome\" atau bentuk santai \"Don't mention it\" / \"No problem\".",
+              "ruleReference": "Modul 0C: Responses to Gratitude"
+          }
+      ],
+      "errorCorrectionTasks": [
+          {
+              "id": "ec-m00c-1",
+              "flawedSentence": "Good night, ladies and gentlemen! Welcome to our annual conference tonight.",
+              "flawLocation": "Good night",
+              "correctedSentence": "Good evening, ladies and gentlemen! Welcome to our annual conference tonight.",
+              "linguisticExplanation": "Good night adalah salam perpisahan saat hendak tidur atau berpamitan pulang. Untuk membuka pidato atau menyapa audiens di malam hari, wajib menggunakan Good evening."
+          },
+          {
+              "id": "ec-m00c-2",
+              "flawedSentence": "Excuse me, you must to help me carry this box.",
+              "flawLocation": "you must to help me",
+              "correctedSentence": "Excuse me, could you please help me carry this box?",
+              "linguisticExplanation": "Menggunakan kata must terdengar seperti perintah yang memaksa dan tidak sopan. Gunakan frasa permohonan santun dengan could you please."
+          }
+      ]
+  },
+
+  {
+      "id": "modul-00d-5w1h-basic-questions",
+      "stageNumber": 0,
+      "stageName": "Tahap 0: Orientasi & Pengenalan Awal Bahasa Inggris",
+      "categoryKey": "Sentence Architecture",
+      "moduleNumber": "0D",
+      "title": "Kata Tanya Inti (5W1H) & Struktur Pertanyaan Dasar",
+      "subtitle": "Menggali informasi dengan What, Who, Where, When, Why, How dan pola Yes/No questions",
+      "levelBadge": "Level Nol · Modul 0D",
+      "estimatedMinutes": 20,
+      "prerequisite": "Modul 0C (Salam & Percakapan)",
+      "mentalModelIntro": "Belajar berbicara bahasa Inggris tidak lengkap jika kita hanya bisa menjawab; kita juga harus mampu bertanya. Kemampuan mengajukan pertanyaan adalah kunci aktif dalam menggali informasi, memecahkan masalah, dan menjalin dialog yang bermakna.\n\nDi modul ini, kita akan membedah taksonomi 6 kata tanya inti (5W1H): What untuk objek atau informasi, Who untuk pelaku manusia, Where untuk lokasi, When untuk waktu, Why untuk alasan, dan How untuk cara atau kondisi. Kamu juga akan menguasai cara membalik urutan kata untuk membentuk pertanyaan sederhana dengan kata kerja to be, serta menjawabnya dengan pola jawaban singkat (short answers) yang percaya diri.",
+      "coreConceptSummary": "Pertanyaan bahasa Inggris terbagi atas dua kelompok besar: Information Questions (WH-Questions) yang menuntut jawaban berupa data informasi lengkap, dan Yes/No Questions yang menuntut konfirmasi ya atau tidak.\n\nDalam membentuk pertanyaan dasar dengan kata kerja to be, bahasa Inggris menerapkan Inversion (pembalikan): posisi kata kerja bantu to be (am, is, are) dipindahkan ke depan mendahului subjek. Formula dasar WH-Questions adalah: Question Word + To Be + Subject + Complement. Sedangkan Yes/No Questions dibentuk dengan: To Be + Subject + Complement.",
+      "decisionTree": [
+          {
+              "step": "Langkah 1: Menentukan Tipe Informasi yang Ingin Ditanyakan",
+              "question": "Apakah kamu menanyakan pelaku orang, lokasi tempat, waktu, alasan, atau cara?",
+              "branches": [
+                  {
+                      "condition": "Orang / Pelaku Manusia",
+                      "outcome": "Gunakan kata tanya 'Who'",
+                      "rule": "Contoh: Who is your supervisor?"
+                  },
+                  {
+                      "condition": "Lokasi Tempat / Keberadaan",
+                      "outcome": "Gunakan kata tanya 'Where'",
+                      "rule": "Contoh: Where is the main library?"
+                  },
+                  {
+                      "condition": "Waktu Peristiwa",
+                      "outcome": "Gunakan kata tanya 'When'",
+                      "rule": "Contoh: When is the final exam?"
+                  },
+                  {
+                      "condition": "Alasan / Sebab",
+                      "outcome": "Gunakan kata tanya 'Why'",
+                      "rule": "Contoh: Why is the lab closed today?"
+                  },
+                  {
+                      "condition": "Kondisi / Cara / Kuantitas",
+                      "outcome": "Gunakan kata tanya 'How'",
+                      "rule": "Contoh: How are you? How much is this ticket?"
+                  }
+              ]
+          },
+          {
+              "step": "Langkah 2: Menentukan Urutan Kata dalam Pertanyaan",
+              "question": "Apakah kata kerja bantu (am/is/are) sudah dipindahkan ke depan mendahului subjek?",
+              "branches": [
+                  {
+                      "condition": "Ya, Inversi Berhasil (To Be + Subjek)",
+                      "outcome": "Struktur pertanyaan sah secara gramatikal",
+                      "rule": "Contoh: Is she ready? (Bukan: She is ready?)"
+                  }
+              ]
+          }
+      ],
+      "registerLadder": {
+          "informal": "Where's the party at tonight?",
+          "standard": "Where will the reception take place tonight?",
+          "academicHigh": "Under what specific conditions was the preliminary empirical investigation conducted?",
+          "analysis": "Penguasaan kata tanya memungkinkan pergeseran dari sekadar bertanya tempat secara kasual hingga formulasi rumusan masalah penelitian akademik."
+      },
+      "canDoChecklist": [
+          "Mampu memilih kata tanya yang tepat dari 6 unsur 5W1H sesuai jenis informasi yang dicari.",
+          "Mampu menyusun kalimat tanya sederhana dengan membalik posisi subjek dan to be (Am I? Is he? Are they?).",
+          "Mampu menjawab Yes/No questions menggunakan pola Short Answers yang baku (Yes, he is / No, they aren't).",
+          "Memahami pola intonasi naik untuk Yes/No questions dan intonasi turun untuk WH-questions."
+      ],
+      "pocketAxioms": [
+          "Aksioma Inversi Tanya: Dalam kalimat tanya, kata kerja bantu (to be) selalu mendahului subjek.",
+          "Aksioma Why-Because: Pertanyaan berawalan Why dijawab dengan klausa penjelas berawalan Because.",
+          "Aksioma Jawaban Singkat: Jangan hanya menjawab Yes/No tunggal; sertakan pronoun dan auxiliary (Yes, I am)."
+      ],
+      "sections": [
+          {
+              "stepNumber": "01",
+              "title": "Taksonomi 6 Kata Tanya Inti (5W1H) & Fungsi Semantiknya",
+              "explanation": "Untuk menggali informasi terarah, bahasa Inggris menyediakan 6 kata tanya inti: What (menanyakan benda atau definisi), Who (menanyakan orang), Where (menanyakan tempat), When (menanyakan waktu), Why (menanyakan alasan penyebab), dan How (menanyakan kondisi, cara, usia, atau jumlah).",
+              "formula": "What (Benda) | Who (Orang) | Where (Tempat) | When (Waktu) | Why (Alasan) | How (Cara/Kondisi)",
+              "examples": [
+                  {
+                      "sentence": "What is the title of your latest research paper?",
+                      "translation": "Apa judul makalah penelitian terbaru Anda?",
+                      "note": "What menanyakan informasi mengenai suatu benda atau konsep."
+                  },
+                  {
+                      "sentence": "Where are the international delegates staying?",
+                      "translation": "Di mana para delegasi internasional tersebut menginap?",
+                      "note": "Where menanyakan lokasi keberadaan."
+                  }
+              ],
+              "commonPitfall": "Menggunakan kata what saat menanyakan orang (misalnya What is that person? ❌ alih-alih Who is that person? ✔)."
+          },
+          {
+              "stepNumber": "02",
+              "title": "Struktur Pertanyaan dengan Kata Kerja Bantu To Be (Am, Is, Are)",
+              "explanation": "Berbeda dengan bahasa Indonesia yang cukup menaikkan intonasi di akhir kalimat (\"Kamu siap?\"), kalimat tanya bahasa Inggris mewajibkan perubahan susunan kata (Subject-Verb Inversion). Kata kerja bantu to be dipindahkan ke depan subjek. Jika ada kata tanya WH, letakkan kata tanya tersebut di posisi paling depan.",
+              "formula": "WH-Word + [am / is / are] + Subject + Complement?",
+              "examples": [
+                  {
+                      "sentence": "Where is the chemistry laboratory located?",
+                      "translation": "Di manakah laboratorium kimia tersebut berlokasi?",
+                      "note": "Where (WH) + is (to be) + the chemistry laboratory (subjek) + located (pelengkap)?"
+                  },
+                  {
+                      "sentence": "Why are the students excited about the field trip?",
+                      "translation": "Mengapa para siswa antusias tentang karyawisata tersebut?",
+                      "note": "Why + are + the students + excited...?"
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "Where you are going today?",
+                  "correctSentence": "Where are you going today?",
+                  "linguisticReason": "Kata kerja to be (are) wajib mendahului subjek (you) saat menyusun kalimat tanya bahasa Inggris."
+              }
+          },
+          {
+              "stepNumber": "03",
+              "title": "Pertanyaan Konfirmasi Yes/No & Pola Jawaban Singkat (Short Answers)",
+              "explanation": "Yes/No Questions adalah pertanyaan yang tidak menggunakan kata tanya 5W1H, melainkan langsung diawali oleh kata kerja bantu. Cara menjawab yang sopan dan alami bukanlah sekadar mengatakan \"Yes\" atau \"No\" sepatah kata, melainkan menyertakan kata ganti dan kata bantu to be.",
+              "formula": "Pertanyaan: [Am / Is / Are] + Subject + Complement? -> Jawaban: Yes, [Pronoun] + be / No, [Pronoun] + be not",
+              "examples": [
+                  {
+                      "sentence": "Is Dr. Vance available for consultation this morning? — Yes, he is.",
+                      "translation": "Apakah Dr. Vance bersedia untuk konsultasi pagi ini? — Ya, beliau bersedia.",
+                      "note": "Jawaban singkat positif: Yes, he is."
+                  },
+                  {
+                      "sentence": "Are they members of the editorial board? — No, they are not (they aren't).",
+                      "translation": "Apakah mereka anggota dewan editorial? — Bukan, mereka bukan anggota.",
+                      "note": "Jawaban singkat negatif: No, they are not."
+                  }
+              ],
+              "commonPitfall": "Menjawab Yes/No questions hanya dengan \"Yes\" atau \"No\" tunggal tanpa pronoun dan auxiliary. Hal ini terdengar dingin dan kurang bersahabat bagi penutur asli."
+          },
+          {
+              "stepNumber": "04",
+              "title": "Intonasi Pertanyaan: Pola Nada Naik (Rising) vs Turun (Falling)",
+              "explanation": "Intonasi suara memberi petunjuk kepada pendengar mengenai tipe pertanyaan yang sedang diajukan. Pada Yes/No Questions, nada suara naik di akhir kalimat (Rising Intonation). Pada WH-Questions, nada suara justru menurun di akhir kalimat (Falling Intonation).",
+              "formula": "Yes/No Questions -> Nada Naik di Akhir (↗) | WH-Questions -> Nada Turun di Akhir (↘)",
+              "examples": [
+                  {
+                      "sentence": "Are you ready to present your slides? (↗)",
+                      "translation": "Apakah Anda siap mempresentasikan salindia Anda?",
+                      "note": "Intonasi suara dinaikkan pada kata terakhir (slides)."
+                  },
+                  {
+                      "sentence": "What time does the presentation conclude? (↘)",
+                      "translation": "Pukul berapa presentasi tersebut berakhir?",
+                      "note": "Intonasi suara diturunkan secara mantap pada kata terakhir (conclude)."
+                  }
+              ]
+          }
+      ],
+      "examBridge": {
+          "ieltsApplication": "Pada IELTS Speaking Part 3, kemampuan memahami struktur pertanyaan kompleks dan membedakan pertanyaan klarifikasi sangat mempengaruhi skor kelancaran.",
+          "toeflApplication": "TOEFL Listening menguji pemahaman peserta terhadap pertanyaan retoris profesor di tengah kuliah akademis.",
+          "scoringImpact": "Mencegah kesalahpahaman dalam menangkap inti pertanyaan penguji lisan."
+      },
+      "goldenRules": [
+          "Pindahkan kata kerja bantu (am, is, are) ke depan subjek saat membentuk pertanyaan.",
+          "Gunakan kata tanya yang tepat: Who untuk orang, Where untuk tempat, When untuk waktu, Why untuk alasan.",
+          "Jawab Yes/No questions dengan format lengkap: Yes, I am atau No, she isn't."
+      ],
+      "questions": [
+          {
+              "id": "q-m00d-1",
+              "category": "Sentence Architecture",
+              "difficulty": "Dasar",
+              "question": "Kata tanya manakah yang tepat untuk melengkapi: \"_____ is your favourite English lecturer?\"",
+              "options": [
+                  "Where",
+                  "Who",
+                  "When",
+                  "Why"
+              ],
+              "correctAnswer": "Who",
+              "explanation": "Pertanyaan ini menanyakan sosok orang (dosen favorit), sehingga kata tanya yang wajib digunakan adalah Who.",
+              "ruleReference": "Modul 0D: Question Word Who for Persons"
+          },
+          {
+              "id": "q-m00d-2",
+              "category": "Sentence Architecture",
+              "difficulty": "Dasar",
+              "question": "Pilihlah susunan kalimat tanya yang benar secara gramatikal bahasa Inggris:",
+              "options": [
+                  "Where your office is located?",
+                  "Where is your office located?",
+                  "Where your office located is?",
+                  "Is where your office located?"
+              ],
+              "correctAnswer": "Where is your office located?",
+              "explanation": "Struktur pertanyaan baku adalah Question Word (Where) + Auxiliary to be (is) + Subject (your office) + Complement (located)?",
+              "ruleReference": "Modul 0D: WH-Question Inversion Structure"
+          },
+          {
+              "id": "q-m00d-3",
+              "category": "Sentence Architecture",
+              "difficulty": "Menengah",
+              "question": "Seseorang bertanya: \"Are you and your colleague ready for the trial?\" Jawaban singkat yang benar adalah:",
+              "options": [
+                  "Yes, we are.",
+                  "Yes, I am.",
+                  "Yes, they are.",
+                  "Yes, you are."
+              ],
+              "correctAnswer": "Yes, we are.",
+              "explanation": "Subjek \"you and your colleague\" merujuk pada pihak jamak kami/kita, sehingga dijawab dengan pronoun \"we\" -> \"Yes, we are.\"",
+              "ruleReference": "Modul 0D: Short Answer Subject Concord"
+          },
+          {
+              "id": "q-m00d-4",
+              "category": "Sentence Architecture",
+              "difficulty": "Menengah",
+              "question": "Bagaimanakah pola intonasi suara yang lazim pada kalimat tanya berawalan kata WH (seperti \"What is your name?\")?",
+              "options": [
+                  "Intonasi menurun di akhir kalimat (Falling Intonation)",
+                  "Intonasi melengking naik tajam di akhir kalimat",
+                  "Intonasi datar tanpa dinamika sama sekali",
+                  "Intonasi berbisik"
+              ],
+              "correctAnswer": "Intonasi menurun di akhir kalimat (Falling Intonation)",
+              "explanation": "Secara fonetik, pertanyaan terbuka berawalan kata tanya WH (What, Where, When, dll) menggunakan pola intonasi menurun (Falling Intonation) di akhir kalimat.",
+              "ruleReference": "Modul 0D: Intonation Patterns in Questions"
+          }
+      ],
+      "errorCorrectionTasks": [
+          {
+              "id": "ec-m00d-1",
+              "flawedSentence": "Where the library is located on this campus?",
+              "flawLocation": "the library is located",
+              "correctedSentence": "Where is the library located on this campus?",
+              "linguisticExplanation": "Dalam kalimat tanya dengan kata tanya WH, kata kerja to be (is) wajib diletakkan sebelum subjek (the library)."
+          },
+          {
+              "id": "ec-m00d-2",
+              "flawedSentence": "Is she a medical doctor? — Yes, she does.",
+              "flawLocation": "Yes, she does",
+              "correctedSentence": "Is she a medical doctor? — Yes, she is.",
+              "linguisticExplanation": "Pertanyaan diawali dengan kata kerja to be \"Is\", sehingga jawaban singkat wajib selaras menggunakan to be \"she is\", bukan auxiliary \"does\"."
+          }
+      ]
+  },
+
+  {
+      "id": "modul-00e-to-be-present-foundations",
+      "stageNumber": 0,
+      "stageName": "Tahap 0: Orientasi & Pengenalan Awal Bahasa Inggris",
+      "categoryKey": "Sentence Architecture",
+      "moduleNumber": "0E",
+      "title": "Fondasi Kata Kerja To Be (Am, Is, Are) & Kalimat Sederhana Pertama",
+      "subtitle": "Membangun kalimat nominal pertama: identitas profesi, karakteristik sifat, dan posisi lokasi",
+      "levelBadge": "Level Nol · Modul 0E",
+      "estimatedMinutes": 20,
+      "prerequisite": "Modul 0D (Kalimat Tanya Dasar)",
+      "mentalModelIntro": "Dalam bahasa Indonesia, kita sangat terbiasa menggabungkan dua kata secara langsung: 'Saya senang' atau 'Dia dokter'. Kalimat tersebut sudah sah dan dipahami seutuhnya. Namun dalam bahasa Inggris, struktur kalimat menuntut hadirnya kata kerja (Verb) di setiap kalimat tanpa terkecuali. Tanpa kata kerja, sebuah kalimat dianggap pincang atau buntung (Sentence Fragment).\n\nDi sinilah peran penting keluarga kata kerja 'To Be' di masa kini: AM, IS, dan ARE. To Be bertindak seperti tanda sama dengan (=) yang menjembatani sang subjek dengan identitas profesinya, kondisi perasaannya, atau letak keberadaannya. Di modul penutup Tahap 0 ini, kamu akan membangun kalimat-kalimat utuh pertamamu dengan percaya diri, sebelum melangkah masuk ke pendalaman tata bahasa formal di Modul 01.",
+      "coreConceptSummary": "To Be (Am, Is, Are) berfungsi sebagai Copula (kata kerja penghubung) yang merekatkan subjek dengan Subject Complement tanpa menyatakan tindakan fisik. Aturan pasangannya bersifat mutlak: subjek 'I' berpasangan dengan 'am', subjek tunggal orang ketiga ('He', 'She', 'It', nama tunggal) berpasangan dengan 'is', dan subjek jamak ('You', 'We', 'They', benda jamak) berpasangan dengan 'are'.\n\nUntuk percakapan santai, gunakan bentuk singkatan (Contractions): I'm, He's, She's, It's, We're, They're. Untuk kalimat negatif, cukup tambahkan kata 'not' tepat setelah to be (am not, is not / isn't, are not / aren't). Waspadai Zero Copula Trap: jangan pernah menghilangkan to be saat mendeskripsikan sifat atau profesi.",
+      "decisionTree": [
+          {
+              "step": "Langkah 1: Menentukan Pasangan To Be Berdasarkan Subjek",
+              "question": "Siapakah subjek yang menjadi pokok kalimat?",
+              "branches": [
+                  {
+                      "condition": "Subjek orang pertama tunggal 'I'",
+                      "outcome": "Gunakan 'am' (Bentuk singkat: I'm)",
+                      "rule": "Contoh: I am an engineer. I am very proud."
+                  },
+                  {
+                      "condition": "Subjek tunggal ketiga 'He', 'She', 'It', atau nama benda tunggal",
+                      "outcome": "Gunakan 'is' (Bentuk singkat: He's, She's, It's)",
+                      "rule": "Contoh: She is an architect. The book is interesting."
+                  },
+                  {
+                      "condition": "Subjek jamak 'You', 'We', 'They', atau kata benda jamak",
+                      "outcome": "Gunakan 'are' (Bentuk singkat: You're, We're, They're)",
+                      "rule": "Contoh: We are ready. The students are diligent."
+                  }
+              ]
+          },
+          {
+              "step": "Langkah 2: Menentukan Bentuk Kalimat Positif atau Negatif",
+              "question": "Apakah kalimat menyatakan fakta positif atau penolakan negatif?",
+              "branches": [
+                  {
+                      "condition": "Pernyataan Positif",
+                      "outcome": "Subjek + To Be + Pelengkap",
+                      "rule": "Contoh: They are in the conference hall."
+                  },
+                  {
+                      "condition": "Pernyataan Negatif",
+                      "outcome": "Subjek + To Be + not + Pelengkap",
+                      "rule": "Contoh: They are not (aren't) in the conference hall."
+                  }
+              ]
+          }
+      ],
+      "registerLadder": {
+          "informal": "I'm not sure about that, they're still checking.",
+          "standard": "I am not certain regarding the data; they are currently verifying it.",
+          "academicHigh": "The empirical observations are consistent with the theoretical framework under scrutiny.",
+          "analysis": "To Be adalah predikat penghubung utama yang menopang seluruh laras bahasa, mulai dari percakapan santai hingga premis ilmiah tertinggi."
+      },
+      "canDoChecklist": [
+          "Mampu memasangkan 7 subjek inti bahasa Inggris dengan bentuk To Be yang tepat (Am, Is, Are).",
+          "Mampu membentuk dan melafalkan singkatan kontraksi (I'm, She's, We're) secara alami.",
+          "Mampu menyusun kalimat negatif dengan menyematkan kata not setelah to be.",
+          "Bebas dari kesalahan Zero Copula (tidak lagi menulis \"She doctor\" atau \"They happy\")."
+      ],
+      "pocketAxioms": [
+          "Hukum Tanda Sama Dengan: To Be bertindak seperti simbol matematika yang merekatkan subjek dengan sifat atau identitasnya.",
+          "Hukum Pasangan Mutlak: I selalu berpasangan dengan am, He/She/It dengan is, dan You/We/They dengan are.",
+          "Hukum Negasi To Be: Bentuk negatif selalu dibuat dengan menambahkan not tepat setelah to be (am not, is not, are not)."
+      ],
+      "sections": [
+          {
+              "stepNumber": "01",
+              "title": "Tiga Fungsi Utama To Be: Identitas, Kondisi Sifat & Lokasi",
+              "explanation": "Kata kerja to be adalah pahlawan tanpa tanda jasa dalam kalimat bahasa Inggris. Ia tidak menggambarkan aksi fisik seperti menendang atau berlari, melainkan menjalankan tiga fungsi utama: pertama menyatakan identitas atau profesi (I am a doctor), kedua menyatakan kondisi sifat atau emosi (She is optimistic), dan ketiga menyatakan lokasi atau keberadaan (The files are on the desk).",
+              "formula": "Subject + [am / is / are] + [Noun (Profesi) / Adjective (Sifat) / Prepositional Phrase (Lokasi)]",
+              "examples": [
+                  {
+                      "sentence": "Dr. Vance is a distinguished professor of environmental science.",
+                      "translation": "Dr. Vance adalah seorang profesor ilmu lingkungan yang terkemuka.",
+                      "note": "is menghubungkan subjek dengan profesi (a distinguished professor)."
+                  },
+                  {
+                      "sentence": "The experimental results are positive and conclusive.",
+                      "translation": "Hasil-hasil eksperimental tersebut positif dan meyakinkan.",
+                      "note": "are menghubungkan subjek jamak dengan kata sifat (positive and conclusive)."
+                  },
+                  {
+                      "sentence": "The research team is in the laboratory right now.",
+                      "translation": "Tim riset tersebut berada di dalam laboratorium saat ini.",
+                      "note": "is menghubungkan subjek dengan keterangan lokasi (in the laboratory)."
+                  }
+              ]
+          },
+          {
+              "stepNumber": "02",
+              "title": "Pemetaan Pasangan Subjek dan To Be di Masa Kini (Simple Present)",
+              "explanation": "Keluarga to be di masa kini memiliki tiga wujud: AM hanya digunakan untuk subjek orang pertama tunggal I. IS digunakan untuk seluruh subjek tunggal orang ketiga (He, She, It, dan nama orang atau benda tunggal). ARE digunakan untuk subjek orang kedua tunggal/jamak You serta subjek jamak We dan They.",
+              "formula": "I + am | He / She / It / Noun Tunggal + is | You / We / They / Noun Jamak + are",
+              "examples": [
+                  {
+                      "sentence": "I am enthusiastic about the upcoming research collaboration.",
+                      "translation": "Saya antusias mengenai kolaborasi penelitian yang akan datang.",
+                      "note": "Subjek I selalu berpasangan dengan am."
+                  },
+                  {
+                      "sentence": "She is confident, and they are equally prepared for the presentation.",
+                      "translation": "Dia percaya diri, dan mereka sama-sama siap untuk presentasi tersebut.",
+                      "note": "She berpasangan dengan is; they berpasangan dengan are."
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "The students is very diligent in the library.",
+                  "correctSentence": "The students are very diligent in the library.",
+                  "linguisticReason": "The students adalah subjek jamak (plural noun), sehingga wajib menggunakan kata kerja to be are, bukan is."
+              }
+          },
+          {
+              "stepNumber": "03",
+              "title": "Bentuk Kontraksi (Singkatan) & Pola Kalimat Negatif (am not, isn't, aren't)",
+              "explanation": "Dalam komunikasi lisan dan tulisan semi-formal, penutur asli sangat sering menyingkat to be bersama subjeknya untuk menghemat napas dan memperlancar alur bicara. Untuk membentuk kalimat negatif, cukup letakkan kata not setelah to be. Perhatikan bahwa am not tidak memiliki singkatan resmi amn't (hanya I'm not).",
+              "formula": "Kontraksi: I'm | He's | She's | It's | We're | They're || Negatif: isn't (is not) | aren't (are not)",
+              "examples": [
+                  {
+                      "sentence": "We're delighted to announce that the project proposal is approved.",
+                      "translation": "Kami sangat senang mengumumkan bahwa proposal proyek tersebut telah disetujui.",
+                      "note": "We're adalah singkatan kontraksi dari We are."
+                  },
+                  {
+                      "sentence": "The data isn't complete yet; we need additional samples.",
+                      "translation": "Datanya belum lengkap; kita membutuhkan sampel tambahan.",
+                      "note": "isn't adalah singkatan dari is not."
+                  }
+              ],
+              "commonPitfall": "Membuat singkatan amn't untuk I am not. Dalam bahasa Inggris baku internasional, bentuk singkat yang benar hanyalah I'm not."
+          },
+          {
+              "stepNumber": "04",
+              "title": "Jebakan Zero Copula: Mengapa Bahasa Inggris Wajib Memiliki Kata Kerja",
+              "explanation": "Jebakan terbesar pembelajar asal Indonesia adalah meniadakan to be karena terbiasa dengan pola bahasa ibu: Dia dokter -> She doctor (salah fatal). Bahasa Inggris tidak mengenal kalimat tanpa kata kerja. Jika tidak ada kata kerja aksi seperti membaca atau menulis, maka kata kerja to be WAJIB hadir mengisi posisi predikat kalimat.",
+              "formula": "Pemeriksaan Sintaksis: Apakah ada kata kerja aksi? Jika TIDAK ADA, wajib sematkan To Be!",
+              "examples": [
+                  {
+                      "sentence": "My brother is an architect in Singapore.",
+                      "translation": "Saudara laki-laki saya adalah seorang arsitek di Singapura.",
+                      "note": "is wajib hadir menghubungkan subjek dengan profesinya."
+                  },
+                  {
+                      "sentence": "The climate in this region is very humid throughout the year.",
+                      "translation": "Iklim di wilayah ini sangat lembap sepanjang tahun.",
+                      "note": "is wajib hadir sebelum kata sifat humid."
+                  }
+              ],
+              "contrastiveAnalysis": {
+                  "incorrectSentence": "She beautiful and she doctor.",
+                  "correctSentence": "She is beautiful and she is a doctor.",
+                  "linguisticReason": "Menghilangkan to be menghasilkan kalimat cacat tanpa predikat finitis (Sentence Fragment). Wajib sertakan is."
+              }
+          }
+      ],
+      "examBridge": {
+          "ieltsApplication": "Kesalahan kalimat nominal dasar (menghilangkan to be atau salah pasang is/are) langsung menggugurkan kandidat dari perolehan band 6.0 pada kriteria Grammatical Accuracy.",
+          "toeflApplication": "Soal Written Expression TOEFL secara rutin menguji keberadaan to be pada kalimat nominal dan keselarasan subjek-predikat.",
+          "scoringImpact": "Menjamin kebersihan fondasi sintaksis sebelum melangkah ke tenses dan klausa kompleks."
+      },
+      "goldenRules": [
+          "Setiap kalimat bahasa Inggris wajib memiliki kata kerja; gunakan To Be bila tidak ada kata kerja aksi.",
+          "Pasangan baku masa kini: I am, He/She/It is, You/We/They are.",
+          "Bentuk kalimat negatif dengan menambahkan kata not tepat setelah to be (am not, is not, are not)."
+      ],
+      "questions": [
+          {
+              "id": "q-m00e-1",
+              "category": "Sentence Architecture",
+              "difficulty": "Dasar",
+              "question": "Kata kerja to be yang tepat untuk melengkapi kalimat \"The newly discovered species _____ extremely rare.\" adalah:",
+              "options": [
+                  "is",
+                  "are",
+                  "am",
+                  "be"
+              ],
+              "correctAnswer": "is",
+              "explanation": "Subjek \"The newly discovered species\" dalam konteks satu spesies tunggal ini adalah tunggal, sehingga menggunakan to be \"is\".",
+              "ruleReference": "Modul 0E: Singular Subject with Is"
+          },
+          {
+              "id": "q-m00e-2",
+              "category": "Sentence Architecture",
+              "difficulty": "Dasar",
+              "question": "Bentuk singkatan kontraksi negatif yang benar untuk \"They are not\" adalah:",
+              "options": [
+                  "They aren't",
+                  "They isn't",
+                  "They amn't",
+                  "They not are"
+              ],
+              "correctAnswer": "They aren't",
+              "explanation": "Kontraksi negatif baku untuk \"They are not\" adalah \"They aren't\" atau \"They're not\".",
+              "ruleReference": "Modul 0E: Negative Contractions with To Be"
+          },
+          {
+              "id": "q-m00e-3",
+              "category": "Sentence Architecture",
+              "difficulty": "Menengah",
+              "question": "Manakah kalimat di bawah ini yang BENAR secara tata bahasa dan terbebas dari kesalahan Zero Copula?",
+              "options": [
+                  "The research assistant very diligent in the laboratory.",
+                  "The research assistant is very diligent in the laboratory.",
+                  "The research assistant be very diligent in the laboratory.",
+                  "The research assistant are very diligent in the laboratory."
+              ],
+              "correctAnswer": "The research assistant is very diligent in the laboratory.",
+              "explanation": "Kalimat nominal memerlukan kopula to be \"is\" untuk menghubungkan subjek tunggal \"The research assistant\" dengan kata sifat \"diligent\".",
+              "ruleReference": "Modul 0E: Zero Copula Elimination"
+          },
+          {
+              "id": "q-m00e-4",
+              "category": "Sentence Architecture",
+              "difficulty": "Menengah",
+              "question": "Pilihlah pasangan kalimat yang menunjukkan fungsi To Be untuk menyatakan LOKASI / KEBERADAAN:",
+              "options": [
+                  "The key documents are in the safe deposit box.",
+                  "She is a senior neurosurgeon.",
+                  "They are extremely intelligent.",
+                  "He is happy with the outcome."
+              ],
+              "correctAnswer": "The key documents are in the safe deposit box.",
+              "explanation": "Kalimat \"The key documents are in the safe deposit box\" menggunakan to be \"are\" yang diikuti frasa preposisi lokasi untuk menyatakan posisi tempat benda berada.",
+              "ruleReference": "Modul 0E: To Be for Location Expressing"
+          }
+      ],
+      "errorCorrectionTasks": [
+          {
+              "id": "ec-m00e-1",
+              "flawedSentence": "The senior engineer very confident about the structural integrity.",
+              "flawLocation": "very confident",
+              "correctedSentence": "The senior engineer is very confident about the structural integrity.",
+              "linguisticExplanation": "Zero Copula Trap: Bahasa Inggris mewajibkan hadirnya to be \"is\" sebelum kata sifat \"confident\" untuk membentuk predikat finitis yang sah."
+          },
+          {
+              "id": "ec-m00e-2",
+              "flawedSentence": "My colleagues and I is ready to present the empirical data.",
+              "flawLocation": "is ready",
+              "correctedSentence": "My colleagues and I are ready to present the empirical data.",
+              "linguisticExplanation": "Subjek gabungan \"My colleagues and I\" adalah subjek jamak setara dengan \"we\", sehingga wajib menggunakan to be \"are\", bukan \"is\"."
+          }
+      ]
+  },
+
   // =========================================================================
   // TAHAP 1: FONDASI MUTLAK & ARSITEKTUR SUBJEK-PREDIKAT INTI
   // =========================================================================

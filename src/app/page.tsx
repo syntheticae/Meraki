@@ -112,7 +112,7 @@ type NavigationHub =
   | 'diagnostic';
 
 export default function MerakiApp() {
-  const [selectedTopicId, setSelectedTopicId] = useState<string>('modul-00-pengenalan-awal');
+  const [selectedTopicId, setSelectedTopicId] = useState<string>('modul-00a-alphabet-phonetics');
   const [activeHub, setActiveHub] = useState<NavigationHub>('curriculum');
 
   const handleNavSelect = (hub: NavigationHub) => {
@@ -2046,9 +2046,13 @@ export default function MerakiApp() {
                           )}
                         </div>
 
-                        <p className="text-xs sm:text-sm text-[#38332A] leading-relaxed">
-                          {section.explanation}
-                        </p>
+                        <div className="text-xs sm:text-sm text-[#38332A] leading-relaxed space-y-2.5">
+                          {section.explanation.split('\n\n').map((paragraph, pIdx) => (
+                            <p key={pIdx} className="leading-relaxed">
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
 
                         {/* Formula Card */}
                         {section.formula && (
@@ -6664,7 +6668,7 @@ export default function MerakiApp() {
                   <Compass className="w-8 h-8 mx-auto text-[#7A7265]/60" />
                   <p className="text-xs font-mono font-semibold">Pencarian Terpadu Meraki English</p>
                   <p className="text-xs">
-                    Ketik kata kunci untuk mencari cepat lintas 36 Modul Kurikulum, 200+ Irregular Verb, 38+ Dependent Prepositions, Academic Collocations, dan Fonetik.
+                    Ketik kata kunci untuk mencari cepat lintas 40 Modul Kurikulum, 200+ Irregular Verb, 38+ Dependent Prepositions, Academic Collocations, dan Fonetik.
                   </p>
                 </div>
               ) : omnisearchResults.length === 0 ? (
@@ -6948,7 +6952,7 @@ export default function MerakiApp() {
                     <div>
                       <h4 className="font-serif text-base font-bold text-[#1E1B17]">Unduh Cadangan Data (JSON)</h4>
                       <p className="text-xs text-[#7A7265]">
-                        Simpan riwayat 36 modul, jawaban kuis, Mistake Vault, dan progres belajar ke file JSON lokal di komputer/ponsel Anda.
+                        Simpan riwayat 40 modul, jawaban kuis, Mistake Vault, dan progres belajar ke file JSON lokal di komputer/ponsel Anda.
                       </p>
                     </div>
                     <button
