@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import { PenTool, Sparkles, Clock, BookOpen, Award, CheckCircle, FileText } from 'lucide-react';
-import { GlassCard } from '@/components/ui/GlassCard';
-import { Badge } from '@/components/ui/Badge';
-import { Navbar } from '@/components/layout/Navbar';
+import { AppShell } from '@/components/layout/AppShell';
 import { WritingRubric } from '@/components/exercises/WritingRubric';
 import { WritingRubricExercise } from '@/types/exercise';
 
@@ -509,35 +507,37 @@ export default function WritingStudioPage() {
   const currentExercise = WRITING_PROMPTS[selectedPromptIndex];
 
   return (
-    <div className="min-h-screen bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] flex flex-col font-sans">
-      <Navbar />
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-28 sm:pb-36 space-y-10">
+    <AppShell
+      category="Writing Studio"
+      title="Simulasi Esai & Evaluasi Mandiri"
+    >
+      <div className="space-y-8">
         {/* Header */}
-        <div className="space-y-4 max-w-3xl">
+        <div className="space-y-3 max-w-3xl">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#00638E] text-white" />
-            <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase tracking-widest">
-              Writing Studio & Assessment Pad
+            <span className="w-2 h-2 rounded-full bg-[#00638E]" />
+            <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase tracking-widest font-bold">
+              Academic Linter & Assessment Pad
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#141414] dark:text-[#FFFFFF] font-bold">
+          <h1 className="text-2xl sm:text-3xl font-serif text-[#141414] dark:text-[#FFFFFF] font-bold">
             Simulasi Penulisan Esai & Evaluasi Mandiri
           </h1>
-          <p className="text-[#50585C] dark:text-[#7A8992] text-sm sm:text-base leading-relaxed font-sans">
+          <p className="text-[#50585C] dark:text-[#7A8992] text-xs sm:text-sm leading-relaxed font-sans">
             Ruang menulis bebas distraksi dengan timer waktu nyata, live word counter, analitik ritme kalimat, dan rubrik evaluasi standar Cambridge & ETS.
           </p>
         </div>
 
         {/* Prompt Selector Pills */}
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2">
           {WRITING_PROMPTS.map((prompt, idx) => (
             <button
               key={prompt.id}
               onClick={() => setSelectedPromptIndex(idx)}
-              className={`px-4 py-2.5 rounded-2xl text-xs font-mono transition-all flex items-center gap-2 tactile-btn min-h-[40px] ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-mono transition-all flex items-center gap-2 tactile-btn cursor-pointer ${
                 selectedPromptIndex === idx
-                  ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs'
-                  : 'bg-[#FFFFFF] dark:bg-[#141414] hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] border border-[#BFD8E3]/40 dark:border-white/10'
+                  ? 'bg-[#00638E] text-white font-bold shadow-xs'
+                  : 'bg-[#FFFFFF] dark:bg-[#141414] hover:bg-[#EDF3F7] dark:hover:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] border border-[#BFD8E3]/40 dark:border-white/10'
               }`}
             >
               <PenTool className="w-3.5 h-3.5" />
@@ -547,10 +547,10 @@ export default function WritingStudioPage() {
         </div>
 
         {/* Main Writing Pad Component */}
-        <GlassCard padded="lg" className="bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm">
+        <div className="p-4 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/5 shadow-xs">
           <WritingRubric key={currentExercise.id} exercise={currentExercise} />
-        </GlassCard>
-      </main>
-    </div>
+        </div>
+      </div>
+    </AppShell>
   );
 }

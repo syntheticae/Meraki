@@ -1,16 +1,23 @@
 import type { Metadata, Viewport } from 'next';
-import { Manrope, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 
-const manrope = Manrope({
-  variable: '--font-sans',
+const geistSans = Geist({
+  variable: '--font-geist-sans',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
 const geistMono = Geist_Mono({
-  variable: '--font-mono',
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: '--font-serif',
+  weight: ['400'],
+  style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
 });
@@ -56,7 +63,7 @@ export default function RootLayout({
     <html
       lang="id"
       suppressHydrationWarning
-      className={`${manrope.variable} ${geistMono.variable} h-full w-full antialiased overscroll-none`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full w-full antialiased overscroll-none`}
     >
       <head>
         <script

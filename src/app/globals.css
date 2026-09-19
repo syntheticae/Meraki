@@ -57,8 +57,8 @@
 
 @theme {
   --font-serif: var(--font-serif), Georgia, serif;
-  --font-sans: var(--font-sans), Manrope, -apple-system, sans-serif;
-  --font-mono: var(--font-mono), monospace;
+  --font-sans: var(--font-geist-sans), -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
 html {
@@ -297,7 +297,7 @@ html.dark ::selection {
 
 /* Drop Cap Typography */
 .drop-cap::first-letter {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   float: left;
   font-size: 2.75rem;
   line-height: 0.85;

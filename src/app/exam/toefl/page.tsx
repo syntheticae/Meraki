@@ -3,15 +3,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { GraduationCap, Clock, CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
+import { AppShell } from '@/components/layout/AppShell';
 import { toeflLessons } from '@/data/lessons/toefl-lessons';
 
 export default function TOEFLDedicatedPage() {
   return (
-    <div className="min-h-screen bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] flex flex-col font-sans">
-      <Navbar />
-
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-28 sm:pb-36 space-y-10">
+    <AppShell
+      category="TOEFL iBT"
+      title="Panduan & Kurikulum Spesialisasi TOEFL"
+    >
+      <div className="space-y-8">
         {/* Breadcrumb */}
         <Link
           href="/exam"
@@ -110,14 +111,14 @@ export default function TOEFLDedicatedPage() {
           <div className="pt-2">
             <Link
               href="/exam/mock/toefl"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#004A6B] dark:bg-[#00638E] text-white hover:bg-[#3f4331] text-white text-xs font-mono font-semibold transition-all shadow-sm tactile-btn"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#004A6B] dark:bg-[#00638E] text-white hover:bg-[#004A6B] text-xs font-mono font-semibold transition-all shadow-sm tactile-btn"
             >
               <span>Mulai TOEFL Mock Test Sekarang</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </AppShell>
   );
 }

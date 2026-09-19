@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Volume2, Sparkles, Filter, RotateCw, CheckCircle2, Search, ArrowRight } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
+import { AppShell } from '@/components/layout/AppShell';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
 import { vocabularyCards, VocabularyCard } from '@/data/lessons/vocabulary';
@@ -54,10 +54,11 @@ export default function VocabularyPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] flex flex-col font-sans">
-      <Navbar />
-
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-28 sm:pb-36 space-y-10">
+    <AppShell
+      category="Kosakata Akademik"
+      title="AWL Lexicon Oxford 3000"
+    >
+      <div className="space-y-8">
         {/* Page Header */}
         <div className="space-y-4 max-w-3xl">
           <div className="flex items-center gap-2">
@@ -221,7 +222,7 @@ export default function VocabularyPage() {
             );
           })}
         </div>
-      </main>
-    </div>
+      </div>
+    </AppShell>
   );
 }

@@ -153,6 +153,24 @@ class LocalProgressRepository {
     return Promise.resolve(data);
   }
 
+  async exportProgressJSON(): Promise<string> {
+    const data = this.getLocalData();
+    return Promise.resolve(JSON.stringify(data, null, 2));
+  }
+
+  async importProgressJSON(jsonString: string): Promise<boolean> {
+    try {
+      const parsed = JSON.parse(jsonString) as UserProgress;
+      if (parsed && typeof parsed === 'object' && Array.isArray(parsed.completedLessons)) {
+        this.saveLocalData(parsed);
+        return Promise.resolve(true);
+      }
+      return Promise.resolve(false);
+    } catch {
+      return Promise.resolve(false);
+    }
+  }
+
   private updateStreakInternal(data: UserProgress): void {
     const today = new Date().toISOString().split('T')[0];
     if (!data.streak.historyDates.includes(today)) {

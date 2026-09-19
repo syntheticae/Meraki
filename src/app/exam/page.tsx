@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Award, GraduationCap, CheckCircle2, Clock, ArrowRight, ShieldCheck, HelpCircle } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
+import { AppShell } from '@/components/layout/AppShell';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
 import { calculateIELTSBand, calculateTOEFLScore } from '@/data/mock-exams';
@@ -16,10 +16,11 @@ export default function ExamHubPage() {
   const toeflResult = calculateTOEFLScore(toeflRawInput, 30);
 
   return (
-    <div className="min-h-screen bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] flex flex-col font-sans">
-      <Navbar />
-
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-28 sm:pb-36 space-y-12">
+    <AppShell
+      category="Ujian & Evaluasi"
+      title="Pusat Persiapan IELTS & TOEFL"
+    >
+      <div className="space-y-8">
         {/* Header */}
         <div className="space-y-4 max-w-3xl">
           <div className="flex items-center gap-2">
@@ -247,7 +248,7 @@ export default function ExamHubPage() {
             </div>
           </div>
         </section>
-      </main>
-    </div>
+      </div>
+    </AppShell>
   );
 }
