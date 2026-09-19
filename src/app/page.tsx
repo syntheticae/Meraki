@@ -124,7 +124,7 @@ export default function MerakiApp() {
   
   // Sidebar visibility (Zen / Focus mode)
   const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
-  const [isModuleIndexOpen, setIsModuleIndexOpen] = useState<boolean>(true);
+  const [isModuleIndexOpen, setIsModuleIndexOpen] = useState<boolean>(false);
 
   // Auto-detect mobile screen on mount
   useEffect(() => {
@@ -479,6 +479,9 @@ export default function MerakiApp() {
   };
 
   const currentTopic = MERAKI_CURRICULUM.find((t) => t.id === selectedTopicId) || MERAKI_CURRICULUM[0];
+  const currentTopicIndex = MERAKI_CURRICULUM.findIndex((t) => t.id === currentTopic.id);
+  const prevTopic = currentTopicIndex > 0 ? MERAKI_CURRICULUM[currentTopicIndex - 1] : null;
+  const nextTopic = currentTopicIndex < MERAKI_CURRICULUM.length - 1 ? MERAKI_CURRICULUM[currentTopicIndex + 1] : null;
   const questions = currentTopic.questions || [];
   const currentQuestion = questions[activeQuestionIndex] || questions[0];
 
@@ -1387,115 +1390,175 @@ export default function MerakiApp() {
           </div>
         </div>
 
-        {/* Sidebar Nav Items */}
-        <div className="flex-1 overflow-y-auto mi-scroll py-3 space-y-5 pr-1">
-          {/* Section 1: Kurikulum & Latihan */}
-          <div className="space-y-1">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] px-3 font-semibold block">
-              Kurikulum & Teori
+        {/* Sidebar Nav Items: 4 Pilar Terstruktur */}
+        <div className="flex-1 overflow-y-auto mi-scroll py-2 space-y-4 pr-1">
+          {/* Pilar 1: 📖 Kurikulum */}
+          <div className="space-y-0.5">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+              Kurikulum
             </span>
             <button
               onClick={() => handleNavSelect('curriculum')}
               className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'curriculum' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'curriculum'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <BookOpen className="w-4 h-4 text-[#A84A28]" />
-              <span>Modul Materi (9 Tahap)</span>
+              <BookOpen className="w-4 h-4 text-[#7C6EEA]" />
+              <span className="truncate">Modul Materi (40 Modul)</span>
             </button>
 
             <button
               onClick={() => handleNavSelect('practice')}
               className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'practice' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'practice'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <ListCheck className="w-4 h-4 text-[#535841]" />
-              <span>Latihan & Bedah Soal</span>
+              <ListCheck className="w-4 h-4 text-[#9B90F2]" />
+              <span className="truncate">Latihan & Bedah Soal</span>
             </button>
+
+            <Link
+              href="/learn"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+            >
+              <div className="flex items-center gap-2.5">
+                <Compass className="w-4 h-4 text-[#7C6EEA]" />
+                <span className="truncate">7 Jalur Tracks</span>
+              </div>
+              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+            </Link>
           </div>
 
-          {/* Section 2: Diksi & Fondasi Leksikal */}
-          <div className="space-y-1">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] px-3 font-semibold block">
-              Laboratorium Diksi
+          {/* Pilar 2: ✍️ Laboratorium Bahasa */}
+          <div className="space-y-0.5">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+              Laboratorium
             </span>
+            <button
+              onClick={() => handleNavSelect('studio')}
+              className={clsx(
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'studio'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+              )}
+            >
+              <PenTool className="w-4 h-4 text-[#7C6EEA]" />
+              <span className="truncate">Studio Sintaksis</span>
+            </button>
+
             <button
               onClick={() => handleNavSelect('collocations')}
               className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'collocations' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'collocations'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Sparkles className="w-4 h-4 text-[#A84A28]" />
-              <span>ACL & Diksi Alami</span>
+              <Sparkles className="w-4 h-4 text-[#9B90F2]" />
+              <span className="truncate">Diksi ACL & Kolokasi</span>
             </button>
 
             <button
               onClick={() => handleNavSelect('matrices')}
               className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'matrices' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'matrices'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Table className="w-4 h-4 text-[#535841]" />
-              <span>Master Matriks Fondasi</span>
-            </button>
-
-            <button
-              onClick={() => handleNavSelect('studio')}
-              className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'studio' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
-              )}
-            >
-              <PenTool className="w-4 h-4 text-[#A84A28]" />
-              <span>Studio Sintaksis</span>
+              <Table className="w-4 h-4 text-[#7C6EEA]" />
+              <span className="truncate">Master Matriks Fondasi</span>
             </button>
 
             <button
               onClick={() => handleNavSelect('phonetics')}
               className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'phonetics' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'phonetics'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Ear className="w-4 h-4 text-[#535841]" />
-              <span>Minimal Pairs Lab</span>
+              <Ear className="w-4 h-4 text-[#9B90F2]" />
+              <span className="truncate">Minimal Pairs Lab</span>
             </button>
 
             <button
               onClick={() => handleNavSelect('oxford3000')}
               className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'oxford3000' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'oxford3000'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Layers className="w-4 h-4 text-[#A84A28]" />
-              <span>Oxford 3000 SRS</span>
+              <Layers className="w-4 h-4 text-[#7C6EEA]" />
+              <span className="truncate">Oxford 3000 SRS</span>
             </button>
+
+            <Link
+              href="/vocabulary"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+            >
+              <div className="flex items-center gap-2.5">
+                <BookMarked className="w-4 h-4 text-[#9B90F2]" />
+                <span className="truncate">AWL Lexicon</span>
+              </div>
+              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+            </Link>
+
+            <Link
+              href="/writing-pad"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+            >
+              <div className="flex items-center gap-2.5">
+                <PenTool className="w-4 h-4 text-[#7C6EEA]" />
+                <span className="truncate">Writing Studio</span>
+              </div>
+              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+            </Link>
           </div>
 
-          {/* Section 3: Evaluasi & Bank Khilaf */}
-          <div className="space-y-1">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] px-3 font-semibold block">
-              Evaluasi & Bank Khilaf
+          {/* Pilar 3: 🎯 Ujian & Evaluasi */}
+          <div className="space-y-0.5">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+              Ujian & Evaluasi
             </span>
+            <Link
+              href="/exam"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+            >
+              <div className="flex items-center gap-2.5">
+                <GraduationCap className="w-4 h-4 text-[#7C6EEA]" />
+                <span className="truncate">IELTS & TOEFL Hub</span>
+              </div>
+              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+            </Link>
+
             <button
               onClick={() => handleNavSelect('vault')}
               className={clsx(
-                'w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'vault' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'vault'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <div className="flex items-center gap-3">
-                <Archive className="w-4 h-4 text-[#A84A28]" />
-                <span>Mistake Vault</span>
+              <div className="flex items-center gap-2.5">
+                <Archive className="w-4 h-4 text-[#9B90F2]" />
+                <span className="truncate">Mistake Vault</span>
               </div>
               {mistakeVault.length > 0 && (
-                <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-[#A84A28] text-white font-bold">
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-[#7C6EEA] text-white font-bold">
                   {mistakeVault.length}
                 </span>
               )}
@@ -1504,76 +1567,34 @@ export default function MerakiApp() {
             <button
               onClick={() => handleNavSelect('diagnostic')}
               className={clsx(
-                'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'diagnostic' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
+                activeHub === 'diagnostic'
+                  ? 'mi-nav-active'
+                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Award className="w-4 h-4 text-[#535841]" />
-              <span>Diagnostic Matrix</span>
+              <Award className="w-4 h-4 text-[#7C6EEA]" />
+              <span className="truncate">Diagnostic Matrix</span>
             </button>
           </div>
 
-          {/* Section 4: Pusat Studi & Simulasi Lanjutan */}
-          <div className="space-y-1">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] px-3 font-semibold block">
-              Pusat Studi Lanjutan
+          {/* Pilar 4: 📊 Analytics */}
+          <div className="space-y-0.5">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+              Analytics
             </span>
             <Link
               href="/dashboard"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
-              <div className="flex items-center gap-3">
-                <BarChart2 className="w-4 h-4 text-[#A84A28]" />
-                <span>Dashboard Analisis</span>
+              <div className="flex items-center gap-2.5">
+                <BarChart2 className="w-4 h-4 text-[#7C6EEA]" />
+                <span className="truncate">Dashboard Analisis</span>
               </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
-            </Link>
-
-            <Link
-              href="/exam"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
-            >
-              <div className="flex items-center gap-3">
-                <GraduationCap className="w-4 h-4 text-[#535841]" />
-                <span>IELTS & TOEFL Hub</span>
-              </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
-            </Link>
-
-            <Link
-              href="/vocabulary"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
-            >
-              <div className="flex items-center gap-3">
-                <BookMarked className="w-4 h-4 text-[#A84A28]" />
-                <span>AWL Lexical Vault</span>
-              </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
-            </Link>
-            <Link
-              href="/writing-pad"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
-            >
-              <div className="flex items-center gap-3">
-                <PenTool className="w-4 h-4 text-[#535841]" />
-                <span>Writing Pad Studio</span>
-              </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
-            </Link>
-
-            <Link
-              href="/learn"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
-            >
-              <div className="flex items-center gap-3">
-                <BookOpen className="w-4 h-4 text-[#A84A28]" />
-                <span>Kurikulum Tracks</span>
-              </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#7A7265]" />
+              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
             </Link>
           </div>
         </div>
-
         {/* Sidebar Footer */}
         <div className="pt-3 border-t border-white/[0.07] space-y-2.5 shrink-0">
           <div className="mi-inner p-2.5 rounded-xl space-y-1.5">
@@ -1627,136 +1648,166 @@ export default function MerakiApp() {
       {/* ───────────── MAIN APP CONTAINER ───────────── */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden gap-2.5 sm:gap-3">
         {/* Top Floating Dock Capsule */}
-        <header className="mi-dock px-3.5 sm:px-5 py-2.5 flex items-center justify-between shrink-0 z-30 gap-2">
-          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0">
+        <header className="mi-dock px-3 sm:px-4 py-2 flex items-center justify-between shrink-0 z-30 gap-2">
+          <div className="flex items-center gap-2 overflow-hidden min-w-0">
             <button
-              onClick={() => setIsNavOpen(true)}
-              className="p-1.5 sm:px-2.5 sm:py-1 rounded-xl mi-inner hover:bg-white/5 text-[#E8E8F0] transition-all text-xs font-mono flex items-center gap-1.5 shrink-0 min-h-[34px]"
-              title="Buka Menu Navigasi"
+              onClick={() => setIsNavOpen(!isNavOpen)}
+              className="p-1.5 px-2.5 rounded-xl mi-inner hover:bg-white/5 text-[#E8E8F0] transition-all text-xs font-mono flex items-center gap-1.5 shrink-0 min-h-[34px]"
+              title={isNavOpen ? "Zen Mode (Sembunyikan Sidebar)" : "Buka Sidebar"}
             >
               <Menu className="w-4 h-4" />
-              <span className="hidden sm:inline">Menu</span>
+              <span className="hidden sm:inline text-xs">{isNavOpen ? "Zen" : "Menu"}</span>
             </button>
 
-            <div className="flex items-center gap-1.5 truncate min-w-0">
-              <span className="font-serif text-sm font-semibold text-[#1E1B17] truncate shrink-0">
+            {/* Quick Module Switcher Pill in Dock */}
+            {activeHub === 'curriculum' ? (
+              <button
+                onClick={() => setIsModuleIndexOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono transition-all truncate min-w-0 max-w-[280px] sm:max-w-md group"
+                title="Klik untuk memilih dari 40 modul"
+              >
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[rgba(124,110,234,0.2)] text-[#9B90F2] shrink-0">
+                  {String(currentTopic.moduleNumber).padStart(2, '0')}
+                </span>
+                <span className="truncate font-serif text-[13px] text-[#E8E8F0] font-semibold">
+                  {currentTopic.title}
+                </span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#6A6A84] shrink-0 group-hover:translate-y-0.5 transition-transform ml-1" />
+              </button>
+            ) : (
+              <span className="font-serif text-sm font-semibold text-[#E8E8F0] truncate shrink-0 px-2">
                 {getHubTitle()}
               </span>
-              {activeHub === 'curriculum' && (
-                <>
-                  <span className="text-[#7A7265] text-xs shrink-0">/</span>
-                  <span className="font-mono text-xs text-[#A84A28] truncate font-bold">
-                    <span className="sm:hidden">M{String(currentTopic.moduleNumber).padStart(2, '0')}</span>
-                    <span className="hidden sm:inline">Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}</span>
-                  </span>
-                </>
-              )}
-            </div>
+            )}
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-            {/* Obsidian Dark Mode Toggle */}
-            <ThemeToggle className="min-h-[36px] min-w-[36px]" />
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* Quick Stepper in Curriculum Mode */}
+            {activeHub === 'curriculum' && (
+              <div className="hidden sm:flex items-center gap-1 mi-inner p-0.5 rounded-xl">
+                <button
+                  onClick={() => prevTopic && handleSelectTopic(prevTopic.id)}
+                  disabled={!prevTopic}
+                  className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-25 disabled:hover:bg-transparent text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
+                  title={prevTopic ? `Sebelumnya: ${prevTopic.title}` : 'Awal kurikulum'}
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                </button>
+                <span className="text-[10px] font-mono font-bold px-1 text-[#E8E8F0]">
+                  {currentTopicIndex + 1}/40
+                </span>
+                <button
+                  onClick={() => nextTopic && handleSelectTopic(nextTopic.id)}
+                  disabled={!nextTopic}
+                  className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-25 disabled:hover:bg-transparent text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
+                  title={nextTopic ? `Selanjutnya: ${nextTopic.title}` : 'Akhir kurikulum'}
+                >
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
 
             {/* Global Omnisearch Trigger */}
             <button
               onClick={() => setIsOmnisearchOpen(true)}
-              className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono text-[#8A8AA8] hover:text-[#E8E8F0] transition-all flex items-center gap-1.5 min-h-[34px]"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono text-[#8A8AA8] hover:text-[#E8E8F0] transition-all flex items-center gap-1.5 min-h-[34px]"
               title="Pencarian Global (Cmd+K)"
             >
-              <Search className="w-3.5 h-3.5 text-[#7A7265]" />
+              <Search className="w-3.5 h-3.5 text-[#8A8AA8]" />
               <span className="hidden md:inline text-[11px]">Cari</span>
-              <kbd className="hidden lg:inline-block px-1 py-0.2 text-[9px] bg-[#EFE9DF] border border-[#C8C0B0] rounded font-mono text-[#7A7265]">⌘K</kbd>
+              <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[9px] bg-white/5 border border-white/10 rounded font-mono text-[#8A8AA8]">⌘K</kbd>
             </button>
 
             {/* Audio Settings Trigger */}
             <button
               onClick={() => setIsAudioSettingsOpen(true)}
-              className="hidden sm:flex p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px]"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px] flex"
               title="Pengaturan Suara TTS & Aksen"
             >
-              <Headphones className="w-3.5 h-3.5 text-[#535841]" />
-              <span className="hidden xl:inline text-[10px] text-[#535841] font-mono font-semibold">{audioAccent.slice(3)} · {audioRate}x</span>
+              <Headphones className="w-3.5 h-3.5 text-[#7C6EEA]" />
+              <span className="hidden xl:inline text-[10px] text-[#9B90F2] font-mono font-semibold">{audioAccent.slice(3)} {audioRate}x</span>
             </button>
 
-            {/* Cheatsheets & Backup Trigger */}
+            {/* Cheatsheet Trigger */}
             <button
               onClick={() => setIsCheatsheetOpen(true)}
-              className="hidden sm:flex p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn items-center gap-1 text-xs font-mono min-h-[36px]"
+              className="hidden sm:flex p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px]"
               title="Lembar Ringkasan Cetak & Backup Data"
             >
-              <FileText className="w-3.5 h-3.5 text-[#A84A28]" />
-              <span className="hidden xl:inline text-[10px] text-[#A84A28] font-mono font-semibold">Cheatsheet</span>
+              <FileText className="w-3.5 h-3.5 text-[#9B90F2]" />
+              <span className="hidden xl:inline text-[10px] text-[#9B90F2] font-mono font-semibold">Cheatsheet</span>
             </button>
 
-            {activeHub === 'curriculum' && (
-              <button
-                onClick={() => setIsModuleIndexOpen(!isModuleIndexOpen)}
-                className={clsx(
-                  'px-2.5 py-1.5 rounded-xl transition-all tactile-btn flex items-center gap-1 text-xs font-mono border border-[#C8C0B0] min-h-[36px]',
-                  isModuleIndexOpen ? 'mi-nav-active' : 'mi-inner text-[#8A8AA8] hover:text-[#E8E8F0]'
-                )}
-                title="Pilih Modul Kurikulum"
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span className="text-[11px]">Modul</span>
-              </button>
-            )}
+            {/* Theme Toggle */}
+            <ThemeToggle className="min-h-[34px] min-w-[34px]" />
 
             {mistakeVault.length > 0 && activeHub !== 'vault' && (
               <button
                 onClick={() => setActiveHub('vault')}
-                className="flex items-center gap-1 bg-[#A84A28]/15 border border-[#A84A28]/30 text-[#A84A28] hover:bg-[#A84A28] hover:text-white px-2 py-1 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-mono transition-all mi-chip min-h-[34px]"
               >
                 <Archive className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{mistakeVault.length} Khilaf</span>
+                <span className="hidden sm:inline">{mistakeVault.length}</span>
                 {dueMistakesCount > 0 && (
-                  <span className="w-2 h-2 rounded-full bg-[#A84A28] ring-2 ring-white animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#7C6EEA] ring-2 ring-white/20 animate-pulse" />
                 )}
               </button>
             )}
           </div>
         </header>
-
         {/* Dynamic Content Canvas */}
         <main className="flex-1 min-h-0 overflow-hidden">
           {/* ───────────── WORKSPACE 1: KURIKULUM (MATERI LENGKAP) ───────────── */}
           {activeHub === 'curriculum' && (
-            <div className="h-full flex gap-2.5 sm:gap-3 min-h-0 overflow-hidden relative">
-              {/* Mobile Module Directory Modal (Bottom Sheet on Mobile) */}
+            <div className="h-full flex min-h-0 overflow-hidden relative">
+              {/* Floating Slide-over Module Directory Drawer */}
               {isModuleIndexOpen && (
-                <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-xs md:hidden">
-                  <div className="w-full max-h-[82vh] bg-[#E8E2D6] rounded-t-3xl sm:rounded-3xl border border-[#C8C0B0] flex flex-col overflow-hidden shadow-2xl p-4 pb-safe space-y-3 animate-in slide-in-from-bottom duration-200">
-                    <div className="flex items-center justify-between pb-2 border-b border-[#C8C0B0]">
-                      <span className="font-serif text-lg font-bold text-[#1E1B17]">Pilih Modul Kurikulum</span>
+                <div
+                  className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-start animate-in fade-in duration-150"
+                  onClick={() => setIsModuleIndexOpen(false)}
+                >
+                  <aside
+                    className="mi-slab meraki-ink w-full max-w-sm sm:max-w-md h-full flex flex-col overflow-hidden p-4 space-y-3.5 shadow-2xl m-2 sm:m-3.5 border border-white/10"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="flex items-center justify-between pb-2.5 border-b border-white/[0.07]">
+                      <div className="flex items-center gap-2">
+                        <BookOpen className="w-4 h-4 text-[#7C6EEA]" />
+                        <h3 className="font-serif text-base font-bold text-[#E8E8F0]">
+                          Direktori 40 Modul Kurikulum
+                        </h3>
+                      </div>
                       <button
                         onClick={() => setIsModuleIndexOpen(false)}
-                        className="p-1.5 rounded-full bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+                        className="p-1.5 rounded-xl hover:bg-white/10 text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
+                        title="Tutup Direktori"
                       >
                         <X className="w-4 h-4" />
                       </button>
                     </div>
 
-                    <div className="relative">
-                      <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
+                    <div className="relative shrink-0">
+                      <Search className="w-3.5 h-3.5 text-[#6A6A84] absolute left-3 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
                         value={searchFilter}
                         onChange={(e) => setSearchFilter(e.target.value)}
-                        placeholder="Cari modul..."
-                        className="w-full pl-9 pr-3 py-2 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                        placeholder="Cari materi atau kaidah..."
+                        className="w-full pl-9 pr-3 py-2 text-xs mi-inner bg-transparent rounded-xl outline-hidden focus:border-[#7C6EEA] text-[#E8E8F0] placeholder-[#6A6A84]"
+                        autoFocus
                       />
                     </div>
 
-                    <div className="flex-1 overflow-y-auto space-y-4 pr-1">
+                    <div className="flex-1 overflow-y-auto mi-scroll space-y-4 pr-1">
                       {stageGroups.map((stageTitle) => {
                         const items = filteredTopics.filter((t) => t.stageName === stageTitle);
                         if (items.length === 0) return null;
+
                         return (
                           <div key={stageTitle} className="space-y-1.5">
-                            <div className="flex items-center gap-1.5 px-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#A84A28]" />
-                              <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] font-semibold">
+                            <div className="flex items-center gap-1.5 px-2 py-0.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#7C6EEA]" />
+                              <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] font-semibold">
                                 {stageTitle}
                               </span>
                             </div>
@@ -1764,34 +1815,50 @@ export default function MerakiApp() {
                               {items.map((topic) => {
                                 const isSelected = topic.id === selectedTopicId;
                                 const isDone = completedTopicIds.includes(topic.id);
+
                                 return (
                                   <button
                                     key={topic.id}
-                                    onClick={() => handleSelectTopic(topic.id)}
+                                    onClick={() => {
+                                      handleSelectTopic(topic.id);
+                                      setIsModuleIndexOpen(false);
+                                    }}
                                     className={clsx(
-                                      'w-full text-left p-3 rounded-2xl transition-all flex items-start justify-between gap-2.5 tactile-btn min-h-[46px]',
+                                      'w-full text-left p-2.5 rounded-xl transition-all duration-150 flex items-start justify-between gap-2.5',
                                       isSelected
-                                        ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
-                                        : 'bg-[#E2DCD0]/70 hover:bg-[#DDD7CA] text-[#38332A]'
+                                        ? 'mi-nav-active'
+                                        : 'mi-inner text-[#8A8AA8] hover:text-[#E8E8F0]'
                                     )}
                                   >
                                     <div className="space-y-0.5 flex-1 min-w-0">
                                       <div className="flex items-center gap-2">
                                         <span className={clsx(
-                                          'font-mono text-[10px] px-1.5 py-0.2 rounded-md',
-                                          isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
+                                          'font-mono text-[10px] px-1.5 py-0.5 rounded-md font-semibold',
+                                          isSelected ? 'bg-white/20 text-[#E8E8F0]' : 'bg-white/5 text-[#8A8AA8]'
                                         )}>
                                           {String(topic.moduleNumber).padStart(2, '0')}
                                         </span>
-                                        <h4 className={clsx('text-xs font-medium line-clamp-1', isSelected ? 'text-[#EFE9DF]' : 'text-[#1E1B17]')}>
+                                        <h4 className="text-xs font-medium line-clamp-1 text-[#E8E8F0]">
                                           {topic.title}
                                         </h4>
                                       </div>
-                                      <p className={clsx('text-[11px] line-clamp-1 pl-6', isSelected ? 'text-[#EFE9DF]/70' : 'text-[#7A7265]')}>
+                                      <p className="text-[11px] line-clamp-1 pl-6 text-[#6A6A84]">
                                         {topic.subtitle}
                                       </p>
                                     </div>
-                                    {isDone && <Check className="w-3.5 h-3.5 text-[#535841] shrink-0 mt-1" />}
+
+                                    <div className="shrink-0 mt-0.5">
+                                      {isDone ? (
+                                        <span className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] bg-[rgba(124,110,234,0.2)] text-[#9B90F2]">
+                                          <Check className="w-2.5 h-2.5" />
+                                        </span>
+                                      ) : (
+                                        <span className={clsx(
+                                          'w-1.5 h-1.5 rounded-full inline-block mt-1',
+                                          isSelected ? 'bg-white/40' : 'bg-white/10'
+                                        )} />
+                                      )}
+                                    </div>
                                   </button>
                                 );
                               })}
@@ -1800,129 +1867,33 @@ export default function MerakiApp() {
                         );
                       })}
                     </div>
-                  </div>
+                  </aside>
                 </div>
               )}
-
-              {/* Desktop Module Directory Sidebar */}
-              {isModuleIndexOpen && (
-                <aside className="mi-slab hidden md:flex md:w-72 lg:w-80 h-full flex-col overflow-hidden shrink-0 p-3 space-y-3">
-                  <div className="relative shrink-0">
-                    <Search className="w-3.5 h-3.5 text-[#6A6A84] absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      value={searchFilter}
-                      onChange={(e) => setSearchFilter(e.target.value)}
-                      placeholder="Cari modul kurikulum..."
-                      className="w-full pl-9 pr-3 py-2 text-xs mi-inner bg-transparent rounded-xl outline-hidden focus:border-[#7C6EEA] text-[#E8E8F0] placeholder-[#6A6A84]"
-                    />
-                  </div>
-
-                  <div className="flex-1 overflow-y-auto p-3 space-y-4">
-                    {stageGroups.map((stageTitle) => {
-                      const items = filteredTopics.filter((t) => t.stageName === stageTitle);
-                      if (items.length === 0) return null;
-
-                      return (
-                        <div key={stageTitle} className="space-y-1.5">
-                          <div className="flex items-center gap-1.5 px-2 py-0.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#A84A28]" />
-                            <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] font-semibold">
-                              {stageTitle}
-                            </span>
-                          </div>
-                          <div className="space-y-1">
-                            {items.map((topic) => {
-                              const isSelected = topic.id === selectedTopicId;
-                              const isDone = completedTopicIds.includes(topic.id);
-
-                              return (
-                                <button
-                                  key={topic.id}
-                                  onClick={() => handleSelectTopic(topic.id)}
-                                  className={clsx(
-                                    'w-full text-left p-3 rounded-2xl transition-all duration-200 flex items-start justify-between gap-2.5 tactile-btn',
-                                    isSelected
-                                      ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
-                                      : 'bg-[#E2DCD0]/60 hover:bg-[#DDD7CA] text-[#38332A]'
-                                  )}
-                                >
-                                  <div className="space-y-0.5 flex-1 min-w-0">
-                                    <div className="flex items-center gap-2">
-                                      <span className={clsx(
-                                        'font-mono text-[10px] px-1.5 py-0.2 rounded-md',
-                                        isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
-                                      )}>
-                                        {String(topic.moduleNumber).padStart(2, '0')}
-                                      </span>
-                                      <h4 className={clsx(
-                                        'text-xs font-medium line-clamp-1',
-                                        isSelected ? 'text-[#EFE9DF]' : 'text-[#1E1B17]'
-                                      )}>
-                                        {topic.title}
-                                      </h4>
-                                    </div>
-                                    <p className={clsx(
-                                      'text-[11px] line-clamp-1 pl-6',
-                                      isSelected ? 'text-[#EFE9DF]/70' : 'text-[#7A7265]'
-                                    )}>
-                                      {topic.subtitle}
-                                    </p>
-                                  </div>
-
-                                  <div className="shrink-0 mt-0.5">
-                                    {isDone ? (
-                                      <span className={clsx(
-                                        'w-4 h-4 rounded-full flex items-center justify-center text-[10px]',
-                                        isSelected ? 'bg-[#535841] text-[#EFE9DF]' : 'bg-[#535841]/20 text-[#535841]'
-                                      )}>
-                                        <Check className="w-2.5 h-2.5" />
-                                      </span>
-                                    ) : (
-                                      <span className={clsx(
-                                        'w-1.5 h-1.5 rounded-full inline-block mt-1',
-                                        isSelected ? 'bg-white/40' : 'bg-black/15'
-                                      )} />
-                                    )}
-                                  </div>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </aside>
-              )}
-
               {/* Main Reading Pane */}
               <section className="mi-slab flex-1 min-h-0 overflow-y-auto mi-scroll p-4 sm:p-7 lg:p-10 space-y-6 sm:space-y-8">
                 <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-                  {/* Mobile Quick Module Chips Carousel */}
-                  <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#C8C0B0]/60">
-                    {MERAKI_CURRICULUM.map((topic) => {
-                      const isSelected = topic.id === selectedTopicId;
-                      const isDone = completedTopicIds.includes(topic.id);
-                      return (
-                        <button
-                          key={topic.id}
-                          onClick={() => handleSelectTopic(topic.id)}
-                          className={clsx(
-                            'px-3 py-2 rounded-xl text-xs font-mono whitespace-nowrap transition-all tactile-btn flex items-center gap-1.5 shrink-0 min-h-[38px]',
-                            isSelected
-                              ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
-                              : 'bg-[#E6E0D4] text-[#7A7265] border border-[#C8C0B0]'
-                          )}
-                        >
-                          <span>{String(topic.moduleNumber).padStart(2, '0')}</span>
-                          <span className="max-w-[120px] truncate">{topic.title}</span>
-                          {isDone && <Check className="w-3 h-3 text-[#535841]" />}
-                        </button>
-                      );
-                    })}
-                  </div>
+                  {/* Quick Module Header Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/[0.07]">
+                    <button
+                      onClick={() => setIsModuleIndexOpen(true)}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono text-[#8A8AA8] hover:text-[#E8E8F0] transition-all group"
+                      title="Klik untuk membuka direktori 40 modul"
+                    >
+                      <BookOpen className="w-3.5 h-3.5 text-[#7C6EEA]" />
+                      <span className="font-semibold text-[#E8E8F0]">
+                        Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}
+                      </span>
+                      <ChevronDown className="w-3.5 h-3.5 text-[#6A6A84] group-hover:translate-y-0.5 transition-transform" />
+                    </button>
 
+                    <div className="flex items-center gap-2 text-xs font-mono text-[#6A6A84]">
+                      <span className="mi-chip px-2.5 py-0.5 text-[10px] font-bold">
+                        {currentTopic.stageName}
+                      </span>
+                      <span>~{currentTopic.estimatedMinutes} menit</span>
+                    </div>
+                  </div>
                   {/* Topic Header */}
                   <div className="space-y-3 pb-6 border-b border-[#C8C0B0]">
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -2265,19 +2236,61 @@ export default function MerakiApp() {
                   )}
 
                   {/* Bottom Action */}
-                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] flex items-center justify-between">
+                  <div className="p-5 sm:p-6 rounded-2xl mi-card flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
-                      <h4 className="font-serif text-base text-[#1E1B17]">Sudah Selesai Membaca Modul Ini?</h4>
-                      <p className="text-xs text-[#7A7265]">Uji pemahamanmu pada section latihan kuis khusus modul ini.</p>
+                      <h4 className="font-serif text-base font-bold text-[#E8E8F0]">Sudah Selesai Membaca Modul Ini?</h4>
+                      <p className="text-xs text-[#8A8AA8]">Uji pemahamanmu pada section latihan kuis interaktif khusus modul ini.</p>
                     </div>
 
                     <button
                       onClick={() => setActiveHub('practice')}
-                      className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono transition-colors flex items-center gap-2 shadow-xs"
+                      className="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 hover:opacity-90 active:scale-95 shrink-0"
+                      style={{ background: '#7C6EEA', color: '#fff' }}
                     >
                       <span>Buka Latihan Soal</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
+                  </div>
+                  {/* Bottom Module Stepper Navigation Flow */}
+                  <div className="pt-6 border-t border-white/[0.07] flex flex-col sm:flex-row items-center justify-between gap-3">
+                    {prevTopic ? (
+                      <button
+                        onClick={() => handleSelectTopic(prevTopic.id)}
+                        className="w-full sm:w-auto p-3 sm:px-4 sm:py-2.5 rounded-xl mi-inner hover:bg-white/5 text-left flex items-center gap-2.5 text-xs transition-all"
+                      >
+                        <ChevronLeft className="w-4 h-4 text-[#8A8AA8] shrink-0" />
+                        <div>
+                          <span className="font-mono text-[9px] text-[#6A6A84] block uppercase">Modul Sebelumnya</span>
+                          <span className="font-serif font-semibold text-[#E8E8F0] line-clamp-1">
+                            {String(prevTopic.moduleNumber).padStart(2, '0')}: {prevTopic.title}
+                          </span>
+                        </div>
+                      </button>
+                    ) : <div />}
+
+                    {nextTopic ? (
+                      <button
+                        onClick={() => handleSelectTopic(nextTopic.id)}
+                        className="w-full sm:w-auto p-3 sm:px-5 sm:py-2.5 rounded-xl text-right flex items-center justify-between sm:justify-end gap-2.5 text-xs transition-all hover:opacity-90 active:scale-95 shrink-0"
+                        style={{ background: '#7C6EEA', color: '#fff' }}
+                      >
+                        <div>
+                          <span className="font-mono text-[9px] text-white/80 block uppercase">Modul Selanjutnya</span>
+                          <span className="font-serif font-bold text-white line-clamp-1">
+                            {String(nextTopic.moduleNumber).padStart(2, '0')}: {nextTopic.title}
+                          </span>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-white shrink-0" />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => setActiveHub('practice')}
+                        className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold transition-all hover:opacity-90"
+                        style={{ background: 'rgba(124,110,234,0.18)', border: '1px solid rgba(124,110,234,0.3)', color: '#9B90F2' }}
+                      >
+                        <span>Kurikulum Selesai! Buka Latihan Soal</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </section>
