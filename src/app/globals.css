@@ -97,286 +97,292 @@ body {
   border: 1px solid rgba(200, 192, 176, 0.65);
 }
 
-/* ───────────── OBSIDIAN NIGHT PAPER (DARK MODE GLOBAL THEME OVERRIDES) ───────────── */
+/* ───────────── MERAKI INK — Dark Studio Palette ───────────── */
+/* Elegant single-accent palette for all dark-canvas pages.   */
+/* Accent: Soft Indigo (#7C6EEA) — one color, not many.       */
+.meraki-ink {
+  /* Backgrounds — layered depth */
+  --mi-bg:       #0F0F16;
+  --mi-elevated: #171720;
+  --mi-card:     #1E1E2B;
+  --mi-inner:    #25253A;
 
-/* ───────────── CANVAS STUDIO — Spatial Glass Design Tokens ───────────── */
-/* Used by /dashboard and future spatial-layout pages */
-.canvas-studio {
-  --cs-bg: #0D0D14;
-  --cs-elevated: #13131C;
-  --cs-elevated-2: #1A1A27;
-  --cs-glass: #a0a0c0;
-  --cs-glass-fill: color-mix(in srgb, var(--cs-glass) 7%, transparent);
-  --cs-glass-fill-strong: color-mix(in srgb, var(--cs-glass) 14%, transparent);
-  --cs-glass-border: color-mix(in srgb, white 9%, transparent);
-  --cs-glass-highlight: color-mix(in srgb, white 14%, transparent);
+  /* Text */
+  --mi-text-primary:   #E8E8F0;
+  --mi-text-secondary: #8A8AA8;
+  --mi-text-muted:     #46465A;
 
-  --cs-text-primary: #F0ECE6;
-  --cs-text-secondary: #A8A4A0;
-  --cs-text-muted: #5E5A58;
+  /* Single accent — Soft Indigo */
+  --mi-accent:      #7C6EEA;
+  --mi-accent-dim:  rgba(124, 110, 234, 0.12);
+  --mi-accent-glow: rgba(124, 110, 234, 0.22);
 
-  --cs-accent-lime: #CEFA50;
-  --cs-accent-violet: #B69DFA;
-  --cs-accent-coral: #FF7A5C;
-  --cs-accent-sky: #6BCFFF;
+  /* Borders */
+  --mi-border:       rgba(255, 255, 255, 0.07);
+  --mi-border-hover: rgba(255, 255, 255, 0.14);
 
-  --cs-dock-bg: rgba(15, 15, 22, 0.84);
-  --cs-dock-border: rgba(255, 255, 255, 0.1);
+  /* Dock/sidebar */
+  --mi-dock-bg:    rgba(12, 12, 19, 0.88);
+  --mi-highlight:  rgba(255, 255, 255, 0.055);
 
-  background-color: var(--cs-bg);
-  color: var(--cs-text-primary);
+  background-color: var(--mi-bg);
+  color: var(--mi-text-primary);
   font-family: var(--font-sans);
 }
 
-/* Spatial Canvas — page wrapper with subtle ambient radial glows */
-.cs-spatial-canvas {
+/* Spatial Canvas — ambient single-tone glow (very subtle) */
+.mi-canvas {
   position: relative;
-  background-color: var(--cs-bg);
+  background-color: var(--mi-bg);
   background-image:
-    radial-gradient(ellipse at 18% 18%, rgba(182, 157, 250, 0.08) 0%, transparent 52%),
-    radial-gradient(ellipse at 82% 78%, rgba(206, 250, 80, 0.05) 0%, transparent 48%),
-    radial-gradient(ellipse at 50% 50%, rgba(255, 122, 92, 0.03) 0%, transparent 70%);
+    radial-gradient(ellipse at 20% 15%, rgba(124, 110, 234, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(124, 110, 234, 0.04) 0%, transparent 50%);
   overflow: hidden;
 }
 
-/* Floating Slab — primary glass panel (sidebar, content areas) */
-.cs-slab {
-  background-color: var(--cs-glass-fill);
-  backdrop-filter: blur(14px) saturate(130%);
-  -webkit-backdrop-filter: blur(14px) saturate(130%);
-  border: 1px solid var(--cs-glass-border);
-  border-radius: 24px;
+/* Floating Slab — sidebar / panel glass */
+.mi-slab {
+  background: rgba(23, 23, 32, 0.72);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--mi-border);
+  border-radius: 20px;
   box-shadow:
-    inset 0 1px 0 0 var(--cs-glass-highlight),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-  -webkit-transform: translateZ(0);
+    inset 0 1px 0 var(--mi-highlight),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   transform: translateZ(0);
 }
 
 /* Floating Dock — top bar capsule */
-.cs-dock {
-  background: var(--cs-dock-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--cs-dock-border);
-  border-radius: 20px;
-  box-shadow: inset 0 1px 0 var(--cs-glass-highlight);
-  -webkit-transform: translateZ(0);
+.mi-dock {
+  background: var(--mi-dock-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--mi-border);
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 var(--mi-highlight);
   transform: translateZ(0);
 }
 
-/* Apple Card — inner content card within a slab */
-.cs-card {
-  background: linear-gradient(155deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 18px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+/* Card — glass card with specular edge */
+.mi-card {
+  background: linear-gradient(150deg, rgba(255,255,255,0.042) 0%, rgba(255,255,255,0.012) 100%);
+  border: 1px solid var(--mi-border);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 var(--mi-highlight);
   position: relative;
   overflow: hidden;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
-
-.cs-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(ellipse at 20% 12%, rgba(255,255,255,0.04) 0%, transparent 65%);
-  pointer-events: none;
+.mi-card:hover {
+  border-color: var(--mi-border-hover);
+  background: linear-gradient(150deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.025) 100%);
 }
 
-.cs-card:hover {
-  border-color: rgba(255, 255, 255, 0.13);
-  background: linear-gradient(155deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
+/* Inner — nested zero-blur element */
+.mi-inner {
+  background: transparent;
+  border: 1px solid var(--mi-border);
+  border-radius: 12px;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+.mi-inner:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--mi-border-hover);
 }
 
-/* Inner pseudo-glass — zero-blur overhead nested card */
-.cs-inner {
-  background: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  transition: background 0.18s ease, border-color 0.18s ease;
+/* Nav active pill */
+.mi-nav-active {
+  background: var(--mi-accent-dim);
+  border: 1px solid rgba(124, 110, 234, 0.22);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25), inset 0 1px 0 var(--mi-highlight);
+  color: var(--mi-text-primary);
+  font-weight: 600;
 }
 
-.cs-inner:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Nav item active pill */
-.cs-nav-active {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  color: #F0ECE6;
-  font-weight: 700;
-}
-
-/* Canvas Studio Scrollbar */
-.cs-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
-.cs-scroll::-webkit-scrollbar-track { background: transparent; margin-block: 20px; }
-.cs-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+/* Accent chip/badge */
+.mi-chip {
+  background: var(--mi-accent-dim);
+  border: 1px solid rgba(124, 110, 234, 0.2);
+  color: #A89DF0;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-.cs-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
-
-/* Fade slide up animation */
-@keyframes csFadeSlideUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.cs-animate-in {
-  animation: csFadeSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Glow pill accent dot */
-.cs-glow-lime { box-shadow: 0 0 10px rgba(206, 250, 80, 0.6); }
-.cs-glow-violet { box-shadow: 0 0 10px rgba(182, 157, 250, 0.6); }
-.cs-glow-coral { box-shadow: 0 0 10px rgba(255, 122, 92, 0.6); }
+/* Meraki Ink Scrollbar */
+.mi-scroll::-webkit-scrollbar { width: 4px; height: 4px; }
+.mi-scroll::-webkit-scrollbar-track { background: transparent; margin-block: 16px; }
+.mi-scroll::-webkit-scrollbar-thumb {
+  background: rgba(124, 110, 234, 0.25);
+  border-radius: 9999px;
+}
+.mi-scroll::-webkit-scrollbar-thumb:hover { background: rgba(124, 110, 234, 0.5); }
 
+/* Fade-up entrance animation */
+@keyframes miFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mi-fade-in {
+  animation: miFadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Progress bar */
+.mi-progress {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.mi-progress-fill {
+  background: var(--mi-accent);
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.6s ease;
+}
+
+
+
+
+/* ───────────── GLOBAL DARK MODE OVERRIDES (Meraki Ink Palette) ───────────── */
 
 html.dark, [data-theme="dark"] {
   color-scheme: dark;
 }
 
 html.dark body {
-  background-color: #141210 !important;
-  color: #EFEAE1 !important;
+  background-color: #0F0F16 !important;
+  color: #E8E8F0 !important;
 }
 
 /* Base Canvas / Page background */
 html.dark [class*="bg-[#EFE9DF]"] {
-  background-color: #141210 !important;
+  background-color: #0F0F16 !important;
 }
 
-/* Primary Surface / Panels / Sidebar */
+/* Primary Surface / Panels */
 html.dark [class*="bg-[#E6E0D4]"],
 html.dark [class*="bg-[#E8E2D6]"] {
-  background-color: #1E1B18 !important;
+  background-color: #171720 !important;
 }
 
-/* Cards, Inputs, & Modal Backgrounds */
+/* Cards */
 html.dark [class*="bg-[#DDD7CA]"] {
-  background-color: #27231E !important;
+  background-color: #1E1E2B !important;
 }
 
-/* Subtle Cards & Unselected Pill Items */
+/* Subtle Cards */
 html.dark [class*="bg-[#E2DCD0]"] {
-  background-color: #211D19 !important;
+  background-color: #1A1A27 !important;
 }
 
-/* Active Selected Navigation Pill / Primary Black Buttons */
+/* Active buttons / primary elements */
 html.dark [class*="bg-[#1E1B17]"],
 html.dark [class*="bg-[#1A1714]"] {
-  background-color: #342D25 !important;
-  color: #FFFFFF !important;
+  background-color: #25253A !important;
+  color: #E8E8F0 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* White elements in Dark Mode */
+/* White elements */
 html.dark [class*="bg-white"] {
-  background-color: #27231E !important;
-  color: #EFEAE1 !important;
+  background-color: #1E1E2B !important;
+  color: #E8E8F0 !important;
 }
 
 /* Borders */
 html.dark [class*="border-[#C8C0B0]"],
 html.dark [class*="border-white/"],
 html.dark [class*="border-black/"] {
-  border-color: #38322B !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Primary Ink & Text */
+/* Primary Text */
 html.dark [class*="text-[#1E1B17]"],
 html.dark [class*="text-[#1A1714]"],
 html.dark [class*="text-[#38332A]"],
 html.dark [class*="text-[#38332C]"],
 html.dark .text-black,
 html.dark .text-gray-900 {
-  color: #EFEAE1 !important;
+  color: #E8E8F0 !important;
 }
 
-/* Secondary Ink */
+/* Secondary Text */
 html.dark [class*="text-[#524C42]"] {
-  color: #C8C0B2 !important;
+  color: #8A8AA8 !important;
 }
 
-/* Muted Ink */
+/* Muted Text */
 html.dark [class*="text-[#7A7265]"],
 html.dark [class*="text-[#82796A]"] {
-  color: #9C9385 !important;
+  color: #6A6A84 !important;
 }
 
-/* Terracotta Glowing Accents */
+/* Accent (Terracotta/Sage → Indigo) */
 html.dark [class*="text-[#A84A28]"],
 html.dark [class*="text-[#C4502A]"],
 html.dark [class*="text-[#B5663F]"] {
-  color: #E06D44 !important;
+  color: #9B90F2 !important;
 }
 
-/* Sage Green Accents */
 html.dark [class*="text-[#535841]"],
 html.dark [class*="text-[#5F6244]"] {
-  color: #8C996E !important;
+  color: #7C6EEA !important;
 }
 
-/* Left Border Accents on Callouts */
+/* Left Border Accents */
 html.dark [class*="border-l-[#A84A28]"],
 html.dark [class*="border-l-[#C4502A]"] {
-  border-left-color: #E06D44 !important;
+  border-left-color: #7C6EEA !important;
 }
 
 html.dark [class*="border-l-[#535841]"],
 html.dark [class*="border-l-[#5F6244]"] {
-  border-left-color: #8C996E !important;
+  border-left-color: #7C6EEA !important;
 }
 
-/* Tinted Callout Backgrounds (Mental Model, Badges, Pills) */
+/* Tinted Callout Backgrounds */
 html.dark [class*="bg-[#A84A28]"] {
-  background-color: rgba(224, 109, 68, 0.18) !important;
+  background-color: rgba(124, 110, 234, 0.14) !important;
 }
 
 html.dark [class*="bg-[#535841]"] {
-  background-color: rgba(140, 153, 110, 0.18) !important;
+  background-color: rgba(124, 110, 234, 0.10) !important;
 }
 
 /* Hover States */
 html.dark [class*="hover:bg-[#C8C0B0]"]:hover {
-  background-color: #38322B !important;
+  background-color: #25253A !important;
 }
 
 html.dark [class*="hover:bg-[#DDD7CA]"]:hover {
-  background-color: #2D2721 !important;
+  background-color: #1E1E2B !important;
 }
 
-/* Glassmorphism & Floating Nav in Dark Mode */
+/* Glass elements */
 html.dark .glass-header {
-  background-color: rgba(20, 18, 16, 0.94) !important;
-  border-bottom: 1px solid #38322B !important;
+  background-color: rgba(15, 15, 22, 0.94) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
 }
 
 html.dark .glass-card {
-  background-color: rgba(30, 27, 24, 0.9) !important;
-  border: 1px solid #38322B !important;
+  background-color: rgba(23, 23, 32, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
 }
 
 html.dark nav[class*="backdrop-blur-2xl"] {
-  background-color: rgba(30, 27, 24, 0.92) !important;
-  border: 1px solid #38322B !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+  background-color: rgba(15, 15, 22, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Custom Scrollbars in Dark Mode */
+/* Scrollbar in dark mode */
 html.dark ::-webkit-scrollbar-thumb {
-  background: rgba(224, 109, 68, 0.35);
+  background: rgba(124, 110, 234, 0.25);
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(224, 109, 68, 0.6);
+  background: rgba(124, 110, 234, 0.45);
 }
+
 
 /* Drop Cap Typography */
 .drop-cap::first-letter {
@@ -386,7 +392,7 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   line-height: 0.85;
   margin-right: 0.5rem;
   margin-top: 0.15rem;
-  color: #A84A28;
+  color: #7C6EEA;
   font-weight: 600;
 }
 
@@ -396,73 +402,37 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   outline: none;
 }
 .tactile-btn:focus-visible {
-  outline: 2px solid var(--accent-terracotta);
+  outline: 2px solid #7C6EEA;
   outline-offset: 2px;
 }
 .tactile-btn:active {
   transform: scale(0.97);
 }
 
-/* iOS Safe Area & Native App Support for iPhone (Notch & Dynamic Island) */
+/* ─── iOS Safe Area ─── */
 :root {
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
   --sar: env(safe-area-inset-right, 0px);
 }
+.pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pl-safe { padding-left: env(safe-area-inset-left, 0px); }
+.pr-safe { padding-right: env(safe-area-inset-right, 0px); }
+.top-safe { top: env(safe-area-inset-top, 0px); }
+.bottom-safe { bottom: env(safe-area-inset-bottom, 0px); }
+.min-h-screen-safe { min-height: 100dvh; min-height: -webkit-fill-available; }
+.h-safe-screen { height: 100dvh; height: -webkit-fill-available; }
 
-.pt-safe {
-  padding-top: env(safe-area-inset-top, 0px);
-}
-.pb-safe {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-.pl-safe {
-  padding-left: env(safe-area-inset-left, 0px);
-}
-.pr-safe {
-  padding-right: env(safe-area-inset-right, 0px);
-}
-.top-safe {
-  top: env(safe-area-inset-top, 0px);
-}
-.bottom-safe {
-  bottom: env(safe-area-inset-bottom, 0px);
-}
-.min-h-screen-safe {
-  min-height: 100dvh;
-  min-height: -webkit-fill-available;
-}
-.h-safe-screen {
-  height: 100dvh;
-  height: -webkit-fill-available;
-}
+/* ─── Scrollbar Utilities ─── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.smooth-scroll { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+.touch-target { min-height: 44px; min-width: 44px; }
 
-/* No Scrollbar Utility for Horizontal Pill Carousels */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* iOS Momentum Smooth Scrolling */
-.smooth-scroll {
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-/* Mobile Touch Target Standards */
-.touch-target {
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* Prevent unwanted bounce/zoom on iOS Safari/Webview */
+/* ─── iOS Touch ─── */
 body {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-
-

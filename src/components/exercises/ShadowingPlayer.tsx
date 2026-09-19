@@ -85,18 +85,18 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
 
       {/* Target Shadowing Text Box */}
       <div className="p-6 sm:p-8 rounded-3xl bg-[#DDD7CA] dark:bg-[#201D19] border border-[#C8C0B0] dark:border-[#3A342D] shadow-sm space-y-4">
-        <p className="text-xl sm:text-2xl font-serif text-[#1E1B17] dark:text-[#EFEAE1] leading-relaxed italic">
+        <p className="text-xl sm:text-2xl font-serif text-[#1E1B17] dark:text-[#E8E8F0] leading-relaxed italic">
           "{exercise.textToShadow}"
         </p>
 
         {exercise.ipaPhonetic && (
-          <div className="font-mono text-xs text-[#A84A28] dark:text-[#D45B34] tracking-wider bg-[#A84A28]/10 dark:bg-[#D45B34]/15 px-3 py-1.5 rounded-xl inline-block font-bold">
+          <div className="font-mono text-xs text-[#A84A28] dark:text-[#9B90F2] tracking-wider bg-[#A84A28]/10 dark:bg-[#7C6EEA]/15 px-3 py-1.5 rounded-xl inline-block font-bold">
             IPA: {exercise.ipaPhonetic}
           </div>
         )}
 
         {exercise.translation && (
-          <p className="text-xs text-[#7A7265] dark:text-[#948B7C] italic border-t border-[#C8C0B0] dark:border-[#3A342D] pt-3">
+          <p className="text-xs text-[#7A7265] dark:text-[#8A8AA8] italic border-t border-[#C8C0B0] dark:border-[#3A342D] pt-3">
             Arti: {exercise.translation}
           </p>
         )}
@@ -111,19 +111,19 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
               onClick={handlePlayModel}
               className={clsx(
                 'w-12 h-12 rounded-full flex items-center justify-center text-white transition-all shadow-xs tactile-btn',
-                isPlayingModel ? 'bg-[#A84A28] dark:bg-[#D45B34]' : 'bg-[#1E1B17] dark:bg-[#D45B34] hover:bg-[#A84A28]'
+                isPlayingModel ? 'bg-[#A84A28] dark:bg-[#7C6EEA]' : 'bg-[#1E1B17] dark:bg-[#7C6EEA] hover:bg-[#A84A28]'
               )}
             >
               {isPlayingModel ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
             </button>
             <div>
-              <h4 className="text-sm font-serif font-bold text-[#1E1B17] dark:text-[#EFEAE1]">Native Model Audio</h4>
-              <p className="text-xs text-[#7A7265] dark:text-[#948B7C]">Dengarkan artikulasi dan ritme penutur asli</p>
+              <h4 className="text-sm font-serif font-bold text-[#1E1B17] dark:text-[#E8E8F0]">Native Model Audio</h4>
+              <p className="text-xs text-[#7A7265] dark:text-[#8A8AA8]">Dengarkan artikulasi dan ritme penutur asli</p>
             </div>
           </div>
 
           {/* Speed Selector */}
-          <div className="flex items-center gap-1.5 bg-[#DDD7CA] dark:bg-[#28241F] p-1.5 rounded-2xl border border-[#C8C0B0] dark:border-[#3A342D]">
+          <div className="flex items-center gap-1.5 bg-[#DDD7CA] dark:bg-[#1E1E2B] p-1.5 rounded-2xl border border-[#C8C0B0] dark:border-[#3A342D]">
             {[0.75, 0.9, 1.0].map((rate) => (
               <button
                 key={rate}
@@ -131,8 +131,8 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
                 className={clsx(
                   'px-2.5 py-1 rounded-xl text-xs font-mono transition-colors tactile-btn',
                   playbackSpeed === rate
-                    ? 'bg-[#1E1B17] dark:bg-[#D45B34] text-[#EFE9DF] dark:text-white font-bold shadow-xs'
-                    : 'text-[#7A7265] dark:text-[#948B7C] hover:text-[#1E1B17] dark:hover:text-[#EFEAE1]'
+                    ? 'bg-[#1E1B17] dark:bg-[#7C6EEA] text-[#EFE9DF] dark:text-white font-bold shadow-xs'
+                    : 'text-[#7A7265] dark:text-[#8A8AA8] hover:text-[#1E1B17] dark:hover:text-[#EFEAE1]'
                 )}
               >
                 {rate}x
@@ -145,8 +145,8 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
       {/* User Voice Recording Sandbox */}
       <div className="p-6 rounded-3xl bg-[#E6E0D4] dark:bg-[#1E1B18] border border-[#C8C0B0] dark:border-[#3A342D] space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 font-serif font-bold text-sm text-[#1E1B17] dark:text-[#EFEAE1]">
-            <Mic className="w-4 h-4 text-[#A84A28] dark:text-[#D45B34]" />
+          <div className="flex items-center gap-2 font-serif font-bold text-sm text-[#1E1B17] dark:text-[#E8E8F0]">
+            <Mic className="w-4 h-4 text-[#A84A28] dark:text-[#9B90F2]" />
             <span>Rekam & Bandingkan Suaramu</span>
           </div>
           {isRecording && (
@@ -165,7 +165,7 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
               'px-5 py-2.5 rounded-2xl font-mono text-xs font-medium flex items-center gap-2.5 transition-all shadow-xs tactile-btn',
               isRecording
                 ? 'bg-rose-600 hover:bg-rose-700 text-white animate-pulse'
-                : 'bg-[#1E1B17] dark:bg-[#D45B34] hover:bg-[#A84A28] text-[#EFE9DF] dark:text-white'
+                : 'bg-[#1E1B17] dark:bg-[#7C6EEA] hover:bg-[#A84A28] text-[#EFE9DF] dark:text-white'
             )}
           >
             {isRecording ? (
@@ -187,7 +187,7 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
               <button
                 type="button"
                 onClick={() => setUserAudioUrl(null)}
-                className="p-2 rounded-xl text-[#7A7265] dark:text-[#948B7C] hover:text-[#1E1B17] dark:hover:text-[#EFEAE1] transition-colors"
+                className="p-2 rounded-xl text-[#7A7265] dark:text-[#8A8AA8] hover:text-[#1E1B17] dark:hover:text-[#EFEAE1] transition-colors"
                 title="Hapus Rekaman & Coba Lagi"
               >
                 <RotateCcw className="w-4 h-4" />
@@ -200,11 +200,11 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
       {/* Intonation Guide & Tips */}
       {exercise.keyIntonationPoints && exercise.keyIntonationPoints.length > 0 && (
         <div className="p-5 rounded-3xl bg-[#DDD7CA] dark:bg-[#201D19] border border-[#C8C0B0] dark:border-[#3A342D] space-y-3">
-          <div className="flex items-center gap-2 font-mono text-xs text-[#535841] dark:text-[#7A855F] font-bold uppercase">
+          <div className="flex items-center gap-2 font-mono text-xs text-[#535841] dark:text-[#7C6EEA] font-bold uppercase">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Fokus Ritme & Intonasi:</span>
           </div>
-          <ul className="space-y-1.5 text-xs text-[#1E1B17] dark:text-[#EFEAE1]">
+          <ul className="space-y-1.5 text-xs text-[#1E1B17] dark:text-[#E8E8F0]">
             {exercise.keyIntonationPoints.map((point, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#535841] dark:bg-[#7A855F] mt-1.5 shrink-0" />
@@ -213,7 +213,7 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
             ))}
           </ul>
           {exercise.tips && (
-            <p className="text-xs text-[#7A7265] dark:text-[#948B7C] pt-2 border-t border-[#C8C0B0] dark:border-[#3A342D]">
+            <p className="text-xs text-[#7A7265] dark:text-[#8A8AA8] pt-2 border-t border-[#C8C0B0] dark:border-[#3A342D]">
               <strong>Tip Tambahan: </strong> {exercise.tips}
             </p>
           )}
@@ -221,8 +221,8 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
       )}
 
       {completed && (
-        <div className="p-4 rounded-2xl bg-[#535841]/15 dark:bg-[#7A855F]/20 border border-[#535841]/30 dark:border-[#7A855F]/40 flex items-center gap-2.5 text-[#1E1B17] dark:text-[#EFEAE1] text-xs font-mono font-medium">
-          <CheckCircle2 className="w-4 h-4 text-[#535841] dark:text-[#7A855F] shrink-0" />
+        <div className="p-4 rounded-2xl bg-[#535841]/15 dark:bg-[#7A855F]/20 border border-[#535841]/30 dark:border-[#7A855F]/40 flex items-center gap-2.5 text-[#1E1B17] dark:text-[#E8E8F0] text-xs font-mono font-medium">
+          <CheckCircle2 className="w-4 h-4 text-[#535841] dark:text-[#7C6EEA] shrink-0" />
           <span>Latihan Shadowing Selesai! Kamu telah berhasil membandingkan intonasi suaramu.</span>
         </div>
       )}
