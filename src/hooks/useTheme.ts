@@ -34,12 +34,12 @@ export function useTheme() {
       root.classList.add('dark');
       root.setAttribute('data-theme', 'dark');
       const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', '#151311');
+      if (meta) meta.setAttribute('content', '#000000');
     } else {
       root.classList.remove('dark');
       root.setAttribute('data-theme', 'light');
       const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', '#EFE9DF');
+      if (meta) meta.setAttribute('content', '#F4F7F9');
     }
   };
 

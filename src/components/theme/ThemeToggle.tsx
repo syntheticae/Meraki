@@ -14,17 +14,17 @@ export function ThemeToggle({ className }: { className?: string }) {
       className={clsx(
         'p-2 rounded-xl border transition-all duration-200 tactile-btn flex items-center justify-center',
         isDark
-          ? 'bg-[#27231E] hover:bg-[#342F29] text-[#E06D44] border-[#3A342D]'
-          : 'bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] border-[#C8C0B0]',
+          ? 'bg-[#141414] hover:bg-[#2B2B2B] text-[#BFD8E3] border-white/10 hover:border-[#00638E]/50'
+          : 'bg-[#EDF3F7] hover:bg-[#BFD8E3]/40 text-[#00638E] border-[#BFD8E3]',
         className
       )}
-      title={isDark ? 'Beralih ke Mode Kertas Terang' : 'Beralih ke Mode Obsidian Night Paper'}
-      aria-label="Toggle Obsidian Dark Mode"
+      title={isDark ? 'Beralih ke Mode Terang' : 'Beralih ke Mode Gelap (Onyx)'}
+      aria-label="Toggle Theme Mode"
     >
       {isDark ? (
-        <Sun className="w-4 h-4 text-[#E06D44] transition-transform rotate-0 hover:rotate-45" />
+        <Sun className="w-4 h-4 text-[#BFD8E3] transition-transform rotate-0 hover:rotate-45" />
       ) : (
-        <Moon className="w-4 h-4 text-[#524C42] transition-transform rotate-0 hover:-rotate-12" />
+        <Moon className="w-4 h-4 text-[#00638E] transition-transform rotate-0 hover:-rotate-12" />
       )}
     </button>
   );

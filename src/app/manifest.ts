@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Sistem Pembelajaran Mandiri Tata Bahasa & Retorika Bahasa Inggris Presisi Berbasis Kaidah Ilmiah',
     start_url: '/',
     display: 'standalone',
-    background_color: '#EFE9DF',
-    theme_color: '#EFE9DF',
+    background_color: '#000000',
+    theme_color: '#000000',
     orientation: 'portrait',
     icons: [
       {

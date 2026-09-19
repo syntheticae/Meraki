@@ -1,22 +1,18 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
+import { Manrope, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const manrope = Manrope({
+  variable: '--font-sans',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+  variable: '--font-mono',
   subsets: ['latin'],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: '--font-serif',
-  weight: ['400'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const viewport: Viewport = {
@@ -25,7 +21,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover',
-  themeColor: '#EFE9DF',
+  themeColor: '#000000',
 };
 
 export const metadata: Metadata = {
@@ -60,7 +56,7 @@ export default function RootLayout({
     <html
       lang="id"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full w-full bg-[#EFE9DF] antialiased overscroll-none`}
+      className={`${manrope.variable} ${geistMono.variable} h-full w-full antialiased overscroll-none`}
     >
       <head>
         <script
@@ -81,10 +77,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="h-full w-full font-sans bg-[#EFE9DF] text-[#1E1B17] selection:bg-[#A84A28] selection:text-white overscroll-none">
+      <body className="h-full w-full font-sans bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] selection:bg-[#00638E] selection:text-white overscroll-none">
         {children}
       </body>
     </html>
   );
 }
-

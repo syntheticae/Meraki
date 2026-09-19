@@ -36,17 +36,17 @@ const sidebarSections = [
   {
     title: 'Belajar',
     items: [
-      { href: '/', label: 'Workspace', icon: Home, accent: '#7C6EEA' },
-      { href: '/learn', label: 'Kurikulum Tracks', icon: BookOpen, accent: '#9B90F2' },
-      { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, accent: '#9B90F2' },
+      { href: '/', label: 'Workspace', icon: Home, accent: '#00638E' },
+      { href: '/learn', label: 'Kurikulum Tracks', icon: BookOpen, accent: '#8CB9CC' },
+      { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, accent: '#8CB9CC' },
     ],
   },
   {
     title: 'Ujian & Latihan',
     items: [
-      { href: '/exam', label: 'IELTS & TOEFL', icon: Award, accent: '#7C6EEA' },
-      { href: '/vocabulary', label: 'AWL Lexicon', icon: Library, accent: '#7C6EEA' },
-      { href: '/writing-pad', label: 'Writing Studio', icon: PenTool, accent: '#9B90F2' },
+      { href: '/exam', label: 'IELTS & TOEFL', icon: Award, accent: '#00638E' },
+      { href: '/vocabulary', label: 'AWL Lexicon', icon: Library, accent: '#00638E' },
+      { href: '/writing-pad', label: 'Writing Studio', icon: PenTool, accent: '#8CB9CC' },
     ],
   },
 ];
@@ -69,15 +69,15 @@ function CSSidebar({
           <div className="flex items-center gap-2.5">
             <div
               className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
-              style={{ background: 'linear-gradient(135deg, #7C6EEA 0%, #9B90F2 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #000000 0%, #004A6B 40%, #00638E 75%, #8CB9CC 100%)' }}
             >
-              <span className="text-[13px] font-black" style={{ color: '#0F0F16' }}>M</span>
+              <span className="text-[13px] font-black" style={{ color: '#000000' }}>M</span>
             </div>
             <div>
-              <h1 className="text-[13px] font-bold tracking-tight leading-tight" style={{ color: '#E8E8F0' }}>
+              <h1 className="text-[13px] font-bold tracking-tight leading-tight" style={{ color: '#FFFFFF' }}>
                 Meraki
               </h1>
-              <p className="text-[9px] font-medium tracking-wider uppercase" style={{ color: '#46465A' }}>
+              <p className="text-[9px] font-medium tracking-wider uppercase" style={{ color: '#7A8992' }}>
                 English Studio
               </p>
             </div>
@@ -96,7 +96,7 @@ function CSSidebar({
         <nav className="space-y-4">
           {sidebarSections.map((section) => (
             <div key={section.title} className="space-y-0.5">
-              <div className="px-2.5 pb-1 text-[9px] font-bold uppercase tracking-wider" style={{ color: '#46465A' }}>
+              <div className="px-2.5 pb-1 text-[9px] font-bold uppercase tracking-wider" style={{ color: '#7A8992' }}>
                 {section.title}
               </div>
               {section.items.map((item) => {
@@ -109,9 +109,9 @@ function CSSidebar({
                     onClick={onClose}
                     className={clsx(
                       'w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl text-left transition-all duration-150 text-[12px]',
-                      isActive ? 'mi-nav-active' : 'hover:bg-white/[0.05]'
+                      isActive ? 'ao-nav-active' : 'hover:bg-white/[0.05]'
                     )}
-                    style={{ color: isActive ? '#E8E8F0' : '#8A8AA8' }}
+                    style={{ color: isActive ? '#FFFFFF' : '#BFD8E3' }}
                   >
                     <Icon
                       className="w-4 h-4 stroke-[1.75] shrink-0"
@@ -134,18 +134,18 @@ function CSSidebar({
 
       {/* Bottom status */}
       <div className="pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-        <div className="mi-inner p-2.5 flex items-center gap-2">
+        <div className="ao-inner p-2.5 flex items-center gap-2">
           <div
             className="w-6 h-6 rounded-lg flex items-center justify-center shrink-0"
-            style={{ background: 'rgba(124, 110, 234, 0.15)' }}
+            style={{ background: 'rgba(0, 99, 142, 0.20)' }}
           >
-            <Zap className="w-3.5 h-3.5" style={{ color: '#7C6EEA' }} />
+            <Zap className="w-3.5 h-3.5" style={{ color: '#00638E' }} />
           </div>
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold truncate" style={{ color: '#E8E8F0' }}>
+            <p className="text-[11px] font-semibold truncate" style={{ color: '#FFFFFF' }}>
               Mode Belajar Aktif
             </p>
-            <p className="text-[9px]" style={{ color: '#46465A' }}>Data tersimpan lokal</p>
+            <p className="text-[9px]" style={{ color: '#7A8992' }}>Data tersimpan lokal</p>
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@ function CSSidebar({
   return (
     <>
       {/* Desktop Persistent Sidebar */}
-      <aside className="mi-slab meraki-ink hidden md:flex w-56 xl:w-60 h-full flex-col justify-between p-4 shrink-0 z-20 select-none">
+      <aside className="ao-slab azure-onyx hidden md:flex w-56 xl:w-60 h-full flex-col justify-between p-4 shrink-0 z-20 select-none">
         {sidebarInner}
       </aside>
 
@@ -166,7 +166,7 @@ function CSSidebar({
           onClick={onClose}
         >
           <aside
-            className="mi-slab meraki-ink w-64 h-full flex flex-col justify-between p-4 select-none relative shadow-2xl"
+            className="ao-slab azure-onyx w-64 h-full flex flex-col justify-between p-4 select-none relative shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {sidebarInner}
@@ -188,15 +188,15 @@ interface KpiCardProps {
 
 function KpiCard({ label, value, sub, accent, children }: KpiCardProps) {
   return (
-    <div className="mi-card p-5 space-y-2">
-      <span className="text-[10px] font-bold uppercase tracking-wider block" style={{ color: '#46465A' }}>
+    <div className="ao-card p-5 space-y-2">
+      <span className="text-[10px] font-bold uppercase tracking-wider block" style={{ color: '#7A8992' }}>
         {label}
       </span>
       <div className="flex items-baseline gap-2">
         <span className="text-3xl sm:text-4xl font-bold tracking-tight" style={{ color: accent }}>
           {value}
         </span>
-        <span className="text-xs font-medium" style={{ color: '#8A8AA8' }}>{sub}</span>
+        <span className="text-xs font-medium" style={{ color: '#BFD8E3' }}>{sub}</span>
       </div>
       {children}
     </div>
@@ -226,13 +226,13 @@ export default function UserDashboardPage() {
 
   if (!progress) {
     return (
-      <div className="meraki-ink mi-canvas min-h-screen flex items-center justify-center">
-        <div className="mi-card px-8 py-6 text-center space-y-2">
+      <div className="azure-onyx ao-canvas min-h-screen flex items-center justify-center">
+        <div className="ao-card px-8 py-6 text-center space-y-2">
           <div
             className="w-8 h-8 rounded-full border-2 animate-spin mx-auto"
-            style={{ borderColor: '#9B90F2', borderTopColor: 'transparent' }}
+            style={{ borderColor: '#8CB9CC', borderTopColor: 'transparent' }}
           />
-          <p className="text-xs font-mono" style={{ color: '#46465A' }}>
+          <p className="text-xs font-mono" style={{ color: '#7A8992' }}>
             Memuat data progres...
           </p>
         </div>
@@ -251,7 +251,7 @@ export default function UserDashboardPage() {
   const corePercentage = Math.round((coreCompletedCount / coreTotal) * 100);
 
   return (
-    <div className="meraki-ink mi-canvas flex flex-col h-screen w-screen overflow-hidden select-none">
+    <div className="azure-onyx ao-canvas flex flex-col h-screen w-screen overflow-hidden select-none">
       {/* 3-panel spatial layout */}
       <div className="flex-1 flex gap-3 p-3 md:p-4 lg:p-5 min-h-0 overflow-hidden max-w-[1800px] w-full mx-auto">
 
@@ -266,7 +266,7 @@ export default function UserDashboardPage() {
         <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden gap-3">
 
           {/* Top Dock Bar */}
-          <div className="mi-dock shrink-0 flex items-center justify-between px-3.5 sm:px-5 py-3 gap-2">
+          <div className="ao-dock shrink-0 flex items-center justify-between px-3.5 sm:px-5 py-3 gap-2">
             <div className="flex items-center gap-2.5 min-w-0">
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -276,10 +276,10 @@ export default function UserDashboardPage() {
                 <Menu className="w-4 h-4" />
               </button>
               <div className="min-w-0">
-                <p className="text-[10px] font-mono font-bold uppercase tracking-widest truncate" style={{ color: '#46465A' }}>
+                <p className="text-[10px] font-mono font-bold uppercase tracking-widest truncate" style={{ color: '#7A8992' }}>
                   Scholar Analytics
                 </p>
-                <h2 className="text-sm sm:text-base font-bold leading-tight truncate" style={{ color: '#E8E8F0' }}>
+                <h2 className="text-sm sm:text-base font-bold leading-tight truncate" style={{ color: '#FFFFFF' }}>
                   Dashboard Progres
                 </h2>
               </div>
@@ -288,7 +288,7 @@ export default function UserDashboardPage() {
               {/* Streak badge */}
               <div
                 className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold"
-                style={{ background: 'rgba(124, 110, 234, 0.12)', border: '1px solid rgba(124, 110, 234, 0.22)', color: '#7C6EEA' }}
+                style={{ background: 'rgba(0, 99, 142, 0.18)', border: '1px solid rgba(0, 99, 142, 0.35)', color: '#00638E' }}
               >
                 <Flame className="w-3.5 h-3.5" />
                 <span>{progress.streak.currentStreak} Hari</span>
@@ -296,7 +296,7 @@ export default function UserDashboardPage() {
               {/* Level badge */}
               <div
                 className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold"
-                style={{ background: 'rgba(124, 110, 234, 0.12)', border: '1px solid rgba(124, 110, 234, 0.22)', color: '#9B90F2' }}
+                style={{ background: 'rgba(0, 99, 142, 0.18)', border: '1px solid rgba(0, 99, 142, 0.35)', color: '#8CB9CC' }}
               >
                 <Star className="w-3.5 h-3.5" />
                 <span>{progress.level}</span>
@@ -305,7 +305,7 @@ export default function UserDashboardPage() {
               <Link
                 href="/"
                 className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold transition-all hover:opacity-90 active:scale-95 shrink-0"
-                style={{ background: '#7C6EEA', color: '#0F0F16' }}
+                style={{ background: '#00638E', color: '#000000' }}
               >
                 <span className="hidden xs:inline">Workspace</span>
                 <span className="xs:hidden">Belajar</span>
@@ -315,32 +315,32 @@ export default function UserDashboardPage() {
           </div>
 
           {/* Scrollable content */}
-          <div className="mi-slab flex-1 min-h-0 overflow-y-auto mi-scroll">
-            <div className="p-5 md:p-6 space-y-4 mi-fade-in">
+          <div className="ao-slab flex-1 min-h-0 overflow-y-auto ao-scroll">
+            <div className="p-5 md:p-6 space-y-4 ao-fade-in">
 
               {/* KPI Grid */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <KpiCard label="Kurikulum Inti" value={coreCompletedCount} sub={`/ ${coreTotal} Modul`} accent="#CEFA50">
+                <KpiCard label="Kurikulum Inti" value={coreCompletedCount} sub={`/ ${coreTotal} Modul`} accent="#00638E">
                   <div>
                     <div className="w-full rounded-full h-1.5 overflow-hidden mb-1" style={{ background: 'rgba(255,255,255,0.07)' }}>
-                      <div style={{ width: `${corePercentage}%`, background: '#7C6EEA' }} className="h-full rounded-full transition-all duration-700" />
+                      <div style={{ width: `${corePercentage}%`, background: '#00638E' }} className="h-full rounded-full transition-all duration-700" />
                     </div>
-                    <span className="text-[10px] font-mono" style={{ color: '#46465A' }}>{corePercentage}% Fondasi Tuntas</span>
+                    <span className="text-[10px] font-mono" style={{ color: '#7A8992' }}>{corePercentage}% Fondasi Tuntas</span>
                   </div>
                 </KpiCard>
 
-                <KpiCard label="Streak Belajar" value={progress.streak.currentStreak} sub="Hari Aktif" accent="#FF7A5C">
-                  <p className="text-[11px] font-mono" style={{ color: '#46465A' }}>Rekor: {progress.streak.longestStreak} hari</p>
+                <KpiCard label="Streak Belajar" value={progress.streak.currentStreak} sub="Hari Aktif" accent="#4DA3CC">
+                  <p className="text-[11px] font-mono" style={{ color: '#7A8992' }}>Rekor: {progress.streak.longestStreak} hari</p>
                 </KpiCard>
 
-                <KpiCard label="Bank Khilaf (SRS)" value={mistakeCount} sub="Item Tersimpan" accent="#B69DFA">
-                  <Link href="/" className="text-[11px] font-mono hover:underline block" style={{ color: '#9B90F2' }}>
+                <KpiCard label="Bank Khilaf (SRS)" value={mistakeCount} sub="Item Tersimpan" accent="#8CB9CC">
+                  <Link href="/" className="text-[11px] font-mono hover:underline block" style={{ color: '#8CB9CC' }}>
                     Uji Ulang di Vault
                   </Link>
                 </KpiCard>
 
-                <KpiCard label="Writing Studio" value={progress.writingSubmissions.length} sub="Esai Tersimpan" accent="#6BCFFF">
-                  <Link href="/writing-pad" className="text-[11px] font-mono hover:underline block" style={{ color: '#9B90F2' }}>
+                <KpiCard label="Writing Studio" value={progress.writingSubmissions.length} sub="Esai Tersimpan" accent="#BFD8E3">
+                  <Link href="/writing-pad" className="text-[11px] font-mono hover:underline block" style={{ color: '#8CB9CC' }}>
                     Tulis Esai Baru
                   </Link>
                 </KpiCard>
@@ -350,17 +350,17 @@ export default function UserDashboardPage() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
 
                 {/* Stage Progress Matrix */}
-                <div className="lg:col-span-2 mi-card p-5 space-y-4">
+                <div className="lg:col-span-2 ao-card p-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] font-mono font-bold uppercase tracking-wider" style={{ color: '#46465A' }}>
+                      <p className="text-[10px] font-mono font-bold uppercase tracking-wider" style={{ color: '#7A8992' }}>
                         Matriks 10 Tahap
                       </p>
-                      <h3 className="text-base font-bold" style={{ color: '#E8E8F0' }}>
+                      <h3 className="text-base font-bold" style={{ color: '#FFFFFF' }}>
                         Progres Kurikulum (40 Modul)
                       </h3>
                     </div>
-                    <Link href="/" className="flex items-center gap-1 text-xs font-mono transition-opacity hover:opacity-80" style={{ color: '#7C6EEA' }}>
+                    <Link href="/" className="flex items-center gap-1 text-xs font-mono transition-opacity hover:opacity-80" style={{ color: '#00638E' }}>
                       <span>Buka Modul</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
@@ -372,23 +372,23 @@ export default function UserDashboardPage() {
                       const stagePct = Math.round((stageCompleted / stageModules.length) * 100);
                       const isDone = stagePct === 100;
                       return (
-                        <div key={stageName} className="mi-inner p-3 space-y-2 flex flex-col justify-between">
+                        <div key={stageName} className="ao-inner p-3 space-y-2 flex flex-col justify-between">
                           <div className="space-y-0.5">
-                            <span className="text-[9px] font-mono font-bold uppercase" style={{ color: isDone ? '#7C6EEA' : '#46465A' }}>
+                            <span className="text-[9px] font-mono font-bold uppercase" style={{ color: isDone ? '#00638E' : '#7A8992' }}>
                               Tahap {sIdx}
                             </span>
-                            <p className="text-[11px] font-semibold leading-snug line-clamp-2" style={{ color: isDone ? '#E8E8F0' : '#8A8AA8' }}>
+                            <p className="text-[11px] font-semibold leading-snug line-clamp-2" style={{ color: isDone ? '#FFFFFF' : '#BFD8E3' }}>
                               {stageName}
                             </p>
                           </div>
                           <div className="space-y-1">
-                            <div className="flex justify-between text-[10px] font-mono" style={{ color: '#46465A' }}>
+                            <div className="flex justify-between text-[10px] font-mono" style={{ color: '#7A8992' }}>
                               <span>{stageCompleted}/{stageModules.length}</span>
-                              <span style={{ color: isDone ? '#7C6EEA' : '#E8E8F0' }}>{stagePct}%</span>
+                              <span style={{ color: isDone ? '#00638E' : '#FFFFFF' }}>{stagePct}%</span>
                             </div>
                             <div className="w-full rounded-full h-1 overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
                               <div
-                                style={{ width: `${stagePct}%`, background: isDone ? '#7C6EEA' : '#9B90F2' }}
+                                style={{ width: `${stagePct}%`, background: isDone ? '#00638E' : '#8CB9CC' }}
                                 className="h-full rounded-full transition-all duration-500"
                               />
                             </div>
@@ -400,23 +400,23 @@ export default function UserDashboardPage() {
                 </div>
 
                 {/* Quick Hub */}
-                <div className="mi-card p-5 space-y-3">
-                  <p className="text-[10px] font-mono font-bold uppercase tracking-wider" style={{ color: '#46465A' }}>
+                <div className="ao-card p-5 space-y-3">
+                  <p className="text-[10px] font-mono font-bold uppercase tracking-wider" style={{ color: '#7A8992' }}>
                     Pusat Studi Cepat
                   </p>
                   <div className="grid grid-cols-2 gap-2">
                     {[
-                      { href: '/writing-pad', icon: PenTool, label: 'Writing Pad', sub: 'Simulasi Esai', accent: '#9B90F2' },
-                      { href: '/exam', icon: GraduationCap, label: 'IELTS & TOEFL', sub: 'Diagnostic', accent: '#7C6EEA' },
-                      { href: '/vocabulary', icon: BookmarkIcon, label: 'AWL Lexicon', sub: 'Academic Words', accent: '#7C6EEA' },
-                      { href: '/', icon: Layers, label: '40 Modul', sub: 'Workspace Inti', accent: '#9B90F2' },
+                      { href: '/writing-pad', icon: PenTool, label: 'Writing Pad', sub: 'Simulasi Esai', accent: '#8CB9CC' },
+                      { href: '/exam', icon: GraduationCap, label: 'IELTS & TOEFL', sub: 'Diagnostic', accent: '#00638E' },
+                      { href: '/vocabulary', icon: BookmarkIcon, label: 'AWL Lexicon', sub: 'Academic Words', accent: '#00638E' },
+                      { href: '/', icon: Layers, label: '40 Modul', sub: 'Workspace Inti', accent: '#8CB9CC' },
                     ].map((item) => {
                       const Icon = item.icon;
                       return (
-                        <Link key={item.href} href={item.href} className="mi-inner p-3 flex flex-col gap-1.5 transition-all active:scale-95">
+                        <Link key={item.href} href={item.href} className="ao-inner p-3 flex flex-col gap-1.5 transition-all active:scale-95">
                           <Icon className="w-4 h-4" style={{ color: item.accent }} />
-                          <span className="text-xs font-bold leading-tight" style={{ color: '#E8E8F0' }}>{item.label}</span>
-                          <span className="text-[10px]" style={{ color: '#46465A' }}>{item.sub}</span>
+                          <span className="text-xs font-bold leading-tight" style={{ color: '#FFFFFF' }}>{item.label}</span>
+                          <span className="text-[10px]" style={{ color: '#7A8992' }}>{item.sub}</span>
                         </Link>
                       );
                     })}
@@ -428,17 +428,17 @@ export default function UserDashboardPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
 
                 {/* Track List */}
-                <div className="lg:col-span-7 mi-card p-5 space-y-3">
+                <div className="lg:col-span-7 ao-card p-5 space-y-3">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] font-mono font-bold uppercase tracking-wider" style={{ color: '#46465A' }}>
+                      <p className="text-[10px] font-mono font-bold uppercase tracking-wider" style={{ color: '#7A8992' }}>
                         Jalur Studi Mandiri
                       </p>
-                      <h3 className="text-base font-bold" style={{ color: '#E8E8F0' }}>
+                      <h3 className="text-base font-bold" style={{ color: '#FFFFFF' }}>
                         Track Spesialisasi
                       </h3>
                     </div>
-                    <Link href="/learn" className="text-xs font-mono flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: '#9B90F2' }}>
+                    <Link href="/learn" className="text-xs font-mono flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: '#8CB9CC' }}>
                       <span>Semua Track</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
@@ -451,16 +451,16 @@ export default function UserDashboardPage() {
                         <Link
                           key={track.id}
                           href={`/learn/${track.slug}/${track.lessons[0]?.slug || ''}`}
-                          className="mi-inner flex items-center gap-3 p-3 pr-4 transition-all active:scale-[0.99] group block"
+                          className="ao-inner flex items-center gap-3 p-3 pr-4 transition-all active:scale-[0.99] group block"
                         >
                           <div className="flex-1 min-w-0 space-y-1">
                             <div className="flex items-center gap-2">
-                              <span className="text-[12px] font-bold truncate" style={{ color: '#E8E8F0' }}>
+                              <span className="text-[12px] font-bold truncate" style={{ color: '#FFFFFF' }}>
                                 {track.title}
                               </span>
                               <span
                                 className="text-[9px] font-mono px-1.5 py-0.5 rounded-md shrink-0"
-                                style={{ background: 'rgba(255,255,255,0.07)', color: '#8A8AA8' }}
+                                style={{ background: 'rgba(255,255,255,0.07)', color: '#BFD8E3' }}
                               >
                                 {track.badgeText}
                               </span>
@@ -470,17 +470,17 @@ export default function UserDashboardPage() {
                                 <div
                                   style={{
                                     width: `${trackPct}%`,
-                                    background: track.level === 'exam-prep' ? '#7C6EEA' : '#9B90F2',
+                                    background: track.level === 'exam-prep' ? '#00638E' : '#8CB9CC',
                                   }}
                                   className="h-full rounded-full transition-all"
                                 />
                               </div>
-                              <span className="text-[10px] font-mono shrink-0" style={{ color: '#46465A' }}>
+                              <span className="text-[10px] font-mono shrink-0" style={{ color: '#7A8992' }}>
                                 {doneCount}/{track.totalLessons}
                               </span>
                             </div>
                           </div>
-                          <ChevronRight className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: '#8A8AA8' }} />
+                          <ChevronRight className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: '#BFD8E3' }} />
                         </Link>
                       );
                     })}
@@ -491,34 +491,34 @@ export default function UserDashboardPage() {
                 <div className="lg:col-span-5 space-y-3">
 
                   {/* Daily Goal */}
-                  <div className="mi-card p-4 space-y-2">
+                  <div className="ao-card p-4 space-y-2">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(124, 110, 234, 0.12)' }}>
-                        <Target className="w-4 h-4" style={{ color: '#7C6EEA' }} />
+                      <div className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(0, 99, 142, 0.18)' }}>
+                        <Target className="w-4 h-4" style={{ color: '#00638E' }} />
                       </div>
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: '#E8E8F0' }}>
+                        <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: '#FFFFFF' }}>
                           Target Belajar Harian
                         </p>
-                        <span className="text-[10px] font-mono" style={{ color: '#7C6EEA' }}>20 Menit / Hari</span>
+                        <span className="text-[10px] font-mono" style={{ color: '#00638E' }}>20 Menit / Hari</span>
                       </div>
                     </div>
-                    <p className="text-[11px] leading-relaxed" style={{ color: '#46465A' }}>
+                    <p className="text-[11px] leading-relaxed" style={{ color: '#7A8992' }}>
                       Minimal 1 modul + 10 kartu Oxford 3000 setiap hari untuk retensi 90%+.
                     </p>
                   </div>
 
                   {/* Backup */}
-                  <div className="mi-card p-4 space-y-3">
+                  <div className="ao-card p-4 space-y-3">
                     <div className="flex items-center gap-2">
                       <div className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(124, 110, 234, 0.10)' }}>
-                        <Archive className="w-4 h-4" style={{ color: '#9B90F2' }} />
+                        <Archive className="w-4 h-4" style={{ color: '#8CB9CC' }} />
                       </div>
-                      <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: '#E8E8F0' }}>
+                      <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: '#FFFFFF' }}>
                         Cadangan & Portabilitas
                       </p>
                     </div>
-                    <p className="text-[11px] leading-relaxed" style={{ color: '#46465A' }}>
+                    <p className="text-[11px] leading-relaxed" style={{ color: '#7A8992' }}>
                       Amankan histori belajar, bank khilaf, dan esai ke file JSON.
                     </p>
                     <div className="flex items-center gap-2 flex-wrap">
@@ -542,14 +542,14 @@ export default function UserDashboardPage() {
                           } catch (e) { alert('Gagal mengekspor data.'); }
                         }}
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95"
-                        style={{ background: 'rgba(124, 110, 234, 0.10)', border: '1px solid rgba(124, 110, 234, 0.18)', color: '#9B90F2' }}
+                        style={{ background: 'rgba(124, 110, 234, 0.10)', border: '1px solid rgba(124, 110, 234, 0.18)', color: '#8CB9CC' }}
                       >
                         <Download className="w-3.5 h-3.5" />
                         <span>Ekspor (.json)</span>
                       </button>
                       <label
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 cursor-pointer"
-                        style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: '#8A8AA8' }}
+                        style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: '#BFD8E3' }}
                       >
                         <Upload className="w-3.5 h-3.5" />
                         <span>Impor</span>
@@ -579,30 +579,30 @@ export default function UserDashboardPage() {
                   </div>
 
                   {/* Bookmarks */}
-                  <div className="mi-card p-4 space-y-3">
+                  <div className="ao-card p-4 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(124, 110, 234, 0.12)' }}>
-                          <Bookmark className="w-4 h-4" style={{ color: '#9B90F2' }} />
+                        <div className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(0, 99, 142, 0.18)' }}>
+                          <Bookmark className="w-4 h-4" style={{ color: '#8CB9CC' }} />
                         </div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: '#E8E8F0' }}>
+                        <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: '#FFFFFF' }}>
                           Tersimpan
                         </p>
                       </div>
-                      <span className="text-[10px] font-mono" style={{ color: '#46465A' }}>
+                      <span className="text-[10px] font-mono" style={{ color: '#7A8992' }}>
                         {bookmarkedLessonsData.length} item
                       </span>
                     </div>
                     {bookmarkedLessonsData.length === 0 ? (
-                      <p className="text-[11px] py-3 text-center" style={{ color: '#46465A' }}>
+                      <p className="text-[11px] py-3 text-center" style={{ color: '#7A8992' }}>
                         Belum ada materi tersimpan. Klik ikon bookmark pada pelajaran.
                       </p>
                     ) : (
-                      <div className="space-y-1.5 max-h-[200px] overflow-y-auto mi-scroll pr-1">
+                      <div className="space-y-1.5 max-h-[200px] overflow-y-auto ao-scroll pr-1">
                         {bookmarkedLessonsData.map((l) => (
-                          <Link key={l.id} href={`/learn/${l.trackId}/${l.slug}`} className="mi-inner p-2.5 block transition-all">
-                            <span className="text-xs font-bold line-clamp-1 block" style={{ color: '#E8E8F0' }}>{l.title}</span>
-                            <span className="text-[10px] font-mono" style={{ color: '#46465A' }}>{l.difficulty} · {l.readTimeMin}m</span>
+                          <Link key={l.id} href={`/learn/${l.trackId}/${l.slug}`} className="ao-inner p-2.5 block transition-all">
+                            <span className="text-xs font-bold line-clamp-1 block" style={{ color: '#FFFFFF' }}>{l.title}</span>
+                            <span className="text-[10px] font-mono" style={{ color: '#7A8992' }}>{l.difficulty} · {l.readTimeMin}m</span>
                           </Link>
                         ))}
                       </div>

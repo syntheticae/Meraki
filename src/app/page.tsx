@@ -1332,7 +1332,7 @@ export default function MerakiApp() {
   };
 
   return (
-    <div className="meraki-ink mi-canvas h-[100dvh] min-h-[100dvh] w-full max-w-[100vw] flex flex-col overflow-hidden antialiased select-text overscroll-none touch-pan-y">
+    <div className="azure-onyx ao-canvas h-[100dvh] min-h-[100dvh] w-full max-w-[100vw] flex flex-col overflow-hidden antialiased select-text overscroll-none touch-pan-y">
       {/* 3-panel spatial layout container */}
       <div className="flex-1 flex gap-2.5 sm:gap-3 p-2 sm:p-3 md:p-3.5 min-h-0 overflow-hidden max-w-[1920px] w-full mx-auto">
       {/* Hidden File Input for Data Restore */}
@@ -1354,7 +1354,7 @@ export default function MerakiApp() {
 
       {/* ───────────── MASTER APP SIDEBAR (MODERN, CLEAN, COLLAPSIBLE & MOBILE-DRAWER) ───────────── */}
       <aside className={clsx(
-        'mi-slab meraki-ink flex flex-col justify-between h-full transition-all duration-300 shrink-0 select-none overflow-hidden p-3.5',
+        'ao-slab azure-onyx flex flex-col justify-between h-full transition-all duration-300 shrink-0 select-none overflow-hidden p-3.5',
         // Desktop positioning
         'hidden md:flex',
         isNavOpen ? 'md:w-60 xl:w-64' : 'md:w-0 md:p-0 md:border-0 md:opacity-0',
@@ -1367,7 +1367,7 @@ export default function MerakiApp() {
             <div className="flex items-center gap-2.5">
               <div
                 className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
-                style={{ background: 'linear-gradient(135deg, #7C6EEA 0%, #9B90F2 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #000000 0%, #004A6B 40%, #00638E 75%, #8CB9CC 100%)' }}
               >
                 <span className="text-[13px] font-black text-[#0F0F16]">M</span>
               </div>
@@ -1375,14 +1375,14 @@ export default function MerakiApp() {
                 <span className="text-[14px] font-bold tracking-tight text-[#E8E8F0] leading-tight">
                   Meraki
                 </span>
-                <span className="text-[9px] font-medium tracking-wider uppercase text-[#6A6A84]">
+                <span className="text-[9px] font-medium tracking-wider uppercase text-[#50585C] dark:text-[#7A8992]">
                   Oxford Studio
                 </span>
               </div>
             </div>
             <button
               onClick={() => setIsNavOpen(false)}
-              className="p-1.5 rounded-xl hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
+              className="p-1.5 rounded-xl hover:bg-white/5 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-colors"
               title="Sembunyikan Navigasi (Zen Mode)"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -1391,10 +1391,10 @@ export default function MerakiApp() {
         </div>
 
         {/* Sidebar Nav Items: 4 Pilar Terstruktur */}
-        <div className="flex-1 overflow-y-auto mi-scroll py-2 space-y-4 pr-1">
+        <div className="flex-1 overflow-y-auto ao-scroll py-2 space-y-4 pr-1">
           {/* Pilar 1: 📖 Kurikulum */}
           <div className="space-y-0.5">
-            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] px-2.5 font-bold block mb-1">
               Kurikulum
             </span>
             <button
@@ -1402,11 +1402,11 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'curriculum'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <BookOpen className="w-4 h-4 text-[#7C6EEA]" />
+              <BookOpen className="w-4 h-4 text-[#00638E]" />
               <span className="truncate">Modul Materi (40 Modul)</span>
             </button>
 
@@ -1415,29 +1415,29 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'practice'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <ListCheck className="w-4 h-4 text-[#9B90F2]" />
+              <ListCheck className="w-4 h-4 text-[#8CB9CC]" />
               <span className="truncate">Latihan & Bedah Soal</span>
             </button>
 
             <Link
               href="/learn"
-              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-2.5">
-                <Compass className="w-4 h-4 text-[#7C6EEA]" />
+                <Compass className="w-4 h-4 text-[#00638E]" />
                 <span className="truncate">7 Jalur Tracks</span>
               </div>
-              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+              <ExternalLink className="w-3 h-3 text-[#50585C] dark:text-[#7A8992]" />
             </Link>
           </div>
 
           {/* Pilar 2: ✍️ Laboratorium Bahasa */}
           <div className="space-y-0.5">
-            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] px-2.5 font-bold block mb-1">
               Laboratorium
             </span>
             <button
@@ -1445,11 +1445,11 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'studio'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <PenTool className="w-4 h-4 text-[#7C6EEA]" />
+              <PenTool className="w-4 h-4 text-[#00638E]" />
               <span className="truncate">Studio Sintaksis</span>
             </button>
 
@@ -1458,11 +1458,11 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'collocations'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Sparkles className="w-4 h-4 text-[#9B90F2]" />
+              <Sparkles className="w-4 h-4 text-[#8CB9CC]" />
               <span className="truncate">Diksi ACL & Kolokasi</span>
             </button>
 
@@ -1471,11 +1471,11 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'matrices'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Table className="w-4 h-4 text-[#7C6EEA]" />
+              <Table className="w-4 h-4 text-[#00638E]" />
               <span className="truncate">Master Matriks Fondasi</span>
             </button>
 
@@ -1484,11 +1484,11 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'phonetics'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Ear className="w-4 h-4 text-[#9B90F2]" />
+              <Ear className="w-4 h-4 text-[#8CB9CC]" />
               <span className="truncate">Minimal Pairs Lab</span>
             </button>
 
@@ -1497,51 +1497,51 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'oxford3000'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Layers className="w-4 h-4 text-[#7C6EEA]" />
+              <Layers className="w-4 h-4 text-[#00638E]" />
               <span className="truncate">Oxford 3000 SRS</span>
             </button>
 
             <Link
               href="/vocabulary"
-              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-2.5">
-                <BookMarked className="w-4 h-4 text-[#9B90F2]" />
+                <BookMarked className="w-4 h-4 text-[#8CB9CC]" />
                 <span className="truncate">AWL Lexicon</span>
               </div>
-              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+              <ExternalLink className="w-3 h-3 text-[#50585C] dark:text-[#7A8992]" />
             </Link>
 
             <Link
               href="/writing-pad"
-              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-2.5">
-                <PenTool className="w-4 h-4 text-[#7C6EEA]" />
+                <PenTool className="w-4 h-4 text-[#00638E]" />
                 <span className="truncate">Writing Studio</span>
               </div>
-              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+              <ExternalLink className="w-3 h-3 text-[#50585C] dark:text-[#7A8992]" />
             </Link>
           </div>
 
           {/* Pilar 3: 🎯 Ujian & Evaluasi */}
           <div className="space-y-0.5">
-            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] px-2.5 font-bold block mb-1">
               Ujian & Evaluasi
             </span>
             <Link
               href="/exam"
-              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-2.5">
-                <GraduationCap className="w-4 h-4 text-[#7C6EEA]" />
+                <GraduationCap className="w-4 h-4 text-[#00638E]" />
                 <span className="truncate">IELTS & TOEFL Hub</span>
               </div>
-              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+              <ExternalLink className="w-3 h-3 text-[#50585C] dark:text-[#7A8992]" />
             </Link>
 
             <button
@@ -1549,16 +1549,16 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'vault'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <div className="flex items-center gap-2.5">
-                <Archive className="w-4 h-4 text-[#9B90F2]" />
+                <Archive className="w-4 h-4 text-[#8CB9CC]" />
                 <span className="truncate">Mistake Vault</span>
               </div>
               {mistakeVault.length > 0 && (
-                <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-[#7C6EEA] text-white font-bold">
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-[#00638E] text-white font-bold">
                   {mistakeVault.length}
                 </span>
               )}
@@ -1569,44 +1569,44 @@ export default function MerakiApp() {
               className={clsx(
                 'w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left',
                 activeHub === 'diagnostic'
-                  ? 'mi-nav-active'
-                  : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                  ? 'ao-nav-active'
+                  : 'text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
-              <Award className="w-4 h-4 text-[#7C6EEA]" />
+              <Award className="w-4 h-4 text-[#00638E]" />
               <span className="truncate">Diagnostic Matrix</span>
             </button>
           </div>
 
           {/* Pilar 4: 📊 Analytics */}
           <div className="space-y-0.5">
-            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] px-2.5 font-bold block mb-1">
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] px-2.5 font-bold block mb-1">
               Analytics
             </span>
             <Link
               href="/dashboard"
-              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-all duration-150 text-left text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-2.5">
-                <BarChart2 className="w-4 h-4 text-[#7C6EEA]" />
+                <BarChart2 className="w-4 h-4 text-[#00638E]" />
                 <span className="truncate">Dashboard Analisis</span>
               </div>
-              <ExternalLink className="w-3 h-3 text-[#6A6A84]" />
+              <ExternalLink className="w-3 h-3 text-[#50585C] dark:text-[#7A8992]" />
             </Link>
           </div>
         </div>
         {/* Sidebar Footer */}
         <div className="pt-3 border-t border-white/[0.07] space-y-2.5 shrink-0">
-          <div className="mi-inner p-2.5 rounded-xl space-y-1.5">
+          <div className="ao-inner p-2.5 rounded-xl space-y-1.5">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-[#8A8AA8] text-[11px]">Kurikulum Selesai</span>
+              <span className="text-[#2B2B2B] dark:text-[#BFD8E3] text-[11px]">Kurikulum Selesai</span>
               <span className="font-bold text-[#E8E8F0] text-[11px]">
                 {completedTopicIds.length}/{MERAKI_CURRICULUM.length}
               </span>
             </div>
-            <div className="mi-progress h-1.5 w-full">
+            <div className="ao-progress h-1.5 w-full">
               <div
-                className="mi-progress-fill"
+                className="ao-progress-fill"
                 style={{
                   width: `${(completedTopicIds.length / MERAKI_CURRICULUM.length) * 100}%`,
                 }}
@@ -1614,7 +1614,7 @@ export default function MerakiApp() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-[10px] font-mono text-[#8A8AA8] px-1">
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#2B2B2B] dark:text-[#BFD8E3] px-1">
             <button
               onClick={handleExportDataBackup}
               className="hover:text-[#E8E8F0] flex items-center gap-1 transition-colors"
@@ -1635,7 +1635,7 @@ export default function MerakiApp() {
 
             <button
               onClick={handleResetProgress}
-              className="hover:text-[#7C6EEA] flex items-center gap-1 transition-colors"
+              className="hover:text-[#00638E] flex items-center gap-1 transition-colors"
               title="Reset Progres"
             >
               <RotateCcw className="w-3 h-3" />
@@ -1648,11 +1648,11 @@ export default function MerakiApp() {
       {/* ───────────── MAIN APP CONTAINER ───────────── */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden gap-2.5 sm:gap-3">
         {/* Top Floating Dock Capsule */}
-        <header className="mi-dock px-3 sm:px-4 py-2 flex items-center justify-between shrink-0 z-30 gap-2">
+        <header className="ao-dock px-3 sm:px-4 py-2 flex items-center justify-between shrink-0 z-30 gap-2">
           <div className="flex items-center gap-2 overflow-hidden min-w-0">
             <button
               onClick={() => setIsNavOpen(!isNavOpen)}
-              className="p-1.5 px-2.5 rounded-xl mi-inner hover:bg-white/5 text-[#E8E8F0] transition-all text-xs font-mono flex items-center gap-1.5 shrink-0 min-h-[34px]"
+              className="p-1.5 px-2.5 rounded-xl ao-inner hover:bg-white/5 text-[#E8E8F0] transition-all text-xs font-mono flex items-center gap-1.5 shrink-0 min-h-[34px]"
               title={isNavOpen ? "Zen Mode (Sembunyikan Sidebar)" : "Buka Sidebar"}
             >
               <Menu className="w-4 h-4" />
@@ -1663,16 +1663,16 @@ export default function MerakiApp() {
             {activeHub === 'curriculum' ? (
               <button
                 onClick={() => setIsModuleIndexOpen(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono transition-all truncate min-w-0 max-w-[280px] sm:max-w-md group"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl ao-inner hover:bg-white/5 text-xs font-mono transition-all truncate min-w-0 max-w-[280px] sm:max-w-md group"
                 title="Klik untuk memilih dari 40 modul"
               >
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[rgba(124,110,234,0.2)] text-[#9B90F2] shrink-0">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[rgba(0, 99, 142, 0.25)] text-[#8CB9CC] shrink-0">
                   {String(currentTopic.moduleNumber).padStart(2, '0')}
                 </span>
                 <span className="truncate font-serif text-[13px] text-[#E8E8F0] font-semibold">
                   {currentTopic.title}
                 </span>
-                <ChevronDown className="w-3.5 h-3.5 text-[#6A6A84] shrink-0 group-hover:translate-y-0.5 transition-transform ml-1" />
+                <ChevronDown className="w-3.5 h-3.5 text-[#50585C] dark:text-[#7A8992] shrink-0 group-hover:translate-y-0.5 transition-transform ml-1" />
               </button>
             ) : (
               <span className="font-serif text-sm font-semibold text-[#E8E8F0] truncate shrink-0 px-2">
@@ -1684,11 +1684,11 @@ export default function MerakiApp() {
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Quick Stepper in Curriculum Mode */}
             {activeHub === 'curriculum' && (
-              <div className="hidden sm:flex items-center gap-1 mi-inner p-0.5 rounded-xl">
+              <div className="hidden sm:flex items-center gap-1 ao-inner p-0.5 rounded-xl">
                 <button
                   onClick={() => prevTopic && handleSelectTopic(prevTopic.id)}
                   disabled={!prevTopic}
-                  className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-25 disabled:hover:bg-transparent text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
+                  className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-25 disabled:hover:bg-transparent text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-colors"
                   title={prevTopic ? `Sebelumnya: ${prevTopic.title}` : 'Awal kurikulum'}
                 >
                   <ChevronLeft className="w-3.5 h-3.5" />
@@ -1699,7 +1699,7 @@ export default function MerakiApp() {
                 <button
                   onClick={() => nextTopic && handleSelectTopic(nextTopic.id)}
                   disabled={!nextTopic}
-                  className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-25 disabled:hover:bg-transparent text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
+                  className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-25 disabled:hover:bg-transparent text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-colors"
                   title={nextTopic ? `Selanjutnya: ${nextTopic.title}` : 'Akhir kurikulum'}
                 >
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -1710,32 +1710,32 @@ export default function MerakiApp() {
             {/* Global Omnisearch Trigger */}
             <button
               onClick={() => setIsOmnisearchOpen(true)}
-              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono text-[#8A8AA8] hover:text-[#E8E8F0] transition-all flex items-center gap-1.5 min-h-[34px]"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl ao-inner hover:bg-white/5 text-xs font-mono text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-all flex items-center gap-1.5 min-h-[34px]"
               title="Pencarian Global (Cmd+K)"
             >
-              <Search className="w-3.5 h-3.5 text-[#8A8AA8]" />
+              <Search className="w-3.5 h-3.5 text-[#2B2B2B] dark:text-[#BFD8E3]" />
               <span className="hidden md:inline text-[11px]">Cari</span>
-              <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[9px] bg-white/5 border border-white/10 rounded font-mono text-[#8A8AA8]">⌘K</kbd>
+              <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[9px] bg-white/5 border border-white/10 rounded font-mono text-[#2B2B2B] dark:text-[#BFD8E3]">⌘K</kbd>
             </button>
 
             {/* Audio Settings Trigger */}
             <button
               onClick={() => setIsAudioSettingsOpen(true)}
-              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px] flex"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl ao-inner hover:bg-white/5 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px] flex"
               title="Pengaturan Suara TTS & Aksen"
             >
-              <Headphones className="w-3.5 h-3.5 text-[#7C6EEA]" />
-              <span className="hidden xl:inline text-[10px] text-[#9B90F2] font-mono font-semibold">{audioAccent.slice(3)} {audioRate}x</span>
+              <Headphones className="w-3.5 h-3.5 text-[#00638E]" />
+              <span className="hidden xl:inline text-[10px] text-[#8CB9CC] font-mono font-semibold">{audioAccent.slice(3)} {audioRate}x</span>
             </button>
 
             {/* Cheatsheet Trigger */}
             <button
               onClick={() => setIsCheatsheetOpen(true)}
-              className="hidden sm:flex p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px]"
+              className="hidden sm:flex p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl ao-inner hover:bg-white/5 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px]"
               title="Lembar Ringkasan Cetak & Backup Data"
             >
-              <FileText className="w-3.5 h-3.5 text-[#9B90F2]" />
-              <span className="hidden xl:inline text-[10px] text-[#9B90F2] font-mono font-semibold">Cheatsheet</span>
+              <FileText className="w-3.5 h-3.5 text-[#8CB9CC]" />
+              <span className="hidden xl:inline text-[10px] text-[#8CB9CC] font-mono font-semibold">Cheatsheet</span>
             </button>
 
             {/* Theme Toggle */}
@@ -1744,12 +1744,12 @@ export default function MerakiApp() {
             {mistakeVault.length > 0 && activeHub !== 'vault' && (
               <button
                 onClick={() => setActiveHub('vault')}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-mono transition-all mi-chip min-h-[34px]"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-mono transition-all ao-chip min-h-[34px]"
               >
                 <Archive className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{mistakeVault.length}</span>
                 {dueMistakesCount > 0 && (
-                  <span className="w-2 h-2 rounded-full bg-[#7C6EEA] ring-2 ring-white/20 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#00638E] ring-2 ring-white/20 animate-pulse" />
                 )}
               </button>
             )}
@@ -1767,19 +1767,19 @@ export default function MerakiApp() {
                   onClick={() => setIsModuleIndexOpen(false)}
                 >
                   <aside
-                    className="mi-slab meraki-ink w-full max-w-sm sm:max-w-md h-full flex flex-col overflow-hidden p-4 space-y-3.5 shadow-2xl m-2 sm:m-3.5 border border-white/10"
+                    className="ao-slab azure-onyx w-full max-w-sm sm:max-w-md h-full flex flex-col overflow-hidden p-4 space-y-3.5 shadow-2xl m-2 sm:m-3.5 border border-white/10"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex items-center justify-between pb-2.5 border-b border-white/[0.07]">
                       <div className="flex items-center gap-2">
-                        <BookOpen className="w-4 h-4 text-[#7C6EEA]" />
+                        <BookOpen className="w-4 h-4 text-[#00638E]" />
                         <h3 className="font-serif text-base font-bold text-[#E8E8F0]">
                           Direktori 40 Modul Kurikulum
                         </h3>
                       </div>
                       <button
                         onClick={() => setIsModuleIndexOpen(false)}
-                        className="p-1.5 rounded-xl hover:bg-white/10 text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
+                        className="p-1.5 rounded-xl hover:bg-white/10 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-colors"
                         title="Tutup Direktori"
                       >
                         <X className="w-4 h-4" />
@@ -1787,18 +1787,18 @@ export default function MerakiApp() {
                     </div>
 
                     <div className="relative shrink-0">
-                      <Search className="w-3.5 h-3.5 text-[#6A6A84] absolute left-3 top-1/2 -translate-y-1/2" />
+                      <Search className="w-3.5 h-3.5 text-[#50585C] dark:text-[#7A8992] absolute left-3 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
                         value={searchFilter}
                         onChange={(e) => setSearchFilter(e.target.value)}
                         placeholder="Cari materi atau kaidah..."
-                        className="w-full pl-9 pr-3 py-2 text-xs mi-inner bg-transparent rounded-xl outline-hidden focus:border-[#7C6EEA] text-[#E8E8F0] placeholder-[#6A6A84]"
+                        className="w-full pl-9 pr-3 py-2 text-xs ao-inner bg-transparent rounded-xl outline-hidden focus:border-[#00638E] text-[#E8E8F0] placeholder-[#6A6A84]"
                         autoFocus
                       />
                     </div>
 
-                    <div className="flex-1 overflow-y-auto mi-scroll space-y-4 pr-1">
+                    <div className="flex-1 overflow-y-auto ao-scroll space-y-4 pr-1">
                       {stageGroups.map((stageTitle) => {
                         const items = filteredTopics.filter((t) => t.stageName === stageTitle);
                         if (items.length === 0) return null;
@@ -1806,8 +1806,8 @@ export default function MerakiApp() {
                         return (
                           <div key={stageTitle} className="space-y-1.5">
                             <div className="flex items-center gap-1.5 px-2 py-0.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#7C6EEA]" />
-                              <span className="font-mono text-[9px] uppercase tracking-wider text-[#6A6A84] font-semibold">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#00638E]" />
+                              <span className="font-mono text-[9px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] font-semibold">
                                 {stageTitle}
                               </span>
                             </div>
@@ -1826,15 +1826,15 @@ export default function MerakiApp() {
                                     className={clsx(
                                       'w-full text-left p-2.5 rounded-xl transition-all duration-150 flex items-start justify-between gap-2.5',
                                       isSelected
-                                        ? 'mi-nav-active'
-                                        : 'mi-inner text-[#8A8AA8] hover:text-[#E8E8F0]'
+                                        ? 'ao-nav-active'
+                                        : 'ao-inner text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0]'
                                     )}
                                   >
                                     <div className="space-y-0.5 flex-1 min-w-0">
                                       <div className="flex items-center gap-2">
                                         <span className={clsx(
                                           'font-mono text-[10px] px-1.5 py-0.5 rounded-md font-semibold',
-                                          isSelected ? 'bg-white/20 text-[#E8E8F0]' : 'bg-white/5 text-[#8A8AA8]'
+                                          isSelected ? 'bg-white/20 text-[#E8E8F0]' : 'bg-white/5 text-[#2B2B2B] dark:text-[#BFD8E3]'
                                         )}>
                                           {String(topic.moduleNumber).padStart(2, '0')}
                                         </span>
@@ -1842,14 +1842,14 @@ export default function MerakiApp() {
                                           {topic.title}
                                         </h4>
                                       </div>
-                                      <p className="text-[11px] line-clamp-1 pl-6 text-[#6A6A84]">
+                                      <p className="text-[11px] line-clamp-1 pl-6 text-[#50585C] dark:text-[#7A8992]">
                                         {topic.subtitle}
                                       </p>
                                     </div>
 
                                     <div className="shrink-0 mt-0.5">
                                       {isDone ? (
-                                        <span className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] bg-[rgba(124,110,234,0.2)] text-[#9B90F2]">
+                                        <span className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] bg-[rgba(0, 99, 142, 0.25)] text-[#8CB9CC]">
                                           <Check className="w-2.5 h-2.5" />
                                         </span>
                                       ) : (
@@ -1871,51 +1871,51 @@ export default function MerakiApp() {
                 </div>
               )}
               {/* Main Reading Pane */}
-              <section className="mi-slab flex-1 min-h-0 overflow-y-auto mi-scroll p-4 sm:p-7 lg:p-10 space-y-6 sm:space-y-8">
+              <section className="ao-slab flex-1 min-h-0 overflow-y-auto ao-scroll p-4 sm:p-7 lg:p-10 space-y-6 sm:space-y-8">
                 <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
                   {/* Quick Module Header Bar */}
                   <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/[0.07]">
                     <button
                       onClick={() => setIsModuleIndexOpen(true)}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono text-[#8A8AA8] hover:text-[#E8E8F0] transition-all group"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ao-inner hover:bg-white/5 text-xs font-mono text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] transition-all group"
                       title="Klik untuk membuka direktori 40 modul"
                     >
-                      <BookOpen className="w-3.5 h-3.5 text-[#7C6EEA]" />
+                      <BookOpen className="w-3.5 h-3.5 text-[#00638E]" />
                       <span className="font-semibold text-[#E8E8F0]">
                         Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}
                       </span>
-                      <ChevronDown className="w-3.5 h-3.5 text-[#6A6A84] group-hover:translate-y-0.5 transition-transform" />
+                      <ChevronDown className="w-3.5 h-3.5 text-[#50585C] dark:text-[#7A8992] group-hover:translate-y-0.5 transition-transform" />
                     </button>
 
-                    <div className="flex items-center gap-2 text-xs font-mono text-[#6A6A84]">
-                      <span className="mi-chip px-2.5 py-0.5 text-[10px] font-bold">
+                    <div className="flex items-center gap-2 text-xs font-mono text-[#50585C] dark:text-[#7A8992]">
+                      <span className="ao-chip px-2.5 py-0.5 text-[10px] font-bold">
                         {currentTopic.stageName}
                       </span>
                       <span>~{currentTopic.estimatedMinutes} menit</span>
                     </div>
                   </div>
                   {/* Topic Header */}
-                  <div className="space-y-3 pb-6 border-b border-[#C8C0B0]">
+                  <div className="space-y-3 pb-6 border-b border-[#BFD8E3]/40 dark:border-white/10">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[11px] uppercase tracking-wider text-[#A84A28] font-medium bg-[#A84A28]/10 px-2.5 py-0.5 rounded-md">
+                        <span className="font-mono text-[11px] uppercase tracking-wider text-[#00638E] dark:text-[#8CB9CC] font-medium bg-[#00638E]/10 dark:bg-[#00638E]/20 px-2.5 py-0.5 rounded-md">
                           {currentTopic.stageName}
                         </span>
                         {currentTopic.prerequisite && (
-                          <span className="font-mono text-[10px] text-[#7A7265] bg-[#DDD7CA] px-2 py-0.5 rounded-md">
+                          <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] bg-[#EDF3F7] dark:bg-[#1C1C1C] px-2 py-0.5 rounded-md">
                             Prasyarat: {currentTopic.prerequisite}
                           </span>
                         )}
                       </div>
-                      <span className="font-mono text-xs text-[#7A7265]">
+                      <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                         ~{currentTopic.estimatedMinutes} menit baca
                       </span>
                     </div>
 
-                    <h1 className="text-2xl sm:text-4xl font-serif text-[#1E1B17] leading-tight">
+                    <h1 className="text-2xl sm:text-4xl font-serif text-[#141414] dark:text-[#FFFFFF] leading-tight">
                       {currentTopic.title}
                     </h1>
-                    <div className="text-sm sm:text-base text-[#524C42] leading-relaxed space-y-3 font-serif">
+                    <div className="text-sm sm:text-base text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed space-y-3 font-serif">
                       {currentTopic.coreConceptSummary.split('\n\n').map((para, pIdx) => (
                         <p key={pIdx} className={pIdx === 0 ? "drop-cap leading-relaxed" : "leading-relaxed"}>
                           {para}
@@ -1926,14 +1926,14 @@ export default function MerakiApp() {
 
                   {/* Mental Model Intro */}
                   {currentTopic.mentalModelIntro && (
-                    <div className="p-5 sm:p-6 rounded-2xl mi-card border border-[rgba(124,110,234,0.3)] bg-[rgba(124,110,234,0.07)] space-y-2.5">
+                    <div className="p-5 sm:p-6 rounded-2xl ao-card border border-[rgba(0, 99, 142, 0.35)] bg-[rgba(0, 99, 142, 0.10)] space-y-2.5">
                       <div className="flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-[#535841]" />
-                        <span className="font-mono text-xs uppercase tracking-wider text-[#535841] font-semibold">
+                        <Sparkles className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
+                        <span className="font-mono text-xs uppercase tracking-wider text-[#004A6B] dark:text-[#BFD8E3] font-semibold">
                           Mental Model & Nalar Penutur Asli:
                         </span>
                       </div>
-                      <div className="text-xs sm:text-sm text-[#38332A] leading-relaxed space-y-3 font-serif">
+                      <div className="text-xs sm:text-sm text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed space-y-3 font-serif">
                         {currentTopic.mentalModelIntro.split('\n\n').map((paragraph, pIdx) => (
                           <p key={pIdx} className="leading-relaxed">
                             {paragraph}
@@ -1945,36 +1945,36 @@ export default function MerakiApp() {
 
                   {/* Decision Tree / Flowchart */}
                   {currentTopic.decisionTree && currentTopic.decisionTree.length > 0 && (
-                    <div className="p-5 sm:p-6 rounded-2xl mi-card space-y-4">
+                    <div className="p-5 sm:p-6 rounded-2xl ao-card space-y-4">
                       <div className="flex items-center gap-2">
-                        <Compass className="w-4 h-4 text-[#A84A28]" />
-                        <h3 className="font-serif text-lg font-medium text-[#1E1B17]">
+                        <Compass className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
+                        <h3 className="font-serif text-lg font-medium text-[#141414] dark:text-[#FFFFFF]">
                           Diagram Alur Keputusan Gramatikal (Mental Flowchart)
                         </h3>
                       </div>
 
                       <div className="space-y-3">
                         {currentTopic.decisionTree.map((node, nIdx) => (
-                          <div key={nIdx} className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
+                          <div key={nIdx} className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
                             <div className="flex items-center gap-2">
-                              <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2 py-0.5 rounded font-semibold">
+                              <span className="font-mono text-[10px] bg-[#00638E] text-white shadow-xs font-semibold px-2 py-0.5 rounded font-semibold">
                                 {node.step}
                               </span>
-                              <span className="font-serif text-sm font-semibold text-[#1E1B17]">
+                              <span className="font-serif text-sm font-semibold text-[#141414] dark:text-[#FFFFFF]">
                                 {node.question}
                               </span>
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-1">
                               {node.branches.map((br, bIdx) => (
-                                <div key={bIdx} className="p-3.5 rounded-xl bg-[#E6E0D4] border border-[#C8C0B0]/80 text-xs space-y-1">
-                                  <span className="font-mono text-[10px] uppercase font-semibold text-[#A84A28] block">
+                                <div key={bIdx} className="p-3.5 rounded-xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
+                                  <span className="font-mono text-[10px] uppercase font-semibold text-[#00638E] dark:text-[#8CB9CC] block">
                                     Kondisi: {br.condition}
                                   </span>
-                                  <div className="font-serif font-bold text-[#1E1B17]">
+                                  <div className="font-serif font-bold text-[#141414] dark:text-[#FFFFFF]">
                                     ➔ {br.outcome}
                                   </div>
-                                  <p className="text-[11px] text-[#524C42] pt-1 border-t border-[#C8C0B0]/60">
+                                  <p className="text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3] pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                                     {br.rule}
                                   </p>
                                 </div>
@@ -1991,20 +1991,20 @@ export default function MerakiApp() {
                     {currentTopic.sections.map((section, idx) => (
                       <div
                         key={idx}
-                        className="p-5 sm:p-6 rounded-2xl mi-card space-y-4"
+                        className="p-5 sm:p-6 rounded-2xl ao-card space-y-4"
                       >
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[10px] uppercase tracking-wider bg-[#DDD7CA] text-[#A84A28] px-2 py-0.5 rounded-md font-semibold">
+                          <span className="font-mono text-[10px] uppercase tracking-wider bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] px-2 py-0.5 rounded-md font-semibold">
                             {section.stepNumber}
                           </span>
                           {section.title && (
-                            <h3 className="text-lg font-serif font-medium text-[#1E1B17]">
+                            <h3 className="text-lg font-serif font-medium text-[#141414] dark:text-[#FFFFFF]">
                               {section.title}
                             </h3>
                           )}
                         </div>
 
-                        <div className="text-xs sm:text-sm text-[#38332A] leading-relaxed space-y-2.5">
+                        <div className="text-xs sm:text-sm text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed space-y-2.5">
                           {section.explanation.split('\n\n').map((paragraph, pIdx) => (
                             <p key={pIdx} className="leading-relaxed">
                               {paragraph}
@@ -2014,40 +2014,40 @@ export default function MerakiApp() {
 
                         {/* Formula Card */}
                         {section.formula && (
-                          <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-xs text-[#1E1B17] space-y-1">
-                            <span className="text-[10px] text-[#7A7265] uppercase tracking-wider block font-semibold">
+                          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 font-mono text-xs text-[#141414] dark:text-[#FFFFFF] space-y-1">
+                            <span className="text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider block font-semibold">
                               Rumus / Kaidah Baku:
                             </span>
-                            <div className="font-medium text-[#A84A28]">{section.formula}</div>
+                            <div className="font-medium text-[#00638E] dark:text-[#8CB9CC]">{section.formula}</div>
                           </div>
                         )}
 
                         {/* Examples with Native Audio */}
                         {section.examples && section.examples.length > 0 && (
                           <div className="space-y-2 pt-1">
-                            <span className="font-mono text-[11px] text-[#7A7265] uppercase tracking-wider block">
+                            <span className="font-mono text-[11px] text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider block">
                               Contoh Kontekstual:
                             </span>
                             {section.examples.map((ex, i) => (
                               <div
                                 key={i}
-                                className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 space-y-1 text-xs"
+                                className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/30 dark:border-white/10 space-y-1 text-xs"
                               >
                                 <div className="flex items-start justify-between gap-2">
-                                  <p className="font-serif text-sm text-[#1E1B17] italic">
+                                  <p className="font-serif text-sm text-[#141414] dark:text-[#FFFFFF] italic">
                                     "{ex.sentence}"
                                   </p>
                                   <button
                                     onClick={() => playNativeAudio(ex.sentence)}
-                                    className="p-1 rounded-md hover:bg-[#C8C0B0]/40 text-[#7A7265] hover:text-[#1E1B17] transition-colors shrink-0"
+                                    className="p-1 rounded-md hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B]/40 text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors shrink-0"
                                     title="Dengarkan pelafalan asli"
                                   >
                                     <Volume2 className="w-3.5 h-3.5" />
                                   </button>
                                 </div>
-                                <p className="text-[#7A7265]">{ex.translation}</p>
+                                <p className="text-[#50585C] dark:text-[#7A8992]">{ex.translation}</p>
                                 {ex.note && (
-                                  <p className="text-[11px] text-[#535841] font-mono">{ex.note}</p>
+                                  <p className="text-[11px] text-[#004A6B] dark:text-[#BFD8E3] font-mono">{ex.note}</p>
                                 )}
                               </div>
                             ))}
@@ -2056,21 +2056,21 @@ export default function MerakiApp() {
 
                         {/* Contrastive Analysis */}
                         {section.contrastiveAnalysis && (
-                          <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
-                            <span className="font-mono text-[10px] uppercase font-semibold text-[#A84A28] block">
+                          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                            <span className="font-mono text-[10px] uppercase font-semibold text-[#00638E] dark:text-[#8CB9CC] block">
                               Analisis Kontrastif & Jebakan Fatal:
                             </span>
                             <div className="space-y-1.5 text-xs">
-                              <div className="p-2.5 rounded-lg bg-[#A84A28]/10 text-[#1E1B17] border border-[#A84A28]/20">
-                                <span className="font-mono font-semibold text-[#A84A28] mr-2">Salah:</span>
+                              <div className="p-2.5 rounded-lg bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#141414] dark:text-[#FFFFFF] border border-[#00638E]/25 dark:border-[#8CB9CC]/30">
+                                <span className="font-mono font-semibold text-[#00638E] dark:text-[#8CB9CC] mr-2">Salah:</span>
                                 <span className="italic">"{section.contrastiveAnalysis.incorrectSentence}"</span>
                               </div>
-                              <div className="p-2.5 rounded-lg bg-[#535841]/10 text-[#1E1B17] border border-[#535841]/20">
-                                <span className="font-mono font-semibold text-[#535841] mr-2">Benar:</span>
+                              <div className="p-2.5 rounded-lg bg-[#004A6B]/10 dark:bg-[#00638E]/15 text-[#141414] dark:text-[#FFFFFF] border border-[#004A6B]/20 dark:border-[#BFD8E3]/25">
+                                <span className="font-mono font-semibold text-[#004A6B] dark:text-[#BFD8E3] mr-2">Benar:</span>
                                 <span className="italic">"{section.contrastiveAnalysis.correctSentence}"</span>
                               </div>
                             </div>
-                            <p className="text-[11px] text-[#524C42] leading-relaxed pt-1">
+                            <p className="text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed pt-1">
                               <strong>Mengapa demikian?</strong> {section.contrastiveAnalysis.linguisticReason}
                             </p>
                           </div>
@@ -2078,9 +2078,9 @@ export default function MerakiApp() {
 
                         {/* Common Pitfall */}
                         {section.commonPitfall && (
-                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/90 border-l-4 border-l-[#A84A28] text-xs text-[#1E1B17] space-y-0.5">
-                            <strong className="font-semibold block text-[#A84A28]">Catatan Penting / Jebakan Umum:</strong>
-                            <p className="leading-relaxed text-[#524C42]">{section.commonPitfall}</p>
+                          <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/90 dark:bg-[#1C1C1C]/90 border-l-4 border-l-[#00638E] dark:border-l-[#8CB9CC] text-xs text-[#141414] dark:text-[#FFFFFF] space-y-0.5">
+                            <strong className="font-semibold block text-[#00638E] dark:text-[#8CB9CC]">Catatan Penting / Jebakan Umum:</strong>
+                            <p className="leading-relaxed text-[#2B2B2B] dark:text-[#BFD8E3]">{section.commonPitfall}</p>
                           </div>
                         )}
                       </div>
@@ -2089,37 +2089,37 @@ export default function MerakiApp() {
 
                   {/* Register Elevation Ladder */}
                   {currentTopic.registerLadder && (
-                    <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4">
+                    <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs space-y-4">
                       <div className="flex items-center gap-2">
-                        <Layers className="w-4 h-4 text-[#A84A28]" />
-                        <h3 className="font-serif text-lg font-medium text-[#1E1B17]">
+                        <Layers className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
+                        <h3 className="font-serif text-lg font-medium text-[#141414] dark:text-[#FFFFFF]">
                           Tangga Peningkatan Formalitas (Register Elevation Ladder)
                         </h3>
                       </div>
 
                       <div className="space-y-2.5 text-xs">
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/60 border border-[#C8C0B0] space-y-1">
-                          <span className="font-mono text-[10px] uppercase font-semibold text-[#7A7265] block">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/60 dark:bg-[#1C1C1C]/60 border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                          <span className="font-mono text-[10px] uppercase font-semibold text-[#50585C] dark:text-[#7A8992] block">
                             Level 1: Percakapan Santai (Baseline IELTS 5.5)
                           </span>
-                          <p className="font-serif text-[#7A7265] italic">"{currentTopic.registerLadder.informal}"</p>
+                          <p className="font-serif text-[#50585C] dark:text-[#7A8992] italic">"{currentTopic.registerLadder.informal}"</p>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1">
-                          <span className="font-mono text-[10px] uppercase font-semibold text-[#535841] block">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                          <span className="font-mono text-[10px] uppercase font-semibold text-[#004A6B] dark:text-[#BFD8E3] block">
                             Level 2: Standar Baku Tertulis (IELTS 6.5 - 7.0)
                           </span>
-                          <p className="font-serif text-[#1E1B17] italic">"{currentTopic.registerLadder.standard}"</p>
+                          <p className="font-serif text-[#141414] dark:text-[#FFFFFF] italic">"{currentTopic.registerLadder.standard}"</p>
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-[#535841]/15 border border-[#535841]/30 space-y-1">
-                          <span className="font-mono text-[10px] uppercase font-semibold text-[#535841] block">
+                        <div className="p-4 rounded-2xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 space-y-1">
+                          <span className="font-mono text-[10px] uppercase font-semibold text-[#004A6B] dark:text-[#BFD8E3] block">
                             Level 3: High Academic Polish (IELTS Band 8.5+ / TOEFL iBT 115+)
                           </span>
-                          <p className="font-serif text-sm font-semibold text-[#1E1B17] italic">"{currentTopic.registerLadder.academicHigh}"</p>
+                          <p className="font-serif text-sm font-semibold text-[#141414] dark:text-[#FFFFFF] italic">"{currentTopic.registerLadder.academicHigh}"</p>
                         </div>
 
-                        <div className="p-3 rounded-xl bg-[#DDD7CA]/70 text-[11px] text-[#524C42] border border-[#C8C0B0]/60">
+                        <div className="p-3 rounded-xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3] border border-[#BFD8E3]/30 dark:border-white/10">
                           <strong>Nalar Peningkatan Sintaksis:</strong> {currentTopic.registerLadder.analysis}
                         </div>
                       </div>
@@ -2128,35 +2128,35 @@ export default function MerakiApp() {
 
                   {/* Exam Bridge */}
                   {currentTopic.examBridge && (
-                    <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4">
+                    <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4">
                       <div className="flex items-center gap-2">
-                        <GraduationCap className="w-5 h-5 text-[#A84A28]" />
-                        <h3 className="font-serif text-lg text-[#1E1B17]">
+                        <GraduationCap className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC]" />
+                        <h3 className="font-serif text-lg text-[#141414] dark:text-[#FFFFFF]">
                           Aplikasi Strategis pada IELTS & TOEFL
                         </h3>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                        <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
-                          <span className="font-mono text-[10px] uppercase font-semibold text-[#A84A28] block">
+                        <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5">
+                          <span className="font-mono text-[10px] uppercase font-semibold text-[#00638E] dark:text-[#8CB9CC] block">
                             IELTS Writing & Speaking:
                           </span>
-                          <p className="text-[#38332A] leading-relaxed">
+                          <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                             {currentTopic.examBridge.ieltsApplication}
                           </p>
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
-                          <span className="font-mono text-[10px] uppercase font-semibold text-[#535841] block">
+                        <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5">
+                          <span className="font-mono text-[10px] uppercase font-semibold text-[#004A6B] dark:text-[#BFD8E3] block">
                             TOEFL iBT (Structure & Academic Writing):
                           </span>
-                          <p className="text-[#38332A] leading-relaxed">
+                          <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                             {currentTopic.examBridge.toeflApplication}
                           </p>
                         </div>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-[#DDD7CA]/60 border border-[#C8C0B0] text-[11px] font-mono text-[#524C42]">
+                      <div className="p-3 rounded-xl bg-[#EDF3F7]/60 dark:bg-[#1C1C1C]/60 border border-[#BFD8E3]/40 dark:border-white/10 text-[11px] font-mono text-[#2B2B2B] dark:text-[#BFD8E3]">
                         <strong>Dampak Skor Penilaian:</strong> {currentTopic.examBridge.scoringImpact}
                       </div>
                     </div>
@@ -2164,15 +2164,15 @@ export default function MerakiApp() {
 
                   {/* Can-Do Checklist */}
                   {currentTopic.canDoChecklist && currentTopic.canDoChecklist.length > 0 && (
-                    <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4">
+                    <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-[#535841]" />
-                          <h3 className="font-serif text-lg text-[#1E1B17] font-medium">
+                          <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
+                          <h3 className="font-serif text-lg text-[#141414] dark:text-[#FFFFFF] font-medium">
                             Can-Do Self-Assessment (Radar Refleksi Mandiri)
                           </h3>
                         </div>
-                        <span className="font-mono text-[10px] text-[#7A7265]">Ceklis setelah menguasai</span>
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992]">Ceklis setelah menguasai</span>
                       </div>
 
                       <div className="space-y-2">
@@ -2186,16 +2186,16 @@ export default function MerakiApp() {
                               onClick={() => handleToggleCanDo(checkKey)}
                               className={clsx(
                                 'w-full text-left p-3 rounded-2xl border text-xs transition-all flex items-start gap-3 cursor-pointer',
-                                isChecked ? 'bg-[#535841]/15 border-[#535841]/40 text-[#1E1B17]' : 'bg-[#DDD7CA] border-[#C8C0B0] text-[#38332A]'
+                                isChecked ? 'bg-[#004A6B]/15 dark:bg-[#00638E]/20 border-[#004A6B] dark:border-[#00638E]/40 text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] border-[#BFD8E3]/40 dark:border-white/10 text-[#2B2B2B] dark:text-[#FFFFFF]'
                               )}
                             >
                               <span className={clsx(
                                 'w-4 h-4 rounded-md border flex items-center justify-center shrink-0 mt-0.5',
-                                isChecked ? 'bg-[#535841] border-[#535841] text-white' : 'border-[#7A7265]'
+                                isChecked ? 'bg-[#004A6B] dark:bg-[#00638E] text-white border-[#004A6B] dark:border-[#00638E] text-white' : 'border-[#BFD8E3]/40'
                               )}>
                                 {isChecked && <Check className="w-3 h-3" />}
                               </span>
-                              <span className={clsx('leading-relaxed', isChecked && 'line-through text-[#7A7265]')}>
+                              <span className={clsx('leading-relaxed', isChecked && 'line-through text-[#50585C] dark:text-[#7A8992]')}>
                                 {item}
                               </span>
                             </button>
@@ -2207,11 +2207,11 @@ export default function MerakiApp() {
 
                   {/* Pocket Axioms */}
                   {currentTopic.pocketAxioms && currentTopic.pocketAxioms.length > 0 && (
-                    <div className="p-5 sm:p-6 rounded-2xl mi-card border border-[rgba(124,110,234,0.25)] bg-[rgba(124,110,234,0.06)] shadow-md space-y-4">
+                    <div className="p-5 sm:p-6 rounded-2xl ao-card border border-[rgba(0, 99, 142, 0.30)] bg-[rgba(0, 99, 142, 0.08)] shadow-md space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Sparkles className="w-4 h-4 text-[#A84A28]" />
-                          <h3 className="font-serif text-lg font-medium text-[#EFE9DF]">
+                          <Sparkles className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
+                          <h3 className="font-serif text-lg font-medium text-white">
                             Pocket Axioms (Kartu Contekan Kilat 30 Detik)
                           </h3>
                         </div>
@@ -2224,10 +2224,10 @@ export default function MerakiApp() {
                         </button>
                       </div>
 
-                      <ul className="space-y-2 text-xs text-[#DDD7CA]">
+                      <ul className="space-y-2 text-xs text-[#BFD8E3]">
                         {currentTopic.pocketAxioms.map((ax, aIdx) => (
                           <li key={aIdx} className="flex items-start gap-2">
-                            <span className="text-[#A84A28] font-bold mt-0.5">▪</span>
+                            <span className="text-[#00638E] dark:text-[#8CB9CC] font-bold mt-0.5">▪</span>
                             <span className="leading-relaxed">{ax}</span>
                           </li>
                         ))}
@@ -2236,16 +2236,16 @@ export default function MerakiApp() {
                   )}
 
                   {/* Bottom Action */}
-                  <div className="p-5 sm:p-6 rounded-2xl mi-card flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="p-5 sm:p-6 rounded-2xl ao-card flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
                       <h4 className="font-serif text-base font-bold text-[#E8E8F0]">Sudah Selesai Membaca Modul Ini?</h4>
-                      <p className="text-xs text-[#8A8AA8]">Uji pemahamanmu pada section latihan kuis interaktif khusus modul ini.</p>
+                      <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3]">Uji pemahamanmu pada section latihan kuis interaktif khusus modul ini.</p>
                     </div>
 
                     <button
                       onClick={() => setActiveHub('practice')}
                       className="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 hover:opacity-90 active:scale-95 shrink-0"
-                      style={{ background: '#7C6EEA', color: '#fff' }}
+                      style={{ background: '#00638E', color: '#fff' }}
                     >
                       <span>Buka Latihan Soal</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -2256,11 +2256,11 @@ export default function MerakiApp() {
                     {prevTopic ? (
                       <button
                         onClick={() => handleSelectTopic(prevTopic.id)}
-                        className="w-full sm:w-auto p-3 sm:px-4 sm:py-2.5 rounded-xl mi-inner hover:bg-white/5 text-left flex items-center gap-2.5 text-xs transition-all"
+                        className="w-full sm:w-auto p-3 sm:px-4 sm:py-2.5 rounded-xl ao-inner hover:bg-white/5 text-left flex items-center gap-2.5 text-xs transition-all"
                       >
-                        <ChevronLeft className="w-4 h-4 text-[#8A8AA8] shrink-0" />
+                        <ChevronLeft className="w-4 h-4 text-[#2B2B2B] dark:text-[#BFD8E3] shrink-0" />
                         <div>
-                          <span className="font-mono text-[9px] text-[#6A6A84] block uppercase">Modul Sebelumnya</span>
+                          <span className="font-mono text-[9px] text-[#50585C] dark:text-[#7A8992] block uppercase">Modul Sebelumnya</span>
                           <span className="font-serif font-semibold text-[#E8E8F0] line-clamp-1">
                             {String(prevTopic.moduleNumber).padStart(2, '0')}: {prevTopic.title}
                           </span>
@@ -2272,7 +2272,7 @@ export default function MerakiApp() {
                       <button
                         onClick={() => handleSelectTopic(nextTopic.id)}
                         className="w-full sm:w-auto p-3 sm:px-5 sm:py-2.5 rounded-xl text-right flex items-center justify-between sm:justify-end gap-2.5 text-xs transition-all hover:opacity-90 active:scale-95 shrink-0"
-                        style={{ background: '#7C6EEA', color: '#fff' }}
+                        style={{ background: '#00638E', color: '#fff' }}
                       >
                         <div>
                           <span className="font-mono text-[9px] text-white/80 block uppercase">Modul Selanjutnya</span>
@@ -2286,7 +2286,7 @@ export default function MerakiApp() {
                       <button
                         onClick={() => setActiveHub('practice')}
                         className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold transition-all hover:opacity-90"
-                        style={{ background: 'rgba(124,110,234,0.18)', border: '1px solid rgba(124,110,234,0.3)', color: '#9B90F2' }}
+                        style={{ background: 'rgba(0, 99, 142, 0.22)', border: '1px solid rgba(0, 99, 142, 0.35)', color: '#8CB9CC' }}
                       >
                         <span>Kurikulum Selesai! Buka Latihan Soal</span>
                       </button>
@@ -2301,8 +2301,8 @@ export default function MerakiApp() {
           {activeHub === 'practice' && (
             <div className="h-full flex gap-2.5 sm:gap-3 min-h-0 overflow-hidden">
               {/* Desktop Topic Selector Sidebar */}
-              <aside className="mi-slab hidden md:flex md:w-72 lg:w-80 h-full flex-col overflow-hidden shrink-0 p-3 space-y-3">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#7A7265] font-semibold block">
+              <aside className="ao-slab hidden md:flex md:w-72 lg:w-80 h-full flex-col overflow-hidden shrink-0 p-3 space-y-3">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] font-semibold block">
                   Pilih Modul Soal:
                 </span>
                 <div className="flex-1 overflow-y-auto space-y-1 pr-1">
@@ -2317,8 +2317,8 @@ export default function MerakiApp() {
                         className={clsx(
                           'w-full text-left p-3 rounded-2xl text-xs transition-all flex items-center justify-between gap-2 tactile-btn',
                           isSelected
-                            ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs font-medium'
-                            : 'bg-[#E2DCD0]/60 hover:bg-[#DDD7CA] text-[#38332A]'
+                            ? 'bg-[#00638E] text-white shadow-xs font-semibold shadow-xs font-medium'
+                            : 'bg-[#EDF3F7]/60 dark:bg-[#2B2B2B]/40 hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#2B2B2B] dark:text-[#FFFFFF]'
                         )}
                       >
                         <div className="flex items-center gap-2">
@@ -2328,7 +2328,7 @@ export default function MerakiApp() {
                           <span className="line-clamp-1">{topic.title}</span>
                         </div>
                         {isDone && (
-                          <Check className="w-3.5 h-3.5 shrink-0 text-[#535841]" />
+                          <Check className="w-3.5 h-3.5 shrink-0 text-[#004A6B] dark:text-[#BFD8E3]" />
                         )}
                       </button>
                     );
@@ -2337,10 +2337,10 @@ export default function MerakiApp() {
               </aside>
 
               {/* Right Practice Area */}
-              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-36 md:pb-16 flex flex-col justify-between">
+              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#F4F7F9] dark:bg-[#000000] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-36 md:pb-16 flex flex-col justify-between">
                 <div className="max-w-2xl mx-auto w-full space-y-5 sm:space-y-6 py-2">
                   {/* Mobile Quick Module Chips */}
-                  <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#C8C0B0]/60">
+                  <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#BFD8E3]/30 dark:border-white/10">
                     {MERAKI_CURRICULUM.map((topic) => {
                       const isSelected = topic.id === selectedTopicId;
                       const isDone = completedTopicIds.includes(topic.id);
@@ -2351,24 +2351,24 @@ export default function MerakiApp() {
                           className={clsx(
                             'px-3 py-2 rounded-xl text-xs font-mono whitespace-nowrap transition-all tactile-btn flex items-center gap-1.5 shrink-0 min-h-[38px]',
                             isSelected
-                              ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
-                              : 'bg-[#E6E0D4] text-[#7A7265] border border-[#C8C0B0]'
+                              ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs'
+                              : 'bg-[#FFFFFF] dark:bg-[#141414] text-[#50585C] dark:text-[#7A8992] border border-[#BFD8E3]/40 dark:border-white/10'
                           )}
                         >
                           <span>{String(topic.moduleNumber).padStart(2, '0')}</span>
                           <span className="max-w-[120px] truncate">{topic.title}</span>
-                          {isDone && <Check className="w-3 h-3 text-[#535841]" />}
+                          {isDone && <Check className="w-3 h-3 text-[#004A6B] dark:text-[#BFD8E3]" />}
                         </button>
                       );
                     })}
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
                     <div>
-                      <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
+                      <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold">
                         Modul {String(currentTopic.moduleNumber).padStart(2, '0')}: {currentTopic.title}
                       </span>
-                      <h2 className="text-xl font-serif text-[#1E1B17]">Latihan Sintaksis & Produksi</h2>
+                      <h2 className="text-xl font-serif text-[#141414] dark:text-[#FFFFFF]">Latihan Sintaksis & Produksi</h2>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2">
@@ -2376,18 +2376,18 @@ export default function MerakiApp() {
                         onClick={handleResetTopicQuiz}
                         title="Mulai ulang jawaban topik ini"
                         aria-label="Mulai ulang jawaban topik ini"
-                        className="px-2.5 py-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 text-[#7A7265] hover:text-[#1E1B17] text-xs font-mono flex items-center gap-1 border border-[#C8C0B0] tactile-btn min-h-[36px]"
+                        className="px-2.5 py-1.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:bg-[#1C1C1C]/80 text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] text-xs font-mono flex items-center gap-1 border border-[#BFD8E3]/40 dark:border-white/10 tactile-btn min-h-[36px]"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
                         <span className="hidden sm:inline">Reset Topik</span>
                       </button>
 
-                      <div className="flex items-center gap-1 bg-[#DDD7CA] p-1 rounded-2xl border border-[#C8C0B0]">
+                      <div className="flex items-center gap-1 bg-[#EDF3F7] dark:bg-[#1C1C1C] p-1 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10">
                         <button
                           onClick={() => setPracticeSubMode('quiz')}
                           className={clsx(
                             'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
-                            practiceSubMode === 'quiz' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                            practiceSubMode === 'quiz' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                           )}
                         >
                           Pilihan Ganda
@@ -2396,10 +2396,10 @@ export default function MerakiApp() {
                           onClick={() => setPracticeSubMode('sentence-doctor')}
                           className={clsx(
                             'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1 min-h-[36px]',
-                            practiceSubMode === 'sentence-doctor' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                            practiceSubMode === 'sentence-doctor' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                           )}
                         >
-                          <Sparkles className="w-3 h-3 text-[#A84A28]" />
+                          <Sparkles className="w-3 h-3 text-[#00638E] dark:text-[#8CB9CC]" />
                           <span>Bedah Kalimat</span>
                         </button>
                       </div>
@@ -2408,15 +2408,15 @@ export default function MerakiApp() {
 
                   {practiceSubMode === 'quiz' && (
                     <div className="space-y-6">
-                      <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4">
-                        <div className="flex items-center justify-between text-xs font-mono text-[#7A7265]">
-                          <span className="bg-[#DDD7CA] px-2.5 py-0.5 rounded text-[#535841] font-semibold">
+                      <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs space-y-4">
+                        <div className="flex items-center justify-between text-xs font-mono text-[#50585C] dark:text-[#7A8992]">
+                          <span className="bg-[#EDF3F7] dark:bg-[#1C1C1C] px-2.5 py-0.5 rounded text-[#004A6B] dark:text-[#BFD8E3] font-semibold">
                             Level: {currentQuestion.difficulty}
                           </span>
                           <span>Soal {activeQuestionIndex + 1} dari {questions.length}</span>
                         </div>
 
-                        <p className="text-sm sm:text-base font-medium text-[#1E1B17] leading-relaxed">
+                        <p className="text-sm sm:text-base font-medium text-[#141414] dark:text-[#FFFFFF] leading-relaxed">
                           {currentQuestion.question}
                         </p>
 
@@ -2426,18 +2426,18 @@ export default function MerakiApp() {
                             const isAnswered = quizAnswers[currentQuestion.id] !== undefined;
                             const isCorrect = opt === currentQuestion.correctAnswer;
 
-                            let optStyle = 'bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 border-[#C8C0B0] text-[#38332A]';
+                            let optStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:bg-[#1C1C1C]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#2B2B2B] dark:text-[#FFFFFF]';
 
                             if (isAnswered) {
                               if (isCorrect) {
-                                optStyle = 'bg-[#535841]/15 border-[#535841]/40 text-[#1E1B17] font-medium';
+                                optStyle = 'bg-[#004A6B]/15 dark:bg-[#00638E]/20 border-[#004A6B] dark:border-[#00638E]/40 text-[#141414] dark:text-[#FFFFFF] font-medium';
                               } else if (selected && !isCorrect) {
-                                optStyle = 'bg-[#A84A28]/15 border-[#A84A28]/30 text-[#1E1B17]';
+                                optStyle = 'bg-[#00638E]/15 dark:bg-[#00638E]/25 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]';
                               } else {
-                                optStyle = 'bg-[#DDD7CA]/30 border-transparent text-[#7A7265] opacity-40';
+                                optStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C]/30 border-transparent text-[#50585C] dark:text-[#7A8992] opacity-40';
                               }
                             } else if (selected) {
-                              optStyle = 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17]';
+                              optStyle = 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E]';
                             }
 
                             return (
@@ -2451,19 +2451,19 @@ export default function MerakiApp() {
                                 )}
                               >
                                 <div className="flex items-start gap-2.5">
-                                  <span className="font-mono text-[10px] bg-black/05 border border-black/10 px-1.5 py-0.5 rounded font-semibold text-[#7A7265] shrink-0">
+                                  <span className="font-mono text-[10px] bg-black/05 border border-black/10 px-1.5 py-0.5 rounded font-semibold text-[#50585C] dark:text-[#7A8992] shrink-0">
                                     {['A', 'B', 'C', 'D'][oIdx]}
                                   </span>
                                   <span className="leading-snug">{opt}</span>
                                 </div>
                                 <div className="flex items-center gap-1.5 shrink-0 mt-0.5">
                                   {!isAnswered && (
-                                    <kbd className="font-mono text-[9px] text-[#7A7265] bg-[#DDD7CA] px-1.5 py-0.5 rounded border border-[#C8C0B0]">
+                                    <kbd className="font-mono text-[9px] text-[#50585C] dark:text-[#7A8992] bg-[#EDF3F7] dark:bg-[#1C1C1C] px-1.5 py-0.5 rounded border border-[#BFD8E3]/40 dark:border-white/10">
                                       {oIdx + 1}
                                     </kbd>
                                   )}
                                   {isAnswered && isCorrect && (
-                                    <Check className="w-4 h-4 text-[#535841] shrink-0" />
+                                    <Check className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3] shrink-0" />
                                   )}
                                 </div>
                               </button>
@@ -2472,15 +2472,15 @@ export default function MerakiApp() {
                         </div>
 
                         {quizAnswers[currentQuestion.id] && (
-                          <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1.5 animate-in fade-in duration-200 mt-4">
-                            <span className="font-mono text-[10px] uppercase font-semibold text-[#A84A28] block">
+                          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1.5 animate-in fade-in duration-200 mt-4">
+                            <span className="font-mono text-[10px] uppercase font-semibold text-[#00638E] dark:text-[#8CB9CC] block">
                               Pembahasan & Kaidah:
                             </span>
-                            <p className="text-[#38332A] leading-relaxed">
+                            <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                               {currentQuestion.explanation}
                             </p>
                             {currentQuestion.ruleReference && (
-                              <p className="text-[11px] text-[#535841] font-mono pt-1 border-t border-[#C8C0B0]/60">
+                              <p className="text-[11px] text-[#004A6B] dark:text-[#BFD8E3] font-mono pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                                 Rujukan: {currentQuestion.ruleReference}
                               </p>
                             )}
@@ -2492,7 +2492,7 @@ export default function MerakiApp() {
                         <button
                           onClick={() => setActiveQuestionIndex((prev) => Math.max(0, prev - 1))}
                           disabled={activeQuestionIndex === 0}
-                          className="px-3 sm:px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#7A7265] hover:text-[#1E1B17] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
+                          className="px-3 sm:px-4 py-2 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
                         >
                           <ChevronLeft className="w-3.5 h-3.5" />
                           <span>Sebelumnya</span>
@@ -2503,8 +2503,8 @@ export default function MerakiApp() {
                           className={clsx(
                             'px-3 sm:px-5 py-2 rounded-2xl font-mono text-xs font-medium transition-all tactile-btn flex items-center gap-1.5 min-h-[40px]',
                             completedTopicIds.includes(currentTopic.id)
-                              ? 'bg-[#535841] text-[#EFE9DF]'
-                              : 'bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF]'
+                              ? 'bg-[#004A6B] dark:bg-[#00638E] text-white text-white'
+                              : 'bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white'
                           )}
                         >
                           <Check className="w-3.5 h-3.5" />
@@ -2522,7 +2522,7 @@ export default function MerakiApp() {
                             )
                           }
                           disabled={activeQuestionIndex === questions.length - 1}
-                          className="px-3 sm:px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#1E1B17] hover:text-[#A84A28] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
+                          className="px-3 sm:px-4 py-2 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono text-[#141414] dark:text-[#FFFFFF] hover:text-[#00638E] dark:text-[#8CB9CC] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
                         >
                           <span>Selanjutnya</span>
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -2534,27 +2534,27 @@ export default function MerakiApp() {
                   {practiceSubMode === 'sentence-doctor' && (
                     <div className="space-y-6">
                       {currentDoctorTask ? (
-                        <div className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4 sm:space-y-5">
+                        <div className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs space-y-4 sm:space-y-5">
                           <div className="flex items-center justify-between">
-                            <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
+                            <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold">
                               Tantangan Koreksi Sintaksis:
                             </span>
-                            <span className="font-mono text-xs text-[#7A7265]">
+                            <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                               Tugas {activeDoctorIndex + 1} dari {doctorTasks.length}
                             </span>
                           </div>
 
-                          <div className="p-4 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 space-y-1.5">
-                            <span className="font-mono text-[10px] uppercase text-[#A84A28] block font-semibold">
+                          <div className="p-4 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/35 dark:border-[#8CB9CC]/40 space-y-1.5">
+                            <span className="font-mono text-[10px] uppercase text-[#00638E] dark:text-[#8CB9CC] block font-semibold">
                               Kalimat Cacat / Mengandung Kesalahan:
                             </span>
-                            <p className="font-serif text-base text-[#1E1B17] italic">
+                            <p className="font-serif text-base text-[#141414] dark:text-[#FFFFFF] italic">
                               "{currentDoctorTask.flawedSentence}"
                             </p>
                           </div>
 
                           <form onSubmit={handleCheckDoctorSentence} className="space-y-3">
-                            <label className="font-mono text-[11px] uppercase tracking-wider text-[#7A7265] font-semibold block mb-1.5">
+                            <label className="font-mono text-[11px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] font-semibold block mb-1.5">
                               Ketik Kalimat Versi yang Sudah Dikoreksi:
                             </label>
                             <textarea
@@ -2565,12 +2565,12 @@ export default function MerakiApp() {
                               }}
                               rows={3}
                               placeholder="Ketik kalimat yang benar secara gramatikal..."
-                              className="w-full p-3.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                              className="w-full p-3.5 text-base sm:text-sm bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]"
                             />
                             <div className="flex justify-end">
                               <button
                                 type="submit"
-                                className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all shadow-xs tactile-btn min-h-[44px]"
+                                className="px-6 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono font-medium transition-all shadow-xs tactile-btn min-h-[44px]"
                               >
                                 Verifikasi Perbaikan
                               </button>
@@ -2581,26 +2581,26 @@ export default function MerakiApp() {
                             <div className={clsx(
                               'p-4 rounded-2xl border text-xs space-y-2 animate-in fade-in duration-200',
                               doctorFeedback.isCorrect
-                                ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]'
-                                : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                                ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]'
+                                : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                             )}>
                               <div className="flex items-center gap-2 font-semibold">
                                 {doctorFeedback.isCorrect ? (
                                   <>
-                                    <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                                    <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                                     <span>Koreksi Sempurna! Struktur kalimat sudah baku.</span>
                                   </>
                                 ) : (
                                   <>
-                                    <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                                    <HelpCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                                     <span>Koreksi belum tepat. Tinjau kunci perbaikan di bawah:</span>
                                   </>
                                 )}
                               </div>
 
-                              <div className="space-y-1 pt-1 border-t border-[#C8C0B0]/60">
+                              <div className="space-y-1 pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                                 <p><strong>Kalimat Baku:</strong> "{currentDoctorTask.correctedSentence}"</p>
-                                <p className="text-[#524C42] leading-relaxed">
+                                <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
                                   <strong>Penjelasan Nalar:</strong> {currentDoctorTask.linguisticExplanation}
                                 </p>
                               </div>
@@ -2608,7 +2608,7 @@ export default function MerakiApp() {
                           )}
 
                           {doctorTasks.length > 1 && (
-                            <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#C8C0B0]/60">
+                            <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
                               <button
                                 type="button"
                                 onClick={() => {
@@ -2617,7 +2617,7 @@ export default function MerakiApp() {
                                   setDoctorFeedback(null);
                                 }}
                                 disabled={activeDoctorIndex === 0}
-                                className="px-3.5 sm:px-4 py-2 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] border border-[#C8C0B0] text-xs font-mono text-[#7A7265] hover:text-[#1E1B17] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
+                                className="px-3.5 sm:px-4 py-2 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
                               >
                                 <ChevronLeft className="w-3.5 h-3.5" />
                                 <span>Tugas Sebelumnya</span>
@@ -2631,7 +2631,7 @@ export default function MerakiApp() {
                                   setDoctorFeedback(null);
                                 }}
                                 disabled={activeDoctorIndex === doctorTasks.length - 1}
-                                className="px-3.5 sm:px-4 py-2 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
+                                className="px-3.5 sm:px-4 py-2 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono disabled:opacity-30 flex items-center gap-1 tactile-btn min-h-[40px]"
                               >
                                 <span>Tugas Selanjutnya</span>
                                 <ChevronRight className="w-3.5 h-3.5" />
@@ -2640,7 +2640,7 @@ export default function MerakiApp() {
                           )}
                         </div>
                       ) : (
-                        <div className="p-8 text-center bg-[#E6E0D4] rounded-3xl border border-[#C8C0B0] text-xs text-[#7A7265]">
+                        <div className="p-8 text-center bg-[#FFFFFF] dark:bg-[#141414] rounded-3xl border border-[#BFD8E3]/40 dark:border-white/10 text-xs text-[#50585C] dark:text-[#7A8992]">
                           Modul ini difokuskan pada penguasaan konsep di tab Pilihan Ganda.
                         </div>
                       )}
@@ -2653,22 +2653,22 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 3: ACL & DIKSI ALAMI ───────────── */}
           {activeHub === 'collocations' && (
-            <div className="mi-slab h-full overflow-y-auto mi-scroll p-4 sm:p-6 lg:p-8 space-y-6">
+            <div className="ao-slab h-full overflow-y-auto ao-scroll p-4 sm:p-6 lg:p-8 space-y-6">
               {/* Header Switcher */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10 shrink-0">
                 <div>
-                  <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
+                  <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold">
                     Academic Collocations List (ACL) & Natural Lexicon Studio
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Studio Kolokasi Baku & Diksi On-Point</h2>
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#141414] dark:text-[#FFFFFF]">Studio Kolokasi Baku & Diksi On-Point</h2>
                 </div>
 
-                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
+                <div className="flex items-center gap-1 bg-[#EDF3F7] dark:bg-[#1C1C1C] p-1.5 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
                   <button
                     onClick={() => setCollocationSubTab('acl')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'acl' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'acl' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     ACL Collocations
@@ -2677,7 +2677,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('on-point')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'on-point' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'on-point' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     On-Point Verbs
@@ -2686,7 +2686,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('prep')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'prep' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'prep' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Prepositions
@@ -2695,7 +2695,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('confusables')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'confusables' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'confusables' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Confusables
@@ -2704,7 +2704,7 @@ export default function MerakiApp() {
                     onClick={() => setCollocationSubTab('traps')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      collocationSubTab === 'traps' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      collocationSubTab === 'traps' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Anti-Literal (L1 Traps)
@@ -2718,13 +2718,13 @@ export default function MerakiApp() {
                   {/* Left Column: Filter & Collocation Items */}
                   <div className="col-span-1 lg:col-span-6 space-y-3">
                     <div className="relative shrink-0">
-                      <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
+                      <Search className="w-3.5 h-3.5 text-[#50585C] dark:text-[#7A8992] absolute left-3 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
                         value={collocationSearch}
                         onChange={(e) => setCollocationSearch(e.target.value)}
                         placeholder="Cari kolokasi atau arti..."
-                        className="w-full pl-9 pr-3 py-2.5 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                        className="w-full pl-9 pr-3 py-2.5 text-base sm:text-xs bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]"
                       />
                     </div>
 
@@ -2743,13 +2743,13 @@ export default function MerakiApp() {
                               }}
                               className={clsx(
                                 'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
-                                isSelected ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm' : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                                isSelected ? 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-sm' : 'bg-[#FFFFFF] dark:bg-[#141414] border-[#BFD8E3]/40 dark:border-white/10 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                               )}
                             >
                               <div className="flex items-center justify-between">
                                 <span className={clsx(
                                   'font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold',
-                                  isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#A84A28]'
+                                  isSelected ? 'bg-white/20 text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
                                 )}>
                                   {col.type}
                                 </span>
@@ -2763,13 +2763,13 @@ export default function MerakiApp() {
                               </div>
 
                               <h4 className="font-serif text-lg font-bold">{col.collocation}</h4>
-                              <p className={clsx('text-xs line-clamp-1', isSelected ? 'text-[#EFE9DF]/80' : 'text-[#7A7265]')}>
+                              <p className={clsx('text-xs line-clamp-1', isSelected ? 'text-white/80' : 'text-[#50585C] dark:text-[#7A8992]')}>
                                 {col.meaningId}
                               </p>
 
                               <div className={clsx(
                                 'p-2.5 rounded-2xl text-[11px] font-mono leading-relaxed',
-                                isSelected ? 'bg-white/10 text-[#DDD7CA]' : 'bg-[#A84A28]/10 text-[#A84A28]'
+                                isSelected ? 'bg-white/10 text-[#BFD8E3]' : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC]'
                               )}>
                                 {col.literalIndonesianWarning}
                               </div>
@@ -2780,30 +2780,30 @@ export default function MerakiApp() {
                   </div>
 
                   {/* Right Column: Interactive Cloze Test Card (Sticky on desktop) */}
-                  <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
+                  <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                     {(() => {
                       const col = ACADEMIC_COLLOCATIONS_DATA[activeCollocationIndex] || ACADEMIC_COLLOCATIONS_DATA[0];
                       const options = [col.correctTarget, ...col.distractors].sort();
 
                       return (
                         <div className="space-y-5">
-                          <div className="pb-3 border-b border-[#C8C0B0]">
-                            <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
+                          <div className="pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                            <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">
                               Uji Pasangan Kolokasi Baku (Cloze Test):
                             </span>
                             <div className="flex items-center justify-between gap-2 mt-1">
-                              <h3 className="font-serif text-2xl text-[#1E1B17] font-bold">{col.collocation}</h3>
-                              <button onClick={() => playNativeAudio(col.collocation)} className="text-[#7A7265] hover:text-[#1E1B17] p-1.5 rounded-full bg-[#DDD7CA]">
+                              <h3 className="font-serif text-2xl text-[#141414] dark:text-[#FFFFFF] font-bold">{col.collocation}</h3>
+                              <button onClick={() => playNativeAudio(col.collocation)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] p-1.5 rounded-full bg-[#EDF3F7] dark:bg-[#1C1C1C]">
                                 <Volume2 className="w-4 h-4" />
                               </button>
                             </div>
                           </div>
 
-                          <div className="p-4 sm:p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                          <div className="p-4 sm:p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                               Lengkapi Kalimat dengan Pasangan Kolokasi yang Tepat:
                             </span>
-                            <p className="font-serif text-base text-[#1E1B17] leading-relaxed">"{col.clozePrompt}"</p>
+                            <p className="font-serif text-base text-[#141414] dark:text-[#FFFFFF] leading-relaxed">"{col.clozePrompt}"</p>
                           </div>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -2811,11 +2811,11 @@ export default function MerakiApp() {
                               const isSelected = collocationQuizSelected === opt;
                               const isCorrect = opt === col.correctTarget;
 
-                              let optStyle = 'bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 border-[#C8C0B0] text-[#1E1B17]';
+                              let optStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:bg-[#1C1C1C]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
                               if (collocationQuizSelected) {
-                                if (isCorrect) optStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
-                                else if (isSelected && !isCorrect) optStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
-                                else optStyle = 'opacity-40 bg-[#DDD7CA] border-transparent text-[#7A7265]';
+                                if (isCorrect) optStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold';
+                                else if (isSelected && !isCorrect) optStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
+                                else optStyle = 'opacity-40 bg-[#EDF3F7] dark:bg-[#1C1C1C] border-transparent text-[#50585C] dark:text-[#7A8992]';
                               }
 
                               return (
@@ -2849,15 +2849,15 @@ export default function MerakiApp() {
                           </div>
 
                           {collocationQuizSelected && (
-                            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2.5 animate-in fade-in duration-200">
+                            <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-2.5 animate-in fade-in duration-200">
                               <div className="flex items-center justify-between">
-                                <span className="font-mono text-[10px] uppercase text-[#7A7265] font-semibold">Contoh Kalimat Akademik Baku:</span>
-                                <button onClick={() => playNativeAudio(col.exampleSentence)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                                <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] font-semibold">Contoh Kalimat Akademik Baku:</span>
+                                <button onClick={() => playNativeAudio(col.exampleSentence)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                                   <Volume2 className="w-3.5 h-3.5" />
                                 </button>
                               </div>
-                              <p className="font-serif text-sm text-[#1E1B17] italic">"{col.exampleSentence}"</p>
-                              <p className="text-[#524C42] leading-relaxed pt-2 border-t border-[#C8C0B0]/60">
+                              <p className="font-serif text-sm text-[#141414] dark:text-[#FFFFFF] italic">"{col.exampleSentence}"</p>
+                              <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
                                 <strong>Kaidah Leksikal:</strong> {col.literalIndonesianWarning}
                               </p>
                             </div>
@@ -2874,37 +2874,37 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {ON_POINT_VERBS_DATA.map(opv => (
-                      <div key={opv.id} className="p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3">
+                      <div key={opv.id} className="p-5 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="font-mono text-[10px] bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
+                          <span className="font-mono text-[10px] bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded-full font-semibold">
                             {opv.partOfSpeech}
                           </span>
-                          <button onClick={() => playNativeAudio(opv.onPointVerb)} className="text-[#7A7265] hover:text-[#1E1B17] tactile-btn">
+                          <button onClick={() => playNativeAudio(opv.onPointVerb)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] tactile-btn">
                             <Volume2 className="w-4 h-4" />
                           </button>
                         </div>
 
                         <div>
-                          <h4 className="font-serif text-2xl font-bold text-[#1E1B17]">{opv.onPointVerb}</h4>
-                          <span className="font-mono text-xs text-[#7A7265] block">{opv.ipa}</span>
+                          <h4 className="font-serif text-2xl font-bold text-[#141414] dark:text-[#FFFFFF]">{opv.onPointVerb}</h4>
+                          <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] block">{opv.ipa}</span>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-xs space-y-0.5">
-                          <span className="font-mono text-[10px] text-[#A84A28] uppercase block font-semibold">Gantikan Frasa Panjang/Kaku:</span>
-                          <p className="text-[#1E1B17] font-medium">❌ "{opv.indonesianClunkyPhrase}"</p>
-                          <p className="text-[11px] text-[#7A7265] italic">({opv.clunkyEnglishWordy})</p>
+                        <div className="p-3.5 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-xs space-y-0.5">
+                          <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] uppercase block font-semibold">Gantikan Frasa Panjang/Kaku:</span>
+                          <p className="text-[#141414] dark:text-[#FFFFFF] font-medium">❌ "{opv.indonesianClunkyPhrase}"</p>
+                          <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">({opv.clunkyEnglishWordy})</p>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
-                          <span className="font-mono text-[10px] text-[#535841] uppercase block font-semibold">Definisi & Contoh Baku:</span>
-                          <p className="text-[11px] text-[#38332A] leading-relaxed">{opv.formalDefinition}</p>
-                          <p className="font-serif text-[12px] text-[#1E1B17] italic pt-1 border-t border-[#C8C0B0]/60">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
+                          <span className="font-mono text-[10px] text-[#004A6B] dark:text-[#BFD8E3] uppercase block font-semibold">Definisi & Contoh Baku:</span>
+                          <p className="text-[11px] text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{opv.formalDefinition}</p>
+                          <p className="font-serif text-[12px] text-[#141414] dark:text-[#FFFFFF] italic pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                             "{opv.exampleSentence}"
                           </p>
                         </div>
 
                         {opv.antonymOrPair && (
-                          <div className="text-[11px] font-mono text-[#7A7265]">
+                          <div className="text-[11px] font-mono text-[#50585C] dark:text-[#7A8992]">
                             <strong>Pasangan / Antonim:</strong> {opv.antonymOrPair}
                           </div>
                         )}
@@ -2931,7 +2931,7 @@ export default function MerakiApp() {
                 return (
                   <div className="space-y-6 w-full">
                     {/* Header Controls: Filters & Search */}
-                    <div className="p-4 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div className="p-4 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                       {/* Category Chips */}
                       <div className="flex flex-wrap gap-2">
                         {(['all', 'Adjective', 'Verb', 'Noun'] as const).map(cat => {
@@ -2947,14 +2947,14 @@ export default function MerakiApp() {
                               className={clsx(
                                 'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1.5 min-h-[38px]',
                                 isSel
-                                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
-                                  : 'bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]'
+                                  ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs'
+                                  : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                               )}
                             >
                               <span>{cat === 'all' ? 'Semua Kategori' : cat}</span>
                               <span className={clsx(
                                 'px-1.5 py-0.2 text-[10px] rounded-md font-mono',
-                                isSel ? 'bg-[#EFE9DF]/20 text-[#EFE9DF]' : 'bg-[#C8C0B0]/40 text-[#7A7265]'
+                                isSel ? 'bg-[#F4F7F9] dark:bg-[#000000]/20 text-white' : 'bg-[#BFD8E3]/20 text-[#50585C] dark:text-[#7A8992]'
                               )}>
                                 {count}
                               </span>
@@ -2965,13 +2965,13 @@ export default function MerakiApp() {
 
                       {/* Search Bar */}
                       <div className="relative w-full md:w-72">
-                        <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7A7265]" />
+                        <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#50585C] dark:text-[#7A8992]" />
                         <input
                           type="text"
                           value={prepSearchQuery}
                           onChange={(e) => setPrepSearchQuery(e.target.value)}
                           placeholder="Cari kata atau arti..."
-                          className="w-full pl-9 pr-4 py-2 bg-[#DDD7CA] border border-[#C8C0B0] rounded-xl text-xs text-[#1E1B17] placeholder:text-[#7A7265] outline-hidden focus:border-[#A84A28] min-h-[38px]"
+                          className="w-full pl-9 pr-4 py-2 bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-xl text-xs text-[#141414] dark:text-[#FFFFFF] placeholder:text-[#50585C] dark:text-[#7A8992] outline-hidden focus:border-[#00638E] min-h-[38px]"
                         />
                       </div>
                     </div>
@@ -2981,17 +2981,17 @@ export default function MerakiApp() {
                       {/* Left Column: Interactive Directory List */}
                       <div className="lg:col-span-5 space-y-3">
                         <div className="flex items-center justify-between px-1">
-                          <span className="font-mono text-[11px] text-[#7A7265] uppercase font-semibold">
+                          <span className="font-mono text-[11px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
                             Direktori Kata ({filteredPreps.length} item)
                           </span>
-                          <span className="text-[11px] font-mono text-[#535841]">
+                          <span className="text-[11px] font-mono text-[#004A6B] dark:text-[#BFD8E3]">
                             Pilih kata untuk latihan
                           </span>
                         </div>
 
                         <div className="space-y-2 max-h-[580px] overflow-y-auto pr-1">
                           {filteredPreps.length === 0 ? (
-                            <div className="p-8 text-center bg-[#E6E0D4] border border-[#C8C0B0] rounded-2xl text-xs text-[#7A7265]">
+                            <div className="p-8 text-center bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl text-xs text-[#50585C] dark:text-[#7A8992]">
                               Tidak ada dependent preposition yang cocok dengan pencarian "{prepSearchQuery}".
                             </div>
                           ) : (
@@ -3010,26 +3010,26 @@ export default function MerakiApp() {
                                   className={clsx(
                                     'p-3.5 rounded-2xl border transition-all cursor-pointer tactile-btn text-left flex items-center justify-between gap-3',
                                     isSelected
-                                      ? 'bg-[#E6E0D4] border-[#A84A28] shadow-sm ring-1 ring-[#A84A28]/30'
-                                      : 'bg-[#E6E0D4]/70 hover:bg-[#E6E0D4] border-[#C8C0B0]'
+                                      ? 'bg-[#FFFFFF] dark:bg-[#141414] border-[#00638E] shadow-sm ring-1 ring-[#00638E]/30'
+                                      : 'bg-[#FFFFFF] dark:bg-[#141414]/70 hover:bg-[#FFFFFF] dark:bg-[#141414] border-[#BFD8E3]/40 dark:border-white/10'
                                   )}
                                 >
                                   <div className="space-y-1 flex-1 min-w-0">
                                     <div className="flex items-center gap-2">
-                                      <span className="font-serif font-bold text-sm text-[#1E1B17]">
+                                      <span className="font-serif font-bold text-sm text-[#141414] dark:text-[#FFFFFF]">
                                         {item.word}
                                       </span>
-                                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#DDD7CA] text-[#7A7265]">
+                                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]">
                                         {item.partOfSpeech}
                                       </span>
                                     </div>
-                                    <p className="text-xs text-[#7A7265] truncate font-sans">
+                                    <p className="text-xs text-[#50585C] dark:text-[#7A8992] truncate font-sans">
                                       {item.meaningId}
                                     </p>
                                   </div>
 
                                   <div className="flex items-center gap-2 shrink-0">
-                                    <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#535841]/15 text-[#535841]">
+                                    <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#004A6B]/15 dark:bg-[#00638E]/20 text-[#004A6B] dark:text-[#BFD8E3]">
                                       + {item.requiredPreposition}
                                     </span>
                                     <button
@@ -3038,7 +3038,7 @@ export default function MerakiApp() {
                                         playNativeAudio(`${item.word} ${item.requiredPreposition}`);
                                       }}
                                       title="Dengarkan pengucapan"
-                                      className="p-1.5 rounded-lg hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17] transition-colors"
+                                      className="p-1.5 rounded-lg hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors"
                                     >
                                       <Volume2 className="w-3.5 h-3.5" />
                                     </button>
@@ -3052,50 +3052,50 @@ export default function MerakiApp() {
 
                       {/* Right Column: Sticky Interactive Cloze Studio Card */}
                       <div className="lg:col-span-7 lg:sticky lg:top-24 space-y-4">
-                        <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
+                        <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm space-y-5">
                           {/* Card Top Info */}
-                          <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
+                          <div className="flex items-center justify-between pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
                             <div className="flex items-center gap-2">
-                              <span className="font-serif text-lg font-bold text-[#1E1B17]">
+                              <span className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">
                                 {activeItem.word}
                               </span>
-                              <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-2.5 py-0.5 rounded-md uppercase font-semibold">
+                              <span className="font-mono text-xs bg-[#004A6B]/10 dark:bg-[#00638E]/15 text-[#004A6B] dark:text-[#BFD8E3] px-2.5 py-0.5 rounded-md uppercase font-semibold">
                                 {activeItem.partOfSpeech}
                               </span>
                             </div>
-                            <span className="font-mono text-xs text-[#7A7265]">
+                            <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                               Item {activePrepIndex + 1} dari {DEPENDENT_PREPOSITIONS_DATA.length}
                             </span>
                           </div>
 
                           {/* Indonesian Meaning Context */}
-                          <div className="px-3.5 py-2 rounded-xl bg-[#DDD7CA]/60 border border-[#C8C0B0]/60 text-xs text-[#1E1B17]">
-                            <span className="font-mono font-semibold text-[#7A7265] text-[10px] uppercase block">Makna Kontekstual:</span>
+                          <div className="px-3.5 py-2 rounded-xl bg-[#EDF3F7]/60 dark:bg-[#1C1C1C]/60 border border-[#BFD8E3]/30 dark:border-white/10 text-xs text-[#141414] dark:text-[#FFFFFF]">
+                            <span className="font-mono font-semibold text-[#50585C] dark:text-[#7A8992] text-[10px] uppercase block">Makna Kontekstual:</span>
                             {activeItem.meaningId}
                           </div>
 
                           {/* Cloze Prompt */}
-                          <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
+                          <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
                             <div className="flex items-center justify-between">
-                              <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">
+                              <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
                                 Lengkapi Preposisi Terikat yang Tepat:
                               </span>
                               <button
                                 onClick={() => playNativeAudio(activeItem.clozeSentence.replace('_____', activeItem.requiredPreposition))}
-                                className="inline-flex items-center gap-1 text-[11px] font-mono text-[#535841] hover:text-[#1E1B17] transition-colors"
+                                className="inline-flex items-center gap-1 text-[11px] font-mono text-[#004A6B] dark:text-[#BFD8E3] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors"
                               >
                                 <Volume2 className="w-3.5 h-3.5" />
                                 <span>Dengar Kalimat</span>
                               </button>
                             </div>
-                            <p className="font-serif text-lg text-[#1E1B17] leading-relaxed">
+                            <p className="font-serif text-lg text-[#141414] dark:text-[#FFFFFF] leading-relaxed">
                               "{activeItem.clozeSentence}"
                             </p>
                           </div>
 
                           {/* Rapid Preposition Selector Chips */}
                           <div className="space-y-1.5">
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                               Pilih Cepat Preposisi:
                             </span>
                             <div className="flex flex-wrap gap-1.5">
@@ -3110,8 +3110,8 @@ export default function MerakiApp() {
                                   className={clsx(
                                     'px-2.5 py-1 rounded-lg text-xs font-mono transition-all tactile-btn',
                                     prepUserInput.trim().toLowerCase() === p
-                                      ? 'bg-[#A84A28] text-[#EFE9DF] font-bold shadow-xs'
-                                      : 'bg-[#DDD7CA] text-[#1E1B17] hover:bg-[#C8C0B0]'
+                                      ? 'bg-[#00638E] text-white text-white font-bold shadow-xs'
+                                      : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B]'
                                   )}
                                 >
                                   {p}
@@ -3131,11 +3131,11 @@ export default function MerakiApp() {
                                   setPrepFeedback(null);
                                 }}
                                 placeholder="Ketik atau pilih preposisi di atas..."
-                                className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17] font-mono"
+                                className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-mono"
                               />
                               <button
                                 type="submit"
-                                className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shrink-0 min-h-[44px]"
+                                className="px-6 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono font-medium transition-all tactile-btn shrink-0 min-h-[44px]"
                               >
                                 Periksa Preposisi
                               </button>
@@ -3146,30 +3146,30 @@ export default function MerakiApp() {
                           {prepFeedback && (
                             <div className={clsx(
                               'p-4 rounded-2xl border text-xs space-y-2 animate-in fade-in duration-200',
-                              prepFeedback.isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                              prepFeedback.isCorrect ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                             )}>
                               <div className="flex items-center gap-2 font-semibold">
                                 {prepFeedback.isCorrect ? (
                                   <>
-                                    <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                                    <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                                     <span>Preposisi Tepat! <strong>"{activeItem.word} {activeItem.requiredPreposition}"</strong></span>
                                   </>
                                 ) : (
                                   <>
-                                    <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                                    <HelpCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                                     <span>Preposisi kurang tepat. Preposisi baku adalah: <strong>"{activeItem.requiredPreposition}"</strong></span>
                                   </>
                                 )}
                               </div>
 
-                              <p className="font-serif text-[#1E1B17] italic pt-1 border-t border-[#C8C0B0]/60">
+                              <p className="font-serif text-[#141414] dark:text-[#FFFFFF] italic pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                                 "{activeItem.exampleSentence}"
                               </p>
                             </div>
                           )}
 
                           {/* Navigation Buttons */}
-                          <div className="flex justify-between gap-3 pt-2 border-t border-[#C8C0B0]">
+                          <div className="flex justify-between gap-3 pt-2 border-t border-[#BFD8E3]/40 dark:border-white/10">
                             <button
                               onClick={() => {
                                 setActivePrepIndex(prev => Math.max(0, prev - 1));
@@ -3177,7 +3177,7 @@ export default function MerakiApp() {
                                 setPrepFeedback(null);
                               }}
                               disabled={activePrepIndex === 0}
-                              className="px-4 py-2.5 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[40px]"
+                              className="px-4 py-2.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[40px]"
                             >
                               ← Sebelumnya
                             </button>
@@ -3189,7 +3189,7 @@ export default function MerakiApp() {
                                 setPrepUserInput('');
                                 setPrepFeedback(null);
                               }}
-                              className="px-3.5 py-2.5 rounded-2xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#7A7265] tactile-btn min-h-[40px]"
+                              className="px-3.5 py-2.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-xs font-mono text-[#50585C] dark:text-[#7A8992] tactile-btn min-h-[40px]"
                             >
                               Acak Kata
                             </button>
@@ -3201,7 +3201,7 @@ export default function MerakiApp() {
                                 setPrepFeedback(null);
                               }}
                               disabled={activePrepIndex === DEPENDENT_PREPOSITIONS_DATA.length - 1}
-                              className="px-4 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[40px]"
+                              className="px-4 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono disabled:opacity-30 tactile-btn min-h-[40px]"
                             >
                               Selanjutnya →
                             </button>
@@ -3220,54 +3220,54 @@ export default function MerakiApp() {
                     const cw = CONFUSABLE_WORDS_DATA[activeConfusableIndex] || CONFUSABLE_WORDS_DATA[0];
 
                     return (
-                      <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-5">
-                        <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
-                          <h3 className="font-serif text-2xl font-bold text-[#1E1B17]">
+                      <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-5">
+                        <div className="flex items-center justify-between pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                          <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-[#FFFFFF]">
                             {cw.wordA} vs {cw.wordB}
                           </h3>
-                          <span className="font-mono text-xs text-[#7A7265]">
+                          <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                             Pasangan {activeConfusableIndex + 1} dari {CONFUSABLE_WORDS_DATA.length}
                           </span>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                          <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
-                            <span className="font-mono text-xs font-bold text-[#A84A28] block">{cw.wordA} ({cw.posA})</span>
-                            <p className="text-[#38332A]">{cw.definitionA}</p>
-                            <p className="font-serif text-[12px] text-[#1E1B17] italic pt-1 border-t border-[#C8C0B0]/60">
+                          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
+                            <span className="font-mono text-xs font-bold text-[#00638E] dark:text-[#8CB9CC] block">{cw.wordA} ({cw.posA})</span>
+                            <p className="text-[#2B2B2B] dark:text-[#FFFFFF]">{cw.definitionA}</p>
+                            <p className="font-serif text-[12px] text-[#141414] dark:text-[#FFFFFF] italic pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                               "{cw.exampleA}"
                             </p>
                           </div>
 
-                          <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
-                            <span className="font-mono text-xs font-bold text-[#535841] block">{cw.wordB} ({cw.posB})</span>
-                            <p className="text-[#38332A]">{cw.definitionB}</p>
-                            <p className="font-serif text-[12px] text-[#1E1B17] italic pt-1 border-t border-[#C8C0B0]/60">
+                          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
+                            <span className="font-mono text-xs font-bold text-[#004A6B] dark:text-[#BFD8E3] block">{cw.wordB} ({cw.posB})</span>
+                            <p className="text-[#2B2B2B] dark:text-[#FFFFFF]">{cw.definitionB}</p>
+                            <p className="font-serif text-[12px] text-[#141414] dark:text-[#FFFFFF] italic pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                               "{cw.exampleB}"
                             </p>
                           </div>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#535841]/10 border border-[#535841]/30 text-xs font-mono text-[#535841]">
+                        <div className="p-3.5 rounded-2xl bg-[#004A6B]/10 dark:bg-[#00638E]/15 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-xs font-mono text-[#004A6B] dark:text-[#BFD8E3]">
                           <strong>Trik Memori Diagnostik:</strong> {cw.diagnosticTrick}
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
-                          <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                        <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                          <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                             Uji Ketepatan Penggunaan dalam Kalimat:
                           </span>
-                          <p className="font-serif text-sm text-[#1E1B17]">"{cw.quizQuestion}"</p>
+                          <p className="font-serif text-sm text-[#141414] dark:text-[#FFFFFF]">"{cw.quizQuestion}"</p>
 
                           <div className="grid grid-cols-2 gap-2">
                             {cw.quizOptions.map(opt => {
                               const isSelected = confusableSelected === opt;
                               const isCorrect = opt === cw.correctWord;
 
-                              let btnStyle = 'bg-[#E6E0D4] hover:bg-[#E6E0D4]/80 border-[#C8C0B0] text-[#1E1B17]';
+                              let btnStyle = 'bg-[#FFFFFF] dark:bg-[#141414] hover:bg-[#FFFFFF] dark:bg-[#141414]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
                               if (confusableSelected) {
-                                if (isCorrect) btnStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
-                                else if (isSelected && !isCorrect) btnStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
-                                else btnStyle = 'opacity-40 bg-[#E6E0D4] border-transparent text-[#7A7265]';
+                                if (isCorrect) btnStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold';
+                                else if (isSelected && !isCorrect) btnStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
+                                else btnStyle = 'opacity-40 bg-[#FFFFFF] dark:bg-[#141414] border-transparent text-[#50585C] dark:text-[#7A8992]';
                               }
 
                               return (
@@ -3311,7 +3311,7 @@ export default function MerakiApp() {
                         setConfusableSelected(null);
                       }}
                       disabled={activeConfusableIndex === 0}
-                      className="px-5 py-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
+                      className="px-5 py-2.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
                     >
                       Pasangan Sebelumnya
                     </button>
@@ -3322,7 +3322,7 @@ export default function MerakiApp() {
                         setConfusableSelected(null);
                       }}
                       disabled={activeConfusableIndex === CONFUSABLE_WORDS_DATA.length - 1}
-                      className="px-5 py-2.5 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
+                      className="px-5 py-2.5 rounded-2xl bg-[#00638E] text-white shadow-xs font-semibold text-xs font-mono disabled:opacity-30 tactile-btn min-h-[44px]"
                     >
                       Pasangan Selanjutnya
                     </button>
@@ -3335,11 +3335,11 @@ export default function MerakiApp() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   {/* Left: List of L1 Traps */}
                   <div className="col-span-1 lg:col-span-6 space-y-3">
-                    <div className="p-4 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 text-xs space-y-1">
-                      <strong className="text-[#A84A28] font-mono text-[11px] uppercase block">
+                    <div className="p-4 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-xs space-y-1">
+                      <strong className="text-[#00638E] dark:text-[#8CB9CC] font-mono text-[11px] uppercase block">
                         Bahaya L1 Interference (Terjemahan Kata-per-Kata):
                       </strong>
-                      <p className="text-[#38332A] leading-relaxed">
+                      <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                         Pola berpikir bahasa Indonesia seringkali meminjam metafora fisik ("cuci mata", "tidak enak hati", "makan korban") yang jika diterjemahkan mentah-mentah ke bahasa Inggris akan terdengar sangat aneh bagi penutur asli.
                       </p>
                     </div>
@@ -3355,14 +3355,14 @@ export default function MerakiApp() {
                           className={clsx(
                             'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeTrapIndex === idx
-                              ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
-                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                              ? 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-sm'
+                              : 'bg-[#FFFFFF] dark:bg-[#141414] border-[#BFD8E3]/40 dark:border-white/10 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                           )}
                         >
                           <div className="flex items-center justify-between">
                             <span className={clsx(
                               'font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold',
-                              activeTrapIndex === idx ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#A84A28]'
+                              activeTrapIndex === idx ? 'bg-white/20 text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
                             )}>
                               {trap.registerCategory}
                             </span>
@@ -3373,7 +3373,7 @@ export default function MerakiApp() {
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                             <div className={clsx(
                               'p-2.5 rounded-xl border',
-                              activeTrapIndex === idx ? 'bg-white/10 border-white/20 text-[#EFE9DF]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                              activeTrapIndex === idx ? 'bg-white/10 border-white/20 text-white' : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                             )}>
                               <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Kaku / Cacat:</span>
                               <span className="line-through">{trap.literalClunkyEnglish}</span>
@@ -3381,7 +3381,7 @@ export default function MerakiApp() {
 
                             <div className={clsx(
                               'p-2.5 rounded-xl border',
-                              activeTrapIndex === idx ? 'bg-white/20 border-white/30 text-[#EFE9DF]' : 'bg-[#535841]/15 border-[#535841]/30 text-[#1E1B17]'
+                              activeTrapIndex === idx ? 'bg-white/20 border-white/30 text-white' : 'bg-[#004A6B]/15 dark:bg-[#00638E]/20 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]'
                             )}>
                               <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Native On-Point:</span>
                               <span className="font-semibold">{trap.onPointNativeEnglish}</span>
@@ -3393,78 +3393,78 @@ export default function MerakiApp() {
                   </div>
 
                   {/* Right: Deep Dive & Live Diagnostic Drill */}
-                  <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
+                  <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                     {(() => {
                       const trap = DIRECT_TRANSLATION_TRAPS_DATA[activeTrapIndex] || DIRECT_TRANSLATION_TRAPS_DATA[0];
 
                       return (
                         <div className="space-y-5">
-                          <div className="pb-3 border-b border-[#C8C0B0]">
-                            <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
+                          <div className="pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                            <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">
                               Pembedahan L1: {trap.registerCategory}
                             </span>
-                            <h3 className="font-serif text-2xl font-bold text-[#1E1B17] mt-1">{trap.indonesianPhrase}</h3>
+                            <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-[#FFFFFF] mt-1">{trap.indonesianPhrase}</h3>
                           </div>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div className="p-4 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/30 space-y-1">
-                              <span className="font-mono text-[10px] text-[#A84A28] uppercase block font-semibold">
+                            <div className="p-4 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/35 dark:border-[#8CB9CC]/40 space-y-1">
+                              <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] uppercase block font-semibold">
                                 Terjemahan Kaku (SALAH):
                               </span>
-                              <p className="font-serif text-sm font-semibold text-[#1E1B17] line-through">
+                              <p className="font-serif text-sm font-semibold text-[#141414] dark:text-[#FFFFFF] line-through">
                                 "{trap.literalClunkyEnglish}"
                               </p>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-[#535841]/15 border border-[#535841]/30 space-y-1">
+                            <div className="p-4 rounded-2xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 space-y-1">
                               <div className="flex items-center justify-between">
-                                <span className="font-mono text-[10px] text-[#535841] uppercase font-semibold">
+                                <span className="font-mono text-[10px] text-[#004A6B] dark:text-[#BFD8E3] uppercase font-semibold">
                                   Diksi Native On-Point (BENAR):
                                 </span>
-                                <button onClick={() => playNativeAudio(trap.onPointNativeEnglish)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                                <button onClick={() => playNativeAudio(trap.onPointNativeEnglish)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                                   <Volume2 className="w-3.5 h-3.5" />
                                 </button>
                               </div>
-                              <p className="font-serif text-sm font-bold text-[#1E1B17]">
+                              <p className="font-serif text-sm font-bold text-[#141414] dark:text-[#FFFFFF]">
                                 "{trap.onPointNativeEnglish}"
                               </p>
                             </div>
                           </div>
 
-                          <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1.5">
-                            <strong className="text-[#535841] font-mono text-[10px] uppercase block">
+                          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1.5">
+                            <strong className="text-[#004A6B] dark:text-[#BFD8E3] font-mono text-[10px] uppercase block">
                               Mengapa Terdengar Aneh Bagi Native Speaker?
                             </strong>
-                            <p className="text-[#38332A] leading-relaxed">{trap.linguisticExplanation}</p>
+                            <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{trap.linguisticExplanation}</p>
                           </div>
 
-                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 text-xs space-y-1">
+                          <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/30 dark:border-white/10 text-xs space-y-1">
                             <div className="flex items-center justify-between">
-                              <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">Contoh Kalimat Baku:</span>
-                              <button onClick={() => playNativeAudio(trap.exampleSentence)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                              <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">Contoh Kalimat Baku:</span>
+                              <button onClick={() => playNativeAudio(trap.exampleSentence)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                                 <Volume2 className="w-3 h-3" />
                               </button>
                             </div>
-                            <p className="font-serif text-[#1E1B17] italic">"{trap.exampleSentence}"</p>
+                            <p className="font-serif text-[#141414] dark:text-[#FFFFFF] italic">"{trap.exampleSentence}"</p>
                           </div>
 
                           {/* Live Drill */}
-                          <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                               Uji Pilihan Diksi Baku (Anti-Literal):
                             </span>
-                            <p className="font-serif text-sm text-[#1E1B17]">"{trap.drillQuestion}"</p>
+                            <p className="font-serif text-sm text-[#141414] dark:text-[#FFFFFF]">"{trap.drillQuestion}"</p>
 
                             <div className="grid grid-cols-2 gap-2">
                               {trap.drillOptions.map(opt => {
                                 const isSelected = trapSelected === opt;
                                 const isCorrect = opt === trap.correctAnswer;
 
-                                let btnStyle = 'bg-[#E6E0D4] hover:bg-[#E6E0D4]/80 border-[#C8C0B0] text-[#1E1B17]';
+                                let btnStyle = 'bg-[#FFFFFF] dark:bg-[#141414] hover:bg-[#FFFFFF] dark:bg-[#141414]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
                                 if (trapSelected) {
-                                  if (isCorrect) btnStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
-                                  else if (isSelected && !isCorrect) btnStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
-                                  else btnStyle = 'opacity-40 bg-[#E6E0D4] border-transparent text-[#7A7265]';
+                                  if (isCorrect) btnStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold';
+                                  else if (isSelected && !isCorrect) btnStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
+                                  else btnStyle = 'opacity-40 bg-[#FFFFFF] dark:bg-[#141414] border-transparent text-[#50585C] dark:text-[#7A8992]';
                                 }
 
                                 return (
@@ -3499,11 +3499,11 @@ export default function MerakiApp() {
                           </div>
 
                           {trapSelected && (
-                            <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1 animate-in fade-in duration-200">
-                              <span className="font-mono text-[10px] uppercase font-semibold text-[#535841] block">
+                            <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1 animate-in fade-in duration-200">
+                              <span className="font-mono text-[10px] uppercase font-semibold text-[#004A6B] dark:text-[#BFD8E3] block">
                                 Penjelasan Nalar Diksi:
                               </span>
-                              <p className="text-[#38332A] leading-relaxed">{trap.drillExplanation}</p>
+                              <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{trap.drillExplanation}</p>
                             </div>
                           )}
                         </div>
@@ -3517,14 +3517,14 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 4: MATRIKS FONDASI ───────────── */}
           {activeHub === 'matrices' && (
-            <div className="mi-slab h-full overflow-y-auto mi-scroll p-4 sm:p-6 lg:p-8 space-y-6">
+            <div className="ao-slab h-full overflow-y-auto ao-scroll p-4 sm:p-6 lg:p-8 space-y-6">
               {/* Header Switcher */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10 shrink-0">
                 <div>
-                  <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
+                  <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold">
                     Laboratorium Matriks Referensi Interaktif
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Master Reference & Drill Matrices</h2>
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#141414] dark:text-[#FFFFFF]">Master Reference & Drill Matrices</h2>
                 </div>
 
                 {/* Category Switcher Tabs */}
@@ -3543,8 +3543,8 @@ export default function MerakiApp() {
                         className={clsx(
                           'px-4 py-2 rounded-2xl text-xs font-mono font-semibold transition-all tactile-btn min-h-[38px]',
                           isCatActive
-                            ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
-                            : 'bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#7A7265] hover:text-[#1E1B17]'
+                            ? 'bg-[#00638E] text-white shadow-xs font-semibold shadow-xs'
+                            : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                         )}
                       >
                         {cat.label}
@@ -3555,7 +3555,7 @@ export default function MerakiApp() {
               </div>
 
               {/* Sub-Matrix Selector Pills (Grouped by Category) */}
-              <div className="flex items-center gap-1.5 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full">
+              <div className="flex items-center gap-1.5 bg-[#EDF3F7] dark:bg-[#1C1C1C] p-1.5 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 overflow-x-auto no-scrollbar w-full">
                 {/* 1. Fondasi Group */}
                 {['pronouns', 'to-be', 'do-does-did', 'have-has-had', 'in-on-at', 'nouns'].includes(matrixSubTab) && (
                   <>
@@ -3563,7 +3563,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('pronouns')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'pronouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'pronouns' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Pronouns (Kasus Subjek/Objek)
@@ -3572,7 +3572,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('to-be')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'to-be' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'to-be' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       To Be (Verbal vs Nominal)
@@ -3581,7 +3581,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('do-does-did')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'do-does-did' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'do-does-did' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Do / Does / Did
@@ -3590,7 +3590,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('have-has-had')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'have-has-had' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'have-has-had' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Have / Has / Had
@@ -3599,7 +3599,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('in-on-at')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'in-on-at' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'in-on-at' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       In / On / At (Piramida)
@@ -3608,7 +3608,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('nouns')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'nouns' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'nouns' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Noun Taxonomy
@@ -3623,7 +3623,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('tenses')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'tenses' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'tenses' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       12 Tenses Master Grid
@@ -3632,7 +3632,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('irregular')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'irregular' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'irregular' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Irregular Verbs ({IRREGULAR_VERBS_DATA.length})
@@ -3641,7 +3641,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('phrasal')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'phrasal' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'phrasal' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Phrasal Verbs
@@ -3650,7 +3650,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('punctuation')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'punctuation' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'punctuation' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Tanda Baca & Sintaksis
@@ -3665,7 +3665,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('subjunctive')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'subjunctive' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'subjunctive' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Subjunctive Mood
@@ -3674,7 +3674,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('cleft-sentences')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'cleft-sentences' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'cleft-sentences' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Cleft Sentences (It- & What-)
@@ -3683,7 +3683,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('geographical-articles')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'geographical-articles' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'geographical-articles' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Geographical Articles (The / Ø)
@@ -3698,7 +3698,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('past-modals')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'past-modals' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'past-modals' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Past Modals of Deduction
@@ -3707,7 +3707,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('reported-speech')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'reported-speech' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'reported-speech' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Reported Speech (Indirect)
@@ -3716,7 +3716,7 @@ export default function MerakiApp() {
                       onClick={() => setMatrixSubTab('embedded-questions')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                        matrixSubTab === 'embedded-questions' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        matrixSubTab === 'embedded-questions' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       Embedded Questions
@@ -3730,31 +3730,31 @@ export default function MerakiApp() {
                 <div className="space-y-6">
                   {/* Subject Agreement Quick Summary Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="p-4 sm:p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 shadow-xs">
+                    <div className="p-4 sm:p-5 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5 shadow-xs">
                       <div className="flex items-center justify-between">
-                        <span className="font-serif font-bold text-xl text-[#1E1B17]">HAVE</span>
-                        <span className="font-mono text-[10px] bg-[#535841]/20 text-[#535841] px-2.5 py-0.5 rounded-full font-semibold">Present</span>
+                        <span className="font-serif font-bold text-xl text-[#141414] dark:text-[#FFFFFF]">HAVE</span>
+                        <span className="font-mono text-[10px] bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] px-2.5 py-0.5 rounded-full font-semibold">Present</span>
                       </div>
-                      <p className="text-xs font-semibold text-[#A84A28]">I, You, They, We, & Plural Nouns</p>
-                      <p className="text-[11px] text-[#7A7265] italic">contoh: "The students HAVE completed their research."</p>
+                      <p className="text-xs font-semibold text-[#00638E] dark:text-[#8CB9CC]">I, You, They, We, & Plural Nouns</p>
+                      <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">contoh: "The students HAVE completed their research."</p>
                     </div>
 
-                    <div className="p-4 sm:p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 shadow-xs">
+                    <div className="p-4 sm:p-5 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5 shadow-xs">
                       <div className="flex items-center justify-between">
-                        <span className="font-serif font-bold text-xl text-[#1E1B17]">HAS</span>
-                        <span className="font-mono text-[10px] bg-[#A84A28]/20 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">Present (3rd Singular)</span>
+                        <span className="font-serif font-bold text-xl text-[#141414] dark:text-[#FFFFFF]">HAS</span>
+                        <span className="font-mono text-[10px] bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded-full font-semibold">Present (3rd Singular)</span>
                       </div>
-                      <p className="text-xs font-semibold text-[#A84A28]">He, She, It, & Singular/Uncountable Nouns</p>
-                      <p className="text-[11px] text-[#7A7265] italic">contoh: "The committee HAS published its findings."</p>
+                      <p className="text-xs font-semibold text-[#00638E] dark:text-[#8CB9CC]">He, She, It, & Singular/Uncountable Nouns</p>
+                      <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">contoh: "The committee HAS published its findings."</p>
                     </div>
 
-                    <div className="p-4 sm:p-5 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 shadow-xs">
+                    <div className="p-4 sm:p-5 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5 shadow-xs">
                       <div className="flex items-center justify-between">
-                        <span className="font-serif font-bold text-xl text-[#1E1B17]">HAD</span>
-                        <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">Past (Semua Subjek)</span>
+                        <span className="font-serif font-bold text-xl text-[#141414] dark:text-[#FFFFFF]">HAD</span>
+                        <span className="font-mono text-[10px] bg-[#00638E] text-white shadow-xs font-semibold px-2.5 py-0.5 rounded-full font-semibold">Past (Semua Subjek)</span>
                       </div>
-                      <p className="text-xs font-semibold text-[#535841]">Semua Subjek Tanpa Terkecuali</p>
-                      <p className="text-[11px] text-[#7A7265] italic">contoh: "They HAD arrived before the storm began."</p>
+                      <p className="text-xs font-semibold text-[#004A6B] dark:text-[#BFD8E3]">Semua Subjek Tanpa Terkecuali</p>
+                      <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">contoh: "They HAD arrived before the storm began."</p>
                     </div>
                   </div>
 
@@ -3772,27 +3772,27 @@ export default function MerakiApp() {
                           className={clsx(
                             'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeHhhIndex === idx
-                              ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
-                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                              ? 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-sm'
+                              : 'bg-[#FFFFFF] dark:bg-[#141414] border-[#BFD8E3]/40 dark:border-white/10 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                           )}
                         >
                           <div className="flex items-center justify-between">
                             <span className={clsx(
                               'font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold',
-                              activeHhhIndex === idx ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#A84A28]'
+                              activeHhhIndex === idx ? 'bg-white/20 text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
                             )}>
                               {item.role}
                             </span>
                           </div>
 
                           <h4 className="font-serif text-lg font-bold">{item.title}</h4>
-                          <p className={clsx('text-xs font-mono', activeHhhIndex === idx ? 'text-[#EFE9DF]/80' : 'text-[#535841]')}>
+                          <p className={clsx('text-xs font-mono', activeHhhIndex === idx ? 'text-white/80' : 'text-[#004A6B] dark:text-[#BFD8E3]')}>
                             Rumus: {item.formula}
                           </p>
 
                           <div className={clsx(
                             'p-2.5 rounded-2xl text-[11px] space-y-1',
-                            activeHhhIndex === idx ? 'bg-white/10 text-[#DDD7CA]' : 'bg-[#DDD7CA] text-[#524C42]'
+                            activeHhhIndex === idx ? 'bg-white/10 text-[#BFD8E3]' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#2B2B2B] dark:text-[#BFD8E3]'
                           )}>
                             <p><strong>Contoh Baku:</strong> {item.correctExample}</p>
                           </div>
@@ -3801,43 +3801,43 @@ export default function MerakiApp() {
                     </div>
 
                     {/* Right: Active Deep-Dive & Diagnostic Drill (Sticky on desktop) */}
-                    <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
+                    <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                       {(() => {
                         const hhh = HAVE_HAS_HAD_MASTER_DATA[activeHhhIndex] || HAVE_HAS_HAD_MASTER_DATA[0];
 
                         return (
                           <div className="space-y-5">
-                            <div className="pb-3 border-b border-[#C8C0B0]">
-                              <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
+                            <div className="pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                              <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">
                                 Uji Pemahaman: {hhh.role}
                               </span>
-                              <h3 className="font-serif text-2xl font-bold text-[#1E1B17] mt-1">{hhh.title}</h3>
+                              <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-[#FFFFFF] mt-1">{hhh.title}</h3>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2">
-                              <p className="leading-relaxed text-[#38332A]">{hhh.explanation}</p>
-                              <div className="p-2.5 rounded-xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[#1E1B17]">
+                            <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-2">
+                              <p className="leading-relaxed text-[#2B2B2B] dark:text-[#FFFFFF]">{hhh.explanation}</p>
+                              <div className="p-2.5 rounded-xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-[#141414] dark:text-[#FFFFFF]">
                                 <strong>Peringatan Kesalahan:</strong> {hhh.incorrectExample}
                               </div>
                             </div>
 
                             {/* Cloze Drill */}
-                            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
-                              <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                            <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                              <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                                 Lengkapi Kalimat dengan Bentuk yang Benar:
                               </span>
-                              <p className="font-serif text-sm font-medium text-[#1E1B17]">"{hhh.drillQuestion}"</p>
+                              <p className="font-serif text-sm font-medium text-[#141414] dark:text-[#FFFFFF]">"{hhh.drillQuestion}"</p>
 
                               <div className="grid grid-cols-2 gap-2">
                                 {hhh.drillOptions.map(opt => {
                                   const isSelected = hhhSelected === opt;
                                   const isCorrect = opt === hhh.correctDrillAnswer;
 
-                                  let optStyle = 'bg-[#E6E0D4] hover:bg-[#E6E0D4]/80 border-[#C8C0B0] text-[#1E1B17]';
+                                  let optStyle = 'bg-[#FFFFFF] dark:bg-[#141414] hover:bg-[#FFFFFF] dark:bg-[#141414]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
                                   if (hhhSelected) {
-                                    if (isCorrect) optStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
-                                    else if (isSelected && !isCorrect) optStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
-                                    else optStyle = 'opacity-40 bg-[#E6E0D4] border-transparent text-[#7A7265]';
+                                    if (isCorrect) optStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold';
+                                    else if (isSelected && !isCorrect) optStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
+                                    else optStyle = 'opacity-40 bg-[#FFFFFF] dark:bg-[#141414] border-transparent text-[#50585C] dark:text-[#7A8992]';
                                   }
 
                                   return (
@@ -3858,11 +3858,11 @@ export default function MerakiApp() {
                             </div>
 
                             {hhhSelected && (
-                              <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1 animate-in fade-in duration-200">
-                                <span className="font-mono text-[10px] uppercase font-semibold text-[#535841] block">
+                              <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1 animate-in fade-in duration-200">
+                                <span className="font-mono text-[10px] uppercase font-semibold text-[#004A6B] dark:text-[#BFD8E3] block">
                                   Nalar Kaidah Baku:
                                 </span>
-                                <p className="text-[#38332A] leading-relaxed">{hhh.drillExplanation}</p>
+                                <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{hhh.drillExplanation}</p>
                               </div>
                             )}
                           </div>
@@ -3878,12 +3878,12 @@ export default function MerakiApp() {
                 <div className="space-y-6">
                   {/* Category Filter */}
                   <div className="flex flex-wrap items-center gap-2 pb-1">
-                    <span className="font-mono text-xs text-[#7A7265] uppercase font-semibold mr-1">Dimensi:</span>
+                    <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase font-semibold mr-1">Dimensi:</span>
                     <button
                       onClick={() => setIoaDimensionFilter('all')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
-                        ioaDimensionFilter === 'all' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                        ioaDimensionFilter === 'all' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                       )}
                     >
                       Semua Dimensi
@@ -3892,7 +3892,7 @@ export default function MerakiApp() {
                       onClick={() => setIoaDimensionFilter('time')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
-                        ioaDimensionFilter === 'time' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                        ioaDimensionFilter === 'time' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                       )}
                     >
                       Waktu (Time)
@@ -3901,7 +3901,7 @@ export default function MerakiApp() {
                       onClick={() => setIoaDimensionFilter('space')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
-                        ioaDimensionFilter === 'space' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                        ioaDimensionFilter === 'space' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                       )}
                     >
                       Tempat & Ruang (Space)
@@ -3910,7 +3910,7 @@ export default function MerakiApp() {
                       onClick={() => setIoaDimensionFilter('idiom')}
                       className={clsx(
                         'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn min-h-[36px]',
-                        ioaDimensionFilter === 'idiom' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                        ioaDimensionFilter === 'idiom' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                       )}
                     >
                       Jebakan Kontras Idiomatis
@@ -3927,25 +3927,25 @@ export default function MerakiApp() {
                         return true;
                       })
                       .map((ioa) => (
-                        <div key={ioa.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 shadow-xs">
+                        <div key={ioa.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4 shadow-xs">
                           <div className="flex items-center justify-between">
-                            <span className="font-serif text-3xl font-bold text-[#1E1B17]">{ioa.preposition}</span>
-                            <span className="font-mono text-[10px] bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
+                            <span className="font-serif text-3xl font-bold text-[#141414] dark:text-[#FFFFFF]">{ioa.preposition}</span>
+                            <span className="font-mono text-[10px] bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded-full font-semibold">
                               {ioa.dimension}
                             </span>
                           </div>
 
-                          <div className="p-3 rounded-2xl bg-[#DDD7CA] text-[11px] font-mono text-[#535841]">
+                          <div className="p-3 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[11px] font-mono text-[#004A6B] dark:text-[#BFD8E3]">
                             <strong>Cakupan Piramida:</strong> {ioa.pyramidScope}
                           </div>
 
                           {/* Rules */}
                           <div className="space-y-1.5 text-xs">
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Kaidah Baku:</span>
-                            <ul className="space-y-1 text-[#38332A]">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">Kaidah Baku:</span>
+                            <ul className="space-y-1 text-[#2B2B2B] dark:text-[#FFFFFF]">
                               {ioa.primaryRules.map((r, rIdx) => (
                                 <li key={rIdx} className="flex items-start gap-1.5 leading-relaxed">
-                                  <span className="text-[#A84A28] font-bold">•</span>
+                                  <span className="text-[#00638E] dark:text-[#8CB9CC] font-bold">•</span>
                                   <span>{r}</span>
                                 </li>
                               ))}
@@ -3953,22 +3953,22 @@ export default function MerakiApp() {
                           </div>
 
                           {/* Examples */}
-                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 space-y-2 text-xs">
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Contoh Kontekstual:</span>
+                          <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/30 dark:border-white/10 space-y-2 text-xs">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">Contoh Kontekstual:</span>
                             {ioa.examples.map((ex, eIdx) => (
                               <div key={eIdx} className="space-y-0.5">
                                 <div className="flex items-center justify-between">
-                                  <p className="font-serif text-[#1E1B17] italic">"{ex.en}"</p>
-                                  <button onClick={() => playNativeAudio(ex.en)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                                  <p className="font-serif text-[#141414] dark:text-[#FFFFFF] italic">"{ex.en}"</p>
+                                  <button onClick={() => playNativeAudio(ex.en)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                                     <Volume2 className="w-3.5 h-3.5" />
                                   </button>
                                 </div>
-                                <p className="text-[11px] text-[#7A7265]">{ex.id}</p>
+                                <p className="text-[11px] text-[#50585C] dark:text-[#7A8992]">{ex.id}</p>
                               </div>
                             ))}
                           </div>
 
-                          <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
+                          <div className="p-3 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-[11px] text-[#141414] dark:text-[#FFFFFF]">
                             <strong>Jebakan Fatal:</strong> {ioa.diagnosticPitfall}
                           </div>
                         </div>
@@ -3980,9 +3980,9 @@ export default function MerakiApp() {
               {/* ───────────── SUB-TAB 3: PRONOUN CASE & AGREEMENT GRID ───────────── */}
               {matrixSubTab === 'pronouns' && (
                 <div className="space-y-4">
-                  <div className="p-4 sm:p-5 rounded-3xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1.5 shadow-xs">
-                    <strong className="text-[#535841] font-mono text-[11px] uppercase block font-bold">Aturan Emas Kasus Kata Ganti (Pronoun Case System):</strong>
-                    <p className="text-[#38332A] leading-relaxed">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#004A6B]/10 dark:bg-[#00638E]/15 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#004A6B] dark:text-[#BFD8E3] font-mono text-[11px] uppercase block font-bold">Aturan Emas Kasus Kata Ganti (Pronoun Case System):</strong>
+                    <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                       1. <strong>Subject Case</strong> (I, you, he, she, it, we, they) = Pelaku aksi kalimat.<br/>
                       2. <strong>Object Case</strong> (me, you, him, her, it, us, them) = Penerima aksi & WAJIB setelah SEMUA preposisi (*between you and ME, to US*).<br/>
                       3. <strong>Possessive Adjective</strong> (my, your, his, her, its, our, their) = Wajib nempel dengan kata benda (*its tail*).<br/>
@@ -3992,9 +3992,9 @@ export default function MerakiApp() {
                   </div>
 
                   {/* 5-Column Table */}
-                  <div className="overflow-x-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll p-1">
+                  <div className="overflow-x-auto rounded-3xl border border-[#BFD8E3]/40 dark:border-white/10 bg-[#FFFFFF] dark:bg-[#141414] smooth-scroll p-1">
                     <table className="w-full text-left text-xs border-collapse min-w-[760px]">
-                      <thead className="bg-[#DDD7CA] border-b border-[#C8C0B0] font-mono text-[11px] text-[#7A7265]">
+                      <thead className="bg-[#EDF3F7] dark:bg-[#1C1C1C] border-b border-[#BFD8E3]/40 dark:border-white/10 font-mono text-[11px] text-[#50585C] dark:text-[#7A8992]">
                         <tr>
                           <th className="p-3.5">Orang / Entitas</th>
                           <th className="p-3.5">1. Subject (Pelaku)</th>
@@ -4005,33 +4005,33 @@ export default function MerakiApp() {
                           <th className="p-3.5">Jebakan Kritis</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-[#C8C0B0]/60">
+                      <tbody className="divide-y divide-[#BFD8E3]/20">
                         {PRONOUN_CASE_MASTER_DATA.map(pro => (
-                          <tr key={pro.id} className="hover:bg-[#DDD7CA]/50 transition-colors">
-                            <td className="p-3.5 font-semibold text-[#1E1B17] font-mono text-[11px]">
+                          <tr key={pro.id} className="hover:bg-[#EDF3F7] dark:bg-[#1C1C1C]/50 transition-colors">
+                            <td className="p-3.5 font-semibold text-[#141414] dark:text-[#FFFFFF] font-mono text-[11px]">
                               {pro.personLabel}
                             </td>
-                            <td className="p-3.5 font-serif font-bold text-sm text-[#A84A28]">
+                            <td className="p-3.5 font-serif font-bold text-sm text-[#00638E] dark:text-[#8CB9CC]">
                               <div className="flex items-center gap-1.5">
                                 <span>{pro.subjectPronoun}</span>
-                                <button onClick={() => playNativeAudio(pro.subjectPronoun)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                                <button onClick={() => playNativeAudio(pro.subjectPronoun)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                                   <Volume2 className="w-3 h-3" />
                                 </button>
                               </div>
                             </td>
-                            <td className="p-3.5 font-mono text-xs font-medium text-[#1E1B17]">
+                            <td className="p-3.5 font-mono text-xs font-medium text-[#141414] dark:text-[#FFFFFF]">
                               {pro.objectPronoun}
                             </td>
-                            <td className="p-3.5 font-mono text-xs font-semibold text-[#535841]">
+                            <td className="p-3.5 font-mono text-xs font-semibold text-[#004A6B] dark:text-[#BFD8E3]">
                               {pro.possessiveAdjective}
                             </td>
-                            <td className="p-3.5 font-mono text-xs text-[#7A7265]">
+                            <td className="p-3.5 font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                               {pro.possessivePronoun}
                             </td>
-                            <td className="p-3.5 font-mono text-xs text-[#A84A28]">
+                            <td className="p-3.5 font-mono text-xs text-[#00638E] dark:text-[#8CB9CC]">
                               {pro.reflexivePronoun}
                             </td>
-                            <td className="p-3.5 text-[11px] text-[#524C42] max-w-xs">
+                            <td className="p-3.5 text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3] max-w-xs">
                               {pro.criticalPitfall}
                             </td>
                           </tr>
@@ -4047,35 +4047,35 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {DO_DOES_DID_MASTER_DATA.map((ddd) => (
-                      <div key={ddd.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={ddd.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-3xl font-bold text-[#1E1B17]">{ddd.operator}</span>
-                          <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
+                          <span className="font-serif text-3xl font-bold text-[#141414] dark:text-[#FFFFFF]">{ddd.operator}</span>
+                          <span className="font-mono text-[10px] bg-[#00638E] text-white shadow-xs font-semibold px-2.5 py-0.5 rounded-full font-semibold">
                             {ddd.tenseAndTime}
                           </span>
                         </div>
 
                         <div className="text-xs space-y-1">
-                          <strong className="text-[#A84A28] font-mono text-[10px] uppercase block">Subjek yang Sesuai:</strong>
-                          <p className="text-[#1E1B17] font-medium">{ddd.subjectAgreement}</p>
+                          <strong className="text-[#00638E] dark:text-[#8CB9CC] font-mono text-[10px] uppercase block">Subjek yang Sesuai:</strong>
+                          <p className="text-[#141414] dark:text-[#FFFFFF] font-medium">{ddd.subjectAgreement}</p>
                         </div>
 
-                        <div className="p-3 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-[11px] space-y-1">
-                          <div className="text-[#535841]">Negatif: {ddd.negativeForm}</div>
-                          <div className="text-[#7A7265]">Tanya: {ddd.questionPattern}</div>
+                        <div className="p-3 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 font-mono text-[11px] space-y-1">
+                          <div className="text-[#004A6B] dark:text-[#BFD8E3]">Negatif: {ddd.negativeForm}</div>
+                          <div className="text-[#50585C] dark:text-[#7A8992]">Tanya: {ddd.questionPattern}</div>
                         </div>
 
                         <div className="text-xs space-y-1">
-                          <strong className="text-[#535841] font-mono text-[10px] uppercase block">Aturan Bare Infinitive:</strong>
-                          <p className="text-[11px] text-[#38332A] leading-relaxed">{ddd.bareInfinitiveRule}</p>
+                          <strong className="text-[#004A6B] dark:text-[#BFD8E3] font-mono text-[10px] uppercase block">Aturan Bare Infinitive:</strong>
+                          <p className="text-[11px] text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{ddd.bareInfinitiveRule}</p>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 text-xs space-y-1">
-                          <span className="font-mono text-[10px] text-[#7A7265] uppercase block">Contoh:</span>
-                          <p className="font-serif text-[12px] text-[#1E1B17] italic">"{ddd.exampleSentence}"</p>
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/30 dark:border-white/10 text-xs space-y-1">
+                          <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block">Contoh:</span>
+                          <p className="font-serif text-[12px] text-[#141414] dark:text-[#FFFFFF] italic">"{ddd.exampleSentence}"</p>
                         </div>
 
-                        <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
+                        <div className="p-3 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-[11px] text-[#141414] dark:text-[#FFFFFF]">
                           <strong>Jebakan Fatal:</strong> {ddd.fatalPitfall}
                         </div>
                       </div>
@@ -4087,11 +4087,11 @@ export default function MerakiApp() {
               {/* ───────────── SUB-TAB 5: TO BE MASTER MATRIX ───────────── */}
               {matrixSubTab === 'to-be' && (
                 <div className="space-y-6">
-                  <div className="p-4 sm:p-5 rounded-3xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1.5 shadow-xs">
-                    <strong className="text-[#535841] font-mono text-[11px] uppercase block font-bold">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#004A6B]/10 dark:bg-[#00638E]/15 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#004A6B] dark:text-[#BFD8E3] font-mono text-[11px] uppercase block font-bold">
                       Kaidah Emas To Be & Kalimat Verbal vs Nominal:
                     </strong>
-                    <p className="text-[#38332A] leading-relaxed">
+                    <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                       1. <strong>Kalimat Verbal</strong>: Subjek + Kata Kerja Langsung (DILARANG pakai is/am/are/was/were di depan V1, e.g. <em>I agree</em> ✔️, bukan <em>I am agree ❌</em>).<br/>
                       2. <strong>Kalimat Nominal</strong>: Subjek + To Be + Kata Sifat/Benda/Keterangan (e.g. <em>She is diligent</em>).<br/>
                       3. <strong>Been vs Being</strong>: <em>Have/has/had BEEN</em> (sudah tuntas) vs <em>Is/are/was BEING</em> (sedang diproses pasif).
@@ -4110,27 +4110,27 @@ export default function MerakiApp() {
                           className={clsx(
                             'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeTbeIndex === idx
-                              ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
-                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
+                              ? 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-sm'
+                              : 'bg-[#FFFFFF] dark:bg-[#141414] border-[#BFD8E3]/40 dark:border-white/10 text-[#2B2B2B] dark:text-[#BFD8E3] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                           )}
                         >
                           <div className="flex items-center justify-between">
                             <span className={clsx(
                               'font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold',
-                              activeTbeIndex === idx ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#A84A28]'
+                              activeTbeIndex === idx ? 'bg-white/20 text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
                             )}>
                               {tbe.primaryRole}
                             </span>
                           </div>
 
                           <h4 className="font-serif text-lg font-bold">{tbe.formName}</h4>
-                          <p className={clsx('text-xs font-mono', activeTbeIndex === idx ? 'text-[#EFE9DF]/80' : 'text-[#535841]')}>
+                          <p className={clsx('text-xs font-mono', activeTbeIndex === idx ? 'text-white/80' : 'text-[#004A6B] dark:text-[#BFD8E3]')}>
                             Rumus: {tbe.formula}
                           </p>
 
                           <div className={clsx(
                             'p-2.5 rounded-2xl text-[11px] space-y-1',
-                            activeTbeIndex === idx ? 'bg-white/10 text-[#DDD7CA]' : 'bg-[#DDD7CA] text-[#524C42]'
+                            activeTbeIndex === idx ? 'bg-white/10 text-[#BFD8E3]' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#2B2B2B] dark:text-[#BFD8E3]'
                           )}>
                             <p><strong>Contoh Baku:</strong> {tbe.correctSentence}</p>
                           </div>
@@ -4138,42 +4138,42 @@ export default function MerakiApp() {
                       ))}
                     </div>
 
-                    <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
+                    <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-4 bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-3xl p-5 sm:p-6 shadow-sm space-y-5">
                       {(() => {
                         const tbe = TO_BE_MASTER_DATA[activeTbeIndex] || TO_BE_MASTER_DATA[0];
 
                         return (
                           <div className="space-y-5">
-                            <div className="pb-3 border-b border-[#C8C0B0]">
-                              <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold block">
+                            <div className="pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                              <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">
                                 Uji Pemahaman: {tbe.primaryRole}
                               </span>
-                              <h3 className="font-serif text-2xl font-bold text-[#1E1B17] mt-1">{tbe.formName}</h3>
+                              <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-[#FFFFFF] mt-1">{tbe.formName}</h3>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2">
-                              <p className="leading-relaxed text-[#38332A]">{tbe.explanation}</p>
-                              <div className="p-2.5 rounded-xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[#1E1B17]">
+                            <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-2">
+                              <p className="leading-relaxed text-[#2B2B2B] dark:text-[#FFFFFF]">{tbe.explanation}</p>
+                              <div className="p-2.5 rounded-xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-[#141414] dark:text-[#FFFFFF]">
                                 <strong>Peringatan Kesalahan Fatal:</strong> {tbe.fatalPitfall}
                               </div>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
-                              <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                            <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                              <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                                 Lengkapi Kalimat dengan Kaidah To Be yang Benar:
                               </span>
-                              <p className="font-serif text-sm font-medium text-[#1E1B17]">"{tbe.drillQuestion}"</p>
+                              <p className="font-serif text-sm font-medium text-[#141414] dark:text-[#FFFFFF]">"{tbe.drillQuestion}"</p>
 
                               <div className="grid grid-cols-2 gap-2">
                                 {tbe.drillOptions.map(opt => {
                                   const isSelected = tbeSelected === opt;
                                   const isCorrect = opt === tbe.correctAnswer;
 
-                                  let optStyle = 'bg-[#E6E0D4] hover:bg-[#E6E0D4]/80 border-[#C8C0B0] text-[#1E1B17]';
+                                  let optStyle = 'bg-[#FFFFFF] dark:bg-[#141414] hover:bg-[#FFFFFF] dark:bg-[#141414]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
                                   if (tbeSelected) {
-                                    if (isCorrect) optStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
-                                    else if (isSelected && !isCorrect) optStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
-                                    else optStyle = 'opacity-40 bg-[#E6E0D4] border-transparent text-[#7A7265]';
+                                    if (isCorrect) optStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold';
+                                    else if (isSelected && !isCorrect) optStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
+                                    else optStyle = 'opacity-40 bg-[#FFFFFF] dark:bg-[#141414] border-transparent text-[#50585C] dark:text-[#7A8992]';
                                   }
 
                                   return (
@@ -4194,11 +4194,11 @@ export default function MerakiApp() {
                             </div>
 
                             {tbeSelected && (
-                              <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1 animate-in fade-in duration-200">
-                                <span className="font-mono text-[10px] uppercase font-semibold text-[#535841] block">
+                              <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1 animate-in fade-in duration-200">
+                                <span className="font-mono text-[10px] uppercase font-semibold text-[#004A6B] dark:text-[#BFD8E3] block">
                                   Nalar Kaidah Baku:
                                 </span>
-                                <p className="text-[#38332A] leading-relaxed">{tbe.drillExplanation}</p>
+                                <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{tbe.drillExplanation}</p>
                               </div>
                             )}
                           </div>
@@ -4214,36 +4214,36 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {PAST_MODALS_DEDUCTION_DATA.map((pm) => (
-                      <div key={pm.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={pm.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-xl font-bold text-[#1E1B17]">{pm.modalStructure}</span>
-                          <span className="font-mono text-[9px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
+                          <span className="font-serif text-xl font-bold text-[#141414] dark:text-[#FFFFFF]">{pm.modalStructure}</span>
+                          <span className="font-mono text-[9px] bg-[#00638E] text-white shadow-xs font-semibold px-2.5 py-0.5 rounded-full font-semibold">
                             {pm.certaintyLevel}
                           </span>
                         </div>
 
                         <div className="text-xs space-y-1">
-                          <strong className="text-[#A84A28] font-mono text-[10px] uppercase block">Makna Epistemik:</strong>
-                          <p className="text-[#1E1B17] font-medium">{pm.epistemicMeaning}</p>
+                          <strong className="text-[#00638E] dark:text-[#8CB9CC] font-mono text-[10px] uppercase block">Makna Epistemik:</strong>
+                          <p className="text-[#141414] dark:text-[#FFFFFF] font-medium">{pm.epistemicMeaning}</p>
                         </div>
 
-                        <div className="p-3 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-[11px] text-[#535841]">
+                        <div className="p-3 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">
                           Rumus: {pm.formula}
                         </div>
 
-                        <p className="text-[11px] text-[#38332A] leading-relaxed">{pm.explanation}</p>
+                        <p className="text-[11px] text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{pm.explanation}</p>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 text-xs space-y-1">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/30 dark:border-white/10 text-xs space-y-1">
                           <div className="flex items-center justify-between">
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">Contoh:</span>
-                            <button onClick={() => playNativeAudio(pm.authenticExample)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">Contoh:</span>
+                            <button onClick={() => playNativeAudio(pm.authenticExample)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                               <Volume2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
-                          <p className="font-serif text-[12px] text-[#1E1B17] italic">"{pm.authenticExample}"</p>
+                          <p className="font-serif text-[12px] text-[#141414] dark:text-[#FFFFFF] italic">"{pm.authenticExample}"</p>
                         </div>
 
-                        <div className="p-2.5 rounded-xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
+                        <div className="p-2.5 rounded-xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-[11px] text-[#141414] dark:text-[#FFFFFF]">
                           <strong>Jebakan:</strong> {pm.fatalPitfall}
                         </div>
                       </div>
@@ -4257,38 +4257,38 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {SUBJUNCTIVE_MOOD_DATA.map((sm) => (
-                      <div key={sm.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={sm.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-xl font-bold text-[#1E1B17]">{sm.triggerCategory}</span>
+                          <span className="font-serif text-xl font-bold text-[#141414] dark:text-[#FFFFFF]">{sm.triggerCategory}</span>
                         </div>
 
                         <div className="flex flex-wrap gap-1.5">
                           {sm.triggerWords.map(w => (
-                            <span key={w} className="font-mono text-[10px] bg-[#DDD7CA] text-[#A84A28] px-2.5 py-0.5 rounded-md font-semibold">
+                            <span key={w} className="font-mono text-[10px] bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded-md font-semibold">
                               {w}
                             </span>
                           ))}
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-[11px] text-[#535841]">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">
                           Rumus Subjunctive: {sm.formula}
                         </div>
 
-                        <p className="text-xs text-[#38332A] leading-relaxed">{sm.mandativeRule}</p>
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{sm.mandativeRule}</p>
 
                         <div className="space-y-1.5 text-xs">
-                          <div className="p-2.5 rounded-xl bg-[#535841]/15 text-[#1E1B17] border border-[#535841]/30">
+                          <div className="p-2.5 rounded-xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 text-[#141414] dark:text-[#FFFFFF] border border-[#004A6B]/30 dark:border-[#BFD8E3]/35">
                             <strong>Baku (Subjunctive V1):</strong> "{sm.authenticExample}"
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#A84A28]/15 text-[#1E1B17] border border-[#A84A28]/30">
+                          <div className="p-2.5 rounded-xl bg-[#00638E]/15 dark:bg-[#00638E]/25 text-[#141414] dark:text-[#FFFFFF] border border-[#00638E]/35 dark:border-[#8CB9CC]/40">
                             <strong>Salah:</strong> "{sm.incorrectExample}"
                           </div>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-2">
-                          <span className="font-mono text-[10px] uppercase font-semibold text-[#7A7265] block">Uji Mandatif:</span>
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-2">
+                          <span className="font-mono text-[10px] uppercase font-semibold text-[#50585C] dark:text-[#7A8992] block">Uji Mandatif:</span>
                           <p className="font-serif text-sm">"{sm.drillQuestion}"</p>
-                          <p className="font-mono text-[11px] text-[#535841]">Jawaban Baku: <strong>{sm.correctAnswer}</strong> — {sm.drillExplanation}</p>
+                          <p className="font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">Jawaban Baku: <strong>{sm.correctAnswer}</strong> — {sm.drillExplanation}</p>
                         </div>
                       </div>
                     ))}
@@ -4299,35 +4299,35 @@ export default function MerakiApp() {
               {/* ───────────── SUB-TAB 8: REPORTED SPEECH ───────────── */}
               {matrixSubTab === 'reported-speech' && (
                 <div className="space-y-4">
-                  <div className="p-4 sm:p-5 rounded-3xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1.5 shadow-xs">
-                    <strong className="text-[#535841] font-mono text-[11px] uppercase block font-bold">Hukum Backshift of Tenses (Pergeseran Waktu):</strong>
-                    <p className="text-[#38332A] leading-relaxed">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#004A6B]/10 dark:bg-[#00638E]/15 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#004A6B] dark:text-[#BFD8E3] font-mono text-[11px] uppercase block font-bold">Hukum Backshift of Tenses (Pergeseran Waktu):</strong>
+                    <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                       Ketika mengubah kalimat langsung ke kalimat berita tidak langsung, tenses bergeser satu tingkat ke masa lalu (kecuali untuk kebenaran ilmiah universal yang tetap dalam Simple Present!).
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {REPORTED_SPEECH_DATA.map((rs) => (
-                      <div key={rs.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={rs.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif text-xl font-bold text-[#1E1B17]">{rs.directTense}</span>
-                          <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
+                          <span className="font-serif text-xl font-bold text-[#141414] dark:text-[#FFFFFF]">{rs.directTense}</span>
+                          <span className="font-mono text-[10px] bg-[#00638E] text-white shadow-xs font-semibold px-2.5 py-0.5 rounded-full font-semibold">
                             {rs.reportedTense}
                           </span>
                         </div>
 
-                        <p className="text-xs text-[#38332A] leading-relaxed">{rs.shiftRule}</p>
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{rs.shiftRule}</p>
 
                         <div className="space-y-1.5 text-xs">
-                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] text-[#7A7265]">
+                          <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]">
                             <strong>Direct:</strong> {rs.directExample}
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#535841]/15 text-[#1E1B17] border border-[#535841]/30">
+                          <div className="p-2.5 rounded-xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 text-[#141414] dark:text-[#FFFFFF] border border-[#004A6B]/30 dark:border-[#BFD8E3]/35">
                             <strong>Reported (Indirect):</strong> {rs.reportedExample}
                           </div>
                         </div>
 
-                        <div className="p-2.5 rounded-xl bg-[#DDD7CA] text-[11px] font-mono text-[#535841]">
+                        <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[11px] font-mono text-[#004A6B] dark:text-[#BFD8E3]">
                           <strong>Academic Reporting Verbs:</strong> {rs.academicReportingVerb}
                         </div>
                       </div>
@@ -4339,34 +4339,34 @@ export default function MerakiApp() {
               {/* ───────────── SUB-TAB 9: EMBEDDED QUESTIONS ───────────── */}
               {matrixSubTab === 'embedded-questions' && (
                 <div className="space-y-4">
-                  <div className="p-4 sm:p-5 rounded-3xl bg-[#A84A28]/10 border border-[#A84A28]/30 text-xs space-y-1.5 shadow-xs">
-                    <strong className="text-[#A84A28] font-mono text-[11px] uppercase block font-bold">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-xs space-y-1.5 shadow-xs">
+                    <strong className="text-[#00638E] dark:text-[#8CB9CC] font-mono text-[11px] uppercase block font-bold">
                       Aturan Pembatalan Inversi (Embedded Question Architecture):
                     </strong>
-                    <p className="text-[#38332A] leading-relaxed">
+                    <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                       Ketika kalimat tanya disisipkan ke dalam kalimat lain, struktur kalimat <strong>WAJIB KEMBALI NORMAL: Question Word + SUBJECT + VERB</strong>. Dilarang menggunakan auxiliary <em>do/does/did</em> dan to be diletakkan di akhir.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {EMBEDDED_QUESTIONS_DATA.map((eq) => (
-                      <div key={eq.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] text-xs space-y-1">
-                          <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Pertanyaan Asli (Direct):</span>
-                          <p className="font-serif text-sm font-semibold text-[#1E1B17]">"{eq.directQuestion}"</p>
-                          <span className="font-mono text-[10px] text-[#A84A28] block">Disisipkan ke: "{eq.introductoryFrame}"</span>
+                      <div key={eq.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-xs space-y-1">
+                          <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">Pertanyaan Asli (Direct):</span>
+                          <p className="font-serif text-sm font-semibold text-[#141414] dark:text-[#FFFFFF]">"{eq.directQuestion}"</p>
+                          <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] block">Disisipkan ke: "{eq.introductoryFrame}"</span>
                         </div>
 
                         <div className="space-y-1.5 text-xs">
-                          <div className="p-2.5 rounded-xl bg-[#535841]/15 text-[#1E1B17] border border-[#535841]/30">
+                          <div className="p-2.5 rounded-xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 text-[#141414] dark:text-[#FFFFFF] border border-[#004A6B]/30 dark:border-[#BFD8E3]/35">
                             <strong>Baku (Subjek + Predikat):</strong> "{eq.embeddedQuestionCorrect}"
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#A84A28]/15 text-[#1E1B17] border border-[#A84A28]/30">
+                          <div className="p-2.5 rounded-xl bg-[#00638E]/15 dark:bg-[#00638E]/25 text-[#141414] dark:text-[#FFFFFF] border border-[#00638E]/35 dark:border-[#8CB9CC]/40">
                             <strong>Salah:</strong> "{eq.incorrectSentence}"
                           </div>
                         </div>
 
-                        <p className="text-xs text-[#38332A] leading-relaxed">{eq.syntacticRule}</p>
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{eq.syntacticRule}</p>
                       </div>
                     ))}
                   </div>
@@ -4378,25 +4378,25 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {CLEFT_SENTENCES_DATA.map((cs) => (
-                      <div key={cs.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={cs.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-serif text-lg font-bold text-[#1E1B17]">{cs.cleftType}</h4>
+                          <h4 className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">{cs.cleftType}</h4>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] font-mono text-[11px] text-[#535841]">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">
                           Formula: {cs.formula}
                         </div>
 
                         <div className="space-y-1.5 text-xs">
-                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] text-[#7A7265]">
+                          <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]">
                             <strong>Kalimat Biasa:</strong> "{cs.baseSentence}"
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#535841]/15 text-[#1E1B17] border border-[#535841]/30">
+                          <div className="p-2.5 rounded-xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 text-[#141414] dark:text-[#FFFFFF] border border-[#004A6B]/30 dark:border-[#BFD8E3]/35">
                             <strong>Versi Cleft (Sorotan Kuat):</strong> "{cs.cleftSentence}"
                           </div>
                         </div>
 
-                        <p className="text-xs text-[#38332A] leading-relaxed">
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">
                           <strong>Dampak Retorika:</strong> {cs.rhetoricalImpact}
                         </p>
                       </div>
@@ -4410,29 +4410,29 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {GEOGRAPHICAL_ARTICLES_DATA.map((geo) => (
-                      <div key={geo.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={geo.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-serif text-lg font-bold text-[#1E1B17]">{geo.geographicalCategory}</h4>
-                          <span className="font-mono text-[10px] bg-[#A84A28] text-white px-2.5 py-0.5 rounded-full font-semibold">
+                          <h4 className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">{geo.geographicalCategory}</h4>
+                          <span className="font-mono text-[10px] bg-[#00638E] text-white text-white px-2.5 py-0.5 rounded-full font-semibold">
                             {geo.ruleCategory}
                           </span>
                         </div>
 
-                        <p className="text-xs text-[#38332A] leading-relaxed">{geo.ruleDescription}</p>
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{geo.ruleDescription}</p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                          <div className="p-3.5 rounded-2xl bg-[#535841]/15 border border-[#535841]/30 space-y-1">
-                            <span className="font-mono text-[10px] font-bold text-[#535841] block">Wajib Pakai "THE":</span>
-                            <ul className="space-y-0.5 text-[11px] text-[#1E1B17]">
+                          <div className="p-3.5 rounded-2xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 space-y-1">
+                            <span className="font-mono text-[10px] font-bold text-[#004A6B] dark:text-[#BFD8E3] block">Wajib Pakai "THE":</span>
+                            <ul className="space-y-0.5 text-[11px] text-[#141414] dark:text-[#FFFFFF]">
                               {geo.examplesWithArticle.map(ex => (
                                 <li key={ex}>• {ex}</li>
                               ))}
                             </ul>
                           </div>
 
-                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1">
-                            <span className="font-mono text-[10px] font-bold text-[#7A7265] block">Dilarang "THE" (Ø):</span>
-                            <ul className="space-y-0.5 text-[11px] text-[#1E1B17]">
+                          <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                            <span className="font-mono text-[10px] font-bold text-[#50585C] dark:text-[#7A8992] block">Dilarang "THE" (Ø):</span>
+                            <ul className="space-y-0.5 text-[11px] text-[#141414] dark:text-[#FFFFFF]">
                               {geo.examplesWithoutArticle.map(ex => (
                                 <li key={ex}>• {ex}</li>
                               ))}
@@ -4440,7 +4440,7 @@ export default function MerakiApp() {
                           </div>
                         </div>
 
-                        <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-[11px] text-[#1E1B17]">
+                        <div className="p-3 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-[11px] text-[#141414] dark:text-[#FFFFFF]">
                           <strong>Peringatan Diagnostik:</strong> {geo.diagnosticPitfall}
                         </div>
                       </div>
@@ -4455,13 +4455,13 @@ export default function MerakiApp() {
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap items-center gap-2">
                       <div className="relative w-64">
-                        <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
+                        <Search className="w-3.5 h-3.5 text-[#50585C] dark:text-[#7A8992] absolute left-3 top-1/2 -translate-y-1/2" />
                         <input
                           type="text"
                           value={matrixSearch}
                           onChange={(e) => setMatrixSearch(e.target.value)}
                           placeholder="Cari V1, V2, V3, atau arti..."
-                          className="w-full pl-9 pr-3 py-2 text-base sm:text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                          className="w-full pl-9 pr-3 py-2 text-base sm:text-xs bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]"
                         />
                       </div>
 
@@ -4472,7 +4472,7 @@ export default function MerakiApp() {
                             onClick={() => setIrregularPatternFilter(pat)}
                             className={clsx(
                               'px-3 py-1.5 rounded-xl text-[10px] font-mono transition-all tactile-btn min-h-[36px]',
-                              irregularPatternFilter === pat ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'bg-[#DDD7CA] text-[#7A7265]'
+                              irregularPatternFilter === pat ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                             )}
                           >
                             {pat === 'all' ? 'Semua Pola' : pat}
@@ -4485,7 +4485,7 @@ export default function MerakiApp() {
                       onClick={() => setIrregularDrillMode(!irregularDrillMode)}
                       className={clsx(
                         'px-4 py-2 rounded-2xl text-xs font-mono font-medium transition-all flex items-center gap-1.5 tactile-btn min-h-[40px]',
-                        irregularDrillMode ? 'bg-[#A84A28] text-white' : 'bg-[#DDD7CA] text-[#1E1B17] border border-[#C8C0B0]'
+                        irregularDrillMode ? 'bg-[#00638E] text-white text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF] border border-[#BFD8E3]/40 dark:border-white/10'
                       )}
                     >
                       <Scissors className="w-3.5 h-3.5" />
@@ -4493,9 +4493,9 @@ export default function MerakiApp() {
                     </button>
                   </div>
 
-                  <div className="overflow-x-auto rounded-3xl border border-[#C8C0B0] bg-[#E6E0D4] smooth-scroll p-1">
+                  <div className="overflow-x-auto rounded-3xl border border-[#BFD8E3]/40 dark:border-white/10 bg-[#FFFFFF] dark:bg-[#141414] smooth-scroll p-1">
                     <table className="w-full text-left text-xs border-collapse min-w-[760px]">
-                      <thead className="bg-[#DDD7CA] border-b border-[#C8C0B0] font-mono text-[11px] text-[#7A7265]">
+                      <thead className="bg-[#EDF3F7] dark:bg-[#1C1C1C] border-b border-[#BFD8E3]/40 dark:border-white/10 font-mono text-[11px] text-[#50585C] dark:text-[#7A8992]">
                         <tr>
                           <th className="p-3.5">Verb 1 (Base)</th>
                           <th className="p-3.5">Verb 2 (Past Simple)</th>
@@ -4505,7 +4505,7 @@ export default function MerakiApp() {
                           <th className="p-3.5">Contoh Akademik</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-[#C8C0B0]/60">
+                      <tbody className="divide-y divide-[#BFD8E3]/20">
                         {IRREGULAR_VERBS_DATA
                           .filter(iv => {
                             const matchesPat = irregularPatternFilter === 'all' || iv.pattern === irregularPatternFilter;
@@ -4521,15 +4521,15 @@ export default function MerakiApp() {
                             const v3Correct = userInput.v3.trim().toLowerCase() === iv.v3.toLowerCase();
 
                             return (
-                              <tr key={iv.id} className="hover:bg-[#DDD7CA]/50 transition-colors">
-                                <td className="p-3.5 font-serif font-medium text-sm text-[#1E1B17]">
+                              <tr key={iv.id} className="hover:bg-[#EDF3F7] dark:bg-[#1C1C1C]/50 transition-colors">
+                                <td className="p-3.5 font-serif font-medium text-sm text-[#141414] dark:text-[#FFFFFF]">
                                   <div className="flex items-center gap-2">
                                     <span>{iv.v1}</span>
-                                    <button onClick={() => playNativeAudio(iv.v1)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                                    <button onClick={() => playNativeAudio(iv.v1)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                                       <Volume2 className="w-3.5 h-3.5" />
                                     </button>
                                   </div>
-                                  <span className="font-mono text-[10px] text-[#7A7265] block">{iv.ipaV1}</span>
+                                  <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] block">{iv.ipaV1}</span>
                                 </td>
 
                                 <td className="p-3.5 font-mono text-xs">
@@ -4541,13 +4541,13 @@ export default function MerakiApp() {
                                       placeholder="Ketik V2..."
                                       className={clsx(
                                         'px-2.5 py-1.5 rounded-xl border text-xs w-28 outline-hidden',
-                                        userInput.v2 ? (v2Correct ? 'bg-[#535841]/20 border-[#535841] text-[#1E1B17]' : 'bg-[#A84A28]/20 border-[#A84A28]') : 'bg-[#DDD7CA] border-[#C8C0B0]'
+                                        userInput.v2 ? (v2Correct ? 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E]') : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] border-[#BFD8E3]/40 dark:border-white/10'
                                       )}
                                     />
                                   ) : (
                                     <div>
-                                      <span className="font-semibold text-[#1E1B17]">{iv.v2}</span>
-                                      <span className="text-[10px] text-[#7A7265] block">{iv.ipaV2}</span>
+                                      <span className="font-semibold text-[#141414] dark:text-[#FFFFFF]">{iv.v2}</span>
+                                      <span className="text-[10px] text-[#50585C] dark:text-[#7A8992] block">{iv.ipaV2}</span>
                                     </div>
                                   )}
                                 </td>
@@ -4561,28 +4561,28 @@ export default function MerakiApp() {
                                       placeholder="Ketik V3..."
                                       className={clsx(
                                         'px-2.5 py-1.5 rounded-xl border text-xs w-28 outline-hidden',
-                                        userInput.v3 ? (v3Correct ? 'bg-[#535841]/20 border-[#535841] text-[#1E1B17]' : 'bg-[#A84A28]/20 border-[#A84A28]') : 'bg-[#DDD7CA] border-[#C8C0B0]'
+                                        userInput.v3 ? (v3Correct ? 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E]') : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] border-[#BFD8E3]/40 dark:border-white/10'
                                       )}
                                     />
                                   ) : (
                                     <div>
-                                      <span className="font-semibold text-[#A84A28]">{iv.v3}</span>
-                                      <span className="text-[10px] text-[#7A7265] block">{iv.ipaV3}</span>
+                                      <span className="font-semibold text-[#00638E] dark:text-[#8CB9CC]">{iv.v3}</span>
+                                      <span className="text-[10px] text-[#50585C] dark:text-[#7A8992] block">{iv.ipaV3}</span>
                                     </div>
                                   )}
                                 </td>
 
                                 <td className="p-3.5">
-                                  <span className="font-mono text-[10px] bg-[#DDD7CA] px-2 py-0.5 rounded border border-[#C8C0B0] text-[#7A7265]">
+                                  <span className="font-mono text-[10px] bg-[#EDF3F7] dark:bg-[#1C1C1C] px-2 py-0.5 rounded border border-[#BFD8E3]/40 dark:border-white/10 text-[#50585C] dark:text-[#7A8992]">
                                     {iv.pattern}
                                   </span>
                                 </td>
 
-                                <td className="p-3.5 text-xs text-[#38332A] max-w-xs">
+                                <td className="p-3.5 text-xs text-[#2B2B2B] dark:text-[#FFFFFF] max-w-xs">
                                   {iv.meaningId}
                                 </td>
 
-                                <td className="p-3.5 text-xs text-[#7A7265] italic max-w-sm">
+                                <td className="p-3.5 text-xs text-[#50585C] dark:text-[#7A8992] italic max-w-sm">
                                   "{iv.exampleSentence}"
                                 </td>
                               </tr>
@@ -4599,29 +4599,29 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {NOUN_TAXONOMY_DATA.map(nt => (
-                      <div key={nt.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={nt.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-mono text-[10px] uppercase font-semibold bg-[#DDD7CA] text-[#A84A28] px-2.5 py-0.5 rounded-full">
+                          <span className="font-mono text-[10px] uppercase font-semibold bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded-full">
                             {nt.category}
                           </span>
                         </div>
 
                         <div>
-                          <h4 className="font-serif text-xl text-[#1E1B17] font-bold">{nt.singularForm}</h4>
+                          <h4 className="font-serif text-xl text-[#141414] dark:text-[#FFFFFF] font-bold">{nt.singularForm}</h4>
                           {nt.pluralForm && (
-                            <span className="font-mono text-xs text-[#A84A28] block">Jamak: {nt.pluralForm}</span>
+                            <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] block">Jamak: {nt.pluralForm}</span>
                           )}
-                          <span className="text-xs text-[#7A7265] block mt-0.5">{nt.meaningId}</span>
+                          <span className="text-xs text-[#50585C] dark:text-[#7A8992] block mt-0.5">{nt.meaningId}</span>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs text-[#38332A] space-y-1">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs text-[#2B2B2B] dark:text-[#FFFFFF] space-y-1">
                           <strong>Kaidah Sintaksis:</strong>
                           <p className="text-[11px] leading-relaxed">{nt.ruleExplanation}</p>
                         </div>
 
-                        <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-xs space-y-0.5">
-                          <strong className="text-[#A84A28] text-[10px] uppercase font-mono block">Jebakan Fatal:</strong>
-                          <p className="text-[#1E1B17] text-[11px]">{nt.commonPitfall}</p>
+                        <div className="p-3 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-xs space-y-0.5">
+                          <strong className="text-[#00638E] dark:text-[#8CB9CC] text-[10px] uppercase font-mono block">Jebakan Fatal:</strong>
+                          <p className="text-[#141414] dark:text-[#FFFFFF] text-[11px]">{nt.commonPitfall}</p>
                         </div>
                       </div>
                     ))}
@@ -4634,28 +4634,28 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {TENSES_MASTER_DATA.map(tm => (
-                      <div key={tm.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={tm.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-mono text-[10px] bg-[#1E1B17] text-[#EFE9DF] px-2.5 py-0.5 rounded-full font-semibold">
+                          <span className="font-mono text-[10px] bg-[#00638E] text-white shadow-xs font-semibold px-2.5 py-0.5 rounded-full font-semibold">
                             {tm.timeDimension} · {tm.aspect}
                           </span>
                         </div>
 
-                        <h4 className="font-serif text-2xl text-[#1E1B17] font-bold">{tm.tenseName}</h4>
+                        <h4 className="font-serif text-2xl text-[#141414] dark:text-[#FFFFFF] font-bold">{tm.tenseName}</h4>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-[11px] space-y-1">
-                          <div className="text-[#A84A28] font-medium">(+) {tm.positiveFormula}</div>
-                          <div className="text-[#7A7265]">(-) {tm.negativeFormula}</div>
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 font-mono text-[11px] space-y-1">
+                          <div className="text-[#00638E] dark:text-[#8CB9CC] font-medium">(+) {tm.positiveFormula}</div>
+                          <div className="text-[#50585C] dark:text-[#7A8992]">(-) {tm.negativeFormula}</div>
                         </div>
 
                         <div className="space-y-1 text-xs">
-                          <strong className="text-[#535841] font-mono text-[10px] uppercase block">Mental Model Logic:</strong>
-                          <p className="text-[#38332A] text-[11px] leading-relaxed italic">"{tm.mentalModelLogic}"</p>
+                          <strong className="text-[#004A6B] dark:text-[#BFD8E3] font-mono text-[10px] uppercase block">Mental Model Logic:</strong>
+                          <p className="text-[#2B2B2B] dark:text-[#FFFFFF] text-[11px] leading-relaxed italic">"{tm.mentalModelLogic}"</p>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0]/60 text-xs space-y-1">
-                          <span className="font-mono text-[10px] text-[#7A7265] uppercase block">Contoh Akademik:</span>
-                          <p className="font-serif text-[12px] text-[#1E1B17] italic">"{tm.academicExample}"</p>
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/30 dark:border-white/10 text-xs space-y-1">
+                          <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block">Contoh Akademik:</span>
+                          <p className="font-serif text-[12px] text-[#141414] dark:text-[#FFFFFF] italic">"{tm.academicExample}"</p>
                         </div>
                       </div>
                     ))}
@@ -4668,30 +4668,30 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {PHRASAL_VERBS_DATA.map(pv => (
-                      <div key={pv.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={pv.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <h4 className="font-serif text-xl font-bold text-[#1E1B17]">{pv.verb} {pv.particle}</h4>
-                            <span className="font-mono text-[10px] bg-[#DDD7CA] text-[#A84A28] px-2 py-0.5 rounded font-semibold">
+                            <h4 className="font-serif text-xl font-bold text-[#141414] dark:text-[#FFFFFF]">{pv.verb} {pv.particle}</h4>
+                            <span className="font-mono text-[10px] bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] px-2 py-0.5 rounded font-semibold">
                               {pv.type}
                             </span>
                           </div>
-                          <button onClick={() => playNativeAudio(`${pv.verb} ${pv.particle}`)} className="text-[#7A7265] hover:text-[#1E1B17]">
+                          <button onClick={() => playNativeAudio(`${pv.verb} ${pv.particle}`)} className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]">
                             <Volume2 className="w-4 h-4" />
                           </button>
                         </div>
 
                         <div className="text-xs space-y-1">
                           <p><strong>Arti:</strong> {pv.meaningId}</p>
-                          <p className="font-mono text-[11px] text-[#535841]">
+                          <p className="font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">
                             <strong>Padanan Formal Satu Kata:</strong> {pv.academicRegister}
                           </p>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
-                          <p className="font-serif text-[#1E1B17] italic">"{pv.exampleSentence}"</p>
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
+                          <p className="font-serif text-[#141414] dark:text-[#FFFFFF] italic">"{pv.exampleSentence}"</p>
                           {pv.separableExample && (
-                            <p className="font-mono text-[10px] text-[#7A7265] pt-1 border-t border-[#C8C0B0]/60">
+                            <p className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                               Pola Terpisah: "{pv.separableExample}"
                             </p>
                           )}
@@ -4707,31 +4707,31 @@ export default function MerakiApp() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {PUNCTUATION_GUIDE_DATA.map(pg => (
-                      <div key={pg.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-3.5 shadow-xs">
+                      <div key={pg.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3.5 shadow-xs">
                         <div className="flex items-center gap-3">
-                          <span className="w-11 h-11 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] font-serif text-2xl flex items-center justify-center font-bold">
+                          <span className="w-11 h-11 rounded-2xl bg-[#00638E] text-white shadow-xs font-semibold font-serif text-2xl flex items-center justify-center font-bold">
                             {pg.symbol}
                           </span>
                           <div>
-                            <h4 className="font-serif text-lg text-[#1E1B17] font-semibold">{pg.markName}</h4>
-                            <span className="font-mono text-[10px] text-[#7A7265]">Kaidah Tanda Baca Akademik</span>
+                            <h4 className="font-serif text-lg text-[#141414] dark:text-[#FFFFFF] font-semibold">{pg.markName}</h4>
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992]">Kaidah Tanda Baca Akademik</span>
                           </div>
                         </div>
 
-                        <p className="text-xs text-[#38332A] leading-relaxed">{pg.primaryRule}</p>
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{pg.primaryRule}</p>
 
                         <div className="space-y-1.5 text-xs">
-                          <div className="p-2.5 rounded-xl bg-[#535841]/15 text-[#1E1B17] border border-[#535841]/30">
-                            <span className="font-mono font-semibold text-[#535841] mr-2">Baku:</span>
+                          <div className="p-2.5 rounded-xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 text-[#141414] dark:text-[#FFFFFF] border border-[#004A6B]/30 dark:border-[#BFD8E3]/35">
+                            <span className="font-mono font-semibold text-[#004A6B] dark:text-[#BFD8E3] mr-2">Baku:</span>
                             <span className="italic">"{pg.correctExample}"</span>
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#A84A28]/15 text-[#1E1B17] border border-[#A84A28]/30">
-                            <span className="font-mono font-semibold text-[#A84A28] mr-2">Salah:</span>
+                          <div className="p-2.5 rounded-xl bg-[#00638E]/15 dark:bg-[#00638E]/25 text-[#141414] dark:text-[#FFFFFF] border border-[#00638E]/35 dark:border-[#8CB9CC]/40">
+                            <span className="font-mono font-semibold text-[#00638E] dark:text-[#8CB9CC] mr-2">Salah:</span>
                             <span className="italic">"{pg.incorrectExample}"</span>
                           </div>
                         </div>
 
-                        <p className="text-[11px] text-[#524C42] leading-relaxed pt-1">
+                        <p className="text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed pt-1">
                           <strong>Nalar Linguistik:</strong> {pg.linguisticReason}
                         </p>
                       </div>
@@ -4744,21 +4744,21 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 5: STUDIO SINTAKSIS ───────────── */}
           {activeHub === 'studio' && (
-            <div className="mi-slab h-full overflow-y-auto mi-scroll p-4 sm:p-6 lg:p-8 space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
+            <div className="ao-slab h-full overflow-y-auto ao-scroll p-4 sm:p-6 lg:p-8 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10 shrink-0">
                 <div>
-                  <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
+                  <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold">
                     Studio Produksi & Analisis Retorika Mandiri
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-serif text-[#1E1B17]">Academic Syntax & Exam Studio</h2>
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#141414] dark:text-[#FFFFFF]">Academic Syntax & Exam Studio</h2>
                 </div>
 
-                <div className="flex items-center gap-1.5 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
+                <div className="flex items-center gap-1.5 bg-[#EDF3F7] dark:bg-[#1C1C1C] p-1.5 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 overflow-x-auto no-scrollbar w-full sm:w-auto shrink-0">
                   <button
                     onClick={() => setStudioSubTab('paraphrase')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      studioSubTab === 'paraphrase' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      studioSubTab === 'paraphrase' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Paraphrasing
@@ -4767,7 +4767,7 @@ export default function MerakiApp() {
                     onClick={() => setStudioSubTab('xray')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      studioSubTab === 'xray' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      studioSubTab === 'xray' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Sentence X-Ray
@@ -4776,7 +4776,7 @@ export default function MerakiApp() {
                     onClick={() => setStudioSubTab('ielts-task1')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      studioSubTab === 'ielts-task1' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      studioSubTab === 'ielts-task1' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     IELTS Task 1
@@ -4785,7 +4785,7 @@ export default function MerakiApp() {
                     onClick={() => setStudioSubTab('combine')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      studioSubTab === 'combine' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      studioSubTab === 'combine' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Combining
@@ -4794,7 +4794,7 @@ export default function MerakiApp() {
                     onClick={() => setStudioSubTab('writing-pad')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all tactile-btn whitespace-nowrap shrink-0 min-h-[36px]',
-                      studioSubTab === 'writing-pad' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      studioSubTab === 'writing-pad' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Writing Pad
@@ -4805,29 +4805,29 @@ export default function MerakiApp() {
               {/* Paraphrasing */}
               {studioSubTab === 'paraphrase' && (
                 <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 py-2">
-                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
+                  <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm space-y-5">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
+                      <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-3 py-1 rounded-md uppercase font-semibold">
                         Teknik: {currentParaTask.technique}
                       </span>
-                      <span className="font-mono text-xs text-[#7A7265]">
+                      <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                         Tugas {activeParaIndex + 1} dari {PARAPHRASING_TASKS_DATA.length}
                       </span>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1">
-                      <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                    <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                      <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                         Kalimat Asli (Prompt):
                       </span>
-                      <p className="font-serif text-base text-[#1E1B17]">"{currentParaTask.originalSentence}"</p>
+                      <p className="font-serif text-base text-[#141414] dark:text-[#FFFFFF]">"{currentParaTask.originalSentence}"</p>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-[#535841]/10 border border-[#535841]/30 text-xs font-mono text-[#535841]">
+                    <div className="p-3.5 rounded-2xl bg-[#004A6B]/10 dark:bg-[#00638E]/15 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-xs font-mono text-[#004A6B] dark:text-[#BFD8E3]">
                       <strong>Target Fokus Parafrase:</strong> {currentParaTask.targetFocus}
                     </div>
 
                     <form onSubmit={handleCheckParaphrase} className="space-y-3">
-                      <label className="font-mono text-[11px] uppercase tracking-wider text-[#7A7265] font-semibold block">
+                      <label className="font-mono text-[11px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] font-semibold block">
                         Ketik Kalimat Hasil Parafrase Anda:
                       </label>
                       <textarea
@@ -4838,12 +4838,12 @@ export default function MerakiApp() {
                         }}
                         rows={3}
                         placeholder="Ketik parafrase formal yang mempertahankan makna..."
-                        className="w-full p-3.5 text-xs sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                        className="w-full p-3.5 text-xs sm:text-sm bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]"
                       />
                       <div className="flex justify-end">
                         <button
                           type="submit"
-                          className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shadow-xs"
+                          className="px-6 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono font-medium transition-all tactile-btn shadow-xs"
                         >
                           Verifikasi Parafrase
                         </button>
@@ -4853,25 +4853,25 @@ export default function MerakiApp() {
                     {paraFeedback && (
                       <div className={clsx(
                         'p-4 rounded-2xl border text-xs space-y-2 animate-in fade-in duration-200',
-                        paraFeedback.isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                        paraFeedback.isCorrect ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                       )}>
                         <div className="flex items-center gap-2 font-semibold">
                           {paraFeedback.isCorrect ? (
                             <>
-                              <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                              <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                               <span>Parafrase Sangat Baik & Alami!</span>
                             </>
                           ) : (
                             <>
-                              <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                              <HelpCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                               <span>Parafrase alternatif dapat ditinjau di bawah:</span>
                             </>
                           )}
                         </div>
 
-                        <div className="space-y-1 pt-1 border-t border-[#C8C0B0]/60">
+                        <div className="space-y-1 pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                           <p><strong>Contoh Parafrase Baku:</strong> "{currentParaTask.sampleParaphrase}"</p>
-                          <p className="text-[#524C42] leading-relaxed">
+                          <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
                             <strong>Penjelasan Linguistik:</strong> {currentParaTask.explanation}
                           </p>
                         </div>
@@ -4887,7 +4887,7 @@ export default function MerakiApp() {
                         setParaFeedback(null);
                       }}
                       disabled={activeParaIndex === 0}
-                      className="px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-4 py-2 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono disabled:opacity-30 tactile-btn"
                     >
                       Tugas Sebelumnya
                     </button>
@@ -4899,7 +4899,7 @@ export default function MerakiApp() {
                         setParaFeedback(null);
                       }}
                       disabled={activeParaIndex === PARAPHRASING_TASKS_DATA.length - 1}
-                      className="px-4 py-2 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-4 py-2 rounded-2xl bg-[#00638E] text-white shadow-xs font-semibold text-xs font-mono disabled:opacity-30 tactile-btn"
                     >
                       Tugas Selanjutnya
                     </button>
@@ -4913,24 +4913,24 @@ export default function MerakiApp() {
                   {(() => {
                     const xray = XRAY_SENTENCES_DATA[activeXrayIndex];
                     return (
-                      <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-6">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
+                      <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
                           <div>
-                            <span className="font-mono text-[10px] uppercase text-[#7A7265] tracking-wider block font-semibold">
+                            <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] tracking-wider block font-semibold">
                               Syntactic Constituent X-Ray
                             </span>
-                            <h3 className="font-serif text-xl text-[#1E1B17] font-semibold">{xray.title}</h3>
+                            <h3 className="font-serif text-xl text-[#141414] dark:text-[#FFFFFF] font-semibold">{xray.title}</h3>
                           </div>
                           
                           {/* Case Selectors & View Mode Toggle */}
                           <div className="flex flex-wrap items-center gap-2">
                             {/* Linear vs Tree Toggle */}
-                            <div className="flex bg-[#DDD7CA] p-0.5 rounded-xl border border-[#C8C0B0]">
+                            <div className="flex bg-[#EDF3F7] dark:bg-[#1C1C1C] p-0.5 rounded-xl border border-[#BFD8E3]/40 dark:border-white/10">
                               <button
                                 onClick={() => setXrayViewMode('linear')}
                                 className={clsx(
                                   'px-2.5 py-1 rounded-lg text-xs font-mono transition-all',
-                                  xrayViewMode === 'linear' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265]'
+                                  xrayViewMode === 'linear' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992]'
                                 )}
                               >
                                 Linear
@@ -4939,7 +4939,7 @@ export default function MerakiApp() {
                                 onClick={() => setXrayViewMode('tree')}
                                 className={clsx(
                                   'px-2.5 py-1 rounded-lg text-xs font-mono transition-all flex items-center gap-1',
-                                  xrayViewMode === 'tree' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'text-[#7A7265]'
+                                  xrayViewMode === 'tree' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'text-[#50585C] dark:text-[#7A8992]'
                                 )}
                               >
                                 <Compass className="w-3 h-3" />
@@ -4954,7 +4954,7 @@ export default function MerakiApp() {
                                   onClick={() => setActiveXrayIndex(idx)}
                                   className={clsx(
                                     'px-2.5 py-1 rounded-xl text-xs font-mono',
-                                    activeXrayIndex === idx ? 'bg-[#A84A28] text-white font-bold' : 'bg-[#DDD7CA] text-[#7A7265]'
+                                    activeXrayIndex === idx ? 'bg-[#00638E] text-white text-white font-bold' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                                   )}
                                 >
                                   Kasus {idx + 1}
@@ -4967,8 +4967,8 @@ export default function MerakiApp() {
                         {/* Mode 1: Linear Syntactic Layers */}
                         {xrayViewMode === 'linear' && (
                           <>
-                            <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
-                              <span className="font-mono text-[10px] uppercase text-[#7A7265] block font-semibold">
+                            <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
+                              <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] block font-semibold">
                                 Visual Syntactic Layers (Klik & Sorot Konstituen):
                               </span>
                               <div className="text-base sm:text-lg font-serif leading-relaxed flex flex-wrap gap-1.5">
@@ -4989,12 +4989,12 @@ export default function MerakiApp() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                               {xray.breakdown.map((block, bIdx) => (
-                                <div key={bIdx} className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0] text-xs space-y-1">
-                                  <span className="font-mono text-[10px] font-semibold uppercase text-[#A84A28] block">
+                                <div key={bIdx} className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
+                                  <span className="font-mono text-[10px] font-semibold uppercase text-[#00638E] dark:text-[#8CB9CC] block">
                                     {block.role}
                                   </span>
-                                  <p className="font-serif text-[#1E1B17] italic">"{block.text}"</p>
-                                  <p className="text-[11px] text-[#524C42] pt-1 border-t border-[#C8C0B0]/60">
+                                  <p className="font-serif text-[#141414] dark:text-[#FFFFFF] italic">"{block.text}"</p>
+                                  <p className="text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3] pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                                     {block.explanation}
                                   </p>
                                 </div>
@@ -5005,105 +5005,105 @@ export default function MerakiApp() {
 
                         {/* Mode 2: Interactive Hierarchical Syntax Tree (Deterministic Pure SVG) */}
                         {xrayViewMode === 'tree' && (
-                          <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-4">
+                          <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4">
                             <div className="flex items-center justify-between">
-                              <span className="font-mono text-[10px] uppercase text-[#7A7265] block font-semibold">
+                              <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] block font-semibold">
                                 Hierarchical Phrase Structure Tree (Pohon Struktur Konstituen):
                               </span>
-                              <span className="text-[10px] font-mono text-[#535841] bg-[#535841]/10 px-2 py-0.5 rounded">
+                              <span className="text-[10px] font-mono text-[#004A6B] dark:text-[#BFD8E3] bg-[#004A6B]/10 dark:bg-[#00638E]/15 px-2 py-0.5 rounded">
                                 S → NP + VP
                               </span>
                             </div>
 
                             {/* Responsive SVG Tree Diagram */}
-                            <div className="overflow-x-auto p-2 bg-[#EFE9DF] rounded-xl border border-[#C8C0B0]/70 flex justify-center">
+                            <div className="overflow-x-auto p-2 bg-[#F4F7F9] dark:bg-[#000000] rounded-xl border border-[#BFD8E3]/35 dark:border-white/10 flex justify-center">
                               <svg viewBox="0 0 760 320" className="w-full max-w-[760px] h-auto font-mono text-[11px]">
                                 {/* Connecting Tree Lines */}
                                 {/* Root S to Children */}
-                                <line x1="380" y1="35" x2="160" y2="95" stroke="#7A7265" strokeWidth="2" />
-                                <line x1="380" y1="35" x2="560" y2="95" stroke="#7A7265" strokeWidth="2" />
+                                <line x1="380" y1="35" x2="160" y2="95" stroke="#8CB9CC" strokeWidth="2" />
+                                <line x1="380" y1="35" x2="560" y2="95" stroke="#8CB9CC" strokeWidth="2" />
 
                                 {/* Left Child (NP) to Sub-branches */}
-                                <line x1="160" y1="125" x2="90" y2="185" stroke="#A84A28" strokeWidth="1.5" strokeDasharray="3 3" />
-                                <line x1="160" y1="125" x2="230" y2="185" stroke="#A84A28" strokeWidth="1.5" />
+                                <line x1="160" y1="125" x2="90" y2="185" stroke="#00638E" strokeWidth="1.5" strokeDasharray="3 3" />
+                                <line x1="160" y1="125" x2="230" y2="185" stroke="#00638E" strokeWidth="1.5" />
 
                                 {/* Right Child (VP) to Sub-branches */}
-                                <line x1="560" y1="125" x2="430" y2="185" stroke="#535841" strokeWidth="1.5" />
-                                <line x1="560" y1="125" x2="570" y2="185" stroke="#535841" strokeWidth="1.5" />
-                                <line x1="560" y1="125" x2="690" y2="185" stroke="#535841" strokeWidth="1.5" strokeDasharray="3 3" />
+                                <line x1="560" y1="125" x2="430" y2="185" stroke="#004A6B" strokeWidth="1.5" />
+                                <line x1="560" y1="125" x2="570" y2="185" stroke="#004A6B" strokeWidth="1.5" />
+                                <line x1="560" y1="125" x2="690" y2="185" stroke="#004A6B" strokeWidth="1.5" strokeDasharray="3 3" />
 
                                 {/* Leaf connector lines to text */}
-                                <line x1="90" y1="215" x2="90" y2="260" stroke="#7A7265" strokeWidth="1" />
-                                <line x1="230" y1="215" x2="230" y2="260" stroke="#7A7265" strokeWidth="1" />
-                                <line x1="430" y1="215" x2="430" y2="260" stroke="#7A7265" strokeWidth="1" />
-                                <line x1="570" y1="215" x2="570" y2="260" stroke="#7A7265" strokeWidth="1" />
-                                <line x1="690" y1="215" x2="690" y2="260" stroke="#7A7265" strokeWidth="1" />
+                                <line x1="90" y1="215" x2="90" y2="260" stroke="#8CB9CC" strokeWidth="1" />
+                                <line x1="230" y1="215" x2="230" y2="260" stroke="#8CB9CC" strokeWidth="1" />
+                                <line x1="430" y1="215" x2="430" y2="260" stroke="#8CB9CC" strokeWidth="1" />
+                                <line x1="570" y1="215" x2="570" y2="260" stroke="#8CB9CC" strokeWidth="1" />
+                                <line x1="690" y1="215" x2="690" y2="260" stroke="#8CB9CC" strokeWidth="1" />
 
                                 {/* Root Node [S] */}
-                                <rect x="345" y="10" width="70" height="30" rx="8" fill="#1E1B17" />
-                                <text x="380" y="30" fill="#EFE9DF" textAnchor="middle" fontWeight="bold">S (Root)</text>
+                                <rect x="345" y="10" width="70" height="30" rx="8" fill="#00638E" />
+                                <text x="380" y="30" fill="#FFFFFF" textAnchor="middle" fontWeight="bold">S (Root)</text>
 
                                 {/* Level 1: [NP - Subject] and [VP - Predicate] */}
-                                <rect x="90" y="95" width="140" height="30" rx="8" fill="#A84A28" />
+                                <rect x="90" y="95" width="140" height="30" rx="8" fill="#00638E" />
                                 <text x="160" y="115" fill="#FFFFFF" textAnchor="middle" fontWeight="bold">NP (Subjek)</text>
 
-                                <rect x="490" y="95" width="140" height="30" rx="8" fill="#535841" />
+                                <rect x="490" y="95" width="140" height="30" rx="8" fill="#004A6B" />
                                 <text x="560" y="115" fill="#FFFFFF" textAnchor="middle" fontWeight="bold">VP (Predikat)</text>
 
                                 {/* Level 2: Syntactic Roles */}
-                                <rect x="40" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
-                                <text x="90" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Det / Mod</text>
+                                <rect x="40" y="185" width="100" height="30" rx="6" fill="#141414" stroke="#BFD8E3" />
+                                <text x="90" y="204" fill="#00638E" textAnchor="middle" fontSize="10">Det / Mod</text>
 
-                                <rect x="180" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
-                                <text x="230" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Head Noun</text>
+                                <rect x="180" y="185" width="100" height="30" rx="6" fill="#141414" stroke="#BFD8E3" />
+                                <text x="230" y="204" fill="#00638E" textAnchor="middle" fontSize="10">Head Noun</text>
 
-                                <rect x="380" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
-                                <text x="430" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Finite Verb</text>
+                                <rect x="380" y="185" width="100" height="30" rx="6" fill="#141414" stroke="#BFD8E3" />
+                                <text x="430" y="204" fill="#00638E" textAnchor="middle" fontSize="10">Finite Verb</text>
 
-                                <rect x="520" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
-                                <text x="570" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Direct Object</text>
+                                <rect x="520" y="185" width="100" height="30" rx="6" fill="#141414" stroke="#BFD8E3" />
+                                <text x="570" y="204" fill="#00638E" textAnchor="middle" fontSize="10">Direct Object</text>
 
-                                <rect x="640" y="185" width="100" height="30" rx="6" fill="#DDD7CA" stroke="#C8C0B0" />
-                                <text x="690" y="204" fill="#1E1B17" textAnchor="middle" fontSize="10">Adjunct / PP</text>
+                                <rect x="640" y="185" width="100" height="30" rx="6" fill="#141414" stroke="#BFD8E3" />
+                                <text x="690" y="204" fill="#00638E" textAnchor="middle" fontSize="10">Adjunct / PP</text>
 
                                 {/* Level 3: Terminal Leaves (Sentence Chunks) */}
-                                <rect x="10" y="260" width="160" height="42" rx="8" fill="#E6E0D4" stroke="#A84A28" />
-                                <text x="90" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                <rect x="10" y="260" width="160" height="42" rx="8" fill="#1C1C1C" stroke="#00638E" />
+                                <text x="90" y="280" fill="#00638E" textAnchor="middle" fontSize="9.5" fontWeight="bold">
                                   {xray.breakdown[0]?.text || 'Constituent 1'}
                                 </text>
-                                <text x="90" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                <text x="90" y="294" fill="#BFD8E3" textAnchor="middle" fontSize="8">
                                   {xray.breakdown[0]?.role || 'Modifier'}
                                 </text>
 
-                                <rect x="180" y="260" width="140" height="42" rx="8" fill="#E6E0D4" stroke="#A84A28" />
-                                <text x="250" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                <rect x="180" y="260" width="140" height="42" rx="8" fill="#1C1C1C" stroke="#00638E" />
+                                <text x="250" y="280" fill="#00638E" textAnchor="middle" fontSize="9.5" fontWeight="bold">
                                   {xray.breakdown[1]?.text || 'Constituent 2'}
                                 </text>
-                                <text x="250" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                <text x="250" y="294" fill="#BFD8E3" textAnchor="middle" fontSize="8">
                                   {xray.breakdown[1]?.role || 'Head'}
                                 </text>
 
-                                <rect x="330" y="260" width="140" height="42" rx="8" fill="#E6E0D4" stroke="#535841" />
-                                <text x="400" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                <rect x="330" y="260" width="140" height="42" rx="8" fill="#1C1C1C" stroke="#004A6B" />
+                                <text x="400" y="280" fill="#00638E" textAnchor="middle" fontSize="9.5" fontWeight="bold">
                                   {xray.breakdown[2]?.text || 'Constituent 3'}
                                 </text>
-                                <text x="400" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                <text x="400" y="294" fill="#BFD8E3" textAnchor="middle" fontSize="8">
                                   {xray.breakdown[2]?.role || 'Verb'}
                                 </text>
 
-                                <rect x="480" y="260" width="135" height="42" rx="8" fill="#E6E0D4" stroke="#535841" />
-                                <text x="547" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                <rect x="480" y="260" width="135" height="42" rx="8" fill="#1C1C1C" stroke="#004A6B" />
+                                <text x="547" y="280" fill="#00638E" textAnchor="middle" fontSize="9.5" fontWeight="bold">
                                   {xray.breakdown[3]?.text || 'Constituent 4'}
                                 </text>
-                                <text x="547" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                <text x="547" y="294" fill="#BFD8E3" textAnchor="middle" fontSize="8">
                                   {xray.breakdown[3]?.role || 'Object'}
                                 </text>
 
-                                <rect x="625" y="260" width="130" height="42" rx="8" fill="#E6E0D4" stroke="#7A7265" />
-                                <text x="690" y="280" fill="#1E1B17" textAnchor="middle" fontSize="9.5" fontWeight="bold">
+                                <rect x="625" y="260" width="130" height="42" rx="8" fill="#1C1C1C" stroke="#8CB9CC" />
+                                <text x="690" y="280" fill="#00638E" textAnchor="middle" fontSize="9.5" fontWeight="bold">
                                   {xray.breakdown[4]?.text || 'Constituent 5'}
                                 </text>
-                                <text x="690" y="294" fill="#7A7265" textAnchor="middle" fontSize="8">
+                                <text x="690" y="294" fill="#BFD8E3" textAnchor="middle" fontSize="8">
                                   {xray.breakdown[4]?.role || 'Modifier'}
                                 </text>
                               </svg>
@@ -5111,9 +5111,9 @@ export default function MerakiApp() {
                           </div>
                         )}
 
-                        <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
+                        <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
                           <strong>Ringkasan Arsitektur Kalimat:</strong>
-                          <p className="text-[#38332A] leading-relaxed">{xray.architecturalSummary}</p>
+                          <p className="text-[#2B2B2B] dark:text-[#FFFFFF] leading-relaxed">{xray.architecturalSummary}</p>
                         </div>
                       </div>
                     );
@@ -5124,14 +5124,14 @@ export default function MerakiApp() {
               {/* IELTS Task 1 */}
               {studioSubTab === 'ielts-task1' && (
                 <div className="max-w-4xl mx-auto w-full flex-1 overflow-y-auto space-y-6 py-2">
-                  <div className="flex gap-2 pb-2 border-b border-[#C8C0B0]">
+                  <div className="flex gap-2 pb-2 border-b border-[#BFD8E3]/40 dark:border-white/10">
                     {IELTS_TASK1_TRENDS_DATA.map((tr, idx) => (
                       <button
                         key={tr.id}
                         onClick={() => setActiveIeltsTrendIndex(idx)}
                         className={clsx(
                           'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
-                          activeIeltsTrendIndex === idx ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#E6E0D4] border border-[#C8C0B0] text-[#7A7265]'
+                          activeIeltsTrendIndex === idx ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-[#50585C] dark:text-[#7A8992]'
                         )}
                       >
                         {tr.trendType}
@@ -5143,50 +5143,50 @@ export default function MerakiApp() {
                     const tr = IELTS_TASK1_TRENDS_DATA[activeIeltsTrendIndex];
 
                     return (
-                      <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-5">
+                      <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-5">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <TrendingUp className="w-5 h-5 text-[#A84A28]" />
-                            <h3 className="font-serif text-xl font-bold text-[#1E1B17]">{tr.trendType}</h3>
+                            <TrendingUp className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC]" />
+                            <h3 className="font-serif text-xl font-bold text-[#141414] dark:text-[#FFFFFF]">{tr.trendType}</h3>
                           </div>
-                          <span className="font-mono text-xs bg-[#DDD7CA] text-[#A84A28] px-2.5 py-0.5 rounded font-semibold">
+                          <span className="font-mono text-xs bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded font-semibold">
                             IELTS Writing Task 1 Formula
                           </span>
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-xs text-[#1E1B17] space-y-1">
-                          <span className="text-[10px] text-[#7A7265] uppercase block font-semibold">Struktur Kalimat Baku:</span>
-                          <div className="font-semibold text-[#A84A28]">{tr.formulaStructure}</div>
+                        <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 font-mono text-xs text-[#141414] dark:text-[#FFFFFF] space-y-1">
+                          <span className="text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">Struktur Kalimat Baku:</span>
+                          <div className="font-semibold text-[#00638E] dark:text-[#8CB9CC]">{tr.formulaStructure}</div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0] space-y-1.5">
-                            <span className="font-mono text-[10px] text-[#A84A28] uppercase font-semibold block">Verba Tren Kuat:</span>
+                          <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5">
+                            <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">Verba Tren Kuat:</span>
                             <div className="flex flex-wrap gap-1">
                               {tr.highYieldVerbs.map(v => (
-                                <span key={v} className="font-mono text-[10px] bg-[#E6E0D4] px-2 py-0.5 rounded border border-[#C8C0B0]">
+                                <span key={v} className="font-mono text-[10px] bg-[#FFFFFF] dark:bg-[#141414] px-2 py-0.5 rounded border border-[#BFD8E3]/40 dark:border-white/10">
                                   {v}
                                 </span>
                               ))}
                             </div>
                           </div>
 
-                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0] space-y-1.5">
-                            <span className="font-mono text-[10px] text-[#535841] uppercase font-semibold block">Frasa Benda Tren:</span>
+                          <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5">
+                            <span className="font-mono text-[10px] text-[#004A6B] dark:text-[#BFD8E3] uppercase font-semibold block">Frasa Benda Tren:</span>
                             <div className="flex flex-wrap gap-1">
                               {tr.highYieldNouns.map(n => (
-                                <span key={n} className="font-mono text-[10px] bg-[#E6E0D4] px-2 py-0.5 rounded border border-[#C8C0B0]">
+                                <span key={n} className="font-mono text-[10px] bg-[#FFFFFF] dark:bg-[#141414] px-2 py-0.5 rounded border border-[#BFD8E3]/40 dark:border-white/10">
                                   {n}
                                 </span>
                               ))}
                             </div>
                           </div>
 
-                          <div className="p-3.5 rounded-2xl bg-[#DDD7CA]/70 border border-[#C8C0B0] space-y-1.5">
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold block">Adverbia Derajat:</span>
+                          <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold block">Adverbia Derajat:</span>
                             <div className="flex flex-wrap gap-1">
                               {tr.highYieldAdverbs.map(adv => (
-                                <span key={adv} className="font-mono text-[10px] bg-[#E6E0D4] px-2 py-0.5 rounded border border-[#C8C0B0]">
+                                <span key={adv} className="font-mono text-[10px] bg-[#FFFFFF] dark:bg-[#141414] px-2 py-0.5 rounded border border-[#BFD8E3]/40 dark:border-white/10">
                                   {adv}
                                 </span>
                               ))}
@@ -5194,11 +5194,11 @@ export default function MerakiApp() {
                           </div>
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-[#535841]/10 border border-[#535841]/30 text-xs space-y-1">
-                          <span className="font-mono text-[10px] uppercase text-[#535841] font-semibold block">
+                        <div className="p-4 rounded-2xl bg-[#004A6B]/10 dark:bg-[#00638E]/15 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-xs space-y-1">
+                          <span className="font-mono text-[10px] uppercase text-[#004A6B] dark:text-[#BFD8E3] font-semibold block">
                             Contoh Kalimat Laporan Data IELTS:
                           </span>
-                          <p className="font-serif text-sm text-[#1E1B17] italic">"{tr.sampleSentence}"</p>
+                          <p className="font-serif text-sm text-[#141414] dark:text-[#FFFFFF] italic">"{tr.sampleSentence}"</p>
                         </div>
                       </div>
                     );
@@ -5209,24 +5209,24 @@ export default function MerakiApp() {
               {/* Combining */}
               {studioSubTab === 'combine' && (
                 <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto space-y-6 py-2">
-                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5">
+                  <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm space-y-5">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
+                      <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-3 py-1 rounded-md uppercase font-semibold">
                         Teknik: {currentCombineTask.technique}
                       </span>
-                      <span className="font-mono text-xs text-[#7A7265]">
+                      <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                         Tugas {activeCombineIndex + 1} dari {SENTENCE_COMBINING_DATA.length}
                       </span>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
-                      <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                    <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
+                      <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                         Gabungkan 2 Kalimat Pendek Ini Menjadi 1 Kalimat Majemuk Padat:
                       </span>
-                      <ul className="space-y-1 text-xs sm:text-sm font-serif text-[#1E1B17]">
+                      <ul className="space-y-1 text-xs sm:text-sm font-serif text-[#141414] dark:text-[#FFFFFF]">
                         {currentCombineTask.sourceSentences.map((sent, sIdx) => (
                           <li key={sIdx} className="flex items-start gap-2">
-                            <span className="font-mono text-[10px] text-[#A84A28] font-bold">({sIdx + 1})</span>
+                            <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] font-bold">({sIdx + 1})</span>
                             <span>{sent}</span>
                           </li>
                         ))}
@@ -5234,7 +5234,7 @@ export default function MerakiApp() {
                     </div>
 
                     <form onSubmit={handleCheckCombine} className="space-y-3">
-                      <label className="font-mono text-[11px] uppercase tracking-wider text-[#7A7265] font-semibold block">
+                      <label className="font-mono text-[11px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] font-semibold block">
                         Ketik Kalimat Hasil Penggabungan Anda:
                       </label>
                       <textarea
@@ -5245,12 +5245,12 @@ export default function MerakiApp() {
                         }}
                         rows={3}
                         placeholder="Ketik kalimat tunggal yang padat..."
-                        className="w-full p-3.5 text-xs sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                        className="w-full p-3.5 text-xs sm:text-sm bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]"
                       />
                       <div className="flex justify-end">
                         <button
                           type="submit"
-                          className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shadow-xs"
+                          className="px-6 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono font-medium transition-all tactile-btn shadow-xs"
                         >
                           Verifikasi Penggabungan
                         </button>
@@ -5260,25 +5260,25 @@ export default function MerakiApp() {
                     {combineFeedback && (
                       <div className={clsx(
                         'p-4 rounded-2xl border text-xs space-y-2 animate-in fade-in duration-200',
-                        combineFeedback.isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                        combineFeedback.isCorrect ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                       )}>
                         <div className="flex items-center gap-2 font-semibold">
                           {combineFeedback.isCorrect ? (
                             <>
-                              <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                              <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                               <span>Penggabungan Sangat Padat & Alami!</span>
                             </>
                           ) : (
                             <>
-                              <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                              <HelpCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                               <span>Struktur alternatif dapat ditinjau di bawah:</span>
                             </>
                           )}
                         </div>
 
-                        <div className="space-y-1 pt-1 border-t border-[#C8C0B0]/60">
+                        <div className="space-y-1 pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
                           <p><strong>Kalimat Gabungan Baku:</strong> "{currentCombineTask.sampleCombined}"</p>
-                          <p className="text-[#524C42] leading-relaxed">
+                          <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
                             <strong>Penjelasan Linguistik:</strong> {currentCombineTask.linguisticExplanation}
                           </p>
                         </div>
@@ -5294,7 +5294,7 @@ export default function MerakiApp() {
                         setCombineFeedback(null);
                       }}
                       disabled={activeCombineIndex === 0}
-                      className="px-4 py-2 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-4 py-2 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono disabled:opacity-30 tactile-btn"
                     >
                       Tugas Sebelumnya
                     </button>
@@ -5306,7 +5306,7 @@ export default function MerakiApp() {
                         setCombineFeedback(null);
                       }}
                       disabled={activeCombineIndex === SENTENCE_COMBINING_DATA.length - 1}
-                      className="px-4 py-2 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono disabled:opacity-30 tactile-btn"
+                      className="px-4 py-2 rounded-2xl bg-[#00638E] text-white shadow-xs font-semibold text-xs font-mono disabled:opacity-30 tactile-btn"
                     >
                       Tugas Selanjutnya
                     </button>
@@ -5319,12 +5319,12 @@ export default function MerakiApp() {
                 <div className="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
                   <div className="col-span-12 lg:col-span-8 flex flex-col h-full space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-[#7A7265] uppercase font-semibold">
+                      <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
                         Kanvas Penulisan Esai Formal (IELTS / TOEFL Simulator)
                       </span>
                       <button
                         onClick={() => setWritingPadText('')}
-                        className="text-xs font-mono text-[#A84A28] hover:underline"
+                        className="text-xs font-mono text-[#00638E] dark:text-[#8CB9CC] hover:underline"
                       >
                         Bersihkan Teks
                       </button>
@@ -5339,54 +5339,54 @@ export default function MerakiApp() {
                         } catch (err) {}
                       }}
                       placeholder="Mulai ketik esai argumentatif atau paragraf deskripsi data Anda di sini... Sistem akan menganalisis metrik sintaksis dan leksikal secara instan tanpa ketergantungan AI."
-                      className="flex-1 w-full p-6 text-sm bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl outline-hidden focus:border-[#A84A28] text-[#1E1B17] font-serif leading-relaxed resize-none shadow-xs"
+                      className="flex-1 w-full p-6 text-sm bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-3xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-serif leading-relaxed resize-none shadow-xs"
                     />
                   </div>
 
-                  <div className="col-span-12 lg:col-span-4 bg-[#E6E0D4] border border-[#C8C0B0] rounded-3xl p-5 overflow-y-auto space-y-5">
-                    <h3 className="font-serif text-lg font-semibold text-[#1E1B17] pb-2 border-b border-[#C8C0B0]">
+                  <div className="col-span-12 lg:col-span-4 bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-3xl p-5 overflow-y-auto space-y-5">
+                    <h3 className="font-serif text-lg font-semibold text-[#141414] dark:text-[#FFFFFF] pb-2 border-b border-[#BFD8E3]/40 dark:border-white/10">
                       Metrik Sintaksis & Leksikal
                     </h3>
 
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-center">
-                        <span className="font-mono text-[10px] text-[#7A7265] uppercase block">Total Kata</span>
-                        <span className="font-serif text-2xl font-bold text-[#1E1B17]">{padMetrics.wordCount}</span>
+                      <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-center">
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block">Total Kata</span>
+                        <span className="font-serif text-2xl font-bold text-[#141414] dark:text-[#FFFFFF]">{padMetrics.wordCount}</span>
                       </div>
 
-                      <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-center">
-                        <span className="font-mono text-[10px] text-[#7A7265] uppercase block">Lexical Diversity (TTR)</span>
-                        <span className="font-serif text-2xl font-bold text-[#535841]">{padMetrics.ttr}%</span>
+                      <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-center">
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block">Lexical Diversity (TTR)</span>
+                        <span className="font-serif text-2xl font-bold text-[#004A6B] dark:text-[#BFD8E3]">{padMetrics.ttr}%</span>
                       </div>
                     </div>
 
                     <div className="space-y-2 text-xs">
-                      <div className="flex justify-between py-1 border-b border-[#C8C0B0]/60">
-                        <span className="text-[#7A7265]">Jumlah Kalimat:</span>
-                        <span className="font-mono font-semibold text-[#1E1B17]">{padMetrics.sentenceCount}</span>
+                      <div className="flex justify-between py-1 border-b border-[#BFD8E3]/30 dark:border-white/10">
+                        <span className="text-[#50585C] dark:text-[#7A8992]">Jumlah Kalimat:</span>
+                        <span className="font-mono font-semibold text-[#141414] dark:text-[#FFFFFF]">{padMetrics.sentenceCount}</span>
                       </div>
-                      <div className="flex justify-between py-1 border-b border-[#C8C0B0]/60">
-                        <span className="text-[#7A7265]">Rata-rata Kata/Kalimat:</span>
-                        <span className="font-mono font-semibold text-[#1E1B17]">{padMetrics.avgWordsPerSentence} kata</span>
+                      <div className="flex justify-between py-1 border-b border-[#BFD8E3]/30 dark:border-white/10">
+                        <span className="text-[#50585C] dark:text-[#7A8992]">Rata-rata Kata/Kalimat:</span>
+                        <span className="font-mono font-semibold text-[#141414] dark:text-[#FFFFFF]">{padMetrics.avgWordsPerSentence} kata</span>
                       </div>
-                      <div className="flex justify-between py-1 border-b border-[#C8C0B0]/60">
-                        <span className="text-[#7A7265]">Academic Chunk Density:</span>
-                        <span className="font-mono font-semibold text-[#A84A28]">{padMetrics.academicChunkDensity}%</span>
+                      <div className="flex justify-between py-1 border-b border-[#BFD8E3]/30 dark:border-white/10">
+                        <span className="text-[#50585C] dark:text-[#7A8992]">Academic Chunk Density:</span>
+                        <span className="font-mono font-semibold text-[#00638E] dark:text-[#8CB9CC]">{padMetrics.academicChunkDensity}%</span>
                       </div>
                     </div>
 
                     {/* Sentence Rhythm & Monotony Visualizer */}
-                    <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
+                    <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
                           Diagram Ritme & Variasi Kalimat:
                         </span>
-                        <Activity className="w-3.5 h-3.5 text-[#7A7265]" />
+                        <Activity className="w-3.5 h-3.5 text-[#50585C] dark:text-[#7A8992]" />
                       </div>
 
                       {padMetrics.sentenceLengths.length > 0 ? (
                         <div className="space-y-1.5 pt-1">
-                          <div className="flex items-end gap-1.5 h-16 px-1 pt-2 bg-[#E6E0D4] rounded-xl border border-[#C8C0B0]/60 overflow-x-auto no-scrollbar">
+                          <div className="flex items-end gap-1.5 h-16 px-1 pt-2 bg-[#FFFFFF] dark:bg-[#141414] rounded-xl border border-[#BFD8E3]/30 dark:border-white/10 overflow-x-auto no-scrollbar">
                             {padMetrics.sentenceLengths.map((len, idx) => {
                               const heightPct = Math.min(100, Math.max(15, (len / 35) * 100));
                               const isIdeal = len >= 12 && len <= 28;
@@ -5395,76 +5395,76 @@ export default function MerakiApp() {
                                   <div
                                     className={clsx(
                                       'w-full rounded-t-sm transition-all',
-                                      isIdeal ? 'bg-[#535841]' : len < 12 ? 'bg-[#DDD7CA] border border-[#7A7265]' : 'bg-[#A84A28]'
+                                      isIdeal ? 'bg-[#004A6B] dark:bg-[#00638E] text-white' : len < 12 ? 'bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40' : 'bg-[#00638E] text-white'
                                     )}
                                     style={{ height: `${heightPct}%` }}
                                   />
-                                  <span className="font-mono text-[8px] text-[#7A7265] mt-0.5">{len}</span>
+                                  <span className="font-mono text-[8px] text-[#50585C] dark:text-[#7A8992] mt-0.5">{len}</span>
                                 </div>
                               );
                             })}
                           </div>
-                          <span className="font-mono text-[9px] text-[#7A7265] block text-center">
+                          <span className="font-mono text-[9px] text-[#50585C] dark:text-[#7A8992] block text-center">
                             Setiap bar = jumlah kata per kalimat (Hijau: ideal 12–28 kata)
                           </span>
                         </div>
                       ) : (
-                        <p className="text-[11px] text-[#7A7265] italic">Ketik minimal 1 kalimat untuk melihat grafik ritme.</p>
+                        <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">Ketik minimal 1 kalimat untuk melihat grafik ritme.</p>
                       )}
 
                       {padMetrics.isMonotonous && (
-                        <div className="p-2.5 rounded-xl bg-[#A84A28]/15 border border-[#A84A28]/30 text-[11px] text-[#1E1B17] space-y-0.5">
-                          <strong className="text-[#A84A28] font-mono text-[9px] uppercase block">Peringatan Ritme Monoton:</strong>
+                        <div className="p-2.5 rounded-xl bg-[#00638E]/15 dark:bg-[#00638E]/25 border border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[11px] text-[#141414] dark:text-[#FFFFFF] space-y-0.5">
+                          <strong className="text-[#00638E] dark:text-[#8CB9CC] font-mono text-[9px] uppercase block">Peringatan Ritme Monoton:</strong>
                           <p>{padMetrics.monotonyReason}</p>
                         </div>
                       )}
                     </div>
 
                     {/* Academic High-Yield Chunks Radar */}
-                    <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
+                    <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] text-[#A84A28] uppercase font-semibold block">
+                        <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">
                           Academic Chunks & Connectors ({padMetrics.detectedAcademicChunks.length}):
                         </span>
-                        <Zap className="w-3.5 h-3.5 text-[#A84A28]" />
+                        <Zap className="w-3.5 h-3.5 text-[#00638E] dark:text-[#8CB9CC]" />
                       </div>
                       {padMetrics.detectedAcademicChunks.length > 0 ? (
                         <div className="flex flex-wrap gap-1 pt-1">
                           {padMetrics.detectedAcademicChunks.map(chunk => (
-                            <span key={chunk} className="font-mono text-[10px] bg-[#A84A28]/15 text-[#A84A28] border border-[#A84A28]/25 px-2 py-0.5 rounded-md font-semibold">
+                            <span key={chunk} className="font-mono text-[10px] bg-[#00638E]/15 dark:bg-[#00638E]/25 text-[#00638E] dark:text-[#8CB9CC] border border-[#00638E]/25 px-2 py-0.5 rounded-md font-semibold">
                               {chunk}
                             </span>
                           ))}
                         </div>
                       ) : (
-                        <p className="text-[11px] text-[#7A7265] italic">
+                        <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">
                           Belum ada frasa transisi akademik. Coba gunakan: *in light of*, *conversely*, *with respect to*, atau *plays a pivotal role*.
                         </p>
                       )}
                     </div>
 
                     {/* Academic Hedging */}
-                    <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
-                      <span className="font-mono text-[10px] text-[#535841] uppercase font-semibold block">
+                    <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5">
+                      <span className="font-mono text-[10px] text-[#004A6B] dark:text-[#BFD8E3] uppercase font-semibold block">
                         Academic Hedging Terdeteksi ({padMetrics.detectedHedging.length}):
                       </span>
                       {padMetrics.detectedHedging.length > 0 ? (
                         <div className="flex flex-wrap gap-1">
                           {padMetrics.detectedHedging.map(h => (
-                            <span key={h} className="font-mono text-[10px] bg-[#535841]/20 text-[#535841] px-2 py-0.5 rounded">
+                            <span key={h} className="font-mono text-[10px] bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] px-2 py-0.5 rounded">
                               {h}
                             </span>
                           ))}
                         </div>
                       ) : (
-                        <p className="text-[11px] text-[#7A7265] italic">Belum ada hedging. Gunakan kata seperti *suggests*, *tends to*, atau *may*.</p>
+                        <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">Belum ada hedging. Gunakan kata seperti *suggests*, *tends to*, atau *may*.</p>
                       )}
                     </div>
 
                     {padMetrics.detectedInformal.length > 0 && (
-                      <div className="p-3.5 rounded-2xl bg-[#A84A28]/15 border border-[#A84A28]/30 space-y-1 text-xs">
-                        <strong className="text-[#A84A28] font-mono text-[10px] uppercase block">Peringatan Kata Informal:</strong>
-                        <p className="text-[11px] text-[#1E1B17]">
+                      <div className="p-3.5 rounded-2xl bg-[#00638E]/15 dark:bg-[#00638E]/25 border border-[#00638E]/35 dark:border-[#8CB9CC]/40 space-y-1 text-xs">
+                        <strong className="text-[#00638E] dark:text-[#8CB9CC] font-mono text-[10px] uppercase block">Peringatan Kata Informal:</strong>
+                        <p className="text-[11px] text-[#141414] dark:text-[#FFFFFF]">
                           Hindari kata: {padMetrics.detectedInformal.join(', ')} dalam esai akademik formal.
                         </p>
                       </div>
@@ -5478,22 +5478,22 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 6: FONETIK LAB ───────────── */}
           {activeHub === 'phonetics' && (
             <div className="max-w-4xl mx-auto h-full p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-6 pb-36 md:pb-16">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10">
                 <div>
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#00638E] dark:text-[#8CB9CC] font-semibold">
                     Comparative Phonetics & Ear Training Studio
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
+                  <h2 className="text-2xl sm:text-3xl font-serif text-[#141414] dark:text-[#FFFFFF]">
                     Minimal Pairs & Ear Training Lab
                   </h2>
                 </div>
 
-                <div className="flex items-center gap-1 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] self-start sm:self-auto shrink-0">
+                <div className="flex items-center gap-1 bg-[#EDF3F7] dark:bg-[#1C1C1C] p-1.5 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 self-start sm:self-auto shrink-0">
                   <button
                     onClick={() => setPhoneticsMode('reference')}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
-                      phoneticsMode === 'reference' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      phoneticsMode === 'reference' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
                     Komparasi IPA
@@ -5506,10 +5506,10 @@ export default function MerakiApp() {
                     }}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1',
-                      phoneticsMode === 'ear-training' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      phoneticsMode === 'ear-training' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
-                    <Headphones className="w-3 h-3 text-[#A84A28]" />
+                    <Headphones className="w-3 h-3 text-[#00638E] dark:text-[#8CB9CC]" />
                     <span>Listening Drill</span>
                   </button>
                   <button
@@ -5520,10 +5520,10 @@ export default function MerakiApp() {
                     }}
                     className={clsx(
                       'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1',
-                      phoneticsMode === 'shadowing' ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                      phoneticsMode === 'shadowing' ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                     )}
                   >
-                    <Timer className="w-3 h-3 text-[#535841]" />
+                    <Timer className="w-3 h-3 text-[#004A6B] dark:text-[#BFD8E3]" />
                     <span>Shadowing</span>
                   </button>
                 </div>
@@ -5541,7 +5541,7 @@ export default function MerakiApp() {
                     }}
                     className={clsx(
                       'px-4 py-2 rounded-2xl text-xs font-mono whitespace-nowrap transition-all tactile-btn',
-                      activeMinimalPairIndex === idx ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#E6E0D4] border border-[#C8C0B0] text-[#7A7265]'
+                      activeMinimalPairIndex === idx ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-[#50585C] dark:text-[#7A8992]'
                     )}
                   >
                     {mp.phonemeContrast}
@@ -5586,27 +5586,27 @@ export default function MerakiApp() {
                   };
 
                   return (
-                    <div className="p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-6 text-center">
-                      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#C8C0B0]">
-                        <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
+                    <div className="p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm space-y-6 text-center">
+                      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                        <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-3 py-1 rounded-md uppercase font-semibold">
                           Drill Telinga: Kontras {mp.phonemeContrast}
                         </span>
-                        <div className="font-mono text-xs text-[#7A7265]">
-                          Akurasi: <strong className="text-[#1E1B17]">{earScore.correct} / {earScore.total}</strong> ({earScore.total > 0 ? Math.round((earScore.correct / earScore.total) * 100) : 0}%)
+                        <div className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
+                          Akurasi: <strong className="text-[#141414] dark:text-[#FFFFFF]">{earScore.correct} / {earScore.total}</strong> ({earScore.total > 0 ? Math.round((earScore.correct / earScore.total) * 100) : 0}%)
                         </div>
                       </div>
 
                       <div className="space-y-4 max-w-lg mx-auto">
-                        <h3 className="font-serif text-2xl text-[#1E1B17]">
+                        <h3 className="font-serif text-2xl text-[#141414] dark:text-[#FFFFFF]">
                           Dengarkan dan Tebak Kata yang Diucapkan
                         </h3>
-                        <p className="text-xs text-[#524C42] leading-relaxed">
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
                           Sistem akan memutar salah satu kata dari pasangan <strong className="font-mono">{mp.wordA}</strong> ({mp.ipaA}) atau <strong className="font-mono">{mp.wordB}</strong> ({mp.ipaB}).
                         </p>
 
                         <button
                           onClick={handlePlaySecretWord}
-                          className="px-6 py-3.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-sm font-mono flex items-center justify-center gap-2 mx-auto tactile-btn shadow-md"
+                          className="px-6 py-3.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-sm font-mono flex items-center justify-center gap-2 mx-auto tactile-btn shadow-md"
                           aria-label="Putar suara kata misterius"
                         >
                           <Volume2 className="w-5 h-5" />
@@ -5616,7 +5616,7 @@ export default function MerakiApp() {
 
                       {hasStarted && (
                         <div className="space-y-4 pt-2">
-                          <span className="font-mono text-[11px] uppercase tracking-wider text-[#7A7265] block font-semibold">
+                          <span className="font-mono text-[11px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] block font-semibold">
                             Kata mana yang barusan Anda dengar?
                           </span>
 
@@ -5628,11 +5628,11 @@ export default function MerakiApp() {
                               const isChoice = earSelectedChoice === letter;
                               const isTarget = earSecretWord === letter;
 
-                              let btnStyle = 'bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 border-[#C8C0B0] text-[#1E1B17]';
+                              let btnStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:bg-[#1C1C1C]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
                               if (isAnswered) {
-                                if (isTarget) btnStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
-                                else if (isChoice && !isTarget) btnStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
-                                else btnStyle = 'opacity-40 bg-[#DDD7CA] border-transparent text-[#7A7265]';
+                                if (isTarget) btnStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold';
+                                else if (isChoice && !isTarget) btnStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
+                                else btnStyle = 'opacity-40 bg-[#EDF3F7] dark:bg-[#1C1C1C] border-transparent text-[#50585C] dark:text-[#7A8992]';
                               }
 
                               return (
@@ -5645,10 +5645,10 @@ export default function MerakiApp() {
                                     btnStyle
                                   )}
                                 >
-                                  <span className="font-mono text-[10px] text-[#7A7265] uppercase block">Opsi ({letter})</span>
+                                  <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block">Opsi ({letter})</span>
                                   <h4 className="font-serif text-3xl font-bold">{word}</h4>
-                                  <span className="font-mono text-xs text-[#A84A28] block">{ipa}</span>
-                                  <p className="text-[11px] text-[#524C42]">{meaning}</p>
+                                  <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] block">{ipa}</span>
+                                  <p className="text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3]">{meaning}</p>
                                 </button>
                               );
                             })}
@@ -5657,29 +5657,29 @@ export default function MerakiApp() {
                           {isAnswered && (
                             <div className={clsx(
                               'p-4 rounded-2xl border text-xs max-w-lg mx-auto space-y-3 animate-in fade-in duration-200 text-left',
-                              isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                              isCorrect ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                             )}>
                               <div className="flex items-center gap-2 font-bold">
                                 {isCorrect ? (
                                   <>
-                                    <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                                    <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                                     <span>Tepat Sekali! Telinga Anda berhasil menangkap beda fonem.</span>
                                   </>
                                 ) : (
                                   <>
-                                    <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                                    <HelpCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                                     <span>Belum Tepat! Kata yang diputar adalah "{earSecretWord === 'A' ? mp.wordA : mp.wordB}".</span>
                                   </>
                                 )}
                               </div>
-                              <p className="text-[#524C42] leading-relaxed">
+                              <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
                                 <strong>Kunci Pembeda:</strong> {mp.description}
                               </p>
 
-                              <div className="flex justify-end pt-2 border-t border-[#C8C0B0]/60">
+                              <div className="flex justify-end pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
                                 <button
                                   onClick={handleNextEarRound}
-                                  className="px-4 py-2 rounded-xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono font-medium tactile-btn"
+                                  className="px-4 py-2 rounded-xl bg-[#00638E] text-white shadow-xs font-semibold text-xs font-mono font-medium tactile-btn"
                                 >
                                   Soal Berikutnya
                                 </button>
@@ -5700,39 +5700,39 @@ export default function MerakiApp() {
                   };
 
                   return (
-                    <div className="p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-6 text-center">
+                    <div className="p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm space-y-6 text-center">
                       <div className="space-y-2">
-                        <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-3 py-1 rounded-md uppercase font-semibold">
+                        <span className="font-mono text-xs bg-[#004A6B]/10 dark:bg-[#00638E]/15 text-[#004A6B] dark:text-[#BFD8E3] px-3 py-1 rounded-md uppercase font-semibold">
                           Shadowing & Articulation Loop: {mp.phonemeContrast}
                         </span>
-                        <h3 className="font-serif text-2xl text-[#1E1B17]">
+                        <h3 className="font-serif text-2xl text-[#141414] dark:text-[#FFFFFF]">
                           Tiru Intonasi & Artikulasi Kalimat Kontras
                         </h3>
-                        <p className="text-xs text-[#524C42] max-w-md mx-auto leading-relaxed">
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3] max-w-md mx-auto leading-relaxed">
                           Dengarkan pelafalan penutur asli, lalu tirukan secara lantang dalam hitungan mundur 5 detik.
                         </p>
                       </div>
 
-                      <div className="p-6 rounded-3xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-4 max-w-xl mx-auto text-left">
-                        <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                      <div className="p-6 rounded-3xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4 max-w-xl mx-auto text-left">
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                           Target Kalimat Shadowing:
                         </span>
-                        <p className="font-serif text-lg text-[#1E1B17] italic leading-relaxed">
+                        <p className="font-serif text-lg text-[#141414] dark:text-[#FFFFFF] italic leading-relaxed">
                           "{mp.contrastContext}"
                         </p>
 
-                        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#C8C0B0]/60">
+                        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#BFD8E3]/30 dark:border-white/10">
                           <button
                             onClick={handleStartShadowing}
                             disabled={isShadowingRunning}
-                            className="px-5 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-2 tactile-btn disabled:opacity-50"
+                            className="px-5 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono flex items-center gap-2 tactile-btn disabled:opacity-50"
                           >
                             <Play className="w-4 h-4" />
                             <span>{isShadowingRunning ? `Menirukan (${shadowingCountdown}s)...` : 'Putar & Mulai Shadowing'}</span>
                           </button>
 
                           {isShadowingRunning && (
-                            <div className="flex items-center gap-2 font-mono text-xs text-[#A84A28] font-bold animate-pulse">
+                            <div className="flex items-center gap-2 font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] font-bold animate-pulse">
                               <Timer className="w-4 h-4" />
                               <span>Waktu Ucap: {shadowingCountdown} detik</span>
                             </div>
@@ -5745,25 +5745,25 @@ export default function MerakiApp() {
 
                 // Default: Reference View
                 return (
-                  <div className="p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-6 text-center">
+                  <div className="p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm space-y-6 text-center">
                     <div>
-                      <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
+                      <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-3 py-1 rounded-md uppercase font-semibold">
                         Kontras Fonetik: {mp.phonemeContrast}
                       </span>
-                      <p className="text-xs text-[#524C42] max-w-lg mx-auto mt-2 leading-relaxed">
+                      <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3] max-w-lg mx-auto mt-2 leading-relaxed">
                         {mp.description}
                       </p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="p-6 rounded-3xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
-                        <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Kata A:</span>
-                        <h3 className="text-4xl font-serif text-[#1E1B17]">{mp.wordA}</h3>
-                        <span className="font-mono text-xs text-[#A84A28] block">{mp.ipaA}</span>
-                        <p className="text-xs text-[#38332A]">{mp.meaningA}</p>
+                      <div className="p-6 rounded-3xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">Kata A:</span>
+                        <h3 className="text-4xl font-serif text-[#141414] dark:text-[#FFFFFF]">{mp.wordA}</h3>
+                        <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] block">{mp.ipaA}</span>
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF]">{mp.meaningA}</p>
                         <button
                           onClick={() => playNativeAudio(mp.wordA)}
-                          className="px-4 py-2 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-2 mx-auto tactile-btn shadow-xs"
+                          className="px-4 py-2 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono flex items-center gap-2 mx-auto tactile-btn shadow-xs"
                           aria-label={`Dengarkan pelafalan ${mp.wordA}`}
                         >
                           <Volume2 className="w-4 h-4" />
@@ -5771,14 +5771,14 @@ export default function MerakiApp() {
                         </button>
                       </div>
 
-                      <div className="p-6 rounded-3xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3">
-                        <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">Kata B:</span>
-                        <h3 className="text-4xl font-serif text-[#1E1B17]">{mp.wordB}</h3>
-                        <span className="font-mono text-xs text-[#535841] block">{mp.ipaB}</span>
-                        <p className="text-xs text-[#38332A]">{mp.meaningB}</p>
+                      <div className="p-6 rounded-3xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">Kata B:</span>
+                        <h3 className="text-4xl font-serif text-[#141414] dark:text-[#FFFFFF]">{mp.wordB}</h3>
+                        <span className="font-mono text-xs text-[#004A6B] dark:text-[#BFD8E3] block">{mp.ipaB}</span>
+                        <p className="text-xs text-[#2B2B2B] dark:text-[#FFFFFF]">{mp.meaningB}</p>
                         <button
                           onClick={() => playNativeAudio(mp.wordB)}
-                          className="px-4 py-2 rounded-2xl bg-[#535841] hover:bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono flex items-center gap-2 mx-auto tactile-btn shadow-xs"
+                          className="px-4 py-2 rounded-2xl bg-[#004A6B] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white shadow-xs font-semibold text-xs font-mono flex items-center gap-2 mx-auto tactile-btn shadow-xs"
                           aria-label={`Dengarkan pelafalan ${mp.wordB}`}
                         >
                           <Volume2 className="w-4 h-4" />
@@ -5787,20 +5787,20 @@ export default function MerakiApp() {
                       </div>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2 text-left">
+                    <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2 text-left">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] text-[#7A7265] uppercase font-semibold">
+                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
                           Kalimat Kontras Pembanding:
                         </span>
                         <button 
                           onClick={() => playNativeAudio(mp.contrastContext)} 
-                          className="text-[#7A7265] hover:text-[#1E1B17] tactile-btn"
+                          className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] tactile-btn"
                           aria-label="Dengarkan kalimat kontras"
                         >
                           <Volume2 className="w-4 h-4" />
                         </button>
                       </div>
-                      <p className="font-serif text-base text-[#1E1B17] italic">"{mp.contrastContext}"</p>
+                      <p className="font-serif text-base text-[#141414] dark:text-[#FFFFFF] italic">"{mp.contrastContext}"</p>
                     </div>
                   </div>
                 );
@@ -5811,13 +5811,13 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 7: OXFORD 3000 SRS LAB ───────────── */}
           {activeHub === 'oxford3000' && (
             <div className="h-full grid grid-cols-12 overflow-hidden">
-              <aside className="hidden md:flex md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex-col h-full overflow-hidden p-4 space-y-4">
+              <aside className="hidden md:flex md:col-span-4 lg:col-span-3 bg-[#FFFFFF] dark:bg-[#141414] border-r border-[#BFD8E3]/40 dark:border-white/10 flex-col h-full overflow-hidden p-4 space-y-4">
                 <div className="space-y-2">
-                  <span className="font-mono text-xs text-[#7A7265] uppercase tracking-wider block font-semibold">
+                  <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider block font-semibold">
                     American Oxford 3000 (SRS Studio)
                   </span>
                   <div className="relative">
-                    <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
+                    <Search className="w-3.5 h-3.5 text-[#50585C] dark:text-[#7A8992] absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       value={oxfordSearch}
@@ -5826,7 +5826,7 @@ export default function MerakiApp() {
                         setOxfordIndex(0);
                       }}
                       placeholder="Cari kata atau arti..."
-                      className="w-full pl-9 pr-3 py-1.5 text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                      className="w-full pl-9 pr-3 py-1.5 text-xs bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]"
                     />
                   </div>
 
@@ -5841,8 +5841,8 @@ export default function MerakiApp() {
                         className={clsx(
                           'px-2.5 py-1 rounded-xl text-[10px] font-mono transition-all',
                           oxfordCefrFilter === lvl
-                            ? 'bg-[#1E1B17] text-[#EFE9DF]'
-                            : 'bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]'
+                            ? 'bg-[#00638E] text-white shadow-xs font-semibold'
+                            : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                         )}
                       >
                         {lvl === 'all' ? 'Semua CEFR' : lvl}
@@ -5855,7 +5855,7 @@ export default function MerakiApp() {
                       onClick={() => { setOxfordSrsFilter('all'); setOxfordIndex(0); }}
                       className={clsx(
                         'px-2.5 py-1 rounded-xl text-[9px] font-mono transition-all',
-                        oxfordSrsFilter === 'all' ? 'bg-[#1E1B17] text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
+                        oxfordSrsFilter === 'all' ? 'bg-[#00638E] text-white shadow-xs font-semibold' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                       )}
                     >
                       Semua ({OXFORD_3000_VOCABULARY.length})
@@ -5864,7 +5864,7 @@ export default function MerakiApp() {
                       onClick={() => { setOxfordSrsFilter('due'); setOxfordIndex(0); }}
                       className={clsx(
                         'px-2.5 py-1 rounded-xl text-[9px] font-mono transition-all flex items-center gap-1',
-                        oxfordSrsFilter === 'due' ? 'bg-[#A84A28] text-white' : 'bg-[#DDD7CA] text-[#A84A28]'
+                        oxfordSrsFilter === 'due' ? 'bg-[#00638E] text-white text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
                       )}
                     >
                       <Clock className="w-2.5 h-2.5" />
@@ -5874,7 +5874,7 @@ export default function MerakiApp() {
                       onClick={() => { setOxfordSrsFilter('box4'); setOxfordIndex(0); }}
                       className={clsx(
                         'px-2.5 py-1 rounded-xl text-[9px] font-mono transition-all flex items-center gap-1',
-                        oxfordSrsFilter === 'box4' ? 'bg-[#535841] text-white' : 'bg-[#DDD7CA] text-[#535841]'
+                        oxfordSrsFilter === 'box4' ? 'bg-[#004A6B] dark:bg-[#00638E] text-white text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#004A6B] dark:text-[#BFD8E3]'
                       )}
                     >
                       <Check className="w-2.5 h-2.5" />
@@ -5900,15 +5900,15 @@ export default function MerakiApp() {
                         className={clsx(
                           'w-full text-left p-2.5 rounded-2xl text-xs transition-all flex items-center justify-between gap-2',
                           isSelected
-                            ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs font-medium'
-                            : 'bg-[#E2DCD0]/60 hover:bg-[#DDD7CA] text-[#38332A]'
+                            ? 'bg-[#00638E] text-white shadow-xs font-semibold shadow-xs font-medium'
+                            : 'bg-[#EDF3F7]/60 dark:bg-[#2B2B2B]/40 hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#2B2B2B] dark:text-[#FFFFFF]'
                         )}
                       >
                         <div className="flex items-center gap-2">
                           <span className="font-serif text-sm">{item.word}</span>
                           <span className={clsx(
                             'font-mono text-[9px] px-1.5 py-0.5 rounded-sm',
-                            isSelected ? 'bg-white/20 text-[#EFE9DF]' : 'bg-[#DDD7CA] text-[#7A7265]'
+                            isSelected ? 'bg-white/20 text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]'
                           )}>
                             {item.cefr}
                           </span>
@@ -5917,7 +5917,7 @@ export default function MerakiApp() {
                         <div className="flex items-center gap-1 font-mono text-[9px]">
                           <span className={clsx(
                             'px-1.5 py-0.5 rounded',
-                            wordSrs.box === 4 ? 'bg-[#535841]/20 text-[#535841]' : 'bg-black/05 text-[#7A7265]'
+                            wordSrs.box === 4 ? 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3]' : 'bg-black/05 text-[#50585C] dark:text-[#7A8992]'
                           )}>
                             Box {wordSrs.box}
                           </span>
@@ -5927,56 +5927,56 @@ export default function MerakiApp() {
                   })}
 
                   {filteredOxfordList.length > 120 && (
-                    <div className="p-2 text-center text-[10px] font-mono text-[#7A7265]">
+                    <div className="p-2 text-center text-[10px] font-mono text-[#50585C] dark:text-[#7A8992]">
                       Menampilkan 120 dari {filteredOxfordList.length} kata
                     </div>
                   )}
                 </div>
               </aside>
 
-              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 pb-36 md:pb-16 flex flex-col justify-between space-y-6 sm:space-y-8">
+              <section className="col-span-12 md:col-span-8 lg:col-span-9 bg-[#F4F7F9] dark:bg-[#000000] overflow-y-auto h-full p-4 sm:p-8 pb-36 md:pb-16 flex flex-col justify-between space-y-6 sm:space-y-8">
                 <div className="max-w-2xl mx-auto w-full space-y-6 sm:space-y-8 py-2">
-                  <div className="p-5 sm:p-8 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-sm space-y-5 sm:space-y-6 text-center">
+                  <div className="p-5 sm:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-sm space-y-5 sm:space-y-6 text-center">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-3 py-1 rounded-md uppercase font-semibold">
+                        <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-3 py-1 rounded-md uppercase font-semibold">
                           CEFR {currentOxfordWord?.cefr}
                         </span>
-                        <span className="font-mono text-xs bg-[#535841]/10 text-[#535841] px-2.5 py-1 rounded-md">
+                        <span className="font-mono text-xs bg-[#004A6B]/10 dark:bg-[#00638E]/15 text-[#004A6B] dark:text-[#BFD8E3] px-2.5 py-1 rounded-md">
                           Box {currentWordSrs.box}
                         </span>
                       </div>
-                      <span className="font-mono text-xs text-[#7A7265]">
+                      <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                         Kata {oxfordIndex + 1} dari {filteredOxfordList.length}
                       </span>
                     </div>
 
                     <div className="space-y-2">
                       <div className="flex items-center justify-center gap-3">
-                        <h2 className="text-3xl sm:text-5xl font-serif text-[#1E1B17]">
+                        <h2 className="text-3xl sm:text-5xl font-serif text-[#141414] dark:text-[#FFFFFF]">
                           {currentOxfordWord?.word}
                         </h2>
                         <button
                           onClick={() => playNativeAudio(currentOxfordWord?.word)}
-                          className="p-2.5 rounded-full bg-[#DDD7CA] hover:bg-[#A84A28] text-[#1E1B17] hover:text-[#EFE9DF] transition-all shadow-xs tactile-btn"
+                          className="p-2.5 rounded-full bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#00638E] text-white text-[#141414] dark:text-[#FFFFFF] hover:text-white transition-all shadow-xs tactile-btn"
                           title="Dengarkan pengucapan asli Amerika"
                         >
                           <Volume2 className="w-4 sm:w-5 h-4 sm:h-5" />
                         </button>
                       </div>
 
-                      <div className="font-mono text-xs text-[#7A7265] flex items-center justify-center gap-2">
+                      <div className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] flex items-center justify-center gap-2">
                         <span>{currentOxfordWord?.partOfSpeech}</span>
                         <span>·</span>
-                        <span className="text-[#A84A28]">{currentOxfordWord?.ipa}</span>
+                        <span className="text-[#00638E] dark:text-[#8CB9CC]">{currentOxfordWord?.ipa}</span>
                       </div>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs sm:text-sm text-[#38332A] italic flex items-center justify-between gap-3">
+                    <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs sm:text-sm text-[#2B2B2B] dark:text-[#FFFFFF] italic flex items-center justify-between gap-3">
                       <span>"{currentOxfordWord?.exampleSentence}"</span>
                       <button
                         onClick={() => playNativeAudio(currentOxfordWord?.exampleSentence)}
-                        className="text-[#7A7265] hover:text-[#1E1B17] shrink-0"
+                        className="text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] shrink-0"
                         title="Dengarkan kalimat"
                       >
                         <Volume2 className="w-4 h-4" />
@@ -5985,7 +5985,7 @@ export default function MerakiApp() {
 
                     <form onSubmit={handleCheckOxfordMeaning} className="space-y-3 pt-2">
                       <div className="text-left">
-                        <label className="font-mono text-[11px] uppercase tracking-wider text-[#7A7265] font-semibold block mb-1.5">
+                        <label className="font-mono text-[11px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] font-semibold block mb-1.5">
                           Ketik Arti / Makna Kata dalam Bahasa Indonesia:
                         </label>
                         <div className="flex gap-2">
@@ -5997,11 +5997,11 @@ export default function MerakiApp() {
                               setMeaningFeedback(null);
                             }}
                             placeholder="contoh: menghasilkan, membuat, membuktikan..."
-                            className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17] shadow-xs"
+                            className="flex-1 px-4 py-2.5 text-base sm:text-sm bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] shadow-xs"
                           />
                           <button
                             type="submit"
-                            className="px-5 sm:px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn shadow-xs shrink-0 flex items-center gap-1.5 min-h-[44px]"
+                            className="px-5 sm:px-6 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono font-medium transition-all tactile-btn shadow-xs shrink-0 flex items-center gap-1.5 min-h-[44px]"
                           >
                             <span>Periksa</span>
                             <kbd className="hidden sm:inline text-[9px] bg-white/20 px-1.5 py-0.5 rounded font-mono">↵</kbd>
@@ -6014,43 +6014,43 @@ export default function MerakiApp() {
                       <div className={clsx(
                         'p-4 sm:p-5 rounded-2xl border text-left space-y-3 sm:space-y-4 animate-in fade-in duration-200',
                         meaningFeedback.isCorrect
-                          ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]'
-                          : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                          ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]'
+                          : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                       )}>
                         <div className="flex items-center gap-2 text-xs font-semibold">
                           {meaningFeedback.isCorrect ? (
                             <>
-                              <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                              <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                               <span>Jawaban Tepat! Kata ini dipromosikan di antrean memori.</span>
                             </>
                           ) : (
                             <>
-                              <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                              <HelpCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                               <span>Kurang tepat. Tinjau arti baku di bawah ini:</span>
                             </>
                           )}
                         </div>
 
-                        <div className="space-y-1.5 text-xs pt-2 border-t border-[#C8C0B0]/60">
+                        <div className="space-y-1.5 text-xs pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
                           <div>
-                            <strong className="text-[#1E1B17]">Arti Indonesia:</strong>{' '}
-                            <span className="text-[#38332A]">{currentOxfordWord?.meaningId}</span>
+                            <strong className="text-[#141414] dark:text-[#FFFFFF]">Arti Indonesia:</strong>{' '}
+                            <span className="text-[#2B2B2B] dark:text-[#FFFFFF]">{currentOxfordWord?.meaningId}</span>
                           </div>
                           <div>
-                            <strong className="text-[#1E1B17]">Definisi Inggris:</strong>{' '}
-                            <span className="text-[#7A7265] italic">{currentOxfordWord?.meaningEn}</span>
+                            <strong className="text-[#141414] dark:text-[#FFFFFF]">Definisi Inggris:</strong>{' '}
+                            <span className="text-[#50585C] dark:text-[#7A8992] italic">{currentOxfordWord?.meaningEn}</span>
                           </div>
                         </div>
 
-                        <div className="pt-2 border-t border-[#C8C0B0]/60">
-                          <span className="font-mono text-[10px] uppercase text-[#7A7265] block mb-1">
+                        <div className="pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                          <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] block mb-1">
                             Kolokasi Baku:
                           </span>
                           <div className="flex flex-wrap gap-1.5">
                             {currentOxfordWord?.collocations?.map((col: string, cIdx: number) => (
                               <span
                                 key={cIdx}
-                                className="text-[10px] font-mono bg-[#DDD7CA] px-2 py-0.5 rounded-md border border-[#C8C0B0] text-[#1E1B17]"
+                                className="text-[10px] font-mono bg-[#EDF3F7] dark:bg-[#1C1C1C] px-2 py-0.5 rounded-md border border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]"
                               >
                                 {col}
                               </span>
@@ -6058,26 +6058,26 @@ export default function MerakiApp() {
                           </div>
                         </div>
 
-                        <div className="pt-3 border-t border-[#C8C0B0]/60 space-y-2">
-                          <span className="font-mono text-[10px] uppercase text-[#7A7265] block">
+                        <div className="pt-3 border-t border-[#BFD8E3]/30 dark:border-white/10 space-y-2">
+                          <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] block">
                             Tentukan Interval Pengulangan Memori (SRS):
                           </span>
                           <div className="grid grid-cols-3 gap-2">
                             <button
                               onClick={() => { handleRateSrs(currentOxfordWord.id, 1); handleNextOxfordWord(); }}
-                              className="p-2.5 rounded-xl bg-[#A84A28]/20 hover:bg-[#A84A28] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
+                              className="p-2.5 rounded-xl bg-[#00638E]/20 dark:bg-[#00638E]/30 hover:bg-[#00638E] text-white hover:text-white text-[#141414] dark:text-[#FFFFFF] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
                             >
                               Lupa (Besok)
                             </button>
                             <button
                               onClick={() => { handleRateSrs(currentOxfordWord.id, 2); handleNextOxfordWord(); }}
-                              className="p-2.5 rounded-xl bg-[#DDD7CA] hover:bg-[#1E1B17] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
+                              className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#141414] dark:bg-[#00638E] text-white hover:text-white text-[#141414] dark:text-[#FFFFFF] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
                             >
                               Ragu (3 Hari)
                             </button>
                             <button
                               onClick={() => { handleRateSrs(currentOxfordWord.id, 4); handleNextOxfordWord(); }}
-                              className="p-2.5 rounded-xl bg-[#535841]/20 hover:bg-[#535841] hover:text-white text-[#1E1B17] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
+                              className="p-2.5 rounded-xl bg-[#004A6B]/20 dark:bg-[#00638E]/25 hover:bg-[#004A6B] dark:bg-[#00638E] text-white hover:text-white text-[#141414] dark:text-[#FFFFFF] font-mono text-[10px] transition-colors tactile-btn min-h-[44px]"
                             >
                               Mantap (Box 4)
                             </button>
@@ -6090,7 +6090,7 @@ export default function MerakiApp() {
                   <div className="flex items-center justify-between gap-2 pt-2">
                     <button
                       onClick={handlePrevOxfordWord}
-                      className="px-3.5 sm:px-5 py-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-xs font-mono text-[#1E1B17] hover:bg-[#DDD7CA] flex items-center gap-1.5 tactile-btn min-h-[42px]"
+                      className="px-3.5 sm:px-5 py-2.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono text-[#141414] dark:text-[#FFFFFF] hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] flex items-center gap-1.5 tactile-btn min-h-[42px]"
                     >
                       <ChevronLeft className="w-3.5 h-3.5" />
                       <span>Sebelumnya</span>
@@ -6098,7 +6098,7 @@ export default function MerakiApp() {
 
                     <button
                       onClick={handleRandomOxfordWord}
-                      className="p-2.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] text-[#7A7265] hover:text-[#1E1B17] transition-colors tactile-btn min-h-[42px]"
+                      className="p-2.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors tactile-btn min-h-[42px]"
                       title="Acak kata"
                     >
                       <Shuffle className="w-4 h-4" />
@@ -6106,7 +6106,7 @@ export default function MerakiApp() {
 
                     <button
                       onClick={handleNextOxfordWord}
-                      className="px-3.5 sm:px-5 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-1.5 transition-colors tactile-btn min-h-[42px]"
+                      className="px-3.5 sm:px-5 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono flex items-center gap-1.5 transition-colors tactile-btn min-h-[42px]"
                     >
                       <span>Selanjutnya</span>
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -6120,23 +6120,23 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 8: MISTAKE VAULT ───────────── */}
           {activeHub === 'vault' && (
             <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 pb-36 md:pb-16">
-              <div className="space-y-2 pb-6 border-b border-[#C8C0B0]">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
+              <div className="space-y-2 pb-6 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#00638E] dark:text-[#8CB9CC] font-semibold">
                   Personal Weakness Re-tester & Mastery Loop
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
+                <h2 className="text-2xl sm:text-3xl font-serif text-[#141414] dark:text-[#FFFFFF]">
                   Mistake Vault: Bank Khilaf & Analisis Pola Kesalahan
                 </h2>
-                <p className="text-xs sm:text-sm text-[#7A7265]">
+                <p className="text-xs sm:text-sm text-[#50585C] dark:text-[#7A8992]">
                   Setiap pertanyaan, kolokasi, preposisi, atau latihan kalimat yang pernah Anda jawab kurang tepat akan terkumpul otomatis di sini. Uji ulang sampai tuntas untuk menutup celah kelemahan gramatikal.
                 </p>
               </div>
 
               {mistakeVault.length === 0 ? (
-                <div className="p-8 sm:p-12 text-center bg-[#E6E0D4] rounded-3xl border border-[#C8C0B0] space-y-3">
-                  <CheckCircle2 className="w-10 h-10 text-[#535841] mx-auto" />
-                  <h3 className="font-serif text-lg text-[#1E1B17]">Mistake Vault Kosong!</h3>
-                  <p className="text-xs text-[#7A7265] max-w-md mx-auto">
+                <div className="p-8 sm:p-12 text-center bg-[#FFFFFF] dark:bg-[#141414] rounded-3xl border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                  <CheckCircle2 className="w-10 h-10 text-[#004A6B] dark:text-[#BFD8E3] mx-auto" />
+                  <h3 className="font-serif text-lg text-[#141414] dark:text-[#FFFFFF]">Mistake Vault Kosong!</h3>
+                  <p className="text-xs text-[#50585C] dark:text-[#7A8992] max-w-md mx-auto">
                     Semua soal latihan yang Anda kerjakan telah terjawab dengan benar, atau Anda telah menyelesaikan seluruh sesi perbaikan.
                   </p>
                 </div>
@@ -6156,43 +6156,43 @@ export default function MerakiApp() {
                     const prepPct = Math.round((prepCount / totalMistakes) * 100);
 
                     return (
-                      <div className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4">
+                      <div className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs space-y-4">
                         <div className="flex items-center justify-between">
                           <div>
-                            <span className="font-mono text-[10px] text-[#7A7265] uppercase tracking-wider block font-semibold">
+                            <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider block font-semibold">
                               Analisis Frekuensi & Pola Kelemahan
                             </span>
-                            <h3 className="font-serif text-lg text-[#1E1B17] font-semibold">
+                            <h3 className="font-serif text-lg text-[#141414] dark:text-[#FFFFFF] font-semibold">
                               Distribusi {totalMistakes} Catatan Kesalahan
                             </h3>
                           </div>
-                          <BarChart2 className="w-5 h-5 text-[#A84A28]" />
+                          <BarChart2 className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC]" />
                         </div>
 
                         {/* Stacked Percentage Bar */}
-                        <div className="w-full h-3.5 bg-[#DDD7CA] rounded-full overflow-hidden flex border border-[#C8C0B0]/60">
-                          {quizPct > 0 && <div style={{ width: `${quizPct}%` }} className="bg-[#A84A28] h-full" title={`Grammar/Quiz: ${quizPct}%`} />}
-                          {colPct > 0 && <div style={{ width: `${colPct}%` }} className="bg-[#535841] h-full" title={`Kolokasi/Diksi: ${colPct}%`} />}
-                          {prepPct > 0 && <div style={{ width: `${prepPct}%` }} className="bg-[#7A7265] h-full" title={`Preposisi: ${prepPct}%`} />}
-                          {doctorPct > 0 && <div style={{ width: `${doctorPct}%` }} className="bg-[#1E1B17] h-full" title={`Sintaksis/Doctor: ${doctorPct}%`} />}
+                        <div className="w-full h-3.5 bg-[#EDF3F7] dark:bg-[#1C1C1C] rounded-full overflow-hidden flex border border-[#BFD8E3]/30 dark:border-white/10">
+                          {quizPct > 0 && <div style={{ width: `${quizPct}%` }} className="bg-[#00638E] text-white h-full" title={`Grammar/Quiz: ${quizPct}%`} />}
+                          {colPct > 0 && <div style={{ width: `${colPct}%` }} className="bg-[#004A6B] dark:bg-[#00638E] text-white h-full" title={`Kolokasi/Diksi: ${colPct}%`} />}
+                          {prepPct > 0 && <div style={{ width: `${prepPct}%` }} className="bg-[#8CB9CC] h-full" title={`Preposisi: ${prepPct}%`} />}
+                          {doctorPct > 0 && <div style={{ width: `${doctorPct}%` }} className="bg-[#141414] dark:bg-[#00638E] text-white h-full" title={`Sintaksis/Doctor: ${doctorPct}%`} />}
                         </div>
 
                         {/* Legend */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs font-mono">
-                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#A84A28]" />
+                          <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#00638E] text-white" />
                             <span>Grammar ({quizCount})</span>
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#535841]" />
+                          <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#004A6B] dark:bg-[#00638E] text-white" />
                             <span>Kolokasi ({collocationCount})</span>
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#7A7265]" />
+                          <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#8CB9CC]" />
                             <span>Preposisi ({prepCount})</span>
                           </div>
-                          <div className="p-2.5 rounded-xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#1E1B17]" />
+                          <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#141414] dark:bg-[#00638E] text-white" />
                             <span>Sintaksis ({doctorCount})</span>
                           </div>
                         </div>
@@ -6201,15 +6201,15 @@ export default function MerakiApp() {
                   })()}
 
                   {/* SRS Review Filter Tabs */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0]">
+                  <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10">
                     <div className="flex gap-2">
                       <button
                         onClick={() => setVaultSrsFilter('all')}
                         className={clsx(
                           'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
                           vaultSrsFilter === 'all'
-                            ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
-                            : 'bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]'
+                            ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs'
+                            : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                         )}
                       >
                         Semua Kesalahan ({mistakeVault.length})
@@ -6219,8 +6219,8 @@ export default function MerakiApp() {
                         className={clsx(
                           'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn flex items-center gap-1.5',
                           vaultSrsFilter === 'due'
-                            ? 'bg-[#A84A28] text-white font-bold shadow-xs'
-                            : 'bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]'
+                            ? 'bg-[#00638E] text-white text-white font-bold shadow-xs'
+                            : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                         )}
                       >
                         <Clock className="w-3.5 h-3.5" />
@@ -6228,7 +6228,7 @@ export default function MerakiApp() {
                       </button>
                     </div>
 
-                    <span className="text-[11px] font-mono text-[#535841]">
+                    <span className="text-[11px] font-mono text-[#004A6B] dark:text-[#BFD8E3]">
                       Algoritma Leitner SM-2 (5 Tahap)
                     </span>
                   </div>
@@ -6247,33 +6247,33 @@ export default function MerakiApp() {
                       };
 
                       return (
-                        <div key={item.id} className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-3">
+                        <div key={item.id} className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs space-y-3">
                           <div className="flex flex-wrap items-center justify-between gap-2">
                             <div className="flex flex-wrap items-center gap-2">
-                              <span className="font-mono text-xs bg-[#A84A28]/10 text-[#A84A28] px-2.5 py-0.5 rounded-full font-semibold">
+                              <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded-full font-semibold">
                                 {item.type === 'quiz' ? 'Pilihan Ganda' : item.type === 'doctor' ? 'Bedah Kalimat' : item.type === 'collocation' ? 'Kolokasi & Diksi' : 'Preposisi'}
                               </span>
                               
                               {/* SRS Stage Badge */}
                               <span className={clsx(
                                 'font-mono text-[10px] px-2 py-0.5 rounded-full font-bold',
-                                srsStage >= 5 ? 'bg-[#535841] text-white' : 'bg-[#DDD7CA] text-[#535841]'
+                                srsStage >= 5 ? 'bg-[#004A6B] dark:bg-[#00638E] text-white text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#004A6B] dark:text-[#BFD8E3]'
                               )}>
                                 {srsStage >= 5 ? 'SRS Mastered (Tahap 5)' : `SRS Tahap ${srsStage}/5`}
                               </span>
 
                               {isDue && (
-                                <span className="font-mono text-[10px] bg-[#A84A28] text-white px-2 py-0.5 rounded-full font-semibold">
+                                <span className="font-mono text-[10px] bg-[#00638E] text-white text-white px-2 py-0.5 rounded-full font-semibold">
                                   Perlu Review
                                 </span>
                               )}
 
                               {item.timesMissed && item.timesMissed > 1 && (
-                                <span className="font-mono text-[10px] bg-[#A84A28]/20 text-[#A84A28] px-2 py-0.5 rounded-full font-bold">
+                                <span className="font-mono text-[10px] bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC] px-2 py-0.5 rounded-full font-bold">
                                   Salah {item.timesMissed}x
                                 </span>
                               )}
-                              <span className="text-xs text-[#7A7265]">{item.title}</span>
+                              <span className="text-xs text-[#50585C] dark:text-[#7A8992]">{item.title}</span>
                             </div>
                             <div className="flex items-center gap-3">
                               <button
@@ -6288,14 +6288,14 @@ export default function MerakiApp() {
                                     setVaultReQuizFeedback(null);
                                   }
                                 }}
-                                className="text-xs font-mono text-[#A84A28] hover:underline flex items-center gap-1 tactile-btn"
+                                className="text-xs font-mono text-[#00638E] dark:text-[#8CB9CC] hover:underline flex items-center gap-1 tactile-btn"
                               >
                                 <RotateCcw className="w-3.5 h-3.5" />
                                 <span>{isReQuizzing ? 'Tutup Uji Ulang' : 'Uji Ulang (SRS)'}</span>
                               </button>
                               <button
                                 onClick={() => handleRemoveFromVault(item.id)}
-                                className="text-xs font-mono text-[#535841] hover:underline flex items-center gap-1 tactile-btn"
+                                className="text-xs font-mono text-[#004A6B] dark:text-[#BFD8E3] hover:underline flex items-center gap-1 tactile-btn"
                               >
                                 <Check className="w-3.5 h-3.5" />
                                 <span>Sudah Paham (Hapus)</span>
@@ -6303,14 +6303,14 @@ export default function MerakiApp() {
                             </div>
                           </div>
 
-                          <p className="text-sm font-serif font-medium text-[#1E1B17]">
+                          <p className="text-sm font-serif font-medium text-[#141414] dark:text-[#FFFFFF]">
                             "{item.question}"
                           </p>
 
                           {/* Re-Quiz Interactive Flow */}
                           {isReQuizzing ? (
-                            <form onSubmit={handleFormSubmit} className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-3 animate-in fade-in duration-200">
-                              <span className="font-mono text-[10px] text-[#7A7265] uppercase block font-semibold">
+                            <form onSubmit={handleFormSubmit} className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3 animate-in fade-in duration-200">
+                              <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                                 Coba Jawab Ulang Secara Mandiri:
                               </span>
                               <input
@@ -6321,12 +6321,12 @@ export default function MerakiApp() {
                                   setVaultReQuizFeedback(null);
                                 }}
                                 placeholder="Ketik jawaban / opsi yang benar..."
-                                className="w-full p-2.5 text-xs bg-[#E6E0D4] border border-[#C8C0B0] rounded-xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
+                                className="w-full p-2.5 text-xs bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-xl outline-hidden focus:border-[#00638E] text-[#141414] dark:text-[#FFFFFF]"
                               />
                               <div className="flex items-center justify-between">
                                 <button
                                   type="submit"
-                                  className="px-4 py-2 rounded-xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono font-medium tactile-btn"
+                                  className="px-4 py-2 rounded-xl bg-[#00638E] text-white shadow-xs font-semibold text-xs font-mono font-medium tactile-btn"
                                 >
                                   Verifikasi Jawaban
                                 </button>
@@ -6335,18 +6335,18 @@ export default function MerakiApp() {
                               {vaultReQuizFeedback && (
                                 <div className={clsx(
                                   'p-3 rounded-xl border text-xs space-y-1.5 animate-in fade-in',
-                                  vaultReQuizFeedback.isCorrect ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]' : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+                                  vaultReQuizFeedback.isCorrect ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]' : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
                                 )}>
                                   <div className="flex items-center justify-between">
                                     <span className="font-bold flex items-center gap-1.5">
                                       {vaultReQuizFeedback.isCorrect ? (
                                         <>
-                                          <CheckCircle2 className="w-4 h-4 text-[#535841]" />
+                                          <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                                           <span>Luar Biasa! Jawaban Benar · Naik ke SRS Tahap {srsStage}</span>
                                         </>
                                       ) : (
                                         <>
-                                          <HelpCircle className="w-4 h-4 text-[#A84A28]" />
+                                          <HelpCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                                           <span>Masih Kurang Tepat. Kunci: {item.correctAnswer}</span>
                                         </>
                                       )}
@@ -6355,7 +6355,7 @@ export default function MerakiApp() {
                                       <button
                                         type="button"
                                         onClick={() => handleRemoveFromVault(item.id)}
-                                        className="px-3 py-1 rounded-lg bg-[#535841] text-[#EFE9DF] text-[10px] font-mono font-medium tactile-btn"
+                                        className="px-3 py-1 rounded-lg bg-[#004A6B] dark:bg-[#00638E] text-white text-white text-[10px] font-mono font-medium tactile-btn"
                                       >
                                         Hapus Permanen
                                       </button>
@@ -6366,13 +6366,13 @@ export default function MerakiApp() {
                             </form>
                           ) : (
                             <>
-                              <div className="p-3 rounded-2xl bg-[#A84A28]/10 border border-[#A84A28]/20 text-xs text-[#1E1B17]">
+                              <div className="p-3 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-xs text-[#141414] dark:text-[#FFFFFF]">
                                 {item.prompt}
                               </div>
 
-                              <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
+                              <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
                                 <p><strong>Kunci Jawaban Baku:</strong> {item.correctAnswer}</p>
-                                <p className="text-[#524C42] leading-relaxed"><strong>Pembahasan:</strong> {item.explanation}</p>
+                                <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed"><strong>Pembahasan:</strong> {item.explanation}</p>
                               </div>
                             </>
                           )}
@@ -6388,23 +6388,23 @@ export default function MerakiApp() {
           {/* ───────────── WORKSPACE 9: DIAGNOSTIC MATRIX ───────────── */}
           {activeHub === 'diagnostic' && (
             <div className="h-full max-w-4xl mx-auto p-4 sm:p-8 overflow-y-auto space-y-6 sm:space-y-8 pb-36 md:pb-16">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#C8C0B0]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#BFD8E3]/40 dark:border-white/10">
                 <div className="space-y-1">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-semibold">
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#00638E] dark:text-[#8CB9CC] font-semibold">
                     Comprehensive Diagnostic Evaluation & Weakness Radar
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-serif text-[#1E1B17]">
+                  <h2 className="text-2xl sm:text-3xl font-serif text-[#141414] dark:text-[#FFFFFF]">
                     Diagnostic Matrix: Uji Kesiapan Tata Bahasa
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#7A7265]">
+                  <p className="text-xs sm:text-sm text-[#50585C] dark:text-[#7A8992]">
                     Evaluasi presisi {allDiagnosticQuestions.length} pertanyaan lintas kategori untuk memetakan kekuatan dan titik lemah gramatikalmu.
                   </p>
                 </div>
 
                 {/* Diagnostic Timer Controls */}
-                <div className="flex flex-wrap items-center gap-2 bg-[#DDD7CA] p-1.5 rounded-2xl border border-[#C8C0B0] self-start sm:self-auto shrink-0">
-                  <span className="font-mono text-[10px] text-[#7A7265] uppercase px-2 font-semibold flex items-center gap-1">
-                    <Timer className="w-3 h-3 text-[#A84A28]" />
+                <div className="flex flex-wrap items-center gap-2 bg-[#EDF3F7] dark:bg-[#1C1C1C] p-1.5 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 self-start sm:self-auto shrink-0">
+                  <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase px-2 font-semibold flex items-center gap-1">
+                    <Timer className="w-3 h-3 text-[#00638E] dark:text-[#8CB9CC]" />
                     <span>Timer:</span>
                   </span>
                   {[
@@ -6420,14 +6420,14 @@ export default function MerakiApp() {
                       }}
                       className={clsx(
                         'px-2.5 py-1 rounded-xl text-[10px] font-mono transition-all tactile-btn',
-                        diagnosticTimerMode === tm.seconds ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold' : 'text-[#7A7265] hover:text-[#1E1B17]'
+                        diagnosticTimerMode === tm.seconds ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold' : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                       )}
                     >
                       {tm.label}
                     </button>
                   ))}
                   {diagnosticTimerSeconds !== null && (
-                    <span className="font-mono text-xs font-bold text-[#A84A28] px-2 py-0.5 bg-[#A84A28]/10 rounded-lg">
+                    <span className="font-mono text-xs font-bold text-[#00638E] dark:text-[#8CB9CC] px-2 py-0.5 bg-[#00638E]/10 dark:bg-[#00638E]/20 rounded-lg">
                       {Math.floor(diagnosticTimerSeconds / 60)}:{String(diagnosticTimerSeconds % 60).padStart(2, '0')}
                     </span>
                   )}
@@ -6435,17 +6435,17 @@ export default function MerakiApp() {
               </div>
 
               {diagnosticSubmitted && (
-                <div className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-md space-y-6 animate-in fade-in duration-300">
-                  <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0]">
+                <div className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-md space-y-6 animate-in fade-in duration-300">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10">
                     <div>
-                      <span className="font-mono text-xs text-[#7A7265] uppercase">Skor Diagnostik Global:</span>
-                      <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1E1B17]">
+                      <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase">Skor Diagnostik Global:</span>
+                      <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#141414] dark:text-[#FFFFFF]">
                         {diagnosticAnalytics.percentage}% ({diagnosticAnalytics.correctTotal} / {diagnosticAnalytics.total} Benar)
                       </h3>
                     </div>
                     <button
                       onClick={handleResetDiagnostic}
-                      className="px-4 py-2 rounded-2xl bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 text-xs font-mono text-[#1E1B17] border border-[#C8C0B0] tactile-btn min-h-[40px] flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:bg-[#1C1C1C]/80 text-xs font-mono text-[#141414] dark:text-[#FFFFFF] border border-[#BFD8E3]/40 dark:border-white/10 tactile-btn min-h-[40px] flex items-center gap-1.5"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                       <span>Uji Ulang Tes</span>
@@ -6453,7 +6453,7 @@ export default function MerakiApp() {
                   </div>
 
                   <div className="space-y-3">
-                    <span className="font-mono text-xs uppercase text-[#1E1B17] font-semibold block">
+                    <span className="font-mono text-xs uppercase text-[#141414] dark:text-[#FFFFFF] font-semibold block">
                       Matriks Kompetensi per Kategori:
                     </span>
                     
@@ -6463,24 +6463,24 @@ export default function MerakiApp() {
                         const isWeak = catPct < 70;
 
                         return (
-                          <div key={catName} className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-2">
+                          <div key={catName} className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                              <span className="font-semibold text-[#1E1B17]">{catName}</span>
+                              <span className="font-semibold text-[#141414] dark:text-[#FFFFFF]">{catName}</span>
                               <div className="flex items-center gap-2">
                                 <span className={clsx(
                                   'font-mono px-2 py-0.5 rounded text-[10px] font-semibold',
-                                  catPct >= 80 ? 'bg-[#535841]/20 text-[#535841]' : isWeak ? 'bg-[#A84A28]/20 text-[#A84A28]' : 'bg-black/05 text-[#1E1B17]'
+                                  catPct >= 80 ? 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3]' : isWeak ? 'bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC]' : 'bg-black/05 text-[#141414] dark:text-[#FFFFFF]'
                                 )}>
                                   {catPct >= 80 ? 'Solid / Siap Ujian' : isWeak ? 'Titik Lemah Kritis' : 'Perlu Penguatan'} ({catPct}%)
                                 </span>
                               </div>
                             </div>
 
-                            <div className="w-full h-2 bg-[#C8C0B0]/60 rounded-full overflow-hidden">
+                            <div className="w-full h-2 bg-[#BFD8E3]/30/60 rounded-full overflow-hidden">
                               <div
                                 className={clsx(
                                   'h-full transition-all duration-500',
-                                  catPct >= 80 ? 'bg-[#535841]' : isWeak ? 'bg-[#A84A28]' : 'bg-[#1E1B17]'
+                                  catPct >= 80 ? 'bg-[#004A6B] dark:bg-[#00638E] text-white' : isWeak ? 'bg-[#00638E] text-white' : 'bg-[#141414] dark:bg-[#00638E] text-white'
                                 )}
                                 style={{ width: `${catPct}%` }}
                               />
@@ -6501,26 +6501,26 @@ export default function MerakiApp() {
                   return (
                     <div
                       key={q.id}
-                      className="p-5 sm:p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 shadow-xs"
+                      className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4 shadow-xs"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-xs text-[#7A7265]">Soal {idx + 1}</span>
-                          <span className="font-mono text-[10px] bg-[#DDD7CA] text-[#7A7265] px-2 py-0.5 rounded">
+                          <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">Soal {idx + 1}</span>
+                          <span className="font-mono text-[10px] bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] px-2 py-0.5 rounded">
                             {q.category}
                           </span>
                         </div>
                         {diagnosticSubmitted && (
                           <span className={clsx(
                             'text-xs font-mono font-medium',
-                            isCorrect ? 'text-[#535841]' : 'text-[#A84A28]'
+                            isCorrect ? 'text-[#004A6B] dark:text-[#BFD8E3]' : 'text-[#00638E] dark:text-[#8CB9CC]'
                           )}>
                             {isCorrect ? 'Benar' : 'Salah'}
                           </span>
                         )}
                       </div>
 
-                      <p className="text-sm font-medium text-[#1E1B17]">
+                      <p className="text-sm font-medium text-[#141414] dark:text-[#FFFFFF]">
                         {q.question}
                       </p>
 
@@ -6529,16 +6529,16 @@ export default function MerakiApp() {
                           const isThisSelected = userSelected === opt;
                           const isThisCorrect = opt === q.correctAnswer;
 
-                          let btnStyle = 'bg-[#DDD7CA] hover:bg-[#DDD7CA]/80 border-[#C8C0B0] text-[#38332A]';
+                          let btnStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:bg-[#1C1C1C]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#2B2B2B] dark:text-[#FFFFFF]';
 
                           if (diagnosticSubmitted) {
                             if (isThisCorrect) {
-                              btnStyle = 'bg-[#535841]/20 border-[#535841]/50 text-[#1E1B17] font-medium';
+                              btnStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E]/50 text-[#141414] dark:text-[#FFFFFF] font-medium';
                             } else if (isThisSelected && !isThisCorrect) {
-                              btnStyle = 'bg-[#A84A28]/20 border-[#A84A28]/40 text-[#1E1B17]';
+                              btnStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E]/40 text-[#141414] dark:text-[#FFFFFF]';
                             }
                           } else if (isThisSelected) {
-                            btnStyle = 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17]';
+                            btnStyle = 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E]';
                           }
 
                           return (
@@ -6561,8 +6561,8 @@ export default function MerakiApp() {
                       </div>
 
                       {diagnosticSubmitted && (
-                        <div className="p-3.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs text-[#7A7265] space-y-1">
-                          <span className="font-mono text-[#A84A28] block font-semibold">
+                        <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs text-[#50585C] dark:text-[#7A8992] space-y-1">
+                          <span className="font-mono text-[#00638E] dark:text-[#8CB9CC] block font-semibold">
                             Penjelasan & Kaidah:
                           </span>
                           <p>{q.explanation}</p>
@@ -6574,9 +6574,9 @@ export default function MerakiApp() {
               </div>
 
               {!diagnosticSubmitted && (
-                <div className="sticky bottom-20 md:bottom-6 z-20 p-4 rounded-3xl bg-[#1E1B17] text-[#EFE9DF] border border-[#C8C0B0] flex flex-wrap items-center justify-between gap-3 shadow-xl animate-in slide-in-from-bottom-3 duration-200">
+                <div className="sticky bottom-20 md:bottom-6 z-20 p-4 rounded-3xl bg-[#00638E] text-white shadow-xs font-semibold border border-[#BFD8E3]/40 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 shadow-xl animate-in slide-in-from-bottom-3 duration-200">
                   <div className="space-y-0.5">
-                    <span className="font-mono text-[10px] text-[#A84A28] uppercase font-bold block">
+                    <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] uppercase font-bold block">
                       Status Pengisian Diagnostik
                     </span>
                     <span className="font-serif text-sm font-semibold">
@@ -6585,7 +6585,7 @@ export default function MerakiApp() {
                   </div>
                   <button
                     onClick={handleSubmitDiagnostic}
-                    className="px-6 py-2.5 rounded-2xl bg-[#A84A28] hover:bg-[#8e3c1e] text-white text-xs font-mono font-medium transition-all tactile-btn shadow-md min-h-[44px]"
+                    className="px-6 py-2.5 rounded-2xl bg-[#00638E] text-white hover:bg-[#8e3c1e] text-white text-xs font-mono font-medium transition-all tactile-btn shadow-md min-h-[44px]"
                   >
                     Kumpulkan Lembar Jawaban
                   </button>
@@ -6598,7 +6598,7 @@ export default function MerakiApp() {
         {/* ───────────── FLOATING GLASSMORPHISM IOS DYNAMIC ISLAND NAVBAR ───────────── */}
         {!isNavOpen && (
           <div className="md:hidden fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none pb-safe animate-in slide-in-from-bottom-4 duration-300">
-            <nav className="pointer-events-auto flex items-center justify-between gap-1 p-1.5 px-2 rounded-full mi-dock shadow-2xl w-full max-w-[340px] transition-all duration-300">
+            <nav className="pointer-events-auto flex items-center justify-between gap-1 p-1.5 px-2 rounded-full ao-dock shadow-2xl w-full max-w-[340px] transition-all duration-300">
               {[
                 { id: 'curriculum', label: 'Modul', icon: BookOpen },
                 { id: 'practice', label: 'Latihan', icon: ListCheck },
@@ -6622,12 +6622,12 @@ export default function MerakiApp() {
                     className={clsx(
                       'flex flex-col items-center justify-center gap-0.5 py-1 px-2.5 rounded-full transition-all duration-200 tactile-btn min-h-[42px] flex-1',
                       isActive
-                        ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-md shadow-black/15 font-bold scale-[1.03]'
-                        : 'text-[#7A7265] hover:text-[#1E1B17] hover:bg-[#DDD7CA]/60'
+                        ? 'bg-[#00638E] text-white shadow-xs font-semibold shadow-md shadow-black/15 font-bold scale-[1.03]'
+                        : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] hover:bg-[#EDF3F7]/60 dark:bg-[#1C1C1C]/60'
                     )}
                   >
-                    <Icon className={clsx('w-4 h-4 transition-transform', isActive && 'scale-110 text-[#EFE9DF]')} />
-                    <span className={clsx('text-[10px] font-mono leading-none', isActive ? 'font-bold text-[#EFE9DF]' : 'font-normal')}>
+                    <Icon className={clsx('w-4 h-4 transition-transform', isActive && 'scale-110 text-white')} />
+                    <span className={clsx('text-[10px] font-mono leading-none', isActive ? 'font-bold text-white' : 'font-normal')}>
                       {tab.label}
                     </span>
                   </button>
@@ -6643,38 +6643,38 @@ export default function MerakiApp() {
       {/* ───────────── GLOBAL MODAL 1: OMNISEARCH COMMAND PALETTE (CMD+K) ───────────── */}
       {isOmnisearchOpen && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-safe pb-safe p-4 sm:p-6 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="w-full max-w-2xl bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl overflow-hidden flex flex-col max-h-[75vh] mt-12 sm:mt-16">
+          <div className="w-full max-w-2xl bg-[#FFFFFF] dark:bg-[#141414] rounded-3xl border border-[#BFD8E3]/40 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[75vh] mt-12 sm:mt-16">
             {/* Search Input Bar */}
-            <div className="p-4 border-b border-[#C8C0B0] flex items-center gap-3 bg-[#E6E0D4]">
-              <Search className="w-5 h-5 text-[#A84A28] shrink-0" />
+            <div className="p-4 border-b border-[#BFD8E3]/40 dark:border-white/10 flex items-center gap-3 bg-[#FFFFFF] dark:bg-[#141414]">
+              <Search className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC] shrink-0" />
               <input
                 type="text"
                 autoFocus
                 value={omnisearchQuery}
                 onChange={(e) => setOmnisearchQuery(e.target.value)}
                 placeholder="Ketik materi, kata kerja, preposisi, kolokasi, atau fonetik..."
-                className="w-full bg-transparent text-sm sm:text-base font-serif text-[#1E1B17] placeholder:text-[#7A7265] outline-hidden"
+                className="w-full bg-transparent text-sm sm:text-base font-serif text-[#141414] dark:text-[#FFFFFF] placeholder:text-[#50585C] dark:text-[#7A8992] outline-hidden"
               />
               <button
                 onClick={() => setIsOmnisearchOpen(false)}
-                className="p-1 rounded-full hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+                className="p-1 rounded-full hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Search Results List */}
-            <div className="overflow-y-auto p-3 space-y-1 divide-y divide-[#C8C0B0]/40">
+            <div className="overflow-y-auto p-3 space-y-1 divide-y divide-[#BFD8E3]/20">
               {!omnisearchQuery.trim() ? (
-                <div className="p-8 text-center space-y-2 text-[#7A7265]">
-                  <Compass className="w-8 h-8 mx-auto text-[#7A7265]/60" />
+                <div className="p-8 text-center space-y-2 text-[#50585C] dark:text-[#7A8992]">
+                  <Compass className="w-8 h-8 mx-auto text-[#50585C] dark:text-[#7A8992]/60" />
                   <p className="text-xs font-mono font-semibold">Pencarian Terpadu Meraki English</p>
                   <p className="text-xs">
                     Ketik kata kunci untuk mencari cepat lintas 40 Modul Kurikulum, 200+ Irregular Verb, 38+ Dependent Prepositions, Academic Collocations, dan Fonetik.
                   </p>
                 </div>
               ) : omnisearchResults.length === 0 ? (
-                <div className="p-8 text-center text-xs text-[#7A7265]">
+                <div className="p-8 text-center text-xs text-[#50585C] dark:text-[#7A8992]">
                   Tidak ada materi atau kata yang cocok dengan "{omnisearchQuery}".
                 </div>
               ) : (
@@ -6682,30 +6682,30 @@ export default function MerakiApp() {
                   <button
                     key={res.id}
                     onClick={res.action}
-                    className="w-full p-3 rounded-2xl hover:bg-[#DDD7CA] text-left transition-colors flex items-center justify-between gap-3 group tactile-btn"
+                    className="w-full p-3 rounded-2xl hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-left transition-colors flex items-center justify-between gap-3 group tactile-btn"
                   >
                     <div className="space-y-0.5 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#DDD7CA] group-hover:bg-[#EFE9DF] text-[#7A7265] font-semibold">
+                        <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#EDF3F7] dark:bg-[#1C1C1C] group-hover:bg-[#F4F7F9] dark:bg-[#000000] text-[#50585C] dark:text-[#7A8992] font-semibold">
                           {res.category}
                         </span>
-                        <h4 className="font-serif text-sm font-bold text-[#1E1B17] truncate">
+                        <h4 className="font-serif text-sm font-bold text-[#141414] dark:text-[#FFFFFF] truncate">
                           {res.title}
                         </h4>
                       </div>
-                      <p className="text-xs text-[#7A7265] truncate font-sans">
+                      <p className="text-xs text-[#50585C] dark:text-[#7A8992] truncate font-sans">
                         {res.subtitle}
                       </p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-[#7A7265] group-hover:text-[#A84A28] shrink-0" />
+                    <ArrowRight className="w-4 h-4 text-[#50585C] dark:text-[#7A8992] group-hover:text-[#00638E] dark:text-[#8CB9CC] shrink-0" />
                   </button>
                 ))
               )}
             </div>
 
             {/* Footer Shortcut Helper */}
-            <div className="p-3 border-t border-[#C8C0B0] bg-[#DDD7CA]/60 flex items-center justify-between text-[11px] font-mono text-[#7A7265]">
-              <span>Gunakan <kbd className="px-1.5 py-0.5 bg-[#EFE9DF] border border-[#C8C0B0] rounded">Esc</kbd> untuk menutup</span>
+            <div className="p-3 border-t border-[#BFD8E3]/40 dark:border-white/10 bg-[#EDF3F7]/60 dark:bg-[#1C1C1C]/60 flex items-center justify-between text-[11px] font-mono text-[#50585C] dark:text-[#7A8992]">
+              <span>Gunakan <kbd className="px-1.5 py-0.5 bg-[#F4F7F9] dark:bg-[#000000] border border-[#BFD8E3]/40 dark:border-white/10 rounded">Esc</kbd> untuk menutup</span>
               <span>{omnisearchResults.length} hasil ditemukan</span>
             </div>
           </div>
@@ -6715,15 +6715,15 @@ export default function MerakiApp() {
       {/* ───────────── GLOBAL MODAL 2: AUDIO TTS CONTROL PANEL ───────────── */}
       {isAudioSettingsOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center pt-safe pb-safe p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="w-full max-w-md bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl p-6 space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-[#C8C0B0]">
+          <div className="w-full max-w-md bg-[#FFFFFF] dark:bg-[#141414] rounded-3xl border border-[#BFD8E3]/40 dark:border-white/10 shadow-2xl p-6 space-y-6">
+            <div className="flex items-center justify-between pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
               <div className="flex items-center gap-2">
-                <Headphones className="w-5 h-5 text-[#535841]" />
-                <h3 className="font-serif text-lg font-bold text-[#1E1B17]">Pengaturan Audio & Aksen</h3>
+                <Headphones className="w-5 h-5 text-[#004A6B] dark:text-[#BFD8E3]" />
+                <h3 className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">Pengaturan Audio & Aksen</h3>
               </div>
               <button
                 onClick={() => setIsAudioSettingsOpen(false)}
-                className="p-1.5 rounded-full hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+                className="p-1.5 rounded-full hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -6731,7 +6731,7 @@ export default function MerakiApp() {
 
             {/* Accent Selection */}
             <div className="space-y-2">
-              <label className="font-mono text-xs text-[#7A7265] uppercase block font-semibold">
+              <label className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                 Pilihan Aksen Penutur Asli:
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -6746,8 +6746,8 @@ export default function MerakiApp() {
                     className={clsx(
                       'p-3 rounded-2xl border text-xs font-mono transition-all tactile-btn flex flex-col items-center gap-1',
                       audioAccent === acc.code
-                        ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-xs'
-                        : 'bg-[#DDD7CA] text-[#1E1B17] border-[#C8C0B0] hover:bg-[#C8C0B0]'
+                        ? 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-xs'
+                        : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF] border-[#BFD8E3]/40 dark:border-white/10 hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B]'
                     )}
                   >
                     <span className="text-base">{acc.flag}</span>
@@ -6759,7 +6759,7 @@ export default function MerakiApp() {
 
             {/* Speech Rate Selection */}
             <div className="space-y-2">
-              <label className="font-mono text-xs text-[#7A7265] uppercase block font-semibold">
+              <label className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
                 Kecepatan Pelafalan (Speech Rate):
               </label>
               <div className="grid grid-cols-4 gap-2">
@@ -6775,8 +6775,8 @@ export default function MerakiApp() {
                     className={clsx(
                       'p-2.5 rounded-2xl border text-xs font-mono transition-all tactile-btn text-center',
                       audioRate === spd.rate
-                        ? 'bg-[#535841] text-white border-[#535841] shadow-xs'
-                        : 'bg-[#DDD7CA] text-[#1E1B17] border-[#C8C0B0] hover:bg-[#C8C0B0]'
+                        ? 'bg-[#004A6B] dark:bg-[#00638E] text-white text-white border-[#004A6B] dark:border-[#00638E] shadow-xs'
+                        : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF] border-[#BFD8E3]/40 dark:border-white/10 hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B]'
                     )}
                   >
                     <span className="block font-bold">{spd.label}</span>
@@ -6787,14 +6787,14 @@ export default function MerakiApp() {
             </div>
 
             {/* Audio Test Preview Button */}
-            <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 flex items-center justify-between">
               <div>
-                <span className="font-mono text-[10px] uppercase text-[#7A7265] block font-semibold">Uji Suara:</span>
-                <span className="font-serif text-sm text-[#1E1B17] italic">"The empirical evidence is compelling."</span>
+                <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] block font-semibold">Uji Suara:</span>
+                <span className="font-serif text-sm text-[#141414] dark:text-[#FFFFFF] italic">"The empirical evidence is compelling."</span>
               </div>
               <button
                 onClick={() => playNativeAudio("The empirical evidence is compelling.", audioAccent, audioRate)}
-                className="px-3.5 py-2 rounded-xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono flex items-center gap-1.5 tactile-btn"
+                className="px-3.5 py-2 rounded-xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono flex items-center gap-1.5 tactile-btn"
               >
                 <Volume2 className="w-3.5 h-3.5" />
                 <span>Putar</span>
@@ -6803,7 +6803,7 @@ export default function MerakiApp() {
 
             <button
               onClick={() => setIsAudioSettingsOpen(false)}
-              className="w-full py-2.5 rounded-2xl bg-[#1E1B17] text-[#EFE9DF] text-xs font-mono font-medium tactile-btn"
+              className="w-full py-2.5 rounded-2xl bg-[#00638E] text-white shadow-xs font-semibold text-xs font-mono font-medium tactile-btn"
             >
               Simpan & Tutup
             </button>
@@ -6814,24 +6814,24 @@ export default function MerakiApp() {
       {/* ───────────── GLOBAL MODAL 3: CHEATSHEETS & BACKUP STUDIO ───────────── */}
       {isCheatsheetOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center pt-safe pb-safe p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="w-full max-w-4xl bg-[#E8E2D6] rounded-3xl border border-[#C8C0B0] shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
+          <div className="w-full max-w-4xl bg-[#FFFFFF] dark:bg-[#141414] rounded-3xl border border-[#BFD8E3]/40 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
             {/* Modal Header */}
-            <div className="p-5 border-b border-[#C8C0B0] flex flex-wrap items-center justify-between gap-3 bg-[#E6E0D4]">
+            <div className="p-5 border-b border-[#BFD8E3]/40 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 bg-[#FFFFFF] dark:bg-[#141414]">
               <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-[#A84A28]" />
-                <h3 className="font-serif text-xl font-bold text-[#1E1B17]">Printable Cheatsheets & Backup Studio</h3>
+                <FileText className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC]" />
+                <h3 className="font-serif text-xl font-bold text-[#141414] dark:text-[#FFFFFF]">Printable Cheatsheets & Backup Studio</h3>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => window.print()}
-                  className="px-3.5 py-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#1E1B17] flex items-center gap-1.5 tactile-btn"
+                  className="px-3.5 py-1.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-xs font-mono text-[#141414] dark:text-[#FFFFFF] flex items-center gap-1.5 tactile-btn"
                   title="Cetak Dokumen"
                 >
                   <span>Cetak (PDF / Print)</span>
                 </button>
                 <button
                   onClick={() => setIsCheatsheetOpen(false)}
-                  className="p-1.5 rounded-full hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17]"
+                  className="p-1.5 rounded-full hover:bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -6839,7 +6839,7 @@ export default function MerakiApp() {
             </div>
 
             {/* Navigation Tabs */}
-            <div className="flex flex-wrap gap-2 p-3 bg-[#DDD7CA]/70 border-b border-[#C8C0B0]">
+            <div className="flex flex-wrap gap-2 p-3 bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border-b border-[#BFD8E3]/40 dark:border-white/10">
               {[
                 { id: 'tenses', label: 'Matriks 12 Tenses' },
                 { id: 'preps', label: 'Dependent Prepositions' },
@@ -6853,8 +6853,8 @@ export default function MerakiApp() {
                   className={clsx(
                     'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all tactile-btn',
                     activeCheatsheetTab === tab.id
-                      ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold shadow-xs'
-                      : 'bg-[#E6E0D4] text-[#7A7265] hover:text-[#1E1B17]'
+                      ? 'bg-[#00638E] text-white shadow-xs font-semibold font-bold shadow-xs'
+                      : 'bg-[#FFFFFF] dark:bg-[#141414] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
                   )}
                 >
                   {tab.label}
@@ -6863,23 +6863,23 @@ export default function MerakiApp() {
             </div>
 
             {/* Tab Content Container */}
-            <div className="overflow-y-auto p-6 space-y-6 flex-1 bg-[#EFE9DF]">
+            <div className="overflow-y-auto p-6 space-y-6 flex-1 bg-[#F4F7F9] dark:bg-[#000000]">
               {/* Tab 1: Tenses */}
               {activeCheatsheetTab === 'tenses' && (
                 <div className="space-y-4">
-                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">Ringkasan Rumus 12 Tenses Esensial</h4>
+                  <h4 className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">Ringkasan Rumus 12 Tenses Esensial</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {TENSES_MASTER_DATA.map((t) => (
-                      <div key={t.id} className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1.5 text-xs">
-                        <div className="flex items-center justify-between font-bold text-[#A84A28] font-serif text-sm">
+                      <div key={t.id} className="p-4 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between font-bold text-[#00638E] dark:text-[#8CB9CC] font-serif text-sm">
                           <span>{t.tenseName}</span>
-                          <span className="font-mono text-[10px] text-[#7A7265]">{t.timeDimension} · {t.aspect}</span>
+                          <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992]">{t.timeDimension} · {t.aspect}</span>
                         </div>
-                        <div className="p-2 rounded-xl bg-[#DDD7CA] font-mono text-[11px] font-semibold text-[#1E1B17]">
+                        <div className="p-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] font-mono text-[11px] font-semibold text-[#141414] dark:text-[#FFFFFF]">
                           Rumus: {t.positiveFormula}
                         </div>
-                        <p className="font-serif italic text-[#38332A]">"{t.academicExample}"</p>
-                        <p className="text-[11px] text-[#7A7265]">Signal: {t.timeMarkers.join(', ')}</p>
+                        <p className="font-serif italic text-[#2B2B2B] dark:text-[#FFFFFF]">"{t.academicExample}"</p>
+                        <p className="text-[11px] text-[#50585C] dark:text-[#7A8992]">Signal: {t.timeMarkers.join(', ')}</p>
                       </div>
                     ))}
                   </div>
@@ -6889,17 +6889,17 @@ export default function MerakiApp() {
               {/* Tab 2: Prepositions */}
               {activeCheatsheetTab === 'preps' && (
                 <div className="space-y-4">
-                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">Daftar 38+ Dependent Prepositions Wajib</h4>
+                  <h4 className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">Daftar 38+ Dependent Prepositions Wajib</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs font-mono">
                     {DEPENDENT_PREPOSITIONS_DATA.map((dp) => (
-                      <div key={dp.id} className="p-3 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
+                      <div key={dp.id} className="p-3 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif font-bold text-sm text-[#1E1B17]">{dp.word}</span>
-                          <span className="px-2 py-0.5 rounded bg-[#535841]/20 text-[#535841] font-bold">
+                          <span className="font-serif font-bold text-sm text-[#141414] dark:text-[#FFFFFF]">{dp.word}</span>
+                          <span className="px-2 py-0.5 rounded bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] font-bold">
                             + {dp.requiredPreposition}
                           </span>
                         </div>
-                        <p className="text-[11px] text-[#7A7265] font-sans truncate">{dp.meaningId}</p>
+                        <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] font-sans truncate">{dp.meaningId}</p>
                       </div>
                     ))}
                   </div>
@@ -6909,22 +6909,22 @@ export default function MerakiApp() {
               {/* Tab 3: S-V Agreement */}
               {activeCheatsheetTab === 'agreement' && (
                 <div className="space-y-4 text-xs leading-relaxed">
-                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">5 Aksioma Emas Subject-Verb Agreement</h4>
+                  <h4 className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">5 Aksioma Emas Subject-Verb Agreement</h4>
                   <div className="space-y-3">
-                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
-                      <span className="font-mono text-[#A84A28] font-bold block">Aksioma 1: Kata Ganti Tak Tentu (Indefinite Pronouns)</span>
+                    <div className="p-4 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                      <span className="font-mono text-[#00638E] dark:text-[#8CB9CC] font-bold block">Aksioma 1: Kata Ganti Tak Tentu (Indefinite Pronouns)</span>
                       <p>Kata <em>Each, Every, Everyone, Someone, Nobody, Either, Neither</em> selalu mengikat kata kerja <strong>Tunggal (Singular Verb + -s/-es)</strong>.</p>
-                      <p className="font-mono text-[11px] text-[#535841]">Contoh: "Each of the participants <strong>is</strong> required to attend."</p>
+                      <p className="font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">Contoh: "Each of the participants <strong>is</strong> required to attend."</p>
                     </div>
-                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
-                      <span className="font-mono text-[#A84A28] font-bold block">Aksioma 2: Intervening Prepositional Phrases</span>
+                    <div className="p-4 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                      <span className="font-mono text-[#00638E] dark:text-[#8CB9CC] font-bold block">Aksioma 2: Intervening Prepositional Phrases</span>
                       <p>Frasa preposisi di antara subjek dan kata kerja tidak pernah mengubah singularitas subjek inti.</p>
-                      <p className="font-mono text-[11px] text-[#535841]">Contoh: "The quality of these products <strong>has</strong> improved."</p>
+                      <p className="font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">Contoh: "The quality of these products <strong>has</strong> improved."</p>
                     </div>
-                    <div className="p-4 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
-                      <span className="font-mono text-[#A84A28] font-bold block">Aksioma 3: Either... Or / Neither... Nor (Proximity Rule)</span>
+                    <div className="p-4 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                      <span className="font-mono text-[#00638E] dark:text-[#8CB9CC] font-bold block">Aksioma 3: Either... Or / Neither... Nor (Proximity Rule)</span>
                       <p>Kata kerja mengikuti subjek yang posisinya paling dekat dengan kata kerja tersebut.</p>
-                      <p className="font-mono text-[11px] text-[#535841]">Contoh: "Neither the teacher nor the students <strong>were</strong> aware."</p>
+                      <p className="font-mono text-[11px] text-[#004A6B] dark:text-[#BFD8E3]">Contoh: "Neither the teacher nor the students <strong>were</strong> aware."</p>
                     </div>
                   </div>
                 </div>
@@ -6933,13 +6933,13 @@ export default function MerakiApp() {
               {/* Tab 4: ACL */}
               {activeCheatsheetTab === 'acl' && (
                 <div className="space-y-4">
-                  <h4 className="font-serif text-lg font-bold text-[#1E1B17]">Academic Collocations List (ACL) Esensial</h4>
+                  <h4 className="font-serif text-lg font-bold text-[#141414] dark:text-[#FFFFFF]">Academic Collocations List (ACL) Esensial</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                     {ACADEMIC_COLLOCATIONS_DATA.map((col) => (
-                      <div key={col.id} className="p-3.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-1">
-                        <span className="font-serif font-bold text-sm text-[#1E1B17] block">{col.collocation}</span>
-                        <p className="text-[11px] text-[#7A7265]">{col.meaningId}</p>
-                        <p className="font-serif italic text-[#524C42] pt-1 border-t border-[#C8C0B0]/50">"{col.exampleSentence}"</p>
+                      <div key={col.id} className="p-3.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-1">
+                        <span className="font-serif font-bold text-sm text-[#141414] dark:text-[#FFFFFF] block">{col.collocation}</span>
+                        <p className="text-[11px] text-[#50585C] dark:text-[#7A8992]">{col.meaningId}</p>
+                        <p className="font-serif italic text-[#2B2B2B] dark:text-[#BFD8E3] pt-1 border-t border-[#BFD8E3]/40 dark:border-white/10/50">"{col.exampleSentence}"</p>
                       </div>
                     ))}
                   </div>
@@ -6949,31 +6949,31 @@ export default function MerakiApp() {
               {/* Tab 5: Backup & Restore */}
               {activeCheatsheetTab === 'backup' && (
                 <div className="space-y-6 max-w-xl mx-auto py-4">
-                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 text-center">
-                    <Download className="w-8 h-8 text-[#A84A28] mx-auto" />
+                  <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4 text-center">
+                    <Download className="w-8 h-8 text-[#00638E] dark:text-[#8CB9CC] mx-auto" />
                     <div>
-                      <h4 className="font-serif text-base font-bold text-[#1E1B17]">Unduh Cadangan Data (JSON)</h4>
-                      <p className="text-xs text-[#7A7265]">
+                      <h4 className="font-serif text-base font-bold text-[#141414] dark:text-[#FFFFFF]">Unduh Cadangan Data (JSON)</h4>
+                      <p className="text-xs text-[#50585C] dark:text-[#7A8992]">
                         Simpan riwayat 40 modul, jawaban kuis, Mistake Vault, dan progres belajar ke file JSON lokal di komputer/ponsel Anda.
                       </p>
                     </div>
                     <button
                       onClick={handleExportBackupJson}
-                      className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all tactile-btn"
+                      className="px-6 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono font-medium transition-all tactile-btn"
                     >
                       Unduh File Backup JSON
                     </button>
                   </div>
 
-                  <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] space-y-4 text-center">
-                    <Upload className="w-8 h-8 text-[#535841] mx-auto" />
+                  <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4 text-center">
+                    <Upload className="w-8 h-8 text-[#004A6B] dark:text-[#BFD8E3] mx-auto" />
                     <div>
-                      <h4 className="font-serif text-base font-bold text-[#1E1B17]">Pulihkan Data dari File Cadangan</h4>
-                      <p className="text-xs text-[#7A7265]">
+                      <h4 className="font-serif text-base font-bold text-[#141414] dark:text-[#FFFFFF]">Pulihkan Data dari File Cadangan</h4>
+                      <p className="text-xs text-[#50585C] dark:text-[#7A8992]">
                         Unggah file backup JSON yang sebelumnya telah Anda unduh untuk mengembalikan seluruh progres belajar.
                       </p>
                     </div>
-                    <label className="inline-block px-6 py-2.5 rounded-2xl bg-[#535841] hover:bg-[#3E4230] text-[#EFE9DF] text-xs font-mono font-medium transition-all cursor-pointer tactile-btn">
+                    <label className="inline-block px-6 py-2.5 rounded-2xl bg-[#004A6B] dark:bg-[#00638E] text-white hover:bg-[#3E4230] text-white text-xs font-mono font-medium transition-all cursor-pointer tactile-btn">
                       <span>Pilih File Backup JSON</span>
                       <input
                         type="file"

@@ -47,7 +47,7 @@ export const TRACKS: Track[] = [
     colorTheme: {
       primary: '#1A1714',
       secondary: '#82796A',
-      accent: '#C4502A',
+      accent: '#00638E',
       border: 'rgba(196, 80, 42, 0.25)',
       bgGlow: 'rgba(196, 80, 42, 0.08)',
     },

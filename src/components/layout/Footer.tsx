@@ -13,7 +13,7 @@ export function Footer() {
                 ✺
               </span>
               <span className="font-serif text-2xl tracking-tight text-[#1A1714]">
-                Meraki <span className="italic text-[#C4502A]">English</span>
+                Meraki <span className="italic text-[#00638E] dark:text-[#8CB9CC]">English</span>
               </span>
             </div>
             <p className="text-[#82796A] text-sm leading-relaxed max-w-md font-normal">

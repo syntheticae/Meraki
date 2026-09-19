@@ -748,13 +748,13 @@ export const XRAY_SENTENCES_DATA: XRaySentence[] = [
     {
       text: "It was",
       role: "Subject",
-      colorKey: "bg-[#A84A28]/20 text-[#A84A28] border-[#A84A28]/30",
+      colorKey: "bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC] border-[#00638E]/35 dark:border-[#8CB9CC]/40",
       explanation: "Struktur Pembuka It-Cleft (Dummy Pronoun + Copula Past)."
     },
     {
       text: "the profound disparity in secondary educational funding between metropolitan and rural districts",
       role: "Complement",
-      colorKey: "bg-[#535841]/20 text-[#535841] border-[#535841]/30",
+      colorKey: "bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] border-[#004A6B]/30 dark:border-[#BFD8E3]/35",
       explanation: "Elemen Fokus Inti (Focused Noun Phrase) yang disorot secara dramatis."
     },
     {
@@ -775,13 +775,13 @@ export const XRAY_SENTENCES_DATA: XRaySentence[] = [
     {
       text: "The accelerated degradation of coastal marine habitats,",
       role: "Subject",
-      colorKey: "bg-[#535841]/20 text-[#535841] border-[#535841]/30",
+      colorKey: "bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] border-[#004A6B]/30 dark:border-[#BFD8E3]/35",
       explanation: "Subjek Inti Utama berbentuk Noun Phrase padat (Head Noun: \"degradation\")."
     },
     {
       text: "primarily driven by unconstrained industrial effluent discharge,",
       role: "Participle Phrase",
-      colorKey: "bg-[#7A7265]/20 text-[#524C42] border-[#7A7265]/30",
+      colorKey: "bg-[#004A6B]/15 text-[#004A6B] dark:text-[#BFD8E3] border-[#004A6B]/25",
       explanation: "Reduced Passive Participle Phrase non-restrictive yang menerangkan penyebab degradasi."
     },
     {
@@ -799,7 +799,7 @@ export const XRAY_SENTENCES_DATA: XRaySentence[] = [
     {
       text: "across all signatory jurisdictions.",
       role: "Prepositional Phrase",
-      colorKey: "bg-[#A84A28]/20 text-[#A84A28] border-[#A84A28]/30",
+      colorKey: "bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC] border-[#00638E]/35 dark:border-[#8CB9CC]/40",
       explanation: "Frasa Preposisi (Spatial/Jurisdictional Scope) yang membatasi wilayah penegakan aturan."
     }
   ]
@@ -811,12 +811,12 @@ export const XRAY_SENTENCES_DATA: XRaySentence[] = [
     translation: 'Meskipun komite internasional awalnya mempertanyakan metodologi statistik, para penyelidik senior yang melakukan uji klinis multi-pusat membuktikan hipotesis terobosan mereka dengan menyajikan data telemetri pasien jangka panjang yang komprehensif.',
     architecturalSummary: 'Kalimat ini adalah Kalimat Majemuk Bertingkat Kompleks (*Complex-Compound Sentence*) yang diawali Adverbial Clause of Concession, memuat Relative Clause penjelas subjek, dan dituntaskan oleh Finite Verb transitif dengan Prepositional Participial Adjunct.',
     breakdown: [
-      { text: 'Although the international committee initially questioned the statistical methodology,', role: 'Conjunction', colorKey: 'bg-[#A84A28]/20 text-[#A84A28] border-[#A84A28]/30', explanation: 'Anak Kalimat Pertentangan (Adverbial Clause of Concession) yang mengawali kalimat.' },
-      { text: 'the senior investigators', role: 'Subject', colorKey: 'bg-[#535841]/20 text-[#535841] border-[#535841]/30', explanation: 'Subjek Inti Utama (Core Noun Phrase) dari klausa independen.' },
+      { text: 'Although the international committee initially questioned the statistical methodology,', role: 'Conjunction', colorKey: 'bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC] border-[#00638E]/35 dark:border-[#8CB9CC]/40', explanation: 'Anak Kalimat Pertentangan (Adverbial Clause of Concession) yang mengawali kalimat.' },
+      { text: 'the senior investigators', role: 'Subject', colorKey: 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] border-[#004A6B]/30 dark:border-[#BFD8E3]/35', explanation: 'Subjek Inti Utama (Core Noun Phrase) dari klausa independen.' },
       { text: 'who conducted the multi-center clinical trials', role: 'Relative Clause', colorKey: 'bg-[#D97706]/20 text-[#B45309] border-[#D97706]/30', explanation: 'Defining Relative Clause yang menerangkan identitas spesifik para penyelidik.' },
       { text: 'substantiated', role: 'Finite Verb', colorKey: 'bg-[#2563EB]/20 text-[#1D4ED8] border-[#2563EB]/30', explanation: 'Predikat Kata Kerja Finit Utama (Transitive Past Simple) penggerak klausa utama.' },
       { text: 'their groundbreaking hypothesis', role: 'Direct Object', colorKey: 'bg-[#9333EA]/20 text-[#7E22CE] border-[#9333EA]/30', explanation: 'Objek Langsung (Direct Object Noun Phrase) yang menerima aksi pembuktian.' },
-      { text: 'by presenting comprehensive longitudinal patient telemetry data.', role: 'Participle Phrase', colorKey: 'bg-[#7A7265]/20 text-[#524C42] border-[#7A7265]/30', explanation: 'Frasa Keterangan Preposisi + Gerund (Prepositional Method Adjunct) yang menjelaskan bagaimana hipotesis dibuktikan.' }
+      { text: 'by presenting comprehensive longitudinal patient telemetry data.', role: 'Participle Phrase', colorKey: 'bg-[#004A6B]/15 text-[#004A6B] dark:text-[#BFD8E3] border-[#004A6B]/25', explanation: 'Frasa Keterangan Preposisi + Gerund (Prepositional Method Adjunct) yang menjelaskan bagaimana hipotesis dibuktikan.' }
     ]
   },
   {
@@ -826,11 +826,11 @@ export const XRAY_SENTENCES_DATA: XRaySentence[] = [
     translation: 'Seandainya badan pengawas pusat melakukan intervensi secara lebih tegas selama kekurangan likuiditas awal, keruntuhan perbankan sistemik yang melumpuhkan pasar kredit internasional akan dapat dicegah dengan dampak ekonomi yang minimal.',
     architecturalSummary: 'Kalimat ini menggunakan struktur Inverted Third Conditional (tanpa kata "if") yang dipadukan dengan Relative Clause penjelas subjek dan Modal Past Perfect Passive di klausa utama.',
     breakdown: [
-      { text: 'Had the central regulatory agency intervened more decisively during the initial liquidity shortfall,', role: 'Conjunction', colorKey: 'bg-[#A84A28]/20 text-[#A84A28] border-[#A84A28]/30', explanation: 'Inverted Third Conditional Clause (menggantikan "If the agency had intervened").' },
-      { text: 'the systemic banking collapse', role: 'Subject', colorKey: 'bg-[#535841]/20 text-[#535841] border-[#535841]/30', explanation: 'Subjek Inti dari klausa utama (Noun Phrase).' },
+      { text: 'Had the central regulatory agency intervened more decisively during the initial liquidity shortfall,', role: 'Conjunction', colorKey: 'bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC] border-[#00638E]/35 dark:border-[#8CB9CC]/40', explanation: 'Inverted Third Conditional Clause (menggantikan "If the agency had intervened").' },
+      { text: 'the systemic banking collapse', role: 'Subject', colorKey: 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] border-[#004A6B]/30 dark:border-[#BFD8E3]/35', explanation: 'Subjek Inti dari klausa utama (Noun Phrase).' },
       { text: 'that paralyzed international credit markets', role: 'Relative Clause', colorKey: 'bg-[#D97706]/20 text-[#B45309] border-[#D97706]/30', explanation: 'Defining Relative Clause yang menerangkan dampak keruntuhan perbankan.' },
       { text: 'could have been averted', role: 'Finite Verb', colorKey: 'bg-[#2563EB]/20 text-[#1D4ED8] border-[#2563EB]/30', explanation: 'Predikat Utama berbentuk Modal Past Perfect Passive (Modal + have been + V3).' },
-      { text: 'with minimal economic repercussions.', role: 'Prepositional Phrase', colorKey: 'bg-[#7A7265]/20 text-[#524C42] border-[#7A7265]/30', explanation: 'Frasa Preposisi (Manner Adjunct) yang menerangkan kondisi pencegahan.' }
+      { text: 'with minimal economic repercussions.', role: 'Prepositional Phrase', colorKey: 'bg-[#004A6B]/15 text-[#004A6B] dark:text-[#BFD8E3] border-[#004A6B]/25', explanation: 'Frasa Preposisi (Manner Adjunct) yang menerangkan kondisi pencegahan.' }
     ]
   }
 ];

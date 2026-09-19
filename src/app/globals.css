@@ -1,42 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --paper-bg: #EFE9DF;
-  --paper-surface: #E6E0D4;
-  --paper-card: #DDD7CA;
-  --paper-card-subtle: #E2DCD0;
-  --paper-border: #C8C0B0;
-  --paper-border-subtle: rgba(30, 27, 23, 0.12);
-  --ink-primary: #1E1B17;
-  --ink-secondary: #524C42;
-  --ink-muted: #7A7265;
-  --accent-terracotta: #A84A28;
-  --accent-sage: #535841;
+  /* Azure & Onyx Theme Tokens — Light Mode Default */
+  --ao-canvas: #F4F7F9;
+  --ao-elevated: #FFFFFF;
+  --ao-card: #EDF3F7;
+  --ao-inner: #E2ECF2;
+  --ao-border: rgba(0, 74, 107, 0.12);
+  --ao-border-hover: rgba(0, 99, 142, 0.28);
+  --ao-text-primary: #141414;
+  --ao-text-secondary: #2B2B2B;
+  --ao-text-muted: #50585C;
+  --ao-accent: #00638E;
+  --ao-accent-dim: rgba(0, 99, 142, 0.10);
+  --ao-accent-glow: rgba(0, 99, 142, 0.22);
+  --ao-accent-light: #BFD8E3;
+  --ao-dock-bg: rgba(255, 255, 255, 0.88);
+  --ao-highlight: rgba(0, 99, 142, 0.06);
+
+  /* Legacy variable fallbacks */
+  --paper-bg: var(--ao-canvas);
+  --paper-surface: var(--ao-elevated);
+  --paper-card: var(--ao-card);
+  --paper-border: var(--ao-border);
+  --ink-primary: var(--ao-text-primary);
+  --ink-secondary: var(--ao-text-secondary);
+  --ink-muted: var(--ao-text-muted);
 }
 
 .dark, [data-theme="dark"] {
-  --paper-bg: #141210;
-  --paper-surface: #1E1B17;
-  --paper-card: #28241F;
-  --paper-card-subtle: #221E19;
-  --paper-border: #3A352D;
-  --paper-border-subtle: rgba(236, 230, 218, 0.12);
-  --ink-primary: #EFEAE1;
-  --ink-secondary: #C4BCAD;
-  --ink-muted: #948B7C;
-  --accent-terracotta: #D45B34;
-  --accent-sage: #7A855F;
+  /* Azure & Onyx Theme Tokens — Dark Mode */
+  --ao-canvas: #000000;
+  --ao-elevated: #141414;
+  --ao-card: #1C1C1C;
+  --ao-inner: #2B2B2B;
+  --ao-border: rgba(191, 216, 227, 0.10);
+  --ao-border-hover: rgba(191, 216, 227, 0.22);
+  --ao-text-primary: #FFFFFF;
+  --ao-text-secondary: #BFD8E3;
+  --ao-text-muted: #7A8992;
+  --ao-accent: #00638E;
+  --ao-accent-dim: rgba(0, 99, 142, 0.20);
+  --ao-accent-glow: rgba(0, 99, 142, 0.35);
+  --ao-accent-light: #BFD8E3;
+  --ao-dock-bg: rgba(20, 20, 20, 0.88);
+  --ao-highlight: rgba(255, 255, 255, 0.05);
+
+  --paper-bg: var(--ao-canvas);
+  --paper-surface: var(--ao-elevated);
+  --paper-card: var(--ao-card);
+  --paper-border: var(--ao-border);
+  --ink-primary: var(--ao-text-primary);
+  --ink-secondary: var(--ao-text-secondary);
+  --ink-muted: var(--ao-text-muted);
 }
 
 @theme {
   --font-serif: var(--font-serif), Georgia, serif;
-  --font-sans: var(--font-geist-sans), -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: var(--font-sans), Manrope, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), monospace;
 }
 
 html {
-  background-color: var(--paper-bg);
-  color: var(--ink-primary);
+  background-color: var(--ao-canvas);
+  color: var(--ao-text-primary);
   font-family: var(--font-sans);
   height: 100%;
   width: 100%;
@@ -50,8 +77,8 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--paper-bg);
-  color: var(--ink-primary);
+  background-color: var(--ao-canvas);
+  color: var(--ao-text-primary);
   overscroll-behavior: none;
   touch-action: pan-y;
 }
@@ -67,333 +94,220 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 74, 40, 0.2);
+  background: rgba(0, 99, 142, 0.25);
   border-radius: 9999px;
   transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 74, 40, 0.45);
+  background: rgba(0, 99, 142, 0.50);
 }
 
 /* Selection Styling */
 ::selection {
-  background: #A84A28;
-  color: #F7F3EB;
+  background: #00638E;
+  color: #FFFFFF;
 }
 
-/* Glassmorphism primitives for warm muted paper */
-.glass-header {
-  background-color: rgba(230, 224, 212, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(200, 192, 176, 0.75);
-}
+/* ───────────── AZURE & ONYX DESIGN SYSTEM PRIMITIVES ───────────── */
 
-.glass-card {
-  background-color: rgba(230, 224, 212, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(200, 192, 176, 0.65);
-}
-
-/* ───────────── MERAKI INK — Dark Studio Palette ───────────── */
-/* Elegant single-accent palette for all dark-canvas pages.   */
-/* Accent: Soft Indigo (#7C6EEA) — one color, not many.       */
-.meraki-ink {
-  /* Backgrounds — layered depth */
-  --mi-bg:       #0F0F16;
-  --mi-elevated: #171720;
-  --mi-card:     #1E1E2B;
-  --mi-inner:    #25253A;
-
-  /* Text */
-  --mi-text-primary:   #E8E8F0;
-  --mi-text-secondary: #8A8AA8;
-  --mi-text-muted:     #46465A;
-
-  /* Single accent — Soft Indigo */
-  --mi-accent:      #7C6EEA;
-  --mi-accent-dim:  rgba(124, 110, 234, 0.12);
-  --mi-accent-glow: rgba(124, 110, 234, 0.22);
-
-  /* Borders */
-  --mi-border:       rgba(255, 255, 255, 0.07);
-  --mi-border-hover: rgba(255, 255, 255, 0.14);
-
-  /* Dock/sidebar */
-  --mi-dock-bg:    rgba(12, 12, 19, 0.88);
-  --mi-highlight:  rgba(255, 255, 255, 0.055);
-
-  background-color: var(--mi-bg);
-  color: var(--mi-text-primary);
+.azure-onyx, .meraki-ink {
+  background-color: var(--ao-canvas);
+  color: var(--ao-text-primary);
   font-family: var(--font-sans);
 }
 
-/* Spatial Canvas — ambient single-tone glow (very subtle) */
-.mi-canvas {
+/* Spatial Canvas — Ambient Deep Azure Glow */
+.ao-canvas, .mi-canvas {
   position: relative;
-  background-color: var(--mi-bg);
+  background-color: var(--ao-canvas);
   background-image:
-    radial-gradient(ellipse at 20% 15%, rgba(124, 110, 234, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 80%, rgba(124, 110, 234, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 15%, rgba(0, 99, 142, 0.09) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 85%, rgba(0, 74, 107, 0.06) 0%, transparent 55%);
   overflow: hidden;
 }
 
-/* Floating Slab — sidebar / panel glass */
-.mi-slab {
-  background: rgba(23, 23, 32, 0.72);
+/* Floating Slab — Liquid glass sidebar / panel */
+.ao-slab, .mi-slab {
+  background: var(--ao-elevated);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid var(--mi-border);
+  border: 1px solid var(--ao-border);
   border-radius: 20px;
   box-shadow:
-    inset 0 1px 0 var(--mi-highlight),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    inset 0 1px 0 var(--ao-highlight),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
   transform: translateZ(0);
 }
 
-/* Floating Dock — top bar capsule */
-.mi-dock {
-  background: var(--mi-dock-bg);
+.dark .ao-slab, .dark .mi-slab {
+  background: rgba(20, 20, 20, 0.78);
+  border-color: rgba(191, 216, 227, 0.08);
+}
+
+/* Floating Dock — Top capsule dock */
+.ao-dock, .mi-dock {
+  background: var(--ao-dock-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--mi-border);
+  border: 1px solid var(--ao-border);
   border-radius: 18px;
-  box-shadow: inset 0 1px 0 var(--mi-highlight);
+  box-shadow: inset 0 1px 0 var(--ao-highlight);
   transform: translateZ(0);
 }
 
-/* Card — glass card with specular edge */
-.mi-card {
-  background: linear-gradient(150deg, rgba(255,255,255,0.042) 0%, rgba(255,255,255,0.012) 100%);
-  border: 1px solid var(--mi-border);
-  border-radius: 16px;
-  box-shadow: inset 0 1px 0 var(--mi-highlight);
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-.mi-card:hover {
-  border-color: var(--mi-border-hover);
-  background: linear-gradient(150deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.025) 100%);
+.dark .ao-dock, .dark .mi-dock {
+  background: rgba(20, 20, 20, 0.88);
+  border-color: rgba(191, 216, 227, 0.08);
 }
 
-/* Inner — nested zero-blur element */
-.mi-inner {
-  background: transparent;
-  border: 1px solid var(--mi-border);
+/* Card — Layered glass card with specular edge */
+.ao-card, .mi-card {
+  background: var(--ao-card);
+  border: 1px solid var(--ao-border);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 var(--ao-highlight);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.ao-card:hover, .mi-card:hover {
+  border-color: var(--ao-border-hover);
+}
+
+.dark .ao-card, .dark .mi-card {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border-color: rgba(191, 216, 227, 0.08);
+}
+.dark .ao-card:hover, .dark .mi-card:hover {
+  border-color: rgba(191, 216, 227, 0.18);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+/* Inner — Nested zero-blur element */
+.ao-inner, .mi-inner {
+  background: var(--ao-inner);
+  border: 1px solid var(--ao-border);
   border-radius: 12px;
   transition: background 0.16s ease, border-color 0.16s ease;
 }
-.mi-inner:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--mi-border-hover);
+
+.ao-inner:hover, .mi-inner:hover {
+  border-color: var(--ao-border-hover);
 }
 
-/* Nav active pill */
-.mi-nav-active {
-  background: var(--mi-accent-dim);
-  border: 1px solid rgba(124, 110, 234, 0.22);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25), inset 0 1px 0 var(--mi-highlight);
-  color: var(--mi-text-primary);
+.dark .ao-inner, .dark .mi-inner {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(191, 216, 227, 0.07);
+}
+.dark .ao-inner:hover, .dark .mi-inner:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(191, 216, 227, 0.16);
+}
+
+/* Nav Active Pill */
+.ao-nav-active, .mi-nav-active {
+  background: var(--ao-accent-dim);
+  border: 1px solid rgba(0, 99, 142, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 99, 142, 0.15), inset 0 1px 0 var(--ao-highlight);
+  color: var(--ao-text-primary);
   font-weight: 600;
 }
 
-/* Accent chip/badge */
-.mi-chip {
-  background: var(--mi-accent-dim);
-  border: 1px solid rgba(124, 110, 234, 0.2);
-  color: #A89DF0;
+.dark .ao-nav-active, .dark .mi-nav-active {
+  background: rgba(0, 99, 142, 0.22);
+  border-color: rgba(0, 99, 142, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+/* Accent Chip / Pill */
+.ao-chip, .mi-chip {
+  background: var(--ao-accent-dim);
+  border: 1px solid rgba(0, 99, 142, 0.25);
+  color: #00638E;
   border-radius: 9999px;
 }
 
-/* Meraki Ink Scrollbar */
-.mi-scroll::-webkit-scrollbar { width: 4px; height: 4px; }
-.mi-scroll::-webkit-scrollbar-track { background: transparent; margin-block: 16px; }
-.mi-scroll::-webkit-scrollbar-thumb {
-  background: rgba(124, 110, 234, 0.25);
+.dark .ao-chip, .dark .mi-chip {
+  background: rgba(0, 99, 142, 0.18);
+  border-color: rgba(191, 216, 227, 0.25);
+  color: #BFD8E3;
+}
+
+/* Azure & Onyx Scrollbar */
+.ao-scroll::-webkit-scrollbar, .mi-scroll::-webkit-scrollbar { width: 4px; height: 4px; }
+.ao-scroll::-webkit-scrollbar-track, .mi-scroll::-webkit-scrollbar-track { background: transparent; margin-block: 16px; }
+.ao-scroll::-webkit-scrollbar-thumb, .mi-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 99, 142, 0.25);
   border-radius: 9999px;
 }
-.mi-scroll::-webkit-scrollbar-thumb:hover { background: rgba(124, 110, 234, 0.5); }
+.ao-scroll::-webkit-scrollbar-thumb:hover, .mi-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 99, 142, 0.50);
+}
 
-/* Fade-up entrance animation */
-@keyframes miFadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+/* Branding Gradient */
+.ao-gradient {
+  background: linear-gradient(135deg, #000000 0%, #004A6B 40%, #00638E 75%, #8CB9CC 100%);
+}
+
+/* Fade-in Animation */
+@keyframes aoFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.mi-fade-in {
-  animation: miFadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.ao-fade-in, .mi-fade-in {
+  animation: aoFadeUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Progress bar */
-.mi-progress {
-  background: rgba(255, 255, 255, 0.06);
+/* Progress Bar */
+.ao-progress, .mi-progress {
+  background: rgba(0, 99, 142, 0.12);
   border-radius: 9999px;
   overflow: hidden;
 }
-.mi-progress-fill {
-  background: var(--mi-accent);
-  height: 100%;
-  border-radius: 9999px;
-  transition: width 0.6s ease;
+.dark .ao-progress, .dark .mi-progress {
+  background: rgba(255, 255, 255, 0.06);
 }
 
+.ao-progress-fill, .mi-progress-fill {
+  background: linear-gradient(90deg, #004A6B 0%, #00638E 60%, #8CB9CC 100%);
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
 
-
-
-/* ───────────── GLOBAL DARK MODE OVERRIDES (Meraki Ink Palette) ───────────── */
+/* ───────────── GLOBAL DARK MODE OVERRIDES (Azure & Onyx) ───────────── */
 
 html.dark, [data-theme="dark"] {
   color-scheme: dark;
 }
 
 html.dark body {
-  background-color: #0F0F16 !important;
-  color: #E8E8F0 !important;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
 }
 
-/* Base Canvas / Page background */
-html.dark [class*="bg-[#EFE9DF]"] {
-  background-color: #0F0F16 !important;
+/* Dark Mode Utility Enhancements */
+html.dark ::selection {
+  background-color: #00638E;
+  color: #FFFFFF;
 }
-
-/* Primary Surface / Panels */
-html.dark [class*="bg-[#E6E0D4]"],
-html.dark [class*="bg-[#E8E2D6]"] {
-  background-color: #171720 !important;
-}
-
-/* Cards */
-html.dark [class*="bg-[#DDD7CA]"] {
-  background-color: #1E1E2B !important;
-}
-
-/* Subtle Cards */
-html.dark [class*="bg-[#E2DCD0]"] {
-  background-color: #1A1A27 !important;
-}
-
-/* Active buttons / primary elements */
-html.dark [class*="bg-[#1E1B17]"],
-html.dark [class*="bg-[#1A1714]"] {
-  background-color: #25253A !important;
-  color: #E8E8F0 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* White elements */
-html.dark [class*="bg-white"] {
-  background-color: #1E1E2B !important;
-  color: #E8E8F0 !important;
-}
-
-/* Borders */
-html.dark [class*="border-[#C8C0B0]"],
-html.dark [class*="border-white/"],
-html.dark [class*="border-black/"] {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Primary Text */
-html.dark [class*="text-[#1E1B17]"],
-html.dark [class*="text-[#1A1714]"],
-html.dark [class*="text-[#38332A]"],
-html.dark [class*="text-[#38332C]"],
-html.dark .text-black,
-html.dark .text-gray-900 {
-  color: #E8E8F0 !important;
-}
-
-/* Secondary Text */
-html.dark [class*="text-[#524C42]"] {
-  color: #8A8AA8 !important;
-}
-
-/* Muted Text */
-html.dark [class*="text-[#7A7265]"],
-html.dark [class*="text-[#82796A]"] {
-  color: #6A6A84 !important;
-}
-
-/* Accent (Terracotta/Sage → Indigo) */
-html.dark [class*="text-[#A84A28]"],
-html.dark [class*="text-[#C4502A]"],
-html.dark [class*="text-[#B5663F]"] {
-  color: #9B90F2 !important;
-}
-
-html.dark [class*="text-[#535841]"],
-html.dark [class*="text-[#5F6244]"] {
-  color: #7C6EEA !important;
-}
-
-/* Left Border Accents */
-html.dark [class*="border-l-[#A84A28]"],
-html.dark [class*="border-l-[#C4502A]"] {
-  border-left-color: #7C6EEA !important;
-}
-
-html.dark [class*="border-l-[#535841]"],
-html.dark [class*="border-l-[#5F6244]"] {
-  border-left-color: #7C6EEA !important;
-}
-
-/* Tinted Callout Backgrounds */
-html.dark [class*="bg-[#A84A28]"] {
-  background-color: rgba(124, 110, 234, 0.14) !important;
-}
-
-html.dark [class*="bg-[#535841]"] {
-  background-color: rgba(124, 110, 234, 0.10) !important;
-}
-
-/* Hover States */
-html.dark [class*="hover:bg-[#C8C0B0]"]:hover {
-  background-color: #25253A !important;
-}
-
-html.dark [class*="hover:bg-[#DDD7CA]"]:hover {
-  background-color: #1E1E2B !important;
-}
-
-/* Glass elements */
-html.dark .glass-header {
-  background-color: rgba(15, 15, 22, 0.94) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-}
-
-html.dark .glass-card {
-  background-color: rgba(23, 23, 32, 0.9) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
-}
-
-html.dark nav[class*="backdrop-blur-2xl"] {
-  background-color: rgba(15, 15, 22, 0.94) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Scrollbar in dark mode */
-html.dark ::-webkit-scrollbar-thumb {
-  background: rgba(124, 110, 234, 0.25);
-}
-
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(124, 110, 234, 0.45);
-}
-
 
 /* Drop Cap Typography */
 .drop-cap::first-letter {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   float: left;
   font-size: 2.75rem;
   line-height: 0.85;
   margin-right: 0.5rem;
   margin-top: 0.15rem;
-  color: #7C6EEA;
-  font-weight: 600;
+  color: #00638E;
+  font-weight: 700;
+}
+.dark .drop-cap::first-letter {
+  color: #8CB9CC;
 }
 
 /* Smooth Focus & Button Ripple Effect */
@@ -402,14 +316,14 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   outline: none;
 }
 .tactile-btn:focus-visible {
-  outline: 2px solid #7C6EEA;
+  outline: 2px solid #00638E;
   outline-offset: 2px;
 }
 .tactile-btn:active {
   transform: scale(0.97);
 }
 
-/* ─── iOS Safe Area ─── */
+/* iOS Safe Area & Layout Utilities */
 :root {
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
@@ -425,13 +339,11 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 .min-h-screen-safe { min-height: 100dvh; min-height: -webkit-fill-available; }
 .h-safe-screen { height: 100dvh; height: -webkit-fill-available; }
 
-/* ─── Scrollbar Utilities ─── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .smooth-scroll { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
 .touch-target { min-height: 44px; min-width: 44px; }
 
-/* ─── iOS Touch ─── */
 body {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;

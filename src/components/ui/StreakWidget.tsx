@@ -33,10 +33,10 @@ export function StreakWidget() {
 
   return (
     <div className="flex items-center gap-3">
-      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/15 border border-amber-500/25 text-amber-900 font-mono text-xs shadow-xs">
-        <Flame className="w-4 h-4 text-[#C4502A] animate-pulse" />
-        <span className="font-semibold text-[#C4502A]">{streak.currentStreak} Hari</span>
-        <span className="text-[#82796A] hidden sm:inline text-[11px]">Streak</span>
+      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 text-[#00638E] dark:text-[#8CB9CC] font-mono text-xs shadow-xs">
+        <Flame className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC] animate-pulse" />
+        <span className="font-semibold text-[#00638E] dark:text-[#8CB9CC]">{streak.currentStreak} Hari</span>
+        <span className="text-[#50585C] dark:text-[#7A8992] hidden sm:inline text-[11px]">Streak</span>
       </div>
 
       <div className="hidden md:flex items-center gap-1">
@@ -46,10 +46,10 @@ export function StreakWidget() {
             title={`${day.dateStr} ${day.isCompleted ? '(Selesai Belajar)' : ''}`}
             className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono transition-all ${
               day.isCompleted
-                ? 'bg-[#5F6244] text-white font-bold shadow-xs'
+                ? 'bg-[#00638E] text-white font-bold shadow-xs'
                 : day.isToday
-                ? 'border border-dashed border-[#C4502A] text-[#C4502A]'
-                : 'bg-[#1A1714]/06 text-[#82796A]/60'
+                ? 'border border-dashed border-[#00638E] text-[#00638E] dark:text-[#8CB9CC]'
+                : 'bg-[#141414]/5 dark:bg-white/10 text-[#50585C] dark:text-[#7A8992]'
             }`}
           >
             {day.isCompleted ? <CheckCircle2 className="w-3.5 h-3.5" /> : day.dayName[0]}

@@ -129,25 +129,25 @@ export default function MockExamClient({ examType }: { examType: string }) {
   const timeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
   return (
-    <div className="min-h-screen bg-[#EFE9DF] text-[#1E1B17] flex flex-col font-sans">
+    <div className="min-h-screen bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] flex flex-col font-sans">
       <Navbar />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-28 sm:pb-36 space-y-6">
         {/* Top Status Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs">
+        <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs">
           <div className="flex items-center gap-3">
             <Link
               href="/exam"
-              className="p-2 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-colors tactile-btn"
+              className="p-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-[#141414] dark:text-[#FFFFFF] transition-colors tactile-btn"
               title="Keluar dari simulasi"
             >
               <ArrowLeft className="w-4 h-4" />
             </Link>
             <div>
-              <h1 className="text-base sm:text-lg font-serif font-bold text-[#1E1B17] leading-none">
+              <h1 className="text-base sm:text-lg font-serif font-bold text-[#141414] dark:text-[#FFFFFF] leading-none">
                 {currentExam.title}
               </h1>
-              <span className="font-mono text-[11px] text-[#7A7265]">
+              <span className="font-mono text-[11px] text-[#50585C] dark:text-[#7A8992]">
                 {currentExam.difficulty} · {questions.length} Soal
               </span>
             </div>
@@ -155,15 +155,15 @@ export default function MockExamClient({ examType }: { examType: string }) {
 
           {/* Timer & Submit Pill */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] font-mono text-xs text-[#1E1B17]">
-              <Clock className="w-3.5 h-3.5 text-[#A84A28]" />
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 font-mono text-xs text-[#141414] dark:text-[#FFFFFF]">
+              <Clock className="w-3.5 h-3.5 text-[#00638E] dark:text-[#8CB9CC]" />
               <span className="font-bold">{timeFormatted}</span>
             </div>
 
             {!isSubmitted && (
               <button
                 onClick={handleSubmit}
-                className="px-4 py-2 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] text-xs font-mono font-medium transition-all flex items-center gap-1.5 shadow-xs tactile-btn"
+                className="px-4 py-2 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white text-xs font-mono font-medium transition-all flex items-center gap-1.5 shadow-xs tactile-btn"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Selesai & Kumpulkan</span>
@@ -173,14 +173,14 @@ export default function MockExamClient({ examType }: { examType: string }) {
         </div>
 
         {/* Mobile View Switcher Tab (Visible only on < lg screens) */}
-        <div className="lg:hidden flex items-center p-1.5 rounded-2xl bg-[#E6E0D4] border border-[#C8C0B0] gap-1">
+        <div className="lg:hidden flex items-center p-1.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 gap-1">
           <button
             onClick={() => setMobileTab('passage')}
             className={clsx(
               'flex-1 py-2 rounded-xl text-xs font-mono font-semibold transition-all tactile-btn flex items-center justify-center gap-1.5',
               mobileTab === 'passage'
-                ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
-                : 'text-[#7A7265] hover:text-[#1E1B17]'
+                ? 'bg-[#00638E] text-white shadow-xs font-semibold shadow-xs'
+                : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
             )}
           >
             <FileText className="w-3.5 h-3.5" />
@@ -192,8 +192,8 @@ export default function MockExamClient({ examType }: { examType: string }) {
             className={clsx(
               'flex-1 py-2 rounded-xl text-xs font-mono font-semibold transition-all tactile-btn flex items-center justify-center gap-1.5',
               mobileTab === 'questions'
-                ? 'bg-[#1E1B17] text-[#EFE9DF] shadow-xs'
-                : 'text-[#7A7265] hover:text-[#1E1B17]'
+                ? 'bg-[#00638E] text-white shadow-xs font-semibold shadow-xs'
+                : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF]'
             )}
           >
             <ListOrdered className="w-3.5 h-3.5" />
@@ -203,26 +203,26 @@ export default function MockExamClient({ examType }: { examType: string }) {
 
         {/* Result Modal Banner if Submitted */}
         {isSubmitted && examResult && (
-          <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#A84A28]/40 space-y-4 shadow-md animate-in fade-in duration-300">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#C8C0B0]">
+          <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#00638E]/40 space-y-4 shadow-md animate-in fade-in duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10">
               <div className="space-y-1">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#A84A28] font-bold">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#00638E] dark:text-[#8CB9CC] font-bold">
                   Hasil Evaluasi Simulasi
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1E1B17]">
-                  Perolehan Skor: <span className="text-[#A84A28]">{examResult.bandOrScore}</span>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#141414] dark:text-[#FFFFFF]">
+                  Perolehan Skor: <span className="text-[#00638E] dark:text-[#8CB9CC]">{examResult.bandOrScore}</span>
                 </h2>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs px-3 py-1 rounded-xl bg-[#535841]/20 text-[#535841] font-bold">
+                <span className="font-mono text-xs px-3 py-1 rounded-xl bg-[#004A6B]/20 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#BFD8E3] font-bold">
                   CEFR {examResult.cefr}
                 </span>
-                <div className="font-mono text-xs text-[#7A7265]">
+                <div className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                   Akurasi: {examResult.correctCount}/{examResult.totalCount} Soal ({Math.round((examResult.correctCount / examResult.totalCount) * 100)}%)
                 </div>
               </div>
             </div>
-            <p className="text-xs sm:text-sm text-[#7A7265]">
+            <p className="text-xs sm:text-sm text-[#50585C] dark:text-[#7A8992]">
               Tinjau penjelasan kunci jawaban per soal pada kolom sebelah kanan untuk memperdalam strategi menjawabmu.
             </p>
           </div>
@@ -235,18 +235,18 @@ export default function MockExamClient({ examType }: { examType: string }) {
             'lg:col-span-7 space-y-4',
             mobileTab === 'questions' ? 'hidden lg:block' : 'block'
           )}>
-            <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] max-h-[75vh] overflow-y-auto space-y-4 shadow-xs">
+            <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 max-h-[75vh] overflow-y-auto space-y-4 shadow-xs">
               {passage && (
                 <div className="space-y-4">
-                  <div className="pb-3 border-b border-[#C8C0B0]">
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-[#7A7265] font-semibold">
+                  <div className="pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] font-semibold">
                       Reading Passage ({passage.wordCount} Kata)
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#1E1B17] mt-1">
+                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#141414] dark:text-[#FFFFFF] mt-1">
                       {passage.title}
                     </h3>
                   </div>
-                  <div className="text-sm sm:text-base text-[#1E1B17] leading-relaxed whitespace-pre-line font-serif space-y-3">
+                  <div className="text-sm sm:text-base text-[#141414] dark:text-[#FFFFFF] leading-relaxed whitespace-pre-line font-serif space-y-3">
                     {passage.text}
                   </div>
                 </div>
@@ -260,7 +260,7 @@ export default function MockExamClient({ examType }: { examType: string }) {
             mobileTab === 'passage' ? 'hidden lg:block' : 'block'
           )}>
             {/* Question Number Pills */}
-            <div className="p-3 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] flex flex-wrap gap-2 shadow-xs">
+            <div className="p-3 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 flex flex-wrap gap-2 shadow-xs">
               {questions.map((q, idx) => {
                 const isAnswered = userAnswers[q.id] !== undefined;
                 const isCurrent = idx === currentQuestionIndex;
@@ -275,10 +275,10 @@ export default function MockExamClient({ examType }: { examType: string }) {
                     className={clsx(
                       'w-8 h-8 rounded-xl font-mono text-xs transition-all flex items-center justify-center tactile-btn',
                       isCurrent
-                        ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold ring-2 ring-[#A84A28]'
+                        ? 'bg-[#00638E] text-white shadow-xs font-bold ring-2 ring-[#00638E] dark:ring-[#8CB9CC]'
                         : isAnswered
-                        ? 'bg-[#A84A28]/20 text-[#A84A28] font-bold'
-                        : 'bg-[#DDD7CA] text-[#7A7265] hover:bg-[#C8C0B0]'
+                        ? 'bg-[#00638E]/20 dark:bg-[#00638E]/30 text-[#00638E] dark:text-[#8CB9CC] font-bold'
+                        : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B]'
                     )}
                   >
                     {idx + 1}
@@ -289,17 +289,17 @@ export default function MockExamClient({ examType }: { examType: string }) {
 
             {/* Active Question Card */}
             {currentQuestion && (
-              <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-5">
+              <div className="p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs space-y-5">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs px-2.5 py-0.5 rounded-md bg-[#DDD7CA] text-[#1E1B17] font-semibold">
+                  <span className="font-mono text-xs px-2.5 py-0.5 rounded-md bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF] font-semibold">
                     Soal {currentQuestion.questionNumber} dari {questions.length}
                   </span>
-                  <span className="font-mono text-xs text-[#7A7265]">
+                  <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
                     Skill: {currentQuestion.skillTested}
                   </span>
                 </div>
 
-                <h4 className="text-base sm:text-lg font-serif font-bold text-[#1E1B17] leading-snug">
+                <h4 className="text-base sm:text-lg font-serif font-bold text-[#141414] dark:text-[#FFFFFF] leading-snug">
                   {currentQuestion.prompt}
                 </h4>
 
@@ -309,15 +309,15 @@ export default function MockExamClient({ examType }: { examType: string }) {
                     const isSelected = userAnswers[currentQuestion.id] === opt.id;
                     const isCorrect = opt.id === currentQuestion.correctAnswer;
 
-                    let style = 'bg-[#DDD7CA] hover:bg-[#C8C0B0] border-[#C8C0B0] text-[#1E1B17]';
+                    let style = 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
                     if (isSubmitted) {
                       if (isCorrect) {
-                        style = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold';
+                        style = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold';
                       } else if (isSelected && !isCorrect) {
-                        style = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
+                        style = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
                       }
                     } else if (isSelected) {
-                      style = 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-xs font-semibold';
+                      style = 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-xs font-semibold';
                     }
 
                     return (
@@ -333,10 +333,10 @@ export default function MockExamClient({ examType }: { examType: string }) {
                       >
                         <span>{opt.text}</span>
                         {isSubmitted && isCorrect && (
-                          <CheckCircle2 className="w-4 h-4 text-[#535841] shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3] shrink-0" />
                         )}
                         {isSubmitted && isSelected && !isCorrect && (
-                          <XCircle className="w-4 h-4 text-[#A84A28] shrink-0" />
+                          <XCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC] shrink-0" />
                         )}
                       </button>
                     );
@@ -345,23 +345,23 @@ export default function MockExamClient({ examType }: { examType: string }) {
 
                 {/* Explanation when submitted */}
                 {isSubmitted && (
-                  <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-xs space-y-1">
-                    <span className="font-mono text-[#A84A28] uppercase font-bold block">
+                  <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
+                    <span className="font-mono text-[#00638E] dark:text-[#8CB9CC] uppercase font-bold block">
                       Pembahasan Kunci Jawaban:
                     </span>
-                    <p className="text-[#524C42] leading-relaxed">
+                    <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
                       {currentQuestion.explanation}
                     </p>
                   </div>
                 )}
 
                 {/* Prev / Next Question Buttons */}
-                <div className="flex items-center justify-between pt-2 border-t border-[#C8C0B0]">
+                <div className="flex items-center justify-between pt-2 border-t border-[#BFD8E3]/40 dark:border-white/10">
                   <button
                     type="button"
                     onClick={() => setCurrentQuestionIndex((prev) => Math.max(0, prev - 1))}
                     disabled={currentQuestionIndex === 0}
-                    className="px-3 py-1.5 rounded-xl bg-[#DDD7CA] text-xs font-mono text-[#7A7265] hover:text-[#1E1B17] disabled:opacity-30 flex items-center gap-1 tactile-btn"
+                    className="px-3 py-1.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-xs font-mono text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] disabled:opacity-30 flex items-center gap-1 tactile-btn"
                   >
                     <ChevronLeft className="w-4 h-4" />
                     <span>Sebelumnya</span>
@@ -375,7 +375,7 @@ export default function MockExamClient({ examType }: { examType: string }) {
                       )
                     }
                     disabled={currentQuestionIndex === questions.length - 1}
-                    className="px-3 py-1.5 rounded-xl bg-[#DDD7CA] text-xs font-mono text-[#1E1B17] hover:bg-[#C8C0B0] disabled:opacity-30 flex items-center gap-1 tactile-btn"
+                    className="px-3 py-1.5 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-xs font-mono text-[#141414] dark:text-[#FFFFFF] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] disabled:opacity-30 flex items-center gap-1 tactile-btn"
                   >
                     <span>Selanjutnya</span>
                     <ChevronRight className="w-4 h-4" />

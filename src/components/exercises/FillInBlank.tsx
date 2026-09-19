@@ -77,25 +77,25 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
     <form onSubmit={handleCheck} className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <span className="font-mono text-xs text-[#7A7265] uppercase tracking-wider font-semibold">
+        <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider font-semibold">
           Isian Rumpang (Cloze) · {exercise.points} Pts
         </span>
         <button
           type="button"
           onClick={() => playNativeAudio(exercise.sentence.replace(/\[___\]/g, 'blank'))}
-          className="flex items-center gap-1.5 text-xs text-[#535841] hover:text-[#1E1B17] transition-colors font-mono tactile-btn"
+          className="flex items-center gap-1.5 text-xs text-[#004A6B] dark:text-[#BFD8E3] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors font-mono tactile-btn"
         >
           <Volume2 className="w-3.5 h-3.5" />
           <span>Audio Kalimat</span>
         </button>
       </div>
 
-      <p className="text-sm text-[#7A7265] leading-relaxed">
+      <p className="text-sm text-[#50585C] dark:text-[#7A8992] leading-relaxed">
         {exercise.instruction}
       </p>
 
       {/* Sentence Box */}
-      <div className="p-6 rounded-3xl bg-[#DDD7CA] border border-[#C8C0B0] shadow-xs leading-loose text-base sm:text-lg text-[#1E1B17] font-serif">
+      <div className="p-6 rounded-3xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs leading-loose text-base sm:text-lg text-[#141414] dark:text-[#FFFFFF] font-serif">
         {sentenceParts.map((part, index) => (
           <React.Fragment key={index}>
             <span>{part}</span>
@@ -110,9 +110,9 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
                     'px-3 py-1 text-base rounded-xl border font-sans font-medium outline-hidden transition-all text-center min-w-[140px]',
                     isSubmitted
                       ? isTargetCorrect(index)
-                        ? 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-bold'
-                        : 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]'
-                      : 'bg-[#EFE9DF] border-[#C8C0B0] text-[#1E1B17] focus:border-[#A84A28]'
+                        ? 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-bold'
+                        : 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]'
+                      : 'bg-[#F4F7F9] dark:bg-[#000000] border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF] focus:border-[#00638E]'
                   )}
                 />
               </span>
@@ -123,8 +123,8 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
 
       {/* Word Bank if available */}
       {exercise.wordBank && exercise.wordBank.length > 0 && (
-        <div className="space-y-2 p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0]">
-          <span className="font-mono text-[11px] text-[#7A7265] uppercase tracking-wider block font-semibold">
+        <div className="space-y-2 p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10">
+          <span className="font-mono text-[11px] text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider block font-semibold">
             Bank Kata (Klik untuk memasukkan):
           </span>
           <div className="flex flex-wrap gap-2">
@@ -133,7 +133,7 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
                 key={word}
                 type="button"
                 onClick={() => handleWordBankClick(word)}
-                className="px-3.5 py-1.5 rounded-xl text-xs font-mono bg-[#EFE9DF] hover:bg-[#1E1B17] hover:text-[#EFE9DF] border border-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn"
+                className="px-3.5 py-1.5 rounded-xl text-xs font-mono bg-[#F4F7F9] dark:bg-[#000000] hover:bg-[#141414] dark:bg-[#00638E] text-white hover:text-white border border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF] transition-all tactile-btn"
               >
                 {word}
               </button>
@@ -147,7 +147,7 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
         <button
           type="button"
           onClick={() => setShowHint(!showHint)}
-          className="flex items-center gap-1.5 text-xs text-[#7A7265] hover:text-[#A84A28] transition-colors font-mono tactile-btn"
+          className="flex items-center gap-1.5 text-xs text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E] dark:text-[#8CB9CC] transition-colors font-mono tactile-btn"
         >
           <HelpCircle className="w-3.5 h-3.5" />
           <span>{showHint ? 'Sembunyikan Petunjuk' : 'Lihat Petunjuk'}</span>
@@ -157,14 +157,14 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
           <button
             type="button"
             onClick={handleReset}
-            className="p-2.5 rounded-2xl border border-[#C8C0B0] bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#7A7265] hover:text-[#1E1B17] transition-colors tactile-btn min-h-[44px]"
+            className="p-2.5 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors tactile-btn min-h-[44px]"
             title="Reset Isian"
           >
             <RefreshCw className="w-4 h-4" />
           </button>
           <button
             type="submit"
-            className="px-6 py-2.5 rounded-2xl bg-[#1E1B17] hover:bg-[#A84A28] text-[#EFE9DF] font-medium text-xs font-mono transition-all shadow-xs tactile-btn min-h-[44px]"
+            className="px-6 py-2.5 rounded-2xl bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white font-medium text-xs font-mono transition-all shadow-xs tactile-btn min-h-[44px]"
           >
             Periksa Jawaban
           </button>
@@ -172,7 +172,7 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
       </div>
 
       {showHint && exercise.targets[0]?.hint && (
-        <div className="p-4 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] text-[#1E1B17] text-xs">
+        <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF] text-xs">
           <strong>Petunjuk:</strong> {exercise.targets[0].hint}
         </div>
       )}
@@ -183,19 +183,19 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
           className={clsx(
             'p-5 rounded-2xl border transition-all space-y-2 animate-in fade-in duration-200',
             allCorrect
-              ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]'
-              : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+              ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]'
+              : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
           )}
         >
           <div className="flex items-center gap-2 font-semibold text-sm">
             {allCorrect ? (
               <>
-                <Check className="w-5 h-5 text-[#535841]" />
+                <Check className="w-5 h-5 text-[#004A6B] dark:text-[#BFD8E3]" />
                 <span>Luar biasa! Seluruh kata yang diisikan tepat. (+{exercise.points} Pts)</span>
               </>
             ) : (
               <>
-                <XCircle className="w-5 h-5 text-[#A84A28]" />
+                <XCircle className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC]" />
                 <span>
                   Kunci jawaban baku:{' '}
                   <span className="font-mono font-bold underline">
@@ -205,7 +205,7 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
               </>
             )}
           </div>
-          <p className="text-xs text-[#524C42] leading-relaxed pt-1 border-t border-[#C8C0B0]/60">
+          <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
             <strong>Penjelasan:</strong> {exercise.explanation}
           </p>
         </div>

@@ -43,12 +43,12 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
       {/* Exercise Instruction & Prompt */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-xs text-[#7A7265] uppercase tracking-wider font-semibold">
+          <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider font-semibold">
             Pilihan Ganda · {exercise.points} Pts
           </span>
           <button
             onClick={() => playNativeAudio(exercise.question)}
-            className="flex items-center gap-1.5 text-xs text-[#535841] hover:text-[#1E1B17] transition-colors font-mono tactile-btn"
+            className="flex items-center gap-1.5 text-xs text-[#004A6B] dark:text-[#BFD8E3] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors font-mono tactile-btn"
             title="Dengarkan pelafalan soal"
           >
             <Volume2 className="w-3.5 h-3.5" />
@@ -56,18 +56,18 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
           </button>
         </div>
 
-        <p className="text-sm text-[#7A7265] leading-relaxed">
+        <p className="text-sm text-[#50585C] dark:text-[#7A8992] leading-relaxed">
           {exercise.instruction}
         </p>
 
         {exercise.contextSnippet && (
-          <div className="p-4 rounded-2xl bg-[#DDD7CA] border-l-4 border-l-[#A84A28] border-y border-r border-[#C8C0B0] italic text-sm text-[#1E1B17]">
+          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border-l-4 border-l-[#00638E] dark:border-l-[#8CB9CC] border-y border-r border-[#BFD8E3]/40 dark:border-white/10 italic text-sm text-[#141414] dark:text-[#FFFFFF]">
             "{exercise.contextSnippet}"
           </div>
         )}
 
-        <div className="p-5 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] shadow-xs">
-          <h3 className="text-base sm:text-lg font-serif font-bold text-[#1E1B17] leading-snug">
+        <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs">
+          <h3 className="text-base sm:text-lg font-serif font-bold text-[#141414] dark:text-[#FFFFFF] leading-snug">
             {exercise.question}
           </h3>
         </div>
@@ -79,18 +79,18 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
           const isSelected = selectedId === option.id;
           const isThisCorrect = option.id === exercise.correctAnswerId;
 
-          let cardStyle = 'bg-[#DDD7CA] hover:bg-[#C8C0B0] border-[#C8C0B0] text-[#1E1B17]';
+          let cardStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
 
           if (submitted) {
             if (isThisCorrect) {
-              cardStyle = 'bg-[#535841]/20 border-[#535841] text-[#1E1B17] font-semibold shadow-xs';
+              cardStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-semibold shadow-xs';
             } else if (isSelected && !isThisCorrect) {
-              cardStyle = 'bg-[#A84A28]/20 border-[#A84A28] text-[#1E1B17]';
+              cardStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
             } else {
-              cardStyle = 'bg-[#DDD7CA]/40 border-transparent opacity-50 text-[#7A7265]';
+              cardStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C]/40 border-transparent opacity-50 text-[#50585C] dark:text-[#7A8992]';
             }
           } else if (isSelected) {
-            cardStyle = 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-xs font-semibold';
+            cardStyle = 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-xs font-semibold';
           }
 
           return (
@@ -104,17 +104,17 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
               )}
             >
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <span className="w-6 h-6 rounded-lg bg-black/05 border border-black/10 font-mono text-xs flex items-center justify-center font-bold text-[#7A7265] shrink-0 mt-0.5">
+                <span className="w-6 h-6 rounded-lg bg-black/05 border border-black/10 font-mono text-xs flex items-center justify-center font-bold text-[#50585C] dark:text-[#7A8992] shrink-0 mt-0.5">
                   {['A', 'B', 'C', 'D'][oIdx] || oIdx + 1}
                 </span>
                 <span className="text-xs sm:text-sm leading-relaxed">{option.text}</span>
               </div>
 
               {submitted && isThisCorrect && (
-                <Check className="w-5 h-5 text-[#535841] shrink-0" />
+                <Check className="w-5 h-5 text-[#004A6B] dark:text-[#BFD8E3] shrink-0" />
               )}
               {submitted && isSelected && !isThisCorrect && (
-                <XCircle className="w-5 h-5 text-[#A84A28] shrink-0" />
+                <XCircle className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC] shrink-0" />
               )}
             </button>
           );
@@ -127,20 +127,20 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
           className={clsx(
             'p-5 rounded-2xl border text-xs sm:text-sm space-y-2 animate-in fade-in duration-200',
             isCorrect
-              ? 'bg-[#535841]/10 border-[#535841]/30 text-[#1E1B17]'
-              : 'bg-[#A84A28]/10 border-[#A84A28]/30 text-[#1E1B17]'
+              ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]'
+              : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
           )}
         >
           <div className="flex items-center justify-between font-bold">
             <span className="flex items-center gap-2">
               {isCorrect ? (
                 <>
-                  <Check className="w-4 h-4 text-[#535841]" />
+                  <Check className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
                   <span>Jawaban Tepat! (+{exercise.points} Poin)</span>
                 </>
               ) : (
                 <>
-                  <XCircle className="w-4 h-4 text-[#A84A28]" />
+                  <XCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
                   <span>Kurang Tepat. Periksa Pembahasan di Bawah.</span>
                 </>
               )}
@@ -148,13 +148,13 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
 
             <button
               onClick={handleReset}
-              className="text-xs font-mono text-[#7A7265] hover:text-[#1E1B17] hover:underline"
+              className="text-xs font-mono text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] hover:underline"
             >
               Ulangi Soal
             </button>
           </div>
 
-          <p className="text-xs leading-relaxed text-[#524C42] pt-1 border-t border-[#C8C0B0]/60">
+          <p className="text-xs leading-relaxed text-[#2B2B2B] dark:text-[#BFD8E3] pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
             <strong>Pembahasan:</strong>{' '}
             {exercise.options.find((o) => o.id === (selectedId || exercise.correctAnswerId))?.explanation ||
               exercise.grammarTip ||
