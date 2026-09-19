@@ -14,6 +14,15 @@ import {
   Menu,
   X,
   Search,
+  ListCheck,
+  Layers,
+  Table,
+  Compass,
+  Sparkles,
+  Headphones,
+  Shuffle,
+  Archive,
+  ShieldCheck,
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { SpotlightSearch } from '@/components/search/SpotlightSearch';
@@ -21,19 +30,37 @@ import { clsx } from 'clsx';
 
 export const sidebarSections = [
   {
-    title: 'Belajar',
+    title: 'Analytics & Overview',
     items: [
-      { href: '/', label: 'Dashboard', icon: LayoutDashboard, accent: '#00638E' },
-      { href: '/workspace', label: 'Workspace 40 Modul', icon: Home, accent: '#8CB9CC' },
-      { href: '/learn', label: 'Kurikulum Tracks', icon: BookOpen, accent: '#8CB9CC' },
+      { href: '/', label: 'Dashboard Utama', icon: LayoutDashboard, accent: '#00638E' },
     ],
   },
   {
-    title: 'Ujian & Latihan',
+    title: 'Kurikulum & Materi',
     items: [
-      { href: '/exam', label: 'IELTS & TOEFL', icon: Award, accent: '#00638E' },
-      { href: '/vocabulary', label: 'AWL Lexicon', icon: Library, accent: '#00638E' },
-      { href: '/writing-pad', label: 'Writing Studio', icon: PenTool, accent: '#8CB9CC' },
+      { href: '/modules', label: 'Modul Materi (40 Bab)', icon: BookOpen, accent: '#00638E' },
+      { href: '/practice', label: 'Latihan & Bedah Soal', icon: ListCheck, accent: '#00638E' },
+      { href: '/learn', label: '7 Jalur Kurikulum Tracks', icon: Layers, accent: '#8CB9CC' },
+    ],
+  },
+  {
+    title: 'Laboratorium Bahasa',
+    items: [
+      { href: '/matrices', label: 'Master Matriks Fondasi', icon: Table, accent: '#00638E' },
+      { href: '/syntax', label: 'Studio Sintaksis & Parafrase', icon: Compass, accent: '#8CB9CC' },
+      { href: '/collocations', label: 'Diksi ACL & Kolokasi', icon: Sparkles, accent: '#8CB9CC' },
+      { href: '/phonetics', label: 'Fonetik IPA & Minimal Pairs', icon: Headphones, accent: '#00638E' },
+      { href: '/flashcards', label: 'Oxford 3000 SRS Flashcard', icon: Shuffle, accent: '#8CB9CC' },
+      { href: '/vocabulary', label: 'AWL Lexicon Oxford', icon: Library, accent: '#00638E' },
+      { href: '/writing-pad', label: 'Writing Studio & Linter', icon: PenTool, accent: '#8CB9CC' },
+    ],
+  },
+  {
+    title: 'Ujian & Evaluasi',
+    items: [
+      { href: '/exam', label: 'IELTS & TOEFL Hub', icon: Award, accent: '#00638E' },
+      { href: '/vault', label: 'Bank Khilaf (Mistake SRS)', icon: Archive, accent: '#00638E' },
+      { href: '/diagnostic', label: 'Matriks Diagnostik CEFR', icon: ShieldCheck, accent: '#8CB9CC' },
     ],
   },
 ];
@@ -73,10 +100,10 @@ export function AppShell({
   }, []);
 
   const renderSidebarContent = () => (
-    <div className="flex flex-col h-full justify-between p-4">
-      <div className="space-y-6">
+    <div className="flex flex-col h-full justify-between p-4 overflow-hidden">
+      <div className="flex flex-col flex-1 min-h-0 space-y-4">
         {/* Brand */}
-        <div className="flex items-center justify-between px-1 pt-1">
+        <div className="flex items-center justify-between px-1 pt-1 shrink-0">
           <Link href="/" className="flex items-center gap-2.5 group">
             <div
               className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform"
@@ -92,7 +119,7 @@ export function AppShell({
                 Meraki
               </h1>
               <p className="text-[9px] font-medium tracking-wider uppercase text-[#50585C] dark:text-[#7A8992]">
-                English Studio
+                Oxford Studio
               </p>
             </div>
           </Link>
@@ -107,8 +134,8 @@ export function AppShell({
           )}
         </div>
 
-        {/* Nav Sections */}
-        <nav className="space-y-4">
+        {/* Scrollable Nav Sections */}
+        <nav className="flex-1 overflow-y-auto pr-1 space-y-4 no-scrollbar">
           {sidebarSections.map((section) => (
             <div key={section.title} className="space-y-0.5">
               <div className="px-2.5 pb-1 text-[9px] font-bold uppercase tracking-wider text-[#50585C] dark:text-[#7A8992]">
@@ -126,7 +153,7 @@ export function AppShell({
                     key={item.href}
                     href={item.href}
                     className={clsx(
-                      'flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-xs font-medium transition-all group tactile-btn',
+                      'flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all group tactile-btn',
                       isActive
                         ? 'bg-[#00638E] text-white font-semibold shadow-xs'
                         : 'text-[#50585C] dark:text-[#BFD8E3] hover:text-[#141414] dark:hover:text-[#FFFFFF] hover:bg-[#EDF3F7] dark:hover:bg-[#1C1C1C]'
@@ -134,7 +161,7 @@ export function AppShell({
                   >
                     <Icon
                       className={clsx(
-                        'w-4 h-4 shrink-0 transition-colors',
+                        'w-3.5 h-3.5 shrink-0 transition-colors',
                         isActive
                           ? 'text-white'
                           : 'text-[#50585C] dark:text-[#7A8992] group-hover:text-[#00638E] dark:group-hover:text-[#8CB9CC]'
@@ -150,8 +177,8 @@ export function AppShell({
       </div>
 
       {/* Bottom Footer Status Card */}
-      <div className="pt-4 border-t border-[#BFD8E3]/40 dark:border-white/5 space-y-2">
-        <div className="p-3 rounded-xl bg-[#EDF3F7] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/5">
+      <div className="pt-3 border-t border-[#BFD8E3]/40 dark:border-white/5 shrink-0">
+        <div className="p-2.5 rounded-xl bg-[#EDF3F7] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/5">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#00638E] animate-pulse shrink-0" />
             <span className="text-[11px] font-semibold text-[#141414] dark:text-[#FFFFFF]">
@@ -169,7 +196,7 @@ export function AppShell({
   return (
     <div className="flex min-h-screen w-full bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] font-sans antialiased">
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex w-64 shrink-0 flex-col bg-[#FFFFFF] dark:bg-[#141414] border-r border-[#BFD8E3]/40 dark:border-white/5 sticky top-0 h-screen z-30">
+      <aside className="hidden md:flex w-60 xl:w-64 shrink-0 flex-col bg-[#FFFFFF] dark:bg-[#141414] border-r border-[#BFD8E3]/40 dark:border-white/5 sticky top-0 h-screen z-30">
         {renderSidebarContent()}
       </aside>
 
@@ -180,7 +207,7 @@ export function AppShell({
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className="w-64 max-w-[80vw] h-full bg-[#FFFFFF] dark:bg-[#141414] border-r border-[#BFD8E3]/40 dark:border-white/5 shadow-2xl animate-in slide-in-from-left duration-200"
+            className="w-64 max-w-[85vw] h-full bg-[#FFFFFF] dark:bg-[#141414] border-r border-[#BFD8E3]/40 dark:border-white/5 shadow-2xl animate-in slide-in-from-left duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {renderSidebarContent()}
