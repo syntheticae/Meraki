@@ -1329,7 +1329,9 @@ export default function MerakiApp() {
   };
 
   return (
-    <div className="h-[100dvh] min-h-[100dvh] w-full max-w-[100vw] flex bg-[#EFE9DF] text-[#1E1B17] overflow-hidden antialiased select-text overscroll-none touch-pan-y">
+    <div className="meraki-ink mi-canvas h-[100dvh] min-h-[100dvh] w-full max-w-[100vw] flex flex-col overflow-hidden antialiased select-text overscroll-none touch-pan-y">
+      {/* 3-panel spatial layout container */}
+      <div className="flex-1 flex gap-2.5 sm:gap-3 p-2 sm:p-3 md:p-3.5 min-h-0 overflow-hidden max-w-[1920px] w-full mx-auto">
       {/* Hidden File Input for Data Restore */}
       <input
         type="file"
@@ -1349,27 +1351,35 @@ export default function MerakiApp() {
 
       {/* ───────────── MASTER APP SIDEBAR (MODERN, CLEAN, COLLAPSIBLE & MOBILE-DRAWER) ───────────── */}
       <aside className={clsx(
-        'bg-[#E8E2D6] border-r border-[#C8C0B0] flex flex-col justify-between h-full transition-all duration-300 shrink-0 select-none overflow-hidden',
+        'mi-slab meraki-ink flex flex-col justify-between h-full transition-all duration-300 shrink-0 select-none overflow-hidden p-3.5',
         // Desktop positioning
         'hidden md:flex',
-        isNavOpen ? 'md:w-64' : 'md:w-0 md:border-r-0',
+        isNavOpen ? 'md:w-60 xl:w-64' : 'md:w-0 md:p-0 md:border-0 md:opacity-0',
         // Mobile positioning when open
         isNavOpen && '!flex fixed inset-y-0 left-0 z-50 w-72 pt-safe pb-safe shadow-2xl md:shadow-none md:relative'
       )}>
         {/* Sidebar Header */}
-        <div className="p-5 border-b border-[#C8C0B0] space-y-3">
+        <div className="space-y-3 pb-3 border-b border-white/[0.07]">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="font-serif text-2xl font-bold tracking-tight text-[#1E1B17]">
-                Meraki
-              </span>
-              <span className="text-[9px] font-mono uppercase tracking-wider bg-[#A84A28]/10 text-[#A84A28] px-2 py-0.5 rounded-full font-bold">
-                Oxford
-              </span>
+            <div className="flex items-center gap-2.5">
+              <div
+                className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
+                style={{ background: 'linear-gradient(135deg, #7C6EEA 0%, #9B90F2 100%)' }}
+              >
+                <span className="text-[13px] font-black text-[#0F0F16]">M</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[14px] font-bold tracking-tight text-[#E8E8F0] leading-tight">
+                  Meraki
+                </span>
+                <span className="text-[9px] font-medium tracking-wider uppercase text-[#6A6A84]">
+                  Oxford Studio
+                </span>
+              </div>
             </div>
             <button
               onClick={() => setIsNavOpen(false)}
-              className="p-1.5 rounded-xl hover:bg-[#DDD7CA] text-[#7A7265] hover:text-[#1E1B17] transition-colors tactile-btn"
+              className="p-1.5 rounded-xl hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-colors"
               title="Sembunyikan Navigasi (Zen Mode)"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -1378,7 +1388,7 @@ export default function MerakiApp() {
         </div>
 
         {/* Sidebar Nav Items */}
-        <div className="flex-1 overflow-y-auto p-3 space-y-6">
+        <div className="flex-1 overflow-y-auto mi-scroll py-3 space-y-5 pr-1">
           {/* Section 1: Kurikulum & Latihan */}
           <div className="space-y-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#7A7265] px-3 font-semibold block">
@@ -1388,9 +1398,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('curriculum')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'curriculum'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'curriculum' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <BookOpen className="w-4 h-4 text-[#A84A28]" />
@@ -1401,9 +1409,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('practice')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'practice'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'practice' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <ListCheck className="w-4 h-4 text-[#535841]" />
@@ -1420,9 +1426,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('collocations')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'collocations'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'collocations' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <Sparkles className="w-4 h-4 text-[#A84A28]" />
@@ -1433,9 +1437,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('matrices')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'matrices'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'matrices' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <Table className="w-4 h-4 text-[#535841]" />
@@ -1446,9 +1448,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('studio')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'studio'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'studio' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <PenTool className="w-4 h-4 text-[#A84A28]" />
@@ -1459,9 +1459,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('phonetics')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'phonetics'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'phonetics' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <Ear className="w-4 h-4 text-[#535841]" />
@@ -1472,9 +1470,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('oxford3000')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'oxford3000'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'oxford3000' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <Layers className="w-4 h-4 text-[#A84A28]" />
@@ -1491,9 +1487,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('vault')}
               className={clsx(
                 'w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'vault'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'vault' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <div className="flex items-center gap-3">
@@ -1511,9 +1505,7 @@ export default function MerakiApp() {
               onClick={() => handleNavSelect('diagnostic')}
               className={clsx(
                 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs transition-all tactile-btn text-left',
-                activeHub === 'diagnostic'
-                  ? 'bg-[#1E1B17] text-[#EFE9DF] font-semibold shadow-xs'
-                  : 'text-[#38332A] hover:bg-[#DDD7CA]'
+                activeHub === 'diagnostic' ? 'mi-nav-active' : 'text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
               )}
             >
               <Award className="w-4 h-4 text-[#535841]" />
@@ -1528,7 +1520,7 @@ export default function MerakiApp() {
             </span>
             <Link
               href="/dashboard"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-3">
                 <BarChart2 className="w-4 h-4 text-[#A84A28]" />
@@ -1539,7 +1531,7 @@ export default function MerakiApp() {
 
             <Link
               href="/exam"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-3">
                 <GraduationCap className="w-4 h-4 text-[#535841]" />
@@ -1550,7 +1542,7 @@ export default function MerakiApp() {
 
             <Link
               href="/vocabulary"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-3">
                 <BookMarked className="w-4 h-4 text-[#A84A28]" />
@@ -1560,7 +1552,7 @@ export default function MerakiApp() {
             </Link>
             <Link
               href="/writing-pad"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-3">
                 <PenTool className="w-4 h-4 text-[#535841]" />
@@ -1571,7 +1563,7 @@ export default function MerakiApp() {
 
             <Link
               href="/learn"
-              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#38332A] hover:bg-[#DDD7CA]"
+              className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl text-xs transition-all tactile-btn text-left text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]"
             >
               <div className="flex items-center gap-3">
                 <BookOpen className="w-4 h-4 text-[#A84A28]" />
@@ -1583,17 +1575,17 @@ export default function MerakiApp() {
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-4 pb-safe pb-6 sm:pb-4 border-t border-[#C8C0B0] bg-[#E2DCD0]/60 space-y-3 shrink-0">
-          <div className="p-3 rounded-2xl bg-[#DDD7CA] border border-[#C8C0B0] space-y-1.5">
+        <div className="pt-3 border-t border-white/[0.07] space-y-2.5 shrink-0">
+          <div className="mi-inner p-2.5 rounded-xl space-y-1.5">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-[#7A7265]">Kurikulum Selesai</span>
-              <span className="font-bold text-[#1E1B17]">
+              <span className="text-[#8A8AA8] text-[11px]">Kurikulum Selesai</span>
+              <span className="font-bold text-[#E8E8F0] text-[11px]">
                 {completedTopicIds.length}/{MERAKI_CURRICULUM.length}
               </span>
             </div>
-            <div className="w-full h-1.5 bg-[#C8C0B0] rounded-full overflow-hidden">
+            <div className="mi-progress h-1.5 w-full">
               <div
-                className="h-full bg-[#A84A28] transition-all duration-500"
+                className="mi-progress-fill"
                 style={{
                   width: `${(completedTopicIds.length / MERAKI_CURRICULUM.length) * 100}%`,
                 }}
@@ -1601,10 +1593,10 @@ export default function MerakiApp() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs font-mono text-[#7A7265] pt-1">
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#8A8AA8] px-1">
             <button
               onClick={handleExportDataBackup}
-              className="hover:text-[#1E1B17] flex items-center gap-1 hover:underline min-h-[32px] px-1"
+              className="hover:text-[#E8E8F0] flex items-center gap-1 transition-colors"
               title="Cadangkan Data Progres (.json)"
             >
               <Download className="w-3 h-3" />
@@ -1613,7 +1605,7 @@ export default function MerakiApp() {
 
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="hover:text-[#1E1B17] flex items-center gap-1 hover:underline min-h-[32px] px-1"
+              className="hover:text-[#E8E8F0] flex items-center gap-1 transition-colors"
               title="Pulihkan Data Backup (.json)"
             >
               <Upload className="w-3 h-3" />
@@ -1622,7 +1614,7 @@ export default function MerakiApp() {
 
             <button
               onClick={handleResetProgress}
-              className="hover:text-[#A84A28] flex items-center gap-1 hover:underline min-h-[32px] px-1"
+              className="hover:text-[#7C6EEA] flex items-center gap-1 transition-colors"
               title="Reset Progres"
             >
               <RotateCcw className="w-3 h-3" />
@@ -1633,13 +1625,13 @@ export default function MerakiApp() {
       </aside>
 
       {/* ───────────── MAIN APP CONTAINER ───────────── */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden relative">
-        {/* Top Minimal Toolbar */}
-        <header className="px-3 sm:px-6 pt-safe glass-header border-b border-[#C8C0B0] flex items-center justify-between shrink-0 z-30 min-h-12 py-1.5 sm:py-0">
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden gap-2.5 sm:gap-3">
+        {/* Top Floating Dock Capsule */}
+        <header className="mi-dock px-3.5 sm:px-5 py-2.5 flex items-center justify-between shrink-0 z-30 gap-2">
           <div className="flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0">
             <button
               onClick={() => setIsNavOpen(true)}
-              className="p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn flex items-center gap-1.5 text-xs font-mono shrink-0 min-h-[36px]"
+              className="p-1.5 sm:px-2.5 sm:py-1 rounded-xl mi-inner hover:bg-white/5 text-[#E8E8F0] transition-all text-xs font-mono flex items-center gap-1.5 shrink-0 min-h-[34px]"
               title="Buka Menu Navigasi"
             >
               <Menu className="w-4 h-4" />
@@ -1669,7 +1661,7 @@ export default function MerakiApp() {
             {/* Global Omnisearch Trigger */}
             <button
               onClick={() => setIsOmnisearchOpen(true)}
-              className="p-1.5 sm:px-2.5 sm:py-1 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-xs font-mono text-[#1E1B17] transition-all tactile-btn flex items-center gap-1.5 min-h-[36px]"
+              className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-xs font-mono text-[#8A8AA8] hover:text-[#E8E8F0] transition-all flex items-center gap-1.5 min-h-[34px]"
               title="Pencarian Global (Cmd+K)"
             >
               <Search className="w-3.5 h-3.5 text-[#7A7265]" />
@@ -1680,7 +1672,7 @@ export default function MerakiApp() {
             {/* Audio Settings Trigger */}
             <button
               onClick={() => setIsAudioSettingsOpen(true)}
-              className="hidden sm:flex p-1.5 rounded-xl bg-[#DDD7CA] hover:bg-[#C8C0B0] text-[#1E1B17] transition-all tactile-btn items-center gap-1 text-xs font-mono min-h-[36px]"
+              className="hidden sm:flex p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl mi-inner hover:bg-white/5 text-[#8A8AA8] hover:text-[#E8E8F0] transition-all items-center gap-1.5 text-xs font-mono min-h-[34px]"
               title="Pengaturan Suara TTS & Aksen"
             >
               <Headphones className="w-3.5 h-3.5 text-[#535841]" />
@@ -1702,7 +1694,7 @@ export default function MerakiApp() {
                 onClick={() => setIsModuleIndexOpen(!isModuleIndexOpen)}
                 className={clsx(
                   'px-2.5 py-1.5 rounded-xl transition-all tactile-btn flex items-center gap-1 text-xs font-mono border border-[#C8C0B0] min-h-[36px]',
-                  isModuleIndexOpen ? 'bg-[#1E1B17] text-[#EFE9DF] font-bold' : 'bg-[#DDD7CA] text-[#1E1B17]'
+                  isModuleIndexOpen ? 'mi-nav-active' : 'mi-inner text-[#8A8AA8] hover:text-[#E8E8F0]'
                 )}
                 title="Pilih Modul Kurikulum"
               >
@@ -1727,10 +1719,10 @@ export default function MerakiApp() {
         </header>
 
         {/* Dynamic Content Canvas */}
-        <main className="flex-1 overflow-hidden">
+        <main className="flex-1 min-h-0 overflow-hidden">
           {/* ───────────── WORKSPACE 1: KURIKULUM (MATERI LENGKAP) ───────────── */}
           {activeHub === 'curriculum' && (
-            <div className="h-full grid grid-cols-12 overflow-hidden relative">
+            <div className="h-full flex gap-2.5 sm:gap-3 min-h-0 overflow-hidden relative">
               {/* Mobile Module Directory Modal (Bottom Sheet on Mobile) */}
               {isModuleIndexOpen && (
                 <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-xs md:hidden">
@@ -1814,18 +1806,16 @@ export default function MerakiApp() {
 
               {/* Desktop Module Directory Sidebar */}
               {isModuleIndexOpen && (
-                <aside className="hidden md:flex md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex-col h-full overflow-hidden transition-all duration-300">
-                  <div className="p-3.5 border-b border-[#C8C0B0]/70 space-y-2 shrink-0">
-                    <div className="relative">
-                      <Search className="w-3.5 h-3.5 text-[#7A7265] absolute left-3 top-1/2 -translate-y-1/2" />
-                      <input
-                        type="text"
-                        value={searchFilter}
-                        onChange={(e) => setSearchFilter(e.target.value)}
-                        placeholder="Cari modul kurikulum..."
-                        className="w-full pl-9 pr-3 py-1.5 text-xs bg-[#DDD7CA] border border-[#C8C0B0] rounded-2xl outline-hidden focus:border-[#A84A28] text-[#1E1B17]"
-                      />
-                    </div>
+                <aside className="mi-slab hidden md:flex md:w-72 lg:w-80 h-full flex-col overflow-hidden shrink-0 p-3 space-y-3">
+                  <div className="relative shrink-0">
+                    <Search className="w-3.5 h-3.5 text-[#6A6A84] absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      value={searchFilter}
+                      onChange={(e) => setSearchFilter(e.target.value)}
+                      placeholder="Cari modul kurikulum..."
+                      className="w-full pl-9 pr-3 py-2 text-xs mi-inner bg-transparent rounded-xl outline-hidden focus:border-[#7C6EEA] text-[#E8E8F0] placeholder-[#6A6A84]"
+                    />
                   </div>
 
                   <div className="flex-1 overflow-y-auto p-3 space-y-4">
@@ -1907,10 +1897,7 @@ export default function MerakiApp() {
               )}
 
               {/* Main Reading Pane */}
-              <section className={clsx(
-                'bg-[#EFE9DF] overflow-y-auto h-full p-4 sm:p-8 lg:p-12 pb-36 md:pb-16 space-y-6 sm:space-y-8 transition-all duration-300',
-                isModuleIndexOpen ? 'col-span-12 md:col-span-8 lg:col-span-9' : 'col-span-12'
-              )}>
+              <section className="mi-slab flex-1 min-h-0 overflow-y-auto mi-scroll p-4 sm:p-7 lg:p-10 space-y-6 sm:space-y-8">
                 <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
                   {/* Mobile Quick Module Chips Carousel */}
                   <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1 shrink-0 pb-2 border-b border-[#C8C0B0]/60">
@@ -1968,7 +1955,7 @@ export default function MerakiApp() {
 
                   {/* Mental Model Intro */}
                   {currentTopic.mentalModelIntro && (
-                    <div className="p-6 rounded-3xl bg-[#DDD7CA]/80 border-l-4 border-l-[#535841] space-y-2">
+                    <div className="p-5 sm:p-6 rounded-2xl mi-card border border-[rgba(124,110,234,0.3)] bg-[rgba(124,110,234,0.07)] space-y-2.5">
                       <div className="flex items-center gap-2">
                         <Sparkles className="w-4 h-4 text-[#535841]" />
                         <span className="font-mono text-xs uppercase tracking-wider text-[#535841] font-semibold">
@@ -1987,7 +1974,7 @@ export default function MerakiApp() {
 
                   {/* Decision Tree / Flowchart */}
                   {currentTopic.decisionTree && currentTopic.decisionTree.length > 0 && (
-                    <div className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4">
+                    <div className="p-5 sm:p-6 rounded-2xl mi-card space-y-4">
                       <div className="flex items-center gap-2">
                         <Compass className="w-4 h-4 text-[#A84A28]" />
                         <h3 className="font-serif text-lg font-medium text-[#1E1B17]">
@@ -2033,7 +2020,7 @@ export default function MerakiApp() {
                     {currentTopic.sections.map((section, idx) => (
                       <div
                         key={idx}
-                        className="p-6 rounded-3xl bg-[#E6E0D4] border border-[#C8C0B0] shadow-xs space-y-4"
+                        className="p-5 sm:p-6 rounded-2xl mi-card space-y-4"
                       >
                         <div className="flex items-center gap-2">
                           <span className="font-mono text-[10px] uppercase tracking-wider bg-[#DDD7CA] text-[#A84A28] px-2 py-0.5 rounded-md font-semibold">
@@ -2249,7 +2236,7 @@ export default function MerakiApp() {
 
                   {/* Pocket Axioms */}
                   {currentTopic.pocketAxioms && currentTopic.pocketAxioms.length > 0 && (
-                    <div className="p-6 rounded-3xl bg-[#1E1B17] text-[#EFE9DF] shadow-md space-y-4">
+                    <div className="p-5 sm:p-6 rounded-2xl mi-card border border-[rgba(124,110,234,0.25)] bg-[rgba(124,110,234,0.06)] shadow-md space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <Sparkles className="w-4 h-4 text-[#A84A28]" />
@@ -2299,9 +2286,9 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 2: LATIHAN SOAL & BEDAH KALIMAT ───────────── */}
           {activeHub === 'practice' && (
-            <div className="h-full grid grid-cols-12 overflow-hidden">
+            <div className="h-full flex gap-2.5 sm:gap-3 min-h-0 overflow-hidden">
               {/* Desktop Topic Selector Sidebar */}
-              <aside className="hidden md:flex md:col-span-4 lg:col-span-3 bg-[#E8E2D6] border-r border-[#C8C0B0] flex-col h-full overflow-hidden p-4 space-y-3">
+              <aside className="mi-slab hidden md:flex md:w-72 lg:w-80 h-full flex-col overflow-hidden shrink-0 p-3 space-y-3">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#7A7265] font-semibold block">
                   Pilih Modul Soal:
                 </span>
@@ -2653,7 +2640,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 3: ACL & DIKSI ALAMI ───────────── */}
           {activeHub === 'collocations' && (
-            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-36 md:pb-16">
+            <div className="mi-slab h-full overflow-y-auto mi-scroll p-4 sm:p-6 lg:p-8 space-y-6">
               {/* Header Switcher */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
@@ -2743,7 +2730,7 @@ export default function MerakiApp() {
                               }}
                               className={clsx(
                                 'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
-                                isSelected ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm' : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
+                                isSelected ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm' : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                               )}
                             >
                               <div className="flex items-center justify-between">
@@ -3356,7 +3343,7 @@ export default function MerakiApp() {
                             'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeTrapIndex === idx
                               ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
-                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
+                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                           )}
                         >
                           <div className="flex items-center justify-between">
@@ -3517,7 +3504,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 4: MATRIKS FONDASI ───────────── */}
           {activeHub === 'matrices' && (
-            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-36 md:pb-16">
+            <div className="mi-slab h-full overflow-y-auto mi-scroll p-4 sm:p-6 lg:p-8 space-y-6">
               {/* Header Switcher */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
@@ -3773,7 +3760,7 @@ export default function MerakiApp() {
                             'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeHhhIndex === idx
                               ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
-                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
+                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                           )}
                         >
                           <div className="flex items-center justify-between">
@@ -4111,7 +4098,7 @@ export default function MerakiApp() {
                             'w-full text-left p-4 sm:p-5 rounded-3xl border transition-all tactile-btn space-y-2.5',
                             activeTbeIndex === idx
                               ? 'bg-[#1E1B17] text-[#EFE9DF] border-[#1E1B17] shadow-sm'
-                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#38332A] hover:bg-[#DDD7CA]'
+                              : 'bg-[#E6E0D4] border-[#C8C0B0] text-[#8A8AA8] hover:text-[#E8E8F0] hover:bg-white/[0.05]'
                           )}
                         >
                           <div className="flex items-center justify-between">
@@ -4744,7 +4731,7 @@ export default function MerakiApp() {
 
           {/* ───────────── WORKSPACE 5: STUDIO SINTAKSIS ───────────── */}
           {activeHub === 'studio' && (
-            <div className="h-full overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 pb-36 md:pb-16">
+            <div className="mi-slab h-full overflow-y-auto mi-scroll p-4 sm:p-6 lg:p-8 space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#C8C0B0] shrink-0">
                 <div>
                   <span className="font-mono text-xs text-[#A84A28] uppercase font-semibold">
@@ -6598,7 +6585,7 @@ export default function MerakiApp() {
         {/* ───────────── FLOATING GLASSMORPHISM IOS DYNAMIC ISLAND NAVBAR ───────────── */}
         {!isNavOpen && (
           <div className="md:hidden fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none pb-safe animate-in slide-in-from-bottom-4 duration-300">
-            <nav className="pointer-events-auto flex items-center justify-between gap-1 p-1.5 px-2 rounded-full bg-[#E6E0D4]/88 backdrop-blur-2xl border border-white/60 shadow-[0_12px_36px_rgba(30,27,23,0.18)] ring-1 ring-[#C8C0B0]/60 w-full max-w-[340px] transition-all duration-300">
+            <nav className="pointer-events-auto flex items-center justify-between gap-1 p-1.5 px-2 rounded-full mi-dock shadow-2xl w-full max-w-[340px] transition-all duration-300">
               {[
                 { id: 'curriculum', label: 'Modul', icon: BookOpen },
                 { id: 'practice', label: 'Latihan', icon: ListCheck },
@@ -6637,6 +6624,8 @@ export default function MerakiApp() {
           </div>
         )}
       </div>
+      {/* end 3-panel spatial layout container */}
+    </div>
 
       {/* ───────────── GLOBAL MODAL 1: OMNISEARCH COMMAND PALETTE (CMD+K) ───────────── */}
       {isOmnisearchOpen && (
