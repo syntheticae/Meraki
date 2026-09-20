@@ -28,7 +28,10 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover',
-  themeColor: '#000000',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#DFE5EA' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -84,7 +87,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="h-full w-full font-sans bg-[#F4F7F9] dark:bg-[#000000] text-[#141414] dark:text-[#FFFFFF] selection:bg-[#00638E] selection:text-white overscroll-none">
+      <body className="h-full w-full font-sans bg-[#DFE5EA] dark:bg-[#000000] text-[#0F172A] dark:text-[#FFFFFF] selection:bg-[#00638E] selection:text-white overscroll-none">
         {children}
       </body>
     </html>

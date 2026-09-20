@@ -12,7 +12,7 @@ import {
   ArrowRight,
   ShieldAlert,
 } from 'lucide-react';
-import { AppShell } from '@/components/layout/AppShell';
+import { useRouter } from 'next/navigation';
 import {
   ACADEMIC_COLLOCATIONS_DATA,
   ON_POINT_VERBS_DATA,
@@ -23,7 +23,7 @@ import {
 import { playTextToSpeech } from '@/services/speech';
 import { clsx } from 'clsx';
 
-export default function CollocationsPage() {
+export function CollocationsView() {
   const [collocationSubTab, setCollocationSubTab] = useState<'acl' | 'on-point' | 'prep' | 'confusables' | 'traps'>('acl');
   const [collocationSearch, setCollocationSearch] = useState<string>('');
   const [activeCollocationIndex, setActiveCollocationIndex] = useState<number>(0);
@@ -129,33 +129,32 @@ export default function CollocationsPage() {
   const commonPreps = ['to', 'for', 'of', 'in', 'on', 'with', 'from', 'against', 'between', 'into', 'towards', 'at', 'about', 'by'];
 
   return (
-    <AppShell category="Laboratorium Bahasa" title="Diksi ACL & Kolokasi Natural">
-      <div className="space-y-6 max-w-7xl mx-auto pb-12">
-        {/* Header Hero Liquid Glass */}
-        <div className="bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 rounded-3xl p-6 sm:p-8 shadow-xs">
+    <div className="space-y-6 max-w-7xl mx-auto pb-12">
+        {/* Header Hero */}
+        <div className="bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] text-xs font-mono font-medium">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] border border-[#00638E]/20 text-xs font-mono font-medium">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Academic Collocations List & Anti-Literal Studio</span>
+                <span>Academic Collocations List &amp; Anti-Literal Studio</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-serif text-[#141414] dark:text-white">
-                Studio Kolokasi Baku & Diksi On-Point
+              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] dark:text-white">
+                Studio Kolokasi Baku &amp; Diksi On-Point
               </h1>
-              <p className="text-xs sm:text-sm text-[#50585C] dark:text-[#7A8992]">
+              <p className="text-xs sm:text-sm text-[#334155] dark:text-[#7A8992]">
                 Pelajari 200+ frasa akademis alami, singkirkan kebiasaan terjemahan kata-per-kata Indonesia, dan kuasai preposisi terikat.
               </p>
             </div>
 
             {/* Sub-tab Pill Switcher */}
-            <div className="flex items-center gap-1.5 p-1.5 bg-[#EDF3F7] dark:bg-[#1C1C1C] rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 overflow-x-auto no-scrollbar shrink-0">
+            <div className="flex items-center gap-1.5 p-1.5 bg-[#F1F5F9] dark:bg-[#1C1C1C] rounded-2xl border border-[#CBD5E1] dark:border-white/10 overflow-x-auto no-scrollbar shrink-0">
               <button
                 onClick={() => setCollocationSubTab('acl')}
                 className={clsx(
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap',
                   collocationSubTab === 'acl'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
                 ACL Collocations
@@ -166,7 +165,7 @@ export default function CollocationsPage() {
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap',
                   collocationSubTab === 'on-point'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
                 On-Point Verbs
@@ -177,7 +176,7 @@ export default function CollocationsPage() {
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap',
                   collocationSubTab === 'prep'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
                 Dependent Prepositions
@@ -188,10 +187,10 @@ export default function CollocationsPage() {
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap',
                   collocationSubTab === 'confusables'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
-                Confusables
+                Confusable Words
               </button>
               <button
                 onClick={() => setCollocationSubTab('traps')}
@@ -199,10 +198,10 @@ export default function CollocationsPage() {
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap',
                   collocationSubTab === 'traps'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
-                Anti-Literal (L1 Traps)
+                Anti-Literal Traps
               </button>
             </div>
           </div>
@@ -214,13 +213,13 @@ export default function CollocationsPage() {
             {/* Left Column: Filter & List */}
             <div className="col-span-1 lg:col-span-6 space-y-3">
               <div className="relative shrink-0">
-                <Search className="w-4 h-4 text-[#50585C] dark:text-[#7A8992] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#475569] dark:text-[#7A8992] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={collocationSearch}
                   onChange={(e) => setCollocationSearch(e.target.value)}
                   placeholder="Cari kolokasi atau arti bahasa Indonesia..."
-                  className="w-full pl-10 pr-4 py-2.5 text-xs bg-white/80 dark:bg-[#141414]/80 backdrop-blur-md border border-[#BFD8E3]/40 dark:border-white/10 rounded-2xl outline-none focus:border-[#00638E] text-[#141414] dark:text-white transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 text-xs bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-2xl outline-none focus:border-[#00638E] text-[#0F172A] dark:text-white transition-colors"
                 />
               </div>
 
@@ -243,7 +242,7 @@ export default function CollocationsPage() {
                         'w-full text-left p-5 rounded-2xl border transition-all space-y-2.5',
                         isSelected
                           ? 'bg-[#00638E] text-white border-[#00638E] shadow-sm'
-                          : 'bg-white/80 dark:bg-[#141414]/80 backdrop-blur-md border-[#BFD8E3]/40 dark:border-white/5 text-[#2B2B2B] dark:text-[#BFD8E3] hover:border-[#00638E]/50'
+                          : 'bg-white dark:bg-[#141414] border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#BFD8E3] hover:border-[#00638E]'
                       )}
                     >
                       <div className="flex items-center justify-between">
@@ -252,7 +251,7 @@ export default function CollocationsPage() {
                             'font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold',
                             isSelected
                               ? 'bg-white/20 text-white'
-                              : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
+                              : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] border border-[#CBD5E1] dark:border-white/10'
                           )}
                         >
                           {col.type}
@@ -267,7 +266,7 @@ export default function CollocationsPage() {
                       </div>
 
                       <h4 className="font-serif text-lg font-bold">{col.collocation}</h4>
-                      <p className={clsx('text-xs line-clamp-1', isSelected ? 'text-white/80' : 'text-[#50585C] dark:text-[#7A8992]')}>
+                      <p className={clsx('text-xs line-clamp-1', isSelected ? 'text-white/80' : 'text-[#475569] dark:text-[#7A8992]')}>
                         {col.meaningId}
                       </p>
 
@@ -275,8 +274,8 @@ export default function CollocationsPage() {
                         className={clsx(
                           'p-3 rounded-xl text-[11px] font-mono leading-relaxed',
                           isSelected
-                            ? 'bg-white/10 text-[#BFD8E3]'
-                            : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC]'
+                            ? 'bg-white/10 text-[#DFE5EA]'
+                            : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#004A6B] dark:text-[#8CB9CC] border border-[#00638E]/20'
                         )}
                       >
                         {col.literalIndonesianWarning}
@@ -288,33 +287,33 @@ export default function CollocationsPage() {
             </div>
 
             {/* Right Column: Interactive Cloze Test Card */}
-            <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-6 bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+            <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-6 bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
               {(() => {
                 const col = ACADEMIC_COLLOCATIONS_DATA[activeCollocationIndex] || ACADEMIC_COLLOCATIONS_DATA[0];
                 const options = [col.correctTarget, ...col.distractors].sort();
 
                 return (
                   <div className="space-y-5">
-                    <div className="pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                    <div className="pb-4 border-b border-[#CBD5E1] dark:border-white/10">
                       <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">
                         Uji Pasangan Kolokasi Baku (Cloze Test)
                       </span>
                       <div className="flex items-center justify-between gap-2 mt-1">
-                        <h3 className="font-serif text-2xl text-[#141414] dark:text-white font-bold">{col.collocation}</h3>
+                        <h3 className="font-serif text-2xl text-[#0F172A] dark:text-white font-bold">{col.collocation}</h3>
                         <button
                           onClick={() => playTextToSpeech(col.collocation)}
-                          className="text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E] p-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] transition-colors"
+                          className="text-[#475569] dark:text-[#7A8992] hover:text-[#00638E] p-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 transition-colors"
                         >
                           <Volume2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
-                      <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
+                    <div className="p-5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-2">
+                      <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block font-semibold">
                         Lengkapi Kalimat dengan Kolokasi Baku:
                       </span>
-                      <p className="font-serif text-base sm:text-lg text-[#141414] dark:text-white leading-relaxed">
+                      <p className="font-serif text-base sm:text-lg text-[#0F172A] dark:text-white leading-relaxed">
                         "{col.clozePrompt}"
                       </p>
                     </div>
@@ -325,15 +324,15 @@ export default function CollocationsPage() {
                         const isCorrect = opt === col.correctTarget;
 
                         let optStyle =
-                          'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:hover:bg-[#1C1C1C]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-white';
+                          'bg-[#F8FAFC] dark:bg-[#1C1C1C] hover:bg-[#F1F5F9] dark:hover:bg-[#1C1C1C]/80 border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-white';
                         if (collocationQuizSelected) {
                           if (isCorrect) {
                             optStyle =
-                              'bg-[#004A6B]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#00638E] dark:text-white font-bold';
+                              'bg-emerald-500/15 border-emerald-600 text-emerald-950 dark:text-emerald-200 font-bold';
                           } else if (isSelected && !isCorrect) {
-                            optStyle = 'bg-rose-500/15 border-rose-400 text-rose-600 dark:text-rose-400';
+                            optStyle = 'bg-rose-500/15 border-rose-600 text-rose-950 dark:text-rose-200';
                           } else {
-                            optStyle = 'opacity-40 bg-[#EDF3F7] dark:bg-[#1C1C1C] border-transparent text-[#50585C]';
+                            optStyle = 'opacity-40 bg-[#F8FAFC] dark:bg-[#1C1C1C] border-transparent text-[#475569]';
                           }
                         }
 
@@ -368,22 +367,22 @@ export default function CollocationsPage() {
                     </div>
 
                     {collocationQuizSelected && (
-                      <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-2.5 animate-in fade-in duration-200">
+                      <div className="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs space-y-2.5 animate-in fade-in duration-200">
                         <div className="flex items-center justify-between">
-                          <span className="font-mono text-[10px] uppercase text-[#50585C] dark:text-[#7A8992] font-semibold">
+                          <span className="font-mono text-[10px] uppercase text-[#475569] dark:text-[#7A8992] font-semibold">
                             Contoh Kalimat Akademik Baku:
                           </span>
                           <button
                             onClick={() => playTextToSpeech(col.exampleSentence)}
-                            className="text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E]"
+                            className="text-[#475569] dark:text-[#7A8992] hover:text-[#00638E]"
                           >
                             <Volume2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
-                        <p className="font-serif text-sm text-[#141414] dark:text-white italic">
+                        <p className="font-serif text-sm text-[#0F172A] dark:text-white italic">
                           "{col.exampleSentence}"
                         </p>
-                        <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                        <p className="text-[#1E293B] dark:text-[#BFD8E3] leading-relaxed pt-2 border-t border-[#CBD5E1] dark:border-white/10">
                           <strong>Kaidah Leksikal:</strong> {col.literalIndonesianWarning}
                         </p>
                       </div>
@@ -402,45 +401,45 @@ export default function CollocationsPage() {
               {ON_POINT_VERBS_DATA.map((opv) => (
                 <div
                   key={opv.id}
-                  className="p-6 rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 space-y-4 shadow-xs"
+                  className="p-6 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 space-y-4 shadow-xs"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-2.5 py-0.5 rounded-full font-semibold">
+                    <span className="font-mono text-[10px] bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] border border-[#00638E]/20 px-2.5 py-0.5 rounded-full font-semibold">
                       {opv.partOfSpeech}
                     </span>
                     <button
                       onClick={() => playTextToSpeech(opv.onPointVerb)}
-                      className="text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E] p-1.5 rounded-lg transition-colors"
+                      className="text-[#475569] dark:text-[#7A8992] hover:text-[#00638E] p-1.5 rounded-lg transition-colors"
                     >
                       <Volume2 className="w-4 h-4" />
                     </button>
                   </div>
 
                   <div>
-                    <h4 className="font-serif text-2xl font-bold text-[#141414] dark:text-white">{opv.onPointVerb}</h4>
-                    <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] block">{opv.ipa}</span>
+                    <h4 className="font-serif text-2xl font-bold text-[#0F172A] dark:text-white">{opv.onPointVerb}</h4>
+                    <span className="font-mono text-xs text-[#475569] dark:text-[#7A8992] block">{opv.ipa}</span>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/25 dark:border-[#8CB9CC]/30 text-xs space-y-1">
-                    <span className="font-mono text-[10px] text-[#00638E] dark:text-[#8CB9CC] uppercase block font-semibold">
+                  <div className="p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-rose-200 dark:border-rose-900/40 text-xs space-y-1">
+                    <span className="font-mono text-[10px] text-rose-700 dark:text-rose-400 uppercase block font-semibold">
                       Gantikan Frasa Panjang/Kaku:
                     </span>
-                    <p className="text-[#141414] dark:text-white font-medium">❌ "{opv.indonesianClunkyPhrase}"</p>
-                    <p className="text-[11px] text-[#50585C] dark:text-[#7A8992] italic">({opv.clunkyEnglishWordy})</p>
+                    <p className="text-[#0F172A] dark:text-white font-medium">❌ "{opv.indonesianClunkyPhrase}"</p>
+                    <p className="text-[11px] text-[#475569] dark:text-[#7A8992] italic">({opv.clunkyEnglishWordy})</p>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1">
+                  <div className="p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs space-y-1">
                     <span className="font-mono text-[10px] text-[#004A6B] dark:text-[#BFD8E3] uppercase block font-semibold">
-                      Definisi & Contoh Baku:
+                      Definisi &amp; Contoh Baku:
                     </span>
-                    <p className="text-[11px] text-[#2B2B2B] dark:text-white leading-relaxed">{opv.formalDefinition}</p>
-                    <p className="font-serif text-[12px] text-[#141414] dark:text-white italic pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                    <p className="text-[11px] text-[#1E293B] dark:text-white leading-relaxed">{opv.formalDefinition}</p>
+                    <p className="font-serif text-[12px] text-[#0F172A] dark:text-white italic pt-1 border-t border-[#CBD5E1] dark:border-white/10">
                       "{opv.exampleSentence}"
                     </p>
                   </div>
 
                   {opv.antonymOrPair && (
-                    <div className="text-[11px] font-mono text-[#50585C] dark:text-[#7A8992]">
+                    <div className="text-[11px] font-mono text-[#475569] dark:text-[#7A8992]">
                       <strong>Pasangan / Antonim:</strong> {opv.antonymOrPair}
                     </div>
                   )}
@@ -454,7 +453,7 @@ export default function CollocationsPage() {
         {collocationSubTab === 'prep' && (
           <div className="space-y-6 w-full">
             {/* Header Filters & Search */}
-            <div className="p-4 sm:p-5 rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="p-4 sm:p-5 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex flex-wrap gap-2">
                 {(['all', 'Adjective', 'Verb', 'Noun'] as const).map((cat) => {
                   const count =
@@ -471,14 +470,14 @@ export default function CollocationsPage() {
                         'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all flex items-center gap-1.5 min-h-[38px]',
                         isSel
                           ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                          : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                          : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                       )}
                     >
                       <span>{cat === 'all' ? 'Semua Kategori' : cat}</span>
                       <span
                         className={clsx(
                           'px-1.5 py-0.2 text-[10px] rounded-md font-mono',
-                          isSel ? 'bg-white/20 text-white' : 'bg-[#BFD8E3]/20 text-[#50585C] dark:text-[#7A8992]'
+                          isSel ? 'bg-white/20 text-white' : 'bg-[#CBD5E1]/40 text-[#0F172A] dark:text-[#7A8992]'
                         )}
                       >
                         {count}
@@ -489,13 +488,13 @@ export default function CollocationsPage() {
               </div>
 
               <div className="relative w-full md:w-72">
-                <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#50585C] dark:text-[#7A8992]" />
+                <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#475569] dark:text-[#7A8992]" />
                 <input
                   type="text"
                   value={prepSearchQuery}
                   onChange={(e) => setPrepSearchQuery(e.target.value)}
                   placeholder="Cari kata atau arti..."
-                  className="w-full pl-9 pr-4 py-2 bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-xl text-xs text-[#141414] dark:text-white placeholder:text-[#50585C] dark:placeholder:text-[#7A8992] outline-none focus:border-[#00638E] min-h-[38px]"
+                  className="w-full pl-9 pr-4 py-2 bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 rounded-xl text-xs text-[#0F172A] dark:text-white placeholder:text-[#475569] dark:placeholder:text-[#7A8992] outline-none focus:border-[#00638E] min-h-[38px]"
                 />
               </div>
             </div>
@@ -505,7 +504,7 @@ export default function CollocationsPage() {
               {/* Left Column: List */}
               <div className="lg:col-span-5 space-y-3">
                 <div className="flex items-center justify-between px-1">
-                  <span className="font-mono text-[11px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
+                  <span className="font-mono text-[11px] text-[#475569] dark:text-[#7A8992] uppercase font-semibold">
                     Direktori Preposisi ({filteredPreps.length} item)
                   </span>
                   <span className="text-[11px] font-mono text-[#00638E] dark:text-[#8CB9CC]">Pilih untuk latihan</span>
@@ -528,25 +527,25 @@ export default function CollocationsPage() {
                           'p-4 rounded-2xl border transition-all cursor-pointer text-left flex items-center justify-between gap-3',
                           isSelected
                             ? 'bg-white dark:bg-[#141414] border-[#00638E] shadow-sm ring-1 ring-[#00638E]/30'
-                            : 'bg-white/80 dark:bg-[#141414]/80 hover:bg-white dark:hover:bg-[#141414] border-[#BFD8E3]/40 dark:border-white/5'
+                            : 'bg-white dark:bg-[#141414] hover:border-[#00638E] border-[#CBD5E1] dark:border-white/10'
                         )}
                       >
                         <div className="space-y-1 flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="font-serif font-bold text-sm text-[#141414] dark:text-white">
+                            <span className="font-serif font-bold text-sm text-[#0F172A] dark:text-white">
                               {item.word}
                             </span>
-                            <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]">
+                            <span className="font-mono text-[10px] px-2 py-0.5 rounded-md bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#475569] dark:text-[#7A8992]">
                               {item.partOfSpeech}
                             </span>
                           </div>
-                          <p className="text-xs text-[#50585C] dark:text-[#7A8992] truncate font-sans">
+                          <p className="text-xs text-[#475569] dark:text-[#7A8992] truncate font-sans">
                             {item.meaningId}
                           </p>
                         </div>
 
                         <div className="flex items-center gap-2 shrink-0">
-                          <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#004A6B]/15 dark:bg-[#00638E]/20 text-[#004A6B] dark:text-[#BFD8E3]">
+                          <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#004A6B] dark:text-[#BFD8E3] border border-[#00638E]/20">
                             + {item.requiredPreposition}
                           </span>
                           <button
@@ -554,7 +553,7 @@ export default function CollocationsPage() {
                               e.stopPropagation();
                               playTextToSpeech(`${item.word} ${item.requiredPreposition}`);
                             }}
-                            className="p-1.5 rounded-lg hover:bg-[#EDF3F7] dark:hover:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E] transition-colors"
+                            className="p-1.5 rounded-lg hover:bg-[#F1F5F9] dark:hover:bg-[#1C1C1C] text-[#475569] dark:text-[#7A8992] hover:text-[#00638E] transition-colors"
                           >
                             <Volume2 className="w-3.5 h-3.5" />
                           </button>
@@ -567,31 +566,31 @@ export default function CollocationsPage() {
 
               {/* Right Column: Cloze Card */}
               <div className="lg:col-span-7 lg:sticky lg:top-6 space-y-4">
-                <div className="p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 shadow-xs space-y-5">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs space-y-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#CBD5E1] dark:border-white/10">
                     <div className="flex items-center gap-2">
-                      <span className="font-serif text-xl font-bold text-[#141414] dark:text-white">
+                      <span className="font-serif text-xl font-bold text-[#0F172A] dark:text-white">
                         {activePrep.word}
                       </span>
-                      <span className="font-mono text-xs bg-[#004A6B]/10 dark:bg-[#00638E]/15 text-[#004A6B] dark:text-[#BFD8E3] px-2.5 py-0.5 rounded-md uppercase font-semibold">
+                      <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/15 text-[#004A6B] dark:text-[#BFD8E3] border border-[#00638E]/20 px-2.5 py-0.5 rounded-md uppercase font-semibold">
                         {activePrep.partOfSpeech}
                       </span>
                     </div>
-                    <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
+                    <span className="font-mono text-xs text-[#475569] dark:text-[#7A8992]">
                       Item {activePrepIndex + 1} / {DEPENDENT_PREPOSITIONS_DATA.length}
                     </span>
                   </div>
 
-                  <div className="px-4 py-2.5 rounded-xl bg-[#EDF3F7]/60 dark:bg-[#1C1C1C]/60 border border-[#BFD8E3]/30 dark:border-white/10 text-xs text-[#141414] dark:text-white">
-                    <span className="font-mono font-semibold text-[#50585C] dark:text-[#7A8992] text-[10px] uppercase block">
+                  <div className="px-4 py-2.5 rounded-xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs text-[#0F172A] dark:text-white">
+                    <span className="font-mono font-semibold text-[#475569] dark:text-[#7A8992] text-[10px] uppercase block">
                       Makna Kontekstual:
                     </span>
                     {activePrep.meaningId}
                   </div>
 
-                  <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
+                  <div className="p-5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
+                      <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase font-semibold">
                         Lengkapi Preposisi Terikat yang Tepat:
                       </span>
                       <button
@@ -604,14 +603,14 @@ export default function CollocationsPage() {
                         <span>Dengar Kalimat Lengkap</span>
                       </button>
                     </div>
-                    <p className="font-serif text-lg text-[#141414] dark:text-white leading-relaxed">
+                    <p className="font-serif text-lg text-[#0F172A] dark:text-white leading-relaxed">
                       "{activePrep.clozeSentence}"
                     </p>
                   </div>
 
                   {/* Quick Preposition Chips */}
                   <div className="space-y-1.5">
-                    <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
+                    <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block font-semibold">
                       Pilih Cepat Preposisi:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
@@ -627,7 +626,7 @@ export default function CollocationsPage() {
                             'px-2.5 py-1 rounded-lg text-xs font-mono transition-all',
                             prepUserInput.trim().toLowerCase() === p
                               ? 'bg-[#00638E] text-white font-bold shadow-xs'
-                              : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-white hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B]'
+                              : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-white hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B]'
                           )}
                         >
                           {p}
@@ -647,11 +646,11 @@ export default function CollocationsPage() {
                           setPrepFeedback(null);
                         }}
                         placeholder="Ketik atau pilih preposisi di atas..."
-                        className="flex-1 px-4 py-2.5 text-xs bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 rounded-xl outline-none focus:border-[#00638E] text-[#141414] dark:text-white font-mono"
+                        className="flex-1 px-4 py-2.5 text-xs bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 rounded-xl outline-none focus:border-[#00638E] text-[#0F172A] dark:text-white font-mono"
                       />
                       <button
                         type="submit"
-                        className="px-6 py-2.5 rounded-xl bg-[#00638E] text-white text-xs font-mono font-medium hover:bg-[#004A6B] transition-colors shrink-0"
+                        className="px-6 py-2.5 rounded-xl bg-[#00638E] text-white text-xs font-mono font-medium hover:bg-[#004A6B] transition-colors shrink-0 shadow-xs"
                       >
                         Periksa Preposisi
                       </button>
@@ -664,14 +663,14 @@ export default function CollocationsPage() {
                       className={clsx(
                         'p-4 rounded-2xl border text-xs space-y-2 animate-in fade-in duration-200',
                         prepFeedback.isCorrect
-                          ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/20 border-[#00638E] text-[#141414] dark:text-white'
+                          ? 'bg-emerald-500/10 border-emerald-600 text-emerald-950 dark:text-emerald-200'
                           : 'bg-rose-500/10 border-rose-300 text-rose-700 dark:text-rose-300'
                       )}
                     >
                       <div className="flex items-center gap-2 font-semibold">
                         {prepFeedback.isCorrect ? (
                           <>
-                            <CheckCircle2 className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
+                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                             <span>
                               Preposisi Tepat! <strong>"{activePrep.word} {activePrep.requiredPreposition}"</strong>
                             </span>
@@ -685,14 +684,14 @@ export default function CollocationsPage() {
                           </>
                         )}
                       </div>
-                      <p className="font-serif italic pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                      <p className="font-serif italic pt-1 border-t border-[#CBD5E1] dark:border-white/10">
                         "{activePrep.exampleSentence}"
                       </p>
                     </div>
                   )}
 
                   {/* Navigation */}
-                  <div className="flex justify-between gap-3 pt-2 border-t border-[#BFD8E3]/40 dark:border-white/10">
+                  <div className="flex justify-between gap-3 pt-2 border-t border-[#CBD5E1] dark:border-white/10">
                     <button
                       onClick={() => {
                         setActivePrepIndex((prev) => Math.max(0, prev - 1));
@@ -700,7 +699,7 @@ export default function CollocationsPage() {
                         setPrepFeedback(null);
                       }}
                       disabled={activePrepIndex === 0}
-                      className="px-4 py-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 text-xs font-mono disabled:opacity-30 transition-all"
+                      className="px-4 py-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] hover:bg-[#E2E8F0] border border-[#CBD5E1] dark:border-white/10 text-xs font-mono disabled:opacity-30 transition-all text-[#0F172A] dark:text-white"
                     >
                       ← Sebelumnya
                     </button>
@@ -712,7 +711,7 @@ export default function CollocationsPage() {
                         setPrepUserInput('');
                         setPrepFeedback(null);
                       }}
-                      className="px-3.5 py-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-xs font-mono text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E] transition-colors"
+                      className="px-3.5 py-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs font-mono text-[#475569] dark:text-[#7A8992] hover:text-[#00638E] transition-colors"
                     >
                       Acak Kata
                     </button>
@@ -724,7 +723,7 @@ export default function CollocationsPage() {
                         setPrepFeedback(null);
                       }}
                       disabled={activePrepIndex === DEPENDENT_PREPOSITIONS_DATA.length - 1}
-                      className="px-4 py-2 rounded-xl bg-[#00638E] text-white text-xs font-mono disabled:opacity-30 hover:bg-[#004A6B] transition-colors"
+                      className="px-4 py-2 rounded-xl bg-[#00638E] text-white text-xs font-mono disabled:opacity-30 hover:bg-[#004A6B] transition-colors shadow-xs"
                     >
                       Selanjutnya →
                     </button>
@@ -742,47 +741,47 @@ export default function CollocationsPage() {
               const cw = CONFUSABLE_WORDS_DATA[activeConfusableIndex] || CONFUSABLE_WORDS_DATA[0];
 
               return (
-                <div className="p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 space-y-6 shadow-xs">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
-                    <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-white">
+                <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 space-y-6 shadow-xs">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#CBD5E1] dark:border-white/10">
+                    <h3 className="font-serif text-2xl font-bold text-[#0F172A] dark:text-white">
                       {cw.wordA} <span className="text-[#00638E] dark:text-[#8CB9CC]">vs</span> {cw.wordB}
                     </h3>
-                    <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
+                    <span className="font-mono text-xs text-[#475569] dark:text-[#7A8992]">
                       Pasangan {activeConfusableIndex + 1} dari {CONFUSABLE_WORDS_DATA.length}
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                    <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
+                    <div className="p-5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-2">
                       <span className="font-mono text-xs font-bold text-[#00638E] dark:text-[#8CB9CC] block">
                         {cw.wordA} ({cw.posA})
                       </span>
-                      <p className="text-[#2B2B2B] dark:text-white">{cw.definitionA}</p>
-                      <p className="font-serif text-[12px] text-[#141414] dark:text-white italic pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                      <p className="text-[#1E293B] dark:text-white">{cw.definitionA}</p>
+                      <p className="font-serif text-[12px] text-[#0F172A] dark:text-white italic pt-2 border-t border-[#CBD5E1] dark:border-white/10">
                         "{cw.exampleA}"
                       </p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2">
+                    <div className="p-5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-2">
                       <span className="font-mono text-xs font-bold text-[#004A6B] dark:text-[#BFD8E3] block">
                         {cw.wordB} ({cw.posB})
                       </span>
-                      <p className="text-[#2B2B2B] dark:text-white">{cw.definitionB}</p>
-                      <p className="font-serif text-[12px] text-[#141414] dark:text-white italic pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                      <p className="text-[#1E293B] dark:text-white">{cw.definitionB}</p>
+                      <p className="font-serif text-[12px] text-[#0F172A] dark:text-white italic pt-2 border-t border-[#CBD5E1] dark:border-white/10">
                         "{cw.exampleB}"
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#004A6B]/10 dark:bg-[#00638E]/15 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-xs font-mono text-[#004A6B] dark:text-[#BFD8E3]">
+                  <div className="p-4 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/15 border border-[#00638E]/30 text-xs font-mono text-[#004A6B] dark:text-[#BFD8E3]">
                     <strong>Trik Memori Diagnostik:</strong> {cw.diagnosticTrick}
                   </div>
 
-                  <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
-                    <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
+                  <div className="p-5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-3">
+                    <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block font-semibold">
                       Uji Ketepatan Penggunaan dalam Kalimat:
                     </span>
-                    <p className="font-serif text-base text-[#141414] dark:text-white">"{cw.quizQuestion}"</p>
+                    <p className="font-serif text-base text-[#0F172A] dark:text-white">"{cw.quizQuestion}"</p>
 
                     <div className="grid grid-cols-2 gap-3">
                       {cw.quizOptions.map((opt) => {
@@ -790,14 +789,14 @@ export default function CollocationsPage() {
                         const isCorrect = opt === cw.correctWord;
 
                         let btnStyle =
-                          'bg-white dark:bg-[#141414] hover:bg-white/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-white';
+                          'bg-white dark:bg-[#141414] hover:border-[#00638E] border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-white';
                         if (confusableSelected) {
                           if (isCorrect) {
-                            btnStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#00638E] dark:text-white font-bold';
+                            btnStyle = 'bg-emerald-500/15 border-emerald-600 text-emerald-950 dark:text-white font-bold';
                           } else if (isSelected && !isCorrect) {
                             btnStyle = 'bg-rose-500/15 border-rose-400 text-rose-600';
                           } else {
-                            btnStyle = 'opacity-40 bg-white dark:bg-[#141414] border-transparent text-[#50585C]';
+                            btnStyle = 'opacity-40 bg-[#F1F5F9] dark:bg-[#1C1C1C] border-transparent text-[#475569]';
                           }
                         }
 
@@ -836,7 +835,7 @@ export default function CollocationsPage() {
                         setConfusableSelected(null);
                       }}
                       disabled={activeConfusableIndex === 0}
-                      className="px-5 py-2.5 rounded-xl bg-white dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 text-xs font-mono disabled:opacity-30 transition-all"
+                      className="px-5 py-2.5 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] hover:bg-[#E2E8F0] border border-[#CBD5E1] dark:border-white/10 text-xs font-mono text-[#0F172A] dark:text-white disabled:opacity-30 transition-all"
                     >
                       ← Pasangan Sebelumnya
                     </button>
@@ -847,7 +846,7 @@ export default function CollocationsPage() {
                         setConfusableSelected(null);
                       }}
                       disabled={activeConfusableIndex === CONFUSABLE_WORDS_DATA.length - 1}
-                      className="px-5 py-2.5 rounded-xl bg-[#00638E] text-white text-xs font-mono font-medium hover:bg-[#004A6B] disabled:opacity-30 transition-all"
+                      className="px-5 py-2.5 rounded-xl bg-[#00638E] text-white text-xs font-mono font-medium hover:bg-[#004A6B] disabled:opacity-30 transition-all shadow-xs"
                     >
                       Pasangan Selanjutnya →
                     </button>
@@ -863,12 +862,12 @@ export default function CollocationsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Left Column: Traps List */}
             <div className="col-span-1 lg:col-span-6 space-y-3">
-              <div className="p-5 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/30 dark:border-[#8CB9CC]/40 text-xs space-y-1">
+              <div className="p-5 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/20 text-xs space-y-1">
                 <div className="flex items-center gap-2 text-[#00638E] dark:text-[#8CB9CC] font-mono text-[11px] uppercase font-semibold">
                   <ShieldAlert className="w-4 h-4" />
                   <span>Bahaya L1 Interference (Terjemahan Mentah Indonesia)</span>
                 </div>
-                <p className="text-[#2B2B2B] dark:text-white leading-relaxed">
+                <p className="text-[#1E293B] dark:text-white leading-relaxed">
                   Pola berpikir bahasa Indonesia seringkali meminjam metafora fisik ("cuci mata", "tidak enak hati", "makan korban") yang jika diterjemahkan kata-per-kata akan terdengar cacat bagi penutur asli.
                 </p>
               </div>
@@ -885,14 +884,14 @@ export default function CollocationsPage() {
                       'w-full text-left p-5 rounded-2xl border transition-all space-y-3',
                       activeTrapIndex === idx
                         ? 'bg-[#00638E] text-white border-[#00638E] shadow-sm'
-                        : 'bg-white/80 dark:bg-[#141414]/80 backdrop-blur-md border-[#BFD8E3]/40 dark:border-white/5 text-[#2B2B2B] dark:text-[#BFD8E3] hover:border-[#00638E]/50'
+                        : 'bg-white dark:bg-[#141414] border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#BFD8E3] hover:border-[#00638E]'
                     )}
                   >
                     <div className="flex items-center justify-between">
                       <span
                         className={clsx(
                           'font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold',
-                          activeTrapIndex === idx ? 'bg-white/20 text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
+                          activeTrapIndex === idx ? 'bg-white/20 text-white' : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] border border-[#CBD5E1] dark:border-white/10'
                         )}
                       >
                         {trap.registerCategory}
@@ -907,11 +906,11 @@ export default function CollocationsPage() {
                           'p-2.5 rounded-xl border',
                           activeTrapIndex === idx
                             ? 'bg-white/10 border-white/20 text-white'
-                            : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/30 text-[#141414] dark:text-white'
+                            : 'bg-rose-500/10 border-rose-300 text-rose-950 dark:text-rose-200'
                         )}
                       >
                         <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Kaku / Cacat:</span>
-                        <span className="line-through">{trap.literalClunkyEnglish}</span>
+                        <span className="line-through font-mono">{trap.literalClunkyEnglish}</span>
                       </div>
 
                       <div
@@ -919,11 +918,11 @@ export default function CollocationsPage() {
                           'p-2.5 rounded-xl border',
                           activeTrapIndex === idx
                             ? 'bg-white/20 border-white/30 text-white'
-                            : 'bg-[#004A6B]/15 dark:bg-[#00638E]/25 border-[#004A6B]/30 text-[#004A6B] dark:text-[#BFD8E3]'
+                            : 'bg-emerald-500/10 border-emerald-300 text-emerald-950 dark:text-emerald-200'
                         )}
                       >
                         <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Native On-Point:</span>
-                        <span className="font-semibold">{trap.onPointNativeEnglish}</span>
+                        <span className="font-semibold font-mono">{trap.onPointNativeEnglish}</span>
                       </div>
                     </div>
                   </button>
@@ -932,77 +931,77 @@ export default function CollocationsPage() {
             </div>
 
             {/* Right Column: Deep Dive & Drill */}
-            <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-6 bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+            <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-6 bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
               {(() => {
                 const trap = DIRECT_TRANSLATION_TRAPS_DATA[activeTrapIndex] || DIRECT_TRANSLATION_TRAPS_DATA[0];
 
                 return (
                   <div className="space-y-5">
-                    <div className="pb-3 border-b border-[#BFD8E3]/40 dark:border-white/10">
+                    <div className="pb-3 border-b border-[#CBD5E1] dark:border-white/10">
                       <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase font-semibold block">
                         Pembedahan L1: {trap.registerCategory}
                       </span>
-                      <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-white mt-1">
+                      <h3 className="font-serif text-2xl font-bold text-[#0F172A] dark:text-white mt-1">
                         {trap.indonesianPhrase}
                       </h3>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-200 dark:border-rose-900/30 space-y-1">
-                        <span className="font-mono text-[10px] text-rose-600 dark:text-rose-400 uppercase block font-semibold">
+                      <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-300 dark:border-rose-900/30 space-y-1">
+                        <span className="font-mono text-[10px] text-rose-700 dark:text-rose-400 uppercase block font-semibold">
                           Terjemahan Kaku (SALAH):
                         </span>
-                        <p className="font-serif text-sm font-semibold text-[#141414] dark:text-white line-through">
+                        <p className="font-serif text-sm font-semibold text-[#0F172A] dark:text-white line-through">
                           "{trap.literalClunkyEnglish}"
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-2xl bg-[#004A6B]/15 dark:bg-[#00638E]/20 border border-[#004A6B]/30 dark:border-[#BFD8E3]/35 space-y-1">
+                      <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-300 dark:border-emerald-900/30 space-y-1">
                         <div className="flex items-center justify-between">
-                          <span className="font-mono text-[10px] text-[#004A6B] dark:text-[#BFD8E3] uppercase font-semibold">
+                          <span className="font-mono text-[10px] text-emerald-800 dark:text-emerald-300 uppercase font-semibold">
                             Diksi Native On-Point (BENAR):
                           </span>
                           <button
                             onClick={() => playTextToSpeech(trap.onPointNativeEnglish)}
-                            className="text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E]"
+                            className="text-[#475569] dark:text-[#7A8992] hover:text-[#00638E]"
                           >
                             <Volume2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
-                        <p className="font-serif text-sm font-bold text-[#141414] dark:text-white">
+                        <p className="font-serif text-sm font-bold text-[#0F172A] dark:text-white">
                           "{trap.onPointNativeEnglish}"
                         </p>
                       </div>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1.5">
+                    <div className="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs space-y-1.5">
                       <strong className="text-[#004A6B] dark:text-[#BFD8E3] font-mono text-[10px] uppercase block">
                         Mengapa Terdengar Aneh Bagi Native Speaker?
                       </strong>
-                      <p className="text-[#2B2B2B] dark:text-white leading-relaxed">{trap.linguisticExplanation}</p>
+                      <p className="text-[#1E293B] dark:text-white leading-relaxed">{trap.linguisticExplanation}</p>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-[#EDF3F7]/70 dark:bg-[#1C1C1C]/70 border border-[#BFD8E3]/30 dark:border-white/10 text-xs space-y-1">
+                    <div className="p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
+                        <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase font-semibold">
                           Contoh Kalimat Baku:
                         </span>
                         <button
                           onClick={() => playTextToSpeech(trap.exampleSentence)}
-                          className="text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E]"
+                          className="text-[#475569] dark:text-[#7A8992] hover:text-[#00638E]"
                         >
-                          <Volume2 className="w-3 h-3" />
+                          <Volume2 className="w-3.5 h-3.5" />
                         </button>
                       </div>
-                      <p className="font-serif text-[#141414] dark:text-white italic">"{trap.exampleSentence}"</p>
+                      <p className="font-serif text-[#0F172A] dark:text-white italic">"{trap.exampleSentence}"</p>
                     </div>
 
                     {/* Live Drill */}
-                    <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-3">
-                      <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
+                    <div className="p-5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-3">
+                      <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block font-semibold">
                         Uji Pilihan Diksi Baku (Anti-Literal):
                       </span>
-                      <p className="font-serif text-sm text-[#141414] dark:text-white">"{trap.drillQuestion}"</p>
+                      <p className="font-serif text-sm text-[#0F172A] dark:text-white">"{trap.drillQuestion}"</p>
 
                       <div className="grid grid-cols-2 gap-2">
                         {trap.drillOptions.map((opt) => {
@@ -1010,15 +1009,15 @@ export default function CollocationsPage() {
                           const isCorrect = opt === trap.correctAnswer;
 
                           let btnStyle =
-                            'bg-white dark:bg-[#141414] hover:bg-white/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-white';
+                            'bg-white dark:bg-[#141414] hover:border-[#00638E] border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-white';
                           if (trapSelected) {
                             if (isCorrect) {
                               btnStyle =
-                                'bg-[#004A6B]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#00638E] dark:text-white font-bold';
+                                'bg-emerald-500/15 border-emerald-600 text-emerald-950 dark:text-white font-bold';
                             } else if (isSelected && !isCorrect) {
                               btnStyle = 'bg-rose-500/15 border-rose-400 text-rose-600';
                             } else {
-                              btnStyle = 'opacity-40 bg-white dark:bg-[#141414] border-transparent text-[#50585C]';
+                              btnStyle = 'opacity-40 bg-[#F1F5F9] dark:bg-[#1C1C1C] border-transparent text-[#475569]';
                             }
                           }
 
@@ -1054,11 +1053,11 @@ export default function CollocationsPage() {
                     </div>
 
                     {trapSelected && (
-                      <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 text-xs space-y-1 animate-in fade-in duration-200">
+                      <div className="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs space-y-1 animate-in fade-in duration-200">
                         <span className="font-mono text-[10px] uppercase font-semibold text-[#004A6B] dark:text-[#BFD8E3] block">
                           Penjelasan Nalar Diksi:
                         </span>
-                        <p className="text-[#2B2B2B] dark:text-white leading-relaxed">{trap.drillExplanation}</p>
+                        <p className="text-[#1E293B] dark:text-white leading-relaxed">{trap.drillExplanation}</p>
                       </div>
                     )}
                   </div>
@@ -1068,6 +1067,11 @@ export default function CollocationsPage() {
           </div>
         )}
       </div>
-    </AppShell>
   );
+}
+
+export default function CollocationsPage() {
+  const router = useRouter();
+  React.useEffect(() => { router.replace('/?tab=collocations'); }, [router]);
+  return null;
 }

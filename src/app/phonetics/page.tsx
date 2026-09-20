@@ -15,7 +15,7 @@ import {
   Mic,
   RotateCcw,
 } from 'lucide-react';
-import { AppShell } from '@/components/layout/AppShell';
+import { useRouter } from 'next/navigation';
 import { MINIMAL_PAIRS_DATA, MinimalPair } from '@/data/meraki-collocations';
 import { playTextToSpeech } from '@/services/speech';
 import { clsx } from 'clsx';
@@ -85,7 +85,7 @@ const PHONEME_DATA: PhonemeItem[] = [
   { symbol: '/j/', name: 'Glide Y', category: 'consonant-voiced', examples: ['yes', 'yellow', 'you'], articulationTip: 'Lidah tinggi seperti /iː/ lalu meluncur ke vokal berikutnya.' },
 ];
 
-export default function PhoneticsPage() {
+export function PhoneticsView() {
   const [viewTab, setViewTab] = useState<'soundboard' | 'pairs' | 'ear-training' | 'shadowing'>('soundboard');
   const [activeCategoryFilter, setActiveCategoryFilter] = useState<string>('all');
   const [activeMinimalPairIndex, setActiveMinimalPairIndex] = useState<number>(0);
@@ -151,33 +151,32 @@ export default function PhoneticsPage() {
   });
 
   return (
-    <AppShell category="Laboratorium Bahasa" title="Fonetik IPA & Minimal Pairs">
-      <div className="space-y-6 max-w-7xl mx-auto pb-12">
-        {/* Header Hero Liquid Glass */}
-        <div className="bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 rounded-3xl p-6 sm:p-8 shadow-xs">
+    <div className="space-y-6 max-w-7xl mx-auto pb-12">
+        {/* Header Hero */}
+        <div className="bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] text-xs font-mono font-medium">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] border border-[#00638E]/20 text-xs font-mono font-medium">
                 <Headphones className="w-3.5 h-3.5" />
                 <span>Standard International Phonetic Alphabet (IPA) Studio</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-serif text-[#141414] dark:text-white">
-                Studio Fonetik & Latihan Telinga (Ear Training)
+              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] dark:text-white">
+                Studio Fonetik &amp; Latihan Telinga (Ear Training)
               </h1>
-              <p className="text-xs sm:text-sm text-[#50585C] dark:text-[#7A8992]">
+              <p className="text-xs sm:text-sm text-[#334155] dark:text-[#7A8992]">
                 Kuasai 44 simbol bunyi bahasa Inggris, latih kepekaan telinga menangkap beda fonem krusial, dan bangun memori motorik wicara.
               </p>
             </div>
 
             {/* Sub-tab Pill Switcher */}
-            <div className="flex items-center gap-1.5 p-1.5 bg-[#EDF3F7] dark:bg-[#1C1C1C] rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10 overflow-x-auto no-scrollbar shrink-0">
+            <div className="flex items-center gap-1.5 p-1.5 bg-[#F1F5F9] dark:bg-[#1C1C1C] rounded-2xl border border-[#CBD5E1] dark:border-white/10 overflow-x-auto no-scrollbar shrink-0">
               <button
                 onClick={() => setViewTab('soundboard')}
                 className={clsx(
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5',
                   viewTab === 'soundboard'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
                 <Grid className="w-3.5 h-3.5" />
@@ -189,7 +188,7 @@ export default function PhoneticsPage() {
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5',
                   viewTab === 'pairs'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
                 <Layers className="w-3.5 h-3.5" />
@@ -205,7 +204,7 @@ export default function PhoneticsPage() {
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5',
                   viewTab === 'ear-training'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
                 <Headphones className="w-3.5 h-3.5" />
@@ -221,7 +220,7 @@ export default function PhoneticsPage() {
                   'px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5',
                   viewTab === 'shadowing'
                     ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                    : 'text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                    : 'text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                 )}
               >
                 <Timer className="w-3.5 h-3.5" />
@@ -235,7 +234,7 @@ export default function PhoneticsPage() {
         {viewTab === 'soundboard' && (
           <div className="space-y-6">
             {/* Filter Pills */}
-            <div className="flex flex-wrap gap-2 p-2 bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 rounded-2xl">
+            <div className="flex flex-wrap gap-2 p-2 bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-2xl shadow-xs">
               {[
                 { id: 'all', label: 'Semua 44 Fonem' },
                 { id: 'vowel-short', label: 'Short Vowels (7)' },
@@ -251,7 +250,7 @@ export default function PhoneticsPage() {
                     'px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all',
                     activeCategoryFilter === filter.id
                       ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                      : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                      : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white hover:bg-[#E2E8F0]'
                   )}
                 >
                   {filter.label}
@@ -264,7 +263,7 @@ export default function PhoneticsPage() {
               {filteredPhonemes.map((p) => (
                 <div
                   key={p.symbol}
-                  className="p-4 rounded-2xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 hover:border-[#00638E] transition-all flex flex-col justify-between group shadow-xs space-y-3"
+                  className="p-4 rounded-2xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 hover:border-[#00638E] transition-all flex flex-col justify-between group shadow-xs space-y-3"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-mono font-bold text-[#00638E] dark:text-[#8CB9CC]">
@@ -272,7 +271,7 @@ export default function PhoneticsPage() {
                     </span>
                     <button
                       onClick={() => playTextToSpeech(p.examples[0])}
-                      className="p-1.5 rounded-lg bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] group-hover:text-[#00638E] transition-colors"
+                      className="p-1.5 rounded-lg bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#00638E] hover:bg-[#E2E8F0] transition-colors"
                       title="Dengarkan pengucapan"
                     >
                       <Volume2 className="w-3.5 h-3.5" />
@@ -280,13 +279,13 @@ export default function PhoneticsPage() {
                   </div>
 
                   <div>
-                    <h4 className="font-serif font-bold text-sm text-[#141414] dark:text-white">{p.name}</h4>
-                    <p className="text-[11px] font-mono text-[#50585C] dark:text-[#7A8992] truncate">
+                    <h4 className="font-serif font-bold text-sm text-[#0F172A] dark:text-white">{p.name}</h4>
+                    <p className="text-[11px] font-mono text-[#475569] dark:text-[#7A8992] truncate">
                       {p.examples.join(', ')}
                     </p>
                   </div>
 
-                  <p className="text-[10px] text-[#2B2B2B] dark:text-[#BFD8E3] line-clamp-2 leading-relaxed pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                  <p className="text-[10px] text-[#1E293B] dark:text-[#BFD8E3] line-clamp-2 leading-relaxed pt-2 border-t border-[#CBD5E1] dark:border-white/10">
                     {p.articulationTip}
                   </p>
                 </div>
@@ -308,7 +307,7 @@ export default function PhoneticsPage() {
                     'px-4 py-2 rounded-2xl text-xs font-mono whitespace-nowrap transition-all shrink-0',
                     activeMinimalPairIndex === idx
                       ? 'bg-[#00638E] text-white font-semibold shadow-xs'
-                      : 'bg-white/80 dark:bg-[#141414]/80 border border-[#BFD8E3]/40 dark:border-white/5 text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:hover:text-white'
+                      : 'bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-white'
                   )}
                 >
                   {mp.phonemeContrast}
@@ -317,52 +316,52 @@ export default function PhoneticsPage() {
             </div>
 
             {/* Large Minimal Pair Stage */}
-            <div className="p-6 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 shadow-xs space-y-8 text-center max-w-4xl mx-auto">
+            <div className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs space-y-8 text-center max-w-4xl mx-auto">
               <div className="space-y-2">
-                <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-3.5 py-1 rounded-full uppercase font-semibold">
+                <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#004A6B] dark:text-[#8CB9CC] border border-[#00638E]/20 px-3.5 py-1 rounded-full uppercase font-semibold">
                   Kontras Fonetik: {activeMinimalPair.phonemeContrast}
                 </span>
-                <p className="text-xs sm:text-sm text-[#2B2B2B] dark:text-[#BFD8E3] max-w-xl mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#1E293B] dark:text-[#BFD8E3] max-w-xl mx-auto leading-relaxed">
                   {activeMinimalPair.description}
                 </p>
               </div>
 
               {/* Side by Side Words */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div className="p-6 sm:p-8 rounded-3xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4">
-                  <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
+                <div className="p-6 sm:p-8 rounded-3xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-4">
+                  <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block font-semibold">
                     Kata A:
                   </span>
-                  <h3 className="text-4xl sm:text-5xl font-serif font-bold text-[#141414] dark:text-white">
+                  <h3 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] dark:text-white">
                     {activeMinimalPair.wordA}
                   </h3>
-                  <span className="font-mono text-sm text-[#00638E] dark:text-[#8CB9CC] block">
+                  <span className="font-mono text-sm text-[#00638E] dark:text-[#8CB9CC] block font-semibold">
                     {activeMinimalPair.ipaA}
                   </span>
-                  <p className="text-xs text-[#2B2B2B] dark:text-white">{activeMinimalPair.meaningA}</p>
+                  <p className="text-xs text-[#1E293B] dark:text-white">{activeMinimalPair.meaningA}</p>
                   <button
                     onClick={() => playTextToSpeech(activeMinimalPair.wordA)}
-                    className="px-5 py-2.5 rounded-xl bg-[#141414] dark:bg-[#00638E] text-white text-xs font-mono flex items-center gap-2 mx-auto hover:bg-[#00638E] transition-colors"
+                    className="px-5 py-2.5 rounded-xl bg-[#00638E] text-white text-xs font-mono flex items-center gap-2 mx-auto hover:bg-[#004A6B] transition-colors shadow-xs"
                   >
                     <Volume2 className="w-4 h-4" />
                     <span>Dengarkan Kata A</span>
                   </button>
                 </div>
 
-                <div className="p-6 sm:p-8 rounded-3xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4">
-                  <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
+                <div className="p-6 sm:p-8 rounded-3xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-4">
+                  <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block font-semibold">
                     Kata B:
                   </span>
-                  <h3 className="text-4xl sm:text-5xl font-serif font-bold text-[#141414] dark:text-white">
+                  <h3 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] dark:text-white">
                     {activeMinimalPair.wordB}
                   </h3>
-                  <span className="font-mono text-sm text-[#004A6B] dark:text-[#BFD8E3] block">
+                  <span className="font-mono text-sm text-[#004A6B] dark:text-[#BFD8E3] block font-semibold">
                     {activeMinimalPair.ipaB}
                   </span>
-                  <p className="text-xs text-[#2B2B2B] dark:text-white">{activeMinimalPair.meaningB}</p>
+                  <p className="text-xs text-[#1E293B] dark:text-white">{activeMinimalPair.meaningB}</p>
                   <button
                     onClick={() => playTextToSpeech(activeMinimalPair.wordB)}
-                    className="px-5 py-2.5 rounded-xl bg-[#004A6B] dark:bg-[#00638E] text-white text-xs font-mono flex items-center gap-2 mx-auto hover:bg-[#00638E] transition-colors"
+                    className="px-5 py-2.5 rounded-xl bg-[#004A6B] dark:bg-[#00638E] text-white text-xs font-mono flex items-center gap-2 mx-auto hover:bg-[#003852] transition-colors shadow-xs"
                   >
                     <Volume2 className="w-4 h-4" />
                     <span>Dengarkan Kata B</span>
@@ -371,19 +370,19 @@ export default function PhoneticsPage() {
               </div>
 
               {/* Contrast Sentence */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-2 text-left">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-2 text-left">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase font-semibold">
+                  <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase font-semibold">
                     Kalimat Kontras Pembanding:
                   </span>
                   <button
                     onClick={() => playTextToSpeech(activeMinimalPair.contrastContext)}
-                    className="text-[#50585C] dark:text-[#7A8992] hover:text-[#00638E] p-1.5 rounded-lg"
+                    className="text-[#475569] dark:text-[#7A8992] hover:text-[#00638E] p-1.5 rounded-lg"
                   >
                     <Volume2 className="w-4 h-4" />
                   </button>
                 </div>
-                <p className="font-serif text-base sm:text-lg text-[#141414] dark:text-white italic leading-relaxed">
+                <p className="font-serif text-base sm:text-lg text-[#0F172A] dark:text-white italic leading-relaxed">
                   "{activeMinimalPair.contrastContext}"
                 </p>
               </div>
@@ -394,14 +393,14 @@ export default function PhoneticsPage() {
         {/* TAB 3: EAR TRAINING LISTENING DRILL */}
         {viewTab === 'ear-training' && (
           <div className="max-w-2xl mx-auto space-y-6">
-            <div className="p-6 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 shadow-xs space-y-6 text-center">
-              <div className="flex items-center justify-between pb-4 border-b border-[#BFD8E3]/40 dark:border-white/10">
-                <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#00638E] dark:text-[#8CB9CC] px-3 py-1 rounded-full uppercase font-semibold">
+            <div className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs space-y-6 text-center">
+              <div className="flex items-center justify-between pb-4 border-b border-[#CBD5E1] dark:border-white/10">
+                <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/20 text-[#004A6B] dark:text-[#8CB9CC] border border-[#00638E]/20 px-3 py-1 rounded-full uppercase font-semibold">
                   Drill Telinga: Kontras {activeMinimalPair.phonemeContrast}
                 </span>
-                <div className="font-mono text-xs text-[#50585C] dark:text-[#7A8992]">
+                <div className="font-mono text-xs text-[#475569] dark:text-[#7A8992]">
                   Akurasi:{' '}
-                  <strong className="text-[#141414] dark:text-white">
+                  <strong className="text-[#0F172A] dark:text-white">
                     {earScore.correct} / {earScore.total}
                   </strong>{' '}
                   ({earScore.total > 0 ? Math.round((earScore.correct / earScore.total) * 100) : 0}%)
@@ -409,10 +408,10 @@ export default function PhoneticsPage() {
               </div>
 
               <div className="space-y-4 max-w-md mx-auto">
-                <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-white">
+                <h3 className="font-serif text-2xl font-bold text-[#0F172A] dark:text-white">
                   Dengarkan dan Tebak Kata yang Diucapkan
                 </h3>
-                <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
+                <p className="text-xs text-[#1E293B] dark:text-[#BFD8E3] leading-relaxed">
                   Sistem akan memutar salah satu kata dari pasangan{' '}
                   <strong className="font-mono text-[#00638E] dark:text-[#8CB9CC]">{activeMinimalPair.wordA}</strong> ({activeMinimalPair.ipaA}) atau{' '}
                   <strong className="font-mono text-[#004A6B] dark:text-[#BFD8E3]">{activeMinimalPair.wordB}</strong> ({activeMinimalPair.ipaB}).
@@ -420,7 +419,7 @@ export default function PhoneticsPage() {
 
                 <button
                   onClick={handlePlaySecretWord}
-                  className="px-6 py-3.5 rounded-2xl bg-[#00638E] text-white hover:bg-[#004A6B] text-sm font-mono flex items-center justify-center gap-2 mx-auto shadow-md transition-colors"
+                  className="px-6 py-3.5 rounded-2xl bg-[#00638E] text-white hover:bg-[#004A6B] text-sm font-mono flex items-center justify-center gap-2 mx-auto shadow-sm transition-colors"
                 >
                   <Volume2 className="w-5 h-5" />
                   <span>{earSecretWord !== null ? 'Putar Ulang Suara' : 'Mulai Putar Suara'}</span>
@@ -429,7 +428,7 @@ export default function PhoneticsPage() {
 
               {earSecretWord !== null && (
                 <div className="space-y-4 pt-4">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-[#50585C] dark:text-[#7A8992] block font-semibold">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-[#475569] dark:text-[#7A8992] block font-semibold">
                     Kata mana yang baru saja Anda dengar?
                   </span>
 
@@ -442,15 +441,15 @@ export default function PhoneticsPage() {
                       const isTarget = earSecretWord === letter;
 
                       let btnStyle =
-                        'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#EDF3F7]/80 dark:hover:bg-[#1C1C1C]/80 border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-white';
+                        'bg-[#F8FAFC] dark:bg-[#1C1C1C] hover:bg-[#F1F5F9] dark:hover:bg-[#1C1C1C]/80 border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-white';
                       if (earSelectedChoice !== null) {
                         if (isTarget) {
                           btnStyle =
-                            'bg-[#004A6B]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#00638E] dark:text-white font-bold';
+                            'bg-emerald-500/15 border-emerald-600 text-emerald-950 dark:text-white font-bold';
                         } else if (isChoice && !isTarget) {
                           btnStyle = 'bg-rose-500/15 border-rose-400 text-rose-600';
                         } else {
-                          btnStyle = 'opacity-40 bg-[#EDF3F7] dark:bg-[#1C1C1C] border-transparent text-[#50585C]';
+                          btnStyle = 'opacity-40 bg-[#F8FAFC] dark:bg-[#1C1C1C] border-transparent text-[#475569]';
                         }
                       }
 
@@ -461,12 +460,12 @@ export default function PhoneticsPage() {
                           disabled={earSelectedChoice !== null}
                           className={clsx('p-5 rounded-2xl border transition-all text-center space-y-1', btnStyle)}
                         >
-                          <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block">
+                          <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block">
                             Opsi ({letter})
                           </span>
                           <h4 className="font-serif text-3xl font-bold">{word}</h4>
-                          <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] block">{ipa}</span>
-                          <p className="text-[11px] text-[#2B2B2B] dark:text-[#BFD8E3]">{meaning}</p>
+                          <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] block font-semibold">{ipa}</span>
+                          <p className="text-[11px] text-[#1E293B] dark:text-[#BFD8E3]">{meaning}</p>
                         </button>
                       );
                     })}
@@ -477,14 +476,14 @@ export default function PhoneticsPage() {
                       className={clsx(
                         'p-4 rounded-2xl border text-xs max-w-lg mx-auto space-y-3 animate-in fade-in duration-200 text-left',
                         earSelectedChoice === earSecretWord
-                          ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/20 border-[#00638E] text-[#141414] dark:text-white'
+                          ? 'bg-emerald-500/10 border-emerald-600 text-emerald-950 dark:text-white'
                           : 'bg-rose-500/10 border-rose-300 text-rose-700 dark:text-rose-300'
                       )}
                     >
                       <div className="flex items-center gap-2 font-bold">
                         {earSelectedChoice === earSecretWord ? (
                           <>
-                            <CheckCircle2 className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
+                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-[#8CB9CC]" />
                             <span>Tepat Sekali! Telinga Anda berhasil membedakan fonem.</span>
                           </>
                         ) : (
@@ -497,14 +496,14 @@ export default function PhoneticsPage() {
                           </>
                         )}
                       </div>
-                      <p className="text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed">
+                      <p className="text-[#1E293B] dark:text-[#BFD8E3] leading-relaxed">
                         <strong>Kunci Pembeda:</strong> {activeMinimalPair.description}
                       </p>
 
-                      <div className="flex justify-end pt-2 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                      <div className="flex justify-end pt-2 border-t border-[#CBD5E1] dark:border-white/10">
                         <button
                           onClick={handleNextEarRound}
-                          className="px-4 py-2 rounded-xl bg-[#00638E] text-white text-xs font-mono font-medium hover:bg-[#004A6B] transition-colors"
+                          className="px-4 py-2 rounded-xl bg-[#00638E] text-white text-xs font-mono font-medium hover:bg-[#004A6B] transition-colors shadow-xs"
                         >
                           Soal Berikutnya →
                         </button>
@@ -520,32 +519,32 @@ export default function PhoneticsPage() {
         {/* TAB 4: SHADOWING LOOP */}
         {viewTab === 'shadowing' && (
           <div className="max-w-2xl mx-auto space-y-6">
-            <div className="p-6 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#141414]/80 backdrop-blur-xl border border-[#BFD8E3]/40 dark:border-white/5 shadow-xs space-y-6 text-center">
+            <div className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs space-y-6 text-center">
               <div className="space-y-2">
-                <span className="font-mono text-xs bg-[#004A6B]/10 dark:bg-[#00638E]/15 text-[#004A6B] dark:text-[#BFD8E3] px-3.5 py-1 rounded-full uppercase font-semibold">
-                  Shadowing & Articulation Loop: {activeMinimalPair.phonemeContrast}
+                <span className="font-mono text-xs bg-[#00638E]/10 dark:bg-[#00638E]/15 text-[#004A6B] dark:text-[#BFD8E3] border border-[#00638E]/20 px-3.5 py-1 rounded-full uppercase font-semibold">
+                  Shadowing &amp; Articulation Loop: {activeMinimalPair.phonemeContrast}
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-[#141414] dark:text-white">
-                  Tiru Intonasi & Artikulasi Kalimat Kontras
+                <h3 className="font-serif text-2xl font-bold text-[#0F172A] dark:text-white">
+                  Tiru Intonasi &amp; Artikulasi Kalimat Kontras
                 </h3>
-                <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3] max-w-md mx-auto leading-relaxed">
+                <p className="text-xs text-[#1E293B] dark:text-[#BFD8E3] max-w-md mx-auto leading-relaxed">
                   Dengarkan pelafalan penutur asli secara teliti, lalu tirukan dengan lantang selama hitungan mundur 5 detik.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 space-y-4 max-w-xl mx-auto text-left">
-                <span className="font-mono text-[10px] text-[#50585C] dark:text-[#7A8992] uppercase block font-semibold">
+              <div className="p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 space-y-4 max-w-xl mx-auto text-left">
+                <span className="font-mono text-[10px] text-[#475569] dark:text-[#7A8992] uppercase block font-semibold">
                   Target Kalimat Shadowing:
                 </span>
-                <p className="font-serif text-lg text-[#141414] dark:text-white italic leading-relaxed">
+                <p className="font-serif text-lg text-[#0F172A] dark:text-white italic leading-relaxed">
                   "{activeMinimalPair.contrastContext}"
                 </p>
 
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#BFD8E3]/30 dark:border-white/10">
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#CBD5E1] dark:border-white/10">
                   <button
                     onClick={handleStartShadowing}
                     disabled={isShadowingRunning}
-                    className="px-5 py-2.5 rounded-xl bg-[#00638E] text-white hover:bg-[#004A6B] text-xs font-mono flex items-center gap-2 disabled:opacity-50 transition-colors"
+                    className="px-5 py-2.5 rounded-xl bg-[#00638E] text-white hover:bg-[#004A6B] text-xs font-mono flex items-center gap-2 disabled:opacity-50 transition-colors shadow-xs"
                   >
                     <Play className="w-4 h-4" />
                     <span>{isShadowingRunning ? `Menirukan (${shadowingCountdown}s)...` : 'Putar & Mulai Shadowing'}</span>
@@ -563,6 +562,11 @@ export default function PhoneticsPage() {
           </div>
         )}
       </div>
-    </AppShell>
   );
+}
+
+export default function PhoneticsPage() {
+  const router = useRouter();
+  React.useEffect(() => { router.replace('/?tab=phonetics'); }, [router]);
+  return null;
 }

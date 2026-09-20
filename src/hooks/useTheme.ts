@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 
@@ -8,23 +8,8 @@ export function useTheme() {
   const [theme, setTheme] = useState<ThemeMode>('light');
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    try {
-      const stored = localStorage.getItem('meraki_theme') as ThemeMode | null;
-      if (stored && (stored === 'light' || stored === 'dark' || stored === 'system')) {
-        setTheme(stored);
-        applyTheme(stored);
-      } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
-      }
-    } catch (e) {
-      applyTheme('light');
-    }
-  }, []);
-
-  const applyTheme = (mode: ThemeMode) => {
+  const applyTheme = useCallback((mode: ThemeMode) => {
+    if (typeof window === 'undefined') return;
     const root = document.documentElement;
     const isDark =
       mode === 'dark' ||
@@ -41,7 +26,37 @@ export function useTheme() {
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', '#F4F7F9');
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
+    try {
+      const stored = localStorage.getItem('meraki_theme') as ThemeMode | null;
+      if (stored && (stored === 'light' || stored === 'dark' || stored === 'system')) {
+        setTheme(stored);
+        applyTheme(stored);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialMode: ThemeMode = prefersDark ? 'dark' : 'light';
+        setTheme(initialMode);
+        applyTheme(initialMode);
+      }
+    } catch (e) {
+      applyTheme('light');
+    }
+
+    // Handle system preference changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      const current = localStorage.getItem('meraki_theme');
+      if (!current || current === 'system') {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    };
+    mediaQuery.addEventListener('change', handleMediaChange);
+
+    return () => mediaQuery.removeEventListener('change', handleMediaChange);
+  }, [applyTheme]);
 
   const updateTheme = (newTheme: ThemeMode) => {
     setTheme(newTheme);
@@ -49,17 +64,26 @@ export function useTheme() {
       localStorage.setItem('meraki_theme', newTheme);
     } catch (e) {}
     applyTheme(newTheme);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('meraki-theme-change'));
+    }
   };
 
   const toggleTheme = () => {
-    const nextTheme: ThemeMode = theme === 'dark' ? 'light' : 'dark';
+    if (typeof document === 'undefined') return;
+    const isCurrentlyDark = document.documentElement.classList.contains('dark');
+    const nextTheme: ThemeMode = isCurrentlyDark ? 'light' : 'dark';
     updateTheme(nextTheme);
   };
+
+  const isDark = mounted
+    ? (typeof document !== 'undefined' ? document.documentElement.classList.contains('dark') : false)
+    : false;
 
   return { 
     theme, 
     updateTheme, 
     toggleTheme, 
-    isDark: mounted ? (theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches)) : false 
+    isDark 
   };
 }

@@ -1,22 +1,32 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Azure & Onyx Theme Tokens — Light Mode Default */
-  --ao-canvas: #F4F7F9;
+  --ao-canvas: #DFE5EA;
   --ao-elevated: #FFFFFF;
-  --ao-card: #EDF3F7;
-  --ao-inner: #E2ECF2;
-  --ao-border: rgba(0, 74, 107, 0.12);
-  --ao-border-hover: rgba(0, 99, 142, 0.28);
-  --ao-text-primary: #141414;
-  --ao-text-secondary: #2B2B2B;
-  --ao-text-muted: #50585C;
+  --ao-card: #FFFFFF;
+  --ao-inner: #F1F5F9;
+  --ao-border: #CBD5E1;
+  --ao-border-hover: #00638E;
+  --ao-text-primary: #0F172A;
+  --ao-text-secondary: #1E293B;
+  --ao-text-muted: #334155;
   --ao-accent: #00638E;
-  --ao-accent-dim: rgba(0, 99, 142, 0.10);
+  --ao-accent-dim: rgba(0, 99, 142, 0.12);
   --ao-accent-glow: rgba(0, 99, 142, 0.22);
   --ao-accent-light: #BFD8E3;
-  --ao-dock-bg: rgba(255, 255, 255, 0.88);
-  --ao-highlight: rgba(0, 99, 142, 0.06);
+  --ao-dock-bg: rgba(255, 255, 255, 0.95);
+  --ao-highlight: rgba(0, 99, 142, 0.08);
+
+  /* Semantic success / error — stays within Azure & Onyx system */
+  --ao-success: #0A7A5A;
+  --ao-success-bg: rgba(10, 122, 90, 0.10);
+  --ao-success-border: rgba(10, 122, 90, 0.30);
+  --ao-error: #C0392B;
+  --ao-error-bg: rgba(192, 57, 43, 0.10);
+  --ao-error-border: rgba(192, 57, 43, 0.30);
 
   /* Legacy variable fallbacks */
   --paper-bg: var(--ao-canvas);
@@ -38,13 +48,21 @@
   --ao-border-hover: rgba(191, 216, 227, 0.22);
   --ao-text-primary: #FFFFFF;
   --ao-text-secondary: #BFD8E3;
-  --ao-text-muted: #7A8992;
+  --ao-text-muted: #8FA4AD; /* was #7A8992 — raised for WCAG AA contrast */
   --ao-accent: #00638E;
   --ao-accent-dim: rgba(0, 99, 142, 0.20);
   --ao-accent-glow: rgba(0, 99, 142, 0.35);
   --ao-accent-light: #BFD8E3;
   --ao-dock-bg: rgba(20, 20, 20, 0.88);
   --ao-highlight: rgba(255, 255, 255, 0.05);
+
+  /* Semantic success / error — adjusted for dark mode */
+  --ao-success: #2ECC9A;
+  --ao-success-bg: rgba(46, 204, 154, 0.12);
+  --ao-success-border: rgba(46, 204, 154, 0.30);
+  --ao-error: #E05A4E;
+  --ao-error-bg: rgba(224, 90, 78, 0.12);
+  --ao-error-border: rgba(224, 90, 78, 0.30);
 
   --paper-bg: var(--ao-canvas);
   --paper-surface: var(--ao-elevated);
@@ -278,7 +296,16 @@ body {
   transition: width 0.5s ease;
 }
 
-/* ───────────── GLOBAL DARK MODE OVERRIDES (Azure & Onyx) ───────────── */
+/* ───────────── GLOBAL THEME OVERRIDES (Azure & Onyx) ───────────── */
+
+html:not(.dark), [data-theme="light"] {
+  color-scheme: light;
+}
+
+html:not(.dark) body {
+  background-color: #DFE5EA !important;
+  color: #0F172A !important;
+}
 
 html.dark, [data-theme="dark"] {
   color-scheme: dark;
@@ -287,6 +314,12 @@ html.dark, [data-theme="dark"] {
 html.dark body {
   background-color: #000000 !important;
   color: #FFFFFF !important;
+}
+
+/* Selection Styling */
+html:not(.dark) ::selection {
+  background-color: #00638E;
+  color: #FFFFFF;
 }
 
 /* Dark Mode Utility Enhancements */

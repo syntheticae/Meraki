@@ -260,35 +260,35 @@ export function SpotlightSearch({
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-150">
       <div 
-        className="w-full max-w-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh] animate-in zoom-in-95 duration-150"
+        className="w-full max-w-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh] animate-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Header */}
-        <div className="p-4 border-b border-[#BFD8E3]/40 dark:border-white/10 flex items-center gap-3 bg-[#EDF3F7] dark:bg-[#1C1C1C]/50">
-          <Search className="w-5 h-5 text-[#50585C] dark:text-[#7A8992] shrink-0" />
+        <div className="p-4 border-b border-[#CBD5E1] dark:border-white/10 flex items-center gap-3 bg-[#F1F5F9] dark:bg-[#1C1C1C]/50">
+          <Search className="w-5 h-5 text-[#00638E] dark:text-[#7A8992] shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Cari materi, rumus tenses, modul, kosakata, atau matriks... (Ketik apa saja)"
-            className="w-full bg-transparent text-sm sm:text-base text-[#141414] dark:text-[#FFFFFF] placeholder:text-[#50585C] dark:placeholder:text-[#7A8992] outline-hidden"
+            className="w-full bg-transparent text-sm sm:text-base text-[#0F172A] dark:text-[#FFFFFF] placeholder:text-[#475569] dark:placeholder:text-[#7A8992] outline-hidden font-medium"
           />
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-[#50585C] dark:text-[#7A8992] transition-colors cursor-pointer"
+            className="p-1.5 rounded-xl hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] text-[#475569] dark:text-[#7A8992] transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Results List */}
-        <div className="overflow-y-auto p-2 space-y-1 flex-1 no-scrollbar">
+        <div role="listbox" aria-label="Hasil pencarian materi" className="overflow-y-auto p-2 space-y-1 flex-1 no-scrollbar">
           {filteredItems.length === 0 ? (
             <div className="p-8 text-center space-y-2">
-              <Compass className="w-8 h-8 text-[#50585C] dark:text-[#7A8992] mx-auto stroke-1" />
-              <p className="text-sm font-medium text-[#141414] dark:text-[#FFFFFF]">Tidak ada hasil yang cocok</p>
-              <p className="text-xs text-[#50585C] dark:text-[#7A8992]">Coba kata kunci lain seperti "tenses", "passive", "vocabulary", atau "ielts".</p>
+              <Compass className="w-8 h-8 text-[#475569] dark:text-[#7A8992] mx-auto stroke-1" />
+              <p className="text-sm font-bold text-[#0F172A] dark:text-[#FFFFFF]">Tidak ada hasil yang cocok</p>
+              <p className="text-xs text-[#334155] dark:text-[#7A8992]">Coba kata kunci lain seperti "tenses", "passive", "vocabulary", atau "ielts".</p>
             </div>
           ) : (
             filteredItems.map((item, index) => {
@@ -298,29 +298,31 @@ export function SpotlightSearch({
               return (
                 <button
                   key={item.id}
+                  role="option"
+                  aria-selected={isSelected}
                   onClick={() => item.action()}
                   onMouseEnter={() => setSelectedIndex(index)}
                   className={clsx(
                     'w-full p-3 rounded-2xl text-left transition-all flex items-center justify-between gap-3 tactile-btn cursor-pointer',
                     isSelected
-                      ? 'bg-[#00638E] text-white shadow-xs font-medium'
-                      : 'hover:bg-[#EDF3F7] dark:hover:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF]'
+                      ? 'bg-[#00638E] text-white shadow-xs font-bold'
+                      : 'hover:bg-[#F1F5F9] dark:hover:bg-[#1C1C1C] text-[#0F172A] dark:text-[#FFFFFF]'
                   )}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div className={clsx(
                       'p-2 rounded-xl shrink-0',
-                      isSelected ? 'bg-white/15 text-white' : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC]'
+                      isSelected ? 'bg-white/20 text-white' : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] text-[#00638E] dark:text-[#8CB9CC] border border-[#CBD5E1] dark:border-transparent'
                     )}>
                       <Icon className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs sm:text-sm font-semibold truncate">{item.title}</span>
+                        <span className="text-xs sm:text-sm font-bold truncate">{item.title}</span>
                         {item.badge && (
                           <span className={clsx(
                             'text-[10px] font-mono px-2 py-0.5 rounded-md font-bold shrink-0',
-                            isSelected ? 'bg-white/20 text-white' : 'bg-[#BFD8E3]/30 dark:bg-[#2B2B2B] text-[#004A6B] dark:text-[#BFD8E3]'
+                            isSelected ? 'bg-white/20 text-white' : 'bg-[#00638E]/15 dark:bg-[#2B2B2B] text-[#004A6B] dark:text-[#BFD8E3] border border-[#00638E]/25'
                           )}>
                             {item.badge}
                           </span>
@@ -328,7 +330,7 @@ export function SpotlightSearch({
                       </div>
                       <p className={clsx(
                         'text-[11px] truncate',
-                        isSelected ? 'text-white/80' : 'text-[#50585C] dark:text-[#7A8992]'
+                        isSelected ? 'text-white/90' : 'text-[#475569] dark:text-[#7A8992]'
                       )}>
                         {item.subtitle}
                       </p>
@@ -337,8 +339,8 @@ export function SpotlightSearch({
 
                   <div className="flex items-center gap-1.5 shrink-0">
                     <span className={clsx(
-                      'text-[10px] font-mono hidden sm:inline-block px-2 py-0.5 rounded-md',
-                      isSelected ? 'bg-white/10 text-white' : 'text-[#50585C] dark:text-[#7A8992]'
+                      'text-[10px] font-mono font-semibold hidden sm:inline-block px-2 py-0.5 rounded-md',
+                      isSelected ? 'bg-white/10 text-white' : 'text-[#475569] dark:text-[#7A8992]'
                     )}>
                       {item.category}
                     </span>
@@ -351,19 +353,19 @@ export function SpotlightSearch({
         </div>
 
         {/* Footer Shortcut Guide */}
-        <div className="p-3 border-t border-[#BFD8E3]/40 dark:border-white/10 bg-[#EDF3F7] dark:bg-[#1C1C1C]/40 flex items-center justify-between text-[11px] font-mono text-[#50585C] dark:text-[#7A8992]">
+        <div className="p-3 border-t border-[#CBD5E1] dark:border-white/10 bg-[#F1F5F9] dark:bg-[#1C1C1C]/40 flex items-center justify-between text-[11px] font-mono text-[#475569] dark:text-[#7A8992]">
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-[#BFD8E3]/30 dark:bg-[#2B2B2B] text-[#141414] dark:text-[#FFFFFF] text-[10px]">↑</kbd>
-              <kbd className="px-1.5 py-0.5 rounded bg-[#BFD8E3]/30 dark:bg-[#2B2B2B] text-[#141414] dark:text-[#FFFFFF] text-[10px]">↓</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-[#E2E8F0] dark:bg-[#2B2B2B] text-[#0F172A] dark:text-[#FFFFFF] text-[10px] font-bold border border-[#CBD5E1] dark:border-transparent">↑</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-[#E2E8F0] dark:bg-[#2B2B2B] text-[#0F172A] dark:text-[#FFFFFF] text-[10px] font-bold border border-[#CBD5E1] dark:border-transparent">↓</kbd>
               <span>Navigasi</span>
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-[#BFD8E3]/30 dark:bg-[#2B2B2B] text-[#141414] dark:text-[#FFFFFF] text-[10px]">↵</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-[#E2E8F0] dark:bg-[#2B2B2B] text-[#0F172A] dark:text-[#FFFFFF] text-[10px] font-bold border border-[#CBD5E1] dark:border-transparent">↵</kbd>
               <span>Pilih</span>
             </span>
           </div>
-          <span className="hidden sm:inline">Tekan ESC untuk tutup</span>
+          <span className="hidden sm:inline font-medium">Tekan ESC untuk tutup</span>
         </div>
       </div>
     </div>

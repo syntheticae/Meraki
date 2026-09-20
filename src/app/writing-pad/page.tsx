@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { PenTool, Sparkles, Clock, BookOpen, Award, CheckCircle, FileText } from 'lucide-react';
-import { AppShell } from '@/components/layout/AppShell';
+import { useRouter } from 'next/navigation';
 import { WritingRubric } from '@/components/exercises/WritingRubric';
 import { WritingRubricExercise } from '@/types/exercise';
 
@@ -501,56 +501,57 @@ Following membrane filtration, the purified water undergoes post-treatment disin
   },
 ];
 
-export default function WritingStudioPage() {
+export function WritingPadView() {
   const [selectedPromptIndex, setSelectedPromptIndex] = useState(0);
 
   const currentExercise = WRITING_PROMPTS[selectedPromptIndex];
 
   return (
-    <AppShell
-      category="Writing Studio"
-      title="Simulasi Esai & Evaluasi Mandiri"
-    >
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="space-y-3 max-w-3xl">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#00638E]" />
-            <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase tracking-widest font-bold">
-              Academic Linter & Assessment Pad
-            </span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-serif text-[#141414] dark:text-[#FFFFFF] font-bold">
-            Simulasi Penulisan Esai & Evaluasi Mandiri
-          </h1>
-          <p className="text-[#50585C] dark:text-[#7A8992] text-xs sm:text-sm leading-relaxed font-sans">
-            Ruang menulis bebas distraksi dengan timer waktu nyata, live word counter, analitik ritme kalimat, dan rubrik evaluasi standar Cambridge & ETS.
-          </p>
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="space-y-3 max-w-3xl">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#00638E]" />
+          <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase tracking-widest font-bold">
+            Academic Linter &amp; Assessment Pad
+          </span>
         </div>
-
-        {/* Prompt Selector Pills */}
-        <div className="flex flex-wrap items-center gap-2">
-          {WRITING_PROMPTS.map((prompt, idx) => (
-            <button
-              key={prompt.id}
-              onClick={() => setSelectedPromptIndex(idx)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-mono transition-all flex items-center gap-2 tactile-btn cursor-pointer ${
-                selectedPromptIndex === idx
-                  ? 'bg-[#00638E] text-white font-bold shadow-xs'
-                  : 'bg-[#FFFFFF] dark:bg-[#141414] hover:bg-[#EDF3F7] dark:hover:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] border border-[#BFD8E3]/40 dark:border-white/10'
-              }`}
-            >
-              <PenTool className="w-3.5 h-3.5" />
-              <span className="truncate max-w-[200px] sm:max-w-none">{prompt.title}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Main Writing Pad Component */}
-        <div className="p-4 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#BFD8E3]/40 dark:border-white/5 shadow-xs">
-          <WritingRubric key={currentExercise.id} exercise={currentExercise} />
-        </div>
+        <h1 className="text-2xl sm:text-3xl font-serif text-[#0F172A] dark:text-[#FFFFFF] font-bold">
+          Simulasi Penulisan Esai &amp; Evaluasi Mandiri
+        </h1>
+        <p className="text-[#334155] dark:text-[#7A8992] text-xs sm:text-sm leading-relaxed font-sans">
+          Ruang menulis bebas distraksi dengan timer waktu nyata, live word counter, analitik ritme kalimat, dan rubrik evaluasi standar Cambridge &amp; ETS.
+        </p>
       </div>
-    </AppShell>
+
+      {/* Prompt Selector Pills */}
+      <div className="flex flex-wrap items-center gap-2">
+        {WRITING_PROMPTS.map((prompt, idx) => (
+          <button
+            key={prompt.id}
+            onClick={() => setSelectedPromptIndex(idx)}
+            className={`px-3.5 py-2 rounded-xl text-xs font-mono transition-all flex items-center gap-2 tactile-btn cursor-pointer ${
+              selectedPromptIndex === idx
+                ? 'bg-[#00638E] text-white font-bold shadow-xs'
+                : 'bg-white dark:bg-[#141414] hover:bg-[#F8FAFC] dark:hover:bg-[#1C1C1C] text-[#475569] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-[#FFFFFF] border border-[#CBD5E1] dark:border-white/10 shadow-xs'
+            }`}
+          >
+            <PenTool className="w-3.5 h-3.5" />
+            <span className="truncate max-w-[200px] sm:max-w-none">{prompt.title}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Main Writing Pad Component */}
+      <div className="p-4 sm:p-6 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs">
+        <WritingRubric key={currentExercise.id} exercise={currentExercise} />
+      </div>
+    </div>
   );
+}
+
+export default function WritingStudioPage() {
+  const router = useRouter();
+  React.useEffect(() => { router.replace('/?tab=writing-pad'); }, [router]);
+  return null;
 }

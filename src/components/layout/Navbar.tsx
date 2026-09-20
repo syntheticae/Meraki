@@ -13,7 +13,8 @@ import {
   Library, 
   ArrowLeft, 
   Home,
-  Search
+  Search,
+  Layers,
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { SpotlightSearch } from '@/components/search/SpotlightSearch';
@@ -45,12 +46,12 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Workspace Utama', count: '40 Modul', icon: Home },
-    { href: '/learn', label: 'Kurikulum Tracks', count: '7 Jalur', icon: BookOpen },
-    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { href: '/exam', label: 'IELTS & TOEFL', count: 'Band 7+', icon: Award },
+    { href: '/', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/modules', label: 'Modul Materi', count: '40 Bab', icon: BookOpen },
+    { href: '/learn', label: 'Kurikulum Tracks', count: '7 Jalur', icon: Layers },
+    { href: '/exam', label: 'IELTS & TOEFL', count: 'Simulasi', icon: Award },
     { href: '/vocabulary', label: 'AWL Lexicon', count: 'Oxford', icon: Library },
-    { href: '/writing-pad', label: 'Writing Studio', count: '7 Prompt', icon: PenTool },
+    { href: '/writing-pad', label: 'Writing Studio', count: 'Linter', icon: PenTool },
   ];
 
   return (
@@ -59,8 +60,8 @@ export function Navbar() {
         className={clsx(
           'sticky top-0 z-40 w-full pt-safe transition-all duration-200',
           scrolled
-            ? 'bg-[#F4F7F9]/90 dark:bg-[#000000]/90 backdrop-blur-md border-b border-[#BFD8E3]/40 dark:border-white/10 shadow-xs'
-            : 'bg-[#F4F7F9] dark:bg-[#000000] border-b border-[#BFD8E3]/40 dark:border-white/10'
+            ? 'bg-white/95 dark:bg-[#000000]/90 backdrop-blur-md border-b border-[#CBD5E1] dark:border-white/10 shadow-xs'
+            : 'bg-white dark:bg-[#000000] border-b border-[#CBD5E1] dark:border-white/10'
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
@@ -71,29 +72,29 @@ export function Navbar() {
                 ✺
               </span>
               <div className="flex flex-col">
-                <span className="font-serif text-xl tracking-tight text-[#141414] dark:text-[#FFFFFF] font-semibold leading-none">
+                <span className="font-serif text-xl tracking-tight text-[#0F172A] dark:text-[#FFFFFF] font-bold leading-none">
                   Meraki <span className="italic text-[#00638E] dark:text-[#8CB9CC]">English</span>
                 </span>
-                <span className="font-mono text-[9px] tracking-widest uppercase text-[#50585C] dark:text-[#7A8992] mt-0.5">
+                <span className="font-mono text-[9px] tracking-widest uppercase text-[#475569] dark:text-[#8CB9CC] mt-0.5 font-bold">
                   Academic & Precision
                 </span>
               </div>
             </Link>
 
-            {/* Quick Back to Main Workspace pill if not on home */}
+            {/* Quick Back to Main Dashboard pill if not on home */}
             {pathname !== '/' && (
               <Link
                 href="/"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-xs font-mono text-[#141414] dark:text-[#FFFFFF] transition-all tactile-btn"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] text-xs font-mono text-[#0F172A] dark:text-[#FFFFFF] border border-[#CBD5E1] dark:border-white/10 transition-all tactile-btn font-semibold shadow-2xs"
               >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Workspace 40 Modul</span>
+                <ArrowLeft className="w-3.5 h-3.5 text-[#00638E]" />
+                <span>Dashboard Meraki</span>
               </Link>
             )}
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-[#EDF3F7] dark:bg-[#141414] px-2 py-1 rounded-2xl border border-[#BFD8E3]/40 dark:border-white/10">
+          <nav className="hidden lg:flex items-center gap-1 bg-[#F1F5F9] dark:bg-[#141414] px-2 py-1 rounded-2xl border border-[#CBD5E1] dark:border-white/10">
             {navLinks.map((link) => {
               const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
               const Icon = link.icon;
@@ -105,8 +106,8 @@ export function Navbar() {
                   className={clsx(
                     'px-3 py-1.5 rounded-xl text-xs font-mono transition-all duration-200 flex items-center gap-1.5 tactile-btn',
                     isActive
-                      ? 'bg-[#00638E] text-white shadow-xs font-semibold'
-                      : 'text-[#50585C] dark:text-[#BFD8E3] hover:text-[#141414] dark:hover:text-[#FFFFFF] hover:bg-[#BFD8E3]/30 dark:hover:bg-[#2B2B2B]'
+                      ? 'bg-[#00638E] text-white shadow-xs font-bold'
+                      : 'text-[#334155] dark:text-[#BFD8E3] hover:text-[#0F172A] dark:hover:text-[#FFFFFF] hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] font-medium'
                   )}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -121,13 +122,13 @@ export function Navbar() {
             {/* Spotlight Search Trigger Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-[#141414] dark:text-[#FFFFFF] transition-colors tactile-btn flex items-center gap-2 text-xs font-mono cursor-pointer"
+              className="p-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] text-[#0F172A] dark:text-[#FFFFFF] border border-[#CBD5E1] dark:border-white/10 transition-colors tactile-btn flex items-center gap-2 text-xs font-mono cursor-pointer shadow-2xs"
               title="Cari Materi & Kosakata (Cmd+K)"
               aria-label="Search"
             >
-              <Search className="w-4 h-4 text-[#50585C] dark:text-[#7A8992]" />
-              <span className="hidden xl:inline text-[#50585C] dark:text-[#7A8992]">Cari...</span>
-              <kbd className="hidden xl:inline px-1.5 py-0.5 rounded bg-[#BFD8E3]/30 dark:bg-[#2B2B2B] text-[10px] text-[#004A6B] dark:text-[#BFD8E3]">⌘K</kbd>
+              <Search className="w-4 h-4 text-[#00638E] dark:text-[#7A8992]" />
+              <span className="hidden xl:inline text-[#475569] dark:text-[#7A8992] font-semibold">Cari...</span>
+              <kbd className="hidden xl:inline px-1.5 py-0.5 rounded bg-[#E2E8F0] dark:bg-[#2B2B2B] text-[10px] text-[#00638E] dark:text-[#BFD8E3] font-bold border border-[#CBD5E1] dark:border-transparent">⌘K</kbd>
             </button>
 
             {/* Obsidian Dark Mode Toggle */}
@@ -135,16 +136,16 @@ export function Navbar() {
 
             <Link
               href="/"
-              className="sm:hidden p-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF] text-xs font-mono flex items-center gap-1"
-              title="Kembali ke Workspace"
+              className="sm:hidden p-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#FFFFFF] text-xs font-mono flex items-center gap-1 shadow-2xs"
+              title="Kembali ke Dashboard"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-4 h-4 text-[#00638E]" />
             </Link>
 
             {/* Mobile hamburger button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] text-[#141414] dark:text-[#FFFFFF] transition-colors tactile-btn cursor-pointer"
+              className="lg:hidden p-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] text-[#0F172A] dark:text-[#FFFFFF] border border-[#CBD5E1] dark:border-white/10 transition-colors tactile-btn cursor-pointer shadow-2xs"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -154,8 +155,8 @@ export function Navbar() {
 
         {/* Mobile Drawer Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#FFFFFF] dark:bg-[#141414] border-b border-[#BFD8E3]/40 dark:border-white/10 px-4 py-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150 shadow-lg">
-            <div className="text-[10px] font-mono uppercase text-[#50585C] dark:text-[#7A8992] px-2 font-semibold">
+          <div className="lg:hidden bg-white dark:bg-[#141414] border-b border-[#CBD5E1] dark:border-white/10 px-4 py-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150 shadow-lg">
+            <div className="text-[10px] font-mono uppercase text-[#475569] dark:text-[#7A8992] px-2 font-bold">
               Navigasi Halaman
             </div>
             {navLinks.map((link) => {
@@ -171,7 +172,7 @@ export function Navbar() {
                     'w-full p-3 rounded-2xl text-xs font-mono transition-all flex items-center justify-between tactile-btn',
                     isActive
                       ? 'bg-[#00638E] text-white font-bold shadow-xs'
-                      : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#141414] dark:text-[#FFFFFF] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B]'
+                      : 'bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#FFFFFF] hover:bg-[#F1F5F9] dark:hover:bg-[#2B2B2B] font-semibold'
                   )}
                 >
                   <div className="flex items-center gap-2.5">

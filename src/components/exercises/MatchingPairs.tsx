@@ -73,23 +73,31 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider font-semibold">
+        <span className="font-mono text-xs text-[#475569] dark:text-[#8CB9CC] uppercase tracking-wider font-bold">
           Pasangan Cocok (Matching) · {exercise.points} Pts
         </span>
-        <span className="font-mono text-xs text-[#141414] dark:text-[#FFFFFF] font-bold px-2.5 py-0.5 rounded-full bg-[#EDF3F7] dark:bg-[#1C1C1C]">
+        <span className="font-mono text-xs text-[#0F172A] dark:text-[#FFFFFF] font-bold px-2.5 py-0.5 rounded-full bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 shadow-2xs">
           {Object.keys(matches).length}/{exercise.pairs.length} Terpasang
         </span>
       </div>
 
-      <p className="text-sm text-[#50585C] dark:text-[#7A8992] leading-relaxed">
+      <p className="text-sm text-[#334155] dark:text-[#8CB9CC] leading-relaxed">
         {exercise.instruction} (Pilih satu item di Kolom A, lalu pilih pasangannya di Kolom B).
       </p>
+
+      {/* Dynamic guidance hint (Fix N5) */}
+      {selectedLeft && !isSubmitted && (
+        <div className="p-3 rounded-xl bg-[#00638E]/10 border border-[#00638E]/30 text-xs font-mono text-[#004A6B] dark:text-[#8CB9CC] flex items-center gap-2 animate-in fade-in">
+          <span className="w-2 h-2 rounded-full bg-[#00638E] animate-pulse" />
+          <span>Item terpilih! Sekarang klik pasangannya di Kolom B untuk menyambungkan.</span>
+        </div>
+      )}
 
       {/* Grid Comparison */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {/* Left Column */}
         <div className="space-y-2.5">
-          <span className="font-mono text-[11px] text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider block mb-1 font-semibold">
+          <span className="font-mono text-[11px] text-[#475569] dark:text-[#8CB9CC] uppercase tracking-wider block mb-1 font-bold">
             Kolom A (Item Konsep)
           </span>
           {exercise.pairs.map((pair, index) => {
@@ -104,23 +112,23 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
                 onClick={() => handleLeftClick(pair.id)}
                 disabled={isSubmitted}
                 className={clsx(
-                  'w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 tactile-btn min-h-[48px]',
+                  'w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 tactile-btn min-h-[48px] cursor-pointer shadow-2xs',
                   isSubmitted
                     ? isCorrect
-                      ? 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-semibold'
-                      : 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]'
+                      ? 'bg-[#00638E]/15 dark:bg-[#00638E]/25 border-2 border-[#00638E] text-[#004A6B] dark:text-[#FFFFFF] font-bold'
+                      : 'bg-rose-500/10 dark:bg-rose-500/20 border-2 border-rose-400 text-rose-700 dark:text-rose-400 font-semibold'
                     : isSelected
-                    ? 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-xs font-semibold'
+                    ? 'bg-[#00638E] text-white shadow-xs font-bold border-[#00638E]'
                     : hasMatch
-                    ? 'bg-[#EDF3F7] dark:bg-[#1C1C1C] border-[#00638E] text-[#141414] dark:text-[#FFFFFF] ring-1 ring-[#00638E]/40'
-                    : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]'
+                    ? 'bg-[#F8FAFC] dark:bg-[#1C1C1C] border-2 border-[#00638E] text-[#0F172A] dark:text-[#FFFFFF]'
+                    : 'bg-white dark:bg-[#1C1C1C] hover:bg-[#F1F5F9] dark:hover:bg-[#262626] border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#FFFFFF]'
                 )}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="w-5 h-5 rounded-lg bg-black/05 text-[10px] font-mono flex items-center justify-center font-bold">
+                  <span className="w-5 h-5 rounded-lg bg-[#F1F5F9] dark:bg-white/10 border border-[#CBD5E1] dark:border-white/10 text-[10px] font-mono flex items-center justify-center font-bold text-[#0F172A] dark:text-[#DFE5EA]">
                     {index + 1}
                   </span>
-                  <span>{pair.left}</span>
+                  <span className="font-medium">{pair.left}</span>
                 </div>
 
                 {hasMatch && !isSubmitted && (
@@ -141,7 +149,7 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
 
         {/* Right Column */}
         <div className="space-y-2.5">
-          <span className="font-mono text-[11px] text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider block mb-1 font-semibold">
+          <span className="font-mono text-[11px] text-[#475569] dark:text-[#8CB9CC] uppercase tracking-wider block mb-1 font-bold">
             Kolom B (Pasangan Kaidah)
           </span>
           {shuffledRights.map((item, index) => {
@@ -158,20 +166,20 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
                 className={clsx(
                   'w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 tactile-btn min-h-[48px]',
                   isUsed
-                    ? 'bg-[#EDF3F7] dark:bg-[#1C1C1C] border-[#00638E] text-[#141414] dark:text-[#FFFFFF] ring-1 ring-[#00638E]/40'
+                    ? 'bg-[#F8FAFC] dark:bg-[#1C1C1C] border-2 border-[#00638E] text-[#0F172A] dark:text-[#FFFFFF]'
                     : selectedLeft
-                    ? 'bg-[#F4F7F9] dark:bg-[#000000] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] cursor-pointer'
-                    : 'bg-[#EDF3F7] dark:bg-[#1C1C1C]/50 border-[#BFD8E3]/30 dark:border-white/10 text-[#50585C] dark:text-[#7A8992] opacity-70'
+                    ? 'bg-white dark:bg-[#000000] hover:bg-[#F1F5F9] dark:hover:bg-[#2B2B2B] border-2 border-[#00638E] text-[#0F172A] dark:text-[#FFFFFF] cursor-pointer shadow-xs'
+                    : 'bg-[#F8FAFC] dark:bg-[#1C1C1C]/50 border border-[#CBD5E1] dark:border-white/10 text-[#475569] dark:text-[#7A8992]'
                 )}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="w-5 h-5 rounded-lg bg-black/05 text-[10px] font-mono flex items-center justify-center font-bold">
+                  <span className="w-5 h-5 rounded-lg bg-[#F1F5F9] dark:bg-white/10 border border-[#CBD5E1] dark:border-white/10 text-[10px] font-mono flex items-center justify-center font-bold text-[#0F172A] dark:text-[#DFE5EA]">
                     {letter}
                   </span>
-                  <span>{item.text}</span>
+                  <span className="font-medium">{item.text}</span>
                 </div>
                 {isUsed && (
-                  <span className="font-mono text-[10px] bg-[#00638E]/15 dark:bg-[#00638E]/25 text-[#00638E] dark:text-[#8CB9CC] px-2 py-0.5 rounded-full font-bold">
+                  <span className="font-mono text-[10px] bg-[#00638E]/15 dark:bg-[#00638E]/25 text-[#004A6B] dark:text-[#8CB9CC] border border-[#00638E]/30 px-2 py-0.5 rounded-full font-bold">
                     Terhubung
                   </span>
                 )}
@@ -186,7 +194,7 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
         <button
           type="button"
           onClick={handleReset}
-          className="flex items-center gap-1.5 text-xs text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] font-mono tactile-btn"
+          className="flex items-center gap-1.5 text-xs text-[#475569] dark:text-[#8CB9CC] hover:text-[#00638E] dark:hover:text-[#FFFFFF] font-mono font-bold tactile-btn cursor-pointer"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>Reset Semua Pasangan</span>
@@ -197,10 +205,10 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
           disabled={!allMatched}
           onClick={handleCheck}
           className={clsx(
-            'px-6 py-2.5 rounded-2xl font-medium text-xs font-mono transition-all shadow-xs tactile-btn min-h-[44px]',
+            'px-6 py-2.5 rounded-2xl font-bold text-xs font-mono transition-all shadow-xs tactile-btn min-h-[44px]',
             allMatched
-              ? 'bg-[#141414] dark:bg-[#00638E] text-white hover:bg-[#00638E] text-white text-white cursor-pointer'
-              : 'bg-[#EDF3F7] dark:bg-[#1C1C1C] text-[#50585C] dark:text-[#7A8992]/60 cursor-not-allowed border border-[#BFD8E3]/40 dark:border-white/10'
+              ? 'bg-[#00638E] hover:bg-[#004A6B] text-white cursor-pointer shadow-sm'
+              : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] text-[#94A3B8] dark:text-[#7A8992]/60 cursor-not-allowed border border-[#CBD5E1] dark:border-white/10'
           )}
         >
           Periksa Semua Pasangan
@@ -211,26 +219,26 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
       {isSubmitted && (
         <div
           className={clsx(
-            'p-5 rounded-2xl border transition-all space-y-2 animate-in fade-in duration-200',
+            'p-5 rounded-2xl border transition-all space-y-2 animate-in fade-in duration-200 shadow-2xs',
             allCorrect
-              ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]'
-              : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
+              ? 'bg-[#00638E]/10 dark:bg-[#00638E]/15 border-[#00638E]/30 dark:border-[#BFD8E3]/35 text-[#0F172A] dark:text-[#FFFFFF]'
+              : 'bg-rose-500/10 dark:bg-rose-500/20 border-rose-300 dark:border-rose-800 text-[#0F172A] dark:text-[#FFFFFF]'
           )}
         >
-          <div className="flex items-center gap-2 font-semibold text-sm">
+          <div className="flex items-center gap-2 font-bold text-sm">
             {allCorrect ? (
               <>
-                <Check className="w-5 h-5 text-[#004A6B] dark:text-[#BFD8E3]" />
-                <span>Semua pasangan cocok dengan tepat! (+{exercise.points} Poin)</span>
+                <Check className="w-5 h-5 text-[#00638E] dark:text-[#BFD8E3]" />
+                <span className="text-[#004A6B] dark:text-[#BFD8E3]">Semua pasangan cocok dengan tepat! (+{exercise.points} Poin)</span>
               </>
             ) : (
               <>
-                <XCircle className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC]" />
-                <span>Beberapa pasangan belum tepat. Silakan tinjau kembali.</span>
+                <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
+                <span className="text-rose-700 dark:text-rose-400">Beberapa pasangan belum tepat. Silakan tinjau kembali.</span>
               </>
             )}
           </div>
-          <p className="text-xs text-[#2B2B2B] dark:text-[#BFD8E3] leading-relaxed pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
+          <p className="text-xs text-[#1E293B] dark:text-[#BFD8E3] leading-relaxed pt-1 border-t border-[#CBD5E1] dark:border-white/10">
             <strong>Pembahasan:</strong> {exercise.explanation}
           </p>
         </div>

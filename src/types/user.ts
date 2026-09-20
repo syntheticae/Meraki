@@ -26,15 +26,30 @@ export interface WritingSubmission {
   submittedAt: string;
 }
 
+export interface VaultItem {
+  id: string;
+  sourceType: 'module-quiz' | 'practice' | 'flashcard' | 'manual';
+  question: string;
+  correctAnswer: string;
+  userAnswer?: string;
+  topicTitle?: string;
+  addedAt: string; // ISO date string
+  reviewCount: number;
+  nextReviewAt?: string; // ISO date string for SRS scheduling
+}
+
 export interface UserProgress {
   userId: string;
   displayName: string;
   level: string;
-  completedLessons: string[]; // lesson ids
+  completedLessons: string[];  // lesson ids (for /learn tracks)
+  completedTopics: string[];   // topic ids (for /modules 40-bab core curriculum)
+  lastViewedTopicId?: string;  // last module topic user was reading — for resume
   bookmarkedLessons: string[];
   quizAttempts: Record<string, QuizAttemptRecord>; // key is lessonId
   streak: StreakData;
   writingSubmissions: WritingSubmission[];
+  vaultItems: VaultItem[];     // unified mistake vault
   mockExamResults: Array<{
     id: string;
     examId: string;
@@ -51,4 +66,5 @@ export interface UserProgress {
   };
   dailyGoalMinutes: number;
   preferredDialect: 'en-US' | 'en-GB';
+  hasCompletedOnboarding: boolean; // controls onboarding flow
 }

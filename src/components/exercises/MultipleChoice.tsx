@@ -43,12 +43,12 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
       {/* Exercise Instruction & Prompt */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-xs text-[#50585C] dark:text-[#7A8992] uppercase tracking-wider font-semibold">
+          <span className="font-mono text-xs text-[#475569] dark:text-[#8CB9CC] uppercase tracking-wider font-bold">
             Pilihan Ganda · {exercise.points} Pts
           </span>
           <button
             onClick={() => playNativeAudio(exercise.question)}
-            className="flex items-center gap-1.5 text-xs text-[#004A6B] dark:text-[#BFD8E3] hover:text-[#141414] dark:text-[#FFFFFF] transition-colors font-mono tactile-btn"
+            className="flex items-center gap-1.5 text-xs text-[#00638E] dark:text-[#BFD8E3] hover:text-[#0F172A] dark:text-[#FFFFFF] transition-colors font-mono font-bold tactile-btn cursor-pointer"
             title="Dengarkan pelafalan soal"
           >
             <Volume2 className="w-3.5 h-3.5" />
@@ -56,18 +56,18 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
           </button>
         </div>
 
-        <p className="text-sm text-[#50585C] dark:text-[#7A8992] leading-relaxed">
+        <p className="text-sm text-[#334155] dark:text-[#8CB9CC] leading-relaxed">
           {exercise.instruction}
         </p>
 
         {exercise.contextSnippet && (
-          <div className="p-4 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border-l-4 border-l-[#00638E] dark:border-l-[#8CB9CC] border-y border-r border-[#BFD8E3]/40 dark:border-white/10 italic text-sm text-[#141414] dark:text-[#FFFFFF]">
+          <div className="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border-l-4 border-l-[#00638E] dark:border-l-[#8CB9CC] border-y border-r border-[#CBD5E1] dark:border-white/10 italic text-sm text-[#0F172A] dark:text-[#FFFFFF] shadow-2xs">
             "{exercise.contextSnippet}"
           </div>
         )}
 
-        <div className="p-5 rounded-2xl bg-[#EDF3F7] dark:bg-[#1C1C1C] border border-[#BFD8E3]/40 dark:border-white/10 shadow-xs">
-          <h3 className="text-base sm:text-lg font-serif font-bold text-[#141414] dark:text-[#FFFFFF] leading-snug">
+        <div className="p-5 rounded-2xl bg-[#F8FAFC] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 shadow-xs">
+          <h3 className="text-base sm:text-lg font-serif font-bold text-[#0F172A] dark:text-[#FFFFFF] leading-snug">
             {exercise.question}
           </h3>
         </div>
@@ -79,18 +79,18 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
           const isSelected = selectedId === option.id;
           const isThisCorrect = option.id === exercise.correctAnswerId;
 
-          let cardStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C] hover:bg-[#BFD8E3]/40 dark:hover:bg-[#2B2B2B] border-[#BFD8E3]/40 dark:border-white/10 text-[#141414] dark:text-[#FFFFFF]';
+          let cardStyle = 'bg-white dark:bg-[#1C1C1C] hover:bg-[#F1F5F9] dark:hover:bg-[#262626] border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#FFFFFF] shadow-2xs';
 
           if (submitted) {
             if (isThisCorrect) {
-              cardStyle = 'bg-[#004A6B]/20 dark:bg-[#00638E]/25 border-[#004A6B] dark:border-[#00638E] text-[#141414] dark:text-[#FFFFFF] font-semibold shadow-xs';
+              cardStyle = 'bg-[#00638E]/15 dark:bg-[#00638E]/25 border-2 border-[#00638E] text-[#004A6B] dark:text-[#FFFFFF] font-bold shadow-xs';
             } else if (isSelected && !isThisCorrect) {
-              cardStyle = 'bg-[#00638E]/20 dark:bg-[#00638E]/30 border-[#00638E] text-[#141414] dark:text-[#FFFFFF]';
+              cardStyle = 'bg-rose-500/10 dark:bg-rose-500/20 border-2 border-rose-400 text-rose-700 dark:text-rose-400 font-semibold';
             } else {
-              cardStyle = 'bg-[#EDF3F7] dark:bg-[#1C1C1C]/40 border-transparent opacity-50 text-[#50585C] dark:text-[#7A8992]';
+              cardStyle = 'bg-[#F8FAFC] dark:bg-[#1C1C1C]/40 border-[#CBD5E1]/50 dark:border-transparent opacity-50 text-[#475569] dark:text-[#7A8992]';
             }
           } else if (isSelected) {
-            cardStyle = 'bg-[#00638E] text-white shadow-xs font-semibold border-[#00638E] shadow-xs font-semibold';
+            cardStyle = 'bg-[#00638E] text-white shadow-xs font-bold border-[#00638E]';
           }
 
           return (
@@ -104,17 +104,17 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
               )}
             >
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <span className="w-6 h-6 rounded-lg bg-black/05 border border-black/10 font-mono text-xs flex items-center justify-center font-bold text-[#50585C] dark:text-[#7A8992] shrink-0 mt-0.5">
+                <span className="w-6 h-6 rounded-lg bg-[#F1F5F9] dark:bg-white/10 border border-[#CBD5E1] dark:border-white/10 font-mono text-xs flex items-center justify-center font-bold text-[#0F172A] dark:text-[#DFE5EA] shrink-0 mt-0.5">
                   {['A', 'B', 'C', 'D'][oIdx] || oIdx + 1}
                 </span>
                 <span className="text-xs sm:text-sm leading-relaxed">{option.text}</span>
               </div>
 
               {submitted && isThisCorrect && (
-                <Check className="w-5 h-5 text-[#004A6B] dark:text-[#BFD8E3] shrink-0" />
+                <Check className="w-5 h-5 text-[#00638E] dark:text-[#BFD8E3] shrink-0 font-bold" />
               )}
               {submitted && isSelected && !isThisCorrect && (
-                <XCircle className="w-5 h-5 text-[#00638E] dark:text-[#8CB9CC] shrink-0" />
+                <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0" />
               )}
             </button>
           );
@@ -125,36 +125,37 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
       {submitted && (
         <div
           className={clsx(
-            'p-5 rounded-2xl border text-xs sm:text-sm space-y-2 animate-in fade-in duration-200',
+            'p-5 rounded-2xl border text-xs sm:text-sm space-y-2 animate-in fade-in duration-200 shadow-2xs',
             isCorrect
-              ? 'bg-[#004A6B]/10 dark:bg-[#00638E]/15 border-[#004A6B]/30 dark:border-[#BFD8E3]/35 text-[#141414] dark:text-[#FFFFFF]'
-              : 'bg-[#00638E]/10 dark:bg-[#00638E]/20 border-[#00638E]/35 dark:border-[#8CB9CC]/40 text-[#141414] dark:text-[#FFFFFF]'
+              ? 'bg-[#00638E]/10 dark:bg-[#00638E]/15 border-[#00638E]/30 dark:border-[#BFD8E3]/35 text-[#0F172A] dark:text-[#FFFFFF]'
+              : 'bg-rose-500/10 dark:bg-rose-500/20 border-rose-300 dark:border-rose-800 text-[#0F172A] dark:text-[#FFFFFF]'
           )}
         >
           <div className="flex items-center justify-between font-bold">
             <span className="flex items-center gap-2">
               {isCorrect ? (
                 <>
-                  <Check className="w-4 h-4 text-[#004A6B] dark:text-[#BFD8E3]" />
-                  <span>Jawaban Tepat! (+{exercise.points} Poin)</span>
+                  <Check className="w-4 h-4 text-[#00638E] dark:text-[#BFD8E3]" />
+                  <span className="text-[#004A6B] dark:text-[#BFD8E3]">Jawaban Tepat! (+{exercise.points} Poin)</span>
                 </>
               ) : (
                 <>
-                  <XCircle className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
-                  <span>Kurang Tepat. Periksa Pembahasan di Bawah.</span>
+                  <XCircle className="w-4 h-4 text-rose-600 dark:text-rose-400" />
+                  <span className="text-rose-700 dark:text-rose-400">Kurang Tepat. Periksa Pembahasan di Bawah.</span>
                 </>
               )}
             </span>
 
             <button
+              type="button"
               onClick={handleReset}
-              className="text-xs font-mono text-[#50585C] dark:text-[#7A8992] hover:text-[#141414] dark:text-[#FFFFFF] hover:underline"
+              className="text-xs font-mono font-bold text-[#00638E] dark:text-[#8CB9CC] hover:underline cursor-pointer px-3 py-1.5 rounded-lg min-h-[44px] inline-flex items-center"
             >
               Ulangi Soal
             </button>
           </div>
 
-          <p className="text-xs leading-relaxed text-[#2B2B2B] dark:text-[#BFD8E3] pt-1 border-t border-[#BFD8E3]/30 dark:border-white/10">
+          <p className="text-xs leading-relaxed text-[#1E293B] dark:text-[#BFD8E3] pt-1 border-t border-[#CBD5E1] dark:border-white/10">
             <strong>Pembahasan:</strong>{' '}
             {exercise.options.find((o) => o.id === (selectedId || exercise.correctAnswerId))?.explanation ||
               exercise.grammarTip ||
