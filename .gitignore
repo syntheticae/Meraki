@@ -44,3 +44,9 @@ next-env.d.ts
 # local references
 reference/
 
+# ios / capacitor
+ios/App/Pods/
+ios/App/App/public/
+ios/App/Podfile.lock
+*.ipa
+

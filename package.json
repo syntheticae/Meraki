@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "eslint",
     "desktop": "next build && electron .",
-    "build:win": "next build && electron-builder --win"
+    "build:win": "next build && electron-builder --win",
+    "build:ios": "next build && npx cap sync ios"
   },
   "dependencies": {
     "@capacitor/cli": "^7.0.0",
