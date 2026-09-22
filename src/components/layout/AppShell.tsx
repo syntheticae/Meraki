@@ -245,7 +245,7 @@ export function AppShell({
   );
 
   return (
-    <div className="flex min-h-screen w-full bg-[#DFE5EA] dark:bg-[#000000] text-[#0F172A] dark:text-[#FFFFFF] font-sans antialiased">
+    <div className="flex min-h-dvh w-full bg-[#DFE5EA] dark:bg-[#000000] text-[#0F172A] dark:text-[#FFFFFF] font-sans antialiased overflow-x-hidden">
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex w-60 xl:w-64 shrink-0 flex-col bg-[#F1F5F9] dark:bg-[#141414] border-r border-[#CBD5E1] dark:border-white/10 sticky top-0 h-screen z-30">
         {renderSidebarContent()}
@@ -267,7 +267,7 @@ export function AppShell({
       )}
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 min-h-screen">
+      <div className="flex-1 flex flex-col min-w-0 min-h-dvh overflow-x-hidden">
         {/* Top Header Bar */}
         <header className="sticky top-0 z-20 h-16 bg-[#FFFFFF]/95 dark:bg-[#000000]/85 backdrop-blur-md border-b border-[#CBD5E1] dark:border-white/10 flex items-center justify-between px-4 sm:px-6 lg:px-8 shadow-xs">
           <div className="flex items-center gap-3 min-w-0">

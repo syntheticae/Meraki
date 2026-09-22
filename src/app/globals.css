@@ -98,7 +98,6 @@ body {
   background-color: var(--ao-canvas);
   color: var(--ao-text-primary);
   overscroll-behavior: none;
-  touch-action: pan-y;
 }
 
 /* Custom Editorial Ultra-Thin Scrollbars */
@@ -380,4 +379,30 @@ html.dark ::selection {
 body {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* ── iOS WKWebView Touch & Scroll Fixes ─────────────────────────────────── */
+/* Enable momentum scrolling on all overflowing containers (critical for iOS) */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollable utility — use on any container that should scroll on iOS */
+.ios-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.ios-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent content from going under notch / home indicator with automatic contentInset */
+.safe-top    { padding-top:    max(env(safe-area-inset-top,    0px), 0px); }
+.safe-bottom { padding-bottom: max(env(safe-area-inset-bottom, 0px), 16px); }
+
+/* Fix: on iOS, 100vh includes the browser chrome — use dvh + fill-available fallback */
+.full-height {
+  height: 100dvh;
+  height: -webkit-fill-available;
 }

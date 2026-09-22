@@ -5,9 +5,9 @@
   "backgroundColor": "#DFE5EA",
   "bundledWebRuntime": false,
   "ios": {
-    "contentInset": "never",
+    "contentInset": "automatic",
     "allowsLinkPreview": false,
-    "scrollEnabled": false,
+    "scrollEnabled": true,
     "preferredContentMode": "mobile",
     "backgroundColor": "#DFE5EA"
   },
