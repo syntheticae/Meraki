@@ -58,6 +58,10 @@ const ExamView = dynamic(
   () => import('@/components/views/ExamView').then((m) => m.ExamView),
   { loading: () => <ViewSkeleton /> }
 );
+const TracksView = dynamic(
+  () => import('@/components/views/TracksView').then((m) => m.TracksView),
+  { loading: () => <ViewSkeleton /> }
+);
 
 import { progressRepository } from '@/services/storage';
 import { useAppStore } from '@/stores/useAppStore';
@@ -176,6 +180,7 @@ function WorkstationInner() {
           />
         );
       case 'practice':   return <PracticeView />;
+      case 'tracks':     return <TracksView />;
       case 'matrices':   return <MatricesView />;
       case 'syntax':     return <SyntaxView />;
       case 'collocations': return <CollocationsView />;

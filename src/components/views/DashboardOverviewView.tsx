@@ -114,6 +114,26 @@ export function DashboardOverviewView({ onTabChange }: DashboardOverviewViewProp
     window.location.reload();
   };
 
+  const allLessons = useMemo(() => getAllLessons(), []);
+  const bookmarkedLessonsData = useMemo(
+    () => allLessons.filter((l) => progress?.bookmarkedLessons?.includes(l.id) ?? false),
+    [allLessons, progress?.bookmarkedLessons]
+  );
+
+  const stageNames = useMemo(
+    () => Array.from(new Set(MERAKI_CURRICULUM.map((m) => m.stageName))),
+    []
+  );
+
+  const dueVaultItemsCount = useMemo(() => {
+    if (!progress?.vaultItems) return 0;
+    const now = Date.now();
+    return progress.vaultItems.filter((v) => {
+      if (!v.nextReviewAt) return true;
+      return new Date(v.nextReviewAt).getTime() <= now;
+    }).length;
+  }, [progress?.vaultItems]);
+
   if (!progress) {
     return (
       <div className="min-h-[50vh] flex items-center justify-center">
@@ -130,25 +150,6 @@ export function DashboardOverviewView({ onTabChange }: DashboardOverviewViewProp
     );
   }
 
-  const allLessons = useMemo(() => getAllLessons(), []);
-  const bookmarkedLessonsData = useMemo(
-    () => allLessons.filter((l) => progress.bookmarkedLessons.includes(l.id)),
-    [allLessons, progress.bookmarkedLessons]
-  );
-
-  const stageNames = useMemo(
-    () => Array.from(new Set(MERAKI_CURRICULUM.map((m) => m.stageName))),
-    []
-  );
-
-  const dueVaultItemsCount = useMemo(() => {
-    if (!progress?.vaultItems) return 0;
-    const now = Date.now();
-    return progress.vaultItems.filter((v) => {
-      if (!v.nextReviewAt) return true;
-      return new Date(v.nextReviewAt).getTime() <= now;
-    }).length;
-  }, [progress?.vaultItems]);
   const coreTotal = MERAKI_CURRICULUM.length;
   const coreCompletedIds = progress.completedTopics ?? [];
   const coreCompletedCount = coreCompletedIds.length;
