@@ -74,7 +74,7 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
       </div>
 
       {/* Options Grid */}
-      <div className="space-y-2.5">
+      <div role="radiogroup" aria-label={exercise.question} className="space-y-2.5">
         {exercise.options.map((option, oIdx) => {
           const isSelected = selectedId === option.id;
           const isThisCorrect = option.id === exercise.correctAnswerId;
@@ -96,6 +96,9 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
           return (
             <button
               key={option.id}
+              type="button"
+              role="radio"
+              aria-checked={isSelected}
               onClick={() => handleSelect(option.id)}
               disabled={submitted}
               className={clsx(
@@ -111,10 +114,10 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
               </div>
 
               {submitted && isThisCorrect && (
-                <Check className="w-5 h-5 text-[#00638E] dark:text-[#BFD8E3] shrink-0 font-bold" />
+                <Check className="w-5 h-5 text-[#00638E] dark:text-[#BFD8E3] shrink-0 font-bold" aria-hidden="true" />
               )}
               {submitted && isSelected && !isThisCorrect && (
-                <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0" />
+                <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0" aria-hidden="true" />
               )}
             </button>
           );
@@ -124,6 +127,8 @@ export function MultipleChoice({ exercise, onAnswerSelected }: Props) {
       {/* Explanation Banner */}
       {submitted && (
         <div
+          role="status"
+          aria-live="polite"
           className={clsx(
             'p-5 rounded-2xl border text-xs sm:text-sm space-y-2 animate-in fade-in duration-200 shadow-2xs',
             isCorrect

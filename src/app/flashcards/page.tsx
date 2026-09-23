@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Shuffle,
   Volume2,
@@ -18,6 +18,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { OXFORD_3000_VOCABULARY, OxfordWord, checkMeaningAccuracy } from '@/data/oxford-3000';
 import { playTextToSpeech } from '@/services/speech';
+import { calculateNextReviewDate } from '@/lib/srsEngine';
 import { clsx } from 'clsx';
 
 interface WordSrsData {
@@ -48,9 +49,7 @@ export function FlashcardsView() {
   }, []);
 
   const handleRateSrs = (wordId: string, boxLevel: number) => {
-    const intervals = [0, 1, 3, 7, 14, 30]; // days
-    const intervalDays = intervals[boxLevel] || 1;
-    const nextReview = Date.now() + intervalDays * 24 * 60 * 60 * 1000;
+    const nextReview = calculateNextReviewDate(boxLevel);
 
     const updatedDeck = {
       ...srsDeck,
@@ -88,6 +87,56 @@ export function FlashcardsView() {
     });
   }, [oxfordSearch, oxfordCefrFilter, oxfordSrsFilter, srsDeck]);
 
+  const handleNextOxfordWord = useCallback(() => {
+    setOxfordIndex((prev) => (prev + 1 < filteredOxfordList.length ? prev + 1 : 0));
+    setUserMeaningInput('');
+    setMeaningFeedback(null);
+    setIsFlipped(false);
+  }, [filteredOxfordList.length]);
+
+  const handlePrevOxfordWord = useCallback(() => {
+    setOxfordIndex((prev) => (prev - 1 >= 0 ? prev - 1 : filteredOxfordList.length - 1));
+    setUserMeaningInput('');
+    setMeaningFeedback(null);
+    setIsFlipped(false);
+  }, [filteredOxfordList.length]);
+
+  // Touch swipe state for iOS gesture navigation
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchStartY, setTouchStartY] = useState(0);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+    setTouchStartY(e.touches[0].clientY);
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const deltaY = e.changedTouches[0].clientY - touchStartY;
+    // Only swipe if horizontal movement dominates and is >50px
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+      if (deltaX < 0) handleNextOxfordWord();
+      else handlePrevOxfordWord();
+    }
+  }, [touchStartX, touchStartY, handleNextOxfordWord, handlePrevOxfordWord]);
+
+  // Keyboard navigation: ← / → navigate cards, Space flips
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      // Don't intercept when user is typing
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === 'ArrowRight') handleNextOxfordWord();
+      else if (e.key === 'ArrowLeft') handlePrevOxfordWord();
+      else if (e.key === ' ') {
+        e.preventDefault();
+        setIsFlipped((f) => !f);
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [handleNextOxfordWord, handlePrevOxfordWord]);
+
+
   const currentOxfordWord: OxfordWord | undefined = filteredOxfordList[oxfordIndex] || filteredOxfordList[0];
   const currentWordSrs: WordSrsData = (currentOxfordWord && srsDeck[currentOxfordWord.id]) || {
     box: 1,
@@ -108,19 +157,6 @@ export function FlashcardsView() {
     }
   };
 
-  const handleNextOxfordWord = () => {
-    setOxfordIndex((prev) => (prev + 1 < filteredOxfordList.length ? prev + 1 : 0));
-    setUserMeaningInput('');
-    setMeaningFeedback(null);
-    setIsFlipped(false);
-  };
-
-  const handlePrevOxfordWord = () => {
-    setOxfordIndex((prev) => (prev - 1 >= 0 ? prev - 1 : filteredOxfordList.length - 1));
-    setUserMeaningInput('');
-    setMeaningFeedback(null);
-    setIsFlipped(false);
-  };
 
   const handleRandomOxfordWord = () => {
     if (filteredOxfordList.length === 0) return;
@@ -170,8 +206,8 @@ export function FlashcardsView() {
 
         {/* Main 2-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Left Column: Word Drawer & Filters */}
-          <div className="col-span-1 lg:col-span-4 space-y-4">
+          {/* Left Column: Word Drawer & Filters (Desktop left, Mobile bottom) */}
+          <div className="order-2 lg:order-1 col-span-1 lg:col-span-4 space-y-4">
             <div className="p-5 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs space-y-4">
               {/* Search */}
               <div className="relative">
@@ -284,7 +320,7 @@ export function FlashcardsView() {
                         <span className="font-serif font-medium text-sm">{item.word}</span>
                         <span
                           className={clsx(
-                            'font-mono text-[9px] px-1.5 py-0.5 rounded-sm',
+                            'font-mono text-[11px] px-1.5 py-0.5 rounded-sm',
                             isSelected
                               ? 'bg-white/20 text-white'
                               : 'bg-[#F1F5F9] dark:bg-[#2B2B2B] text-[#475569] dark:text-[#8CB9CC]'
@@ -294,7 +330,7 @@ export function FlashcardsView() {
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-1 font-mono text-[9px]">
+                      <div className="flex items-center gap-1 font-mono text-[11px]">
                         <span
                           className={clsx(
                             'px-1.5 py-0.5 rounded',
@@ -319,8 +355,12 @@ export function FlashcardsView() {
             </div>
           </div>
 
-          {/* Right Column: Flashcard & Interactive Test */}
-          <div className="col-span-1 lg:col-span-8 lg:sticky lg:top-6 space-y-6">
+          {/* Right Column: Flashcard & Interactive Test (Desktop right, Mobile top) */}
+          <div
+            className="order-1 lg:order-2 col-span-1 lg:col-span-8 lg:sticky lg:top-6 space-y-6"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {currentOxfordWord ? (
               <div className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs space-y-6 text-center">
                 <div className="flex items-center justify-between pb-3 border-b border-[#CBD5E1] dark:border-white/10">

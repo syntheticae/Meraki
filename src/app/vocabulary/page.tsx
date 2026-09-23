@@ -7,6 +7,7 @@ import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
 import { vocabularyCards, VocabularyCard } from '@/data/lessons/vocabulary';
 import { playTextToSpeech } from '@/services/speech';
+import { progressRepository } from '@/services/storage';
 import { clsx } from 'clsx';
 
 export function VocabularyView() {
@@ -48,6 +49,8 @@ export function VocabularyView() {
       const next = { ...prev, [id]: !prev[id] };
       try {
         localStorage.setItem('meraki_mastered_vocab', JSON.stringify(next));
+        const count = Object.values(next).filter(Boolean).length;
+        progressRepository.updateVocabularyMasteredCount(count);
       } catch (err) {}
       return next;
     });

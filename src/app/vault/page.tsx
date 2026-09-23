@@ -40,6 +40,8 @@ export function VaultView() {
   const [vaultReQuizAnswer, setVaultReQuizAnswer] = useState<string>('');
   const [vaultReQuizFeedback, setVaultReQuizFeedback] = useState<{ isCorrect: boolean } | null>(null);
   const [confirmClear, setConfirmClear] = useState<boolean>(false);
+  // Confirmation state for single-item delete (prevents accidental deletion)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -325,19 +327,43 @@ export function VaultView() {
                               setVaultReQuizFeedback(null);
                             }
                           }}
-                          className="text-xs font-mono text-[#00638E] dark:text-[#8CB9CC] hover:underline flex items-center gap-1 cursor-pointer font-semibold"
+                          className="min-h-[44px] text-xs font-mono text-[#00638E] dark:text-[#8CB9CC] hover:underline flex items-center gap-1 cursor-pointer font-semibold px-2"
                         >
                           <RotateCcw className="w-3.5 h-3.5" />
                           <span>{isReQuizzing ? 'Tutup Uji Ulang' : 'Uji Ulang (SRS)'}</span>
                         </button>
-                        <button
-                          onClick={() => handleRemoveFromVault(item.id)}
-                          className="text-xs font-mono text-emerald-700 dark:text-emerald-400 hover:underline flex items-center gap-1 cursor-pointer font-semibold"
-                        >
-                          <Check className="w-3.5 h-3.5" />
-                          <span>Sudah Paham (Hapus)</span>
-                        </button>
+
+                        {/* Two-step confirmation for destructive delete */}
+                        {confirmDeleteId === item.id ? (
+                          <div className="flex items-center gap-2 animate-in fade-in duration-200">
+                            <span className="text-xs text-rose-600 dark:text-rose-400 font-mono font-semibold">Hapus?</span>
+                            <button
+                              onClick={() => {
+                                handleRemoveFromVault(item.id);
+                                setConfirmDeleteId(null);
+                              }}
+                              className="min-h-[36px] px-3 py-1.5 rounded-lg bg-rose-600 text-white text-xs font-mono font-medium hover:bg-rose-700 transition-colors"
+                            >
+                              Ya, Hapus
+                            </button>
+                            <button
+                              onClick={() => setConfirmDeleteId(null)}
+                              className="min-h-[36px] px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-white/20 text-xs font-mono text-[#475569] dark:text-[#7A8992] hover:bg-[#F1F5F9] dark:hover:bg-white/5 transition-colors"
+                            >
+                              Batal
+                            </button>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => setConfirmDeleteId(item.id)}
+                            className="min-h-[44px] text-xs font-mono text-emerald-700 dark:text-emerald-400 hover:underline flex items-center gap-1 cursor-pointer font-semibold px-2"
+                          >
+                            <Check className="w-3.5 h-3.5" />
+                            <span>Sudah Paham (Hapus)</span>
+                          </button>
+                        )}
                       </div>
+
                     </div>
 
                     <p className="text-base font-serif font-bold text-[#0F172A] dark:text-white leading-relaxed">

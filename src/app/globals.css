@@ -302,8 +302,8 @@ html:not(.dark), [data-theme="light"] {
 }
 
 html:not(.dark) body {
-  background-color: #DFE5EA !important;
-  color: #0F172A !important;
+  background-color: #DFE5EA;
+  color: #0F172A;
 }
 
 html.dark, [data-theme="dark"] {
@@ -311,18 +311,12 @@ html.dark, [data-theme="dark"] {
 }
 
 html.dark body {
-  background-color: #000000 !important;
-  color: #FFFFFF !important;
-}
-
-/* Selection Styling */
-html:not(.dark) ::selection {
-  background-color: #00638E;
+  background-color: #000000;
   color: #FFFFFF;
 }
 
-/* Dark Mode Utility Enhancements */
-html.dark ::selection {
+/* Selection Styling */
+::selection {
   background-color: #00638E;
   color: #FFFFFF;
 }
@@ -371,10 +365,21 @@ html.dark ::selection {
 .min-h-screen-safe { min-height: 100dvh; min-height: -webkit-fill-available; }
 .h-safe-screen { height: 100dvh; height: -webkit-fill-available; }
 
+/* Scrollbar utilities */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.smooth-scroll { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+.smooth-scroll { scroll-behavior: smooth; overscroll-behavior: contain; }
+
+/* Touch & Interaction Utilities */
+/* touch-target: ensures minimum 44×44px hit area for accessibility */
 .touch-target { min-height: 44px; min-width: 44px; }
+/* touch-safe: apply to buttons to guarantee 44px touch area on mobile */
+.touch-safe {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
 body {
   touch-action: manipulation;
@@ -382,27 +387,51 @@ body {
 }
 
 /* ── iOS WKWebView Touch & Scroll Fixes ─────────────────────────────────── */
-/* Enable momentum scrolling on all overflowing containers (critical for iOS) */
-* {
-  -webkit-overflow-scrolling: touch;
-}
-
 /* Scrollable utility — use on any container that should scroll on iOS */
 .ios-scroll {
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 .ios-scroll-x {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
-
-/* Prevent content from going under notch / home indicator with automatic contentInset */
-.safe-top    { padding-top:    max(env(safe-area-inset-top,    0px), 0px); }
-.safe-bottom { padding-bottom: max(env(safe-area-inset-bottom, 0px), 16px); }
 
 /* Fix: on iOS, 100vh includes the browser chrome — use dvh + fill-available fallback */
 .full-height {
   height: 100dvh;
   height: -webkit-fill-available;
 }
+
+/* Safe area padding helpers with minimum values */
+.safe-top    { padding-top:    max(env(safe-area-inset-top,    0px), 0px); }
+.safe-bottom { padding-bottom: max(env(safe-area-inset-bottom, 0px), 16px); }
+
+/* Scroll snap for horizontal carousels */
+.snap-x-mandatory {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-x-mandatory > * {
+  scroll-snap-align: start;
+}
+
+/* ── 3D Flip Card Animation (U-H1) ────────────────────────────────────────── */
+.card-perspective {
+  perspective: 1000px;
+}
+.card-flipper {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.card-flipper.flipped {
+  transform: rotateY(180deg);
+}
+.card-front, .card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+

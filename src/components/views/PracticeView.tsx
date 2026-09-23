@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   ListCheck,
   CheckCircle2,
@@ -16,6 +16,7 @@ import {
   Stethoscope,
 } from 'lucide-react';
 import { MERAKI_CURRICULUM, PracticeQuestion, ErrorCorrectionTask } from '@/data/meraki-data';
+import { progressRepository } from '@/services/storage';
 import { clsx } from 'clsx';
 
 export function PracticeView() {
@@ -66,8 +67,14 @@ export function PracticeView() {
     });
   }, [allQuestions, selectedCategory, searchQuery]);
 
+  // Reset quiz index whenever filter changes to prevent out-of-bounds (U-C3 fix)
+  useEffect(() => {
+    setCurrentQuizIndex(0);
+  }, [selectedCategory, searchQuery]);
+
   const currentQ = filteredQuestions[currentQuizIndex] || filteredQuestions[0];
   const currentDoc = allDoctorTasks[currentDoctorIndex] || allDoctorTasks[0];
+
 
   const handleSelectAnswer = (choice: string) => {
     if (!currentQ || submittedQuiz[currentQ.id]) return;
@@ -78,6 +85,9 @@ export function PracticeView() {
       correct: isCorrect ? prev.correct + 1 : prev.correct,
       total: prev.total + 1,
     }));
+
+    // Record practice score to central storage
+    progressRepository.recordPracticeScore(isCorrect ? 1 : 0, 1);
 
     // If incorrect, record in Mistake Vault!
     if (!isCorrect) {
@@ -158,9 +168,10 @@ export function PracticeView() {
               <input
                 type="text"
                 placeholder="Cari topik atau kata kunci soal..."
+                aria-label="Cari topik atau kata kunci soal"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-none outline-hidden text-[#0F172A] dark:text-[#FFFFFF]"
+                className="w-full bg-transparent border-none outline-none focus:ring-2 focus:ring-[#00638E] focus:ring-offset-1 rounded-lg px-2 py-1 text-[#0F172A] dark:text-[#FFFFFF]"
               />
             </div>
             <div className="flex items-center gap-3">

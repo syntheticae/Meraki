@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Headphones,
   Volume2,
@@ -98,6 +98,16 @@ export function PhoneticsView() {
   // Shadowing State
   const [shadowingCountdown, setShadowingCountdown] = useState<number>(5);
   const [isShadowingRunning, setIsShadowingRunning] = useState<boolean>(false);
+  const shadowingIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Clean up interval on component unmount
+  useEffect(() => {
+    return () => {
+      if (shadowingIntervalRef.current) {
+        clearInterval(shadowingIntervalRef.current);
+      }
+    };
+  }, []);
 
   const activeMinimalPair = MINIMAL_PAIRS_DATA[activeMinimalPairIndex] || MINIMAL_PAIRS_DATA[0];
 
@@ -130,16 +140,22 @@ export function PhoneticsView() {
   };
 
   const handleStartShadowing = () => {
+    if (shadowingIntervalRef.current) {
+      clearInterval(shadowingIntervalRef.current);
+    }
     playTextToSpeech(activeMinimalPair.contrastContext);
     setIsShadowingRunning(true);
     setShadowingCountdown(5);
 
     let count = 5;
-    const interval = setInterval(() => {
+    shadowingIntervalRef.current = setInterval(() => {
       count -= 1;
       setShadowingCountdown(count);
       if (count <= 0) {
-        clearInterval(interval);
+        if (shadowingIntervalRef.current) {
+          clearInterval(shadowingIntervalRef.current);
+          shadowingIntervalRef.current = null;
+        }
         setIsShadowingRunning(false);
       }
     }, 1000);
@@ -271,10 +287,11 @@ export function PhoneticsView() {
                     </span>
                     <button
                       onClick={() => playTextToSpeech(p.examples[0])}
-                      className="p-1.5 rounded-lg bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#00638E] hover:bg-[#E2E8F0] transition-colors"
+                      className="p-2.5 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#00638E] hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center cursor-pointer"
                       title="Dengarkan pengucapan"
+                      aria-label={`Dengarkan pengucapan simbol ${p.symbol} - ${p.name}`}
                     >
-                      <Volume2 className="w-3.5 h-3.5" />
+                      <Volume2 className="w-4 h-4" />
                     </button>
                   </div>
 

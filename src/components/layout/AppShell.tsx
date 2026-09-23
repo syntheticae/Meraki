@@ -84,7 +84,7 @@ interface AppShellProps {
   title?: string;
   headerAction?: React.ReactNode;
   activeTab?: string;
-  onTabChange?: (tabId: string) => void;
+  onTabChange?: (tabId: string, opts?: { topicId?: string; stageIdx?: number }) => void;
 }
 
 export function AppShell({
@@ -101,7 +101,7 @@ export function AppShell({
   const [isMac, setIsMac] = useState(false);
 
   useEffect(() => {
-    setIsMac(typeof navigator !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform));
+    setIsMac(typeof navigator !== 'undefined' && /Mac/.test(navigator.userAgent) && !('ontouchend' in document));
   }, []);
 
   // Close mobile drawer on route change
@@ -140,7 +140,7 @@ export function AppShell({
               <h1 className="text-[13px] font-bold tracking-tight leading-tight text-[#0F172A] dark:text-[#FFFFFF]">
                 Meraki
               </h1>
-              <p className="text-[9px] font-bold tracking-wider uppercase text-[#475569] dark:text-[#8CB9CC]">
+              <p className="text-[11px] font-bold tracking-wider uppercase text-[#475569] dark:text-[#8CB9CC]">
                 Oxford Studio
               </p>
             </div>
@@ -148,10 +148,10 @@ export function AppShell({
           {mobileMenuOpen && (
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="md:hidden p-1.5 rounded-lg text-[#475569] hover:text-[#0F172A] dark:text-[#7A8992] dark:hover:text-[#FFFFFF] hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer"
+              className="md:hidden p-2 rounded-xl text-[#475569] hover:text-[#0F172A] dark:text-[#7A8992] dark:hover:text-[#FFFFFF] hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Tutup Navigasi"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           )}
         </div>
@@ -160,7 +160,7 @@ export function AppShell({
         <nav className="flex-1 overflow-y-auto pr-1 space-y-4 no-scrollbar">
           {sidebarSections.map((section) => (
             <div key={section.title} className="space-y-0.5">
-              <div className="px-2.5 pb-1 text-[9px] font-bold uppercase tracking-wider text-[#004A6B] dark:text-[#8CB9CC]">
+              <div className="px-2.5 pb-1 text-[11px] font-bold uppercase tracking-wider text-[#004A6B] dark:text-[#8CB9CC]">
                 {section.title}
               </div>
               {section.items.map((item) => {
@@ -179,7 +179,7 @@ export function AppShell({
                       title={item.label}
                       onClick={() => onTabChange(item.id)}
                       className={clsx(
-                        'w-full text-left flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all group tactile-btn cursor-pointer',
+                        'w-full text-left flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-all group tactile-btn cursor-pointer min-h-[38px]',
                         isActive
                           ? 'bg-[#00638E] text-white font-semibold shadow-xs'
                           : 'text-[#1E293B] dark:text-[#BFD8E3] hover:text-[#004A6B] dark:hover:text-[#FFFFFF] hover:bg-[#E2ECF2]/70 dark:hover:bg-[#1C1C1C]'
@@ -187,7 +187,7 @@ export function AppShell({
                     >
                       <Icon
                         className={clsx(
-                          'w-3.5 h-3.5 shrink-0 transition-colors',
+                          'w-4 h-4 shrink-0 transition-colors',
                           isActive
                             ? 'text-white'
                             : 'text-[#475569] dark:text-[#7A8992] group-hover:text-[#00638E] dark:group-hover:text-[#8CB9CC]'
@@ -204,7 +204,7 @@ export function AppShell({
                     href={item.href}
                     title={item.label}
                     className={clsx(
-                      'flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all group tactile-btn',
+                      'flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-all group tactile-btn min-h-[38px]',
                       isActive
                         ? 'bg-[#00638E] text-white font-semibold shadow-xs'
                         : 'text-[#1E293B] dark:text-[#BFD8E3] hover:text-[#004A6B] dark:hover:text-[#FFFFFF] hover:bg-[#E2ECF2]/70 dark:hover:bg-[#1C1C1C]'
@@ -212,7 +212,7 @@ export function AppShell({
                   >
                     <Icon
                       className={clsx(
-                        'w-3.5 h-3.5 shrink-0 transition-colors',
+                        'w-4 h-4 shrink-0 transition-colors',
                         isActive
                           ? 'text-white'
                           : 'text-[#475569] dark:text-[#7A8992] group-hover:text-[#00638E] dark:group-hover:text-[#8CB9CC]'
@@ -274,7 +274,7 @@ export function AppShell({
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden p-2 rounded-xl bg-[#F1F5F9] dark:bg-[#141414] hover:bg-[#E2E8F0] dark:hover:bg-[#1C1C1C] text-[#0F172A] dark:text-[#FFFFFF] border border-[#CBD5E1] dark:border-white/10 transition-colors cursor-pointer shadow-2xs"
+              className="md:hidden p-2 rounded-xl bg-[#F1F5F9] dark:bg-[#141414] hover:bg-[#E2E8F0] dark:hover:bg-[#1C1C1C] text-[#0F172A] dark:text-[#FFFFFF] border border-[#CBD5E1] dark:border-white/10 transition-colors cursor-pointer shadow-2xs min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Buka Navigasi"
             >
               <Menu className="w-5 h-5" />
@@ -320,8 +320,14 @@ export function AppShell({
         </main>
       </div>
 
-      {/* Global Spotlight Search Modal */}
-      <SpotlightSearch isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      {/* Global Spotlight Search Modal - conditionally mounted for performance */}
+      {searchOpen && (
+        <SpotlightSearch
+          isOpen={searchOpen}
+          onClose={() => setSearchOpen(false)}
+          onSelectTopic={(topicId) => onTabChange?.('modules', { topicId })}
+        />
+      )}
     </div>
   );
 }

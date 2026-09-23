@@ -17,7 +17,7 @@ export default function IELTSDedicatedPage() {
       <div className="space-y-8">
         {/* Breadcrumb */}
         <Link
-          href="/exam"
+          href="/?tab=exam"
           className="inline-flex items-center gap-2 text-xs font-mono text-[#334155] dark:text-[#7A8992] hover:text-[#0F172A] dark:hover:text-[#FFFFFF] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />

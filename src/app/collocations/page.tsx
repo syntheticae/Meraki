@@ -909,7 +909,7 @@ export function CollocationsView() {
                             : 'bg-rose-500/10 border-rose-300 text-rose-950 dark:text-rose-200'
                         )}
                       >
-                        <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Kaku / Cacat:</span>
+                        <span className="font-mono text-[11px] uppercase block font-semibold opacity-75">Kaku / Cacat:</span>
                         <span className="line-through font-mono">{trap.literalClunkyEnglish}</span>
                       </div>
 
@@ -921,7 +921,7 @@ export function CollocationsView() {
                             : 'bg-emerald-500/10 border-emerald-300 text-emerald-950 dark:text-emerald-200'
                         )}
                       >
-                        <span className="font-mono text-[9px] uppercase block font-semibold opacity-75">Native On-Point:</span>
+                        <span className="font-mono text-[11px] uppercase block font-semibold opacity-75">Native On-Point:</span>
                         <span className="font-semibold font-mono">{trap.onPointNativeEnglish}</span>
                       </div>
                     </div>

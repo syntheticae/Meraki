@@ -32,7 +32,14 @@ export function ProgressBar({
           )}
         </div>
       )}
-      <div className="w-full h-2 bg-[#1A1714]/08 rounded-full overflow-hidden p-0.5">
+      <div
+        role="progressbar"
+        aria-valuenow={percentage}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={label ? `${label}: ${percentage}%` : `Progres: ${percentage}%`}
+        className="w-full h-2 bg-[#1A1714]/08 dark:bg-white/10 rounded-full overflow-hidden p-0.5"
+      >
         <div
           className={clsx('h-full rounded-full transition-all duration-700 ease-out', barColor)}
           style={{ width: `${percentage}%` }}

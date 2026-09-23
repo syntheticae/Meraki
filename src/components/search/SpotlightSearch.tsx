@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { 
   Search, 
@@ -24,7 +24,7 @@ export interface SearchResultItem {
   title: string;
   subtitle: string;
   category: 'Modul Kurikulum' | 'Matriks Fondasi' | 'Jalur Belajar' | 'Simulasi Ujian' | 'Studio Menulis' | 'Kosakata';
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   action: () => void;
   badge?: string;
   keywords: string[];
@@ -52,8 +52,8 @@ export function SpotlightSearch({
     }
   }, [isOpen]);
 
-  // Build searchable index
-  const searchableItems: SearchResultItem[] = [
+  // Build searchable index (memoized to avoid re-allocating 50+ objects per render)
+  const searchableItems: SearchResultItem[] = useMemo(() => [
     // 1. 35 Curriculum Modules
     ...MERAKI_CURRICULUM.map((mod) => ({
       id: `mod-${mod.id}`,
@@ -212,7 +212,7 @@ export function SpotlightSearch({
         onClose();
       }
     }
-  ];
+  ], [onSelectTopic, onClose, router]);
 
   const filteredItems = query.trim() === ''
     ? searchableItems.slice(0, 8)
@@ -258,17 +258,27 @@ export function SpotlightSearch({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-150">
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-150"
+      onClick={onClose}
+    >
       <div 
+        role="dialog"
+        aria-modal="true"
+        aria-label="Pencarian cepat materi dan kosakata"
         className="w-full max-w-2xl bg-[#FFFFFF] dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh] animate-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Header */}
         <div className="p-4 border-b border-[#CBD5E1] dark:border-white/10 flex items-center gap-3 bg-[#F1F5F9] dark:bg-[#1C1C1C]/50">
-          <Search className="w-5 h-5 text-[#00638E] dark:text-[#7A8992] shrink-0" />
+          <Search className="w-5 h-5 text-[#00638E] dark:text-[#7A8992] shrink-0" aria-hidden="true" />
           <input
             ref={inputRef}
             type="text"
+            role="combobox"
+            aria-expanded={filteredItems.length > 0}
+            aria-controls="search-results-list"
+            aria-autocomplete="list"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Cari materi, rumus tenses, modul, kosakata, atau matriks... (Ketik apa saja)"
@@ -276,14 +286,15 @@ export function SpotlightSearch({
           />
           <button
             onClick={onClose}
+            aria-label="Tutup pencarian"
             className="p-1.5 rounded-xl hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] text-[#475569] dark:text-[#7A8992] transition-colors cursor-pointer"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
 
         {/* Results List */}
-        <div role="listbox" aria-label="Hasil pencarian materi" className="overflow-y-auto p-2 space-y-1 flex-1 no-scrollbar">
+        <div id="search-results-list" role="listbox" aria-label="Hasil pencarian materi" className="overflow-y-auto p-2 space-y-1 flex-1 no-scrollbar">
           {filteredItems.length === 0 ? (
             <div className="p-8 text-center space-y-2">
               <Compass className="w-8 h-8 text-[#475569] dark:text-[#7A8992] mx-auto stroke-1" />

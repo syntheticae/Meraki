@@ -106,13 +106,10 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
             const isCorrect = isPairCorrect(pair.id);
 
             return (
-              <button
+              <div
                 key={pair.id}
-                type="button"
-                onClick={() => handleLeftClick(pair.id)}
-                disabled={isSubmitted}
                 className={clsx(
-                  'w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 tactile-btn min-h-[48px] cursor-pointer shadow-2xs',
+                  'w-full p-2.5 sm:p-3 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-2 shadow-2xs',
                   isSubmitted
                     ? isCorrect
                       ? 'bg-[#00638E]/15 dark:bg-[#00638E]/25 border-2 border-[#00638E] text-[#004A6B] dark:text-[#FFFFFF] font-bold'
@@ -124,25 +121,30 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
                     : 'bg-white dark:bg-[#1C1C1C] hover:bg-[#F1F5F9] dark:hover:bg-[#262626] border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#FFFFFF]'
                 )}
               >
-                <div className="flex items-center gap-2.5">
-                  <span className="w-5 h-5 rounded-lg bg-[#F1F5F9] dark:bg-white/10 border border-[#CBD5E1] dark:border-white/10 text-[10px] font-mono flex items-center justify-center font-bold text-[#0F172A] dark:text-[#DFE5EA]">
+                <button
+                  type="button"
+                  aria-pressed={isSelected}
+                  onClick={() => handleLeftClick(pair.id)}
+                  disabled={isSubmitted}
+                  className="flex-1 flex items-center gap-2.5 text-left cursor-pointer disabled:cursor-default outline-none min-h-[40px]"
+                >
+                  <span className="w-5 h-5 rounded-lg bg-[#F1F5F9] dark:bg-white/10 border border-[#CBD5E1] dark:border-white/10 text-[10px] font-mono flex items-center justify-center font-bold text-[#0F172A] dark:text-[#DFE5EA] shrink-0">
                     {index + 1}
                   </span>
                   <span className="font-medium">{pair.left}</span>
-                </div>
+                </button>
 
                 {hasMatch && !isSubmitted && (
-                  <span
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleRemoveMatch(pair.id);
-                    }}
-                    className="text-[11px] text-[#00638E] dark:text-[#8CB9CC] hover:underline font-mono font-bold"
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveMatch(pair.id)}
+                    aria-label={`Batalkan pasangan ${pair.left}`}
+                    className="text-[11px] text-[#00638E] dark:text-[#8CB9CC] hover:underline font-mono font-bold px-2 py-1 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer min-h-[36px]"
                   >
                     Batal
-                  </span>
+                  </button>
                 )}
-              </button>
+              </div>
             );
           })}
         </div>
@@ -218,6 +220,8 @@ export function MatchingPairs({ exercise, onAnswerChecked }: Props) {
       {/* Result Explanation */}
       {isSubmitted && (
         <div
+          role="status"
+          aria-live="polite"
           className={clsx(
             'p-5 rounded-2xl border transition-all space-y-2 animate-in fade-in duration-200 shadow-2xs',
             allCorrect

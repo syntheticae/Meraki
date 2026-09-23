@@ -162,8 +162,9 @@ export function ModulesView({ initialTopicId, onTopicChange }: ModulesViewProps)
           {/* Audio TTS Button */}
           <button
             onClick={() => playTextToSpeech(currentTopic.title)}
-            className="p-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 hover:border-[#00638E] text-[#00638E] dark:text-[#8CB9CC] transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 hover:border-[#00638E] text-[#00638E] dark:text-[#8CB9CC] transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
             title="Dengarkan Pelafalan Judul Modul"
+            aria-label={`Dengarkan pelafalan judul modul: ${currentTopic.title}`}
           >
             <Volume2 className="w-4 h-4" />
           </button>
@@ -172,7 +173,7 @@ export function ModulesView({ initialTopicId, onTopicChange }: ModulesViewProps)
           <button
             onClick={toggleTopicCompleted}
             className={clsx(
-              'flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer',
+              'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer min-h-[44px]',
               isCurrentCompleted
                 ? 'bg-[#00638E] text-white shadow-xs'
                 : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#334155] dark:text-[#7A8992] hover:text-[#00638E] dark:hover:text-[#FFFFFF]'
@@ -187,19 +188,21 @@ export function ModulesView({ initialTopicId, onTopicChange }: ModulesViewProps)
             <button
               onClick={() => prevTopic && handleSelectTopic(prevTopic.id)}
               disabled={!prevTopic}
-              className="p-1.5 rounded-lg disabled:opacity-30 hover:bg-white dark:hover:bg-[#141414] text-[#0F172A] dark:text-[#FFFFFF] transition-colors cursor-pointer disabled:cursor-not-allowed"
+              className="p-2.5 rounded-lg disabled:opacity-30 hover:bg-white dark:hover:bg-[#141414] text-[#0F172A] dark:text-[#FFFFFF] transition-colors cursor-pointer disabled:cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center"
               title={prevTopic ? prevTopic.title : 'Awal'}
+              aria-label="Topik Sebelumnya"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <span className="text-[11px] font-mono px-2 font-bold text-[#0F172A] dark:text-[#FFFFFF]">
-              {currentTopicIndex + 1}/40
+              {currentTopicIndex + 1}/{MERAKI_CURRICULUM.length}
             </span>
             <button
               onClick={() => nextTopic && handleSelectTopic(nextTopic.id)}
               disabled={!nextTopic}
-              className="p-1.5 rounded-lg disabled:opacity-30 hover:bg-white dark:hover:bg-[#141414] text-[#0F172A] dark:text-[#FFFFFF] transition-colors cursor-pointer disabled:cursor-not-allowed"
+              className="p-2.5 rounded-lg disabled:opacity-30 hover:bg-white dark:hover:bg-[#141414] text-[#0F172A] dark:text-[#FFFFFF] transition-colors cursor-pointer disabled:cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center"
               title={nextTopic ? nextTopic.title : 'Akhir'}
+              aria-label="Topik Selanjutnya"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -235,11 +238,14 @@ export function ModulesView({ initialTopicId, onTopicChange }: ModulesViewProps)
         </div>
 
         {/* Tab Selector: Reading vs Practice */}
-        <div className="flex items-center gap-2 border-b border-[#CBD5E1] dark:border-white/10 pb-2">
+        <div role="tablist" aria-label="Pilihan tampilan modul" className="flex items-center gap-2 border-b border-[#CBD5E1] dark:border-white/10 pb-2">
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'reading'}
             onClick={() => setActiveTab('reading')}
             className={clsx(
-              'px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer',
+              'px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer min-h-[44px]',
               activeTab === 'reading'
                 ? 'bg-[#00638E] text-white shadow-xs'
                 : 'text-[#334155] dark:text-[#7A8992] hover:bg-[#F1F5F9] dark:hover:bg-white/5'
@@ -249,9 +255,12 @@ export function ModulesView({ initialTopicId, onTopicChange }: ModulesViewProps)
           </button>
           {currentTopic.questions && currentTopic.questions.length > 0 && (
             <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'quiz'}
               onClick={() => setActiveTab('quiz')}
               className={clsx(
-                'px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer',
+                'px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer min-h-[44px]',
                 activeTab === 'quiz'
                   ? 'bg-[#00638E] text-white shadow-xs'
                   : 'text-[#334155] dark:text-[#7A8992] hover:bg-[#F1F5F9] dark:hover:bg-white/5'
@@ -500,21 +509,25 @@ export function ModulesView({ initialTopicId, onTopicChange }: ModulesViewProps)
           onClick={() => setIsModuleSelectorOpen(false)}
         >
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Katalog 40 Modul Pembelajaran"
             className="w-full max-w-3xl max-h-[85vh] rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-2xl flex flex-col overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-4 sm:p-5 border-b border-[#CBD5E1] dark:border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
+                <BookOpen className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" aria-hidden="true" />
                 <h3 className="font-serif text-lg font-bold text-[#0F172A] dark:text-[#FFFFFF]">
                   Katalog 40 Modul Pembelajaran
                 </h3>
               </div>
               <button
                 onClick={() => setIsModuleSelectorOpen(false)}
-                className="p-1.5 rounded-lg text-[#475569] dark:text-[#7A8992] hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer"
+                aria-label="Tutup katalog modul"
+                className="p-2.5 rounded-xl text-[#475569] dark:text-[#7A8992] hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
 

@@ -19,15 +19,43 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
   const [criteriaScores, setCriteriaScores] = useState<Record<string, number>>({});
   const [showModelAnswer, setShowModelAnswer] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const [autoSavedAt, setAutoSavedAt] = useState<string | null>(null);
 
   useEffect(() => {
-    setEssayText('');
+    // Restore autosaved draft if exists
+    try {
+      const draft = localStorage.getItem(`meraki_writing_autosave_${exercise.id}`);
+      if (draft) {
+        setEssayText(draft);
+        setAutoSavedAt('Tersimpan sebelumnya');
+      } else {
+        setEssayText('');
+      }
+    } catch {
+      setEssayText('');
+    }
     setTimeLeftSec(exercise.suggestedTimeMin * 60);
     setTimerRunning(false);
     setCriteriaScores({});
     setShowModelAnswer(false);
     setIsSaved(false);
-  }, [exercise.id]);
+    setValidationError(null);
+  }, [exercise.id, exercise.suggestedTimeMin]);
+
+  // Periodic autosave every 30 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (essayText.trim().length > 0) {
+        try {
+          localStorage.setItem(`meraki_writing_autosave_${exercise.id}`, essayText);
+          const now = new Date();
+          setAutoSavedAt(`${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`);
+        } catch {}
+      }
+    }, 30000);
+    return () => clearInterval(timer);
+  }, [essayText, exercise.id]);
 
   useEffect(() => {
     let interval: any;
@@ -69,9 +97,10 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
 
   const handleSaveSubmission = async () => {
     if (wordCount < 10) {
-      alert('Tulis esai minimal beberapa kalimat terlebih dahulu.');
+      setValidationError('Tulis esai minimal beberapa kalimat (minimal 10 kata) terlebih dahulu.');
       return;
     }
+    setValidationError(null);
 
     await progressRepository.saveWritingSubmission({
       id: 'sub_' + Date.now(),
@@ -85,6 +114,11 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
       overallScore: parseFloat(averageScore),
       submittedAt: new Date().toISOString(),
     });
+
+    // Clear autosave draft on successful submission
+    try {
+      localStorage.removeItem(`meraki_writing_autosave_${exercise.id}`);
+    } catch {}
 
     setIsSaved(true);
     if (onSubmitted) {
@@ -134,22 +168,44 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
 
       {/* Editor & Live Analytics */}
       <div className="space-y-3">
+        <label htmlFor="essay-input" className="sr-only">
+          Tulis esaimu di sini
+        </label>
         <div className="relative">
           <textarea
+            id="essay-input"
+            aria-label="Editor teks esai"
             value={essayText}
             onChange={(e) => {
               setEssayText(e.target.value);
               setIsSaved(false);
+              setValidationError(null);
             }}
             rows={12}
             placeholder="Mulai ketik esaimu di sini..."
-            className="w-full p-5 sm:p-6 rounded-3xl bg-[#F8FAFC] dark:bg-[#000000] border border-[#CBD5E1] dark:border-white/10 focus:border-[#00638E] outline-hidden text-[#0F172A] dark:text-[#FFFFFF] leading-relaxed font-sans text-sm sm:text-base transition-all resize-y shadow-inner placeholder:text-[#475569] dark:placeholder:text-[#7A8992]"
+            className="w-full p-5 sm:p-6 rounded-3xl bg-[#F8FAFC] dark:bg-[#000000] border border-[#CBD5E1] dark:border-white/10 focus:border-[#00638E] focus:ring-2 focus:ring-[#00638E]/20 outline-none text-[#0F172A] dark:text-[#FFFFFF] leading-relaxed font-sans text-sm sm:text-base transition-all resize-y shadow-inner placeholder:text-[#475569] dark:placeholder:text-[#7A8992]"
           />
         </div>
+
+        {/* Validation Error Banner */}
+        {validationError && (
+          <div
+            role="alert"
+            className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-300 dark:border-rose-800 text-xs font-mono text-rose-700 dark:text-rose-400 animate-in fade-in"
+          >
+            {validationError}
+          </div>
+        )}
 
         {/* Live Word Count & Real-time Telemetry Strip */}
         <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-xs font-mono text-[#334155] dark:text-[#7A8992] shadow-xs">
           <div className="flex flex-wrap items-center gap-3">
+            {autoSavedAt && (
+              <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                {autoSavedAt.startsWith('Tersimpan') ? autoSavedAt : `Draft tersimpan (${autoSavedAt})`}
+              </span>
+            )}
             <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#F8FAFC] dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10">
               <span>Kata:</span>
               <strong
@@ -351,20 +407,22 @@ export function WritingRubric({ exercise, onSubmitted }: Props) {
       {/* Model Answer Accordion */}
       {exercise.modelAnswer && (
         <div className="p-6 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 space-y-4 shadow-xs">
-          <div
+          <button
+            type="button"
+            aria-expanded={showModelAnswer}
             onClick={() => setShowModelAnswer(!showModelAnswer)}
-            className="flex items-center justify-between cursor-pointer group select-none"
+            className="w-full flex items-center justify-between text-left cursor-pointer group select-none tactile-btn"
           >
             <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" />
+              <BookOpen className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC]" aria-hidden="true" />
               <h4 className="font-serif text-lg font-bold text-[#0F172A] dark:text-[#FFFFFF] group-hover:text-[#00638E] dark:group-hover:text-[#8CB9CC] transition-colors">
                 Contoh Jawaban Acuan ({exercise.modelAnswer.bandOrScore})
               </h4>
             </div>
-            <button className="p-1.5 rounded-full text-[#475569] dark:text-[#8CB9CC] group-hover:text-[#0F172A] dark:group-hover:text-[#FFFFFF]">
-              {showModelAnswer ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-            </button>
-          </div>
+            <div className="p-1.5 rounded-full text-[#475569] dark:text-[#8CB9CC] group-hover:text-[#0F172A] dark:group-hover:text-[#FFFFFF]">
+              {showModelAnswer ? <ChevronUp className="w-5 h-5" aria-hidden="true" /> : <ChevronDown className="w-5 h-5" aria-hidden="true" />}
+            </div>
+          </button>
 
           {showModelAnswer && (
             <div className="space-y-4 pt-3 border-t border-[#CBD5E1] dark:border-white/10 animate-in fade-in duration-200">

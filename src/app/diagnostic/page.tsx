@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { MERAKI_CURRICULUM, PracticeQuestion } from '@/data/meraki-data';
+import { progressRepository } from '@/services/storage';
 import { clsx } from 'clsx';
 
 export function DiagnosticView() {
@@ -91,12 +92,24 @@ export function DiagnosticView() {
         category: q.category,
       }));
 
+    const totalCount = allDiagnosticQuestions.length;
+    const correctCount = allDiagnosticQuestions.filter((q) => diagnosticAnswers[q.id] === q.correctAnswer).length;
+    progressRepository.recordPracticeScore(correctCount, totalCount);
+
     if (mistakesToRecord.length > 0) {
       try {
         const prevStr = localStorage.getItem('meraki_mistake_vault');
         const prev = prevStr ? JSON.parse(prevStr) : [];
         const combined = [...mistakesToRecord, ...prev.filter((p: any) => !p.id.startsWith('diag-'))];
         localStorage.setItem('meraki_mistake_vault', JSON.stringify(combined));
+
+        progressRepository.addToVault(mistakesToRecord.map((m) => ({
+          sourceType: 'practice' as const,
+          topicTitle: m.title,
+          question: m.question,
+          userAnswer: diagnosticAnswers[m.id.replace('diag-', '')] || '',
+          correctAnswer: m.correctAnswer,
+        })));
       } catch (e) {
         console.error(e);
       }

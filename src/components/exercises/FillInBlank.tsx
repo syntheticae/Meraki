@@ -103,11 +103,12 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
               <span className="inline-block mx-1.5 my-1 align-baseline">
                 <input
                   type="text"
+                  aria-label={`Isian kata ke-${index + 1}`}
                   value={userInputs[index] || ''}
                   onChange={(e) => handleInputChange(index, e.target.value)}
                   placeholder="ketik di sini..."
                   className={clsx(
-                    'px-3 py-1 text-base rounded-xl border font-sans font-medium outline-hidden transition-all text-center min-w-[140px]',
+                    'px-3 py-1.5 text-base rounded-xl border font-sans font-medium outline-none focus:ring-2 focus:ring-[#00638E] transition-all text-center min-w-[140px]',
                     isSubmitted
                       ? isTargetCorrect(index)
                         ? 'bg-[#00638E]/15 dark:bg-[#00638E]/25 border-2 border-[#00638E] text-[#004A6B] dark:text-[#FFFFFF] font-bold shadow-xs'
@@ -180,6 +181,8 @@ export function FillInBlank({ exercise, onAnswerChecked }: Props) {
       {/* Explanation Banner */}
       {isSubmitted && (
         <div
+          role="status"
+          aria-live="polite"
           className={clsx(
             'p-5 rounded-2xl border transition-all space-y-2 animate-in fade-in duration-200 shadow-2xs',
             allCorrect

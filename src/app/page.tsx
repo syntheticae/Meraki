@@ -7,18 +7,58 @@ import { MobileBottomNav } from '@/components/layout/MobileBottomNav';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { OnboardingView } from '@/components/views/OnboardingView';
 import { DashboardOverviewView } from '@/components/views/DashboardOverviewView';
-import { ModulesView } from '@/components/views/ModulesView';
-import { PracticeView } from '@/components/views/PracticeView';
-import { MatricesView } from '@/components/views/MatricesView';
-import { SyntaxView } from '@/components/views/SyntaxView';
-import { CollocationsView } from '@/components/views/CollocationsView';
-import { PhoneticsView } from '@/components/views/PhoneticsView';
-import { FlashcardsView } from '@/components/views/FlashcardsView';
-import { VocabularyView } from '@/components/views/VocabularyView';
-import { WritingPadView } from '@/components/views/WritingPadView';
-import { VaultView } from '@/components/views/VaultView';
-import { DiagnosticView } from '@/components/views/DiagnosticView';
-import { ExamView } from '@/components/views/ExamView';
+import dynamic from 'next/dynamic';
+import { ViewSkeleton } from '@/components/ui/ViewSkeleton';
+
+const ModulesView = dynamic(
+  () => import('@/components/views/ModulesView').then((m) => m.ModulesView),
+  { loading: () => <ViewSkeleton /> }
+);
+const PracticeView = dynamic(
+  () => import('@/components/views/PracticeView').then((m) => m.PracticeView),
+  { loading: () => <ViewSkeleton /> }
+);
+const MatricesView = dynamic(
+  () => import('@/components/views/MatricesView').then((m) => m.MatricesView),
+  { loading: () => <ViewSkeleton /> }
+);
+const SyntaxView = dynamic(
+  () => import('@/components/views/SyntaxView').then((m) => m.SyntaxView),
+  { loading: () => <ViewSkeleton /> }
+);
+const CollocationsView = dynamic(
+  () => import('@/components/views/CollocationsView').then((m) => m.CollocationsView),
+  { loading: () => <ViewSkeleton /> }
+);
+const PhoneticsView = dynamic(
+  () => import('@/components/views/PhoneticsView').then((m) => m.PhoneticsView),
+  { loading: () => <ViewSkeleton /> }
+);
+const FlashcardsView = dynamic(
+  () => import('@/components/views/FlashcardsView').then((m) => m.FlashcardsView),
+  { loading: () => <ViewSkeleton /> }
+);
+const VocabularyView = dynamic(
+  () => import('@/components/views/VocabularyView').then((m) => m.VocabularyView),
+  { loading: () => <ViewSkeleton /> }
+);
+const WritingPadView = dynamic(
+  () => import('@/components/views/WritingPadView').then((m) => m.WritingPadView),
+  { loading: () => <ViewSkeleton /> }
+);
+const VaultView = dynamic(
+  () => import('@/components/views/VaultView').then((m) => m.VaultView),
+  { loading: () => <ViewSkeleton /> }
+);
+const DiagnosticView = dynamic(
+  () => import('@/components/views/DiagnosticView').then((m) => m.DiagnosticView),
+  { loading: () => <ViewSkeleton /> }
+);
+const ExamView = dynamic(
+  () => import('@/components/views/ExamView').then((m) => m.ExamView),
+  { loading: () => <ViewSkeleton /> }
+);
+
 import { progressRepository } from '@/services/storage';
 import { useAppStore } from '@/stores/useAppStore';
 

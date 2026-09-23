@@ -25,8 +25,8 @@ const instrumentSerif = Instrument_Serif({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
   viewportFit: 'cover',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#DFE5EA' },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   title: 'Meraki — Oxford English Studio',
   description:
     'Platform pembelajaran bahasa Inggris mandiri, elegan, dan minimalis. Memperkuat fondasi dasar grammar dan retorika untuk kesiapan ujian internasional.',
-  manifest: '/manifest.json',
+  manifest: '/manifest.webmanifest',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -46,11 +46,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.png', type: 'image/png' },
       { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/favicon.png',
+    shortcut: '/icon-192.png',
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
@@ -88,7 +87,16 @@ export default function RootLayout({
         />
       </head>
       <body className="h-full w-full font-sans bg-[#DFE5EA] dark:bg-[#000000] text-[#0F172A] dark:text-[#FFFFFF] selection:bg-[#00638E] selection:text-white overscroll-none">
-        {children}
+        {/* Skip Navigation Link for WCAG Keyboard Accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-[#00638E] focus:text-white focus:rounded-xl focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white text-xs font-mono"
+        >
+          Langsung ke konten utama
+        </a>
+        <div id="main-content" className="h-full w-full">
+          {children}
+        </div>
       </body>
     </html>
   );

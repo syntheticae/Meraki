@@ -111,12 +111,13 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
             <button
               type="button"
               onClick={handlePlayModel}
+              aria-label={isPlayingModel ? 'Jeda audio penutur asli' : 'Putar audio penutur asli'}
               className={clsx(
                 'w-12 h-12 rounded-full flex items-center justify-center text-white transition-all shadow-xs tactile-btn cursor-pointer',
                 isPlayingModel ? 'bg-[#00638E]' : 'bg-[#00638E] hover:bg-[#004A6B]'
               )}
             >
-              {isPlayingModel ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
+              {isPlayingModel ? <Pause className="w-5 h-5" aria-hidden="true" /> : <Play className="w-5 h-5 ml-0.5" aria-hidden="true" />}
             </button>
             <div>
               <h4 className="text-sm font-serif font-bold text-[#0F172A] dark:text-[#FFFFFF]">Native Model Audio</h4>
@@ -129,11 +130,12 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
             <span className="text-[10px] font-mono text-[#475569] dark:text-[#8CB9CC] uppercase font-bold">
               Kecepatan:
             </span>
-            <div className="flex items-center gap-1.5 bg-[#F1F5F9] dark:bg-[#1C1C1C] p-1.5 rounded-2xl border border-[#CBD5E1] dark:border-white/10">
+            <div className="flex items-center gap-1.5 bg-[#F1F5F9] dark:bg-[#1C1C1C] p-1.5 rounded-2xl border border-[#CBD5E1] dark:border-white/10" role="group" aria-label="Pilihan kecepatan putar audio">
               {[0.75, 0.9, 1.0].map((rate) => (
                 <button
                   key={rate}
                   type="button"
+                  aria-pressed={playbackSpeed === rate}
                   onClick={() => setPlaybackSpeed(rate)}
                   className={clsx(
                     'px-2.5 py-1 rounded-xl text-xs font-mono transition-colors tactile-btn cursor-pointer',
@@ -205,14 +207,15 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
 
           {userAudioUrl && (
             <div className="flex items-center gap-3">
-              <audio controls src={userAudioUrl} className="h-9 rounded-2xl" />
+              <audio controls src={userAudioUrl} aria-label="Hasil rekaman suara Anda" className="h-9 rounded-2xl" />
               <button
                 type="button"
                 onClick={() => setUserAudioUrl(null)}
-                className="p-2 rounded-xl text-[#475569] dark:text-[#8CB9CC] hover:text-[#0F172A] dark:hover:text-white transition-colors cursor-pointer"
+                className="p-2 rounded-xl text-[#475569] dark:text-[#8CB9CC] hover:text-[#0F172A] dark:hover:text-white transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
                 title="Hapus Rekaman & Coba Lagi"
+                aria-label="Hapus rekaman suara dan coba lagi"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
           )}
@@ -243,8 +246,12 @@ export function ShadowingPlayer({ exercise, onCompleted }: Props) {
       )}
 
       {completed && (
-        <div className="p-4 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/30 dark:border-[#8CB9CC]/30 flex items-center gap-2.5 text-[#0F172A] dark:text-[#FFFFFF] text-xs font-mono font-bold">
-          <CheckCircle2 className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC] shrink-0" />
+        <div
+          role="status"
+          aria-live="polite"
+          className="p-4 rounded-2xl bg-[#00638E]/10 dark:bg-[#00638E]/20 border border-[#00638E]/30 dark:border-[#8CB9CC]/30 flex items-center gap-2.5 text-[#0F172A] dark:text-[#FFFFFF] text-xs font-mono font-bold"
+        >
+          <CheckCircle2 className="w-4 h-4 text-[#00638E] dark:text-[#8CB9CC] shrink-0" aria-hidden="true" />
           <span>Latihan Shadowing Selesai! Kamu telah berhasil membandingkan intonasi suaramu.</span>
         </div>
       )}

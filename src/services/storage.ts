@@ -1,9 +1,22 @@
 import { UserProgress, QuizAttemptRecord, WritingSubmission, VaultItem } from '@/types/user';
+import { calculateNextReviewDate } from '@/lib/srsEngine';
 
-const STORAGE_KEY = 'meraki_english_user_progress_v2';
-// v1 key for migration
-const LEGACY_KEY_V1 = 'meraki_english_user_progress_v1';
-const LEGACY_TOPICS_KEY = 'meraki_completed_topics';
+export const STORAGE_KEYS = {
+  PROGRESS: 'meraki_english_user_progress_v2',
+  LEGACY_V1: 'meraki_english_user_progress_v1',
+  LEGACY_TOPICS: 'meraki_completed_topics',
+  APP_STATE: 'meraki_app_state',
+  SRS_DECK: 'meraki_srs_deck',
+  MASTERED_VOCAB: 'meraki_mastered_vocab',
+  DIAGNOSTIC_ANSWERS: 'meraki_diagnostic_answers',
+  DIAGNOSTIC_SUBMITTED: 'meraki_diagnostic_submitted',
+  MISTAKE_VAULT: 'meraki_mistake_vault',
+  WRITING_AUTOSAVE: 'meraki_writing_autosave',
+} as const;
+
+const STORAGE_KEY = STORAGE_KEYS.PROGRESS;
+const LEGACY_KEY_V1 = STORAGE_KEYS.LEGACY_V1;
+const LEGACY_TOPICS_KEY = STORAGE_KEYS.LEGACY_TOPICS;
 
 const DEFAULT_USER_PROGRESS: UserProgress = {
   userId: 'local_learner_01',
@@ -37,17 +50,28 @@ const DEFAULT_USER_PROGRESS: UserProgress = {
  * Storage Service — Single Source of Truth for all user progress.
  *
  * Handles migration from v1 storage key and legacy `meraki_completed_topics`.
- * When migrating to Supabase, replace localStorage calls with
- * `supabase.from('user_progress').upsert(...)`.
+ * Features an in-memory cache to prevent redundant JSON.parse calls across components.
  */
 class LocalProgressRepository {
+  private _cache: UserProgress | null = null;
+
+  public clearCache(): void {
+    this._cache = null;
+  }
+
   private getLocalData(): UserProgress {
+    if (this._cache) {
+      return this._cache;
+    }
+
     if (typeof window === 'undefined') return DEFAULT_USER_PROGRESS;
 
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        return { ...DEFAULT_USER_PROGRESS, ...JSON.parse(stored) };
+        const parsed = { ...DEFAULT_USER_PROGRESS, ...JSON.parse(stored) };
+        this._cache = parsed;
+        return parsed;
       }
 
       // — Migration from v1 storage —
@@ -66,6 +90,7 @@ class LocalProgressRepository {
         // Clean up legacy keys
         localStorage.removeItem(LEGACY_KEY_V1);
         localStorage.removeItem(LEGACY_TOPICS_KEY);
+        this._cache = migrated;
         return migrated;
       }
 
@@ -77,6 +102,7 @@ class LocalProgressRepository {
         localStorage.removeItem(LEGACY_TOPICS_KEY);
       }
       localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
+      this._cache = fresh;
       return fresh;
     } catch (e) {
       console.warn('[Storage] Could not read user progress', e);
@@ -85,6 +111,7 @@ class LocalProgressRepository {
   }
 
   private saveLocalData(data: UserProgress): void {
+    this._cache = data;
     if (typeof window === 'undefined') return;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -179,12 +206,8 @@ class LocalProgressRepository {
     const item = data.vaultItems.find((v) => v.id === vaultItemId);
     if (item) {
       item.reviewCount += 1;
-      // Simple SRS: next review in 1 → 3 → 7 → 14 → 30 days
-      const intervals = [1, 3, 7, 14, 30];
-      const daysUntilNext = intervals[Math.min(item.reviewCount, intervals.length - 1)];
-      const next = new Date();
-      next.setDate(next.getDate() + daysUntilNext);
-      item.nextReviewAt = next.toISOString();
+      const nextTimestamp = calculateNextReviewDate(item.reviewCount);
+      item.nextReviewAt = new Date(nextTimestamp).toISOString();
     }
     this.updateStreakInternal(data);
     this.saveLocalData(data);
@@ -300,6 +323,51 @@ class LocalProgressRepository {
     } catch {
       return Promise.resolve(false);
     }
+  }
+
+  // ─── Profile & Data Management ─────────────────────────────────────────────
+
+  async updateProfile(opts: {
+    displayName?: string;
+    level?: string;
+    dailyGoalMinutes?: number;
+    preferredDialect?: 'en-US' | 'en-GB';
+  }): Promise<UserProgress> {
+    const data = this.getLocalData();
+    if (opts.displayName !== undefined) data.displayName = opts.displayName;
+    if (opts.level !== undefined) data.level = opts.level;
+    if (opts.dailyGoalMinutes !== undefined) data.dailyGoalMinutes = opts.dailyGoalMinutes;
+    if (opts.preferredDialect !== undefined) data.preferredDialect = opts.preferredDialect;
+    this.saveLocalData(data);
+    return Promise.resolve(data);
+  }
+
+  async recordPracticeScore(correctCount: number, totalQuestions: number): Promise<UserProgress> {
+    const data = this.getLocalData();
+    data.stats.totalExercisesCompleted += totalQuestions;
+    this.updateStreakInternal(data);
+    this.saveLocalData(data);
+    return Promise.resolve(data);
+  }
+
+  async updateVocabularyMasteredCount(count: number): Promise<UserProgress> {
+    const data = this.getLocalData();
+    data.stats.vocabularyMasteredCount = count;
+    this.saveLocalData(data);
+    return Promise.resolve(data);
+  }
+
+  async clearAllData(): Promise<void> {
+    this._cache = null;
+    if (typeof window === 'undefined') return;
+    try {
+      Object.values(STORAGE_KEYS).forEach((key) => {
+        localStorage.removeItem(key);
+      });
+    } catch (e) {
+      console.warn('[Storage] Could not clear all data', e);
+    }
+    return Promise.resolve();
   }
 
   // ─── Internal ───────────────────────────────────────────────────────────────
