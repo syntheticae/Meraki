@@ -33,6 +33,7 @@ import { progressRepository } from '@/services/storage';
 import { UserProgress } from '@/types/user';
 import { getAllLessons, TRACKS } from '@/data/tracks';
 import { MERAKI_CURRICULUM } from '@/data/meraki-data';
+import { DailyMissionWidget } from '@/components/roadmap/DailyMissionWidget';
 import { clsx } from 'clsx';
 
 // ─── KPI Card ─────────────────────────────────────────────────────────────────
@@ -112,6 +113,11 @@ export function DashboardOverviewView({ onTabChange }: DashboardOverviewViewProp
   const handleResetAllData = async () => {
     await progressRepository.clearAllData();
     window.location.reload();
+  };
+
+  const handleTaskToggle = async (taskId: string) => {
+    const updated = await progressRepository.completeRoadmapTask(taskId);
+    setProgress(updated);
   };
 
   const allLessons = useMemo(() => getAllLessons(), []);
@@ -325,6 +331,15 @@ export function DashboardOverviewView({ onTabChange }: DashboardOverviewViewProp
             </form>
           </div>
         </div>
+      )}
+
+      {/* Daily Smart Mission Widget */}
+      {progress.roadmap && (
+        <DailyMissionWidget
+          roadmap={progress.roadmap}
+          onTabChange={onTabChange}
+          onTaskToggle={handleTaskToggle}
+        />
       )}
 
       {/* Resume Card — shown when user has a last-viewed topic */}

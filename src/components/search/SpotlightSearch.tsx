@@ -13,7 +13,8 @@ import {
   ArrowRight, 
   CornerDownLeft, 
   X, 
-  Compass 
+  Compass,
+  Milestone
 } from 'lucide-react';
 import { MERAKI_CURRICULUM } from '@/data/meraki-data';
 import { TRACKS } from '@/data/tracks';
@@ -23,7 +24,7 @@ export interface SearchResultItem {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Modul Kurikulum' | 'Matriks Fondasi' | 'Jalur Belajar' | 'Simulasi Ujian' | 'Studio Menulis' | 'Kosakata';
+  category: 'Modul Kurikulum' | 'Matriks Fondasi' | 'Jalur Belajar' | 'Simulasi Ujian' | 'Studio Menulis' | 'Kosakata' | 'Kurikulum Inti';
   icon: React.ComponentType<{ className?: string }>;
   action: () => void;
   badge?: string;
@@ -54,6 +55,21 @@ export function SpotlightSearch({
 
   // Build searchable index (memoized to avoid re-allocating 50+ objects per render)
   const searchableItems: SearchResultItem[] = useMemo(() => [
+    // 0. Smart Adaptive Roadmap
+    {
+      id: 'smart-roadmap',
+      title: 'Roadmap Belajar Cerdas & Misi Harian',
+      subtitle: 'Kurikulum adaptif 30/60 hari dengan panduan langkah harian terarah',
+      category: 'Kurikulum Inti' as const,
+      icon: Milestone,
+      badge: 'Adaptive',
+      keywords: ['roadmap', 'jadwal', 'rencana belajar', 'kurikulum cerdas', 'misi harian', 'daily plan', 'target'],
+      action: () => {
+        router.push('/roadmap');
+        onClose();
+      }
+    },
+
     // 1. 35 Curriculum Modules
     ...MERAKI_CURRICULUM.map((mod) => ({
       id: `mod-${mod.id}`,

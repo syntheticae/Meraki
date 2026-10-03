@@ -1,5 +1,11 @@
 import { UserProgress, QuizAttemptRecord, WritingSubmission, VaultItem } from '@/types/user';
 import { calculateNextReviewDate } from '@/lib/srsEngine';
+import { UserRoadmapProgress, RoadmapTargetId } from '@/types/roadmap';
+import {
+  generateRoadmap,
+  markRoadmapTaskCompleted,
+  syncRoadmapWithExternalActivity,
+} from '@/lib/roadmapEngine';
 
 export const STORAGE_KEYS = {
   PROGRESS: 'meraki_english_user_progress_v2',
@@ -12,6 +18,7 @@ export const STORAGE_KEYS = {
   DIAGNOSTIC_SUBMITTED: 'meraki_diagnostic_submitted',
   MISTAKE_VAULT: 'meraki_mistake_vault',
   WRITING_AUTOSAVE: 'meraki_writing_autosave',
+  ROADMAP: 'meraki_smart_roadmap',
 } as const;
 
 const STORAGE_KEY = STORAGE_KEYS.PROGRESS;
@@ -70,6 +77,9 @@ class LocalProgressRepository {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = { ...DEFAULT_USER_PROGRESS, ...JSON.parse(stored) };
+        if (!parsed.roadmap) {
+          parsed.roadmap = generateRoadmap('foundation-30', parsed.level);
+        }
         this._cache = parsed;
         return parsed;
       }
@@ -85,6 +95,7 @@ class LocalProgressRepository {
           completedTopics: legacyTopics ? JSON.parse(legacyTopics) : (parsed.completedTopics ?? []),
           vaultItems: parsed.vaultItems ?? [],
           hasCompletedOnboarding: parsed.hasCompletedOnboarding ?? (!!parsed.displayName && parsed.displayName !== ''),
+          roadmap: parsed.roadmap ?? generateRoadmap('foundation-30', parsed.level),
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
         // Clean up legacy keys
@@ -101,6 +112,7 @@ class LocalProgressRepository {
         fresh.completedTopics = JSON.parse(legacyTopics);
         localStorage.removeItem(LEGACY_TOPICS_KEY);
       }
+      fresh.roadmap = generateRoadmap('foundation-30', fresh.level);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
       this._cache = fresh;
       return fresh;
@@ -154,6 +166,9 @@ class LocalProgressRepository {
     if (!data.completedTopics.includes(topicId)) {
       data.completedTopics.push(topicId);
       data.stats.totalExercisesCompleted += 1;
+      if (data.roadmap) {
+        data.roadmap = syncRoadmapWithExternalActivity(data.roadmap, { topicId });
+      }
       this.updateStreakInternal(data);
       this.saveLocalData(data);
     }
@@ -353,6 +368,36 @@ class LocalProgressRepository {
   async updateVocabularyMasteredCount(count: number): Promise<UserProgress> {
     const data = this.getLocalData();
     data.stats.vocabularyMasteredCount = count;
+    this.saveLocalData(data);
+    return Promise.resolve(data);
+  }
+
+  // ─── Smart Roadmap ─────────────────────────────────────────────────────────
+
+  async getRoadmap(): Promise<UserRoadmapProgress> {
+    const data = this.getLocalData();
+    if (!data.roadmap) {
+      data.roadmap = generateRoadmap('foundation-30', data.level);
+      this.saveLocalData(data);
+    }
+    return Promise.resolve(data.roadmap);
+  }
+
+  async completeRoadmapTask(taskId: string): Promise<UserProgress> {
+    const data = this.getLocalData();
+    if (!data.roadmap) {
+      data.roadmap = generateRoadmap('foundation-30', data.level);
+    }
+    data.roadmap = markRoadmapTaskCompleted(data.roadmap, taskId);
+    data.stats.totalExercisesCompleted += 1;
+    this.updateStreakInternal(data);
+    this.saveLocalData(data);
+    return Promise.resolve(data);
+  }
+
+  async switchRoadmapTarget(targetId: RoadmapTargetId): Promise<UserProgress> {
+    const data = this.getLocalData();
+    data.roadmap = generateRoadmap(targetId, data.level);
     this.saveLocalData(data);
     return Promise.resolve(data);
   }

@@ -62,6 +62,10 @@ const TracksView = dynamic(
   () => import('@/components/views/TracksView').then((m) => m.TracksView),
   { loading: () => <ViewSkeleton /> }
 );
+const RoadmapView = dynamic(
+  () => import('@/components/views/RoadmapView').then((m) => m.RoadmapView),
+  { loading: () => <ViewSkeleton /> }
+);
 
 import { progressRepository } from '@/services/storage';
 import { useAppStore } from '@/stores/useAppStore';
@@ -69,6 +73,7 @@ import { useAppStore } from '@/stores/useAppStore';
 // ── Tab metadata ───────────────────────────────────────────────────────────────
 const TAB_META: Record<string, { category: string; title: string }> = {
   dashboard:    { category: 'Scholar Analytics',   title: 'Dashboard Progres' },
+  roadmap:      { category: 'Kurikulum Cerdas',     title: 'Roadmap & Rencana Belajar' },
   modules:      { category: 'Kurikulum Inti',       title: 'Modul Materi (40 Bab)' },
   practice:     { category: 'Kurikulum Inti',       title: 'Latihan & Bedah Soal' },
   tracks:       { category: 'Kurikulum Inti',       title: '7 Jalur Kurikulum Tracks' },
@@ -172,6 +177,8 @@ function WorkstationInner() {
     switch (activeTab) {
       case 'dashboard':
         return <DashboardOverviewView onTabChange={handleTabChange} />;
+      case 'roadmap':
+        return <RoadmapView onTabChange={handleTabChange} />;
       case 'modules':
         return (
           <ModulesView

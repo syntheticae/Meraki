@@ -23,6 +23,7 @@ import {
   Shuffle,
   Archive,
   ShieldCheck,
+  Milestone,
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { SpotlightSearch } from '@/components/search/SpotlightSearch';
@@ -51,6 +52,7 @@ export const sidebarSections: SidebarSection[] = [
   {
     title: 'Kurikulum & Materi',
     items: [
+      { id: 'roadmap', href: '/roadmap', label: 'Roadmap Belajar Cerdas', icon: Milestone, accent: '#00638E' },
       { id: 'modules', href: '/modules', label: 'Modul Materi (40 Bab)', icon: BookOpen, accent: '#00638E' },
       { id: 'practice', href: '/practice', label: 'Latihan & Bedah Soal', icon: ListCheck, accent: '#00638E' },
       { id: 'tracks', href: '/learn', label: '7 Jalur Kurikulum Tracks', icon: Layers, accent: '#8CB9CC' },

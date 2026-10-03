@@ -1,3 +1,5 @@
+import { UserRoadmapProgress } from './roadmap';
+
 export interface StreakData {
   currentStreak: number;
   longestStreak: number;
@@ -67,4 +69,5 @@ export interface UserProgress {
   dailyGoalMinutes: number;
   preferredDialect: 'en-US' | 'en-GB';
   hasCompletedOnboarding: boolean; // controls onboarding flow
+  roadmap?: UserRoadmapProgress;   // smart personal roadmap
 }

@@ -16,6 +16,7 @@ import {
   PenTool,
   Award,
   ShieldCheck,
+  Milestone,
   X,
 } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -34,6 +35,7 @@ const PRIMARY_NAV = [
 ];
 
 const MORE_FEATURES = [
+  { id: 'roadmap', icon: Milestone, label: 'Roadmap Cerdas', desc: 'Kurikulum adaptif & target harian' },
   { id: 'matrices', icon: Table, label: 'Master Matriks', desc: '16 tabel kaidah grammar & rumus' },
   { id: 'syntax', icon: Compass, label: 'Studio Sintaksis', desc: 'Analisis kalimat & parafrase' },
   { id: 'collocations', icon: Sparkles, label: 'Diksi & Kolokasi', desc: 'Academic Collocation List' },
