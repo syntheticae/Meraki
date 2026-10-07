@@ -1,6 +1,6 @@
 export type TrackLevel = 'basic' | 'intermediate' | 'advanced' | 'exam-prep';
 
-export type SkillCategory = 'grammar' | 'vocabulary' | 'reading' | 'writing' | 'ielts' | 'toefl';
+export type SkillCategory = 'grammar' | 'vocabulary' | 'reading' | 'writing' | 'ielts' | 'toefl' | 'conversation';
 
 export interface LessonSection {
   id: string;

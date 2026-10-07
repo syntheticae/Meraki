@@ -76,7 +76,7 @@ const TAB_META: Record<string, { category: string; title: string }> = {
   roadmap:      { category: 'Kurikulum Cerdas',     title: 'Roadmap & Rencana Belajar' },
   modules:      { category: 'Kurikulum Inti',       title: 'Modul Materi (40 Bab)' },
   practice:     { category: 'Kurikulum Inti',       title: 'Latihan & Bedah Soal' },
-  tracks:       { category: 'Kurikulum Inti',       title: '7 Jalur Kurikulum Tracks' },
+  tracks:       { category: 'Kurikulum Inti',       title: 'Peta Jalur Kurikulum Tracks' },
   matrices:     { category: 'Laboratorium Bahasa',  title: 'Master Matriks Fondasi' },
   syntax:       { category: 'Laboratorium Bahasa',  title: 'Studio Sintaksis & Parafrase' },
   collocations: { category: 'Laboratorium Bahasa',  title: 'Diksi ACL & Kolokasi' },

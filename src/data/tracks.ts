@@ -7,6 +7,7 @@ import { vocabularyLessons, vocabularyExercises } from './lessons/vocabulary';
 import { readingWritingLessons, readingWritingExercises } from './lessons/reading-writing';
 import { ieltsLessons, ieltsExercises } from './lessons/ielts-lessons';
 import { toeflLessons, toeflExercises } from './lessons/toefl-lessons';
+import { conversationLessons, conversationExercises } from './lessons/conversation-english';
 
 
 export const TRACKS: Track[] = [
@@ -158,6 +159,27 @@ export const TRACKS: Track[] = [
     },
     lessons: toeflLessons,
   },
+  {
+    id: 'conversation-english',
+    slug: 'conversation-english',
+    title: 'Daily & Academic Conversation',
+    subtitle: 'From natural small talk and polite requests to workplace syncs and academic debates',
+    level: 'intermediate',
+    category: 'conversation',
+    description: 'Kuasai seni percakapan bahasa Inggris nyata: basa-basi natural, meminta tolong secara sopan, rapat bisnis kolaboratif, dan debat seminar ilmiah berbobot.',
+    iconName: 'MessageSquare',
+    badgeText: 'Level 2 · Spoken Fluency',
+    estimatedHours: 10,
+    totalLessons: conversationLessons.length,
+    colorTheme: {
+      primary: '#1A1714',
+      secondary: '#4361EE',
+      accent: '#00638E',
+      border: 'rgba(0, 99, 142, 0.25)',
+      bgGlow: 'rgba(0, 99, 142, 0.08)',
+    },
+    lessons: conversationLessons,
+  },
 ];
 
 // Unified Exercise Lookup Map
@@ -169,6 +191,7 @@ export const ALL_EXERCISES: Record<string, Exercise[]> = {
   ...readingWritingExercises,
   ...ieltsExercises,
   ...toeflExercises,
+  ...conversationExercises,
 };
 
 // Helper Functions

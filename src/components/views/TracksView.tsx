@@ -35,7 +35,7 @@ export function TracksView() {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#00638E]" />
           <span className="font-mono text-xs text-[#00638E] dark:text-[#8CB9CC] uppercase tracking-widest font-bold">
-            7 Jalur Terstruktur
+            {TRACKS.length} Jalur Terstruktur
           </span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-serif text-[#0F172A] dark:text-[#FFFFFF] font-bold">
