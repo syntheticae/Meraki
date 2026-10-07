@@ -14,13 +14,21 @@ import {
   Check,
   X,
   Stethoscope,
+  BookOpenCheck,
 } from 'lucide-react';
 import { MERAKI_CURRICULUM, PracticeQuestion, ErrorCorrectionTask } from '@/data/meraki-data';
+import {
+  IELTS_PASSAGES,
+  IELTS_READING_QUESTIONS,
+  IELTSReadingQuestion,
+  IELTSPassage,
+  IELTSQuestionType,
+} from '@/data/ielts-reading-practice';
 import { progressRepository } from '@/services/storage';
 import { clsx } from 'clsx';
 
 export function PracticeView() {
-  const [activeMode, setActiveMode] = useState<'quiz' | 'doctor'>('quiz');
+  const [activeMode, setActiveMode] = useState<'quiz' | 'doctor' | 'ielts'>('quiz');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -55,6 +63,27 @@ export function PracticeView() {
   // Doctor state
   const [currentDoctorIndex, setCurrentDoctorIndex] = useState(0);
   const [doctorRevealed, setDoctorRevealed] = useState<Record<string, boolean>>({});
+
+  // IELTS Reading Practice state
+  const [ieltsTypeFilter, setIeltsTypeFilter] = useState<IELTSQuestionType | 'all'>('all');
+  const [ieltsIndex, setIeltsIndex] = useState(0);
+  const [ieltsAnswers, setIeltsAnswers] = useState<Record<string, string>>({});
+  const [ieltsSubmitted, setIeltsSubmitted] = useState<Record<string, boolean>>({});
+  const [ieltsScore, setIeltsScore] = useState({ correct: 0, total: 0 });
+  const [ieltsTextInput, setIeltsTextInput] = useState<Record<string, string>>({});
+
+  const passageMap = useMemo(() => {
+    const map: Record<string, IELTSPassage> = {};
+    IELTS_PASSAGES.forEach((p) => { map[p.id] = p; });
+    return map;
+  }, []);
+
+  const filteredIeltsQuestions = useMemo(() => {
+    if (ieltsTypeFilter === 'all') return IELTS_READING_QUESTIONS;
+    return IELTS_READING_QUESTIONS.filter((q) => q.type === ieltsTypeFilter);
+  }, [ieltsTypeFilter]);
+
+  const currentIeltsQ = filteredIeltsQuestions[ieltsIndex] ?? filteredIeltsQuestions[0];
 
   // Filtered Questions
   const filteredQuestions = useMemo(() => {
@@ -111,6 +140,38 @@ export function PracticeView() {
     }
   };
 
+  const handleIeltsAnswer = (questionId: string, answer: string) => {
+    if (ieltsSubmitted[questionId]) return;
+    const q = IELTS_READING_QUESTIONS.find((q) => q.id === questionId);
+    if (!q) return;
+    const isCorrect = answer.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase();
+    setIeltsAnswers((prev) => ({ ...prev, [questionId]: answer }));
+    setIeltsSubmitted((prev) => ({ ...prev, [questionId]: true }));
+    setIeltsScore((prev) => ({
+      correct: isCorrect ? prev.correct + 1 : prev.correct,
+      total: prev.total + 1,
+    }));
+    if (!isCorrect) {
+      try {
+        const storedVault = localStorage.getItem('meraki_mistake_vault');
+        const parsed = storedVault ? JSON.parse(storedVault) : [];
+        const newItem = {
+          id: questionId,
+          type: 'quiz',
+          title: `IELTS Reading — ${q.type}`,
+          question: q.questionText,
+          prompt: `Jawaban Anda: "${answer}" (Salah)`,
+          correctAnswer: q.correctAnswer,
+          explanation: q.strategyWalkthrough,
+          timestamp: Date.now(),
+          category: 'IELTS Reading',
+        };
+        const updated = [newItem, ...parsed.filter((m: any) => m.id !== questionId)];
+        localStorage.setItem('meraki_mistake_vault', JSON.stringify(updated));
+      } catch (e) {}
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Mode Selector & Stats Header */}
@@ -130,7 +191,7 @@ export function PracticeView() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto">
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
           <button
             onClick={() => setActiveMode('quiz')}
             className={clsx(
@@ -154,6 +215,18 @@ export function PracticeView() {
           >
             <Stethoscope className="w-4 h-4" />
             <span>Bedah Kalimat ({allDoctorTasks.length})</span>
+          </button>
+          <button
+            onClick={() => setActiveMode('ielts')}
+            className={clsx(
+              'flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all tactile-btn cursor-pointer',
+              activeMode === 'ielts'
+                ? 'bg-[#00638E] text-white shadow-xs'
+                : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#334155] dark:text-[#7A8992] hover:text-[#00638E] dark:hover:text-[#FFFFFF]'
+            )}
+          >
+            <BookOpenCheck className="w-4 h-4" />
+            <span>IELTS Reading ({IELTS_READING_QUESTIONS.length})</span>
           </button>
         </div>
       </div>
@@ -378,6 +451,250 @@ export function PracticeView() {
                   Kasus Berikutnya →
                 </button>
               </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* MODE 3: IELTS Reading Practice */}
+      {activeMode === 'ielts' && (
+        <div className="space-y-4">
+          {/* Type Filter Bar */}
+          <div className="p-4 rounded-2xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+              <span className="text-[#475569] dark:text-[#7A8992] font-semibold shrink-0">Tipe Soal:</span>
+              {(['all', 'TFNG', 'MatchingHeadings', 'SentenceCompletion', 'SummaryCompletion', 'MatchingFeatures'] as const).map((type) => {
+                const labels: Record<string, string> = {
+                  all: 'Semua',
+                  TFNG: 'True/False/NG',
+                  MatchingHeadings: 'Matching Headings',
+                  SentenceCompletion: 'Sentence Completion',
+                  SummaryCompletion: 'Summary Completion',
+                  MatchingFeatures: 'Matching Features',
+                };
+                return (
+                  <button
+                    key={type}
+                    onClick={() => { setIeltsTypeFilter(type); setIeltsIndex(0); }}
+                    className={clsx(
+                      'px-3 py-1.5 rounded-xl transition-all cursor-pointer',
+                      ieltsTypeFilter === type
+                        ? 'bg-[#00638E] text-white font-bold shadow-xs'
+                        : 'bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-transparent text-[#334155] dark:text-[#7A8992] hover:text-[#00638E]'
+                    )}
+                  >
+                    {labels[type]}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="flex items-center gap-3 text-xs font-mono">
+              <span className="text-[#475569] dark:text-[#7A8992]">
+                Skor: <strong className="text-[#00638E] dark:text-[#8CB9CC]">{ieltsScore.correct}</strong>/{ieltsScore.total}
+              </span>
+              <button
+                onClick={() => { setIeltsAnswers({}); setIeltsSubmitted({}); setIeltsScore({ correct: 0, total: 0 }); setIeltsTextInput({}); }}
+                className="flex items-center gap-1 text-[#475569] dark:text-[#7A8992] hover:text-[#00638E] cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Question Card */}
+          {currentIeltsQ ? ((() => {
+            const passage = passageMap[currentIeltsQ.passageId];
+            const isSubmitted = ieltsSubmitted[currentIeltsQ.id];
+            const userAnswer = ieltsAnswers[currentIeltsQ.id];
+            const isCorrect = userAnswer?.trim().toLowerCase() === currentIeltsQ.correctAnswer.trim().toLowerCase();
+            const hasOptions = !!currentIeltsQ.options && currentIeltsQ.options.length > 0;
+
+            return (
+              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#141414] border border-[#CBD5E1] dark:border-white/10 shadow-xs space-y-6">
+                {/* Header */}
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#CBD5E1] dark:border-white/10 text-xs font-mono">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="px-2.5 py-0.5 rounded-md bg-[#00638E]/15 text-[#004A6B] dark:text-[#8CB9CC] font-bold">
+                      {currentIeltsQ.type}
+                    </span>
+                    {passage && (
+                      <span className="text-[#475569] dark:text-[#7A8992]">{passage.title}</span>
+                    )}
+                  </div>
+                  <span className="text-[#475569] dark:text-[#7A8992]">
+                    Soal {ieltsIndex + 1} dari {filteredIeltsQuestions.length}
+                  </span>
+                </div>
+
+                {/* Passage Excerpt */}
+                {passage && (
+                  <div className="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#1A1A1A] border border-[#CBD5E1] dark:border-white/8 space-y-2">
+                    <span className="text-xs font-mono font-bold text-[#004A6B] dark:text-[#8CB9CC] uppercase tracking-wider">
+                      Passage: {passage.topic}
+                    </span>
+                    <p className="text-xs sm:text-sm text-[#334155] dark:text-[#BFD8E3] leading-relaxed font-serif line-clamp-6">
+                      {passage.body}
+                    </p>
+                    {currentIeltsQ.keywordHint && (
+                      <p className="text-xs font-mono text-[#475569] dark:text-[#7A8992] pt-1">
+                        🔍 Scanning hint:{' '}
+                        <span className="text-[#00638E] dark:text-[#8CB9CC] font-bold">
+                          &quot;{currentIeltsQ.keywordHint}&quot;
+                        </span>
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Question */}
+                <div className="space-y-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#004A6B] dark:text-[#8CB9CC] font-bold">
+                    Pertanyaan:
+                  </span>
+                  <p className="text-base sm:text-lg font-medium text-[#0F172A] dark:text-[#FFFFFF] leading-relaxed">
+                    {currentIeltsQ.questionText}
+                  </p>
+                </div>
+
+                {/* Answer Options */}
+                {hasOptions && (
+                  <div className="grid grid-cols-1 gap-2">
+                    {currentIeltsQ.options!.map((opt) => {
+                      const isSelected = userAnswer === opt;
+                      const isThisCorrect = opt === currentIeltsQ.correctAnswer;
+                      let style = 'bg-[#F8FAFC] dark:bg-[#1C1C1C] border-[#CBD5E1] dark:border-white/10 hover:border-[#00638E] text-[#0F172A] dark:text-[#FFFFFF]';
+                      if (isSubmitted) {
+                        if (isThisCorrect) style = 'bg-emerald-50 border-emerald-500 text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300 font-bold';
+                        else if (isSelected) style = 'bg-rose-50 border-rose-500 text-rose-900 dark:bg-rose-950/40 dark:text-rose-300';
+                        else style = 'opacity-40 bg-[#F1F5F9] dark:bg-[#1C1C1C] border-[#CBD5E1]';
+                      } else if (isSelected) {
+                        style = 'bg-[#00638E] text-white border-[#00638E] font-bold shadow-xs';
+                      }
+                      return (
+                        <button
+                          key={opt}
+                          onClick={() => handleIeltsAnswer(currentIeltsQ.id, opt)}
+                          disabled={isSubmitted}
+                          className={clsx(
+                            'p-3.5 rounded-2xl border text-left text-xs sm:text-sm font-mono transition-all tactile-btn cursor-pointer flex items-center justify-between gap-2',
+                            style
+                          )}
+                        >
+                          <span>{opt}</span>
+                          {isSubmitted && isThisCorrect && <Check className="w-4 h-4 text-emerald-500 shrink-0" />}
+                          {isSubmitted && isSelected && !isThisCorrect && <X className="w-4 h-4 text-rose-500 shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Text Input for completion questions */}
+                {!hasOptions && !isSubmitted && (
+                  <div className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="Ketik jawaban dari passage (maks. 3 kata)..."
+                      aria-label="Jawaban soal IELTS"
+                      value={ieltsTextInput[currentIeltsQ.id] ?? ''}
+                      onChange={(e) => setIeltsTextInput((prev) => ({ ...prev, [currentIeltsQ.id]: e.target.value }))}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          const val = (ieltsTextInput[currentIeltsQ.id] ?? '').trim();
+                          if (val) handleIeltsAnswer(currentIeltsQ.id, val.toLowerCase());
+                        }
+                      }}
+                      className="w-full px-4 py-3 rounded-2xl border border-[#CBD5E1] dark:border-white/10 bg-[#F8FAFC] dark:bg-[#1C1C1C] text-[#0F172A] dark:text-[#FFFFFF] text-sm font-mono outline-none focus:ring-2 focus:ring-[#00638E] transition-all"
+                    />
+                    <button
+                      onClick={() => {
+                        const val = (ieltsTextInput[currentIeltsQ.id] ?? '').trim();
+                        if (val) handleIeltsAnswer(currentIeltsQ.id, val.toLowerCase());
+                      }}
+                      className="px-5 py-2.5 rounded-xl bg-[#00638E] text-white text-xs font-mono font-bold hover:bg-[#004A6B] shadow-xs cursor-pointer transition-all"
+                    >
+                      Jawab →
+                    </button>
+                  </div>
+                )}
+
+                {/* Text Input answered (show answer) */}
+                {!hasOptions && isSubmitted && (
+                  <div className="p-3.5 rounded-2xl border border-[#CBD5E1] dark:border-white/10 bg-[#F8FAFC] dark:bg-[#1C1C1C] text-xs font-mono">
+                    <span className="text-[#475569] dark:text-[#7A8992]">Jawaban Anda: </span>
+                    <span className={isCorrect ? 'text-emerald-600 font-bold' : 'text-rose-600 font-bold'}>
+                      &quot;{userAnswer}&quot;
+                    </span>
+                    {!isCorrect && (
+                      <span className="text-[#475569] dark:text-[#7A8992]"> → Benar: <span className="text-emerald-600 font-bold">&quot;{currentIeltsQ.correctAnswer}&quot;</span></span>
+                    )}
+                  </div>
+                )}
+
+                {/* Post-submit Strategy Walkthrough */}
+                {isSubmitted && (
+                  <div className={clsx(
+                    'p-5 rounded-2xl border space-y-3 animate-in fade-in duration-300',
+                    isCorrect
+                      ? 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-500/30'
+                      : 'bg-rose-50 dark:bg-rose-950/30 border-rose-500/30'
+                  )}>
+                    <div className="flex items-center gap-2">
+                      {isCorrect
+                        ? <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                        : <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
+                      }
+                      <span className={clsx(
+                        'font-mono font-bold text-sm',
+                        isCorrect ? 'text-emerald-800 dark:text-emerald-300' : 'text-rose-800 dark:text-rose-300'
+                      )}>
+                        {isCorrect ? '✓ Jawaban Benar!' : `✗ Jawaban Salah`}
+                      </span>
+                    </div>
+                    <div className="space-y-1 text-xs">
+                      <span className="font-mono font-bold text-[#00638E] dark:text-[#8CB9CC] block">
+                        📋 Strategi & Penjelasan:
+                      </span>
+                      <p className="text-[#334155] dark:text-[#BFD8E3] leading-relaxed">
+                        {currentIeltsQ.strategyWalkthrough}
+                      </p>
+                    </div>
+                    {!isCorrect && currentIeltsQ.trapExplanation && (
+                      <div className="pt-2 border-t border-rose-200 dark:border-rose-800/40 space-y-1 text-xs">
+                        <span className="font-mono font-bold text-rose-700 dark:text-rose-400 block">
+                          ⚠️ Jebakan yang Perlu Diwaspadai:
+                        </span>
+                        <p className="text-rose-800 dark:text-rose-300 leading-relaxed">
+                          {currentIeltsQ.trapExplanation}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Navigation */}
+                <div className="flex items-center justify-between pt-4 border-t border-[#CBD5E1] dark:border-white/10">
+                  <button
+                    onClick={() => setIeltsIndex((prev) => Math.max(0, prev - 1))}
+                    disabled={ieltsIndex === 0}
+                    className="px-4 py-2 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] border border-[#CBD5E1] dark:border-white/10 text-[#0F172A] dark:text-[#FFFFFF] text-xs font-mono disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed hover:border-[#00638E]"
+                  >
+                    ← Soal Sebelumnya
+                  </button>
+                  <button
+                    onClick={() => setIeltsIndex((prev) => Math.min(filteredIeltsQuestions.length - 1, prev + 1))}
+                    disabled={ieltsIndex >= filteredIeltsQuestions.length - 1}
+                    className="px-5 py-2 rounded-xl bg-[#00638E] text-white text-xs font-mono font-bold hover:bg-[#004A6B] disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed shadow-xs"
+                  >
+                    Soal Berikutnya →
+                  </button>
+                </div>
+              </div>
+            );
+          })()) : (
+            <div className="p-8 text-center text-xs font-mono text-[#475569] dark:text-[#7A8992]">
+              Belum ada soal untuk tipe ini.
             </div>
           )}
         </div>
