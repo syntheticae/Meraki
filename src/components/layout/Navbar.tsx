@@ -68,12 +68,16 @@ export function Navbar() {
           {/* Left: Brand & Back to Home */}
           <div className="flex items-center gap-3 sm:gap-4">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <span className="w-8 h-8 rounded-xl bg-[#00638E] text-white flex items-center justify-center text-sm font-serif group-hover:bg-[#004A6B] transition-colors shadow-xs">
-                ✺
-              </span>
+              <img
+                src="/logo.webp"
+                alt="Lingua Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-xl object-cover shadow-xs border border-[#CBD5E1] dark:border-white/10"
+              />
               <div className="flex flex-col">
                 <span className="font-serif text-xl tracking-tight text-[#0F172A] dark:text-[#FFFFFF] font-bold leading-none">
-                  Meraki <span className="italic text-[#00638E] dark:text-[#8CB9CC]">English</span>
+                  Lingua <span className="italic text-[#00638E] dark:text-[#8CB9CC]">English</span>
                 </span>
                 <span className="font-mono text-[9px] tracking-widest uppercase text-[#475569] dark:text-[#8CB9CC] mt-0.5 font-bold">
                   Academic & Precision
@@ -88,7 +92,7 @@ export function Navbar() {
                 className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#F1F5F9] dark:bg-[#1C1C1C] hover:bg-[#E2E8F0] dark:hover:bg-[#2B2B2B] text-xs font-mono text-[#0F172A] dark:text-[#FFFFFF] border border-[#CBD5E1] dark:border-white/10 transition-all tactile-btn font-semibold shadow-2xs"
               >
                 <ArrowLeft className="w-3.5 h-3.5 text-[#00638E]" />
-                <span>Dashboard Meraki</span>
+                <span>Dashboard Lingua</span>
               </Link>
             )}
           </div>

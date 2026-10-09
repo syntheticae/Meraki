@@ -95,7 +95,7 @@ export function OnboardingView({ onComplete }: OnboardingViewProps) {
   const handleFinish = async () => {
     setSaving(true);
     await progressRepository.completeOnboarding({
-      displayName: name.trim() || 'Meraki Scholar',
+      displayName: name.trim() || 'Lingua Scholar',
       level: detectedLevel,
       dailyGoalMinutes: goalMinutes,
       preferredDialect: dialect,
@@ -109,11 +109,15 @@ export function OnboardingView({ onComplete }: OnboardingViewProps) {
       <div className="w-full max-w-lg space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-[#00638E] flex items-center justify-center mx-auto shadow-sm">
-            <BookOpen className="w-6 h-6 text-white" />
-          </div>
+          <img
+            src="/logo.webp"
+            alt="Lingua Logo"
+            width={56}
+            height={56}
+            className="w-14 h-14 rounded-2xl object-cover mx-auto shadow-sm border border-[#CBD5E1] dark:border-white/10"
+          />
           <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0F172A] dark:text-white">
-            Selamat Datang di <span className="italic text-[#00638E] dark:text-[#8CB9CC]">Meraki</span>
+            Selamat Datang di <span className="italic text-[#00638E] dark:text-[#8CB9CC]">Lingua</span>
           </h1>
           <p className="text-sm text-[#334155] dark:text-[#8CB9CC]">
             Platform belajar Bahasa Inggris yang elegan dan terstruktur.
@@ -258,7 +262,7 @@ export function OnboardingView({ onComplete }: OnboardingViewProps) {
                 <div className="p-4 rounded-xl bg-[#00638E]/10 border border-[#00638E]/30 space-y-1">
                   <p className="text-[10px] font-mono uppercase tracking-wider text-[#00638E] dark:text-[#8CB9CC] font-bold">Level Terdeteksi</p>
                   <p className="font-serif font-bold text-lg text-[#0F172A] dark:text-white">{detectedLevel}</p>
-                  <p className="text-xs text-[#334155] dark:text-[#7A8992]">Meraki akan menyesuaikan rekomendasi modul untukmu.</p>
+                  <p className="text-xs text-[#334155] dark:text-[#7A8992]">Lingua akan menyesuaikan rekomendasi modul untukmu.</p>
                 </div>
                 <button
                   type="button"

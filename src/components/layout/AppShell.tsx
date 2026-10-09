@@ -129,18 +129,16 @@ export function AppShell({
         {/* Brand */}
         <div className="flex items-center justify-between px-1 pt-1 shrink-0">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div
-              className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform"
-              style={{
-                background:
-                  'linear-gradient(135deg, #000000 0%, #004A6B 40%, #00638E 75%, #8CB9CC 100%)',
-              }}
-            >
-              <span className="text-[13px] font-black text-white">M</span>
-            </div>
+            <img
+              src="/logo.webp"
+              alt="Lingua Logo"
+              width={32}
+              height={32}
+              className="w-8 h-8 rounded-xl object-cover shrink-0 shadow-xs group-hover:scale-105 transition-transform border border-[#CBD5E1] dark:border-white/10"
+            />
             <div>
               <h1 className="text-[13px] font-bold tracking-tight leading-tight text-[#0F172A] dark:text-[#FFFFFF]">
-                Meraki
+                Lingua
               </h1>
               <p className="text-[11px] font-bold tracking-wider uppercase text-[#475569] dark:text-[#8CB9CC]">
                 Oxford Studio

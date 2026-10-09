@@ -9,11 +9,15 @@ export function Footer() {
           {/* Brand Col */}
           <div className="space-y-4 md:col-span-2">
             <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#1A1714] text-[#F7F3EB] flex items-center justify-center text-xs font-serif">
-                ✺
-              </span>
+              <img
+                src="/logo.webp"
+                alt="Lingua Logo"
+                width={28}
+                height={28}
+                className="w-7 h-7 rounded-lg object-cover shadow-2xs"
+              />
               <span className="font-serif text-2xl tracking-tight text-[#1A1714]">
-                Meraki <span className="italic text-[#00638E] dark:text-[#8CB9CC]">English</span>
+                Lingua <span className="italic text-[#00638E] dark:text-[#8CB9CC]">English</span>
               </span>
             </div>
             <p className="text-[#82796A] text-sm leading-relaxed max-w-md font-normal">
@@ -86,7 +90,7 @@ export function Footer() {
 
         {/* Bottom strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#82796A] font-mono gap-4">
-          <p>© 2026 Meraki English Studio. Designed with quiet editorial grace.</p>
+          <p>© 2026 Lingua English Studio. Designed with quiet editorial grace.</p>
           <div className="flex items-center gap-6">
             <span>Geist + Instrument Serif</span>
             <span>·</span>

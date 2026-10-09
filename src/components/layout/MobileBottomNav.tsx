@@ -72,7 +72,7 @@ export function MobileBottomNav({ activeTab, onTabChange }: MobileBottomNavProps
                   Laboratorium & Fitur Lengkap
                 </h3>
                 <p className="text-[11px] text-[#475569] dark:text-[#8CB9CC] font-mono">
-                  Akses langsung seluruh fitur Meraki Studio
+                  Akses langsung seluruh fitur Lingua Studio
                 </p>
               </div>
               <button

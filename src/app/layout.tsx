@@ -35,21 +35,23 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Meraki — Oxford English Studio',
+  title: 'Lingua — Oxford English Studio',
   description:
     'Platform pembelajaran bahasa Inggris mandiri, elegan, dan minimalis. Memperkuat fondasi dasar grammar dan retorika untuk kesiapan ujian internasional.',
   manifest: '/manifest.webmanifest',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Meraki',
+    title: 'Lingua',
   },
   icons: {
     icon: [
+      { url: '/logo.webp', sizes: '512x512', type: 'image/webp' },
+      { url: '/icon-192.webp', sizes: '192x192', type: 'image/webp' },
       { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/icon-192.png',
+    shortcut: '/logo.webp',
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],

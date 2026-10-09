@@ -1,8 +1,8 @@
 {
-  "name": "meraki-english",
+  "name": "lingua-english",
   "version": "0.1.0",
   "private": true,
-  "description": "Meraki English Studio - Master English with Depth, Grammar Architecture & Intuition",
+  "description": "Lingua English Studio - Master English with Depth, Grammar Architecture & Intuition",
   "author": "Syntheticae Studio",
   "scripts": {
     "dev": "next dev",
@@ -42,7 +42,7 @@
   "main": "electron/main.js",
   "build": {
     "appId": "com.syntheticae.meraki",
-    "productName": "Meraki",
+    "productName": "Lingua",
     "directories": {
       "output": "dist"
     },
@@ -74,7 +74,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Meraki English"
+      "shortcutName": "Lingua English"
     }
   }
 }

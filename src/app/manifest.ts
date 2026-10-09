@@ -4,8 +4,8 @@ export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Meraki English - Academic Grammar & Lexicon',
-    short_name: 'Meraki',
+    name: 'Lingua English - Academic Grammar & Lexicon',
+    short_name: 'Lingua',
     description: 'Sistem Pembelajaran Mandiri Tata Bahasa & Retorika Bahasa Inggris Presisi Berbasis Kaidah Ilmiah',
     start_url: '/',
     display: 'standalone',
@@ -14,6 +14,18 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: 'any',
     categories: ['education', 'productivity'],
     icons: [
+      {
+        src: '/logo.webp',
+        sizes: '512x512',
+        type: 'image/webp',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-192.webp',
+        sizes: '192x192',
+        type: 'image/webp',
+        purpose: 'any',
+      },
       {
         src: '/icon-192.png',
         sizes: '192x192',

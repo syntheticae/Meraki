@@ -25,9 +25,9 @@ function createWindow() {
     height: 880,
     minWidth: 980,
     minHeight: 640,
-    title: 'Meraki English',
+    title: 'Lingua — Oxford English Studio',
     icon: path.join(__dirname, '..', 'public', 'icon.ico'),
-    backgroundColor: '#EFE9DF',
+    backgroundColor: '#DFE5EA',
     show: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -59,7 +59,7 @@ function createWindow() {
     {
       label: 'App',
       submenu: [
-        { label: 'Tentang Meraki', role: 'about' },
+        { label: 'Tentang Lingua', role: 'about' },
         { type: 'separator' },
         { label: 'Keluar', accelerator: 'CmdOrCtrl+Q', click: () => app.quit() }
       ]

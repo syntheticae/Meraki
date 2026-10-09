@@ -664,7 +664,7 @@ export function DashboardOverviewView({ onTabChange }: DashboardOverviewViewProp
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = `meraki-progress-${new Date().toISOString().split('T')[0]}.json`;
+                    a.download = `lingua-progress-${new Date().toISOString().split('T')[0]}.json`;
                     a.click();
                     URL.revokeObjectURL(url);
                     showFeedback('Data progres berhasil diekspor!');
